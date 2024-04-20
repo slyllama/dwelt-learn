@@ -45,16 +45,20 @@ func _ready():
 
 func _input(_event):
 	if Input.is_action_just_pressed("move_forward"):
+		$Stars.amount_ratio = 1.0
 		$SoundHandler.move()
 		$PlaceholderMesh/AnimationPlayer.play("Fly")
 	if Input.is_action_just_released("move_forward"):
+		$Stars.amount_ratio = 0.3
 		$SoundHandler.stop_moving()
 		$PlaceholderMesh/AnimationPlayer.play_backwards("Fly")
 	
 	if Input.is_action_just_pressed("move_back"):
+		$Stars.amount_ratio = 1.0
 		$SoundHandler.move()
 		$PlaceholderMesh/AnimationPlayer.play("Fly")
 	if Input.is_action_just_released("move_back"):
+		$Stars.amount_ratio = 0.3
 		$SoundHandler.stop_moving()
 		$PlaceholderMesh/AnimationPlayer.play_backwards("Fly")
 
