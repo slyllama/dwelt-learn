@@ -8,7 +8,6 @@ var NUMS = [
 ]
 var stagger = [5, 4, 3, 2, 1]
 var transitioning = false
-var active = false
 
 ### Dialogue-specific variables
 var current_dialogue = []
@@ -20,7 +19,7 @@ func _set_text(get_text):
 func close_dialogue():
 	current_dialogue = ""
 	current_place = 0
-	active = false
+	Global.dialogue_active = false
 	
 	transitioning = true
 	var fade_in = create_tween()
@@ -32,7 +31,7 @@ func close_dialogue():
 func play_dialogue(get_dialogue):
 	current_dialogue = get_dialogue
 	current_place = 0
-	active = true
+	Global.dialogue_active = true
 	$Base/Proceed.visible = false
 	$Base.modulate.a = 0.0
 	visible = true
@@ -77,13 +76,14 @@ func play_phrase():
 	transitioning = false
 
 func _ready():
+	Global.connect("dialogue_played", play_dialogue)
 	visible = false
 	$Base/Proceed.visible = false
 
 func _input(_event):
-	if transitioning == true or active == false: return
-	if Input.is_action_just_pressed("ui_accept"):
-		if active == true: play_phrase()
+	if transitioning == true or Global.dialogue_active == false: return
+	if Input.is_action_just_pressed("interact"):
+		if Global.dialogue_active == true: play_phrase()
 
 func _on_proceed_pressed():
 	play_phrase()
