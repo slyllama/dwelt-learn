@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://lib/dialogue_area/dialogue_area.gd" id="1_kv4hh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u8012"]
-size = Vector3(3, 0.1, 3)
+size = Vector3(3, 1, 3)
 
 [node name="DialogueArea" type="Area3D"]
 script = ExtResource("1_kv4hh")

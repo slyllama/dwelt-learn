@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpobtu45t8vkb"
-path.s3tc="res://.godot/imported/stars_tile.png-ad6a5eb587c0390de4e624a734557683.s3tc.ctex"
+uid="uid://be2hioxs4cw60"
+path.s3tc="res://.godot/imported/brass_trim_emit.png-9b500502438d46eb40eb8639cb7b389f.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://characters/styx/styx_v3/tex/stars_tile.png"
-dest_files=["res://.godot/imported/stars_tile.png-ad6a5eb587c0390de4e624a734557683.s3tc.ctex"]
+source_file="res://characters/styx/tex/brass_trim_emit.png"
+dest_files=["res://.godot/imported/brass_trim_emit.png-9b500502438d46eb40eb8639cb7b389f.s3tc.ctex"]
 
 [params]
 

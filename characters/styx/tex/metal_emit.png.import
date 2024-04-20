@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dc8yk3uxcpn3k"
-path.s3tc="res://.godot/imported/metal_norm.png-c234b498b21c2b75315be27e8d4fc5b6.s3tc.ctex"
+uid="uid://budte3e6oj4vn"
+path.s3tc="res://.godot/imported/metal_emit.png-12c7884c5403e01dc6e94a5ab29408d7.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://characters/styx/styx_v3/tex/metal_norm.png"
-dest_files=["res://.godot/imported/metal_norm.png-c234b498b21c2b75315be27e8d4fc5b6.s3tc.ctex"]
+source_file="res://characters/styx/tex/metal_emit.png"
+dest_files=["res://.godot/imported/metal_emit.png-12c7884c5403e01dc6e94a5ab29408d7.s3tc.ctex"]
 
 [params]
 
@@ -20,12 +20,12 @@ compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=1
+compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=1
-roughness/src_normal="res://characters/styx/styx_v3/tex/metal_norm.png"
+roughness/mode=0
+roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

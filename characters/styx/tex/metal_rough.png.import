@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://be2hioxs4cw60"
-path.s3tc="res://.godot/imported/brass_trim_emit.png-fc8977d098849aa958956d5fbb4be041.s3tc.ctex"
+uid="uid://bsw8cgxptfuok"
+path.s3tc="res://.godot/imported/metal_rough.png-a3bfb9d2064fb8fbfaa34adec3305f7d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://characters/styx/styx_v3/tex/brass_trim_emit.png"
-dest_files=["res://.godot/imported/brass_trim_emit.png-fc8977d098849aa958956d5fbb4be041.s3tc.ctex"]
+source_file="res://characters/styx/tex/metal_rough.png"
+dest_files=["res://.godot/imported/metal_rough.png-a3bfb9d2064fb8fbfaa34adec3305f7d.s3tc.ctex"]
 
 [params]
 

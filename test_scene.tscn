@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://xn6ih4gyo82p" path="res://generic/tex/tile_emit.png" id="14_6vp08"]
 [ext_resource type="Texture2D" uid="uid://bio1xu5ncuvte" path="res://generic/tex/tile_norm.png" id="15_ajtqs"]
 [ext_resource type="Texture2D" uid="uid://c530ebvhp0q2f" path="res://objects/floor/wall/tex/wall_embellish_emit.png" id="17_lx010"]
-[ext_resource type="Material" uid="uid://dedhetoptnip7" path="res://generic/mat_grey.tres" id="18_0kl5y"]
+[ext_resource type="Material" uid="uid://dedhetoptnip7" path="res://generic/mat_tile.tres" id="18_0kl5y"]
 [ext_resource type="PackedScene" uid="uid://dw6tab3s5lc2v" path="res://objects/floor/wall/wall.tscn" id="18_hg1d0"]
 [ext_resource type="ArrayMesh" uid="uid://bvf6fuimgjs8c" path="res://objects/rock_test/rock.obj" id="18_j5tgn"]
 [ext_resource type="Texture2D" uid="uid://b7qjderyhyvxt" path="res://objects/floor/wall/tex/wall_embellish_norm.png" id="18_pw26b"]
@@ -488,7 +488,7 @@ autoplay = "rotate"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -4)
 
 [node name="DialogueArea" parent="." instance=ExtResource("32_d6er5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0864, -0.0765724, -2.46207)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0864, -0.544238, -2.46207)
 
 [node name="Infobot" parent="." instance=ExtResource("32_gdlq0")]
 transform = Transform3D(-0.53033, 0, 0.53033, 0, 0.75, 0, -0.53033, 0, -0.53033, 7.7, 2.3, -9)

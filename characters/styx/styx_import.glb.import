@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bvvun6m072cl8"
-path="res://.godot/imported/styx_v3_import.glb-0b4709ea35360f3f617f5f8e8c71bd58.scn"
+path="res://.godot/imported/styx_import.glb-8c11a1370d8562fd33fb6df247628051.scn"
 
 [deps]
 
-source_file="res://characters/styx/styx_v3/styx_v3_import.glb"
-dest_files=["res://.godot/imported/styx_v3_import.glb-0b4709ea35360f3f617f5f8e8c71bd58.scn"]
+source_file="res://characters/styx/styx_import.glb"
+dest_files=["res://.godot/imported/styx_import.glb-8c11a1370d8562fd33fb6df247628051.scn"]
 
 [params]
 
