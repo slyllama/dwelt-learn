@@ -1,0 +1,144 @@
+[gd_scene load_steps=3 format=3 uid="uid://dq3aqaliycowy"]
+
+[ext_resource type="Script" path="res://lib/ui/debug_pane/debug_pane.gd" id="1_sn71f"]
+[ext_resource type="FontFile" uid="uid://bhk1jyryyb1be" path="res://generic/ibm_plex_mono_text.otf" id="3_egsd7"]
+
+[node name="DebugPane" type="CanvasLayer"]
+script = ExtResource("1_sn71f")
+
+[node name="FPSCounter" type="RichTextLabel" parent="."]
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 370.0
+offset_bottom = 85.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("3_egsd7")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[FPS]"
+
+[node name="About" type="RichTextLabel" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -165.0
+offset_top = 40.0
+offset_right = 165.0
+offset_bottom = 85.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("3_egsd7")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[center]This is DWELT."
+
+[node name="Details" type="RichTextLabel" parent="."]
+offset_left = 40.0
+offset_top = 84.0
+offset_right = 628.0
+offset_bottom = 399.0
+mouse_filter = 1
+theme_override_constants/line_separation = -5
+theme_override_fonts/normal_font = ExtResource("3_egsd7")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[Details]"
+
+[node name="Settings" type="Control" parent="."]
+z_index = 100
+z_as_relative = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 40.0
+offset_top = 204.0
+offset_right = 347.0
+offset_bottom = 323.0
+mouse_filter = 1
+
+[node name="BG" type="ColorRect" parent="Settings"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0.176471)
+
+[node name="FOVText" type="RichTextLabel" parent="Settings"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 10.0
+offset_top = 11.0
+offset_right = -10.0
+offset_bottom = 36.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("3_egsd7")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "FOV:"
+
+[node name="FOVSlider" type="HSlider" parent="Settings"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 10.0
+offset_top = 35.0
+offset_right = -10.0
+offset_bottom = 51.0
+grow_horizontal = 2
+focus_mode = 0
+min_value = 50.0
+value = 50.0
+
+[node name="MuteText" type="RichTextLabel" parent="Settings"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 10.0
+offset_top = 60.0
+offset_right = -232.0
+offset_bottom = 85.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("3_egsd7")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "Mute:"
+
+[node name="MuteButton" type="CheckButton" parent="Settings"]
+layout_mode = 0
+offset_left = 260.0
+offset_top = 60.0
+offset_right = 304.0
+offset_bottom = 84.0
+focus_mode = 0
+
+[node name="BlendShadow" type="RichTextLabel" parent="Settings"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 10.0
+offset_top = 81.0
+offset_right = -88.0
+offset_bottom = 106.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("3_egsd7")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "Blend shadow splits:"
+
+[node name="BlendShadowButton" type="CheckButton" parent="Settings"]
+layout_mode = 0
+offset_left = 260.0
+offset_top = 81.0
+offset_right = 304.0
+offset_bottom = 105.0
+focus_mode = 0
+
+[connection signal="value_changed" from="Settings/FOVSlider" to="." method="_on_fov_slider_value_changed"]
+[connection signal="pressed" from="Settings/MuteButton" to="." method="_on_mute_button_pressed"]
+[connection signal="pressed" from="Settings/BlendShadowButton" to="." method="_on_blend_shadow_button_pressed"]

@@ -1,0 +1,66 @@
+[gd_scene load_steps=10 format=3 uid="uid://bcp4um4sjbyx6"]
+
+[ext_resource type="Script" path="res://lib/player/player.gd" id="1_2r77g"]
+[ext_resource type="Script" path="res://lib/player/CamPivot.gd" id="2_73c7o"]
+[ext_resource type="PackedScene" uid="uid://dubiapk4q8y4o" path="res://characters/styx/styx_v3/styx_v3.tscn" id="4_lxxnv"]
+[ext_resource type="PackedScene" uid="uid://cw7452jwdahpu" path="res://lib/highlight_decal/highlight_decal.tscn" id="5_siwwa"]
+[ext_resource type="PackedScene" path="res://lib/player/sound_handler/sound_handler.tscn" id="5_ymbnw"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_yehb5"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7nbr8"]
+radius = 0.733304
+height = 1.7
+
+[sub_resource type="Animation" id="Animation_8883i"]
+resource_name = "float"
+loop_mode = 1
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlaceholderMesh")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.5, 1, 0, 0.035, 0)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k5xan"]
+_data = {
+"float": SubResource("Animation_8883i")
+}
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_2r77g")
+
+[node name="CamPivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05, 0)
+script = ExtResource("2_73c7o")
+
+[node name="CamArm" type="SpringArm3D" parent="CamPivot"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0)
+shape = SubResource("SphereShape3D_yehb5")
+spring_length = 5.0
+
+[node name="Camera" type="Camera3D" parent="CamPivot/CamArm"]
+current = true
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_7nbr8")
+
+[node name="YCast" type="RayCast3D" parent="."]
+target_position = Vector3(0, -20, 0)
+collide_with_areas = true
+
+[node name="SoundHandler" parent="." instance=ExtResource("5_ymbnw")]
+
+[node name="FloatUpDown" type="AnimationPlayer" parent="."]
+autoplay = "float"
+libraries = {
+"": SubResource("AnimationLibrary_k5xan")
+}
+
+[node name="PlaceholderMesh" parent="." instance=ExtResource("4_lxxnv")]
+transform = Transform3D(0.27, 0, 0, 0, 0.27, 0, 0, 0, 0.27, 0, 0, 0)
+
+[node name="HighlightDecal" parent="." instance=ExtResource("5_siwwa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.215, 0)

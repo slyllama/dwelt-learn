@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://rrahcoqndg6d"]
+
+[ext_resource type="Texture2D" uid="uid://gw4e0dj4u12b" path="res://objects/floor/tex/floor_emit.png" id="1_n8xc8"]
+[ext_resource type="Texture2D" uid="uid://cwk5toi67o1wi" path="res://objects/floor/tex/floor_norm.png" id="2_3xi8p"]
+
+[resource]
+albedo_texture = ExtResource("1_n8xc8")
+metallic = 0.45
+roughness = 0.5
+normal_enabled = true
+normal_scale = 0.5
+normal_texture = ExtResource("2_3xi8p")

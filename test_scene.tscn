@@ -1,0 +1,482 @@
+[gd_scene load_steps=51 format=3 uid="uid://bsetivexkdulh"]
+
+[ext_resource type="Script" path="res://test_scene.gd" id="1_2kdkw"]
+[ext_resource type="Material" uid="uid://4d6tcixxllut" path="res://objects/rocket_claw/mat_rocket_claw.tres" id="1_q37l3"]
+[ext_resource type="ArrayMesh" uid="uid://cpdlvsk5u8brl" path="res://objects/rocket_claw/rocket_claw.obj" id="2_7u0dt"]
+[ext_resource type="Texture2D" uid="uid://dkbckkhxndfn5" path="res://generic/tex/stars_1080p.jpg" id="2_s1yfh"]
+[ext_resource type="PackedScene" uid="uid://bcp4um4sjbyx6" path="res://lib/player/player.tscn" id="4_1oai2"]
+[ext_resource type="Texture2D" uid="uid://b3aaiytpklgal" path="res://lib/ui/tex/vignette.png" id="4_xtxix"]
+[ext_resource type="PackedScene" uid="uid://e0k8h1ytp7wi" path="res://lib/ui/hud/hud.tscn" id="5_6lqxt"]
+[ext_resource type="Material" uid="uid://rrahcoqndg6d" path="res://objects/floor/mat_floor.tres" id="6_fjpyi"]
+[ext_resource type="AudioStream" uid="uid://bb7tmgac32l35" path="res://generic/ambient_track.ogg" id="6_nln1m"]
+[ext_resource type="ArrayMesh" uid="uid://bnlpp6ne5jq3y" path="res://objects/floor/floor.obj" id="6_r1bc3"]
+[ext_resource type="PackedScene" path="res://objects/gravpad/gravity_pad.tscn" id="13_liyv3"]
+[ext_resource type="Texture2D" uid="uid://xn6ih4gyo82p" path="res://generic/tex/tile_emit.png" id="14_6vp08"]
+[ext_resource type="Texture2D" uid="uid://bio1xu5ncuvte" path="res://generic/tex/tile_norm.png" id="15_ajtqs"]
+[ext_resource type="Texture2D" uid="uid://c530ebvhp0q2f" path="res://objects/floor/wall/tex/wall_embellish_emit.png" id="17_lx010"]
+[ext_resource type="Material" uid="uid://dedhetoptnip7" path="res://generic/mat_grey.tres" id="18_0kl5y"]
+[ext_resource type="PackedScene" uid="uid://dw6tab3s5lc2v" path="res://objects/floor/wall/wall.tscn" id="18_hg1d0"]
+[ext_resource type="ArrayMesh" uid="uid://bvf6fuimgjs8c" path="res://objects/rock_test/rock.obj" id="18_j5tgn"]
+[ext_resource type="Texture2D" uid="uid://b7qjderyhyvxt" path="res://objects/floor/wall/tex/wall_embellish_norm.png" id="18_pw26b"]
+[ext_resource type="Texture2D" uid="uid://d1fy6jygommc6" path="res://generic/tex/mote.png" id="18_r710r"]
+[ext_resource type="ArrayMesh" uid="uid://jmvm537tcgg6" path="res://objects/floor/wall/wall_import.obj" id="19_6jbv0"]
+[ext_resource type="Material" uid="uid://b4hs5hauq3l0f" path="res://objects/rock_test/mat_rock.tres" id="19_xx3wl"]
+[ext_resource type="PackedScene" uid="uid://b0cumm7revohw" path="res://characters/infobot/infobot.tscn" id="20_821ow"]
+[ext_resource type="ArrayMesh" uid="uid://dcqni2oqbyp05" path="res://objects/rock_test/grass.obj" id="21_70xv4"]
+[ext_resource type="ArrayMesh" uid="uid://dr2else4l8d0n" path="res://objects/floor/pillar.obj" id="22_2mbv3"]
+[ext_resource type="Material" uid="uid://b8qiowsyf48h7" path="res://objects/rock_test/mat_foliage.tres" id="22_hxvov"]
+[ext_resource type="ArrayMesh" uid="uid://ce1w3e45srxgq" path="res://objects/kryptis_test/kryptis_test.obj" id="23_1u1sq"]
+[ext_resource type="Texture2D" uid="uid://ddgi7bji2llop" path="res://objects/kryptis_test/kryptis_emit.png" id="24_p1rwb"]
+[ext_resource type="Texture2D" uid="uid://8id1cqd5qyio" path="res://objects/kryptis_test/kryptis_norm.png" id="25_w8grm"]
+[ext_resource type="Texture2D" uid="uid://dei8dwgkv0wms" path="res://objects/kryptis_test/kryptis_rough.png" id="26_b5yyo"]
+[ext_resource type="PackedScene" uid="uid://bbt6np1daksl4" path="res://lib/cable/cable.tscn" id="27_ftbr5"]
+[ext_resource type="ArrayMesh" uid="uid://c6yb8s3l7fjqi" path="res://objects/cathedral/cathedral.obj" id="31_43blj"]
+[ext_resource type="PackedScene" uid="uid://i1jp4klishr3" path="res://lib/dialogue_area/dialogue_area.tscn" id="32_d6er5"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dbpli"]
+panorama = ExtResource("2_s1yfh")
+
+[sub_resource type="Sky" id="Sky_s5wm8"]
+sky_material = SubResource("PanoramaSkyMaterial_dbpli")
+
+[sub_resource type="Environment" id="Environment_r5o54"]
+background_mode = 2
+sky = SubResource("Sky_s5wm8")
+ambient_light_source = 2
+ambient_light_color = Color(0.3536, 0.442347, 0.52, 1)
+ambient_light_energy = 1.4
+tonemap_mode = 2
+tonemap_exposure = 1.35
+fog_enabled = true
+fog_light_color = Color(0, 0, 0, 1)
+fog_light_energy = 0.0
+fog_density = 0.04
+fog_sky_affect = 0.0
+fog_height_density = -0.1
+
+[sub_resource type="QuadMesh" id="QuadMesh_fhx46"]
+size = Vector2(100, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_70374"]
+albedo_texture = ExtResource("14_6vp08")
+metallic_specular = 0.25
+normal_enabled = true
+normal_texture = ExtResource("15_ajtqs")
+uv1_scale = Vector3(50, 50, 50)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fuk4o"]
+size = Vector3(50, 0.1, 50)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_30eag"]
+albedo_texture = ExtResource("17_lx010")
+metallic = 0.45
+roughness = 0.7
+normal_enabled = true
+normal_texture = ExtResource("18_pw26b")
+
+[sub_resource type="Gradient" id="Gradient_aovtp"]
+offsets = PackedFloat32Array(0, 0.232143, 0.834821, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xbgi5"]
+gradient = SubResource("Gradient_aovtp")
+
+[sub_resource type="Curve" id="Curve_lstkl"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_n7qc6"]
+curve = SubResource("Curve_lstkl")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6f558"]
+emission_shape = 3
+emission_box_extents = Vector3(5, 5, 5)
+gravity = Vector3(0, 0.01, 0)
+initial_velocity_min = 0.05
+initial_velocity_max = 0.05
+scale_min = 0.5
+scale_curve = SubResource("CurveTexture_n7qc6")
+color_ramp = SubResource("GradientTexture1D_xbgi5")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2dh08"]
+transparency = 1
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("18_r710r")
+backlight_enabled = true
+backlight = Color(1, 1, 1, 1)
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_udmxf"]
+material = SubResource("StandardMaterial3D_2dh08")
+size = Vector2(0.06, 0.06)
+orientation = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qj1h0"]
+albedo_color = Color(0.647059, 0.517647, 0.545098, 1)
+albedo_texture = ExtResource("24_p1rwb")
+roughness = 0.65
+roughness_texture = ExtResource("26_b5yyo")
+normal_enabled = true
+normal_texture = ExtResource("25_w8grm")
+distance_fade_mode = 2
+distance_fade_max_distance = 3.0
+
+[sub_resource type="Animation" id="Animation_xfbye"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-4, 1, -9)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Infobot:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(7.7, 2.3, -9)]
+}
+
+[sub_resource type="Animation" id="Animation_mq6ed"]
+resource_name = "rotate"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5, 5, 7.5, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.5708, 0), Vector3(0, 3.14159, 0), Vector3(0, 4.71239, 0), Vector3(0, 6.28319, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.5, 5, 7.5, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-4, 1, -9), Vector3(-4, 1.3, -9), Vector3(-4, 1, -9), Vector3(-4, 1.3, -9), Vector3(-4, 1, -9)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Infobot:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.5, 5, 7.5, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(7.7, 2.3, -9), Vector3(7.7, 2.1, -9), Vector3(7.7, 2.3, -9), Vector3(7.7, 2.1, -9), Vector3(7.7, 2.3, -9)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_omjoa"]
+_data = {
+"RESET": SubResource("Animation_xfbye"),
+"rotate": SubResource("Animation_mq6ed")
+}
+
+[node name="TestScene" type="Node3D"]
+script = ExtResource("1_2kdkw")
+
+[node name="Sky" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_r5o54")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.521665, -0.435322, 0.733731, -0.0968269, 0.824258, 0.557874, -0.847638, -0.362068, 0.387835, 0, 6.09097, 0)
+light_color = Color(1, 0.854902, 0.733333, 1)
+light_energy = 2.0
+shadow_enabled = true
+directional_shadow_blend_splits = true
+directional_shadow_pancake_size = 10.0
+
+[node name="Player" parent="." instance=ExtResource("4_1oai2")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1.3, 2)
+
+[node name="Vignette" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.823529)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_xtxix")
+expand_mode = 1
+
+[node name="HUD" parent="." instance=ExtResource("5_6lqxt")]
+
+[node name="Ambience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_nln1m")
+volume_db = -12.0
+autoplay = true
+
+[node name="Architecture" type="Node3D" parent="."]
+
+[node name="Floor" type="StaticBody3D" parent="Architecture"]
+
+[node name="WideFloor" type="MeshInstance3D" parent="Architecture/Floor"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.1, 0)
+mesh = SubResource("QuadMesh_fhx46")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_70374")
+
+[node name="Collision" type="CollisionShape3D" parent="Architecture/Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+shape = SubResource("BoxShape3D_fuk4o")
+
+[node name="GravityPad" parent="Architecture" instance=ExtResource("13_liyv3")]
+transform = Transform3D(0.971205, 0, 0.238245, 0, 1, 0, -0.238245, 0, 0.971205, 7.7, -0.2, -9)
+TYPE = "player_model"
+
+[node name="GravityPad2" parent="Architecture" instance=ExtResource("13_liyv3")]
+transform = Transform3D(0.878359, 0, 0.478002, 0, 1, 0, -0.478002, 0, 0.878359, -16, 4.07623, -10)
+
+[node name="GravityPad3" parent="Architecture" instance=ExtResource("13_liyv3")]
+transform = Transform3D(0.930398, 0, -0.36655, 0, 1, 0, 0.36655, 0, 0.930398, -4, -0.2, -9)
+TYPE = "ignore"
+
+[node name="RocketClaw" type="MeshInstance3D" parent="Architecture"]
+transform = Transform3D(-3.17494e-08, 0.726339, -1.01731, -1.25, -5.46393e-08, 0, -4.44681e-08, 1.01731, 0.726339, 10.0497, 2.53575, -12.7577)
+material_override = ExtResource("1_q37l3")
+mesh = ExtResource("2_7u0dt")
+skeleton = NodePath("../..")
+
+[node name="RocketClaw2" type="MeshInstance3D" parent="Architecture"]
+transform = Transform3D(5.33465e-08, -1.22043, -0.872099, -1.5, -6.55671e-08, 3.97803e-14, -3.81207e-08, 0.872099, -1.22043, 2.39675, 0.892048, -12.3394)
+material_override = ExtResource("1_q37l3")
+mesh = ExtResource("2_7u0dt")
+skeleton = NodePath("../..")
+
+[node name="RocketClaw3" type="MeshInstance3D" parent="Architecture"]
+transform = Transform3D(3.97943e-08, -0.910388, -0.856557, -1.25, -5.46392e-08, 1.59376e-13, -3.74415e-08, 0.856557, -0.910388, -16, 4.96143, -10)
+material_override = ExtResource("1_q37l3")
+mesh = ExtResource("2_7u0dt")
+skeleton = NodePath("../..")
+
+[node name="FloorPlatform" type="MeshInstance3D" parent="Architecture"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -16, 3.7, -10)
+material_override = ExtResource("6_fjpyi")
+mesh = ExtResource("6_r1bc3")
+skeleton = NodePath("../..")
+
+[node name="NewRock" type="MeshInstance3D" parent="Architecture"]
+transform = Transform3D(1.99238, 0, 0.244144, 0, 2.97017, 0, -0.238424, 0, 2.04018, 10.9521, -0.428628, -13.2355)
+mesh = ExtResource("18_j5tgn")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("19_xx3wl")
+
+[node name="NewRock2" type="MeshInstance3D" parent="Architecture"]
+transform = Transform3D(1.99521, 0, -0.927632, 0, 2.255, 0, 0.907754, 0, 2.0389, 7.48119, -0.12267, -14.2614)
+mesh = ExtResource("18_j5tgn")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("19_xx3wl")
+
+[node name="NewRock3" type="MeshInstance3D" parent="Architecture"]
+transform = Transform3D(1.62828, 0, 1.49964, 0, 3.22798, 0, -1.4675, 0, 1.66394, -18.2908, -0.12267, -13.4919)
+mesh = ExtResource("18_j5tgn")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("19_xx3wl")
+
+[node name="NewRock4" type="MeshInstance3D" parent="Architecture"]
+transform = Transform3D(2.52601, 0.485302, -0.200366, -0.291207, 2.11426, 1.44966, 0.436879, -1.39671, 2.12479, 2.86925, -2.40262, -13.0758)
+mesh = ExtResource("18_j5tgn")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("19_xx3wl")
+
+[node name="NewRock5" type="MeshInstance3D" parent="Architecture"]
+transform = Transform3D(2.52601, 0.485302, -0.200366, -0.291207, 2.11426, 1.44966, 0.436879, -1.39671, 2.12479, -18.2665, -2.40262, -10.2956)
+mesh = ExtResource("18_j5tgn")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("19_xx3wl")
+
+[node name="NewRock6" type="MeshInstance3D" parent="Architecture"]
+transform = Transform3D(2.46968, -0.667522, 0.746544, 0.386029, 2.46767, 0.929423, -0.924065, -0.753166, 2.3835, -13.926, -1.3668, -13.4893)
+mesh = ExtResource("18_j5tgn")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("19_xx3wl")
+
+[node name="NewRock7" type="MeshInstance3D" parent="Architecture"]
+transform = Transform3D(1.43185, 0, 0.801677, 0, 1.641, 0, -0.801677, 0, 1.43185, -18.1109, -0.215898, -3.418)
+mesh = ExtResource("18_j5tgn")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("19_xx3wl")
+
+[node name="Wall" parent="Architecture" instance=ExtResource("18_hg1d0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -0.3, -14.4)
+
+[node name="Wall2" parent="Architecture" instance=ExtResource("18_hg1d0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, -14.4)
+
+[node name="Wall3" parent="Architecture" instance=ExtResource("18_hg1d0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.3, -14.4)
+
+[node name="Wall4" parent="Architecture" instance=ExtResource("18_hg1d0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12.4, -0.3, -10)
+
+[node name="Wall5" parent="Architecture" instance=ExtResource("18_hg1d0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12.4, -0.3, -2)
+
+[node name="Wall6" parent="Architecture" instance=ExtResource("18_hg1d0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, -0.3, -14.4)
+
+[node name="Wall7" parent="Architecture" instance=ExtResource("18_hg1d0")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20.4, -0.3, -10)
+
+[node name="Wall8" parent="Architecture" instance=ExtResource("18_hg1d0")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20.4, -0.3, -2)
+
+[node name="Wall9" parent="Architecture" instance=ExtResource("18_hg1d0")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20.4, -0.3, 6)
+
+[node name="Pillar" type="MeshInstance3D" parent="Architecture"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.2, -0.3, -14.2)
+mesh = ExtResource("22_2mbv3")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("18_0kl5y")
+
+[node name="Pillar2" type="MeshInstance3D" parent="Architecture"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -0.3, -6)
+mesh = ExtResource("22_2mbv3")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("18_0kl5y")
+
+[node name="Pillar3" type="MeshInstance3D" parent="Architecture"]
+transform = Transform3D(0.999965, -0.00836003, 0, 0.00836003, 0.999965, 0, 0, 0, 1, -20.2, -0.3, -14.2)
+mesh = ExtResource("22_2mbv3")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("18_0kl5y")
+
+[node name="Pillar4" type="MeshInstance3D" parent="Architecture"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -0.3, -14.2)
+mesh = ExtResource("22_2mbv3")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("18_0kl5y")
+
+[node name="WallImport" type="MeshInstance3D" parent="Architecture"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, -0.3, -6)
+material_override = SubResource("StandardMaterial3D_30eag")
+mesh = ExtResource("19_6jbv0")
+
+[node name="Foliage" type="Node3D" parent="."]
+
+[node name="Grass" type="MeshInstance3D" parent="Foliage"]
+transform = Transform3D(0.825961, 0, -0.563728, 0, 1, 0, 0.563728, 0, 0.825961, 0.915869, 0.501292, -12.7655)
+cast_shadow = 0
+visibility_range_end = 30.0
+mesh = ExtResource("21_70xv4")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("22_hxvov")
+
+[node name="Grass2" type="MeshInstance3D" parent="Foliage"]
+transform = Transform3D(-0.696163, 0, -0.717883, 0, 1, 0, 0.717883, 0, -0.696163, -0.839466, -0.168761, -12.9132)
+cast_shadow = 0
+mesh = ExtResource("21_70xv4")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("22_hxvov")
+
+[node name="Grass3" type="MeshInstance3D" parent="Foliage"]
+transform = Transform3D(-0.883766, 0, -0.46793, 0, 1.22818, 0, 0.46793, 0, -0.883766, 3.59105, 0.461646, -11.6053)
+cast_shadow = 0
+mesh = ExtResource("21_70xv4")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("22_hxvov")
+
+[node name="Grass4" type="MeshInstance3D" parent="Foliage"]
+transform = Transform3D(-1.15711, 0, -0.045362, 0, 1.42, 0, 0.045362, 0, -1.15711, 5.48856, 1.13637, -13.2621)
+cast_shadow = 0
+mesh = ExtResource("21_70xv4")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("22_hxvov")
+
+[node name="Grass5" type="MeshInstance3D" parent="Foliage"]
+transform = Transform3D(-1.09039, 0, 0.3899, 0, 1.42, 0, -0.3899, 0, -1.09039, -17.8026, 1.46025, -3.63633)
+cast_shadow = 0
+mesh = ExtResource("21_70xv4")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("22_hxvov")
+
+[node name="Grass6" type="MeshInstance3D" parent="Foliage"]
+transform = Transform3D(-0.360825, 0, 1.26117, 0, 1.24594, 0, -1.03499, 0, -0.439679, -18.2972, 0.734412, -2.53357)
+cast_shadow = 0
+mesh = ExtResource("21_70xv4")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("22_hxvov")
+
+[node name="Grass7" type="MeshInstance3D" parent="Foliage"]
+transform = Transform3D(-0.864473, 0, 0.770488, 0, 1.42, 0, -0.770488, 0, -0.864473, 7.8985, 1.66545, -13.394)
+cast_shadow = 0
+mesh = ExtResource("21_70xv4")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("22_hxvov")
+
+[node name="Motes" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.13003, 0)
+cast_shadow = 0
+amount = 20
+lifetime = 3.0
+preprocess = 5.0
+speed_scale = 0.5
+visibility_aabb = AABB(-6.5899, -2.60607, -5.6187, 13.1798, 5.21214, 11.2374)
+process_material = SubResource("ParticleProcessMaterial_6f558")
+draw_pass_1 = SubResource("PlaneMesh_udmxf")
+
+[node name="Infobot" parent="." instance=ExtResource("20_821ow")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 7.7, 2.3, -9)
+
+[node name="KryptisTest" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.75, 0, 0, 0, 1.75, 0, 0, 0, 1.75, -4, 1, -9)
+mesh = ExtResource("23_1u1sq")
+surface_material_override/0 = SubResource("StandardMaterial3D_qj1h0")
+
+[node name="KryptisAnim" type="AnimationPlayer" parent="KryptisTest"]
+autoplay = "rotate"
+libraries = {
+"": SubResource("AnimationLibrary_omjoa")
+}
+
+[node name="Cable" parent="." instance=ExtResource("27_ftbr5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -4)
+
+[node name="CathedralGreyboxPrototype" type="MeshInstance3D" parent="."]
+transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, -6, -0.1, 26)
+mesh = ExtResource("31_43blj")
+
+[node name="DialogueArea" parent="." instance=ExtResource("32_d6er5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0864, 0.805574, -2.46207)
