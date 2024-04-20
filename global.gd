@@ -9,7 +9,7 @@ var fov = 75
 signal fov_changed
 var mute = false
 signal mute_changed
-var blend_shadow_splits = false
+var blend_shadow_splits = true
 signal blend_shadow_splits_changed
 
 var debug_details_text = "[Details]"

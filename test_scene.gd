@@ -13,7 +13,6 @@ func _blend_shadow_splits():
 #	else: $Sun.shadow_opacity = 0.9
 
 func _ready():
-	print("test scene")
 	# Apply settings and connect global changes
 	Global.connect("fov_changed", _fov_changed)
 	Global.emit_signal("fov_changed")

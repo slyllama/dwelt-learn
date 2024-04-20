@@ -60,7 +60,7 @@ operator = 2
 
 [resource]
 code = "shader_type spatial;
-render_mode cull_disabled, specular_disabled, unshaded, shadows_disabled;
+render_mode blend_mix, depth_draw_opaque, cull_disabled, diffuse_lambert, specular_disabled, unshaded, shadows_disabled;
 
 uniform vec4 Color : source_color = vec4(0.834546, 0.964625, 1.000000, 1.000000);
 uniform float UVXScale = 1;

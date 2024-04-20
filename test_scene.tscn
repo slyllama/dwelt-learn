@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://bsetivexkdulh"]
+[gd_scene load_steps=52 format=3 uid="uid://bsetivexkdulh"]
 
 [ext_resource type="Script" path="res://test_scene.gd" id="1_2kdkw"]
 [ext_resource type="Material" uid="uid://4d6tcixxllut" path="res://objects/rocket_claw/mat_rocket_claw.tres" id="1_q37l3"]
@@ -21,7 +21,6 @@
 [ext_resource type="Texture2D" uid="uid://d1fy6jygommc6" path="res://generic/tex/mote.png" id="18_r710r"]
 [ext_resource type="ArrayMesh" uid="uid://jmvm537tcgg6" path="res://objects/floor/wall/wall_import.obj" id="19_6jbv0"]
 [ext_resource type="Material" uid="uid://b4hs5hauq3l0f" path="res://objects/rock_test/mat_rock.tres" id="19_xx3wl"]
-[ext_resource type="PackedScene" uid="uid://b0cumm7revohw" path="res://characters/infobot/infobot.tscn" id="20_821ow"]
 [ext_resource type="ArrayMesh" uid="uid://dcqni2oqbyp05" path="res://objects/rock_test/grass.obj" id="21_70xv4"]
 [ext_resource type="ArrayMesh" uid="uid://dr2else4l8d0n" path="res://objects/floor/pillar.obj" id="22_2mbv3"]
 [ext_resource type="Material" uid="uid://b8qiowsyf48h7" path="res://objects/rock_test/mat_foliage.tres" id="22_hxvov"]
@@ -32,6 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://bbt6np1daksl4" path="res://lib/cable/cable.tscn" id="27_ftbr5"]
 [ext_resource type="ArrayMesh" uid="uid://c6yb8s3l7fjqi" path="res://objects/cathedral/cathedral.obj" id="31_43blj"]
 [ext_resource type="PackedScene" uid="uid://i1jp4klishr3" path="res://lib/dialogue_area/dialogue_area.tscn" id="32_d6er5"]
+[ext_resource type="PackedScene" uid="uid://cmdg6fsdcpvcu" path="res://characters/styx/styx.tscn" id="32_gdlq0"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dbpli"]
 panorama = ExtResource("2_s1yfh")
@@ -74,6 +74,13 @@ roughness = 0.7
 normal_enabled = true
 normal_texture = ExtResource("18_pw26b")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_md1su"]
+albedo_texture = ExtResource("14_6vp08")
+normal_enabled = true
+normal_texture = ExtResource("15_ajtqs")
+backlight = Color(0.5, 0.5, 0.5, 1)
+uv1_scale = Vector3(36, 36, 36)
+
 [sub_resource type="Gradient" id="Gradient_aovtp"]
 offsets = PackedFloat32Array(0, 0.232143, 0.834821, 1)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
@@ -91,9 +98,9 @@ curve = SubResource("Curve_lstkl")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6f558"]
 emission_shape = 3
 emission_box_extents = Vector3(5, 5, 5)
-gravity = Vector3(0, 0.01, 0)
 initial_velocity_min = 0.05
 initial_velocity_max = 0.05
+gravity = Vector3(0, 0.01, 0)
 scale_min = 0.5
 scale_curve = SubResource("CurveTexture_n7qc6")
 color_ramp = SubResource("GradientTexture1D_xbgi5")
@@ -222,6 +229,9 @@ transform = Transform3D(0.521665, -0.435322, 0.733731, -0.0968269, 0.824258, 0.5
 light_color = Color(1, 0.854902, 0.733333, 1)
 light_energy = 2.0
 shadow_enabled = true
+directional_shadow_split_1 = 0.3
+directional_shadow_split_2 = 0.4
+directional_shadow_split_3 = 0.7
 directional_shadow_blend_splits = true
 directional_shadow_pancake_size = 10.0
 
@@ -394,6 +404,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, -0.3, -6)
 material_override = SubResource("StandardMaterial3D_30eag")
 mesh = ExtResource("19_6jbv0")
 
+[node name="Cathedral" type="MeshInstance3D" parent="Architecture"]
+transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, -6, -0.1, 26)
+mesh = ExtResource("31_43blj")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_md1su")
+
 [node name="Foliage" type="Node3D" parent="."]
 
 [node name="Grass" type="MeshInstance3D" parent="Foliage"]
@@ -457,26 +473,22 @@ visibility_aabb = AABB(-6.5899, -2.60607, -5.6187, 13.1798, 5.21214, 11.2374)
 process_material = SubResource("ParticleProcessMaterial_6f558")
 draw_pass_1 = SubResource("PlaneMesh_udmxf")
 
-[node name="Infobot" parent="." instance=ExtResource("20_821ow")]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 7.7, 2.3, -9)
-
 [node name="KryptisTest" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.75, 0, 0, 0, 1.75, 0, 0, 0, 1.75, -4, 1, -9)
 mesh = ExtResource("23_1u1sq")
 surface_material_override/0 = SubResource("StandardMaterial3D_qj1h0")
 
 [node name="KryptisAnim" type="AnimationPlayer" parent="KryptisTest"]
-autoplay = "rotate"
 libraries = {
 "": SubResource("AnimationLibrary_omjoa")
 }
+autoplay = "rotate"
 
 [node name="Cable" parent="." instance=ExtResource("27_ftbr5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -4)
 
-[node name="CathedralGreyboxPrototype" type="MeshInstance3D" parent="."]
-transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, -6, -0.1, 26)
-mesh = ExtResource("31_43blj")
-
 [node name="DialogueArea" parent="." instance=ExtResource("32_d6er5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0864, 0.805574, -2.46207)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0864, -0.0765724, -2.46207)
+
+[node name="Infobot" parent="." instance=ExtResource("32_gdlq0")]
+transform = Transform3D(-0.53033, 0, 0.53033, 0, 0.75, 0, -0.53033, 0, -0.53033, 7.7, 2.3, -9)

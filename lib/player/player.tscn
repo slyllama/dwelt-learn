@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://lib/player/player.gd" id="1_2r77g"]
 [ext_resource type="Script" path="res://lib/player/CamPivot.gd" id="2_73c7o"]
-[ext_resource type="PackedScene" uid="uid://dubiapk4q8y4o" path="res://characters/styx/styx_v3/styx_v3.tscn" id="4_lxxnv"]
+[ext_resource type="PackedScene" uid="uid://cmdg6fsdcpvcu" path="res://characters/styx/styx.tscn" id="5_omtax"]
 [ext_resource type="PackedScene" uid="uid://cw7452jwdahpu" path="res://lib/highlight_decal/highlight_decal.tscn" id="5_siwwa"]
 [ext_resource type="PackedScene" path="res://lib/player/sound_handler/sound_handler.tscn" id="5_ymbnw"]
 
@@ -54,13 +54,13 @@ collide_with_areas = true
 [node name="SoundHandler" parent="." instance=ExtResource("5_ymbnw")]
 
 [node name="FloatUpDown" type="AnimationPlayer" parent="."]
-autoplay = "float"
 libraries = {
 "": SubResource("AnimationLibrary_k5xan")
 }
-
-[node name="PlaceholderMesh" parent="." instance=ExtResource("4_lxxnv")]
-transform = Transform3D(0.27, 0, 0, 0, 0.27, 0, 0, 0, 0.27, 0, 0, 0)
+autoplay = "float"
 
 [node name="HighlightDecal" parent="." instance=ExtResource("5_siwwa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.215, 0)
+
+[node name="PlaceholderMesh" parent="." instance=ExtResource("5_omtax")]
+transform = Transform3D(0.27, 0, 0, 0, 0.27, 0, 0, 0, 0.27, 0, 0, 0)

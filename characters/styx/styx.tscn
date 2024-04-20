@@ -1,97 +1,84 @@
-[gd_scene load_steps=5 format=3 uid="uid://dubiapk4q8y4o"]
+[gd_scene load_steps=5 format=3 uid="uid://cmdg6fsdcpvcu"]
 
-[ext_resource type="PackedScene" uid="uid://bvvun6m072cl8" path="res://characters/styx/styx_v3/styx_v3_import.glb" id="1_lwil6"]
-[ext_resource type="Material" uid="uid://il4332aimc5d" path="res://characters/styx/styx_v3/mat_orb_fresnel.tres" id="2_8h8mm"]
-[ext_resource type="Material" uid="uid://dnocspb2b52gm" path="res://characters/styx/styx_v3/mat_styx_metal.tres" id="2_skl0w"]
-[ext_resource type="Material" uid="uid://dcbaiiwobape1" path="res://characters/styx/styx_v3/mat_brass_trim.tres" id="3_j14d5"]
+[ext_resource type="PackedScene" uid="uid://bvvun6m072cl8" path="res://characters/styx/styx_v3/styx_v3_import.glb" id="1_b5u0w"]
+[ext_resource type="Material" uid="uid://il4332aimc5d" path="res://characters/styx/styx_v3/mat_orb_fresnel.tres" id="2_j8kp7"]
+[ext_resource type="Material" uid="uid://dcbaiiwobape1" path="res://characters/styx/styx_v3/mat_brass_trim.tres" id="3_vwaxl"]
+[ext_resource type="Material" uid="uid://dnocspb2b52gm" path="res://characters/styx/styx_v3/mat_styx_metal.tres" id="4_225a1"]
 
-[node name="styx_v3_import" instance=ExtResource("1_lwil6")]
-
-[node name="Skeleton3D" parent="StyxArmature" index="0"]
-bones/1/rotation = Quaternion(0, 0, 1, 0)
-bones/7/rotation = Quaternion(0.488662, 0.307637, 0.690921, -0.434968)
+[node name="styx_v3_import" instance=ExtResource("1_b5u0w")]
 
 [node name="EnergySphere" parent="StyxArmature/Skeleton3D" index="0"]
 transform = Transform3D(1, -2.68222e-22, 0, 2.68222e-22, 1, 0, 0, 0, 1, 0, 0, 0)
-bone_idx = 2
 
 [node name="EnergySphere" parent="StyxArmature/Skeleton3D/EnergySphere" index="0"]
-surface_material_override/0 = ExtResource("2_8h8mm")
+surface_material_override/0 = ExtResource("2_j8kp7")
 
 [node name="Pivot" parent="StyxArmature/Skeleton3D" index="1"]
 transform = Transform3D(-1.19209e-07, -5.96046e-08, 1, 1.03316e-07, 1, 1.19209e-07, -1, 1.62921e-07, -5.96047e-08, -5.7881e-22, 3.67052e-22, -3.55271e-15)
-bone_idx = 4
 
 [node name="Pivot" parent="StyxArmature/Skeleton3D/Pivot" index="0"]
-surface_material_override/0 = ExtResource("3_j14d5")
+surface_material_override/0 = ExtResource("3_vwaxl")
 
 [node name="Ring" parent="StyxArmature/Skeleton3D" index="2"]
 transform = Transform3D(1, -5.96046e-08, 1.19209e-07, 1.19209e-07, 1, -1.03316e-07, -5.96047e-08, 1.62921e-07, 1, 6.15812e-15, -6.15812e-15, 5.96046e-08)
-bone_idx = 5
 
 [node name="Ring" parent="StyxArmature/Skeleton3D/Ring" index="0"]
-surface_material_override/0 = ExtResource("3_j14d5")
+material_override = ExtResource("3_vwaxl")
+surface_material_override/0 = ExtResource("3_vwaxl")
 
 [node name="RingInner" parent="StyxArmature/Skeleton3D" index="3"]
 transform = Transform3D(-7.10543e-15, 1, -3.57628e-07, 4.37114e-08, -3.57628e-07, -1, -1, 1.19209e-07, -1.62921e-07, 6.15812e-15, -6.15812e-15, 5.96046e-08)
-bone_idx = 6
 
 [node name="RingInner" parent="StyxArmature/Skeleton3D/RingInner" index="0"]
-surface_material_override/0 = ExtResource("3_j14d5")
+transform = Transform3D(1, 1.42109e-14, -2.84217e-14, -5.0822e-21, 1, 1.13687e-13, 7.10543e-15, 0, 1, 0, 0, 0)
+surface_material_override/0 = ExtResource("3_vwaxl")
 
 [node name="BaseRing" parent="StyxArmature/Skeleton3D" index="4"]
-transform = Transform3D(8.9407e-07, 4.17233e-07, 1, 7.7486e-07, 1, -5.36442e-07, -1, 9.23872e-07, 6.85453e-07, 0.13804, -1.35369, -9.38773e-07)
-bone_idx = 8
+transform = Transform3D(1.49012e-07, 5.96046e-08, 1, -1.19209e-07, 1, -1.49012e-07, -1, 5.96046e-08, -2.98023e-08, 0.13804, -1.35369, 1.63913e-07)
 
 [node name="BaseRing" parent="StyxArmature/Skeleton3D/BaseRing" index="0"]
-surface_material_override/0 = ExtResource("3_j14d5")
+surface_material_override/0 = ExtResource("3_vwaxl")
 
 [node name="Tails" parent="StyxArmature/Skeleton3D" index="5"]
-transform = Transform3D(1, 3.27826e-07, -9.23872e-07, -4.47035e-07, 1, -7.59959e-07, 7.45058e-07, 8.9407e-07, 1, -2.38419e-07, -4.76837e-07, -2.81005e-08)
-bone_idx = 9
+transform = Transform3D(1, -5.96046e-08, -1.78814e-07, -8.9407e-08, 1, 1.3411e-07, 2.98023e-08, 0, 1, -2.38419e-07, -4.76837e-07, -2.80999e-08)
 
 [node name="Tails" parent="StyxArmature/Skeleton3D/Tails" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, -1.77636e-15, 0, 0, 1, 0, 0, 0)
-surface_material_override/0 = ExtResource("2_skl0w")
+material_override = ExtResource("4_225a1")
 
 [node name="EyeCentral" parent="StyxArmature/Skeleton3D" index="6"]
-transform = Transform3D(-0.315023, 0.949084, -9.23872e-07, -0.949084, -0.315023, -7.59959e-07, -1.08326e-06, 4.2547e-07, 1, 0.616256, 1.75008, 1.99574e-06)
-bone_idx = 10
+transform = Transform3D(-0.315023, 0.949084, -1.78814e-07, -0.949084, -0.315023, 1.3411e-07, -9.38841e-09, 2.82849e-08, 1, 0.616255, 1.75008, -9.73405e-09)
 
 [node name="EyeCentral" parent="StyxArmature/Skeleton3D/EyeCentral" index="0"]
-surface_material_override/0 = ExtResource("2_skl0w")
-surface_material_override/1 = ExtResource("2_8h8mm")
+surface_material_override/0 = ExtResource("4_225a1")
+surface_material_override/1 = ExtResource("2_j8kp7")
 
-[node name="Tails001" parent="StyxArmature/Skeleton3D" index="7"]
-transform = Transform3D(1, 3.27826e-07, -9.23872e-07, -4.47035e-07, 1, -7.59959e-07, 7.45058e-07, 8.9407e-07, 1, 5.96048e-08, 1.31842e-07, -2.80998e-08)
-bone_idx = 11
+[node name="Tails_001" parent="StyxArmature/Skeleton3D" index="7"]
+transform = Transform3D(1, -5.96046e-08, -1.78814e-07, -8.9407e-08, 1, 1.3411e-07, 2.98023e-08, 0, 1, 5.96047e-08, 1.31842e-07, -2.81e-08)
+
+[node name="Tails_001" parent="StyxArmature/Skeleton3D/Tails_001" index="0"]
+surface_material_override/0 = ExtResource("4_225a1")
 
 [node name="EngineRing" parent="StyxArmature/Skeleton3D" index="8"]
 transform = Transform3D(1.23582e-07, 0.873479, -0.486862, -2.71946e-07, -0.486861, -0.873479, -1, 2.42144e-07, 1.2666e-07, 1.59831, 0.00324516, -9.43084e-08)
-bone_idx = 13
 
 [node name="EngineRing" parent="StyxArmature/Skeleton3D/EngineRing" index="0"]
-surface_material_override/0 = ExtResource("3_j14d5")
+surface_material_override/0 = ExtResource("3_vwaxl")
 
 [node name="Fuselage" parent="StyxArmature/Skeleton3D" index="9"]
 transform = Transform3D(1, -2.68222e-22, 1.19209e-07, -9.00005e-15, 1, 7.10543e-15, -1.19209e-07, -7.10543e-15, 1, 1.49012e-08, -8.47033e-22, -1.19209e-07)
-bone_idx = 14
 
 [node name="Fuselage" parent="StyxArmature/Skeleton3D/Fuselage" index="0"]
-transform = Transform3D(1, -2.52435e-29, 0, 0, 1, 2.25857e-22, 0, -3.19746e-29, 1, 0, 0, 0)
-surface_material_override/0 = ExtResource("2_skl0w")
+surface_material_override/0 = ExtResource("4_225a1")
 
 [node name="Eyes" parent="StyxArmature/Skeleton3D" index="10"]
 transform = Transform3D(-0.315023, 0.949084, 1.19209e-07, -0.949084, -0.315023, 7.10543e-15, 3.75536e-08, -1.1314e-07, 1, -2.25572, 0.122205, -1.67151)
-bone_idx = 15
 
 [node name="Eyes" parent="StyxArmature/Skeleton3D/Eyes" index="0"]
-surface_material_override/0 = ExtResource("2_skl0w")
-surface_material_override/1 = ExtResource("2_8h8mm")
+surface_material_override/0 = ExtResource("4_225a1")
+surface_material_override/1 = ExtResource("2_j8kp7")
 
 [node name="Pivots" parent="StyxArmature/Skeleton3D" index="11"]
 transform = Transform3D(-1.42109e-14, 0, 1, -1, 1.19209e-07, -9.00005e-15, -1.19209e-07, -1, 0, 1.57247, -0.077287, -3.06662e-07)
-bone_idx = 16
 
 [node name="Pivots" parent="StyxArmature/Skeleton3D/Pivots" index="0"]
-surface_material_override/0 = ExtResource("3_j14d5")
+surface_material_override/0 = ExtResource("3_vwaxl")
