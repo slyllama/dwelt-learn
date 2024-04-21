@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=4 format=3 uid="uid://blknasrarvsh"]
 
 [ext_resource type="Script" path="res://lib/player/sound_handler/sound_handler.gd" id="1_ucr74"]
 [ext_resource type="AudioStream" uid="uid://ben56xx3y2yxy" path="res://characters/styx/sound/engine_idle.ogg" id="2_rxqh3"]
@@ -9,7 +9,8 @@ script = ExtResource("1_ucr74")
 
 [node name="EngineIdle" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("2_rxqh3")
-unit_size = 2.0
+volume_db = -0.4
+unit_size = 1.5
 
 [node name="EngineRun" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_2f48u")
