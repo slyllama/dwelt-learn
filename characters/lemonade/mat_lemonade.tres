@@ -1,16 +1,17 @@
 [gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://oqhyxbqylma3"]
 
-[ext_resource type="Texture2D" uid="uid://cgsgryel5mc58" path="res://characters/lemonade/tex/lemonade_emit.png" id="1_6827r"]
-[ext_resource type="Texture2D" uid="uid://qc36byp7r07w" path="res://characters/lemonade/tex/lemonade_norm.png" id="2_qg0vd"]
-[ext_resource type="Texture2D" uid="uid://b13rpsjk6r5jf" path="res://characters/lemonade/tex/lemonade_rough.png" id="3_5nlsx"]
+[ext_resource type="Texture2D" uid="uid://cgsgryel5mc58" path="res://characters/lemonade/tex/lemonade_emit.png" id="1_1g51r"]
+[ext_resource type="Texture2D" uid="uid://qc36byp7r07w" path="res://characters/lemonade/tex/lemonade_norm.png" id="2_uskog"]
+[ext_resource type="Texture2D" uid="uid://b13rpsjk6r5jf" path="res://characters/lemonade/tex/lemonade_rough.png" id="3_oax30"]
 
 [resource]
-albedo_texture = ExtResource("1_6827r")
+albedo_texture = ExtResource("1_1g51r")
+metallic = 0.3
 roughness = 0.5
-roughness_texture = ExtResource("3_5nlsx")
+roughness_texture = ExtResource("3_oax30")
 roughness_texture_channel = 4
 normal_enabled = true
 normal_scale = 0.75
-normal_texture = ExtResource("2_qg0vd")
+normal_texture = ExtResource("2_uskog")
 backlight_enabled = true
-backlight = Color(0.5, 0.5, 0.5, 1)
+backlight = Color(0.75, 0.75, 0.75, 1)

@@ -1,12 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://bcp4um4sjbyx6"]
+[gd_scene load_steps=15 format=3 uid="uid://bcp4um4sjbyx6"]
 
 [ext_resource type="Script" path="res://lib/player/player.gd" id="1_2r77g"]
 [ext_resource type="Script" path="res://lib/player/CamPivot.gd" id="2_73c7o"]
 [ext_resource type="PackedScene" uid="uid://cw7452jwdahpu" path="res://lib/highlight_decal/highlight_decal.tscn" id="5_siwwa"]
-[ext_resource type="PackedScene" uid="uid://blknasrarvsh" path="res://lib/player/sound_handler/sound_handler.tscn" id="5_ymbnw"]
 [ext_resource type="Texture2D" uid="uid://dinrdf02xeqaq" path="res://generic/fade_ramp.tres" id="6_k5syw"]
 [ext_resource type="ArrayMesh" uid="uid://cn0wlud2ukcna" path="res://generic/tex/star.obj" id="7_7rcg7"]
-[ext_resource type="PackedScene" uid="uid://bxvcmgo8l4g7v" path="res://characters/lemonade/lemonade.tscn" id="7_x5qc0"]
+[ext_resource type="PackedScene" uid="uid://ch1n54go1oqrn" path="res://characters/lemonade/lemonade.tscn" id="7_bsuml"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_yehb5"]
 
@@ -84,8 +83,6 @@ shape = SubResource("CapsuleShape3D_7nbr8")
 target_position = Vector3(0, -20, 0)
 collide_with_areas = true
 
-[node name="SoundHandler" parent="." instance=ExtResource("5_ymbnw")]
-
 [node name="FloatUpDown" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_k5xan")
@@ -104,5 +101,5 @@ amount_ratio = 0.3
 process_material = SubResource("ParticleProcessMaterial_xy1xp")
 draw_pass_1 = ExtResource("7_7rcg7")
 
-[node name="PlaceholderMesh" parent="." instance=ExtResource("7_x5qc0")]
-transform = Transform3D(0.27, 0, 0, 0, 0.27, 0, 0, 0, 0.27, 0, 0, 0)
+[node name="PlaceholderMesh" parent="." instance=ExtResource("7_bsuml")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)

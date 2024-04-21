@@ -29,8 +29,8 @@
 [ext_resource type="Shader" uid="uid://dg1bo2f0gnaue" path="res://objects/kryptis_test/mat_kryptis.tres" id="27_elhuu"]
 [ext_resource type="PackedScene" uid="uid://bbt6np1daksl4" path="res://lib/cable/cable.tscn" id="27_ftbr5"]
 [ext_resource type="ArrayMesh" uid="uid://c6yb8s3l7fjqi" path="res://objects/cathedral/cathedral.obj" id="31_43blj"]
+[ext_resource type="PackedScene" uid="uid://ch1n54go1oqrn" path="res://characters/lemonade/lemonade.tscn" id="31_arm1h"]
 [ext_resource type="PackedScene" uid="uid://i1jp4klishr3" path="res://lib/dialogue_area/dialogue_area.tscn" id="32_d6er5"]
-[ext_resource type="PackedScene" uid="uid://cmdg6fsdcpvcu" path="res://characters/styx/styx.tscn" id="32_gdlq0"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dbpli"]
 panorama = ExtResource("2_s1yfh")
@@ -195,7 +195,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 2.5, 5, 7.5, 10),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(7.7, 2.3, -9), Vector3(7.7, 2.1, -9), Vector3(7.7, 2.3, -9), Vector3(7.7, 2.1, -9), Vector3(7.7, 2.3, -9)]
+"values": [Vector3(7.7, 2.3, -9), Vector3(7.7, 3.1, -9), Vector3(7.7, 3.3, -9), Vector3(7.7, 3.1, -9), Vector3(7.7, 3.3, -9)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_omjoa"]
@@ -211,7 +211,7 @@ script = ExtResource("1_2kdkw")
 environment = SubResource("Environment_r5o54")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.521665, -0.435322, 0.733731, -0.0968269, 0.824258, 0.557874, -0.847638, -0.362068, 0.387835, 0, 6.09097, 0)
+transform = Transform3D(0.824367, -0.00943035, 0.565977, -0.453776, 0.586708, 0.670717, -0.338388, -0.809744, 0.479383, 0, 6.09097, 0)
 light_color = Color(1, 0.854902, 0.733333, 1)
 light_energy = 2.0
 shadow_enabled = true
@@ -477,5 +477,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -4)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -0.5, -5)
 dialogue_data = Array[String](["It's a beautiful night for a peaceful glide, and oh good lord, what is that.", "Don't be silly; of course you know what that is. It's the fleshy mass of skin and tendons which make up the tentacles that line your home lattice."])
 
-[node name="Infobot" parent="." instance=ExtResource("32_gdlq0")]
-transform = Transform3D(-0.53033, 0, 0.53033, 0, 0.75, 0, -0.53033, 0, -0.53033, 7.7, 2.3, -9)
+[node name="Infobot" parent="." instance=ExtResource("31_arm1h")]
+transform = Transform3D(-0.255334, 0, 0.705198, 0, 0.75, 0, -0.705198, 0, -0.255334, 7.7, 2.3, -9)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(-0.707107, -0.570148, -0.418248, 0, -0.591493, 0.80631, -0.707107, 0.570148, 0.418248, 5.01566, 9.77549, -6.31566)
+light_energy = 15.0
+spot_range = 15.0
+spot_angle = 30.0

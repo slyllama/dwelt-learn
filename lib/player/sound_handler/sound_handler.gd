@@ -3,12 +3,10 @@ extends Node3D
 # TODO: get the transitions in and working properly
 
 func move(): # transition through acceleration to a moving sound
-	$EngineIdle.stop()
-	$EngineRun.play()
+	print("[SoundHandler] move.")
 
 func stop_moving():
-	$EngineRun.stop()
-	$EngineIdle.play()
+	print("[SoundHandler] stop moving.")
 
 func _ready():
-	$EngineIdle.play()
+	print("[SoundHandler] idle.")

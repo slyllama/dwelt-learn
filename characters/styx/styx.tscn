@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cmdg6fsdcpvcu"]
 
 [ext_resource type="PackedScene" uid="uid://bvvun6m072cl8" path="res://characters/styx/styx_import.glb" id="1_b5u0w"]
-[ext_resource type="Material" uid="uid://il4332aimc5d" path="res://characters/styx/mat_orb_fresnel.tres" id="2_j8kp7"]
+[ext_resource type="Material" uid="uid://il4332aimc5d" path="res://characters/lemonade/mat_orb_fresnel.tres" id="2_j8kp7"]
 [ext_resource type="Material" uid="uid://dcbaiiwobape1" path="res://characters/styx/mat_brass_trim.tres" id="3_vwaxl"]
 [ext_resource type="Material" uid="uid://dnocspb2b52gm" path="res://characters/styx/mat_styx_metal.tres" id="4_225a1"]
 

@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bpobtu45t8vkb"
-path.s3tc="res://.godot/imported/stars_tile.png-e8867a4b5669f94b5b45c527bbd63b88.s3tc.ctex"
+path.s3tc="res://.godot/imported/stars_tile.png-c86fbfc2a85cf5edeabf4e2651372d47.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://characters/styx/tex/stars_tile.png"
-dest_files=["res://.godot/imported/stars_tile.png-e8867a4b5669f94b5b45c527bbd63b88.s3tc.ctex"]
+source_file="res://characters/lemonade/tex/stars_tile.png"
+dest_files=["res://.godot/imported/stars_tile.png-c86fbfc2a85cf5edeabf4e2651372d47.s3tc.ctex"]
 
 [params]
 
