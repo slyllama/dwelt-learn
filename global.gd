@@ -21,7 +21,8 @@ var settings = SETTINGS
 
 signal entered_keybind_select
 signal left_keybind_select
-signal player_position_locked
+signal player_position_locked(get_lock_pos, get_cam_facing, get_clamp_extent_x, get_clamp_extent_y)
+signal player_position_unlocked
 
 var can_move = true
 var debug_details_text = "[Details]"

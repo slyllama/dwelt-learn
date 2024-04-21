@@ -63,6 +63,9 @@ func update_debug():
 	Global.debug_details_text += "\nraycast_y_point = " + Utilities.fstr(raycast_y_point)
 
 func _ready():
+	Global.connect("player_position_locked", lock_position)
+	Global.connect("player_position_unlocked", unlock_position)
+	
 	# Set up for retina
 	if DisplayServer.screen_get_size().x > 2000:
 #		get_window().size = get_window().size * 1.5

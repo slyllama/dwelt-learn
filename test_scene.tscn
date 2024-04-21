@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://bsetivexkdulh"]
+[gd_scene load_steps=51 format=3 uid="uid://bsetivexkdulh"]
 
 [ext_resource type="Script" path="res://test_scene.gd" id="1_2kdkw"]
 [ext_resource type="Material" uid="uid://4d6tcixxllut" path="res://objects/rocket_claw/mat_rocket_claw.tres" id="1_q37l3"]
@@ -32,6 +32,7 @@
 [ext_resource type="ArrayMesh" uid="uid://c6yb8s3l7fjqi" path="res://objects/cathedral/cathedral.obj" id="31_43blj"]
 [ext_resource type="PackedScene" uid="uid://ch1n54go1oqrn" path="res://characters/lemonade/lemonade.tscn" id="31_arm1h"]
 [ext_resource type="PackedScene" uid="uid://i1jp4klishr3" path="res://lib/dialogue_area/dialogue_area.tscn" id="32_d6er5"]
+[ext_resource type="PackedScene" uid="uid://07n4fhjhunl" path="res://lib/laser/laser.tscn" id="33_3y43r"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dbpli"]
 panorama = ExtResource("2_s1yfh")
@@ -486,8 +487,11 @@ autoplay = "rotate"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -4)
 
 [node name="DialogueArea" parent="." instance=ExtResource("32_d6er5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -0.5, -5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -6.253)
 dialogue_data = Array[String](["It's a beautiful night for a peaceful glide, and oh good lord, what is that.", "Don't be silly; of course you know what that is. It's the fleshy mass of skin and tendons which make up the tentacles that line your home lattice."])
+
+[node name="Laser" parent="." instance=ExtResource("33_3y43r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.145, 0, 0.441)
 
 [node name="Infobot" parent="." instance=ExtResource("31_arm1h")]
 transform = Transform3D(-0.255334, 0, 0.705198, 0, 0.75, 0, -0.705198, 0, -0.255334, 7.7, 2.3, -9)

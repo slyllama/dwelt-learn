@@ -17,6 +17,7 @@ func _set_text(get_text):
 	$Base/DText.text = "[center]" + get_text + "[/center]"
 
 func close_dialogue():
+	Global.interact_left.emit() # hide overlay on leaving
 	current_dialogue = []
 	current_place = 0
 	Global.dialogue_active = false

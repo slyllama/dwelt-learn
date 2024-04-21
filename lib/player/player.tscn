@@ -94,8 +94,9 @@ libraries = {
 autoplay = "float"
 
 [node name="HighlightDecal" parent="." instance=ExtResource("5_siwwa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.215, 0)
+transform = Transform3D(1, 0, 0, 0, 0.598849, 0, 0, 0, 1, 0, -2.455, 0)
 visible = false
+debug_only = true
 
 [node name="Stars" type="GPUParticles3D" parent="."]
 material_override = SubResource("StandardMaterial3D_cotlk")
