@@ -36,12 +36,12 @@
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dbpli"]
 panorama = ExtResource("2_s1yfh")
 
-[sub_resource type="Sky" id="Sky_s5wm8"]
+[sub_resource type="Sky" id="Sky_is2vb"]
 sky_material = SubResource("PanoramaSkyMaterial_dbpli")
 
 [sub_resource type="Environment" id="Environment_r5o54"]
 background_mode = 2
-sky = SubResource("Sky_s5wm8")
+sky = SubResource("Sky_is2vb")
 ambient_light_source = 2
 ambient_light_color = Color(0.3536, 0.442347, 0.52, 1)
 ambient_light_energy = 1.4
@@ -492,7 +492,7 @@ dialogue_data = Array[String](["It's a beautiful night for a peaceful glide, and
 [node name="Infobot" parent="." instance=ExtResource("31_arm1h")]
 transform = Transform3D(-0.255334, 0, 0.705198, 0, 0.75, 0, -0.705198, 0, -0.255334, 7.7, 2.3, -9)
 
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
+[node name="Spotlight" type="SpotLight3D" parent="."]
 transform = Transform3D(-0.707107, -0.570148, -0.418248, 0, -0.591493, 0.80631, -0.707107, 0.570148, 0.418248, 4.97566, 9.85261, -6.27566)
 light_color = Color(1, 0.960784, 0.960784, 1)
 light_energy = 25.0
