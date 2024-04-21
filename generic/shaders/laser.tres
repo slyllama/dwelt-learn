@@ -19,13 +19,13 @@ default_value = 1.0
 [sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_828dg"]
 operator = 2
 
-[sub_resource type="Gradient" id="Gradient_vtu5k"]
-offsets = PackedFloat32Array(0, 0.190476, 0.606349, 1)
-colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0.945098, 0.945098, 0.945098, 1, 0, 0, 0, 1)
+[sub_resource type="Gradient" id="Gradient_biib7"]
+offsets = PackedFloat32Array(0, 0.470395)
+colors = PackedColorArray(0, 0, 0, 1, 0.945098, 0.945098, 0.945098, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_gxp23"]
-gradient = SubResource("Gradient_vtu5k")
-fill_to = Vector2(0, 1)
+gradient = SubResource("Gradient_biib7")
+fill_from = Vector2(1, 1)
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_w6mjw"]
 expanded_output_ports = [0]
@@ -133,7 +133,7 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-597.272, 2.70919)
+graph_offset = Vector2(-575.631, 30.9451)
 modes/cull = 2
 modes/specular = 2
 flags/unshaded = true

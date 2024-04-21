@@ -1,9 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://ch1n54go1oqrn"]
+[gd_scene load_steps=8 format=3 uid="uid://ch1n54go1oqrn"]
 
 [ext_resource type="PackedScene" uid="uid://dgcneqqcemexj" path="res://characters/lemonade/lemonade_import.glb" id="1_kxeob"]
 [ext_resource type="Material" uid="uid://il4332aimc5d" path="res://characters/lemonade/mat_orb_fresnel.tres" id="2_ge1a3"]
 [ext_resource type="Material" uid="uid://bpog2tm2hdqsl" path="res://characters/lemonade/mat_lemonade_2.tres" id="3_shypb"]
 [ext_resource type="Material" uid="uid://oqhyxbqylma3" path="res://characters/lemonade/mat_lemonade.tres" id="4_k7hj8"]
+[ext_resource type="ArrayMesh" uid="uid://cnojvik40qwcr" path="res://characters/lemonade/v_propel_cone/v_propel_cone.obj" id="5_pqa3t"]
+[ext_resource type="Shader" uid="uid://dsggukocef5lg" path="res://characters/lemonade/v_propel_cone/mat_v_propel_cone.tres" id="6_lamt5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2uogg"]
+render_priority = 0
+shader = ExtResource("6_lamt5")
 
 [node name="Lemonade" instance=ExtResource("1_kxeob")]
 
@@ -30,6 +36,13 @@ transform = Transform3D(1.49012e-07, 5.96046e-08, 1, -1.19209e-07, 1, -1.49012e-
 
 [node name="BaseRing" parent="StyxArmature/Skeleton3D/BaseRing" index="0"]
 surface_material_override/0 = ExtResource("4_k7hj8")
+
+[node name="VPropelCone" type="MeshInstance3D" parent="StyxArmature/Skeleton3D/BaseRing" index="1"]
+transform = Transform3D(1.165, -1.43898e-07, 1.64991e-07, 1.63845e-07, 1.1554, -0.14922, -1.452e-07, 0.14922, 1.1554, 9.93736e-08, 1.64818, -0.0380779)
+cast_shadow = 0
+mesh = ExtResource("5_pqa3t")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = SubResource("ShaderMaterial_2uogg")
 
 [node name="Tails" parent="StyxArmature/Skeleton3D" index="4"]
 transform = Transform3D(1, -5.96046e-08, -1.78814e-07, -8.9407e-08, 1, 1.3411e-07, 2.98023e-08, 0, 1, -2.38419e-07, -4.76837e-07, -2.80999e-08)
