@@ -14,17 +14,34 @@ var rotation_diff = 0.0 # difference between pivot and model rotation - used for
 var raycast_y_point = 0.0
 var over_area = false
 
-# Position locking
+# Position locking variables
 var position_locked = false
 var lock_pos = Vector3.ZERO
+var lock_cam_clamp = { "x_lower": 0.0, "x_upper": 0.0, "y_lower": 0.0, "y_upper": 0.0 }
 
-func lock_position(get_lock_pos):
-	position_locked = true
+# Apply and lock the position and camera rotation of the player, and limit the
+# extent to which the player can look around.
+#
+# - get_lock_pos: the position in the world to snap to
+# - get_cam_facing: Vector2([x in degrees][y in degrees] to point toward
+# - get_clamp_extent_x: the extent, in degrees, to which the camera can look
+#   in the x direction
+# - get_clamp_extent_y: the extent, in degrees, to which the camera can look
+#   in the y direction
+
+func lock_position(get_lock_pos, get_cam_facing, get_clamp_extent_x, get_clamp_extent_y):
 	lock_pos = get_lock_pos
+	lock_cam_clamp.x_lower = get_cam_facing.x - get_clamp_extent_x
+	lock_cam_clamp.x_upper = get_cam_facing.x + get_clamp_extent_x
+	lock_cam_clamp.y_lower = get_cam_facing.y - get_clamp_extent_y
+	lock_cam_clamp.y_upper = get_cam_facing.y + get_clamp_extent_y
+	
+	position_locked = true
 	$Lemonade/AnimationPlayer.play_backwards("Fly")
 	$Stars.amount_ratio = 0.3
-	$CamPivot.rotation_degrees.y = 0.0
-	$CamPivot.new_cam_y_rotation = $CamPivot.rotation.y
+	
+	%CamPivot.rotation_degrees.y = get_cam_facing.x
+	%CamPivot.new_cam_y_rotation = get_cam_facing.x
 
 func unlock_position():
 	if (Input.is_action_pressed("move_forward")
@@ -41,7 +58,7 @@ func update_debug():
 		+ Utilities.fstr(global_position.y) + ", "
 		+ Utilities.fstr(global_position.z) + ")")
 	Global.debug_details_text += "\nmagnitude = " + Utilities.fstr(velocity.length())
-	Global.debug_details_text += "\ndirection = " + Utilities.fstr($CamPivot.rotation_degrees.y, 1)
+	Global.debug_details_text += "\ndirection = " + Utilities.fstr(%CamPivot.rotation_degrees.y, 1)
 	Global.debug_details_text += "\u00B0 (" + str(snapped($Lemonade.rotation_degrees.y, 1))  + "\u00B0)"
 	Global.debug_details_text += "\nraycast_y_point = " + Utilities.fstr(raycast_y_point)
 
@@ -59,7 +76,7 @@ func _input(_event):
 	# TODO: debug only
 	if Input.is_action_just_pressed("test_key"):
 		if position_locked == false:
-			lock_position(Vector3(0, 4, 0))
+			lock_position(Vector3(0.0, 4.0, 0.0), Vector2(90.0, 10.0), 40.0, 20.0)
 			return
 		else: unlock_position()
 	
@@ -92,13 +109,16 @@ func _physics_process(_delta):
 	
 	if Global.in_keybind_select == true: return
 	if position_locked == true:
-		last_pivot_y_rotation = $CamPivot.rotation.y
+		last_pivot_y_rotation = %CamPivot.rotation.y
 	
 	if position_locked == true:
 		position = lerp(position, lock_pos, 0.2)
+		Global.player_position = position
+		update_debug()
+		# Match model rotation to locked position
 		$Lemonade.rotation.z = lerp($Lemonade.rotation.z, 0.0, 0.5)
 		$Lemonade.rotation.y = lerp_angle(
-			$Lemonade.rotation.y, 0, 0.5)
+			$Lemonade.rotation.y, last_pivot_y_rotation, 0.4)
 		return
 	
 	if Input.is_action_pressed("move_forward"): forward += 1
@@ -110,8 +130,8 @@ func _physics_process(_delta):
 		strafe_diff -= 10.0
 		side -= 0.5
 	
-	target_velocity = (-forward * $CamPivot.global_transform.basis.z
-		+ -side * $CamPivot.global_transform.basis.x)
+	target_velocity = (-forward * %CamPivot.global_transform.basis.z
+		+ -side * %CamPivot.global_transform.basis.x)
 	target_velocity = target_velocity.normalized() * Vector3(1, 0, 1) * speed # strip out the camera looking up/down
 	
 	velocity = lerp(velocity, target_velocity, speed_smoothing)
@@ -119,8 +139,8 @@ func _physics_process(_delta):
 
 	if velocity.length() > 1.0:
 		rotation_diff = Utilities.short_angle_dist(
-			$CamPivot.rotation.y, $Lemonade.rotation.y) * -0.25
-		last_pivot_y_rotation = $CamPivot.rotation.y
+			%CamPivot.rotation.y, $Lemonade.rotation.y) * -0.25
+		last_pivot_y_rotation = %CamPivot.rotation.y
 	
 	# Robot slowly turns to match the camera
 	$Lemonade.rotation.y = lerp_angle(
@@ -136,8 +156,8 @@ func _physics_process(_delta):
 		raycast_y_point = $YCast.get_collision_point().y
 	
 	position.y = lerp(position.y, raycast_y_point + hover_height, 0.07)
-	Global.player_position = position
 	
+	Global.player_position = position
 	update_debug()
 	
 	if $YCast.get_collider() != null:

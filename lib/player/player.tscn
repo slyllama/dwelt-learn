@@ -65,6 +65,7 @@ color_initial_ramp = SubResource("GradientTexture1D_ptkd8")
 script = ExtResource("1_2r77g")
 
 [node name="CamPivot" type="Node3D" parent="."]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05, 0)
 script = ExtResource("2_73c7o")
 
