@@ -17,8 +17,15 @@ var right_mouse_down = false
 var mouse_offset = Vector2.ZERO
 var last_mouse_offset = mouse_offset
 
+# click_mouse_pos is used to measure the amount the mouse has moved while the
+# mouse is down. True to GW2 style, camera movement will only activate after
+# the mouse have moved while down - not just when a button is pressed
+var click_mouse_pos = Vector2.ZERO
+var click_mouse_pos_diff = Vector2.ZERO
+
 func _ready():
-	# Apply the original rotation of the pivot point so there won't be any awkward snaps
+	# Apply the original rotation of the pivot point so there won't be any
+	# awkward snaps
 	new_cam_y_rotation = rotation_degrees.y
 	new_cam_x_rotation = rotation_degrees.x
 	target_y_position = $CamArm/Camera.v_offset
@@ -27,11 +34,19 @@ func _ready():
 	for _i in 2: camera_distance -= zoom_increment
 
 func _input(event):
-	if Input.is_action_just_pressed("right_click"):
+	# Only move the camera after the actuation threshold has been passed --
+	# see click_mouse_pos_diff above. Should work for both left and right click
+	if event is InputEventMouseMotion:
+		click_mouse_pos_diff = click_mouse_pos - get_window().get_mouse_position()
+		if Input.is_action_pressed("right_click") or Input.is_action_pressed("click"):
+			if click_mouse_pos_diff.length() > 2.0:
+				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+				right_mouse_down = true
+	if Input.is_action_just_pressed("right_click") or Input.is_action_just_pressed("click"):
 		if right_mouse_down == false:
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-			right_mouse_down = true
-	if Input.is_action_just_released("right_click"):
+			click_mouse_pos_diff = Vector2.ZERO
+			click_mouse_pos = get_window().get_mouse_position()
+	if Input.is_action_just_released("right_click") or Input.is_action_just_released("click"):
 		if right_mouse_down == true:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			right_mouse_down = false

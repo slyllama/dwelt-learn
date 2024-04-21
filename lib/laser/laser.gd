@@ -7,7 +7,8 @@ var active = false
 var in_area = false
 
 func _ready():
-	$Cable.end = global_position + Vector3(0, 0, 2.0)
+	$Cable.end = global_position + Vector3(-2.0, 3.0, 0)
+	$Cable.start = global_position + Vector3(-7.0, 6.0, -3.0)
 	$Cable.update()
 
 func _input(_event):
