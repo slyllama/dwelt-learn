@@ -66,7 +66,7 @@ operator = 2
 
 [resource]
 code = "shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, cull_disabled, diffuse_lambert, specular_disabled, unshaded, shadows_disabled;
+render_mode blend_mix, depth_draw_opaque, cull_disabled, diffuse_lambert, specular_disabled, depth_test_disabled, unshaded, shadows_disabled;
 
 uniform vec4 Color : source_color = vec4(0.329953, 0.561385, 0.871607, 1.000000);
 uniform float Speed = 0.5;
@@ -141,8 +141,10 @@ void fragment() {
 
 }
 "
+graph_offset = Vector2(-345.654, 230.862)
 modes/cull = 2
 modes/specular = 2
+flags/depth_test_disabled = true
 flags/unshaded = true
 flags/shadows_disabled = true
 nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_j60og")

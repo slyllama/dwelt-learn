@@ -29,6 +29,7 @@ var debug_details_text = "[Details]"
 var dialogue_active = false
 var in_area_name = ""
 var in_keybind_select = false
+var looking_at = null
 
 ### World states ###
 var player_position = Vector2.ZERO

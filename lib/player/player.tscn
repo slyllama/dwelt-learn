@@ -77,6 +77,9 @@ spring_length = 5.0
 [node name="Camera" type="Camera3D" parent="CamPivot/CamArm"]
 current = true
 
+[node name="Cast" type="RayCast3D" parent="CamPivot/CamArm/Camera"]
+target_position = Vector3(0, 0, -20)
+
 [node name="Collision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_7nbr8")

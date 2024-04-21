@@ -6,9 +6,13 @@ extends Area3D
 var active = false
 var in_area = false
 
+func _ready():
+	$Cable.end = global_position + Vector3(0, 0, 2.0)
+	$Cable.update()
+
 func _input(_event):
-	if in_area == false: return
 	if Input.is_action_just_pressed("interact"):
+		if in_area == false: return
 		if active == false:
 			active = true
 			$Cable.set_active(true)
@@ -24,9 +28,14 @@ func _input(_event):
 			Global.player_position_unlocked.emit()
 			return
 
-func _physics_process(_delta):
-	$Cable.position.x -= 0.01
-	if Global.in_area_name == TYPE:
-		if in_area == false: in_area = true
-	else:
-		if in_area == true: in_area = false
+func _process(_delta):
+	if Global.in_area_name != TYPE: 
+		if in_area == true:
+			in_area = false
+			return
+	else: if in_area == false:
+		in_area = true
+	
+	if active == true:
+		if Global.looking_at != null:
+			$Cable.start = lerp($Cable.start, Global.looking_at, 0.5)
