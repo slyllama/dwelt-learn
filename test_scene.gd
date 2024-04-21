@@ -8,11 +8,8 @@ func _mute_changed():
 
 func _blend_shadow_splits():
 	$Sun.directional_shadow_blend_splits = Global.blend_shadow_splits
-#	if Global.blend_shadow_splits == true:
-#		$Sun.shadow_opacity = 1.0
-#	else: $Sun.shadow_opacity = 0.9
 
-func _ready():
+func _ready():	
 	# Apply settings and connect global changes
 	Global.connect("fov_changed", _fov_changed)
 	Global.emit_signal("fov_changed")

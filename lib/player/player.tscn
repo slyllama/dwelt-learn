@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://lib/player/player.gd" id="1_2r77g"]
 [ext_resource type="Script" path="res://lib/player/CamPivot.gd" id="2_73c7o"]
-[ext_resource type="PackedScene" uid="uid://cmdg6fsdcpvcu" path="res://characters/styx/styx.tscn" id="5_omtax"]
 [ext_resource type="PackedScene" uid="uid://cw7452jwdahpu" path="res://lib/highlight_decal/highlight_decal.tscn" id="5_siwwa"]
 [ext_resource type="PackedScene" uid="uid://blknasrarvsh" path="res://lib/player/sound_handler/sound_handler.tscn" id="5_ymbnw"]
 [ext_resource type="Texture2D" uid="uid://dinrdf02xeqaq" path="res://generic/fade_ramp.tres" id="6_k5syw"]
 [ext_resource type="ArrayMesh" uid="uid://cn0wlud2ukcna" path="res://generic/tex/star.obj" id="7_7rcg7"]
+[ext_resource type="PackedScene" uid="uid://bxvcmgo8l4g7v" path="res://characters/lemonade/lemonade.tscn" id="7_x5qc0"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_yehb5"]
 
@@ -96,9 +96,6 @@ autoplay = "float"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.215, 0)
 visible = false
 
-[node name="PlaceholderMesh" parent="." instance=ExtResource("5_omtax")]
-transform = Transform3D(0.27, 0, 0, 0, 0.27, 0, 0, 0, 0.27, 0, 0, 0)
-
 [node name="Stars" type="GPUParticles3D" parent="."]
 material_override = SubResource("StandardMaterial3D_cotlk")
 cast_shadow = 0
@@ -106,3 +103,6 @@ amount = 30
 amount_ratio = 0.3
 process_material = SubResource("ParticleProcessMaterial_xy1xp")
 draw_pass_1 = ExtResource("7_7rcg7")
+
+[node name="PlaceholderMesh" parent="." instance=ExtResource("7_x5qc0")]
+transform = Transform3D(0.27, 0, 0, 0, 0.27, 0, 0, 0, 0.27, 0, 0, 0)

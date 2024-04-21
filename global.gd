@@ -8,7 +8,7 @@ signal interact_left
 ### Settings ###
 var fov = 75
 signal fov_changed
-var mute = false
+var mute = true
 signal mute_changed
 var blend_shadow_splits = true
 signal blend_shadow_splits_changed
