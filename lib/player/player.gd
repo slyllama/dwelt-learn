@@ -1,7 +1,5 @@
 extends CharacterBody3D
 
-# Try this: https://forum.godotengine.org/t/how-to-program-the-ability-to-jump-in-4-0-2-in-3d/1997/2
-
 @export var hover_height = 3.0
 @export var floor_level = 2.0
 @export var speed = 5.0
@@ -16,24 +14,36 @@ var rotation_diff = 0.0 # difference between pivot and model rotation - used for
 var raycast_y_point = 0.0
 var over_area = false
 
-# Thanks https://forum.godotengine.org/t/lerping-a-2d-angle-while-going-trought-the-shortest-possible-distance/24124/2
-func _short_angle_dist(from, to):
-	var max_angle = PI * 2
-	var difference = fmod(to - from, max_angle)
-	return fmod(2 * difference, max_angle) - difference
+# Position locking
+var position_locked = false
+var lock_pos = Vector3.ZERO
 
-func _fstr(num, place = 0.01):  return(str(snapped(num, place)))
+func lock_position(get_lock_pos):
+	position_locked = true
+	lock_pos = get_lock_pos
+	$Lemonade/AnimationPlayer.play_backwards("Fly")
+	$Stars.amount_ratio = 0.3
+	$CamPivot.rotation_degrees.y = 0.0
+	$CamPivot.new_cam_y_rotation = $CamPivot.rotation.y
+
+func unlock_position():
+	if (Input.is_action_pressed("move_forward")
+		or Input.is_action_pressed("move_back")):
+		# Play movement animation if the player is holding down a movement key
+		# when leaving the laser
+		$Lemonade/AnimationPlayer.play("Fly")
+	position_locked = false
+	$Stars.amount_ratio = 1.0
 
 func update_debug():
-
 	Global.debug_details_text = ("position = ("
-		+ _fstr(global_position.x) + ", "
-		+ _fstr(global_position.y) + ", "
-		+ _fstr(global_position.z) + ")")
-	Global.debug_details_text += "\nmagnitude = " + _fstr(velocity.length())
-	Global.debug_details_text += "\ndirection = " + _fstr($CamPivot.rotation_degrees.y, 1)
-	Global.debug_details_text += "\u00B0 (" + str(snapped($PlaceholderMesh.rotation_degrees.y, 1))  + "\u00B0)"
-	Global.debug_details_text += "\nraycast_y_point = " + str(snapped(raycast_y_point, 0.01))
+		+ Utilities.fstr(global_position.x) + ", "
+		+ Utilities.fstr(global_position.y) + ", "
+		+ Utilities.fstr(global_position.z) + ")")
+	Global.debug_details_text += "\nmagnitude = " + Utilities.fstr(velocity.length())
+	Global.debug_details_text += "\ndirection = " + Utilities.fstr($CamPivot.rotation_degrees.y, 1)
+	Global.debug_details_text += "\u00B0 (" + str(snapped($Lemonade.rotation_degrees.y, 1))  + "\u00B0)"
+	Global.debug_details_text += "\nraycast_y_point = " + Utilities.fstr(raycast_y_point)
 
 func _ready():
 	# Set up for retina
@@ -46,23 +56,33 @@ func _ready():
 func _input(_event):
 	if Global.in_keybind_select == true: return
 	
+	# TODO: debug only
+	if Input.is_action_just_pressed("test_key"):
+		if position_locked == false:
+			lock_position(Vector3(0, 4, 0))
+			return
+		else: unlock_position()
+	
+	# No animations if the player's position is locked
+	if position_locked == true: return
+	
 	if Input.is_action_just_pressed("move_forward"):
 		$Stars.amount_ratio = 1.0
 		$SoundHandler.move()
-		$PlaceholderMesh/AnimationPlayer.play("Fly")
+		$Lemonade/AnimationPlayer.play("Fly")
 	if Input.is_action_just_released("move_forward"):
 		$Stars.amount_ratio = 0.3
 		$SoundHandler.stop_moving()
-		$PlaceholderMesh/AnimationPlayer.play_backwards("Fly")
+		$Lemonade/AnimationPlayer.play_backwards("Fly")
 	
 	if Input.is_action_just_pressed("move_back"):
 		$Stars.amount_ratio = 1.0
 		$SoundHandler.move()
-		$PlaceholderMesh/AnimationPlayer.play("Fly")
+		$Lemonade/AnimationPlayer.play("Fly")
 	if Input.is_action_just_released("move_back"):
 		$Stars.amount_ratio = 0.3
 		$SoundHandler.stop_moving()
-		$PlaceholderMesh/AnimationPlayer.play_backwards("Fly")
+		$Lemonade/AnimationPlayer.play_backwards("Fly")
 
 func _physics_process(_delta):
 	forward = 0
@@ -71,6 +91,15 @@ func _physics_process(_delta):
 	var strafe_diff = 0.0
 	
 	if Global.in_keybind_select == true: return
+	if position_locked == true:
+		last_pivot_y_rotation = $CamPivot.rotation.y
+	
+	if position_locked == true:
+		position = lerp(position, lock_pos, 0.2)
+		$Lemonade.rotation.z = lerp($Lemonade.rotation.z, 0.0, 0.5)
+		$Lemonade.rotation.y = lerp_angle(
+			$Lemonade.rotation.y, 0, 0.5)
+		return
 	
 	if Input.is_action_pressed("move_forward"): forward += 1
 	if Input.is_action_pressed("move_back"): forward -= 1
@@ -89,19 +118,18 @@ func _physics_process(_delta):
 	move_and_slide()
 
 	if velocity.length() > 1.0:
-		#rotation_diff = ($CamPivot.rotation.y - $PlaceholderMesh.rotation.y) * 0.25
-		rotation_diff = _short_angle_dist($CamPivot.rotation.y, $PlaceholderMesh.rotation.y) * -0.25
+		rotation_diff = Utilities.short_angle_dist(
+			$CamPivot.rotation.y, $Lemonade.rotation.y) * -0.25
 		last_pivot_y_rotation = $CamPivot.rotation.y
 	
 	# Robot slowly turns to match the camera
-	$PlaceholderMesh.rotation.y = lerp_angle(
-		$PlaceholderMesh.rotation.y, last_pivot_y_rotation, 0.06)
-	
+	$Lemonade.rotation.y = lerp_angle(
+		$Lemonade.rotation.y, last_pivot_y_rotation, 0.06)
 	# Robot yaws to match rotation rate and strafe
-	$PlaceholderMesh.rotation.z = lerpf(
-		$PlaceholderMesh.rotation.z, rotation_diff + strafe_diff * 0.02, 0.06)
-	$PlaceholderMesh.rotation_degrees.z = clampf(
-		$PlaceholderMesh.rotation_degrees.z, -model_yaw_extent, model_yaw_extent)
+	$Lemonade.rotation.z = lerpf(
+		$Lemonade.rotation.z, rotation_diff + strafe_diff * 0.02, 0.06)
+	$Lemonade.rotation_degrees.z = clampf(
+		$Lemonade.rotation_degrees.z, -model_yaw_extent, model_yaw_extent)
 
 	# Raycast stuff - this will need to go into a new section
 	if $YCast.get_collider() != null:

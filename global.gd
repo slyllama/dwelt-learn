@@ -21,6 +21,7 @@ var settings = SETTINGS
 
 signal entered_keybind_select
 signal left_keybind_select
+signal player_position_locked
 
 var can_move = true
 var debug_details_text = "[Details]"
