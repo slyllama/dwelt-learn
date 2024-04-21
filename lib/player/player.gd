@@ -88,7 +88,7 @@ func _physics_process(_delta):
 	velocity = lerp(velocity, target_velocity, speed_smoothing)
 	move_and_slide()
 
-	if velocity.length() > 0.1:
+	if velocity.length() > 1.0:
 		#rotation_diff = ($CamPivot.rotation.y - $PlaceholderMesh.rotation.y) * 0.25
 		rotation_diff = _short_angle_dist($CamPivot.rotation.y, $PlaceholderMesh.rotation.y) * -0.25
 		last_pivot_y_rotation = $CamPivot.rotation.y

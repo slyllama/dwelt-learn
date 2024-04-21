@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ch1n54go1oqrn"]
+[gd_scene load_steps=9 format=3 uid="uid://ch1n54go1oqrn"]
 
 [ext_resource type="PackedScene" uid="uid://dgcneqqcemexj" path="res://characters/lemonade/lemonade_import.glb" id="1_kxeob"]
 [ext_resource type="Material" uid="uid://il4332aimc5d" path="res://characters/lemonade/mat_orb_fresnel.tres" id="2_ge1a3"]
@@ -7,9 +7,21 @@
 [ext_resource type="ArrayMesh" uid="uid://cnojvik40qwcr" path="res://characters/lemonade/v_propel_cone/v_propel_cone.obj" id="5_pqa3t"]
 [ext_resource type="Shader" uid="uid://dsggukocef5lg" path="res://characters/lemonade/v_propel_cone/mat_v_propel_cone.tres" id="6_lamt5"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nlrw8"]
+render_priority = 0
+shader = ExtResource("6_lamt5")
+shader_parameter/Color = Color(2.69532e-06, 0.542092, 0.703383, 1)
+shader_parameter/Speed = 0.1
+shader_parameter/Scale = Vector2(2, 1.5)
+shader_parameter/Ramp = 5.0
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2uogg"]
 render_priority = 0
 shader = ExtResource("6_lamt5")
+shader_parameter/Color = Color(0.329953, 0.561385, 0.871607, 1)
+shader_parameter/Speed = 0.5
+shader_parameter/Scale = Vector2(1, 0.6)
+shader_parameter/Ramp = 1.5
 
 [node name="Lemonade" instance=ExtResource("1_kxeob")]
 
@@ -18,6 +30,10 @@ transform = Transform3D(1, -2.68222e-22, 0, 2.68222e-22, 1, 0, 0, 0, 1, 0.22456,
 
 [node name="EnergySphere" parent="StyxArmature/Skeleton3D/EnergySphere" index="0"]
 surface_material_override/0 = ExtResource("2_ge1a3")
+
+[node name="EnergyField" type="CSGSphere3D" parent="StyxArmature/Skeleton3D/EnergySphere" index="1"]
+radius = 1.34
+material = SubResource("ShaderMaterial_nlrw8")
 
 [node name="Cylinder_002" parent="StyxArmature/Skeleton3D" index="1"]
 transform = Transform3D(0, -2.68222e-22, 1, 0, 1, 2.68222e-22, -1, 0, 0, 0.22456, -0.011073, 0.0306607)
@@ -88,6 +104,7 @@ transform = Transform3D(-0.949084, -0.315023, 1.19209e-07, 0.315023, -0.949084, 
 
 [node name="EyesCovering" parent="StyxArmature/Skeleton3D/EyesCovering" index="0"]
 transform = Transform3D(1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0, 0, 1, 0, 0, 0)
+visible = false
 surface_material_override/0 = ExtResource("3_shypb")
 
 [node name="Rod" parent="StyxArmature/Skeleton3D" index="11"]
