@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://bsetivexkdulh"]
+[gd_scene load_steps=50 format=3 uid="uid://bsetivexkdulh"]
 
 [ext_resource type="Script" path="res://test_scene.gd" id="1_2kdkw"]
 [ext_resource type="Material" uid="uid://4d6tcixxllut" path="res://objects/rocket_claw/mat_rocket_claw.tres" id="1_q37l3"]
@@ -28,7 +28,6 @@
 [ext_resource type="ArrayMesh" uid="uid://ce1w3e45srxgq" path="res://objects/kryptis_test/kryptis_test.obj" id="23_1u1sq"]
 [ext_resource type="Texture2D" uid="uid://dinrdf02xeqaq" path="res://generic/fade_ramp.tres" id="25_cms4a"]
 [ext_resource type="Shader" uid="uid://dg1bo2f0gnaue" path="res://objects/kryptis_test/mat_kryptis.tres" id="27_elhuu"]
-[ext_resource type="PackedScene" uid="uid://bbt6np1daksl4" path="res://lib/cable/cable.tscn" id="27_ftbr5"]
 [ext_resource type="ArrayMesh" uid="uid://c6yb8s3l7fjqi" path="res://objects/cathedral/cathedral.obj" id="31_43blj"]
 [ext_resource type="PackedScene" uid="uid://ch1n54go1oqrn" path="res://characters/lemonade/lemonade.tscn" id="31_arm1h"]
 [ext_resource type="PackedScene" uid="uid://i1jp4klishr3" path="res://lib/dialogue_area/dialogue_area.tscn" id="32_d6er5"]
@@ -482,9 +481,6 @@ libraries = {
 "": SubResource("AnimationLibrary_omjoa")
 }
 autoplay = "rotate"
-
-[node name="Cable" parent="." instance=ExtResource("27_ftbr5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -4)
 
 [node name="DialogueArea" parent="." instance=ExtResource("32_d6er5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -6.253)

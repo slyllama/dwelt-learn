@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://07n4fhjhunl"]
+[gd_scene load_steps=4 format=3 uid="uid://07n4fhjhunl"]
 
 [ext_resource type="Script" path="res://lib/laser/laser.gd" id="1_qy5bo"]
+[ext_resource type="PackedScene" uid="uid://bbt6np1daksl4" path="res://lib/cable/cable.tscn" id="2_qx4ym"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kbmuv"]
 size = Vector3(5, 1, 5)
@@ -11,3 +12,6 @@ script = ExtResource("1_qy5bo")
 [node name="Collision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.45, 0)
 shape = SubResource("BoxShape3D_kbmuv")
+
+[node name="Cable" parent="." instance=ExtResource("2_qx4ym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 5, 5)
