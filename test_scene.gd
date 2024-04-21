@@ -17,3 +17,6 @@ func _ready():
 	Global.emit_signal("mute_changed")
 	Global.connect("blend_shadow_splits_changed", _blend_shadow_splits)
 	Global.emit_signal("blend_shadow_splits_changed")
+	
+	await get_tree().create_timer(2.0).timeout
+	$Music.play()

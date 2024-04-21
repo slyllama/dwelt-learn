@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dq3aqaliycowy"]
 
 [ext_resource type="Script" path="res://lib/ui/debug_pane/debug_pane.gd" id="1_sn71f"]
-[ext_resource type="FontFile" uid="uid://bhk1jyryyb1be" path="res://generic/ibm_plex_mono_text.otf" id="3_egsd7"]
+[ext_resource type="FontFile" uid="uid://bhk1jyryyb1be" path="res://generic/plex_mono.otf" id="3_egsd7"]
 
 [node name="DebugPane" type="CanvasLayer"]
 script = ExtResource("1_sn71f")

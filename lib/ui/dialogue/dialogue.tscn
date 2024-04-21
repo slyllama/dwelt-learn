@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://ds7v1kxeoggbl"]
+[gd_scene load_steps=5 format=3 uid="uid://ds7v1kxeoggbl"]
 
 [ext_resource type="Script" path="res://lib/ui/dialogue/dialogue.gd" id="1_6fhhv"]
 [ext_resource type="Texture2D" uid="uid://dduothw77bdaf" path="res://lib/ui/dialogue/tex/base.png" id="1_i1ywh"]
-[ext_resource type="FontFile" uid="uid://bhk1jyryyb1be" path="res://generic/ibm_plex_mono_text.otf" id="3_7i6yx"]
+[ext_resource type="FontFile" uid="uid://bhk1jyryyb1be" path="res://generic/plex_mono.otf" id="3_y1toj"]
 [ext_resource type="Texture2D" uid="uid://dwyq41q6l4uf5" path="res://lib/ui/dialogue/tex/proceed_button.png" id="4_12nny"]
-[ext_resource type="AudioStream" uid="uid://baiij8cmabt6r" path="res://generic/letter.ogg" id="4_wxyv1"]
 
 [node name="Dialogue" type="CanvasLayer"]
 script = ExtResource("1_6fhhv")
@@ -31,7 +30,7 @@ grow_horizontal = 2
 mouse_filter = 2
 theme_override_colors/default_color = Color(0.72549, 0.819608, 0.85098, 1)
 theme_override_constants/line_separation = -4
-theme_override_fonts/normal_font = ExtResource("3_7i6yx")
+theme_override_fonts/normal_font = ExtResource("3_y1toj")
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 text = "[center][DIALOGUE][/center]"
@@ -48,9 +47,5 @@ offset_bottom = 393.0
 grow_horizontal = 2
 focus_mode = 0
 texture_normal = ExtResource("4_12nny")
-
-[node name="Letter" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_wxyv1")
-volume_db = -3.0
 
 [connection signal="pressed" from="Base/Proceed" to="." method="_on_proceed_pressed"]

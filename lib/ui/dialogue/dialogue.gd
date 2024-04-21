@@ -61,13 +61,11 @@ func play_phrase():
 			if c[i] != " ": out_text += N[i]
 			else: out_text += " "
 		_set_text(out_text)
-		$Letter.play()
 		await get_tree().create_timer(FTIME).timeout
 	for m in stagger:
 		for i in range(0, len(c)):
 			if i % m == 0: out_text[i] = c[i]
 			_set_text(out_text)
-		$Letter.play()
 		await get_tree().create_timer(FTIME).timeout
 	
 	_set_text(c)

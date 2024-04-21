@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://lib/ui/deco_overlay/deco_overlay.gd" id="1_ddkjk"]
 [ext_resource type="Texture2D" uid="uid://b0feucb0fmvyv" path="res://lib/ui/deco_overlay/tex/deco_frame.png" id="2_22byq"]
-[ext_resource type="FontFile" uid="uid://bhk1jyryyb1be" path="res://generic/ibm_plex_mono_text.otf" id="3_5f4vs"]
+[ext_resource type="FontFile" uid="uid://bhk1jyryyb1be" path="res://generic/plex_mono.otf" id="3_5f4vs"]
 
 [sub_resource type="Animation" id="Animation_isnqx"]
 resource_name = "flicker"
