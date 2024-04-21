@@ -12,14 +12,14 @@ default_input_values = [0, 1.0, 1, 0.6, 2, 0.0]
 op_type = 0
 
 [sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_6cw74"]
-constant = Color(0.1664, 0.371627, 0.64, 1)
+constant = Color(0.329953, 0.561385, 0.871607, 1)
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_j60og"]
 expanded_output_ports = [0]
 texture = ExtResource("1_c0uvk")
 
 [sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_xqvk3"]
-default_input_values = [0, 0.0, 1, 3.0]
+default_input_values = [0, 0.0, 1, 1.5]
 operator = 5
 
 [sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_38ru2"]
@@ -62,7 +62,7 @@ uniform sampler2D tex_frg_5;
 
 void fragment() {
 // ColorConstant:12
-	vec4 n_out12p0 = vec4(0.166400, 0.371627, 0.640000, 1.000000);
+	vec4 n_out12p0 = vec4(0.329953, 0.561385, 0.871607, 1.000000);
 
 
 // Input:8
@@ -95,7 +95,7 @@ void fragment() {
 
 
 // FloatOp:3
-	float n_in3p1 = 3.00000;
+	float n_in3p1 = 1.50000;
 	float n_out3p0 = pow(n_out2p1, n_in3p1);
 
 
@@ -120,7 +120,7 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-807.13, 65.1844)
+graph_offset = Vector2(-498.286, -20.5714)
 modes/cull = 2
 modes/specular = 2
 flags/unshaded = true

@@ -24,10 +24,7 @@ func _ready():
 	Global.emit_signal("blend_shadow_splits_changed")
 
 func _input(_event):
-	if Input.is_action_just_pressed("toggle_debug"):
-		if visible == false:
-			Global.emit_signal("deco_triggered")
-		visible = !visible
+	if Input.is_action_just_pressed("toggle_debug"): visible = !visible
 
 func _process(_delta):
 	var colour = "green"

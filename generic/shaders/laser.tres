@@ -20,8 +20,8 @@ default_value = 1.0
 operator = 2
 
 [sub_resource type="Gradient" id="Gradient_biib7"]
-offsets = PackedFloat32Array(0, 0.470395)
-colors = PackedColorArray(0, 0, 0, 1, 0.945098, 0.945098, 0.945098, 1)
+offsets = PackedFloat32Array(0, 0.565789, 0.766447, 0.927632)
+colors = PackedColorArray(0, 0, 0, 1, 0.945098, 0.945098, 0.945098, 1, 0.945098, 0.945098, 0.945098, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_gxp23"]
 gradient = SubResource("Gradient_biib7")
@@ -133,7 +133,7 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-575.631, 30.9451)
+graph_offset = Vector2(-374.338, -2.00002)
 modes/cull = 2
 modes/specular = 2
 flags/unshaded = true

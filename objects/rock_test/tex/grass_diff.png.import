@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwyq41q6l4uf5"
-path.s3tc="res://.godot/imported/proceed_button.png-5e0dd0e1ca8b65aad9904f4918884d49.s3tc.ctex"
+uid="uid://bvf6tvx5idhw5"
+path.s3tc="res://.godot/imported/grass_diff.png-23e2de8eac8e2870c83b7c7d94f07403.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://lib/ui/dialogue/tex/proceed_button.png"
-dest_files=["res://.godot/imported/proceed_button.png-5e0dd0e1ca8b65aad9904f4918884d49.s3tc.ctex"]
+source_file="res://objects/rock_test/tex/grass_diff.png"
+dest_files=["res://.godot/imported/grass_diff.png-23e2de8eac8e2870c83b7c7d94f07403.s3tc.ctex"]
 
 [params]
 

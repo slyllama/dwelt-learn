@@ -32,7 +32,6 @@ func play_dialogue(get_dialogue):
 	current_dialogue = get_dialogue
 	current_place = 0
 	Global.dialogue_active = true
-	$Base/Proceed.visible = false
 	$Base.modulate.a = 0.0
 	visible = true
 	
@@ -49,8 +48,7 @@ func play_phrase():
 	if current_place > current_dialogue.size() - 1:
 		close_dialogue()
 		return
-	
-	$Base/Proceed.visible = false
+
 	transitioning = true
 	var out_text
 	var c = current_dialogue[current_place]
@@ -69,19 +67,14 @@ func play_phrase():
 		await get_tree().create_timer(FTIME).timeout
 	
 	_set_text(c)
-	$Base/Proceed.visible = true
 	current_place += 1
 	transitioning = false
 
 func _ready():
 	Global.connect("dialogue_played", play_dialogue)
 	visible = false
-	$Base/Proceed.visible = false
 
 func _input(_event):
 	if transitioning == true or Global.dialogue_active == false: return
 	if Input.is_action_just_pressed("interact"):
 		if Global.dialogue_active == true: play_phrase()
-
-func _on_proceed_pressed():
-	play_phrase()

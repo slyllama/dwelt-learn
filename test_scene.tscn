@@ -404,7 +404,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_md1su")
 [node name="Foliage" type="Node3D" parent="."]
 
 [node name="Grass" type="MeshInstance3D" parent="Foliage"]
-transform = Transform3D(0.825961, 0, -0.563728, 0, 1, 0, 0.563728, 0, 0.825961, 0.915869, 0.501292, -12.7655)
+transform = Transform3D(1.0862, 0, -0.346086, 0, 1.14, 0, 0.346086, 0, 1.0862, 0.83859, 0.546205, -12.5667)
 cast_shadow = 0
 visibility_range_end = 30.0
 mesh = ExtResource("21_70xv4")
@@ -412,42 +412,42 @@ skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("22_hxvov")
 
 [node name="Grass2" type="MeshInstance3D" parent="Foliage"]
-transform = Transform3D(-0.696163, 0, -0.717883, 0, 1, 0, 0.717883, 0, -0.696163, -0.839466, -0.168761, -12.9132)
+transform = Transform3D(-0.97811, 0, -1.00863, 0, 1.405, 0, 1.00863, 0, -0.97811, -0.839466, -0.168761, -12.9132)
 cast_shadow = 0
 mesh = ExtResource("21_70xv4")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("22_hxvov")
 
 [node name="Grass3" type="MeshInstance3D" parent="Foliage"]
-transform = Transform3D(-0.883766, 0, -0.46793, 0, 1.22818, 0, 0.46793, 0, -0.883766, 3.59105, 0.461646, -11.6053)
+transform = Transform3D(-0.976561, 0, -0.517062, 0, 1.357, 0, 0.517062, 0, -0.976561, 3.59105, 0.461646, -11.6053)
 cast_shadow = 0
 mesh = ExtResource("21_70xv4")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("22_hxvov")
 
 [node name="Grass4" type="MeshInstance3D" parent="Foliage"]
-transform = Transform3D(-1.15711, 0, -0.045362, 0, 1.42, 0, 0.045362, 0, -1.15711, 5.48856, 1.13637, -13.2621)
+transform = Transform3D(-1.20707, 0, -0.0473207, 0, 1.481, 0, 0.0473207, 0, -1.20707, 5.67424, 1.13637, -13.0434)
 cast_shadow = 0
 mesh = ExtResource("21_70xv4")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("22_hxvov")
 
 [node name="Grass5" type="MeshInstance3D" parent="Foliage"]
-transform = Transform3D(-1.09039, 0, 0.3899, 0, 1.42, 0, -0.3899, 0, -1.09039, -17.8026, 1.46025, -3.63633)
+transform = Transform3D(-1.26929, 0, 0.453872, 0, 1.653, 0, -0.453872, 0, -1.26929, -17.8026, 1.46025, -3.63633)
 cast_shadow = 0
 mesh = ExtResource("21_70xv4")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("22_hxvov")
 
 [node name="Grass6" type="MeshInstance3D" parent="Foliage"]
-transform = Transform3D(-0.360825, 0, 1.26117, 0, 1.24594, 0, -1.03499, 0, -0.439679, -18.2972, 0.734412, -2.53357)
+transform = Transform3D(-0.452972, 0, 1.58353, 0, 1.564, 0, -1.2993, 0, -0.55206, -17.6879, 0.893792, -2.80678)
 cast_shadow = 0
 mesh = ExtResource("21_70xv4")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("22_hxvov")
 
 [node name="Grass7" type="MeshInstance3D" parent="Foliage"]
-transform = Transform3D(-0.864473, 0, 0.770488, 0, 1.42, 0, -0.770488, 0, -0.864473, 7.8985, 1.66545, -13.394)
+transform = Transform3D(-0.427547, 0, 1.07618, 0, 1.42, 0, -1.07618, 0, -0.427547, 7.8985, 1.85354, -13.394)
 cast_shadow = 0
 mesh = ExtResource("21_70xv4")
 skeleton = NodePath("../..")
