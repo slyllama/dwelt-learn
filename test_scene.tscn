@@ -11,9 +11,9 @@
 [ext_resource type="AudioStream" uid="uid://to210dowl6qk" path="res://generic/music/forest_ambience.ogg" id="6_i6drl"]
 [ext_resource type="ArrayMesh" uid="uid://bnlpp6ne5jq3y" path="res://objects/floor/floor.obj" id="6_r1bc3"]
 [ext_resource type="AudioStream" uid="uid://da774d17ngy2a" path="res://generic/music/glass_darkly.ogg" id="7_d3l8n"]
+[ext_resource type="Texture2D" uid="uid://bd7c4x2ajeimr" path="res://generic/tex/floor_diff.png" id="8_ycmhx"]
+[ext_resource type="Texture2D" uid="uid://5bruu4afeor5" path="res://generic/tex/floor_norm.png" id="9_eer7i"]
 [ext_resource type="PackedScene" path="res://objects/gravpad/gravity_pad.tscn" id="13_liyv3"]
-[ext_resource type="Texture2D" uid="uid://xn6ih4gyo82p" path="res://generic/tex/tile_emit.png" id="14_6vp08"]
-[ext_resource type="Texture2D" uid="uid://bio1xu5ncuvte" path="res://generic/tex/tile_norm.png" id="15_ajtqs"]
 [ext_resource type="Texture2D" uid="uid://c530ebvhp0q2f" path="res://objects/floor/wall/tex/wall_embellish_emit.png" id="17_lx010"]
 [ext_resource type="Material" uid="uid://dedhetoptnip7" path="res://generic/mat_tile.tres" id="18_0kl5y"]
 [ext_resource type="PackedScene" uid="uid://dw6tab3s5lc2v" path="res://objects/floor/wall/wall.tscn" id="18_hg1d0"]
@@ -58,11 +58,12 @@ fog_height_density = -0.1
 size = Vector2(100, 100)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_70374"]
-albedo_texture = ExtResource("14_6vp08")
-metallic_specular = 0.25
+albedo_texture = ExtResource("8_ycmhx")
+metallic_specular = 0.75
 normal_enabled = true
-normal_texture = ExtResource("15_ajtqs")
-uv1_scale = Vector3(50, 50, 50)
+normal_texture = ExtResource("9_eer7i")
+backlight = Color(0.25, 0.25, 0.25, 1)
+uv1_scale = Vector3(84, 84, 84)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fuk4o"]
 size = Vector3(50, 0.1, 50)
@@ -75,11 +76,11 @@ normal_enabled = true
 normal_texture = ExtResource("18_pw26b")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_md1su"]
-albedo_texture = ExtResource("14_6vp08")
+albedo_texture = ExtResource("8_ycmhx")
 normal_enabled = true
-normal_texture = ExtResource("15_ajtqs")
-backlight = Color(0.5, 0.5, 0.5, 1)
-uv1_scale = Vector3(36, 36, 36)
+normal_texture = ExtResource("9_eer7i")
+backlight = Color(0.8, 0.8, 0.8, 1)
+uv1_scale = Vector3(12, 12, 12)
 
 [sub_resource type="Curve" id="Curve_lstkl"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -384,6 +385,12 @@ mesh = ExtResource("22_2mbv3")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("18_0kl5y")
 
+[node name="Pillar5" type="MeshInstance3D" parent="Architecture"]
+transform = Transform3D(0.999965, -0.00836003, 0, 0.00836003, 0.999965, 0, 0, 0, 1, -20.2, -0.3, 2)
+mesh = ExtResource("22_2mbv3")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("18_0kl5y")
+
 [node name="Pillar4" type="MeshInstance3D" parent="Architecture"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -0.3, -14.2)
 mesh = ExtResource("22_2mbv3")
@@ -396,7 +403,7 @@ material_override = SubResource("StandardMaterial3D_30eag")
 mesh = ExtResource("19_6jbv0")
 
 [node name="Cathedral" type="MeshInstance3D" parent="Architecture"]
-transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, -6, -0.1, 26)
+transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, -2.68883, -0.099999, 23.338)
 mesh = ExtResource("31_43blj")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_md1su")
@@ -486,7 +493,8 @@ dialogue_data = Array[String](["It's a beautiful night for a peaceful glide, and
 transform = Transform3D(-0.255334, 0, 0.705198, 0, 0.75, 0, -0.705198, 0, -0.255334, 7.7, 2.3, -9)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(-0.707107, -0.570148, -0.418248, 0, -0.591493, 0.80631, -0.707107, 0.570148, 0.418248, 5.01566, 9.77549, -6.31566)
-light_energy = 15.0
+transform = Transform3D(-0.707107, -0.570148, -0.418248, 0, -0.591493, 0.80631, -0.707107, 0.570148, 0.418248, 4.97566, 9.85261, -6.27566)
+light_color = Color(1, 0.960784, 0.960784, 1)
+light_energy = 25.0
 spot_range = 15.0
-spot_angle = 30.0
+spot_angle = 37.0

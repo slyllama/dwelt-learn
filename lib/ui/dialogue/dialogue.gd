@@ -17,7 +17,7 @@ func _set_text(get_text):
 	$Base/DText.text = "[center]" + get_text + "[/center]"
 
 func close_dialogue():
-	current_dialogue = ""
+	current_dialogue = []
 	current_place = 0
 	Global.dialogue_active = false
 	
@@ -26,6 +26,7 @@ func close_dialogue():
 	fade_in.tween_property($Base, "modulate:a", 0.0, 0.1)
 	await fade_in.finished
 	visible = false
+	$Base/DText.text = ""
 	transitioning = false
 
 func play_dialogue(get_dialogue):

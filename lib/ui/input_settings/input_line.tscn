@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://dssjh323af85u"]
+
+[ext_resource type="Script" path="res://lib/ui/input_settings/input_line.gd" id="1_7ircg"]
+[ext_resource type="FontFile" uid="uid://bhk1jyryyb1be" path="res://generic/plex_mono.otf" id="1_qtto6"]
+[ext_resource type="Theme" uid="uid://dfe36tnn0c1ud" path="res://generic/debug_theme.tres" id="3_sbk1l"]
+
+[node name="InputLine" type="HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+offset_right = 106.0
+offset_bottom = 27.0
+script = ExtResource("1_7ircg")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 2
+theme = ExtResource("3_sbk1l")
+text = "Label"
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("3_sbk1l")
+text = "Button"
+
+[node name="CancelButton" type="Button" parent="."]
+visible = false
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("3_sbk1l")
+theme_override_fonts/font = ExtResource("1_qtto6")
+theme_override_font_sizes/font_size = 14
+text = "X"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CancelButton" to="." method="_on_cancel_button_pressed"]

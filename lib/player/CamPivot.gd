@@ -25,16 +25,6 @@ func _ready():
 	for _i in 2: camera_distance -= zoom_increment
 
 func _input(event):
-	# Process zooms
-	if Input.is_action_just_pressed("zoom_in"):
-		if camera_distance - zoom_increment > min_zoom_extent:
-			camera_distance -= zoom_increment
-			target_y_position -= 0.1
-	elif Input.is_action_just_pressed("zoom_out"):
-		if camera_distance + zoom_increment < max_zoom_extent:
-			camera_distance += zoom_increment
-			target_y_position += 0.1
-	
 	if Input.is_action_just_pressed("right_click"):
 		if right_mouse_down == false:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -50,6 +40,18 @@ func _input(event):
 			mouse_offset.x = 0.0
 		if mouse_offset.y < 2.0 and mouse_offset.y > -2.0:
 			mouse_offset.y = 0.0
+	
+	if Global.in_keybind_select == true: return
+	
+	# Process zooms
+	if Input.is_action_just_pressed("zoom_in"):
+		if camera_distance - zoom_increment > min_zoom_extent:
+			camera_distance -= zoom_increment
+			target_y_position -= 0.1
+	elif Input.is_action_just_pressed("zoom_out"):
+		if camera_distance + zoom_increment < max_zoom_extent:
+			camera_distance += zoom_increment
+			target_y_position += 0.1
 
 func _process(_delta):
 	# Zoom camera

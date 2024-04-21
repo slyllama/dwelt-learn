@@ -44,6 +44,8 @@ func _ready():
 			DisplayServer.cursor_set_custom_image(load("res://generic/tex/cursor_2x.png"))
 
 func _input(_event):
+	if Global.in_keybind_select == true: return
+	
 	if Input.is_action_just_pressed("move_forward"):
 		$Stars.amount_ratio = 1.0
 		$SoundHandler.move()
@@ -67,6 +69,8 @@ func _physics_process(_delta):
 	side = 0
 	rotation_diff = 0.0
 	var strafe_diff = 0.0
+	
+	if Global.in_keybind_select == true: return
 	
 	if Input.is_action_pressed("move_forward"): forward += 1
 	if Input.is_action_pressed("move_back"): forward -= 1

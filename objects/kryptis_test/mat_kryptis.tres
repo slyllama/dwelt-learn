@@ -28,7 +28,7 @@ op_type = 0
 operator = 2
 
 [sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_bb5g3"]
-constant = -0.025
+constant = -0.04
 
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_xj8cx"]
 input_name = "uv"
@@ -111,7 +111,7 @@ void fragment() {
 
 
 // FloatConstant:13
-	float n_out13p0 = -0.025000;
+	float n_out13p0 = -0.040000;
 
 
 // VectorOp:12
@@ -152,6 +152,7 @@ void fragment() {
 
 }
 "
+graph_offset = Vector2(-1375.43, 12)
 nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_unj4i")
 nodes/fragment/2/position = Vector2(-200, 140)
 nodes/fragment/3/node = SubResource("VisualShaderNodeTexture_nwqfl")
