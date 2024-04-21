@@ -26,7 +26,6 @@ func _input(event):
 				or Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT)): return
 			InputMap.action_erase_events(action_id)
 			InputMap.action_add_event(action_id, event)
-			
 			Global.emit_signal("left_keybind_select")
 
 func _on_button_pressed():

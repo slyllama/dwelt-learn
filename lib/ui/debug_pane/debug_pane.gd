@@ -3,14 +3,14 @@ extends CanvasLayer
 @export var fps_lower_limit = 20
 
 func _fov_changed():
-	$Settings/FOVSlider.value = Global.fov
-	$Settings/FOVText.text = "FOV: " + str(Global.fov) + "\u00B0"
+	$Settings/FOVSlider.value = Global.settings.fov
+	$Settings/FOVText.text = "FOV: " + str(Global.settings.fov) + "\u00B0"
 
 func _mute_changed():
-	$Settings/MuteButton.button_pressed = Global.mute
+	$Settings/MuteButton.button_pressed = Global.settings.mute
 
 func _blend_shadow_splits():
-	$Settings/BlendShadowButton.button_pressed = Global.blend_shadow_splits
+	$Settings/BlendShadowButton.button_pressed = Global.settings.blend_shadow_splits
 
 func _ready():
 	visible = false
@@ -37,13 +37,13 @@ func _process(_delta):
 		+ str(Engine.get_frames_per_second()) + "fps[/color]")
 
 func _on_fov_slider_value_changed(value):
-	Global.fov = $Settings/FOVSlider.value
+	Global.settings.fov = $Settings/FOVSlider.value
 	Global.emit_signal("fov_changed")
 
 func _on_mute_button_pressed():
-	Global.mute = !Global.mute
+	Global.settings.mute = !Global.settings.mute
 	Global.emit_signal("mute_changed")
 
 func _on_blend_shadow_button_pressed():
-	Global.blend_shadow_splits = !Global.blend_shadow_splits
+	Global.settings.blend_shadow_splits = !Global.settings.blend_shadow_splits
 	Global.emit_signal("blend_shadow_splits_changed")

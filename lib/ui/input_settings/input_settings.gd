@@ -1,7 +1,7 @@
 extends Control
 
 const InputLine = preload("res://lib/ui/input_settings/input_line.tscn")
-const INPUTS = [
+var input_data = [
 	{"id": "move_forward", "name": "Move Forward" },
 	{"id": "move_back", "name": "Move Back" },
 	{"id": "strafe_left", "name": "Strafe Left" },
@@ -10,7 +10,7 @@ const INPUTS = [
 	{"id": "zoom_in", "name": "Zoom In" },
 	{"id": "zoom_out", "name": "Zoom Out" } ]
 
-var input_containers = [] # input list nodes, so they can be cleared
+var input_containers = [] # input list nodes, so they can be cleared on refresh
 
 func _get_key(input_id):
 	var action = InputMap.action_get_events(input_id)[0]
@@ -26,19 +26,33 @@ func refresh():
 	for node in input_containers: node.queue_free()
 	input_containers = []
 	
-	for input in INPUTS:
+	for input in input_data:
 		var i = InputLine.instantiate()
 		i.populate(input.name, input.id, _get_key(input.id))
 		input_containers.append(i)
 		$Panel/Scroll/VBox.add_child(i)
 	$Panel/Scroll/VBox.move_child($Panel/Scroll/VBox/ResetContainer, -1)
-	
-	# To avoid instantly applying
-	# TODO: this isn't that ideal...
+
+	# To avoid instantly triggering that input just by setting it
+	# TODO: fix; this isn't that ideal...
 	await get_tree().create_timer(0.2).timeout
 	Global.in_keybind_select = false
 
+func save_inputs(): # save inputs to "inputs.json" file
+	# TODO: proper logic for relating and saving key codes
+	var inputs_json = FileAccess.open("user://inputs.json", FileAccess.WRITE)
+	inputs_json.store_string("inputs.json")
+	inputs_json.close()
+
 func _ready():
+	if FileAccess.file_exists("user://inputs.json"):
+		var inputs_json = FileAccess.open("user://inputs.json", FileAccess.READ)
+		print("[InputSettings] 'inputs.json' exists, loading.")
+		inputs_json.close()
+	else:
+		print("[InputSettings] 'inputs.json' doesn't exist, creating it.")
+		save_inputs()
+	
 	Global.connect("left_keybind_select", refresh)
 	refresh()
 

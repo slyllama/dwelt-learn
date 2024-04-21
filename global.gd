@@ -9,9 +9,11 @@ signal blend_shadow_splits_changed
 signal fov_changed
 signal mute_changed
 
-var blend_shadow_splits = true
-var fov = 75
-var mute = true
+var settings = {
+	"blend_shadow_splits": true,
+	"fov": 75,
+	"mute": true
+}
 
 ### Game states ###
 
