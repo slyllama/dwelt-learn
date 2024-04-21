@@ -6,14 +6,16 @@ signal interact_left
 
 ### Settings ###
 signal blend_shadow_splits_changed
-signal fov_changed
+signal fov_changed(release)
 signal mute_changed
 
-var settings = {
+const SETTINGS = {
 	"blend_shadow_splits": true,
 	"fov": 75,
-	"mute": true
+	"mute": false
 }
+
+var settings = SETTINGS
 
 ### Game states ###
 

@@ -3,10 +3,11 @@ extends Node3D
 # This script loads settings, music, and other things into the world.
 # It should be extended after creating a new scene.
 
-func _fov_changed():
+func _fov_changed(release):
 	if get_node_or_null("Player") != null:
 		%Player/CamPivot/CamArm/Camera.fov = Global.settings.fov
-		save_settings() # TODO: streamline instead of having multiple functions
+		if release == true:
+			save_settings() # TODO: streamline instead of having multiple functions
 	else: print("[Settings] no player!")
 
 func _mute_changed():
@@ -37,7 +38,7 @@ func _ready():
 	
 	# Apply settings and connect global changes
 	Global.connect("fov_changed", _fov_changed)
-	Global.emit_signal("fov_changed")
+	Global.emit_signal("fov_changed", false)
 	Global.connect("mute_changed", _mute_changed)
 	Global.emit_signal("mute_changed")
 	Global.connect("blend_shadow_splits_changed", _blend_shadow_splits)

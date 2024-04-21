@@ -2,7 +2,7 @@ extends CanvasLayer
 
 @export var fps_lower_limit = 20
 
-func _fov_changed():
+func _fov_changed(_release):
 	$Settings/FOVSlider.value = Global.settings.fov
 	$Settings/FOVText.text = "FOV: " + str(Global.settings.fov) + "\u00B0"
 
@@ -17,7 +17,7 @@ func _ready():
 	
 	# Apply settings and connect global changes
 	Global.connect("fov_changed", _fov_changed)
-	Global.emit_signal("fov_changed")
+	Global.emit_signal("fov_changed", false)
 	Global.connect("mute_changed", _mute_changed)
 	Global.emit_signal("mute_changed")
 	Global.connect("blend_shadow_splits_changed", _blend_shadow_splits)
@@ -38,7 +38,10 @@ func _process(_delta):
 
 func _on_fov_slider_value_changed(value):
 	Global.settings.fov = $Settings/FOVSlider.value
-	Global.emit_signal("fov_changed")
+	Global.emit_signal("fov_changed", false)
+
+func _on_fov_slider_drag_ended(_value_changed):
+	Global.emit_signal("fov_changed", true)
 
 func _on_mute_button_pressed():
 	Global.settings.mute = !Global.settings.mute
@@ -47,3 +50,12 @@ func _on_mute_button_pressed():
 func _on_blend_shadow_button_pressed():
 	Global.settings.blend_shadow_splits = !Global.settings.blend_shadow_splits
 	Global.emit_signal("blend_shadow_splits_changed")
+
+func _on_reset_pressed():
+	Global.settings = Global.SETTINGS
+	
+	Global.emit_signal("fov_changed", false)
+	Global.emit_signal("mute_changed")
+	Global.emit_signal("blend_shadow_splits_changed")
+
+

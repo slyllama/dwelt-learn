@@ -38,7 +38,7 @@ anchors_preset = 0
 offset_left = 40.0
 offset_top = 204.0
 offset_right = 347.0
-offset_bottom = 323.0
+offset_bottom = 385.0
 mouse_filter = 1
 
 [node name="BG" type="ColorRect" parent="Settings"]
@@ -112,7 +112,7 @@ grow_horizontal = 2
 mouse_filter = 2
 theme = ExtResource("3_480m7")
 bbcode_enabled = true
-text = "Blend shadow splits:"
+text = "Blend Shadow Splits:"
 
 [node name="BlendShadowButton" type="CheckButton" parent="Settings"]
 layout_mode = 0
@@ -122,15 +122,34 @@ offset_right = 304.0
 offset_bottom = 105.0
 focus_mode = 0
 
+[node name="Reset" type="Button" parent="Settings"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -34.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
+focus_mode = 0
+theme = ExtResource("3_480m7")
+text = "Default Settings"
+
 [node name="InputSettings" parent="." instance=ExtResource("3_ntwnx")]
 anchors_preset = 9
 anchor_right = 0.0
 offset_left = 41.0
-offset_top = 339.0
+offset_top = 404.0
 offset_right = 347.0
 offset_bottom = -70.0
 grow_horizontal = 1
 
+[connection signal="drag_ended" from="Settings/FOVSlider" to="." method="_on_fov_slider_drag_ended"]
 [connection signal="value_changed" from="Settings/FOVSlider" to="." method="_on_fov_slider_value_changed"]
 [connection signal="pressed" from="Settings/MuteButton" to="." method="_on_mute_button_pressed"]
 [connection signal="pressed" from="Settings/BlendShadowButton" to="." method="_on_blend_shadow_button_pressed"]
+[connection signal="pressed" from="Settings/Reset" to="." method="_on_reset_pressed"]
