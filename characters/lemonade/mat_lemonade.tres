@@ -14,4 +14,4 @@ normal_enabled = true
 normal_scale = 0.75
 normal_texture = ExtResource("2_uskog")
 backlight_enabled = true
-backlight = Color(0.75, 0.75, 0.75, 1)
+backlight = Color(0.25, 0.25, 0.25, 1)

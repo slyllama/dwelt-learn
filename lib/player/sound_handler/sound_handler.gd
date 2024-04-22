@@ -6,10 +6,13 @@ func lock_position(_get_lock_pos, _get_cam_facing, _get_clamp_extent_x, _get_cla
 	$Speaker.play()
 
 func move():
-	pass
+	$EngineIdle.stop()
+	$EngineFly.play()
 
 func stop_moving():
-	pass
+	$EngineFly.stop()
+	$EngineIdle.play()
 
 func _ready():
+	stop_moving()
 	Global.player_position_locked.connect(lock_position)
