@@ -27,7 +27,8 @@ initial_velocity_max = 1.1
 gravity = Vector3(0, 0, 0)
 linear_accel_min = 0.1
 linear_accel_max = 1.0
-scale_max = 3.0
+scale_min = 2.0
+scale_max = 4.0
 color_ramp = SubResource("GradientTexture1D_bdpnb")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_felip"]
@@ -139,6 +140,7 @@ material = SubResource("ShaderMaterial_b5ght")
 script = ExtResource("1_tptbn")
 
 [node name="Sparks" type="GPUParticles3D" parent="."]
+emitting = false
 amount = 40
 lifetime = 1.3
 preprocess = 1.0

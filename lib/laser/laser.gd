@@ -27,14 +27,12 @@ func _input(_event):
 		if active == false:
 			active = true
 			Global.interact_left.emit() # hide overlay
-			$Cable.set_active(true)
 			Global.emit_signal(
 				"player_position_locked",
 				$DockingPoint.global_position,
 				pointing_at, 40.0, 20.0)
 			return
 		else:
-			$Cable.set_active(false)
 			active = false
 			Global.player_position_unlocked.emit()
 			return

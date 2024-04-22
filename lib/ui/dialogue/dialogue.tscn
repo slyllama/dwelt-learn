@@ -18,6 +18,7 @@ shader_parameter/thickness = 0.0
 script = ExtResource("1_6fhhv")
 
 [node name="Base" type="TextureRect" parent="."]
+self_modulate = Color(1, 1, 1, 0.784314)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

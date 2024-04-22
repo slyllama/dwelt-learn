@@ -2,9 +2,6 @@ extends CSGCylinder3D
 
 var start = Vector3(0.0, 0.0, 0.0)
 var end = Vector3(1.0, 1.0, 1.0)
-var active = false
-
-func set_active(get_active): active = get_active
 
 # Hide and show the end sphere -- could be updated with a better visual
 # effect in the future
@@ -26,7 +23,9 @@ func update():
 	material.set_shader_parameter("UVXScale", height * 0.02 + 3.0)
 
 func _ready():
-	set_active(false)
+	# Avoid erroneous particles when the laser first updates its position
+	await get_tree().create_timer(1.0).timeout
+	$Sparks.emitting = true
 
 func _process(_delta):
 	update()
