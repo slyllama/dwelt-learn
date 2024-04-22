@@ -12,9 +12,7 @@ signal mute_changed
 const SETTINGS = {
 	"blend_shadow_splits": true,
 	"fov": 75,
-	"mute": false
-}
-
+	"mute": false }
 var settings = SETTINGS
 
 ### Game states ###
@@ -27,6 +25,7 @@ signal player_position_unlocked
 var can_move = true
 var debug_details_text = "[Details]"
 var dialogue_active = false
+var dragging_control = false # sliders should report their position so they aren't trapped on camera pan
 var in_area_name = ""
 var in_keybind_select = false
 var looking_at = null

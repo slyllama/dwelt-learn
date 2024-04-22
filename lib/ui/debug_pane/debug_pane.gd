@@ -40,7 +40,10 @@ func _on_fov_slider_value_changed(value):
 	Global.settings.fov = $Settings/FOVSlider.value
 	Global.emit_signal("fov_changed", false)
 
+func _on_fov_slider_drag_started(): Global.dragging_control = true
+
 func _on_fov_slider_drag_ended(_value_changed):
+	Global.dragging_control = false
 	Global.emit_signal("fov_changed", true)
 
 func _on_mute_button_pressed():

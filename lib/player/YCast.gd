@@ -13,8 +13,6 @@ func _physics_process(_delta):
 				Global.emit_signal("interact_entered")
 				over_area = true
 				Global.in_area_name = get_collider().TYPE
-			Global.debug_details_text += ("\n[color=yellow]Over: '"
-				+ str(get_collider().TYPE) + "'[/color]")
 		else:
 			if over_area == true:
 				Global.emit_signal("interact_left")

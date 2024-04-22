@@ -34,6 +34,8 @@ func _ready():
 	for _i in 2: camera_distance -= zoom_increment
 
 func _input(event):
+	if Global.dragging_control == true: return
+	
 	# Only move the camera after the actuation threshold has been passed --
 	# see click_mouse_pos_diff above. Should work for both left and right click
 	if event is InputEventMouseMotion:
