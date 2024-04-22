@@ -69,3 +69,6 @@ func _process(_delta):
 	$Cast.rotation_degrees.y = clampf(
 		$Cast.rotation_degrees.y,
 		pointing_at.x - laser_limit_angle, pointing_at.x + laser_limit_angle)
+	
+	if $Cast.cast_is_on_type() == true:
+		$Cast.get_collider().set_active($Cast)

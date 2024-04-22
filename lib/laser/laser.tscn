@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://07n4fhjhunl"]
+[gd_scene load_steps=9 format=3 uid="uid://07n4fhjhunl"]
 
 [ext_resource type="Script" path="res://lib/laser/laser.gd" id="1_qy5bo"]
 [ext_resource type="PackedScene" uid="uid://bbt6np1daksl4" path="res://lib/cable/cable.tscn" id="2_qx4ym"]
+[ext_resource type="Script" path="res://lib/laser/Cast.gd" id="3_0t5vk"]
 [ext_resource type="Texture2D" uid="uid://xn6ih4gyo82p" path="res://generic/tex/shader_tex/tile_emit.png" id="3_xws8f"]
 [ext_resource type="Texture2D" uid="uid://bio1xu5ncuvte" path="res://generic/tex/shader_tex/tile_norm.png" id="4_6cats"]
 [ext_resource type="ArrayMesh" uid="uid://cgix1hwbg5e4s" path="res://maps/test_room/objects/laser_turret/turret_placeholder.obj" id="5_ax68d"]
@@ -31,6 +32,7 @@ visible = false
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.84675, 0.999592, 0)
 target_position = Vector3(0, 0, -20)
 collision_mask = 2
+script = ExtResource("3_0t5vk")
 
 [node name="EndPoint" type="Node3D" parent="Cast"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)

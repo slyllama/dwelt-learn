@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://bsetivexkdulh"]
+[gd_scene load_steps=70 format=3 uid="uid://bsetivexkdulh"]
 
 [ext_resource type="Script" path="res://maps/test_room/test_room.gd" id="1_2kdkw"]
 [ext_resource type="Material" uid="uid://4d6tcixxllut" path="res://maps/test_room/objects/rocket_claw/mat_rocket_claw.tres" id="1_q37l3"]
@@ -34,6 +34,7 @@
 [ext_resource type="PackedScene" uid="uid://07n4fhjhunl" path="res://lib/laser/laser.tscn" id="33_3y43r"]
 [ext_resource type="ArrayMesh" uid="uid://c48ccnw3gi5h4" path="res://lib/god_ray/god_ray_1.obj" id="33_8maq2"]
 [ext_resource type="Material" uid="uid://cu31l43wp5syj" path="res://lib/god_ray/mat_god_ray.tres" id="33_kqhsn"]
+[ext_resource type="PackedScene" uid="uid://cvho6mkc04s7h" path="res://maps/test_room/objects/laser_detector/laser_detector.tscn" id="35_23rac"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dbpli"]
 panorama = ExtResource("2_s1yfh")
@@ -663,6 +664,7 @@ dialogue_data = Array[String](["It's a beautiful night for a peaceful glide, and
 
 [node name="Laser" parent="." instance=ExtResource("33_3y43r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.145, 0, 0.441)
+laser_limit_angle = 40.0
 
 [node name="Infobot" parent="." instance=ExtResource("31_arm1h")]
 transform = Transform3D(-0.255334, 0, 0.705198, 0, 0.75, 0, -0.705198, 0, -0.255334, 7.7, 2.3, -9)
@@ -695,3 +697,6 @@ layers = 2
 cast_shadow = 0
 mesh = ExtResource("33_8maq2")
 surface_material_override/0 = ExtResource("33_kqhsn")
+
+[node name="LaserDetector" parent="." instance=ExtResource("35_23rac")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5984, 5.67756, 5.16896)

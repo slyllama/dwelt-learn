@@ -21,3 +21,4 @@ func pulse(force = 0.02):
 
 func _ready():
 	get_parent().opened.connect(pulse)
+	get_parent().closed.connect(pulse)

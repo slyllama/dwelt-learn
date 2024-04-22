@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 signal opened
+signal closed
 
 const FTIME = 0.05
 var NUMS = [
@@ -22,10 +23,11 @@ func close_dialogue():
 	current_dialogue = []
 	current_place = 0
 	Global.dialogue_active = false
+	emit_signal("closed")
 	
 	transitioning = true
 	var fade_in = create_tween()
-	fade_in.tween_property($Base, "modulate:a", 0.0, 0.1)
+	fade_in.tween_property($Base, "modulate:a", 0.0, 0.25)
 	await fade_in.finished
 	visible = false
 	$Base/DText.text = ""

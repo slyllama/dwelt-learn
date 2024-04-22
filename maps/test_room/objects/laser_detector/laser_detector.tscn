@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvho6mkc04s7h"]
+
+[ext_resource type="Script" path="res://maps/test_room/objects/laser_detector/laser_detector.gd" id="1_mqits"]
+[ext_resource type="Material" uid="uid://8oy0j0kdyonq" path="res://maps/test_room/objects/laser_detector/light_up_material.tres" id="2_vdh0b"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k8s5v"]
+
+[node name="LaserDetector" type="StaticBody3D"]
+collision_layer = 3
+script = ExtResource("1_mqits")
+
+[node name="Box" type="CSGBox3D" parent="."]
+material_override = ExtResource("2_vdh0b")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_k8s5v")
