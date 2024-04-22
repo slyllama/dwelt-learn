@@ -1,4 +1,6 @@
 extends Area3D
+# NOTE: the laser operates on collision group 2 -- meshes will need to be set
+# to reflect this.
 # TODO: make a generic area class
 
 @export var TYPE = "laser"
@@ -13,8 +15,7 @@ var active = false
 var in_area = false
 
 func _ready():
-	$Cable.end = global_position + Vector3(-2.0, 3.0, 0)
-	$Cable.start = global_position + Vector3(-7.0, 6.0, -3.0)
+	$Cable.end = $Cast.global_position
 	$Cable.update()
 
 func _input(_event):
@@ -25,7 +26,7 @@ func _input(_event):
 			$Cable.set_active(true)
 			Global.emit_signal(
 				"player_position_locked",
-				Vector3(position.x, 4.0, position.z),
+				$DockingPoint.global_position,
 				pointing_at, 40.0, 20.0)
 			return
 		else:

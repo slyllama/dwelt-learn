@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5lyj80wh77au"
-path.s3tc="res://.godot/imported/laser_contact.png-09cfcf1cfeb5cf7476b1090c3bf47ea6.s3tc.ctex"
+uid="uid://bio1xu5ncuvte"
+path.s3tc="res://.godot/imported/tile_norm.png-5e35291502944f4d1bdcefc0c75870f4.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://generic/tex/laser_contact.png"
-dest_files=["res://.godot/imported/laser_contact.png-09cfcf1cfeb5cf7476b1090c3bf47ea6.s3tc.ctex"]
+source_file="res://generic/tex/shader_tex/tile_norm.png"
+dest_files=["res://.godot/imported/tile_norm.png-5e35291502944f4d1bdcefc0c75870f4.s3tc.ctex"]
 
 [params]
 
@@ -20,12 +20,12 @@ compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=0
-roughness/src_normal=""
+roughness/mode=1
+roughness/src_normal="res://generic/tex/placeholder_tile_NORM.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

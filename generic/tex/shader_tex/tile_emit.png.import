@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5bruu4afeor5"
-path.s3tc="res://.godot/imported/floor_norm.png-991788586489fc8ac6819f429386ba93.s3tc.ctex"
+uid="uid://xn6ih4gyo82p"
+path.s3tc="res://.godot/imported/tile_emit.png-949335704796c469cad10b3fbc261fd6.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://generic/tex/floor_norm.png"
-dest_files=["res://.godot/imported/floor_norm.png-991788586489fc8ac6819f429386ba93.s3tc.ctex"]
+source_file="res://generic/tex/shader_tex/tile_emit.png"
+dest_files=["res://.godot/imported/tile_emit.png-949335704796c469cad10b3fbc261fd6.s3tc.ctex"]
 
 [params]
 
@@ -20,12 +20,12 @@ compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=1
+compress/normal_map=2
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://generic/tex/floor_norm.png"
+roughness/src_normal="res://generic/tex/tile_emit.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

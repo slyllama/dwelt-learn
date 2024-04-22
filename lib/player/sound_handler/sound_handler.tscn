@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://blknasrarvsh"]
+[gd_scene load_steps=3 format=3 uid="uid://blknasrarvsh"]
 
 [ext_resource type="Script" path="res://lib/player/sound_handler/sound_handler.gd" id="1_ucr74"]
+[ext_resource type="AudioStream" uid="uid://bqrktf88sjfwc" path="res://lib/player/sound_handler/speak.ogg" id="2_ue8n6"]
 
 [node name="SoundHandler" type="Node3D"]
 script = ExtResource("1_ucr74")
+
+[node name="Speaker" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_ue8n6")

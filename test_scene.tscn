@@ -1,25 +1,24 @@
-[gd_scene load_steps=50 format=3 uid="uid://bsetivexkdulh"]
+[gd_scene load_steps=49 format=3 uid="uid://bsetivexkdulh"]
 
 [ext_resource type="Script" path="res://test_scene.gd" id="1_2kdkw"]
 [ext_resource type="Material" uid="uid://4d6tcixxllut" path="res://objects/rocket_claw/mat_rocket_claw.tres" id="1_q37l3"]
 [ext_resource type="ArrayMesh" uid="uid://cpdlvsk5u8brl" path="res://objects/rocket_claw/rocket_claw.obj" id="2_7u0dt"]
 [ext_resource type="Texture2D" uid="uid://dkbckkhxndfn5" path="res://generic/tex/stars_1080p.jpg" id="2_s1yfh"]
 [ext_resource type="PackedScene" uid="uid://bcp4um4sjbyx6" path="res://lib/player/player.tscn" id="4_1oai2"]
-[ext_resource type="Texture2D" uid="uid://b3aaiytpklgal" path="res://lib/ui/tex/vignette.png" id="4_xtxix"]
 [ext_resource type="PackedScene" uid="uid://e0k8h1ytp7wi" path="res://lib/ui/hud/hud.tscn" id="5_6lqxt"]
 [ext_resource type="Material" uid="uid://rrahcoqndg6d" path="res://objects/floor/mat_floor.tres" id="6_fjpyi"]
 [ext_resource type="AudioStream" uid="uid://to210dowl6qk" path="res://generic/music/forest_ambience.ogg" id="6_i6drl"]
 [ext_resource type="ArrayMesh" uid="uid://bnlpp6ne5jq3y" path="res://objects/floor/floor.obj" id="6_r1bc3"]
-[ext_resource type="AudioStream" uid="uid://da774d17ngy2a" path="res://generic/music/glass_darkly.ogg" id="7_d3l8n"]
-[ext_resource type="Texture2D" uid="uid://bd7c4x2ajeimr" path="res://generic/tex/floor_diff.png" id="8_ycmhx"]
-[ext_resource type="Texture2D" uid="uid://5bruu4afeor5" path="res://generic/tex/floor_norm.png" id="9_eer7i"]
+[ext_resource type="AudioStream" uid="uid://cylpnijc2ws65" path="res://generic/music/test_room.ogg" id="7_uehu4"]
+[ext_resource type="Texture2D" uid="uid://bd7c4x2ajeimr" path="res://generic/tex/shader_tex/floor_diff.png" id="8_ycmhx"]
+[ext_resource type="Texture2D" uid="uid://5bruu4afeor5" path="res://generic/tex/shader_tex/floor_norm.png" id="9_eer7i"]
 [ext_resource type="PackedScene" path="res://objects/gravpad/gravity_pad.tscn" id="13_liyv3"]
 [ext_resource type="Texture2D" uid="uid://c530ebvhp0q2f" path="res://objects/floor/wall/tex/wall_embellish_emit.png" id="17_lx010"]
 [ext_resource type="Material" uid="uid://dedhetoptnip7" path="res://generic/mat_tile.tres" id="18_0kl5y"]
 [ext_resource type="PackedScene" uid="uid://dw6tab3s5lc2v" path="res://objects/floor/wall/wall.tscn" id="18_hg1d0"]
 [ext_resource type="ArrayMesh" uid="uid://bvf6fuimgjs8c" path="res://objects/rock_test/rock.obj" id="18_j5tgn"]
 [ext_resource type="Texture2D" uid="uid://b7qjderyhyvxt" path="res://objects/floor/wall/tex/wall_embellish_norm.png" id="18_pw26b"]
-[ext_resource type="Texture2D" uid="uid://d1fy6jygommc6" path="res://generic/tex/mote.png" id="18_r710r"]
+[ext_resource type="Texture2D" uid="uid://d1fy6jygommc6" path="res://generic/tex/particles/mote.png" id="18_r710r"]
 [ext_resource type="ArrayMesh" uid="uid://jmvm537tcgg6" path="res://objects/floor/wall/wall_import.obj" id="19_6jbv0"]
 [ext_resource type="Material" uid="uid://b4hs5hauq3l0f" path="res://objects/rock_test/mat_rock.tres" id="19_xx3wl"]
 [ext_resource type="ArrayMesh" uid="uid://dcqni2oqbyp05" path="res://objects/rock_test/grass.obj" id="21_70xv4"]
@@ -227,17 +226,6 @@ directional_shadow_pancake_size = 10.0
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1.3, 2)
 
-[node name="Vignette" type="TextureRect" parent="."]
-modulate = Color(1, 1, 1, 0.823529)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("4_xtxix")
-expand_mode = 1
-
 [node name="HUD" parent="." instance=ExtResource("5_6lqxt")]
 
 [node name="Ambience" type="AudioStreamPlayer" parent="."]
@@ -246,7 +234,7 @@ volume_db = -3.0
 autoplay = true
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_d3l8n")
+stream = ExtResource("7_uehu4")
 volume_db = -9.0
 
 [node name="Architecture" type="Node3D" parent="."]

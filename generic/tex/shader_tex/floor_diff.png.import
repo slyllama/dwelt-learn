@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1fy6jygommc6"
-path.s3tc="res://.godot/imported/mote.png-760921af5c3bb09fd49d335b5d10bf8c.s3tc.ctex"
+uid="uid://bd7c4x2ajeimr"
+path.s3tc="res://.godot/imported/floor_diff.png-2a70fcad1b89cc9ec2dce7f807463652.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://generic/tex/mote.png"
-dest_files=["res://.godot/imported/mote.png-760921af5c3bb09fd49d335b5d10bf8c.s3tc.ctex"]
+source_file="res://generic/tex/shader_tex/floor_diff.png"
+dest_files=["res://.godot/imported/floor_diff.png-2a70fcad1b89cc9ec2dce7f807463652.s3tc.ctex"]
 
 [params]
 

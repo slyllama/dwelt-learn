@@ -5,7 +5,7 @@
 [ext_resource type="Material" uid="uid://bpog2tm2hdqsl" path="res://characters/lemonade/mat_lemonade_2.tres" id="3_shypb"]
 [ext_resource type="Material" uid="uid://oqhyxbqylma3" path="res://characters/lemonade/mat_lemonade.tres" id="4_k7hj8"]
 [ext_resource type="ArrayMesh" uid="uid://cnojvik40qwcr" path="res://characters/lemonade/v_propel_cone/v_propel_cone.obj" id="5_pqa3t"]
-[ext_resource type="Texture2D" uid="uid://dgkrpn8nt8pvt" path="res://generic/tex/laser.jpeg" id="7_n1bo2"]
+[ext_resource type="Texture2D" uid="uid://dgkrpn8nt8pvt" path="res://generic/tex/shader_tex/laser.jpeg" id="7_n1bo2"]
 
 [sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_nq8tf"]
 default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]

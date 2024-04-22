@@ -11,8 +11,6 @@ var side = 0
 var target_velocity = Vector3.ZERO
 var last_pivot_y_rotation = 0.0
 var rotation_diff = 0.0 # difference between pivot and model rotation - used for animation
-var raycast_y_point = 0.0
-var over_area = false
 
 # Position locking variables
 var position_locked = false
@@ -37,11 +35,14 @@ func lock_position(get_lock_pos, get_cam_facing, get_clamp_extent_x, get_clamp_e
 	lock_cam_clamp.y_upper = get_cam_facing.y + get_clamp_extent_y
 	
 	position_locked = true
+	$FloatUpDown.pause()
 	$Lemonade/AnimationPlayer.play_backwards("Fly")
 	$Stars.amount_ratio = 0.3
 	
 	%CamPivot.rotation_degrees.y = get_cam_facing.x
 	%CamPivot.new_cam_y_rotation = get_cam_facing.x
+	$Lemonade.rotation_degrees.y = get_cam_facing.x
+	$Lemonade.rotation_degrees.z = 0.0
 
 func unlock_position():
 	if (Input.is_action_pressed("move_forward")
@@ -49,6 +50,7 @@ func unlock_position():
 		# Play movement animation if the player is holding down a movement key
 		# when leaving the laser
 		$Lemonade/AnimationPlayer.play("Fly")
+	$FloatUpDown.play("float")
 	position_locked = false
 	$Stars.amount_ratio = 1.0
 
@@ -60,7 +62,7 @@ func update_debug():
 	Global.debug_details_text += "\nmagnitude = " + Utilities.fstr(velocity.length())
 	Global.debug_details_text += "\ndirection = " + Utilities.fstr(%CamPivot.rotation_degrees.y, 1)
 	Global.debug_details_text += "\u00B0 (" + str(snapped($Lemonade.rotation_degrees.y, 1))  + "\u00B0)"
-	Global.debug_details_text += "\nraycast_y_point = " + Utilities.fstr(raycast_y_point)
+	Global.debug_details_text += "\nraycast_y_point = " + Utilities.fstr(Global.raycast_y_point)
 
 func _ready():
 	Global.connect("player_position_locked", lock_position)
@@ -111,19 +113,14 @@ func _physics_process(_delta):
 	var strafe_diff = 0.0
 	
 	if Global.in_keybind_select == true: return
-	if position_locked == true:
-		last_pivot_y_rotation = %CamPivot.rotation.y
-	
+
 	if position_locked == true:
 		position = lerp(position, lock_pos, 0.2)
 		Global.player_position = position
 		update_debug()
-		# Match model rotation to locked position
-		$Lemonade.rotation.z = lerp($Lemonade.rotation.z, 0.0, 0.5)
-		$Lemonade.rotation.y = lerp_angle(
-			$Lemonade.rotation.y, last_pivot_y_rotation, 0.4)
 		return
 	
+	# If the position is locked, nothing happens after this point
 	if Input.is_action_pressed("move_forward"): forward += 1
 	if Input.is_action_pressed("move_back"): forward -= 1
 	if Input.is_action_pressed("strafe_left"):
@@ -135,11 +132,12 @@ func _physics_process(_delta):
 	
 	target_velocity = (-forward * %CamPivot.global_transform.basis.z
 		+ -side * %CamPivot.global_transform.basis.x)
-	target_velocity = target_velocity.normalized() * Vector3(1, 0, 1) * speed # strip out the camera looking up/down
+	# Strip out the camera looking up/down
+	target_velocity = target_velocity.normalized() * Vector3(1, 0, 1) * speed
 	
 	velocity = lerp(velocity, target_velocity, speed_smoothing)
 	move_and_slide()
-
+	
 	if velocity.length() > 1.0:
 		rotation_diff = Utilities.short_angle_dist(
 			%CamPivot.rotation.y, $Lemonade.rotation.y) * -0.25
@@ -154,26 +152,6 @@ func _physics_process(_delta):
 	$Lemonade.rotation_degrees.z = clampf(
 		$Lemonade.rotation_degrees.z, -model_yaw_extent, model_yaw_extent)
 
-	# Raycast stuff - this will need to go into a new section
-	if $YCast.get_collider() != null:
-		raycast_y_point = $YCast.get_collision_point().y
-	
-	position.y = lerp(position.y, raycast_y_point + hover_height, 0.07)
-	
+	position.y = lerp(position.y, Global.raycast_y_point + hover_height, 0.07)
 	Global.player_position = position
 	update_debug()
-	
-	if $YCast.get_collider() != null:
-		if "TYPE" in $YCast.get_collider():
-			if $YCast.get_collider().TYPE == "ignore": return
-			if over_area == false:
-				Global.emit_signal("interact_entered")
-				over_area = true
-				Global.in_area_name = $YCast.get_collider().TYPE
-			Global.debug_details_text += ("\n[color=yellow]Over: '"
-				+ str($YCast.get_collider().TYPE) + "'[/color]")
-		else:
-			if over_area == true:
-				Global.emit_signal("interact_left")
-				over_area = false
-				Global.in_area_name = ""

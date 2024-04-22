@@ -4,9 +4,9 @@
 [ext_resource type="Script" path="res://lib/ui/hud/hud.gd" id="1_i45xt"]
 [ext_resource type="PackedScene" uid="uid://ds7v1kxeoggbl" path="res://lib/ui/dialogue/dialogue.tscn" id="3_lcfva"]
 [ext_resource type="PackedScene" uid="uid://d1a3dquec4n6t" path="res://lib/ui/fade_overlay/fade_overlay.tscn" id="4_ob2oh"]
-[ext_resource type="Texture2D" uid="uid://d23l1jk521b1h" path="res://lib/ui/tex/border_overlay.png" id="5_hvexc"]
 [ext_resource type="Texture2D" uid="uid://8kcdl0ahju3s" path="res://lib/ui/tex/interact_overlay.png" id="6_n4mbk"]
 [ext_resource type="Theme" uid="uid://dfe36tnn0c1ud" path="res://generic/debug_theme.tres" id="6_x2xjl"]
+[ext_resource type="Texture2D" uid="uid://b3aaiytpklgal" path="res://lib/ui/tex/vignette.png" id="7_wv8wl"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_i45xt")
@@ -19,26 +19,27 @@ layer = 3
 
 [node name="FadeOverlay" parent="." instance=ExtResource("4_ob2oh")]
 
-[node name="InteractOverlay" type="TextureRect" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("5_hvexc")
-
-[node name="Green" type="TextureRect" parent="InteractOverlay"]
-layout_mode = 1
+[node name="Vignette" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.823529)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+texture = ExtResource("7_wv8wl")
+expand_mode = 1
+
+[node name="InteractOverlay" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("6_n4mbk")
 
 [node name="Details" type="RichTextLabel" parent="."]
-modulate = Color(1, 1, 1, 0.392157)
+modulate = Color(1, 1, 1, 0.666667)
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0

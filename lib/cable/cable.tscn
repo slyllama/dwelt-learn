@@ -2,8 +2,8 @@
 
 [ext_resource type="Shader" uid="uid://yi627x8xvfu2" path="res://generic/shaders/laser.tres" id="1_ga0ie"]
 [ext_resource type="Script" path="res://lib/cable/cable.gd" id="1_tptbn"]
-[ext_resource type="Texture2D" uid="uid://d1fy6jygommc6" path="res://generic/tex/mote.png" id="3_jdu8b"]
-[ext_resource type="Texture2D" uid="uid://c5lyj80wh77au" path="res://generic/tex/laser_contact.png" id="4_qesil"]
+[ext_resource type="Texture2D" uid="uid://d1fy6jygommc6" path="res://generic/tex/particles/mote.png" id="3_jdu8b"]
+[ext_resource type="Texture2D" uid="uid://c5lyj80wh77au" path="res://generic/tex/particles/laser_contact.png" id="4_qesil"]
 [ext_resource type="Shader" uid="uid://dsggukocef5lg" path="res://characters/lemonade/v_propel_cone/mat_v_propel_cone.tres" id="5_egji0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b5ght"]

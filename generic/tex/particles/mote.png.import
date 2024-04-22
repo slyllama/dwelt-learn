@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgkrpn8nt8pvt"
-path.s3tc="res://.godot/imported/laser.jpeg-3c7847636c42d306e91fc36209166f27.s3tc.ctex"
+uid="uid://d1fy6jygommc6"
+path.s3tc="res://.godot/imported/mote.png-d57ce69f21d4019a79fd1d8bca158314.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://generic/tex/laser.jpeg"
-dest_files=["res://.godot/imported/laser.jpeg-3c7847636c42d306e91fc36209166f27.s3tc.ctex"]
+source_file="res://generic/tex/particles/mote.png"
+dest_files=["res://.godot/imported/mote.png-d57ce69f21d4019a79fd1d8bca158314.s3tc.ctex"]
 
 [params]
 

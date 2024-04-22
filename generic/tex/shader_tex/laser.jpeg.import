@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bd7c4x2ajeimr"
-path.s3tc="res://.godot/imported/floor_diff.png-9158dcaad41eb72b7fe316b8b630c015.s3tc.ctex"
+uid="uid://dgkrpn8nt8pvt"
+path.s3tc="res://.godot/imported/laser.jpeg-bae636eb419555bf10462f0a1003dd7e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://generic/tex/floor_diff.png"
-dest_files=["res://.godot/imported/floor_diff.png-9158dcaad41eb72b7fe316b8b630c015.s3tc.ctex"]
+source_file="res://generic/tex/shader_tex/laser.jpeg"
+dest_files=["res://.godot/imported/laser.jpeg-bae636eb419555bf10462f0a1003dd7e.s3tc.ctex"]
 
 [params]
 

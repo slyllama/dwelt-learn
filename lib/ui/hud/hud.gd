@@ -8,7 +8,7 @@ func _toggle_interact_overlay(state):
 	else:
 		var fade_tween = create_tween()
 		fade_tween.tween_property(
-			$InteractOverlay, "modulate:a", 0.2, 0.2)
+			$InteractOverlay, "modulate:a", 0.1, 0.2)
 
 func _ready():
 	Global.connect("interact_entered", _toggle_interact_overlay.bind(true))

@@ -33,3 +33,4 @@ var looking_at = null
 
 ### World states ###
 var player_position = Vector2.ZERO
+var raycast_y_point = 0.0

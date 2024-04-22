@@ -1,6 +1,6 @@
 [gd_resource type="VisualShader" load_steps=17 format=3 uid="uid://dsggukocef5lg"]
 
-[ext_resource type="Texture2D" uid="uid://dgkrpn8nt8pvt" path="res://generic/tex/laser.jpeg" id="1_c0uvk"]
+[ext_resource type="Texture2D" uid="uid://dgkrpn8nt8pvt" path="res://generic/tex/shader_tex/laser.jpeg" id="1_c0uvk"]
 
 [sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_6dnqq"]
 default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]
