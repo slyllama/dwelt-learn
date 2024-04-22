@@ -1,9 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://ds7v1kxeoggbl"]
+[gd_scene load_steps=8 format=3 uid="uid://ds7v1kxeoggbl"]
 
 [ext_resource type="Script" path="res://lib/ui/dialogue/dialogue.gd" id="1_6fhhv"]
 [ext_resource type="Texture2D" uid="uid://dduothw77bdaf" path="res://lib/ui/dialogue/tex/base.png" id="1_i1ywh"]
 [ext_resource type="FontFile" uid="uid://bhk1jyryyb1be" path="res://generic/plex_mono.otf" id="3_y1toj"]
 [ext_resource type="FontFile" uid="uid://b1v28gy50d86f" path="res://generic/red_hat.ttf" id="4_fptdd"]
+[ext_resource type="Shader" path="res://lib/ui/dialogue/radial_distort.gdshader" id="5_mlith"]
+[ext_resource type="Script" path="res://lib/ui/dialogue/DistortShader.gd" id="6_tb7wh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b0j08"]
+shader = ExtResource("5_mlith")
+shader_parameter/center = Vector2(0.5, 0.25)
+shader_parameter/force = 0.01
+shader_parameter/size = 0.0
+shader_parameter/thickness = 0.0
 
 [node name="Dialogue" type="CanvasLayer"]
 script = ExtResource("1_6fhhv")
@@ -13,9 +22,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 253.0
-offset_top = 61.0
+offset_top = 161.0
 offset_right = -252.0
-offset_bottom = -592.0
+offset_bottom = -691.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_i1ywh")
@@ -26,14 +35,14 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 319.0
-offset_top = 136.0
-offset_right = -319.0
-offset_bottom = -110.0
+offset_left = 299.0
+offset_top = 62.0
+offset_right = -299.0
+offset_bottom = -27.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_colors/default_color = Color(0.72, 0.72, 0.72, 1)
+theme_override_colors/default_color = Color(0.64, 1, 0.46, 1)
 theme_override_constants/line_separation = -4
 theme_override_fonts/normal_font = ExtResource("3_y1toj")
 theme_override_font_sizes/normal_font_size = 18
@@ -46,12 +55,21 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -247.0
-offset_top = 98.0
+offset_top = 21.0
 offset_right = 247.0
-offset_bottom = 143.0
+offset_bottom = 66.0
 grow_horizontal = 2
 mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("4_fptdd")
 theme_override_font_sizes/normal_font_size = 21
 bbcode_enabled = true
-text = "[center]Dialogue[/center]"
+text = "[center]DIALOGUE[/center]"
+
+[node name="DistortShader" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_b0j08")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_tb7wh")

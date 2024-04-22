@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+signal opened
+
 const FTIME = 0.05
 var NUMS = [
 	"4354076982764985762487698756983276459876458745",
@@ -17,7 +19,6 @@ func _set_text(get_text):
 	$Base/DText.text = "[center]" + get_text + "[/center]"
 
 func close_dialogue():
-	Global.interact_left.emit() # hide overlay on leaving
 	current_dialogue = []
 	current_place = 0
 	Global.dialogue_active = false
@@ -36,6 +37,8 @@ func play_dialogue(get_dialogue):
 	Global.dialogue_active = true
 	$Base.modulate.a = 0.0
 	visible = true
+	emit_signal("opened")
+	Global.interact_left.emit() # hide overlay
 	
 	transitioning = true
 	var fade_in = create_tween()

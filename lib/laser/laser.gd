@@ -6,15 +6,18 @@ extends Area3D
 @export var TYPE = "laser"
 ## The movement speed of the laser controls.
 @export var laser_move_speed = 0.5
-## Specifies the initial rotation of the camera when the laser is activated, relative to the orientation of the laser itself.
+## Specifies the initial rotation of the camera when the laser is activated,
+## relative to the orientation of the laser itself.
 @export var pointing_at = Vector2(90.0, 10.0)
-## Limits how far (in degrees) the laser may be moved from its original orientation.
+## Limits how far (in degrees) the laser may be moved from its original
+## orientation.
 @export var laser_limit_angle = 20.0
 
 var active = false
 var in_area = false
 
 func _ready():
+	$Cable.visible = true
 	$Cable.end = $Cast.global_position
 	$Cable.update()
 
@@ -23,6 +26,7 @@ func _input(_event):
 		if (in_area == false or Global.in_keybind_select == true): return
 		if active == false:
 			active = true
+			Global.interact_left.emit() # hide overlay
 			$Cable.set_active(true)
 			Global.emit_signal(
 				"player_position_locked",
@@ -32,7 +36,6 @@ func _input(_event):
 		else:
 			$Cable.set_active(false)
 			active = false
-			Global.interact_left.emit() # hide overlay on leaving
 			Global.player_position_unlocked.emit()
 			return
 
