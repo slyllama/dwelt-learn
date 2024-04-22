@@ -5,6 +5,7 @@ extends Area3D
 
 func _input(_event):
 	if Input.is_action_just_pressed("interact"):
-		if dialogue_data == [] or Global.dialogue_active == true: return
+		if (dialogue_data == [] or Global.dialogue_active == true
+			or Global.in_keybind_select == true): return
 		if Global.in_area_name == TYPE:
 			Global.emit_signal("dialogue_played", dialogue_data)

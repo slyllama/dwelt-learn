@@ -20,7 +20,7 @@ func _ready():
 
 func _input(_event):
 	if Input.is_action_just_pressed("interact"):
-		if in_area == false: return
+		if (in_area == false or Global.in_keybind_select == true): return
 		if active == false:
 			active = true
 			$Cable.set_active(true)

@@ -77,6 +77,7 @@ func _ready():
 	visible = false
 
 func _input(_event):
-	if transitioning == true or Global.dialogue_active == false: return
+	if (transitioning == true or Global.dialogue_active == false
+		or Global.in_keybind_select == true): return
 	if Input.is_action_just_pressed("interact"):
 		if Global.dialogue_active == true: play_phrase()
