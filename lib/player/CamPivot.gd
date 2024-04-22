@@ -78,7 +78,7 @@ func _process(_delta):
 	# Get what the player is looking up by reading the results of a raycast
 	# Sets the var to 'null' if looking at nothing
 	if Cast.is_colliding(): Global.looking_at = Cast.get_collision_point()
-	else: Global.looking_at == null
+	else: Global.looking_at = null
 	
 	last_mouse_offset = mouse_offset
 	if right_mouse_down == true:

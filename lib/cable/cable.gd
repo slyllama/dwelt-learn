@@ -6,6 +6,12 @@ var active = false
 
 func set_active(get_active): active = get_active
 
+# Hide and show the end sphere -- could be updated with a better visual
+# effect in the future
+func toggle_end_point(state):
+	if $Glow.visible != state:
+		$Glow.visible = state
+
 func update():
 	global_position = (start + end) / 2.0
 	look_at(end, Vector3.UP)
@@ -23,5 +29,4 @@ func _ready():
 	set_active(false)
 
 func _process(_delta):
-	if active == false: return
 	update()
