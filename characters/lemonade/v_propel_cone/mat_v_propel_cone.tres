@@ -38,12 +38,12 @@ operator = 5
 [sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_38ru2"]
 operator = 2
 
-[sub_resource type="Gradient" id="Gradient_biib7"]
-offsets = PackedFloat32Array(0, 0.565789, 0.766447, 0.927632)
+[sub_resource type="Gradient" id="Gradient_rvs3h"]
+offsets = PackedFloat32Array(0, 0.189655, 0.701149, 0.927632)
 colors = PackedColorArray(0, 0, 0, 1, 0.945098, 0.945098, 0.945098, 1, 0.945098, 0.945098, 0.945098, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_gxp23"]
-gradient = SubResource("Gradient_biib7")
+gradient = SubResource("Gradient_rvs3h")
 fill_from = Vector2(1, 1)
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_n4e42"]

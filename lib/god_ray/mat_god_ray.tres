@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cu31l43wp5syj"]
+
+[ext_resource type="Shader" uid="uid://dtg3t52t3kle7" path="res://lib/god_ray/god_ray.tres" id="1_2tdtp"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_2tdtp")
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = null

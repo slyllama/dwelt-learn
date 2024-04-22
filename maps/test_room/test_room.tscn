@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://bsetivexkdulh"]
+[gd_scene load_steps=69 format=3 uid="uid://bsetivexkdulh"]
 
 [ext_resource type="Script" path="res://maps/test_room/test_room.gd" id="1_2kdkw"]
 [ext_resource type="Material" uid="uid://4d6tcixxllut" path="res://maps/test_room/objects/rocket_claw/mat_rocket_claw.tres" id="1_q37l3"]
@@ -32,6 +32,8 @@
 [ext_resource type="PackedScene" uid="uid://ch1n54go1oqrn" path="res://characters/lemonade/lemonade.tscn" id="31_arm1h"]
 [ext_resource type="PackedScene" uid="uid://i1jp4klishr3" path="res://lib/dialogue_area/dialogue_area.tscn" id="32_d6er5"]
 [ext_resource type="PackedScene" uid="uid://07n4fhjhunl" path="res://lib/laser/laser.tscn" id="33_3y43r"]
+[ext_resource type="ArrayMesh" uid="uid://c48ccnw3gi5h4" path="res://lib/god_ray/god_ray_1.obj" id="33_8maq2"]
+[ext_resource type="Material" uid="uid://cu31l43wp5syj" path="res://lib/god_ray/mat_god_ray.tres" id="33_kqhsn"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dbpli"]
 panorama = ExtResource("2_s1yfh")
@@ -669,5 +671,27 @@ transform = Transform3D(-0.255334, 0, 0.705198, 0, 0.75, 0, -0.705198, 0, -0.255
 transform = Transform3D(-0.707107, -0.570148, -0.418248, 0, -0.591493, 0.80631, -0.707107, 0.570148, 0.418248, 4.97566, 9.85261, -6.27566)
 light_color = Color(1, 0.960784, 0.960784, 1)
 light_energy = 25.0
+light_cull_mask = 4294967293
 spot_range = 15.0
 spot_angle = 37.0
+
+[node name="GodRay1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.2897, 0, 0, 0, 1.30701, 0, 0, 0, 1, 6.13227, 2.37423, -8.99763)
+layers = 2
+cast_shadow = 0
+mesh = ExtResource("33_8maq2")
+surface_material_override/0 = ExtResource("33_kqhsn")
+
+[node name="GodRay2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.78, 0, 0, 0, 1.803, 0, 0, 0, 1.38, 5.42541, 2.50308, 34.592)
+layers = 2
+cast_shadow = 0
+mesh = ExtResource("33_8maq2")
+surface_material_override/0 = ExtResource("33_kqhsn")
+
+[node name="GodRay3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.78, 0, 0, 0, 1.803, 0, 0, 0, 1.38, 5.42541, 2.50308, 26.9841)
+layers = 2
+cast_shadow = 0
+mesh = ExtResource("33_8maq2")
+surface_material_override/0 = ExtResource("33_kqhsn")
