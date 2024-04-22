@@ -43,8 +43,8 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 
 [sub_resource type="Gradient" id="Gradient_r77nj"]
-offsets = PackedFloat32Array(0, 0.515625, 1)
-colors = PackedColorArray(0, 0.756863, 1, 1, 0.000681892, 0.114002, 0.491014, 1, 1, 1, 1, 1)
+offsets = PackedFloat32Array(0, 0.218182, 0.627273, 1)
+colors = PackedColorArray(0.6417, 0.93, 0.6417, 1, 2.40654e-07, 0.179482, 0.0808157, 1, 0, 0.554526, 0, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_ptkd8"]
 gradient = SubResource("Gradient_r77nj")

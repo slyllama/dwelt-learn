@@ -181,7 +181,7 @@ nodes/fragment/connections = PackedInt32Array(2, 1, 3, 0, 3, 0, 4, 0, 5, 1, 6, 0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nlrw8"]
 render_priority = 0
 shader = SubResource("VisualShader_e2qhw")
-shader_parameter/Color = Color(2.69532e-06, 0.542092, 0.703383, 1)
+shader_parameter/Color = Color(0.71659, 0.87, 0.6699, 1)
 shader_parameter/Speed = 0.1
 shader_parameter/Scale = Vector2(2, 1.5)
 shader_parameter/Ramp = 5.0
@@ -352,7 +352,7 @@ nodes/fragment/connections = PackedInt32Array(2, 1, 3, 0, 3, 0, 4, 0, 5, 1, 6, 0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2uogg"]
 render_priority = 0
 shader = SubResource("VisualShader_eug5f")
-shader_parameter/Color = Color(0.329953, 0.561385, 0.871607, 1)
+shader_parameter/Color = Color(0.522084, 0.784145, 0.468794, 1)
 shader_parameter/Speed = 0.5
 shader_parameter/Scale = Vector2(1, 0.6)
 shader_parameter/Ramp = 1.5

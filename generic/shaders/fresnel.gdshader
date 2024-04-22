@@ -15,7 +15,7 @@ void fragment()
 	
 	vec2 noise_uv = adjusted_screen_uv + TIME * 0.04;
 	vec2 noise_final = vec2(texture(noise_texture, noise_uv).r, texture(noise_texture, noise_uv).g);
-	vec3 fresnel_color = vec3(0.0, 0.7, 0.9);
+	vec3 fresnel_color = vec3(0.1, 1.0, 0.1);
 	vec3 fresnel = fresnel_glow(7.0, 5.0, fresnel_color, NORMAL, VIEW);
 	
 	vec4 tex_col = texture(stars_texture, adjusted_screen_uv * stars_scale + noise_final * 0.9);
