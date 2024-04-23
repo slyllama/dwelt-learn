@@ -25,6 +25,9 @@ func save_settings(): # save settings to "settings.json" file
 	settings_json.store_string(JSON.stringify(Global.settings))
 	settings_json.close()
 
+func set_master_vol(vol):
+	AudioServer.set_bus_volume_db(0, vol)
+
 func _ready():
 	# Load the settings file, or make a new one using save_settings() if it doesn't
 	if FileAccess.file_exists("user://settings.json"):
@@ -44,6 +47,13 @@ func _ready():
 	Global.connect("blend_shadow_splits_changed", _blend_shadow_splits)
 	Global.emit_signal("blend_shadow_splits_changed")
 	
+	# Fade in all sound if the game wasn't already muted
+	if Global.SETTINGS.mute == false:
+		pass
+		set_master_vol(-20.0)
+		var fade_bus_in = create_tween()
+		fade_bus_in.tween_method(set_master_vol, -20.0, 0.0, 1.0).set_trans(Tween.TRANS_EXPO)
+	#
 	# Only try to prime music if the nodes actually exist
 	if get_node_or_null("Ambience") != null and get_node_or_null("Music") != null:
 		$Ambience.volume_db = -20.0

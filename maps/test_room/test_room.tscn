@@ -715,14 +715,14 @@ mesh = ExtResource("33_8maq2")
 surface_material_override/0 = ExtResource("33_kqhsn")
 
 [node name="GodRay2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.78, 0, 0, 0, 1.803, 0, 0, 0, 1.38, 5.42541, 2.50308, 34.592)
+transform = Transform3D(1.78, 0, 0, 0, 1.803, 0, 0, 0, 1.38, 3.09423, 1.45257, 34.592)
 layers = 2
 cast_shadow = 0
 mesh = ExtResource("33_8maq2")
 surface_material_override/0 = ExtResource("33_kqhsn")
 
 [node name="GodRay3" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.78, 0, 0, 0, 1.803, 0, 0, 0, 1.38, 5.42541, 2.50308, 26.9841)
+transform = Transform3D(1.78, 0, 0, 0, 1.803, 0, 0, 0, 1.38, 3.09423, 1.45257, 26.9841)
 layers = 2
 cast_shadow = 0
 mesh = ExtResource("33_8maq2")

@@ -22,8 +22,8 @@ gradient = SubResource("Gradient_dn3s2")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7bqph"]
 direction = Vector3(1, 1, 1)
 spread = 180.0
-initial_velocity_min = 0.9
-initial_velocity_max = 1.1
+initial_velocity_min = 0.2
+initial_velocity_max = 0.3
 gravity = Vector3(0, 0, 0)
 linear_accel_min = 0.1
 linear_accel_max = 1.0
@@ -37,7 +37,6 @@ shading_mode = 0
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("3_jdu8b")
 billboard_mode = 3
-billboard_keep_scale = true
 particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
@@ -48,7 +47,7 @@ size = Vector2(0.1, 0.1)
 orientation = 2
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_oc2w5"]
-size = Vector2(4, 4)
+size = Vector2(3, 3)
 orientation = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_su511"]
@@ -157,7 +156,7 @@ mesh = SubResource("PlaneMesh_oc2w5")
 surface_material_override/0 = SubResource("StandardMaterial3D_su511")
 
 [node name="EnergyField" type="CSGSphere3D" parent="Glow"]
-radius = 1.1
+radius = 0.7
 material = SubResource("ShaderMaterial_0067l")
 
 [node name="GlowAnim" type="AnimationPlayer" parent="Glow"]
