@@ -24,7 +24,7 @@ func _ready():
 	$Cable.update()
 	
 	overlay_texture.texture = load("res://lib/laser/tex/laser_overlay.png")
-	overlay_texture.position = get_viewport().size / 2.0
+	overlay_texture.position = Vector2(1920.0, 1080.0) / 2.0
 	add_child(overlay_texture)
 	overlay_texture.modulate.a = 0.0
 

@@ -1,7 +1,6 @@
 extends CharacterBody3D
 
 @export var hover_height = 3.0
-@export var floor_level = 2.0
 @export var speed = 5.0
 @export var speed_smoothing = 0.08
 @export var model_yaw_extent = 20.0
