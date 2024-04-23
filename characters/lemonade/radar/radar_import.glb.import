@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://y5jgb6ge51s7"
+uid="uid://dx4opjbtl5pwj"
 path="res://.godot/imported/radar_import.glb-dfe86dfaaad7c2b2417105e7076bec80.scn"
 
 [deps]
@@ -29,6 +29,13 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={}
+_subresources={
+"materials": {
+"holograph": {
+"use_external/enabled": false,
+"use_external/path": "res://characters/lemonade/radar/holograph.tres"
+}
+}
+}
 gltf/naming_version=1
 gltf/embedded_image_handling=1

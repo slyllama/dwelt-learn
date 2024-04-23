@@ -1,13 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://bbw2dv43cf0uc"]
+[gd_scene load_steps=4 format=3 uid="uid://d3hod7745u2ev"]
 
-[ext_resource type="PackedScene" uid="uid://y5jgb6ge51s7" path="res://characters/lemonade/radar/radar_import.glb" id="1_lc1w3"]
-[ext_resource type="Shader" uid="uid://cupub7pghtysj" path="res://characters/lemonade/radar/radar_tex.tres" id="2_j4iem"]
+[ext_resource type="PackedScene" uid="uid://dx4opjbtl5pwj" path="res://characters/lemonade/radar/radar_import.glb" id="1_vtgif"]
+[ext_resource type="Shader" uid="uid://cupub7pghtysj" path="res://characters/lemonade/radar/holograph.tres" id="2_mgg76"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_k0yi4"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7d0ve"]
 render_priority = 0
-shader = ExtResource("2_j4iem")
+shader = ExtResource("2_mgg76")
 
-[node name="radar_import" instance=ExtResource("1_lc1w3")]
+[node name="Radar" instance=ExtResource("1_vtgif")]
 
 [node name="RadarCube" parent="." index="0"]
-surface_material_override/0 = SubResource("ShaderMaterial_k0yi4")
+surface_material_override/0 = SubResource("ShaderMaterial_7d0ve")
