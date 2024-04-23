@@ -91,21 +91,12 @@ func _ready():
 	
 	# Set up for retina
 	if DisplayServer.screen_get_size().x > 2000:
-#		get_window().size = get_window().size * 1.5
-#		get_window().position -= Vector2i(get_window().size.x / 4.0, get_window().size.y / 4.0)
 		if OS.get_name() != "macOS":
 			DisplayServer.cursor_set_custom_image(load("res://generic/tex/cursor_2x.png"))
 
 func _input(_event):
 	if Global.in_keybind_select == true: return
-	
-	# TODO: debug only
-	if Input.is_action_just_pressed("test_key"):
-		if position_locked == false:
-			lock_position(Vector3(0.0, 4.0, 0.0), Vector2(90.0, 10.0), 40.0, 20.0)
-			return
-		else: unlock_position()
-	
+
 	# No animations if the player's position is locked
 	if position_locked == true: return
 	

@@ -1,0 +1,85 @@
+[gd_scene load_steps=11 format=3 uid="uid://e67dngl87klq"]
+
+[ext_resource type="Texture2D" uid="uid://dkbckkhxndfn5" path="res://generic/tex/stars_1080p.jpg" id="1_g8c1o"]
+[ext_resource type="Script" path="res://lib/ui/main_menu/main_menu.gd" id="1_v53i6"]
+[ext_resource type="ArrayMesh" uid="uid://d3naoc14d04p8" path="res://maps/test_room/spaceship.obj" id="2_5cpkf"]
+[ext_resource type="Texture2D" uid="uid://b3aaiytpklgal" path="res://lib/ui/tex/vignette.png" id="4_log8n"]
+[ext_resource type="Texture2D" uid="uid://8kcdl0ahju3s" path="res://lib/ui/tex/interact_overlay.png" id="5_lhatl"]
+[ext_resource type="AudioStream" uid="uid://c0mcu2mepdqkh" path="res://lib/ui/main_menu/sound/afterlife.ogg" id="6_wktfa"]
+[ext_resource type="AudioStream" uid="uid://d2u38ckfsboi" path="res://lib/ui/main_menu/sound/lava.ogg" id="7_rb4fb"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_f13yi"]
+panorama = ExtResource("1_g8c1o")
+
+[sub_resource type="Sky" id="Sky_is2vb"]
+sky_material = SubResource("PanoramaSkyMaterial_f13yi")
+
+[sub_resource type="Environment" id="Environment_pdrk3"]
+background_mode = 2
+sky = SubResource("Sky_is2vb")
+ambient_light_source = 2
+ambient_light_color = Color(0.3536, 0.442347, 0.52, 1)
+ambient_light_energy = 0.4
+tonemap_mode = 2
+tonemap_exposure = 1.35
+fog_enabled = true
+fog_light_color = Color(0, 0, 0, 1)
+fog_light_energy = 0.0
+fog_density = 0.04
+fog_sky_affect = 0.0
+fog_height_density = -0.1
+
+[node name="MainMenu" type="Node3D"]
+script = ExtResource("1_v53i6")
+
+[node name="Sky" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_pdrk3")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.250494, 0.393207, -0.88467, 0.939547, -0.319102, 0.124202, -0.233463, -0.862301, -0.449369, 0, 6.09097, 0)
+light_color = Color(1, 0.854902, 0.733333, 1)
+light_energy = 2.0
+shadow_enabled = true
+directional_shadow_split_1 = 0.3
+directional_shadow_split_2 = 0.4
+directional_shadow_split_3 = 0.7
+directional_shadow_blend_splits = true
+directional_shadow_pancake_size = 10.0
+
+[node name="Spaceship" type="MeshInstance3D" parent="."]
+mesh = ExtResource("2_5cpkf")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.73809)
+current = true
+fov = 100.0
+
+[node name="FG" type="CanvasLayer" parent="."]
+
+[node name="Vignette" type="TextureRect" parent="FG"]
+modulate = Color(1, 1, 1, 0.666667)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_log8n")
+expand_mode = 1
+
+[node name="InteractOverlay" type="TextureRect" parent="FG"]
+self_modulate = Color(0, 0, 0, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_lhatl")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_wktfa")
+volume_db = -3.0
+
+[node name="FX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_rb4fb")
+volume_db = -4.0

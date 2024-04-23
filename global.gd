@@ -9,6 +9,7 @@ signal blend_shadow_splits_changed
 signal fov_changed(release)
 signal mute_changed
 
+const SCREEN_SIZE = Vector2(1920.0, 1080.0)
 const SETTINGS = {
 	"blend_shadow_splits": true,
 	"fov": 75,
