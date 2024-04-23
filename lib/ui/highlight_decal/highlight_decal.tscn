@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cw7452jwdahpu"]
 
-[ext_resource type="Texture2D" uid="uid://c145ygljk20uj" path="res://lib/highlight_decal/tex/circle.png" id="1_d58ak"]
-[ext_resource type="Script" path="res://lib/highlight_decal/highlight_decal.gd" id="2_4yoqw"]
+[ext_resource type="Texture2D" uid="uid://c145ygljk20uj" path="res://lib/ui/highlight_decal/tex/circle.png" id="1_d58ak"]
+[ext_resource type="Script" path="res://lib/ui/highlight_decal/highlight_decal.gd" id="2_4yoqw"]
 
 [sub_resource type="Animation" id="Animation_0os74"]
 resource_name = "rotate"

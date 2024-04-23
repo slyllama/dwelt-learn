@@ -23,6 +23,8 @@ func close_dialogue():
 	current_dialogue = []
 	current_place = 0
 	Global.dialogue_active = false
+	Global.in_action = false
+	
 	emit_signal("closed")
 	
 	transitioning = true
@@ -36,12 +38,16 @@ func close_dialogue():
 func play_dialogue(get_dialogue):
 	current_dialogue = get_dialogue
 	current_place = 0
+	
+	# These are already set by interact_area, but dialogue won't necessarily
+	# be called by area
 	Global.dialogue_active = true
+	Global.in_action = true
+	
 	$Base.modulate.a = 0.0
 	visible = true
 	emit_signal("opened")
 	Global.interact_left.emit() # hide overlay
-	
 	transitioning = true
 	var fade_in = create_tween()
 	fade_in.tween_property($Base, "modulate:a", 1.0, 0.1)
@@ -53,7 +59,8 @@ func play_dialogue(get_dialogue):
 # Animate the presentation of a phrase
 func play_phrase():
 	if current_place > current_dialogue.size() - 1:
-		close_dialogue()
+		Global.interact_entered.emit()
+		Global.dialogue_closed.emit()
 		return
 
 	transitioning = true
@@ -79,6 +86,8 @@ func play_phrase():
 
 func _ready():
 	Global.connect("dialogue_played", play_dialogue)
+	Global.connect("dialogue_closed", close_dialogue)
+	Global.connect("dialogue_closed_early", close_dialogue)
 	visible = false
 
 func _input(_event):

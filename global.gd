@@ -1,6 +1,8 @@
 extends Node
 
 signal dialogue_played(dialogue)
+signal dialogue_closed
+signal dialogue_closed_early
 signal interact_entered
 signal interact_left
 
@@ -27,6 +29,7 @@ var can_move = true
 var debug_details_text = "[Details]"
 var dialogue_active = false
 var dragging_control = false # sliders should report their position so they aren't trapped on camera pan
+var in_action = false
 var in_area_name = ""
 var in_keybind_select = false
 var looking_at = null

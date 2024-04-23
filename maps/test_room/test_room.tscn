@@ -25,15 +25,15 @@
 [ext_resource type="ArrayMesh" uid="uid://dr2else4l8d0n" path="res://maps/test_room/objects/floor/pillar.obj" id="22_2mbv3"]
 [ext_resource type="Material" uid="uid://b8qiowsyf48h7" path="res://maps/test_room/objects/nature/mat_foliage.tres" id="22_hxvov"]
 [ext_resource type="ArrayMesh" uid="uid://ce1w3e45srxgq" path="res://maps/test_room/objects/kryptis_test/kryptis_test.obj" id="23_1u1sq"]
+[ext_resource type="Material" uid="uid://cu31l43wp5syj" path="res://lib/objects/god_ray/mat_god_ray.tres" id="24_hjdsa"]
 [ext_resource type="Texture2D" uid="uid://dinrdf02xeqaq" path="res://generic/fade_ramp.tres" id="25_cms4a"]
 [ext_resource type="Shader" uid="uid://dg1bo2f0gnaue" path="res://maps/test_room/objects/kryptis_test/mat_kryptis.tres" id="27_elhuu"]
 [ext_resource type="Texture2D" uid="uid://dgkrpn8nt8pvt" path="res://generic/tex/shader_tex/laser.jpeg" id="29_sh2ae"]
 [ext_resource type="ArrayMesh" uid="uid://c6yb8s3l7fjqi" path="res://maps/test_room/objects/cathedral/cathedral.obj" id="31_43blj"]
 [ext_resource type="PackedScene" uid="uid://ch1n54go1oqrn" path="res://characters/lemonade/lemonade.tscn" id="31_arm1h"]
-[ext_resource type="PackedScene" uid="uid://i1jp4klishr3" path="res://lib/dialogue_area/dialogue_area.tscn" id="32_d6er5"]
-[ext_resource type="PackedScene" uid="uid://07n4fhjhunl" path="res://lib/laser/laser.tscn" id="33_3y43r"]
-[ext_resource type="ArrayMesh" uid="uid://c48ccnw3gi5h4" path="res://lib/god_ray/god_ray_1.obj" id="33_8maq2"]
-[ext_resource type="Material" uid="uid://cu31l43wp5syj" path="res://lib/god_ray/mat_god_ray.tres" id="33_kqhsn"]
+[ext_resource type="PackedScene" uid="uid://i1jp4klishr3" path="res://lib/dialogue/dialogue.tscn" id="32_d6er5"]
+[ext_resource type="PackedScene" uid="uid://07n4fhjhunl" path="res://lib/objects/laser/laser.tscn" id="33_3y43r"]
+[ext_resource type="ArrayMesh" uid="uid://c48ccnw3gi5h4" path="res://lib/objects/god_ray/god_ray_1.obj" id="33_8maq2"]
 [ext_resource type="PackedScene" uid="uid://cvho6mkc04s7h" path="res://maps/test_room/objects/laser_detector/laser_detector.tscn" id="35_23rac"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dbpli"]
@@ -609,6 +609,30 @@ mesh = ExtResource("31_43blj")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_md1su")
 
+[node name="GodRay1" type="MeshInstance3D" parent="Architecture"]
+transform = Transform3D(1.2897, 0, 0, 0, 1.30701, 0, 0, 0, 1, 6.13227, 2.37423, -8.99763)
+layers = 2
+cast_shadow = 0
+mesh = ExtResource("33_8maq2")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("24_hjdsa")
+
+[node name="GodRay2" type="MeshInstance3D" parent="Architecture"]
+transform = Transform3D(1.78, 0, 0, 0, 1.803, 0, 0, 0, 1.38, 3.09423, 1.45257, 34.592)
+layers = 2
+cast_shadow = 0
+mesh = ExtResource("33_8maq2")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("24_hjdsa")
+
+[node name="GodRay3" type="MeshInstance3D" parent="Architecture"]
+transform = Transform3D(1.78, 0, 0, 0, 1.803, 0, 0, 0, 1.38, 3.09423, 1.45257, 26.9841)
+layers = 2
+cast_shadow = 0
+mesh = ExtResource("33_8maq2")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("24_hjdsa")
+
 [node name="Foliage" type="Node3D" parent="."]
 
 [node name="Grass" type="MeshInstance3D" parent="Foliage"]
@@ -690,6 +714,7 @@ material = SubResource("ShaderMaterial_kev7y")
 
 [node name="DialogueArea" parent="." instance=ExtResource("32_d6er5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -6.253)
+TYPE = "test_dialogue"
 dialogue_data = Array[String](["Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.", "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."])
 
 [node name="Laser" parent="." instance=ExtResource("33_3y43r")]
@@ -706,27 +731,6 @@ light_energy = 25.0
 light_cull_mask = 4294967293
 spot_range = 15.0
 spot_angle = 37.0
-
-[node name="GodRay1" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.2897, 0, 0, 0, 1.30701, 0, 0, 0, 1, 6.13227, 2.37423, -8.99763)
-layers = 2
-cast_shadow = 0
-mesh = ExtResource("33_8maq2")
-surface_material_override/0 = ExtResource("33_kqhsn")
-
-[node name="GodRay2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.78, 0, 0, 0, 1.803, 0, 0, 0, 1.38, 3.09423, 1.45257, 34.592)
-layers = 2
-cast_shadow = 0
-mesh = ExtResource("33_8maq2")
-surface_material_override/0 = ExtResource("33_kqhsn")
-
-[node name="GodRay3" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.78, 0, 0, 0, 1.803, 0, 0, 0, 1.38, 3.09423, 1.45257, 26.9841)
-layers = 2
-cast_shadow = 0
-mesh = ExtResource("33_8maq2")
-surface_material_override/0 = ExtResource("33_kqhsn")
 
 [node name="LaserDetector" parent="." instance=ExtResource("35_23rac")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5984, 5.67756, 5.16896)

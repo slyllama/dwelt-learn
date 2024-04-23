@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cu31l43wp5syj"]
 
-[ext_resource type="Shader" uid="uid://dtg3t52t3kle7" path="res://lib/god_ray/god_ray.tres" id="1_2tdtp"]
+[ext_resource type="Shader" uid="uid://dtg3t52t3kle7" path="res://lib/objects/god_ray/god_ray.tres" id="1_2tdtp"]
 
 [resource]
 render_priority = 0

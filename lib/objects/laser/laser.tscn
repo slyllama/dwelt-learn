@@ -1,14 +1,12 @@
 [gd_scene load_steps=9 format=3 uid="uid://07n4fhjhunl"]
 
-[ext_resource type="Script" path="res://lib/laser/laser.gd" id="1_qy5bo"]
-[ext_resource type="PackedScene" uid="uid://bbt6np1daksl4" path="res://lib/cable/cable.tscn" id="2_qx4ym"]
-[ext_resource type="Script" path="res://lib/laser/Cast.gd" id="3_0t5vk"]
+[ext_resource type="Script" path="res://lib/objects/laser/laser.gd" id="1_qy5bo"]
+[ext_resource type="PackedScene" uid="uid://bbt6np1daksl4" path="res://lib/objects/cable/cable.tscn" id="2_qx4ym"]
+[ext_resource type="Script" path="res://lib/objects/laser/Cast.gd" id="3_0t5vk"]
 [ext_resource type="Texture2D" uid="uid://xn6ih4gyo82p" path="res://generic/tex/shader_tex/tile_emit.png" id="3_xws8f"]
 [ext_resource type="Texture2D" uid="uid://bio1xu5ncuvte" path="res://generic/tex/shader_tex/tile_norm.png" id="4_6cats"]
 [ext_resource type="ArrayMesh" uid="uid://cgix1hwbg5e4s" path="res://maps/test_room/objects/laser_turret/turret_placeholder.obj" id="5_ax68d"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_kbmuv"]
-size = Vector3(5, 1, 5)
+[ext_resource type="PackedScene" uid="uid://c542303ron8x" path="res://lib/interact_area/interact_area.tscn" id="7_6xnlv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oc3v8"]
 albedo_texture = ExtResource("3_xws8f")
@@ -17,12 +15,8 @@ normal_texture = ExtResource("4_6cats")
 backlight = Color(0.5, 0.5, 0.5, 1)
 uv1_scale = Vector3(64, 64, 64)
 
-[node name="Laser" type="Area3D"]
+[node name="Laser" type="Node3D"]
 script = ExtResource("1_qy5bo")
-
-[node name="Collision" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.45, 0)
-shape = SubResource("BoxShape3D_kbmuv")
 
 [node name="Cable" parent="." instance=ExtResource("2_qx4ym")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
@@ -44,3 +38,5 @@ mesh = ExtResource("5_ax68d")
 
 [node name="DockingPoint" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.541717, 2.26995, 0)
+
+[node name="InteractArea" parent="." instance=ExtResource("7_6xnlv")]

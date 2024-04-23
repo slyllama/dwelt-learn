@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://lib/player/player.gd" id="1_2r77g"]
 [ext_resource type="Script" path="res://lib/player/CamPivot.gd" id="2_73c7o"]
 [ext_resource type="Script" path="res://lib/player/YCast.gd" id="3_oxn4f"]
-[ext_resource type="PackedScene" uid="uid://cw7452jwdahpu" path="res://lib/highlight_decal/highlight_decal.tscn" id="5_siwwa"]
+[ext_resource type="PackedScene" uid="uid://cw7452jwdahpu" path="res://lib/ui/highlight_decal/highlight_decal.tscn" id="5_siwwa"]
 [ext_resource type="PackedScene" uid="uid://blknasrarvsh" path="res://lib/player/sound_handler/sound_handler.tscn" id="5_ymbnw"]
 [ext_resource type="Texture2D" uid="uid://dinrdf02xeqaq" path="res://generic/fade_ramp.tres" id="6_k5syw"]
 [ext_resource type="ArrayMesh" uid="uid://cn0wlud2ukcna" path="res://generic/tex/particles/star.obj" id="7_7rcg7"]

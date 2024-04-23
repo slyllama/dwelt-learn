@@ -1,4 +1,4 @@
-extends Area3D
+extends Node3D
 # NOTE: the laser operates on collision group 2 -- meshes will need to be set
 # to reflect this.
 # TODO: make a generic area class
@@ -13,50 +13,66 @@ extends Area3D
 ## orientation.
 @export var laser_limit_angle = 20.0
 
-var active = false
-var in_area = false
-
 var overlay_texture = Sprite2D.new()
 
+func activate():
+	overlay_texture.scale = Vector2(1.0, 1.0)
+	overlay_texture.rotation_degrees = 45.0
+	var fade_tween = create_tween()
+	fade_tween.tween_property(overlay_texture, "modulate:a", 1.0, 0.3)
+	Global.emit_signal(
+		"player_position_locked",
+		$DockingPoint.global_position,
+		pointing_at, 40.0, 20.0)
+
+func deactivate():
+	var fade_tween = create_tween()
+	fade_tween.tween_property(overlay_texture, "modulate:a", 0.0, 0.1)
+	Global.player_position_unlocked.emit()
+
 func _ready():
+	$InteractArea.TYPE = TYPE
+	$InteractArea.activated.connect(activate)
+	$InteractArea.deactivated.connect(deactivate)
+	
 	$Cable.visible = true
 	$Cable.end = $Cast.global_position
 	$Cable.update()
 	
-	overlay_texture.texture = load("res://lib/laser/tex/laser_overlay.png")
+	overlay_texture.texture = load("uid://d3xxoqd47y644")
 	overlay_texture.position = Vector2(1920.0, 1080.0) / 2.0
 	add_child(overlay_texture)
 	overlay_texture.modulate.a = 0.0
 
-func _input(_event):
-	if Input.is_action_just_pressed("interact"):
-		if (in_area == false or Global.in_keybind_select == true): return
-		if active == false:
-			overlay_texture.scale = Vector2(1.0, 1.0)
-			overlay_texture.rotation_degrees = 45.0
-			var fade_tween = create_tween()
-			fade_tween.tween_property(overlay_texture, "modulate:a", 1.0, 0.3)
-			active = true
-			Global.interact_left.emit() # hide overlay
-			Global.emit_signal(
-				"player_position_locked",
-				$DockingPoint.global_position,
-				pointing_at, 40.0, 20.0)
-			return
-		else:
-			active = false
-			var fade_tween = create_tween()
-			fade_tween.tween_property(overlay_texture, "modulate:a", 0.0, 0.1)
-			Global.player_position_unlocked.emit()
-			return
+#func _input(_event):
+	#if Input.is_action_just_pressed("interact"):
+		#if (in_area == false or Global.in_action == true): return
+		#if active == false:
+			#overlay_texture.scale = Vector2(1.0, 1.0)
+			#overlay_texture.rotation_degrees = 45.0
+			#var fade_tween = create_tween()
+			#fade_tween.tween_property(overlay_texture, "modulate:a", 1.0, 0.3)
+			#active = true
+			#Global.interact_left.emit() # hide overlay
+			#Global.emit_signal(
+				#"player_position_locked",
+				#$DockingPoint.global_position,
+				#pointing_at, 40.0, 20.0)
+			#return
+		#else:
+			#active = false
+			#var fade_tween = create_tween()
+			#fade_tween.tween_property(overlay_texture, "modulate:a", 0.0, 0.1)
+			#Global.player_position_unlocked.emit()
+			#return
 
 func _process(_delta):
-	if Global.in_area_name != TYPE: 
-		if in_area == true:
-			in_area = false
-			return
-	else: if in_area == false:
-		in_area = true
+	#if Global.in_area_name != TYPE: 
+		#if in_area == true:
+			#in_area = false
+			#return
+	#else: if in_area == false:
+		#in_area = true
 	
 	overlay_texture.scale = lerp(overlay_texture.scale, Vector2(0.7, 0.7), 0.2)
 	overlay_texture.rotation_degrees = lerp(overlay_texture.rotation_degrees, 0.0, 0.2)
@@ -68,7 +84,7 @@ func _process(_delta):
 		$Cable.start = lerp($Cable.start, $Cast/EndPoint.global_position, 0.5)
 		$Cable.toggle_end_point(false)
 	
-	if active == false: return
+	if $InteractArea.active == false: return
 	if Input.is_action_pressed("move_forward"):
 		$Cast.rotation_degrees.x += laser_move_speed
 	if Input.is_action_pressed("move_back"):

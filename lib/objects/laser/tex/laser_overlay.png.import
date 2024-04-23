@@ -2,34 +2,33 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c145ygljk20uj"
-path.s3tc="res://.godot/imported/circle.png-9e0288cb5bdac6b8b8492af1e8c57dce.s3tc.ctex"
+uid="uid://d3xxoqd47y644"
+path="res://.godot/imported/laser_overlay.png-d0da0b60d377d9d8b7ff3228b33b3275.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://lib/highlight_decal/tex/circle.png"
-dest_files=["res://.godot/imported/circle.png-9e0288cb5bdac6b8b8492af1e8c57dce.s3tc.ctex"]
+source_file="res://lib/objects/laser/tex/laser_overlay.png"
+dest_files=["res://.godot/imported/laser_overlay.png-d0da0b60d377d9d8b7ff3228b33b3275.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
 process/fix_alpha_border=true
-process/premult_alpha=true
+process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1
