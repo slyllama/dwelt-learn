@@ -568,6 +568,36 @@ mesh = ExtResource("22_2mbv3")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("18_0kl5y")
 
+[node name="Wall10" parent="Architecture" instance=ExtResource("18_hg1d0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 7.2, -14.4)
+
+[node name="Wall11" parent="Architecture" instance=ExtResource("18_hg1d0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.2, -14.4)
+
+[node name="Wall12" parent="Architecture" instance=ExtResource("18_hg1d0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 7.2, -14.4)
+
+[node name="Wall13" parent="Architecture" instance=ExtResource("18_hg1d0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 7.2, -14.4)
+
+[node name="Pillar6" type="MeshInstance3D" parent="Architecture"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.2, 7.2, -14.2)
+mesh = ExtResource("22_2mbv3")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("18_0kl5y")
+
+[node name="Pillar7" type="MeshInstance3D" parent="Architecture"]
+transform = Transform3D(0.999965, -0.00836003, 0, 0.00836003, 0.999965, 0, 0, 0, 1, -20.2, 7.2, -14.2)
+mesh = ExtResource("22_2mbv3")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("18_0kl5y")
+
+[node name="Pillar8" type="MeshInstance3D" parent="Architecture"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 7.2, -14.2)
+mesh = ExtResource("22_2mbv3")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("18_0kl5y")
+
 [node name="WallImport" type="MeshInstance3D" parent="Architecture"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, -0.3, -6)
 material_override = SubResource("StandardMaterial3D_30eag")
@@ -660,7 +690,7 @@ material = SubResource("ShaderMaterial_kev7y")
 
 [node name="DialogueArea" parent="." instance=ExtResource("32_d6er5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -6.253)
-dialogue_data = Array[String](["It's a beautiful night for a peaceful glide, and oh good lord, what is that.", "Don't be silly; of course you know what that is. It's the fleshy mass of skin and tendons which make up the tentacles that line your home lattice."])
+dialogue_data = Array[String](["Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.", "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."])
 
 [node name="Laser" parent="." instance=ExtResource("33_3y43r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.145, 0, 0.441)
