@@ -6,16 +6,32 @@ extends CharacterBody3D
 @export var speed_smoothing = 0.08
 @export var model_yaw_extent = 20.0
 
+@onready var Radar = $Lemonade/StyxArmature/Skeleton3D/BaseRing/Radar
+@onready var RadarAnim = $Lemonade/StyxArmature/Skeleton3D/BaseRing/Radar/AnimationPlayer
+
 var forward = 0
 var side = 0
 var target_velocity = Vector3.ZERO
 var last_pivot_y_rotation = 0.0
 var rotation_diff = 0.0 # difference between pivot and model rotation - used for animation
+var radar_open = false
 
 # Position locking variables
 var position_locked = false
 var lock_pos = Vector3.ZERO
 var lock_cam_clamp = { "x_lower": 0.0, "x_upper": 0.0, "y_lower": 0.0, "y_upper": 0.0 }
+
+func open_radar():
+	radar_open = true
+	Radar.visible = true
+	RadarAnim.play("RadarKeyAction")
+
+func close_radar():
+	radar_open = false
+	RadarAnim.play_backwards("RadarKeyAction")
+	await RadarAnim.animation_finished
+	if radar_open == false: # skip if player has gone back into an interact area
+		Radar.visible = false
 
 # Apply and lock the position and camera rotation of the player, and limit the
 # extent to which the player can look around.
@@ -69,6 +85,10 @@ func update_debug():
 func _ready():
 	Global.connect("player_position_locked", lock_position)
 	Global.connect("player_position_unlocked", unlock_position)
+	Global.connect("interact_entered", open_radar)
+	Global.connect("interact_left", close_radar)
+	
+	Radar.visible = false
 	
 	# Set up for retina
 	if DisplayServer.screen_get_size().x > 2000:
