@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bcp4um4sjbyx6"]
+[gd_scene load_steps=20 format=3 uid="uid://bcp4um4sjbyx6"]
 
 [ext_resource type="Script" path="res://lib/player/player.gd" id="1_2r77g"]
 [ext_resource type="Script" path="res://lib/player/CamPivot.gd" id="2_73c7o"]
@@ -10,6 +10,43 @@
 [ext_resource type="PackedScene" uid="uid://ch1n54go1oqrn" path="res://characters/lemonade/lemonade.tscn" id="7_bsuml"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_yehb5"]
+
+[sub_resource type="Animation" id="Animation_tsccv"]
+resource_name = "shake"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CamArm/Camera:v_offset")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.1, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_6mrla"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CamArm/Camera:v_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_25tn2"]
+_data = {
+"RESET": SubResource("Animation_6mrla"),
+"shake": SubResource("Animation_tsccv")
+}
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7nbr8"]
 radius = 0.733304
@@ -76,10 +113,16 @@ shape = SubResource("SphereShape3D_yehb5")
 spring_length = 5.0
 
 [node name="Camera" type="Camera3D" parent="CamPivot/CamArm"]
+v_offset = -0.1
 current = true
 
 [node name="Cast" type="RayCast3D" parent="CamPivot/CamArm/Camera"]
 target_position = Vector3(0, 0, -20)
+
+[node name="ShakeAnim" type="AnimationPlayer" parent="CamPivot"]
+libraries = {
+"": SubResource("AnimationLibrary_25tn2")
+}
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)

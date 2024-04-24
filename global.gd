@@ -1,5 +1,6 @@
 extends Node
 
+signal camera_shaken
 signal dialogue_played(dialogue)
 signal dialogue_closed
 signal dialogue_closed_early

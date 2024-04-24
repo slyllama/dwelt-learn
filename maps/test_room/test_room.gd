@@ -1,6 +1,7 @@
 extends "res://lib/world_loader/world_loader.gd"
 
 func toggle_door_test(door_test_state):
+	Global.camera_shaken.emit()
 	if door_test_state == true:
 		$PuzzleDoor/AnimationPlayer.play("Hinges")
 	else:

@@ -23,7 +23,11 @@ var last_mouse_offset = mouse_offset
 var click_mouse_pos = Vector2.ZERO
 var click_mouse_pos_diff = Vector2.ZERO
 
+func _shake_cam(): $ShakeAnim.play("shake")
+
 func _ready():
+	Global.camera_shaken.connect(_shake_cam)
+	
 	# Apply the original rotation of the pivot point so there won't be any
 	# awkward snaps
 	new_cam_y_rotation = rotation_degrees.y
