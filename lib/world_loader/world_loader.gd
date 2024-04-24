@@ -1,7 +1,8 @@
 extends Node3D
 
 # This script loads settings, music, and other things into the world.
-# It should be extended after creating a new scene.
+# It should be extended after creating a new scene. NOTE: 'initialise()' MUST
+# called in order for everything to be loaded properly.
 
 func _fov_changed(release):
 	if get_node_or_null("Player") != null:
@@ -28,7 +29,7 @@ func save_settings(): # save settings to "settings.json" file
 func set_master_vol(vol):
 	AudioServer.set_bus_volume_db(0, vol)
 
-func _ready():
+func initialise():
 	# Load the settings file, or make a new one using save_settings() if it doesn't
 	if FileAccess.file_exists("user://settings.json"):
 		var settings_json = FileAccess.open("user://settings.json", FileAccess.READ)
