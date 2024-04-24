@@ -11,3 +11,5 @@ normal_texture = ExtResource("2_io4xk")
 backlight_enabled = true
 backlight = Color(0.5, 0.5, 0.5, 1)
 uv1_scale = Vector3(42, 42, 42)
+distance_fade_mode = 2
+distance_fade_max_distance = 3.0

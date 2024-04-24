@@ -24,7 +24,7 @@ visible = false
 
 [node name="Cast" type="RayCast3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.8, 1, 0)
-target_position = Vector3(0, 0, -20)
+target_position = Vector3(0, 0, -30)
 collision_mask = 2
 script = ExtResource("3_0t5vk")
 

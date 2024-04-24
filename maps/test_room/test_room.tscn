@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://bsetivexkdulh"]
+[gd_scene load_steps=74 format=3 uid="uid://bsetivexkdulh"]
 
 [ext_resource type="Script" path="res://maps/test_room/test_room.gd" id="1_2kdkw"]
 [ext_resource type="Material" uid="uid://4d6tcixxllut" path="res://maps/test_room/objects/rocket_claw/mat_rocket_claw.tres" id="1_q37l3"]
@@ -391,7 +391,10 @@ backlight = Color(0.8, 0.8, 0.8, 1)
 uv1_scale = Vector3(12, 12, 12)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ln6h7"]
-size = Vector3(1, 10, 28)
+size = Vector3(1, 10, 30.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d7cw4"]
+size = Vector3(8.5, 10, 1)
 
 [node name="TestRoom" type="Node3D"]
 script = ExtResource("1_2kdkw")
@@ -428,6 +431,7 @@ volume_db = -5.0
 [node name="Architecture" type="Node3D" parent="."]
 
 [node name="Floor" type="StaticBody3D" parent="Architecture"]
+collision_layer = 3
 
 [node name="WideFloor" type="MeshInstance3D" parent="Architecture/Floor"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.1, 0)
@@ -714,7 +718,7 @@ spot_angle = 37.0
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -2, -0.2, 23)
 
 [node name="LaserDetector" parent="." instance=ExtResource("35_23rac")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.3259, 5.67756, 19.1622)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.8259, 5.67756, 16.1622)
 
 [node name="Cathedral" type="Node3D" parent="."]
 
@@ -762,8 +766,20 @@ surface_material_override/0 = ExtResource("24_hjdsa")
 collision_layer = 3
 
 [node name="Collision" type="CollisionShape3D" parent="Cathedral/Wall"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 5, 26)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 5, 24.75)
 shape = SubResource("BoxShape3D_ln6h7")
+
+[node name="Collision3" type="CollisionShape3D" parent="Cathedral/Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 5, 24.75)
+shape = SubResource("BoxShape3D_ln6h7")
+
+[node name="Collision2" type="CollisionShape3D" parent="Cathedral/Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.75, 5, 9)
+shape = SubResource("BoxShape3D_d7cw4")
+
+[node name="Collision4" type="CollisionShape3D" parent="Cathedral/Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.75, 5, 9)
+shape = SubResource("BoxShape3D_d7cw4")
 
 [node name="FloorPlatform" type="MeshInstance3D" parent="Cathedral"]
 transform = Transform3D(0.0441424, 0, 0.999025, 0, 1, 0, -0.999025, 0, 0.0441424, -1, -0.2, 10)

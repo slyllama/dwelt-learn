@@ -3,6 +3,9 @@ extends StaticBody3D
 
 const INIT_COLOR = Color.RED
 
+signal activated
+signal deactivated
+
 var TYPE = "laser_detector"
 var active = false
 var caster = null
@@ -13,12 +16,14 @@ func _set_box_color(get_color):
 func set_active(get_caster):
 	if active == true: return
 	active = true
+	activated.emit()
 	var fade_tween = create_tween()
 	fade_tween.tween_method(_set_box_color, INIT_COLOR, Color.WHITE, 0.4)
 	caster = get_caster
 
 func set_inactive():
 	active = false
+	deactivated.emit()
 	var fade_tween = create_tween()
 	fade_tween.tween_method(_set_box_color, Color.WHITE, INIT_COLOR, 0.4)
 	caster = null
