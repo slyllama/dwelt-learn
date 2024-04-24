@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dkbckkhxndfn5" path="res://generic/tex/stars_1080p.jpg" id="1_g8c1o"]
 [ext_resource type="Script" path="res://lib/ui/main_menu/main_menu.gd" id="1_v53i6"]
-[ext_resource type="ArrayMesh" uid="uid://d3naoc14d04p8" path="res://maps/test_room/spaceship.obj" id="2_5cpkf"]
+[ext_resource type="ArrayMesh" uid="uid://d3naoc14d04p8" path="res://lib/ui/main_menu/spaceship.obj" id="2_5cpkf"]
 [ext_resource type="Texture2D" uid="uid://b3aaiytpklgal" path="res://lib/ui/tex/vignette.png" id="4_log8n"]
 [ext_resource type="Texture2D" uid="uid://8kcdl0ahju3s" path="res://lib/ui/tex/interact_overlay.png" id="5_lhatl"]
 [ext_resource type="AudioStream" uid="uid://c0mcu2mepdqkh" path="res://lib/ui/main_menu/sound/afterlife.ogg" id="6_wktfa"]
