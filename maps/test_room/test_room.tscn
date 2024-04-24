@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://bsetivexkdulh"]
+[gd_scene load_steps=73 format=3 uid="uid://bsetivexkdulh"]
 
 [ext_resource type="Script" path="res://maps/test_room/test_room.gd" id="1_2kdkw"]
 [ext_resource type="Material" uid="uid://4d6tcixxllut" path="res://maps/test_room/objects/rocket_claw/mat_rocket_claw.tres" id="1_q37l3"]
@@ -9,7 +9,6 @@
 [ext_resource type="Material" uid="uid://rrahcoqndg6d" path="res://maps/test_room/objects/floor/mat_floor.tres" id="6_fjpyi"]
 [ext_resource type="AudioStream" uid="uid://to210dowl6qk" path="res://maps/test_room/sounds/forest_ambience.ogg" id="6_i6drl"]
 [ext_resource type="ArrayMesh" uid="uid://bnlpp6ne5jq3y" path="res://maps/test_room/objects/floor/floor.obj" id="6_r1bc3"]
-[ext_resource type="AudioStream" uid="uid://cylpnijc2ws65" path="res://maps/test_room/sounds/test_room.ogg" id="7_uehu4"]
 [ext_resource type="Texture2D" uid="uid://bd7c4x2ajeimr" path="res://generic/tex/shader_tex/floor_diff.png" id="8_ycmhx"]
 [ext_resource type="Texture2D" uid="uid://5bruu4afeor5" path="res://generic/tex/shader_tex/floor_norm.png" id="9_eer7i"]
 [ext_resource type="PackedScene" path="res://maps/test_room/objects/gravpad/gravity_pad.tscn" id="13_liyv3"]
@@ -415,7 +414,7 @@ directional_shadow_pancake_size = 10.0
 
 [node name="Player" parent="." instance=ExtResource("4_1oai2")]
 unique_name_in_owner = true
-transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 1, 1.3, -3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.3, -3)
 
 [node name="HUD" parent="." instance=ExtResource("5_6lqxt")]
 
@@ -425,7 +424,6 @@ volume_db = -3.0
 autoplay = true
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_uehu4")
 volume_db = -5.0
 
 [node name="Architecture" type="Node3D" parent="."]
@@ -692,13 +690,13 @@ radius = 1.05
 material = SubResource("ShaderMaterial_kev7y")
 
 [node name="DialogueArea" parent="." instance=ExtResource("32_d6er5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -6.253)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -7)
 TYPE = "test_dialogue"
 dialogue_data = Array[String](["Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.", "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."])
 
 [node name="Laser" parent="." instance=ExtResource("33_3y43r")]
-transform = Transform3D(0.537741, 0, 0.84311, 0, 1, 0, -0.84311, 0, 0.537741, 1, 0.125, 7)
-laser_move_speed = 0.6
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 0.8, 0.125, 8.2)
+laser_move_speed = 0.4
 laser_limit_angle = Vector2(45, 45)
 
 [node name="Infobot" parent="." instance=ExtResource("31_arm1h")]

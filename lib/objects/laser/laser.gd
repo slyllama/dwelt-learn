@@ -6,21 +6,28 @@ extends Node3D
 @export var laser_limit_angle = Vector2(45.0, 10.0)
 
 var overlay_texture = Sprite2D.new()
+var delay_complete = false # laser won't start moving until after a short delay
 
 func activate():
 	overlay_texture.scale = Vector2(1.0, 1.0)
 	overlay_texture.rotation_degrees = 45.0
+	
+	delay_complete = false
 	var fade_tween = create_tween()
 	fade_tween.tween_property(overlay_texture, "modulate:a", 1.0, 0.3)
 	Global.emit_signal(
 		"player_position_locked",
 		$DockingPoint.global_position,
-		Vector2(rotation_degrees.y + 90.0, 0.0), 40.0, 20.0)
+		Vector2(global_rotation_degrees.y, 0.0), 40.0, 20.0)
+	
+	await get_tree().create_timer(0.7).timeout
+	delay_complete = true
 
 func deactivate():
 	var fade_tween = create_tween()
 	fade_tween.tween_property(overlay_texture, "modulate:a", 0.0, 0.1)
 	Global.player_position_unlocked.emit()
+	Global.interact_entered.emit()
 
 func _ready():
 	$InteractArea.TYPE = TYPE
@@ -36,6 +43,8 @@ func _ready():
 	add_child(overlay_texture)
 	overlay_texture.modulate.a = 0.0
 
+var start = 2
+
 func _process(_delta):
 	overlay_texture.scale = lerp(overlay_texture.scale, Vector2(0.7, 0.7), 0.2)
 	overlay_texture.rotation_degrees = lerp(overlay_texture.rotation_degrees, 0.0, 0.2)
@@ -46,6 +55,10 @@ func _process(_delta):
 	else:
 		$Cable.start = lerp($Cable.start, $Cast/EndPoint.global_position, 0.5)
 		$Cable.toggle_end_point(false)
+	
+	# Allow to update for 2 frames, and then only run after the delay
+	if start > 0: start -= 1
+	else: if delay_complete == false: return
 	
 	if $InteractArea.active == false: return
 	if Input.is_action_pressed("move_forward"):
@@ -64,8 +77,8 @@ func _process(_delta):
 		laser_limit_angle.y)
 	$Cast.rotation_degrees.y = clampf(
 		$Cast.rotation_degrees.y,
-		90.0 - laser_limit_angle.x,
-		90.0 + laser_limit_angle.x)
+		-laser_limit_angle.x,
+		laser_limit_angle.x)
 	
 	if $Cast.cast_is_on_type() == true:
 		$Cast.get_collider().set_active($Cast)

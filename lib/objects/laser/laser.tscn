@@ -23,7 +23,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
 visible = false
 
 [node name="Cast" type="RayCast3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.8, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1.5)
 target_position = Vector3(0, 0, -30)
 collision_mask = 2
 script = ExtResource("3_0t5vk")
@@ -32,11 +32,11 @@ script = ExtResource("3_0t5vk")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
 
 [node name="TurretPlaceholder" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.56647, 0, 0)
 material_override = SubResource("StandardMaterial3D_oc3v8")
 mesh = ExtResource("5_ax68d")
 
 [node name="DockingPoint" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.541717, 2.26995, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4, 0.3)
 
 [node name="InteractArea" parent="." instance=ExtResource("7_6xnlv")]
+debug_messages = false

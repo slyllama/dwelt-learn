@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://lib/interact_area/interact_area.gd" id="1_5m83q"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_44534"]
-size = Vector3(5, 1, 5)
+size = Vector3(7, 1, 7)
 
 [node name="InteractArea" type="Area3D"]
 script = ExtResource("1_5m83q")
