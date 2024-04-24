@@ -5,6 +5,7 @@
 [ext_resource type="FontFile" uid="uid://b1v28gy50d86f" path="res://generic/red_hat.ttf" id="3_r5f1i"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k8s5v"]
+size = Vector3(2, 2, 2)
 
 [node name="LaserDetector" type="StaticBody3D"]
 collision_layer = 3
@@ -12,6 +13,7 @@ script = ExtResource("1_mqits")
 
 [node name="Box" type="CSGBox3D" parent="."]
 material_override = ExtResource("2_vdh0b")
+size = Vector3(2, 2, 2)
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_k8s5v")

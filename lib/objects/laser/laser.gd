@@ -1,17 +1,9 @@
 extends Node3D
-# NOTE: the laser operates on collision group 2 -- meshes will need to be set
-# to reflect this.
-# TODO: make a generic area class
+# NOTE: laser acts on collision group 2
 
 @export var TYPE = "laser"
-## The movement speed of the laser controls.
 @export var laser_move_speed = 0.5
-## Specifies the initial rotation of the camera when the laser is activated,
-## relative to the orientation of the laser itself.
-@export var pointing_at = Vector2(90.0, 10.0)
-## Limits how far (in degrees) the laser may be moved from its original
-## orientation.
-@export var laser_limit_angle = 20.0
+@export var laser_limit_angle = Vector2(45.0, 10.0)
 
 var overlay_texture = Sprite2D.new()
 
@@ -23,7 +15,7 @@ func activate():
 	Global.emit_signal(
 		"player_position_locked",
 		$DockingPoint.global_position,
-		pointing_at, 40.0, 20.0)
+		Vector2(rotation_degrees.y + 90.0, 0.0), 40.0, 20.0)
 
 func deactivate():
 	var fade_tween = create_tween()
@@ -44,36 +36,7 @@ func _ready():
 	add_child(overlay_texture)
 	overlay_texture.modulate.a = 0.0
 
-#func _input(_event):
-	#if Input.is_action_just_pressed("interact"):
-		#if (in_area == false or Global.in_action == true): return
-		#if active == false:
-			#overlay_texture.scale = Vector2(1.0, 1.0)
-			#overlay_texture.rotation_degrees = 45.0
-			#var fade_tween = create_tween()
-			#fade_tween.tween_property(overlay_texture, "modulate:a", 1.0, 0.3)
-			#active = true
-			#Global.interact_left.emit() # hide overlay
-			#Global.emit_signal(
-				#"player_position_locked",
-				#$DockingPoint.global_position,
-				#pointing_at, 40.0, 20.0)
-			#return
-		#else:
-			#active = false
-			#var fade_tween = create_tween()
-			#fade_tween.tween_property(overlay_texture, "modulate:a", 0.0, 0.1)
-			#Global.player_position_unlocked.emit()
-			#return
-
 func _process(_delta):
-	#if Global.in_area_name != TYPE: 
-		#if in_area == true:
-			#in_area = false
-			#return
-	#else: if in_area == false:
-		#in_area = true
-	
 	overlay_texture.scale = lerp(overlay_texture.scale, Vector2(0.7, 0.7), 0.2)
 	overlay_texture.rotation_degrees = lerp(overlay_texture.rotation_degrees, 0.0, 0.2)
 	
@@ -97,10 +60,12 @@ func _process(_delta):
 	# Limit the rotation of the laser
 	$Cast.rotation_degrees.x = clampf(
 		$Cast.rotation_degrees.x,
-		pointing_at.y - laser_limit_angle, pointing_at.y + laser_limit_angle)
+		-laser_limit_angle.y,
+		laser_limit_angle.y)
 	$Cast.rotation_degrees.y = clampf(
 		$Cast.rotation_degrees.y,
-		pointing_at.x - laser_limit_angle, pointing_at.x + laser_limit_angle)
+		90.0 - laser_limit_angle.x,
+		90.0 + laser_limit_angle.x)
 	
 	if $Cast.cast_is_on_type() == true:
 		$Cast.get_collider().set_active($Cast)

@@ -8,6 +8,8 @@ var end = Vector3(1.0, 1.0, 1.0)
 func toggle_end_point(state):
 	if $Glow.visible != state:
 		$Glow.visible = state
+	if $Sparks.visible != state:
+		$Sparks.visible = state
 
 func update():
 	global_position = (start + end) / 2.0

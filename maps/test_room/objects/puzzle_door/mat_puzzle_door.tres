@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://2ifdmpx34hk"]
+
+[ext_resource type="Texture2D" uid="uid://bd7c4x2ajeimr" path="res://generic/tex/shader_tex/floor_diff.png" id="1_qktti"]
+[ext_resource type="Texture2D" uid="uid://5bruu4afeor5" path="res://generic/tex/shader_tex/floor_norm.png" id="2_io4xk"]
+
+[resource]
+albedo_color = Color(0.770237, 0.770237, 0.770236, 1)
+albedo_texture = ExtResource("1_qktti")
+normal_enabled = true
+normal_texture = ExtResource("2_io4xk")
+backlight_enabled = true
+backlight = Color(0.5, 0.5, 0.5, 1)
+uv1_scale = Vector3(42, 42, 42)
