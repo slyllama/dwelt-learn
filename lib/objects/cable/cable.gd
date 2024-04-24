@@ -1,10 +1,10 @@
 extends CSGCylinder3D
+#TODO: particles should come a little forward from the end of the cast point,
+# so we can keep the depth test while avoiding clipping.
 
 var start = Vector3(0.0, 0.0, 0.0)
 var end = Vector3(1.0, 1.0, 1.0)
 
-# Hide and show the end sphere -- could be updated with a better visual
-# effect in the future
 func toggle_end_point(state):
 	if $Glow.visible != state:
 		$Glow.visible = state
@@ -18,9 +18,9 @@ func update():
 	
 	height = global_position.distance_to(end) * 2.0
 	$Sparks.look_at(end, Vector3.UP)
-	$Sparks.position.y = height / 2.0
+	$Sparks.position.y = height / 2.0 - 1.0
 	$Glow.look_at(end, Vector3.UP)
-	$Glow.position.y = height / 2.0
+	$Glow.position.y = height / 2.0 - 1.0
 	
 	material.set_shader_parameter("UVXScale", height * 0.02 + 3.0)
 

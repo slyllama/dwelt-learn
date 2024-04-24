@@ -30,3 +30,8 @@ text = "A"
 font = ExtResource("3_r5f1i")
 font_size = 72
 outline_size = 6
+
+[node name="DelayTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="DelayTimer" to="." method="_on_delay_timer_timeout"]
