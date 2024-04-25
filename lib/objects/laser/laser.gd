@@ -11,6 +11,7 @@ var active = false
 
 func activate():
 	active = true
+	$EnterLaser.play()
 	overlay_texture.visible = true
 	overlay_texture.scale = Vector2(1.0, 1.0)
 	overlay_texture.rotation_degrees = 45.0
@@ -28,6 +29,7 @@ func activate():
 
 func deactivate():
 	active = false
+	$EnterLaser.play()
 	var fade_tween = create_tween()
 	fade_tween.tween_property(overlay_texture, "modulate:a", 0.0, 0.1)
 	fade_tween.tween_callback(func():

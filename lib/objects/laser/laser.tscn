@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://07n4fhjhunl"]
+[gd_scene load_steps=10 format=3 uid="uid://07n4fhjhunl"]
 
 [ext_resource type="Script" path="res://lib/objects/laser/laser.gd" id="1_qy5bo"]
 [ext_resource type="PackedScene" uid="uid://bbt6np1daksl4" path="res://lib/objects/cable/cable.tscn" id="2_qx4ym"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bio1xu5ncuvte" path="res://generic/tex/shader_tex/tile_norm.png" id="4_6cats"]
 [ext_resource type="ArrayMesh" uid="uid://cgix1hwbg5e4s" path="res://maps/test_room/objects/laser_turret/turret_placeholder.obj" id="5_ax68d"]
 [ext_resource type="PackedScene" uid="uid://c542303ron8x" path="res://lib/interact_area/interact_area.tscn" id="7_6xnlv"]
+[ext_resource type="AudioStream" uid="uid://ksek1nmbm7lq" path="res://lib/objects/laser/enter_laser.ogg" id="8_pae4y"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oc3v8"]
 albedo_texture = ExtResource("3_xws8f")
@@ -40,3 +41,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4, 0.3)
 
 [node name="InteractArea" parent="." instance=ExtResource("7_6xnlv")]
 debug_messages = false
+
+[node name="EnterLaser" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("8_pae4y")
+volume_db = -4.0
