@@ -19,16 +19,15 @@ size = Vector3(2, 2, 2)
 shape = SubResource("BoxShape3D_k8s5v")
 
 [node name="Label" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.16746, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.16746, 0)
 pixel_size = 0.001
 billboard = 1
 no_depth_test = true
 fixed_size = true
-modulate = Color(1, 0, 0, 1)
-outline_modulate = Color(1, 1, 1, 1)
-text = "A"
+modulate = Color(1, 1, 0, 1)
+text = "Barries"
 font = ExtResource("3_r5f1i")
-font_size = 72
+font_size = 27
 outline_size = 6
 
 [node name="DelayTimer" type="Timer" parent="."]

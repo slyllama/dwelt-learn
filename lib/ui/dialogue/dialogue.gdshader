@@ -1,7 +1,6 @@
 shader_type canvas_item;
 
 uniform sampler2D holograph: filter_nearest, repeat_enable;
-uniform sampler2D holo_noise: filter_nearest, repeat_enable;
 
 vec4 lighten(vec4 base, vec4 blend) {
 	return max(base, blend);

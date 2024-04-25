@@ -57,6 +57,7 @@ func lock_position(get_lock_pos, get_cam_facing, get_clamp_extent_x, get_clamp_e
 	%CamPivot.rotation_degrees.y = get_cam_facing.x
 	#%CamPivot.new_cam_y_rotation = get_cam_facing.x
 	$Lemonade.rotation_degrees.y = get_cam_facing.x
+	last_pivot_y_rotation = get_cam_facing.x
 	$Lemonade.rotation_degrees.z = 0.0
 
 func unlock_position():

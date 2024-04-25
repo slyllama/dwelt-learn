@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkbckkhxndfn5"
-path.s3tc="res://.godot/imported/stars_1080p.jpg-1ff0989b323765a0286aab53578bcef1.s3tc.ctex"
+uid="uid://c5duom5wl7px7"
+path.bptc="res://.godot/imported/sky.png-09213bfd29a4a2477c22c2aa0130c36d.bptc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,13 +11,13 @@ metadata={
 
 [deps]
 
-source_file="res://generic/tex/stars_1080p.jpg"
-dest_files=["res://.godot/imported/stars_1080p.jpg-1ff0989b323765a0286aab53578bcef1.s3tc.ctex"]
+source_file="res://maps/test_room/sky.png"
+dest_files=["res://.godot/imported/sky.png-09213bfd29a4a2477c22c2aa0130c36d.bptc.ctex"]
 
 [params]
 
 compress/mode=2
-compress/high_quality=false
+compress/high_quality=true
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0

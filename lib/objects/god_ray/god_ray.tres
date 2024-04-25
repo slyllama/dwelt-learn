@@ -7,7 +7,7 @@ operator = 2
 
 [sub_resource type="Gradient" id="Gradient_s2evw"]
 offsets = PackedFloat32Array(0, 0.697531)
-colors = PackedColorArray(0.255659, 0.255659, 0.255659, 1, 0.122252, 0.122252, 0.122252, 1)
+colors = PackedColorArray(0.540422, 0.540422, 0.540422, 1, 0.122252, 0.122252, 0.122252, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ftq2x"]
 noise_type = 3
@@ -185,6 +185,7 @@ void fragment() {
 
 }
 "
+graph_offset = Vector2(-672.128, 227.436)
 modes/blend = 1
 modes/cull = 2
 flags/depth_prepass_alpha = true

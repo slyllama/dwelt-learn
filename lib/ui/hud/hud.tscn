@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://e0k8h1ytp7wi"]
+[gd_scene load_steps=11 format=3 uid="uid://e0k8h1ytp7wi"]
 
 [ext_resource type="PackedScene" uid="uid://dq3aqaliycowy" path="res://lib/ui/debug_pane/debug_pane.tscn" id="1_gv0re"]
 [ext_resource type="Script" path="res://lib/ui/hud/hud.gd" id="1_i45xt"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://d1a3dquec4n6t" path="res://lib/ui/fade_overlay/fade_overlay.tscn" id="4_ob2oh"]
 [ext_resource type="Texture2D" uid="uid://chs04gxkfh3ag" path="res://lib/ui/tex/interact_overlay_glow.png" id="6_du7uc"]
 [ext_resource type="Texture2D" uid="uid://8kcdl0ahju3s" path="res://lib/ui/tex/interact_overlay.png" id="6_n4mbk"]
-[ext_resource type="Theme" uid="uid://dfe36tnn0c1ud" path="res://generic/debug_theme.tres" id="6_x2xjl"]
 [ext_resource type="Texture2D" uid="uid://b3aaiytpklgal" path="res://lib/ui/tex/vignette.png" id="7_wv8wl"]
 
 [sub_resource type="Animation" id="Animation_ghsgi"]
@@ -89,20 +88,3 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_n4mbk")
-
-[node name="Details" type="RichTextLabel" parent="."]
-modulate = Color(1, 1, 1, 0.470588)
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 40.0
-offset_top = -65.0
-offset_right = 534.0
-offset_bottom = -40.0
-grow_vertical = 0
-mouse_filter = 2
-theme = ExtResource("6_x2xjl")
-theme_override_font_sizes/normal_font_size = 18
-bbcode_enabled = true
-text = "Dwelt Technical Test"
-fit_content = true
