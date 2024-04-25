@@ -10,6 +10,9 @@ var delay_complete = false # laser won't start moving until after a short delay
 var active = false
 
 func activate():
+	# Don't trigger other interactive areas - but don't exclude valid signals, either
+	if Global.in_area_name != TYPE and Global.in_area_name != null: return
+	
 	active = true
 	$EnterLaser.play()
 	overlay_texture.visible = true
@@ -28,6 +31,8 @@ func activate():
 	delay_complete = true
 
 func deactivate():
+	if Global.in_area_name != TYPE and Global.in_area_name != null: return
+	
 	active = false
 	$EnterLaser.play()
 	var fade_tween = create_tween()
