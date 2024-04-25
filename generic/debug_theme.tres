@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=4 format=3 uid="uid://dfe36tnn0c1ud"]
 
-[ext_resource type="FontFile" uid="uid://b1v28gy50d86f" path="res://generic/red_hat.ttf" id="1_4xjey"]
+[ext_resource type="FontFile" uid="uid://b1v28gy50d86f" path="res://generic/fonts/red_hat.ttf" id="1_4xjey"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_78c76"]
 content_margin_left = 5.0

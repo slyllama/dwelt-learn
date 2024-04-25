@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://b1v28gy50d86f"
-path="res://.godot/imported/red_hat.ttf-b0e7cd924700dd84db02594d7b92cac3.fontdata"
+path="res://.godot/imported/red_hat.ttf-751ded29b17d8a0b24e6a34cbaff63c9.fontdata"
 
 [deps]
 
-source_file="res://generic/red_hat.ttf"
-dest_files=["res://.godot/imported/red_hat.ttf-b0e7cd924700dd84db02594d7b92cac3.fontdata"]
+source_file="res://generic/fonts/red_hat.ttf"
+dest_files=["res://.godot/imported/red_hat.ttf-751ded29b17d8a0b24e6a34cbaff63c9.fontdata"]
 
 [params]
 

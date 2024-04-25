@@ -89,11 +89,6 @@ func _ready():
 	Global.connect("interact_left", close_radar)
 	
 	Radar.visible = false
-	
-	# Set up for retina
-	if DisplayServer.screen_get_size().x > 2000:
-		if OS.get_name() != "macOS":
-			DisplayServer.cursor_set_custom_image(load("res://generic/tex/cursor_2x.png"))
 
 func _input(_event):
 	if Global.in_keybind_select == true: return
@@ -102,13 +97,17 @@ func _input(_event):
 	if position_locked == true: return
 	
 	if Input.is_action_just_pressed("move_forward"):
+		$CamPivot.fov_offset = 5.0 # shift the camera back a little when moving
 		$Stars.amount_ratio = 1.0
 		$SoundHandler.move()
 		$Lemonade/AnimationPlayer.play("Fly")
+		$Anime.anime_in()
 	if Input.is_action_just_released("move_forward"):
+		$CamPivot.fov_offset = 0.0
 		$Stars.amount_ratio = 0.3
 		$SoundHandler.stop_moving()
 		$Lemonade/AnimationPlayer.play_backwards("Fly")
+		$Anime.anime_out()
 	
 	if Input.is_action_just_pressed("move_back"):
 		$Stars.amount_ratio = 1.0
@@ -134,6 +133,7 @@ func _physics_process(_delta):
 		return
 	
 	# If the position is locked, nothing happens after this point
+
 	if Input.is_action_pressed("move_forward"): forward += 1
 	if Input.is_action_pressed("move_back"): forward -= 1
 	if Input.is_action_pressed("strafe_left"):

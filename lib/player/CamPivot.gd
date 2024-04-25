@@ -17,6 +17,8 @@ var right_mouse_down = false
 var mouse_offset = Vector2.ZERO
 var last_mouse_offset = mouse_offset
 
+var fov_offset = 0.0
+
 # click_mouse_pos is used to measure the amount the mouse has moved while the
 # mouse is down. True to GW2 style, camera movement will only activate after
 # the mouse have moved while down - not just when a button is pressed
@@ -87,6 +89,9 @@ func _process(_delta):
 	# Sets the var to 'null' if looking at nothing
 	if Cast.is_colliding(): Global.looking_at = Cast.get_collision_point()
 	else: Global.looking_at = null
+	
+	# TODO: make sure this doesn't become too performant
+	$CamArm/Camera.fov = lerp($CamArm/Camera.fov, Global.SETTINGS.fov + fov_offset, 0.04)
 	
 	last_mouse_offset = mouse_offset
 	if right_mouse_down == true:

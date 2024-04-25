@@ -15,6 +15,7 @@ func activate():
 	delay_complete = false
 	var fade_tween = create_tween()
 	fade_tween.tween_property(overlay_texture, "modulate:a", 1.0, 0.3)
+	Global.camera_shaken.emit()
 	Global.emit_signal(
 		"player_position_locked",
 		$DockingPoint.global_position,
@@ -26,6 +27,7 @@ func activate():
 func deactivate():
 	var fade_tween = create_tween()
 	fade_tween.tween_property(overlay_texture, "modulate:a", 0.0, 0.1)
+	fade_tween.tween_callback(func(): overlay_texture.visible = false)
 	Global.player_position_unlocked.emit()
 	Global.interact_entered.emit()
 

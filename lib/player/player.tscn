@@ -1,13 +1,15 @@
-[gd_scene load_steps=20 format=3 uid="uid://bcp4um4sjbyx6"]
+[gd_scene load_steps=22 format=3 uid="uid://bcp4um4sjbyx6"]
 
 [ext_resource type="Script" path="res://lib/player/player.gd" id="1_2r77g"]
 [ext_resource type="Script" path="res://lib/player/CamPivot.gd" id="2_73c7o"]
 [ext_resource type="Script" path="res://lib/player/YCast.gd" id="3_oxn4f"]
 [ext_resource type="PackedScene" uid="uid://cw7452jwdahpu" path="res://lib/ui/highlight_decal/highlight_decal.tscn" id="5_siwwa"]
 [ext_resource type="PackedScene" uid="uid://blknasrarvsh" path="res://lib/player/sound_handler/sound_handler.tscn" id="5_ymbnw"]
-[ext_resource type="Texture2D" uid="uid://dinrdf02xeqaq" path="res://generic/fade_ramp.tres" id="6_k5syw"]
+[ext_resource type="Texture2D" uid="uid://dinrdf02xeqaq" path="res://generic/tex/fade_ramp.tres" id="6_k5syw"]
 [ext_resource type="ArrayMesh" uid="uid://cn0wlud2ukcna" path="res://generic/tex/particles/star.obj" id="7_7rcg7"]
 [ext_resource type="PackedScene" uid="uid://ch1n54go1oqrn" path="res://characters/lemonade/lemonade.tscn" id="7_bsuml"]
+[ext_resource type="Texture2D" uid="uid://cks1xhn81ymh0" path="res://lib/ui/tex/anime.png" id="9_15e71"]
+[ext_resource type="Script" path="res://lib/player/Anime.gd" id="9_b4cap"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_yehb5"]
 
@@ -156,3 +158,11 @@ draw_pass_1 = ExtResource("7_7rcg7")
 
 [node name="Lemonade" parent="." instance=ExtResource("7_bsuml")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+
+[node name="Anime" type="CanvasLayer" parent="."]
+script = ExtResource("9_b4cap")
+
+[node name="AnimeTex" type="TextureRect" parent="Anime"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("9_15e71")

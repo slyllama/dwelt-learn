@@ -25,7 +25,7 @@
 [ext_resource type="Material" uid="uid://b8qiowsyf48h7" path="res://maps/test_room/objects/nature/mat_foliage.tres" id="22_hxvov"]
 [ext_resource type="ArrayMesh" uid="uid://ce1w3e45srxgq" path="res://maps/test_room/objects/kryptis_test/kryptis_test.obj" id="23_1u1sq"]
 [ext_resource type="Material" uid="uid://cu31l43wp5syj" path="res://lib/objects/god_ray/mat_god_ray.tres" id="24_hjdsa"]
-[ext_resource type="Texture2D" uid="uid://dinrdf02xeqaq" path="res://generic/fade_ramp.tres" id="25_cms4a"]
+[ext_resource type="Texture2D" uid="uid://dinrdf02xeqaq" path="res://generic/tex/fade_ramp.tres" id="25_cms4a"]
 [ext_resource type="Shader" uid="uid://dg1bo2f0gnaue" path="res://maps/test_room/objects/kryptis_test/mat_kryptis.tres" id="27_elhuu"]
 [ext_resource type="Texture2D" uid="uid://dgkrpn8nt8pvt" path="res://generic/tex/shader_tex/laser.jpeg" id="29_sh2ae"]
 [ext_resource type="ArrayMesh" uid="uid://c6yb8s3l7fjqi" path="res://maps/test_room/objects/cathedral/cathedral.obj" id="31_43blj"]

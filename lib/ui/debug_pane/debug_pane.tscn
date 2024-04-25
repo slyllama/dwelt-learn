@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://lib/ui/debug_pane/debug_pane.gd" id="1_sn71f"]
 [ext_resource type="Theme" uid="uid://dfe36tnn0c1ud" path="res://generic/debug_theme.tres" id="3_480m7"]
-[ext_resource type="FontFile" uid="uid://bhk1jyryyb1be" path="res://generic/plex_mono.otf" id="3_egsd7"]
+[ext_resource type="FontFile" uid="uid://bhk1jyryyb1be" path="res://generic/fonts/plex_mono.otf" id="3_egsd7"]
 [ext_resource type="PackedScene" uid="uid://ci5m35pqt4f3i" path="res://lib/ui/input_settings/input_settings.tscn" id="3_ntwnx"]
 
 [node name="DebugPane" type="CanvasLayer"]

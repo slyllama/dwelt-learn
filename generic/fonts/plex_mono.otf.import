@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://bhk1jyryyb1be"
-path="res://.godot/imported/plex_mono.otf-9e4c8bdf772a62b6d3657a71d295651a.fontdata"
+path="res://.godot/imported/plex_mono.otf-af4d1b1d5559eca827282c7377fd929f.fontdata"
 
 [deps]
 
-source_file="res://generic/plex_mono.otf"
-dest_files=["res://.godot/imported/plex_mono.otf-9e4c8bdf772a62b6d3657a71d295651a.fontdata"]
+source_file="res://generic/fonts/plex_mono.otf"
+dest_files=["res://.godot/imported/plex_mono.otf-af4d1b1d5559eca827282c7377fd929f.fontdata"]
 
 [params]
 

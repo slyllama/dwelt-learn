@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dssjh323af85u"]
 
 [ext_resource type="Script" path="res://lib/ui/input_settings/input_line.gd" id="1_7ircg"]
-[ext_resource type="FontFile" uid="uid://bhk1jyryyb1be" path="res://generic/plex_mono.otf" id="1_qtto6"]
+[ext_resource type="FontFile" uid="uid://bhk1jyryyb1be" path="res://generic/fonts/plex_mono.otf" id="1_qtto6"]
 [ext_resource type="Theme" uid="uid://dfe36tnn0c1ud" path="res://generic/debug_theme.tres" id="3_sbk1l"]
 
 [node name="InputLine" type="HBoxContainer"]
