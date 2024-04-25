@@ -7,15 +7,17 @@ extends Node3D
 
 var overlay_texture = Sprite2D.new()
 var delay_complete = false # laser won't start moving until after a short delay
+var active = false
 
 func activate():
+	active = true
+	overlay_texture.visible = true
 	overlay_texture.scale = Vector2(1.0, 1.0)
 	overlay_texture.rotation_degrees = 45.0
 	
 	delay_complete = false
 	var fade_tween = create_tween()
 	fade_tween.tween_property(overlay_texture, "modulate:a", 1.0, 0.3)
-	Global.camera_shaken.emit()
 	Global.emit_signal(
 		"player_position_locked",
 		$DockingPoint.global_position,
@@ -25,9 +27,12 @@ func activate():
 	delay_complete = true
 
 func deactivate():
+	active = false
 	var fade_tween = create_tween()
 	fade_tween.tween_property(overlay_texture, "modulate:a", 0.0, 0.1)
-	fade_tween.tween_callback(func(): overlay_texture.visible = false)
+	fade_tween.tween_callback(func():
+		if active == true: return
+		overlay_texture.visible = false)
 	Global.player_position_unlocked.emit()
 	Global.interact_entered.emit()
 
