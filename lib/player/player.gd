@@ -32,9 +32,9 @@ func close_radar():
 	if radar_open == false: # skip if player has gone back into an interact area
 		Radar.visible = false
 
+# TODO: camera locking has been disabled for now
 # Apply and lock the position and camera rotation of the player, and limit the
 # extent to which the player can look around.
-#
 # - get_lock_pos: the position in the world to snap to
 # - get_cam_facing: Vector2([x in degrees][y in degrees] to point toward
 # - get_clamp_extent_x: the extent, in degrees, to which the camera can look

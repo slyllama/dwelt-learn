@@ -99,15 +99,15 @@ func _process(_delta):
 		new_cam_x_rotation += -mouse_offset.y / 2.0 * camera_sensitivity
 		
 		# Clamp the camera's rotation when the player is locked into position
-		if get_parent().position_locked == true:
-			new_cam_y_rotation = clampf(
-				new_cam_y_rotation,
-				get_parent().lock_cam_clamp.x_lower,
-				get_parent().lock_cam_clamp.x_upper)
-			new_cam_x_rotation = clampf(
-				new_cam_x_rotation,
-				get_parent().lock_cam_clamp.y_lower,
-				get_parent().lock_cam_clamp.y_upper)
+		#if get_parent().position_locked == true:
+			#new_cam_y_rotation = lerp(new_cam_y_rotation, clampf(
+				#new_cam_y_rotation,
+				#get_parent().lock_cam_clamp.x_lower,
+				#get_parent().lock_cam_clamp.x_upper), 0.1)
+			#new_cam_x_rotation = clampf(
+				#new_cam_x_rotation,
+				#get_parent().lock_cam_clamp.y_lower,
+				#get_parent().lock_cam_clamp.y_upper)
 		
 		rotation_degrees.y = lerpf(
 			rotation_degrees.y, new_cam_y_rotation, camera_smoothing)
