@@ -18,9 +18,16 @@ func _toggle_interact_overlay(state):
 		glow_fade_tween.tween_property(
 			$InteractOverlayGlow, "modulate:a", 0.0, 0.2)
 
+func _fade_out_black():
+	var fade_tween = create_tween()
+	fade_tween.tween_property($LoadBlack, "modulate:a", 0.0, 0.2)
+	fade_tween.tween_callback(func(): $LoadBlack.visible = false)
+
 func _ready():
-	Global.connect("interact_entered", _toggle_interact_overlay.bind(true))
-	Global.connect("interact_left", _toggle_interact_overlay.bind(false))
+	Global.shaders_loaded.connect(_fade_out_black)
+	Global.interact_entered.connect(_toggle_interact_overlay.bind(true))
+	Global.interact_left.connect(_toggle_interact_overlay.bind(false))
 	
 	$InteractOverlay.modulate = Color(0.0, 0.0, 0.0, 0.2)
 	$InteractOverlayGlow.modulate.a = 0.2
+	$LoadBlack.visible = true
