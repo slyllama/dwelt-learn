@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnvmpcnhjje26"]
+
+[ext_resource type="Script" path="res://lib/shader_cache_gen/shader_cache_gen.gd" id="1_txime"]
+
+[node name="ShaderCacheGen" type="Node3D"]
+script = ExtResource("1_txime")

@@ -6,6 +6,7 @@ signal dialogue_closed
 signal dialogue_closed_early
 signal interact_entered
 signal interact_left
+signal shaders_loaded # called after ShaderCacheGen has loaded and removed itself
 
 ### Settings ###
 signal blend_shadow_splits_changed

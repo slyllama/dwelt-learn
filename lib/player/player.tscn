@@ -1,7 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://bcp4um4sjbyx6"]
+[gd_scene load_steps=23 format=3 uid="uid://bcp4um4sjbyx6"]
 
 [ext_resource type="Script" path="res://lib/player/player.gd" id="1_2r77g"]
 [ext_resource type="Script" path="res://lib/player/CamPivot.gd" id="2_73c7o"]
+[ext_resource type="PackedScene" uid="uid://bnvmpcnhjje26" path="res://lib/shader_cache_gen/shader_cache_gen.tscn" id="3_fylyn"]
 [ext_resource type="Script" path="res://lib/player/YCast.gd" id="3_oxn4f"]
 [ext_resource type="PackedScene" uid="uid://cw7452jwdahpu" path="res://lib/ui/highlight_decal/highlight_decal.tscn" id="5_siwwa"]
 [ext_resource type="PackedScene" uid="uid://blknasrarvsh" path="res://lib/player/sound_handler/sound_handler.tscn" id="5_ymbnw"]
@@ -120,6 +121,9 @@ current = true
 
 [node name="Cast" type="RayCast3D" parent="CamPivot/CamArm/Camera"]
 target_position = Vector3(0, 0, -20)
+
+[node name="ShaderCacheGen" parent="CamPivot/CamArm/Camera" instance=ExtResource("3_fylyn")]
+transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, -2)
 
 [node name="ShakeAnim" type="AnimationPlayer" parent="CamPivot"]
 libraries = {
