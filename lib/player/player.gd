@@ -67,7 +67,6 @@ func unlock_position():
 		$Lemonade/AnimationPlayer.play("Fly")
 	$FloatUpDown.play("float")
 	position_locked = false
-	$Stars.amount_ratio = 1.0
 
 func update_debug():
 	Global.debug_details_text = ("position = ("
@@ -78,6 +77,7 @@ func update_debug():
 	Global.debug_details_text += "\ndirection = " + Utilities.fstr(%CamPivot.rotation_degrees.y, 1)
 	Global.debug_details_text += "\u00B0 (" + str(snapped($Lemonade.rotation_degrees.y, 1))  + "\u00B0)"
 	Global.debug_details_text += "\nraycast_y_point = " + Utilities.fstr(Global.raycast_y_point)
+	Global.debug_details_text += "\nstars_ratio = " + Utilities.fstr($Stars.amount_ratio)
 	if Global.in_area_name != "":
 		Global.debug_details_text += ("\n[color=yellow]Over: '" + str(Global.in_area_name) + "'[/color]")
 

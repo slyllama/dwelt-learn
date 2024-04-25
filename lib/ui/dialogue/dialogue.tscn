@@ -1,11 +1,30 @@
-[gd_scene load_steps=8 format=3 uid="uid://ds7v1kxeoggbl"]
+[gd_scene load_steps=14 format=3 uid="uid://ds7v1kxeoggbl"]
 
 [ext_resource type="Script" path="res://lib/ui/dialogue/dialogue.gd" id="1_6fhhv"]
 [ext_resource type="Texture2D" uid="uid://dduothw77bdaf" path="res://lib/ui/dialogue/tex/base.png" id="1_i1ywh"]
+[ext_resource type="Shader" path="res://lib/ui/dialogue/dialogue.gdshader" id="2_8x6bg"]
+[ext_resource type="Texture2D" uid="uid://dsroqhsarregr" path="res://characters/lemonade/radar/tex/holograph_diff.png" id="3_0hyii"]
 [ext_resource type="FontFile" uid="uid://bhk1jyryyb1be" path="res://generic/plex_mono.otf" id="3_y1toj"]
 [ext_resource type="FontFile" uid="uid://b1v28gy50d86f" path="res://generic/red_hat.ttf" id="4_fptdd"]
 [ext_resource type="Shader" path="res://lib/ui/dialogue/radial_distort.gdshader" id="5_mlith"]
 [ext_resource type="Script" path="res://lib/ui/dialogue/DistortShader.gd" id="6_tb7wh"]
+
+[sub_resource type="Gradient" id="Gradient_toud4"]
+colors = PackedColorArray(0, 1, 0, 1, 1, 0.980392, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_1a35i"]
+noise_type = 3
+seed = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_o1yml"]
+seamless = true
+color_ramp = SubResource("Gradient_toud4")
+noise = SubResource("FastNoiseLite_1a35i")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i067v"]
+shader = ExtResource("2_8x6bg")
+shader_parameter/holograph = ExtResource("3_0hyii")
+shader_parameter/holo_noise = SubResource("NoiseTexture2D_o1yml")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b0j08"]
 shader = ExtResource("5_mlith")
@@ -19,6 +38,8 @@ script = ExtResource("1_6fhhv")
 
 [node name="Base" type="TextureRect" parent="."]
 self_modulate = Color(1, 1, 1, 0.784314)
+texture_repeat = 2
+material = SubResource("ShaderMaterial_i067v")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

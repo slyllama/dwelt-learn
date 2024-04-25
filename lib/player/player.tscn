@@ -104,7 +104,7 @@ script = ExtResource("1_2r77g")
 
 [node name="CamPivot" type="Node3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15, 0)
 script = ExtResource("2_73c7o")
 
 [node name="CamArm" type="SpringArm3D" parent="CamPivot"]

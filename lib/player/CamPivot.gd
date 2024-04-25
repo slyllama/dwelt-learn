@@ -27,7 +27,6 @@ func _shake_cam(): $ShakeAnim.play("shake")
 
 func _ready():
 	Global.camera_shaken.connect(_shake_cam)
-	
 	# Apply the original rotation of the pivot point so there won't be any
 	# awkward snaps
 	new_cam_y_rotation = rotation_degrees.y
@@ -35,7 +34,10 @@ func _ready():
 	target_y_position = $CamArm/Camera.v_offset
 	camera_distance = $CamArm.spring_length
 	
-	for _i in 2: camera_distance -= zoom_increment
+	# Zoom in a bit
+	for _i in 2:
+		camera_distance -= zoom_increment
+		target_y_position -= 0.1
 
 func _input(event):
 	if Global.dragging_control == true: return

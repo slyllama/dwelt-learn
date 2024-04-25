@@ -14,3 +14,8 @@ func _ready():
 	$PuzzleDoor/Closed.set_collision_layer_value(2, true)
 	$LaserDetector.activated.connect(toggle_door_test.bind(true))
 	$LaserDetector.deactivated.connect(toggle_door_test.bind(false))
+
+func _input(_event):
+	if Input.is_action_just_pressed("test_key"):
+		Global.camera_shaken.emit()
+		$PuzzleDoor/AnimationPlayer.play("Door")

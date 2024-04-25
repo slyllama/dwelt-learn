@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=21 format=3 uid="uid://dg1bo2f0gnaue"]
+[gd_resource type="VisualShader" load_steps=22 format=3 uid="uid://dg1bo2f0gnaue"]
 
 [ext_resource type="Texture2D" uid="uid://ddgi7bji2llop" path="res://maps/test_room/objects/kryptis_test/tex/kryptis_emit.png" id="1_77jrx"]
 [ext_resource type="Texture2D" uid="uid://8id1cqd5qyio" path="res://maps/test_room/objects/kryptis_test/tex/kryptis_norm.png" id="2_ljep1"]
@@ -43,6 +43,11 @@ operator = 2
 [sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_l8byy"]
 default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]
 op_type = 0
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_ngiiy"]
+default_input_values = [0, Vector2(0, 0), 1, Vector2(0.2, 0.2)]
+op_type = 0
+operator = 2
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_unj4i"]
 texture = ExtResource("1_77jrx")
@@ -142,16 +147,24 @@ void fragment() {
 	float n_out7p0 = 1.000000;
 
 
+// VectorOp:18
+	vec2 n_in18p1 = vec2(0.20000, 0.20000);
+	vec2 n_out18p0 = vec2(n_out2p0.xy) * n_in18p1;
+
+
 // Output:0
 	ALBEDO = vec3(n_out2p0.xyz);
 	METALLIC = n_out5p0;
 	ROUGHNESS = n_out6p0;
 	NORMAL_MAP = vec3(n_out3p0.xyz);
 	NORMAL_MAP_DEPTH = n_out7p0;
+	BACKLIGHT = vec3(n_out18p0, 0.0);
 
 
 }
 "
+graph_offset = Vector2(-292.571, 143.429)
+nodes/fragment/0/position = Vector2(780, 140)
 nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_unj4i")
 nodes/fragment/2/position = Vector2(-200, 140)
 nodes/fragment/3/node = SubResource("VisualShaderNodeTexture_nwqfl")
@@ -182,4 +195,6 @@ nodes/fragment/16/node = SubResource("VisualShaderNodeFloatOp_is88l")
 nodes/fragment/16/position = Vector2(-2480, 480)
 nodes/fragment/17/node = SubResource("VisualShaderNodeVectorOp_l8byy")
 nodes/fragment/17/position = Vector2(-2220, 280)
-nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0, 5, 0, 0, 2, 6, 0, 0, 3, 3, 0, 0, 9, 7, 0, 0, 10, 8, 0, 9, 0, 9, 0, 2, 0, 10, 1, 11, 0, 10, 2, 11, 1, 11, 0, 12, 0, 13, 0, 12, 1, 12, 0, 9, 1, 9, 0, 3, 0, 15, 0, 16, 0, 14, 0, 17, 0, 16, 0, 17, 1, 17, 0, 10, 0)
+nodes/fragment/18/node = SubResource("VisualShaderNodeVectorOp_ngiiy")
+nodes/fragment/18/position = Vector2(260, 700)
+nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0, 5, 0, 0, 2, 6, 0, 0, 3, 3, 0, 0, 9, 7, 0, 0, 10, 8, 0, 9, 0, 9, 0, 2, 0, 10, 1, 11, 0, 10, 2, 11, 1, 11, 0, 12, 0, 13, 0, 12, 1, 12, 0, 9, 1, 9, 0, 3, 0, 15, 0, 16, 0, 14, 0, 17, 0, 16, 0, 17, 1, 17, 0, 10, 0, 2, 0, 18, 0, 18, 0, 0, 18)
