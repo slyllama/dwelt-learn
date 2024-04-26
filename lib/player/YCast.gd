@@ -8,7 +8,10 @@ func _physics_process(_delta):
 	
 	if get_collider() != null:
 		if "TYPE" in get_collider():
-			if get_collider().TYPE == "ignore": return
+			# Can also include the "IGNORE" variable to ignore on the Y-cast
+			# while giving the interactable a name
+			if (get_collider().TYPE == "ignore"
+				or "IGNORE" in get_collider()): return
 			if over_area == false:
 				Global.emit_signal("interact_entered")
 				over_area = true

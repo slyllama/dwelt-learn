@@ -2,6 +2,7 @@ extends StaticBody3D
 # The laser cast looks for laser detectors; if it finds one it triggers it
 
 const INIT_COLOR = Color.RED
+const IGNORE = true
 
 @export var start_after_delay = true
 @export var delay_time = 1.0

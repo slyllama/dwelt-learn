@@ -21,6 +21,13 @@ func _blend_shadow_splits():
 		save_settings()
 	else: print("[Settings] no sun!")
 
+func _camera_sens_changed(release):
+	if get_node_or_null("Player") != null:
+		%Player/CamPivot.camera_sensitivity = Global.settings.camera_sens
+		if release == true:
+			save_settings() # TODO: streamline instead of having multiple functions
+	else: print("[Settings] no player!")
+
 func save_settings(): # save settings to "settings.json" file
 	var settings_json = FileAccess.open("user://settings.json", FileAccess.WRITE)
 	settings_json.store_string(JSON.stringify(Global.settings))
@@ -52,6 +59,8 @@ func initialise():
 	Global.emit_signal("mute_changed")
 	Global.connect("blend_shadow_splits_changed", _blend_shadow_splits)
 	Global.emit_signal("blend_shadow_splits_changed")
+	Global.connect("camera_sens_changed", _camera_sens_changed)
+	Global.emit_signal("camera_sens_changed", false)
 	
 	# Fade in all sound if the game wasn't already muted
 	if Global.SETTINGS.mute == false:

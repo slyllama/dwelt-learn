@@ -12,12 +12,14 @@ signal shaders_loaded # called after ShaderCacheGen has loaded and removed itsel
 signal blend_shadow_splits_changed
 signal fov_changed(release)
 signal mute_changed
+signal camera_sens_changed(release)
 
 const SCREEN_SIZE = Vector2(1920.0, 1080.0)
 const SETTINGS = {
 	"blend_shadow_splits": true,
 	"fov": 75,
-	"mute": false }
+	"mute": false,
+	"camera_sens": 0.65 }
 var settings = SETTINGS
 
 ### Game states ###

@@ -35,7 +35,7 @@ func _ready():
 	new_cam_x_rotation = rotation_degrees.x
 	target_y_position = $CamArm/Camera.v_offset
 	camera_distance = $CamArm.spring_length
-	
+
 	# Zoom in a bit
 	for _i in 2:
 		camera_distance -= zoom_increment
@@ -91,7 +91,7 @@ func _process(_delta):
 	else: Global.looking_at = null
 	
 	# TODO: make sure this doesn't become too performant
-	$CamArm/Camera.fov = lerp($CamArm/Camera.fov, Global.SETTINGS.fov + fov_offset, 0.04)
+	$CamArm/Camera.fov = lerp($CamArm/Camera.fov, Global.settings.fov + fov_offset, 0.04)
 	
 	last_mouse_offset = mouse_offset
 	if right_mouse_down == true:
