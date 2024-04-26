@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://lib/ui/debug_pane/debug_pane.gd" id="1_sn71f"]
 [ext_resource type="Theme" uid="uid://dfe36tnn0c1ud" path="res://generic/debug_theme.tres" id="3_480m7"]
 [ext_resource type="FontFile" uid="uid://bhk1jyryyb1be" path="res://generic/fonts/plex_mono.otf" id="3_egsd7"]
-[ext_resource type="PackedScene" uid="uid://ci5m35pqt4f3i" path="res://lib/ui/input_settings/input_settings.tscn" id="3_ntwnx"]
+[ext_resource type="PackedScene" uid="uid://bx5xwgdebscc6" path="res://lib/ui/settings/settings.tscn" id="4_vgpn7"]
 
 [node name="DebugPane" type="CanvasLayer"]
 script = ExtResource("1_sn71f")
@@ -31,151 +31,6 @@ theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
 text = "[Details]"
 
-[node name="Settings" type="Control" parent="."]
-z_as_relative = false
-layout_mode = 3
-anchors_preset = 0
-offset_left = 40.0
-offset_top = 204.0
-offset_right = 347.0
-offset_bottom = 440.0
-mouse_filter = 1
-
-[node name="BG" type="ColorRect" parent="Settings"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(1, 1, 1, 0.176471)
-
-[node name="FOVText" type="RichTextLabel" parent="Settings"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_left = 10.0
-offset_top = 11.0
-offset_right = -10.0
-offset_bottom = 36.0
-grow_horizontal = 2
-mouse_filter = 1
-theme = ExtResource("3_480m7")
-bbcode_enabled = true
-text = "FOV:"
-
-[node name="FOVSlider" type="HSlider" parent="Settings"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_left = 10.0
-offset_top = 35.0
-offset_right = -10.0
-offset_bottom = 51.0
-grow_horizontal = 2
-focus_mode = 0
-min_value = 50.0
-value = 50.0
-
-[node name="CameraSensText" type="RichTextLabel" parent="Settings"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_left = 10.0
-offset_top = 55.0
-offset_right = -10.0
-offset_bottom = 80.0
-grow_horizontal = 2
-mouse_filter = 1
-theme = ExtResource("3_480m7")
-bbcode_enabled = true
-text = "Camera Sensitivity"
-
-[node name="CameraSens" type="HSlider" parent="Settings"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_left = 10.0
-offset_top = 79.0
-offset_right = -10.0
-offset_bottom = 95.0
-grow_horizontal = 2
-focus_mode = 0
-max_value = 2.0
-step = 0.04
-value = 0.65
-
-[node name="MuteText" type="RichTextLabel" parent="Settings"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_left = 10.0
-offset_top = 97.0
-offset_right = -232.0
-offset_bottom = 122.0
-grow_horizontal = 2
-mouse_filter = 2
-theme = ExtResource("3_480m7")
-bbcode_enabled = true
-text = "Mute:"
-
-[node name="MuteButton" type="CheckButton" parent="Settings"]
-layout_mode = 0
-offset_left = 260.0
-offset_top = 97.0
-offset_right = 304.0
-offset_bottom = 121.0
-focus_mode = 0
-
-[node name="BlendShadow" type="RichTextLabel" parent="Settings"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_left = 10.0
-offset_top = 118.0
-offset_right = -88.0
-offset_bottom = 143.0
-grow_horizontal = 2
-mouse_filter = 2
-theme = ExtResource("3_480m7")
-bbcode_enabled = true
-text = "Blend Shadow Splits:"
-
-[node name="BlendShadowButton" type="CheckButton" parent="Settings"]
-layout_mode = 0
-offset_left = 260.0
-offset_top = 118.0
-offset_right = 304.0
-offset_bottom = 142.0
-focus_mode = 0
-
-[node name="Reset" type="Button" parent="Settings"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = -34.0
-offset_right = -10.0
-offset_bottom = -10.0
-grow_horizontal = 2
-grow_vertical = 0
-size_flags_horizontal = 3
-focus_mode = 0
-theme = ExtResource("3_480m7")
-text = "Default Settings"
-
-[node name="InputSettings" parent="." instance=ExtResource("3_ntwnx")]
-anchors_preset = 9
-anchor_right = 0.0
-offset_left = 41.0
-offset_top = 449.0
-offset_right = 347.0
-offset_bottom = -70.0
-grow_horizontal = 1
-
 [node name="DweltTitle" type="RichTextLabel" parent="."]
 modulate = Color(1, 1, 1, 0.470588)
 anchors_preset = 2
@@ -193,13 +48,5 @@ bbcode_enabled = true
 text = "Dwelt Technical Test"
 fit_content = true
 
-[connection signal="mouse_exited" from="Settings" to="." method="_on_settings_mouse_exited"]
-[connection signal="drag_ended" from="Settings/FOVSlider" to="." method="_on_fov_slider_drag_ended"]
-[connection signal="drag_started" from="Settings/FOVSlider" to="." method="_on_fov_slider_drag_started"]
-[connection signal="value_changed" from="Settings/FOVSlider" to="." method="_on_fov_slider_value_changed"]
-[connection signal="drag_ended" from="Settings/CameraSens" to="." method="_on_camera_sens_drag_ended"]
-[connection signal="drag_started" from="Settings/CameraSens" to="." method="_on_camera_sens_drag_started"]
-[connection signal="value_changed" from="Settings/CameraSens" to="." method="_on_camera_sens_value_changed"]
-[connection signal="pressed" from="Settings/MuteButton" to="." method="_on_mute_button_pressed"]
-[connection signal="pressed" from="Settings/BlendShadowButton" to="." method="_on_blend_shadow_button_pressed"]
-[connection signal="pressed" from="Settings/Reset" to="." method="_on_reset_pressed"]
+[node name="Settings" parent="." instance=ExtResource("4_vgpn7")]
+visible = false

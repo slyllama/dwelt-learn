@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://e0k8h1ytp7wi"]
+[gd_scene load_steps=20 format=3 uid="uid://e0k8h1ytp7wi"]
 
 [ext_resource type="PackedScene" uid="uid://dq3aqaliycowy" path="res://lib/ui/debug_pane/debug_pane.tscn" id="1_gv0re"]
 [ext_resource type="Script" path="res://lib/ui/hud/hud.gd" id="1_i45xt"]
@@ -11,6 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://chs04gxkfh3ag" path="res://lib/ui/tex/interact_overlay_glow.png" id="6_du7uc"]
 [ext_resource type="Texture2D" uid="uid://8kcdl0ahju3s" path="res://lib/ui/tex/interact_overlay.png" id="6_n4mbk"]
 [ext_resource type="Texture2D" uid="uid://b3aaiytpklgal" path="res://lib/ui/tex/vignette.png" id="7_wv8wl"]
+[ext_resource type="Texture2D" uid="uid://bi3k2uagvaf4g" path="res://lib/ui/tex/top_menu_darken.png" id="9_0p1yl"]
+[ext_resource type="Texture2D" uid="uid://dihk47hb2acqo" path="res://lib/ui/tex/icon_tool.png" id="12_ivaak"]
+[ext_resource type="Texture2D" uid="uid://cpnauxmpvkcdb" path="res://lib/ui/tex/icon_tool_hover.png" id="12_u62tc"]
+[ext_resource type="AudioStream" uid="uid://drae5tgg8hj47" path="res://generic/hover.ogg" id="15_3x38c"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ulxyu"]
 shader = ExtResource("2_j7o8v")
@@ -88,6 +92,18 @@ mouse_filter = 2
 texture = ExtResource("7_wv8wl")
 expand_mode = 1
 
+[node name="Vignette2" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.745098)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -430.0
+offset_right = 430.0
+offset_bottom = 244.0
+grow_horizontal = 2
+mouse_filter = 2
+texture = ExtResource("9_0p1yl")
+
 [node name="InteractOverlayGlow" type="TextureRect" parent="."]
 self_modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
@@ -109,6 +125,24 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_n4mbk")
+
+[node name="TopMenu" type="HBoxContainer" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -16.0
+offset_top = 46.0
+offset_right = 16.0
+offset_bottom = 78.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="DebugButton" type="TextureButton" parent="TopMenu"]
+layout_mode = 2
+focus_mode = 0
+texture_normal = ExtResource("12_ivaak")
+texture_hover = ExtResource("12_u62tc")
 
 [node name="LoadBlack" type="ColorRect" parent="."]
 visible = false
@@ -136,3 +170,9 @@ theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
 text = "Loading"
 fit_content = true
+
+[node name="ButtonHover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_3x38c")
+
+[connection signal="mouse_entered" from="TopMenu/DebugButton" to="." method="_mouseover"]
+[connection signal="pressed" from="TopMenu/DebugButton" to="." method="_on_debug_button_pressed"]

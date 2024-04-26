@@ -39,3 +39,6 @@ func _on_button_pressed():
 func _on_cancel_button_pressed():
 	if active == false: return
 	cancel()
+
+func _mouseover():
+	Global.button_hover.emit()

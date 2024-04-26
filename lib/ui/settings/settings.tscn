@@ -1,0 +1,113 @@
+[gd_scene load_steps=10 format=3 uid="uid://bx5xwgdebscc6"]
+
+[ext_resource type="Script" path="res://lib/ui/settings/settings.gd" id="1_ttf36"]
+[ext_resource type="Shader" path="res://lib/ui/dialogue/dialogue.gdshader" id="2_27nbv"]
+[ext_resource type="Theme" uid="uid://dfe36tnn0c1ud" path="res://generic/debug_theme.tres" id="2_r1d7p"]
+[ext_resource type="Texture2D" uid="uid://dsroqhsarregr" path="res://characters/lemonade/radar/tex/holograph_diff.png" id="3_3o7vn"]
+[ext_resource type="PackedScene" uid="uid://bg5bulncs2ejf" path="res://lib/ui/settings/stin_input_toggle.tscn" id="5_krp21"]
+[ext_resource type="PackedScene" uid="uid://d4avw33snp7bc" path="res://lib/ui/settings/stin_input_slider.tscn" id="6_y64kv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m2rom"]
+shader = ExtResource("2_27nbv")
+shader_parameter/scale = 6.0
+shader_parameter/holograph = ExtResource("3_3o7vn")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yc4ml"]
+bg_color = Color(0.0196078, 0.0196078, 0.0196078, 0.854902)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kvdqb"]
+content_margin_top = 12.0
+content_margin_bottom = 10.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="Settings" type="CanvasLayer"]
+layer = 4
+script = ExtResource("1_ttf36")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -420.0
+offset_top = 40.0
+offset_right = -40.0
+offset_bottom = 600.0
+grow_horizontal = 0
+
+[node name="Panel" type="Panel" parent="Control"]
+material = SubResource("ShaderMaterial_m2rom")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_yc4ml")
+
+[node name="VBox" type="VBoxContainer" parent="Control/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="RichTextLabel" parent="Control/Panel/VBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+theme = ExtResource("2_r1d7p")
+theme_override_constants/line_separation = -5
+theme_override_font_sizes/normal_font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_kvdqb")
+bbcode_enabled = true
+text = "[center]Settings[/center]"
+fit_content = true
+
+[node name="ResetButton" type="Button" parent="Control/Panel/VBox"]
+layout_mode = 2
+theme = ExtResource("2_r1d7p")
+text = "Reset"
+
+[node name="MuteControl" parent="Control/Panel/VBox" instance=ExtResource("5_krp21")]
+layout_mode = 2
+setting_id = "mute"
+setting_title = "Mute"
+
+[node name="Input" type="RichTextLabel" parent="Control/Panel/VBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+theme = ExtResource("2_r1d7p")
+theme_override_constants/line_separation = -5
+theme_override_font_sizes/normal_font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_kvdqb")
+bbcode_enabled = true
+text = "[center]Input[/center]"
+fit_content = true
+
+[node name="FOVControl" parent="Control/Panel/VBox" instance=ExtResource("6_y64kv")]
+layout_mode = 2
+setting_id = "fov"
+setting_title = "FOV"
+output_suffix = "deg"
+min_value = 50.0
+
+[node name="CamSensControl" parent="Control/Panel/VBox" instance=ExtResource("6_y64kv")]
+layout_mode = 2
+setting_id = "camera_sens"
+setting_title = "Camera Sensitivity"
+min_value = 0.5
+max_value = 2.5
+step = 0.05
+
+[connection signal="mouse_entered" from="Control/Panel/VBox/ResetButton" to="." method="_mouseover"]
+[connection signal="pressed" from="Control/Panel/VBox/ResetButton" to="." method="_on_button_pressed"]

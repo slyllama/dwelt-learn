@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4avw33snp7bc"]
+
+[ext_resource type="Script" path="res://lib/ui/settings/stin_input_slider.gd" id="1_67xaq"]
+[ext_resource type="Theme" uid="uid://dfe36tnn0c1ud" path="res://generic/debug_theme.tres" id="1_d25bt"]
+
+[node name="SettingsInputSlider" type="VBoxContainer"]
+script = ExtResource("1_67xaq")
+
+[node name="Title" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+mouse_filter = 1
+theme = ExtResource("1_d25bt")
+bbcode_enabled = true
+text = "Setting:"
+fit_content = true
+
+[node name="Slider" type="HSlider" parent="."]
+layout_mode = 2
+
+[connection signal="changed" from="Slider" to="." method="_on_slider_changed"]
+[connection signal="drag_ended" from="Slider" to="." method="_on_slider_drag_ended"]
+[connection signal="drag_started" from="Slider" to="." method="_on_slider_drag_started"]
+[connection signal="mouse_entered" from="Slider" to="." method="_mouseover"]
+[connection signal="value_changed" from="Slider" to="." method="_on_slider_value_changed"]

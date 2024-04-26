@@ -1,6 +1,6 @@
-extends Control
+extends CanvasLayer
 
-const InputLine = preload("res://lib/ui/input_settings/input_line.tscn")
+const InputLine = preload("res://lib/ui/settings/stin_input_keybind.tscn")
 var original_input_data = []
 var input_data = [
 	{"id": "move_forward", "name": "Move Forward" },
@@ -33,7 +33,7 @@ func apply_input_data():
 			e.button_index = i.code
 			InputMap.action_add_event(i.id, e)
 
-func refresh():
+func refresh_input_data():
 	for node in input_containers: node.queue_free()
 	input_containers = []
 	save_input_data()
@@ -43,8 +43,7 @@ func refresh():
 		var i = InputLine.instantiate()
 		i.populate(input.name, input.id, _get_key(input.id))
 		input_containers.append(i)
-		$Panel/Scroll/VBox.add_child(i)
-	$Panel/Scroll/VBox.move_child($Panel/Scroll/VBox/ResetContainer, -1)
+		$Control/Panel/VBox.add_child(i)
 
 	# To avoid instantly triggering that input just by setting it
 	# TODO: fix; this isn't that ideal...
@@ -81,10 +80,16 @@ func _ready():
 		save_input_data()
 	
 	apply_input_data()
-	Global.connect("left_keybind_select", refresh)
-	refresh()
+	Global.connect("left_keybind_select", refresh_input_data)
+	refresh_input_data()
 
-func _on_reset_pressed():
+func _on_button_pressed():
 	input_data = original_input_data.duplicate()
 	apply_input_data()
-	refresh()
+	refresh_input_data()
+	Global.settings = Global.SETTINGS
+	for setting in Global.settings:
+		Global.setting_changed.emit(setting)
+
+func _mouseover():
+	Global.button_hover.emit()

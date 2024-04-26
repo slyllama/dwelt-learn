@@ -1,6 +1,10 @@
 extends Node
 
+const SCREEN_SIZE = Vector2(1920.0, 1080.0)
+
 signal camera_shaken
+signal button_hover
+signal debug_toggled
 signal dialogue_played(dialogue)
 signal dialogue_closed
 signal dialogue_closed_early
@@ -9,14 +13,9 @@ signal interact_left
 signal shaders_loaded # called after ShaderCacheGen has loaded and removed itself
 
 ### Settings ###
-signal blend_shadow_splits_changed
-signal fov_changed(release)
-signal mute_changed
-signal camera_sens_changed(release)
 
-const SCREEN_SIZE = Vector2(1920.0, 1080.0)
+signal setting_changed(setting_id)
 const SETTINGS = {
-	"blend_shadow_splits": true,
 	"fov": 75,
 	"mute": false,
 	"camera_sens": 0.65 }
@@ -31,6 +30,7 @@ signal player_position_unlocked
 
 var can_move = true
 var debug_details_text = "[Details]"
+var debug_state = false
 var dialogue_active = false
 var dragging_control = false # sliders should report their position so they aren't trapped on camera pan
 var in_action = false
