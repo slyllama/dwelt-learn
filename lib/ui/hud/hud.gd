@@ -31,3 +31,7 @@ func _ready():
 	$InteractOverlay.modulate = Color(0.0, 0.0, 0.0, 0.2)
 	$InteractOverlayGlow.modulate.a = 0.2
 	$LoadBlack.visible = true
+
+func _on_debug_button_pressed():
+	$DebugPane.visible = !$DebugPane.visible
+	$DebugPane/Settings.visible = $DebugPane.visible

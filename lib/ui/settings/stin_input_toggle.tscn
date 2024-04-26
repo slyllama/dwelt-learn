@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bg5bulncs2ejf"]
 
-[ext_resource type="Script" path="res://lib/ui/settings/settings_input_toggle.gd" id="1_3420c"]
+[ext_resource type="Script" path="res://lib/ui/settings/stin_input_toggle.gd" id="1_3420c"]
 [ext_resource type="Theme" uid="uid://dfe36tnn0c1ud" path="res://generic/debug_theme.tres" id="1_uvnjk"]
 
 [node name="SettingsInputToggle" type="HBoxContainer"]

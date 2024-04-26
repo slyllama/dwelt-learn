@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-const InputLine = preload("res://lib/ui/settings/settings_input_keybind.tscn")
+const InputLine = preload("res://lib/ui/settings/stin_keybind.tscn")
 var original_input_data = []
 var input_data = [
 	{"id": "move_forward", "name": "Move Forward" },
