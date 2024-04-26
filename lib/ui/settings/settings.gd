@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-const InputLine = preload("res://lib/ui/settings/stin_keybind.tscn")
+const InputLine = preload("res://lib/ui/settings/stin_input_keybind.tscn")
 var original_input_data = []
 var input_data = [
 	{"id": "move_forward", "name": "Move Forward" },
@@ -90,3 +90,6 @@ func _on_button_pressed():
 	Global.settings = Global.SETTINGS
 	for setting in Global.settings:
 		Global.setting_changed.emit(setting)
+
+func _mouseover():
+	Global.button_hover.emit()

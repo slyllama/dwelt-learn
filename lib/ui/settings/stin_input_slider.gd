@@ -40,3 +40,6 @@ func _on_slider_drag_ended(_value_changed):
 
 func _on_slider_value_changed(value):
 	update_title(value)
+
+func _mouseover():
+	Global.button_hover.emit()

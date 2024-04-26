@@ -21,4 +21,5 @@ layout_mode = 2
 [connection signal="changed" from="Slider" to="." method="_on_slider_changed"]
 [connection signal="drag_ended" from="Slider" to="." method="_on_slider_drag_ended"]
 [connection signal="drag_started" from="Slider" to="." method="_on_slider_drag_started"]
+[connection signal="mouse_entered" from="Slider" to="." method="_mouseover"]
 [connection signal="value_changed" from="Slider" to="." method="_on_slider_value_changed"]

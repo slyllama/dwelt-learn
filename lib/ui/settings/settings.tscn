@@ -109,4 +109,5 @@ min_value = 0.5
 max_value = 2.5
 step = 0.05
 
+[connection signal="mouse_entered" from="Control/Panel/VBox/ResetButton" to="." method="_mouseover"]
 [connection signal="pressed" from="Control/Panel/VBox/ResetButton" to="." method="_on_button_pressed"]

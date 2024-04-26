@@ -3,6 +3,8 @@ extends Node
 const SCREEN_SIZE = Vector2(1920.0, 1080.0)
 
 signal camera_shaken
+signal button_hover
+signal debug_toggled
 signal dialogue_played(dialogue)
 signal dialogue_closed
 signal dialogue_closed_early
@@ -28,6 +30,7 @@ signal player_position_unlocked
 
 var can_move = true
 var debug_details_text = "[Details]"
+var debug_state = false
 var dialogue_active = false
 var dragging_control = false # sliders should report their position so they aren't trapped on camera pan
 var in_action = false
