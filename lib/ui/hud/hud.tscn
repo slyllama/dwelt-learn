@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://e0k8h1ytp7wi"]
+[gd_scene load_steps=16 format=3 uid="uid://e0k8h1ytp7wi"]
 
 [ext_resource type="PackedScene" uid="uid://dq3aqaliycowy" path="res://lib/ui/debug_pane/debug_pane.tscn" id="1_gv0re"]
 [ext_resource type="Script" path="res://lib/ui/hud/hud.gd" id="1_i45xt"]
@@ -11,7 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://chs04gxkfh3ag" path="res://lib/ui/tex/interact_overlay_glow.png" id="6_du7uc"]
 [ext_resource type="Texture2D" uid="uid://8kcdl0ahju3s" path="res://lib/ui/tex/interact_overlay.png" id="6_n4mbk"]
 [ext_resource type="Texture2D" uid="uid://b3aaiytpklgal" path="res://lib/ui/tex/vignette.png" id="7_wv8wl"]
-[ext_resource type="PackedScene" uid="uid://bx5xwgdebscc6" path="res://lib/ui/settings/settings.tscn" id="12_7kyqg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ulxyu"]
 shader = ExtResource("2_j7o8v")
@@ -137,5 +136,3 @@ theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
 text = "Loading"
 fit_content = true
-
-[node name="Settings" parent="." instance=ExtResource("12_7kyqg")]

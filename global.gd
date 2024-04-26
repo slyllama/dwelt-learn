@@ -1,5 +1,7 @@
 extends Node
 
+const SCREEN_SIZE = Vector2(1920.0, 1080.0)
+
 signal camera_shaken
 signal dialogue_played(dialogue)
 signal dialogue_closed
@@ -9,16 +11,9 @@ signal interact_left
 signal shaders_loaded # called after ShaderCacheGen has loaded and removed itself
 
 ### Settings ###
-signal blend_shadow_splits_changed
-signal fov_changed(release)
-signal mute_changed
-signal camera_sens_changed(release)
 
 signal setting_changed(setting_id)
-
-const SCREEN_SIZE = Vector2(1920.0, 1080.0)
 const SETTINGS = {
-	"blend_shadow_splits": true,
 	"fov": 75,
 	"mute": false,
 	"camera_sens": 0.65 }
