@@ -1,0 +1,86 @@
+[gd_scene load_steps=9 format=3 uid="uid://bx5xwgdebscc6"]
+
+[ext_resource type="Script" path="res://lib/ui/settings/settings.gd" id="1_ttf36"]
+[ext_resource type="Shader" path="res://lib/ui/dialogue/dialogue.gdshader" id="2_27nbv"]
+[ext_resource type="Theme" uid="uid://dfe36tnn0c1ud" path="res://generic/debug_theme.tres" id="2_r1d7p"]
+[ext_resource type="Texture2D" uid="uid://dsroqhsarregr" path="res://characters/lemonade/radar/tex/holograph_diff.png" id="3_3o7vn"]
+[ext_resource type="PackedScene" uid="uid://bg5bulncs2ejf" path="res://lib/ui/settings/SettingsInputToggle.tscn" id="5_avxn8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m2rom"]
+shader = ExtResource("2_27nbv")
+shader_parameter/scale = 6.0
+shader_parameter/holograph = ExtResource("3_3o7vn")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yc4ml"]
+bg_color = Color(0.0196078, 0.0196078, 0.0196078, 0.854902)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kvdqb"]
+content_margin_top = 12.0
+content_margin_bottom = 10.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="Settings" type="CanvasLayer"]
+layer = 4
+script = ExtResource("1_ttf36")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -190.0
+offset_top = -340.0
+offset_right = 190.0
+offset_bottom = 220.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Control"]
+material = SubResource("ShaderMaterial_m2rom")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_yc4ml")
+
+[node name="VBox" type="VBoxContainer" parent="Control/Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 10.0
+offset_right = -10.0
+offset_bottom = 103.0
+grow_horizontal = 2
+
+[node name="TitleContainer" type="HBoxContainer" parent="Control/Panel/VBox"]
+layout_mode = 2
+
+[node name="Title" type="RichTextLabel" parent="Control/Panel/VBox/TitleContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+theme = ExtResource("2_r1d7p")
+theme_override_constants/line_separation = -5
+theme_override_font_sizes/normal_font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_kvdqb")
+bbcode_enabled = true
+text = "[center]Settings[/center]"
+fit_content = true
+
+[node name="MuteButton" parent="Control/Panel/VBox" instance=ExtResource("5_avxn8")]
+layout_mode = 2
+setting_id = "mute"
+setting_title = "Mute"
+
+[node name="TestButton" parent="Control/Panel/VBox" instance=ExtResource("5_avxn8")]
+layout_mode = 2
+setting_id = "blend_shadow_splits"
+setting_title = "BlendShadowSplits"

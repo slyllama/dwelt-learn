@@ -4,6 +4,13 @@ extends Node3D
 # It should be extended after creating a new scene. NOTE: 'initialise()' MUST
 # called in order for everything to be loaded properly.
 
+func _setting_changed(get_setting_id):
+	match get_setting_id:
+		"mute":
+			AudioServer.set_bus_mute(0, Global.settings.mute)
+			print("setting mute to " + str(Global.settings.mute))
+	save_settings()
+
 func _fov_changed(release):
 	if get_node_or_null("Player") != null:
 		%Player/CamPivot/CamArm/Camera.fov = Global.settings.fov
@@ -53,6 +60,10 @@ func initialise():
 		save_settings()
 	
 	# Apply settings and connect global changes
+	Global.setting_changed.connect(_setting_changed)
+	for setting in Global.settings:
+		Global.setting_changed.emit(setting)
+	
 	Global.connect("fov_changed", _fov_changed)
 	Global.emit_signal("fov_changed", false)
 	Global.connect("mute_changed", _mute_changed)
