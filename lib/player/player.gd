@@ -142,10 +142,14 @@ func _physics_process(_delta):
 		strafe_diff -= 10.0
 		side -= 0.5
 	
-	target_velocity = (-forward * %CamPivot.global_transform.basis.z
-		+ -side * %CamPivot.global_transform.basis.x)
-	# Strip out the camera looking up/down
-	target_velocity = target_velocity.normalized() * Vector3(1, 0, 1) * speed
+	#target_velocity = (-forward * %CamPivot.global_transform.basis.z
+		#+ -side * %CamPivot.global_transform.basis.x)
+	
+	# New velocity calculations which ensures that having the camera facing
+	# down on the player doesn't slow it down
+	target_velocity = forward * Vector3.FORWARD * $CamPivot.global_transform.basis
+	target_velocity += side * Vector3.RIGHT * $CamPivot.global_transform.basis
+	target_velocity = target_velocity.normalized() * Vector3(-1, 0, 1) * speed
 	
 	velocity = lerp(velocity, target_velocity, speed_smoothing)
 	move_and_slide()

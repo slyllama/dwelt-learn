@@ -116,7 +116,7 @@ func _process(_delta):
 		
 		# Prevent weird interactions with floor/top of axis
 		rotation_degrees.x = clampf(
-			rotation_degrees.x, -80.0, 45.0)
+			rotation_degrees.x, -60.0, 45.0)
 
 		# Ensure that the camera will never get stuck in an eternally rotating situation
 		if last_mouse_offset == mouse_offset:
