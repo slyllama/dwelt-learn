@@ -88,7 +88,7 @@ func _on_button_pressed():
 	input_data = original_input_data.duplicate()
 	apply_input_data()
 	refresh_input_data()
-	Global.settings = Global.SETTINGS
+	Global.settings = Global.SETTINGS.duplicate()
 	for setting in Global.settings:
 		Global.setting_changed.emit(setting)
 

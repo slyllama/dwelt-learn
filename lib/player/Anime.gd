@@ -1,8 +1,8 @@
 extends CanvasLayer
 # "Anime" effect which shows when the player moves
 
-@export var time = 0.5
-@export var maximum_alpha = 0.09
+@export var time = 0.1
+@export var maximum_alpha = 0.13
 
 var active = false
 
@@ -17,7 +17,7 @@ func anime_out():
 	active = false
 	$AnimeTex.modulate.a = maximum_alpha
 	var fade_tween = create_tween()
-	fade_tween.tween_property($AnimeTex, "modulate:a", 0.0, time / 3.0)
+	fade_tween.tween_property($AnimeTex, "modulate:a", 0.0, time)
 	fade_tween.tween_callback(func():
 		if active == true:
 			return

@@ -3,6 +3,7 @@ extends VBoxContainer
 @export var setting_id: String
 @export var setting_title = "[Setting]"
 @export var show_output = true
+@export var output_as_percentage = false
 @export var output_suffix = ""
 
 @export_category("Slider Settings")
@@ -15,7 +16,14 @@ func update_title(override_value = -999):
 	var new_value
 	if override_value == -999: new_value = float($Slider.value)
 	else: new_value = override_value
-	$Title.text = (str(setting_title) + ": " + Utilities.fstr(new_value) + output_suffix)
+	
+	var disp: String
+	if output_as_percentage == true:
+		disp = str(snapped(new_value * 100, 1))
+	else: disp = Utilities.fstr(new_value)
+	
+	$Title.text = (str(setting_title) + ": " + disp + output_suffix)
+	if output_as_percentage == true: $Title.text += "%"
 
 func _ready():
 	$Slider.min_value = min_value

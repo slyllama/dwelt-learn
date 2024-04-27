@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://bsetivexkdulh"]
+[gd_scene load_steps=74 format=3 uid="uid://bsetivexkdulh"]
 
 [ext_resource type="Script" path="res://maps/test_room/test_room.gd" id="1_2kdkw"]
 [ext_resource type="Material" uid="uid://4d6tcixxllut" path="res://maps/test_room/objects/rocket_claw/mat_rocket_claw.tres" id="1_q37l3"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://e0k8h1ytp7wi" path="res://lib/ui/hud/hud.tscn" id="5_6lqxt"]
 [ext_resource type="Material" uid="uid://rrahcoqndg6d" path="res://maps/test_room/objects/floor/mat_floor.tres" id="6_fjpyi"]
 [ext_resource type="AudioStream" uid="uid://to210dowl6qk" path="res://maps/test_room/sounds/forest_ambience.ogg" id="6_i6drl"]
+[ext_resource type="AudioStream" uid="uid://bhwleokhlvwgu" path="res://maps/test_room/sounds/splinter_trial.ogg" id="6_mh3o3"]
 [ext_resource type="ArrayMesh" uid="uid://bnlpp6ne5jq3y" path="res://maps/test_room/objects/floor/floor.obj" id="6_r1bc3"]
 [ext_resource type="Texture2D" uid="uid://copestgn31um5" path="res://maps/test_room/objects/tex/cplace_floor_emit.png" id="6_yy4rh"]
 [ext_resource type="Texture2D" uid="uid://baamnrm303pmf" path="res://maps/test_room/objects/tex/cplace_floor_norm.png" id="7_y7c80"]
@@ -388,6 +389,9 @@ size = Vector3(1, 10, 30.5)
 [sub_resource type="BoxShape3D" id="BoxShape3D_d7cw4"]
 size = Vector3(8.5, 10, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_l6wio"]
+size = Vector3(20, 10, 1)
+
 [node name="TestRoom" type="Node3D"]
 script = ExtResource("1_2kdkw")
 
@@ -417,6 +421,7 @@ volume_db = -3.0
 autoplay = true
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_mh3o3")
 volume_db = -5.0
 
 [node name="Architecture" type="Node3D" parent="."]
@@ -446,7 +451,7 @@ transform = Transform3D(0.930398, 0, -0.36655, 0, 1, 0, 0.36655, 0, 0.930398, -4
 TYPE = "ignore"
 
 [node name="GravityPad4" parent="Architecture" instance=ExtResource("13_liyv3")]
-transform = Transform3D(1.28391, 0, 0.558181, 0, 1, 0, -0.558181, 0, 1.28391, -4, -0.2, -9)
+transform = Transform3D(1.28391, 0, 0.558182, 0, 1.4, 0, -0.558182, 0, 1.28391, -4, -0.491361, -9)
 TYPE = "ignore"
 
 [node name="RocketClaw" type="MeshInstance3D" parent="Architecture"]
@@ -800,6 +805,10 @@ shape = SubResource("BoxShape3D_d7cw4")
 [node name="Collision4" type="CollisionShape3D" parent="Cathedral/Wall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.75, 5, 9)
 shape = SubResource("BoxShape3D_d7cw4")
+
+[node name="Collision5" type="CollisionShape3D" parent="Cathedral/Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 5, 34)
+shape = SubResource("BoxShape3D_l6wio")
 
 [node name="FloorPlatform" type="MeshInstance3D" parent="Cathedral"]
 transform = Transform3D(0.0441424, 0, 0.999025, 0, 1, 0, -0.999025, 0, 0.0441424, -1, -0.2, 10)

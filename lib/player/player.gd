@@ -87,7 +87,6 @@ func _ready():
 	Global.connect("player_position_unlocked", unlock_position)
 	Global.connect("interact_entered", open_radar)
 	Global.connect("interact_left", close_radar)
-
 	Radar.visible = false
 
 func _input(_event):

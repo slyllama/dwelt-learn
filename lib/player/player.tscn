@@ -73,7 +73,6 @@ _data = {
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cotlk"]
 transparency = 1
-no_depth_test = true
 shading_mode = 0
 vertex_color_use_as_albedo = true
 billboard_mode = 3

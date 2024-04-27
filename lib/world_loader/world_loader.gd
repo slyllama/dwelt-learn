@@ -6,9 +6,9 @@ extends Node3D
 
 func _setting_changed(get_setting_id):
 	match get_setting_id:
-		"mute": AudioServer.set_bus_mute(0, Global.settings.mute)
 		"fov": %Player/CamPivot/CamArm/Camera.fov = Global.settings.fov
 		"camera_sens": %Player/CamPivot.camera_sensitivity = Global.settings.camera_sens
+		"volume": AudioServer.set_bus_volume_db(0, linear_to_db(Global.settings.volume))
 	save_settings()
 
 func save_settings(): # save settings to "settings.json" file
@@ -29,11 +29,15 @@ func initialise():
 	if FileAccess.file_exists("user://settings.json"):
 		var settings_json = FileAccess.open("user://settings.json", FileAccess.READ)
 		Global.settings = JSON.parse_string(settings_json.get_as_text())
+		for setting in Global.SETTINGS:
+			if !setting in Global.settings:
+				print("missing " + setting)
 		print("[Settings] 'settings.json' exists, loading.")
 		settings_json.close()
 	else:
 		print("[Settings] 'settings.json' doesn't exist, creating it.")
 		save_settings()
+		Global.settings = Global.SETTINGS
 	
 	# Apply settings and connect global changes
 	Global.setting_changed.connect(_setting_changed)
@@ -41,11 +45,16 @@ func initialise():
 		Global.setting_changed.emit(setting)
 
 	# Fade in all sound if the game wasn't already muted
-	if Global.settings.mute == false:
-		set_master_vol(-20.0)
-		var fade_bus_in = create_tween()
-		fade_bus_in.tween_method(set_master_vol, -20.0, 0.0, 1.0).set_trans(Tween.TRANS_EXPO)
-	#
+	set_master_vol(linear_to_db(Global.settings.volume / 2.0))
+	var fade_bus_in = create_tween()
+	# Divide global volume by two to get lower volume, to avoid sound playing
+	# when the game was muted
+	fade_bus_in.tween_method(
+		set_master_vol,
+		linear_to_db(Global.settings.volume / 2.0),
+		linear_to_db(Global.settings.volume), 1.0
+	).set_trans(Tween.TRANS_EXPO)
+	
 	# Only try to prime music if the nodes actually exist
 	if get_node_or_null("Ambience") != null and get_node_or_null("Music") != null:
 		$Ambience.volume_db = -20.0

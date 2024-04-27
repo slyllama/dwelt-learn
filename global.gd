@@ -15,11 +15,12 @@ signal shaders_loaded # called after ShaderCacheGen has loaded and removed itsel
 ### Settings ###
 
 signal setting_changed(setting_id)
-const SETTINGS = {
+var SETTINGS = {
 	"fov": 75,
-	"mute": false,
-	"camera_sens": 0.65 }
-var settings = SETTINGS
+	"camera_sens": 0.65,
+	"volume": 0.00
+}
+var settings = SETTINGS.duplicate()
 
 ### Game states ###
 
