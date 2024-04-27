@@ -30,7 +30,7 @@ func save_settings(): # save settings to "settings.json" file
 func set_master_vol(vol):
 	AudioServer.set_bus_volume_db(0, vol)
 
-func initialise():
+func _ready():
 	# Set up for retina
 	if DisplayServer.screen_get_size().x > 2000:
 		if OS.get_name() != "macOS":
