@@ -10,7 +10,7 @@ script = ExtResource("1_3420c")
 [node name="Title" type="RichTextLabel" parent="."]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
-size_flags_horizontal = 2
+size_flags_horizontal = 3
 mouse_filter = 1
 theme = ExtResource("1_uvnjk")
 bbcode_enabled = true
@@ -18,7 +18,7 @@ text = "Setting:"
 
 [node name="Toggle" type="CheckButton" parent="."]
 layout_mode = 2
-size_flags_horizontal = 10
+size_flags_horizontal = 8
 
 [connection signal="mouse_entered" from="Toggle" to="." method="_on_toggle_mouse_entered"]
 [connection signal="pressed" from="Toggle" to="." method="_on_toggle_pressed"]

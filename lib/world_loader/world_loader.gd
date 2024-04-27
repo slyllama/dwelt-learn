@@ -1,5 +1,11 @@
 extends Node3D
 
+func get_all_children(in_node, arr := []):
+	arr.push_back(in_node)
+	for child in in_node.get_children():
+		arr = get_all_children(child,arr)
+	return(arr)
+
 # This script loads settings, music, and other things into the world.
 # It should be extended after creating a new scene. NOTE: 'initialise()' MUST
 # called in order for everything to be loaded properly.
@@ -9,6 +15,10 @@ func _setting_changed(get_setting_id):
 		"fov": %Player/CamPivot/CamArm/Camera.fov = Global.settings.fov
 		"camera_sens": %Player/CamPivot.camera_sensitivity = Global.settings.camera_sens
 		"volume": AudioServer.set_bus_volume_db(0, linear_to_db(Global.settings.volume))
+		"spot_shadows":
+			for child in get_all_children(get_tree().root):
+				if child is SpotLight3D:
+					child.shadow_enabled = Global.settings.spot_shadows
 	save_settings()
 
 func save_settings(): # save settings to "settings.json" file

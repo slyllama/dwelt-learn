@@ -508,6 +508,12 @@ mesh = ExtResource("18_j5tgn")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("19_xx3wl")
 
+[node name="NewRock9" type="MeshInstance3D" parent="Architecture"]
+transform = Transform3D(-0.520696, 1.37979, -2.11695, -0.291207, 2.11426, 1.44966, 2.51007, 0.531512, -0.270962, 19.2605, -1.9616, 0.648266)
+mesh = ExtResource("18_j5tgn")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("19_xx3wl")
+
 [node name="NewRock5" type="MeshInstance3D" parent="Architecture"]
 transform = Transform3D(2.52601, 0.485302, -0.200366, -0.291207, 2.11426, 1.44966, 0.436879, -1.39671, 2.12479, -18.2665, -2.40262, -10.2956)
 mesh = ExtResource("18_j5tgn")
@@ -545,7 +551,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.3, -14.4)
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12.4, -0.3, -10)
 
 [node name="Wall5" parent="Architecture" instance=ExtResource("18_hg1d0")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12.4, -0.3, -2)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 16.4, -0.3, 2)
+
+[node name="Wall15" parent="Architecture" instance=ExtResource("18_hg1d0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20.4, -0.3, -2)
+
+[node name="Wall16" parent="Architecture" instance=ExtResource("18_hg1d0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20.4, -0.3, -10)
 
 [node name="Wall14" parent="Architecture" instance=ExtResource("18_hg1d0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12.4, -0.3, 6)
@@ -604,6 +616,12 @@ mesh = ExtResource("22_2mbv3")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("18_0kl5y")
 
+[node name="Pillar10" type="MeshInstance3D" parent="Architecture"]
+transform = Transform3D(0.999965, -0.00836003, 0, 0.00836003, 0.999965, 0, 0, 0, 1, 12.5, -0.3, 2)
+mesh = ExtResource("22_2mbv3")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("18_0kl5y")
+
 [node name="Pillar4" type="MeshInstance3D" parent="Architecture"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -0.3, -14.2)
 mesh = ExtResource("22_2mbv3")
@@ -640,6 +658,22 @@ surface_material_override/0 = ExtResource("22_hxvov")
 
 [node name="Grass8" type="MeshInstance3D" parent="Foliage"]
 transform = Transform3D(0.767634, 0, -0.842819, 0, 1.54638, 0, 0.842819, 0, 0.767634, 3.01229, 0.546205, -12.2973)
+cast_shadow = 0
+visibility_range_end = 30.0
+mesh = ExtResource("21_70xv4")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("22_hxvov")
+
+[node name="Grass9" type="MeshInstance3D" parent="Foliage"]
+transform = Transform3D(-0.38204, 0, -1.07408, 0, 1.14, 0, 1.07408, 0, -0.38204, 18.8481, 0.987229, -0.913794)
+cast_shadow = 0
+visibility_range_end = 30.0
+mesh = ExtResource("21_70xv4")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("22_hxvov")
+
+[node name="Grass10" type="MeshInstance3D" parent="Foliage"]
+transform = Transform3D(-0.867897, 0, -0.739162, 0, 1.54638, 0, 0.739162, 0, -0.867897, 18.4777, 0.987229, 0.76532)
 cast_shadow = 0
 visibility_range_end = 30.0
 mesh = ExtResource("21_70xv4")
@@ -752,6 +786,7 @@ transform = Transform3D(0.38778, 0.288241, 0.875525, 0.0987635, -0.957374, 0.271
 light_color = Color(1, 0.819608, 0.639216, 1)
 light_energy = 40.0
 light_cull_mask = 4294967293
+shadow_enabled = true
 distance_fade_enabled = true
 distance_fade_begin = 30.0
 spot_range = 20.0

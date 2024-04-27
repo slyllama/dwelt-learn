@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bx5xwgdebscc6"]
+[gd_scene load_steps=10 format=3 uid="uid://bx5xwgdebscc6"]
 
 [ext_resource type="Script" path="res://lib/ui/settings/settings.gd" id="1_ttf36"]
 [ext_resource type="Shader" path="res://lib/ui/dialogue/dialogue.gdshader" id="2_27nbv"]
 [ext_resource type="Theme" uid="uid://dfe36tnn0c1ud" path="res://generic/debug_theme.tres" id="2_r1d7p"]
 [ext_resource type="Texture2D" uid="uid://dsroqhsarregr" path="res://characters/lemonade/radar/tex/holograph_diff.png" id="3_3o7vn"]
+[ext_resource type="PackedScene" uid="uid://bg5bulncs2ejf" path="res://lib/ui/settings/stin_input_toggle.tscn" id="5_duwqu"]
 [ext_resource type="PackedScene" uid="uid://d4avw33snp7bc" path="res://lib/ui/settings/stin_input_slider.tscn" id="6_y64kv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m2rom"]
@@ -76,6 +77,11 @@ layout_mode = 2
 theme = ExtResource("2_r1d7p")
 text = "Reset"
 
+[node name="SettingsInputToggle" parent="Control/Panel/VBox" instance=ExtResource("5_duwqu")]
+layout_mode = 2
+setting_id = "spot_shadows"
+setting_title = "High Quality Shadows"
+
 [node name="VolumeControl" parent="Control/Panel/VBox" instance=ExtResource("6_y64kv")]
 layout_mode = 2
 setting_id = "volume"
@@ -100,7 +106,7 @@ fit_content = true
 layout_mode = 2
 setting_id = "fov"
 setting_title = "FOV"
-output_suffix = "deg"
+output_suffix = "°"
 min_value = 50.0
 
 [node name="CamSensControl" parent="Control/Panel/VBox" instance=ExtResource("6_y64kv")]

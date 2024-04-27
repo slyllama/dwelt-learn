@@ -1,3 +1,4 @@
+@tool
 extends VBoxContainer
 
 @export var setting_id: String
@@ -11,6 +12,9 @@ extends VBoxContainer
 @export var max_value: float = 100
 @export var step: float = 1
 
+func fstr(num, place = 0.01): # copied from Utilities for @tool
+	return(str(snapped(num, place)))
+
 func update_title(override_value = -999):
 	if show_output == false: return
 	var new_value
@@ -20,7 +24,7 @@ func update_title(override_value = -999):
 	var disp: String
 	if output_as_percentage == true:
 		disp = str(snapped(new_value * 100, 1))
-	else: disp = Utilities.fstr(new_value)
+	else: disp = fstr(new_value)
 	
 	$Title.text = (str(setting_title) + ": " + disp + output_suffix)
 	if output_as_percentage == true: $Title.text += "%"
@@ -32,7 +36,9 @@ func _ready():
 	
 	if output_suffix == "deg": output_suffix = "\u00B0"
 	$Title.text = str(setting_title)
-
+	
+	if Engine.is_editor_hint() == true: return
+	
 	Global.setting_changed.connect(func(get_setting_id):
 		if get_setting_id == setting_id and setting_id != null:
 			$Slider.value = Global.settings[setting_id]

@@ -7,3 +7,4 @@
 script = ExtResource("1_kv4hh")
 
 [node name="InteractArea" parent="." instance=ExtResource("2_0pd22")]
+debug_messages = false
