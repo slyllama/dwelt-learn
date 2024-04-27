@@ -19,7 +19,8 @@ var SETTINGS = {
 	"fov": 75,
 	"camera_sens": 0.65,
 	"volume": 0.00,
-	"spot_shadows": false
+	"spot_shadows": true,
+	"vol_fog": false
 }
 var settings = SETTINGS.duplicate()
 

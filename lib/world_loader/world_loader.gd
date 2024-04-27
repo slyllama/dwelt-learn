@@ -19,6 +19,7 @@ func _setting_changed(get_setting_id):
 			for child in get_all_children(get_tree().root):
 				if child is SpotLight3D:
 					child.shadow_enabled = Global.settings.spot_shadows
+		"vol_fog": $Sky.get_environment().volumetric_fog_enabled = Global.settings.vol_fog
 	save_settings()
 
 func save_settings(): # save settings to "settings.json" file

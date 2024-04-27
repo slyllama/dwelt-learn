@@ -77,10 +77,15 @@ layout_mode = 2
 theme = ExtResource("2_r1d7p")
 text = "Reset"
 
-[node name="SettingsInputToggle" parent="Control/Panel/VBox" instance=ExtResource("5_duwqu")]
+[node name="HQShadowsControl" parent="Control/Panel/VBox" instance=ExtResource("5_duwqu")]
 layout_mode = 2
 setting_id = "spot_shadows"
 setting_title = "High Quality Shadows"
+
+[node name="VolFog" parent="Control/Panel/VBox" instance=ExtResource("5_duwqu")]
+layout_mode = 2
+setting_id = "vol_fog"
+setting_title = "Volumetric Fog"
 
 [node name="VolumeControl" parent="Control/Panel/VBox" instance=ExtResource("6_y64kv")]
 layout_mode = 2
