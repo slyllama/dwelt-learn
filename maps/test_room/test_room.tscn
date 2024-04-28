@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://baamnrm303pmf" path="res://maps/test_room/objects/tex/cplace_floor_norm.png" id="7_y7c80"]
 [ext_resource type="Texture2D" uid="uid://bd7c4x2ajeimr" path="res://generic/tex/shader_tex/floor_diff.png" id="8_ycmhx"]
 [ext_resource type="Texture2D" uid="uid://5bruu4afeor5" path="res://generic/tex/shader_tex/floor_norm.png" id="9_eer7i"]
-[ext_resource type="PackedScene" path="res://maps/test_room/objects/gravpad/gravity_pad.tscn" id="13_liyv3"]
+[ext_resource type="PackedScene" uid="uid://4do2qvii442c" path="res://maps/test_room/objects/gravpad/gravity_pad.tscn" id="13_liyv3"]
 [ext_resource type="Material" uid="uid://dedhetoptnip7" path="res://generic/mat_tile.tres" id="18_0kl5y"]
 [ext_resource type="PackedScene" uid="uid://dw6tab3s5lc2v" path="res://maps/test_room/objects/floor/wall/wall.tscn" id="18_hg1d0"]
 [ext_resource type="ArrayMesh" uid="uid://bvf6fuimgjs8c" path="res://maps/test_room/objects/nature/rock.obj" id="18_j5tgn"]
@@ -58,7 +58,6 @@ fog_light_energy = 0.0
 fog_density = 0.035
 fog_sky_affect = 0.5
 fog_height_density = -0.1
-volumetric_fog_enabled = true
 volumetric_fog_density = 0.07
 volumetric_fog_albedo = Color(0.510177, 0.465192, 0.415054, 1)
 volumetric_fog_length = 7.0
@@ -111,7 +110,7 @@ material = SubResource("StandardMaterial3D_2dh08")
 size = Vector2(0.06, 0.06)
 orientation = 2
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_dfr5t"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1cqgk"]
 render_priority = 0
 shader = ExtResource("27_elhuu")
 
@@ -180,7 +179,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 2.5, 5, 7.5, 10),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(-4, 1, -9), Vector3(-4, 1.3, -9), Vector3(-4, 1, -9), Vector3(-4, 1.3, -9), Vector3(-4, 1, -9)]
+"values": [Vector3(-4, 4, -9), Vector3(-4, 4.3, -9), Vector3(-4, 4, -9), Vector3(-4, 4.3, -9), Vector3(-4, 4, -9)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -428,35 +427,32 @@ autoplay = true
 stream = ExtResource("6_mh3o3")
 volume_db = -5.0
 
-[node name="Architecture" type="Node3D" parent="."]
-
-[node name="Floor" type="StaticBody3D" parent="Architecture"]
+[node name="Floor" type="StaticBody3D" parent="."]
 collision_layer = 3
 
-[node name="WideFloor" type="MeshInstance3D" parent="Architecture/Floor"]
+[node name="WideFloor" type="MeshInstance3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.1, 0)
 mesh = SubResource("QuadMesh_fhx46")
-skeleton = NodePath("../../..")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_tbe5t")
 
-[node name="Collision" type="CollisionShape3D" parent="Architecture/Floor"]
+[node name="Collision" type="CollisionShape3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 shape = SubResource("BoxShape3D_fuk4o")
 
+[node name="Architecture" type="Node3D" parent="."]
+
 [node name="GravityPad" parent="Architecture" instance=ExtResource("13_liyv3")]
 transform = Transform3D(0.971205, 0, 0.238245, 0, 1, 0, -0.238245, 0, 0.971205, 7.7, -0.2, -9)
-TYPE = "player_model"
 
 [node name="GravityPad2" parent="Architecture" instance=ExtResource("13_liyv3")]
 transform = Transform3D(0.878359, 0, 0.478002, 0, 1, 0, -0.478002, 0, 0.878359, -16, 4.07623, -10)
 
 [node name="GravityPad3" parent="Architecture" instance=ExtResource("13_liyv3")]
 transform = Transform3D(0.930398, 0, -0.36655, 0, 1, 0, 0.36655, 0, 0.930398, -4, 0.3, -9)
-TYPE = "ignore"
 
 [node name="GravityPad4" parent="Architecture" instance=ExtResource("13_liyv3")]
 transform = Transform3D(1.28391, 0, 0.558182, 0, 1.4, 0, -0.558182, 0, 1.28391, -4, -0.491361, -9)
-TYPE = "ignore"
 
 [node name="RocketClaw" type="MeshInstance3D" parent="Architecture"]
 transform = Transform3D(-3.17494e-08, 0.726339, -1.01731, -1.25, -5.46393e-08, 0, -4.44681e-08, 1.01731, 0.726339, 10.0497, 2.53575, -12.7577)
@@ -740,7 +736,7 @@ draw_pass_1 = SubResource("PlaneMesh_udmxf")
 [node name="KryptisTest" type="MeshInstance3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4, 1, -9)
 mesh = ExtResource("23_1u1sq")
-surface_material_override/0 = SubResource("ShaderMaterial_dfr5t")
+surface_material_override/0 = SubResource("ShaderMaterial_1cqgk")
 
 [node name="KryptisAnim" type="AnimationPlayer" parent="KryptisTest"]
 libraries = {
@@ -749,11 +745,10 @@ libraries = {
 autoplay = "rotate"
 
 [node name="EnergyField" type="CSGSphere3D" parent="KryptisTest"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.45, 0)
 radius = 1.09
 material = SubResource("ShaderMaterial_kev7y")
 
-[node name="DialogueArea" parent="." instance=ExtResource("32_d6er5")]
+[node name="KryptisDialogue" parent="." instance=ExtResource("32_d6er5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -7)
 TYPE = "test_dialogue"
 dialogue_data = Array[String](["Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.", "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."])

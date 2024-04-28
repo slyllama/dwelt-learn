@@ -8,7 +8,7 @@ colors = PackedColorArray(1, 0, 0, 1, 0, 1, 0, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_o2syu"]
 noise_type = 3
-frequency = 0.006
+frequency = 0.002
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cxuuk"]
 seamless = true
@@ -28,7 +28,7 @@ op_type = 0
 operator = 2
 
 [sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_bb5g3"]
-constant = -0.04
+constant = -0.07
 
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_xj8cx"]
 input_name = "uv"
@@ -37,7 +37,7 @@ input_name = "uv"
 input_name = "time"
 
 [sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_is88l"]
-default_input_values = [0, 0.0, 1, 0.03]
+default_input_values = [0, 0.0, 1, 0.06]
 operator = 2
 
 [sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_l8byy"]
@@ -97,7 +97,7 @@ void fragment() {
 
 
 // FloatOp:16
-	float n_in16p1 = 0.03000;
+	float n_in16p1 = 0.06000;
 	float n_out16p0 = n_out15p0 * n_in16p1;
 
 
@@ -116,7 +116,7 @@ void fragment() {
 
 
 // FloatConstant:13
-	float n_out13p0 = -0.040000;
+	float n_out13p0 = -0.070000;
 
 
 // VectorOp:12
@@ -163,6 +163,7 @@ void fragment() {
 
 }
 "
+graph_offset = Vector2(-1351.54, 41.2678)
 nodes/fragment/0/position = Vector2(780, 140)
 nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_unj4i")
 nodes/fragment/2/position = Vector2(-200, 140)

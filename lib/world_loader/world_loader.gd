@@ -31,11 +31,6 @@ func set_master_vol(vol):
 	AudioServer.set_bus_volume_db(0, vol)
 
 func _ready():
-	# Set up for retina
-	if DisplayServer.screen_get_size().x > 2000:
-		if OS.get_name() != "macOS":
-			DisplayServer.cursor_set_custom_image(load("res://generic/tex/cursor_2x.png"))
-	
 	# Load the settings file, or make a new one using save_settings() if it doesn't
 	if FileAccess.file_exists("user://settings.json"):
 		var settings_json = FileAccess.open("user://settings.json", FileAccess.READ)

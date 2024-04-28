@@ -146,7 +146,6 @@ texture_normal = ExtResource("12_ivaak")
 texture_hover = ExtResource("12_u62tc")
 
 [node name="LoadBlack" type="TextureRect" parent="."]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -154,44 +153,21 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("14_dbdm6")
 
-[node name="LoadingInfo" type="RichTextLabel" parent="LoadBlack"]
-modulate = Color(0.8, 0.8, 0.8, 1)
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 40.0
-offset_top = -130.0
-offset_right = 534.0
-offset_bottom = -105.0
-grow_vertical = 0
-mouse_filter = 2
-theme = ExtResource("6_14irq")
-theme_override_font_sizes/normal_font_size = 18
-bbcode_enabled = true
-text = "Loading"
-fit_content = true
-
 [node name="ProgressBar" type="ProgressBar" parent="LoadBlack"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 40.0
-offset_top = -100.0
-offset_right = -40.0
-offset_bottom = -73.0
+offset_left = 80.0
+offset_top = -135.0
+offset_right = -80.0
+offset_bottom = -120.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("6_14irq")
 value = 100.0
 show_percentage = false
-
-[node name="TextureRect" type="TextureRect" parent="LoadBlack"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
 
 [node name="ButtonHover" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_3x38c")

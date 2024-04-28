@@ -17,8 +17,11 @@ func load_map(name):
 	ResourceLoader.load_threaded_request(target_path)
 
 func _ready():
-	if debug_mode == true:
-		load_map(debug_map)
+	# Set up for retina
+	if DisplayServer.screen_get_size().x > 2000:
+		if OS.get_name() != "macOS":
+			DisplayServer.cursor_set_custom_image(load("res://generic/tex/cursor_2x.png"))
+	if debug_mode == true: load_map(debug_map)
 
 func _process(_delta):
 	if target_path == null or target_path == "": return

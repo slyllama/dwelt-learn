@@ -28,7 +28,7 @@ corner_radius_bottom_left = 2
 bg_color = Color(0.146641, 0.146641, 0.146641, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xijcw"]
-bg_color = Color(0.278824, 0.528644, 0.258509, 1)
+bg_color = Color(0.63, 0.63, 0.63, 1)
 
 [resource]
 Button/fonts/font = ExtResource("1_4xjey")
