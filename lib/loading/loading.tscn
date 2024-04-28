@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4cboiwskjvvh"]
+
+[ext_resource type="Script" path="res://lib/loading/loading.gd" id="1_dy6oh"]
+[ext_resource type="Texture2D" uid="uid://e7nlf6qmftkd" path="res://generic/tex/splash.png" id="2_7s2de"]
+[ext_resource type="Theme" uid="uid://dfe36tnn0c1ud" path="res://generic/debug_theme.tres" id="2_rl4eh"]
+
+[node name="Loading" type="CanvasLayer"]
+script = ExtResource("1_dy6oh")
+debug_mode = true
+
+[node name="LoadBlack" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_7s2de")
+
+[node name="ProgressBar" type="ProgressBar" parent="LoadBlack"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = -100.0
+offset_right = -40.0
+offset_bottom = -73.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_rl4eh")
+show_percentage = false
+
+[node name="LoadingInfo" type="RichTextLabel" parent="LoadBlack"]
+modulate = Color(0.8, 0.8, 0.8, 1)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = -130.0
+offset_right = 534.0
+offset_bottom = -105.0
+grow_vertical = 0
+mouse_filter = 2
+theme = ExtResource("2_rl4eh")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "Loading"
+fit_content = true
