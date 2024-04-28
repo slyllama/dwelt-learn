@@ -6,7 +6,6 @@
 
 [node name="Loading" type="CanvasLayer"]
 script = ExtResource("1_dy6oh")
-debug_mode = true
 
 [node name="LoadBlack" type="TextureRect" parent="."]
 anchors_preset = 15

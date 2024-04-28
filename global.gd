@@ -23,6 +23,7 @@ var SETTINGS = {
 	"vol_fog": false
 }
 var settings = SETTINGS.duplicate()
+var current_map = "test_room"
 
 ### Game states ###
 
