@@ -20,37 +20,20 @@ func _setting_changed(get_setting_id):
 				if child is SpotLight3D or child is OmniLight3D:
 					child.shadow_enabled = Global.settings.spot_shadows
 		"vol_fog": $Sky.get_environment().volumetric_fog_enabled = Global.settings.vol_fog
-	save_settings()
+	Utilities.save_settings()
 
-func save_settings(): # save settings to "settings.json" file
-	var settings_json = FileAccess.open("user://settings.json", FileAccess.WRITE)
-	settings_json.store_string(JSON.stringify(Global.settings))
-	settings_json.close()
-
-func set_master_vol(vol):
-	AudioServer.set_bus_volume_db(0, vol)
-
-func _ready():
-	# Load the settings file, or make a new one using save_settings() if it doesn't
-	if FileAccess.file_exists("user://settings.json"):
-		var settings_json = FileAccess.open("user://settings.json", FileAccess.READ)
-		Global.settings = JSON.parse_string(settings_json.get_as_text())
-		for setting in Global.SETTINGS:
-			if !setting in Global.settings:
-				Global.settings[setting] = Global.SETTINGS[setting]
-				print("[Settings] Missing setting '" + setting + "' in settings.json, adding it.")
-		print("[Settings] settings.json exists, loading.")
-		settings_json.close()
-	else:
-		print("[Settings] settings.json doesn't exist, creating it.")
-		save_settings()
-		Global.settings = Global.SETTINGS
-	
+func _settings_loaded():
 	# Apply settings and connect global changes
 	Global.setting_changed.connect(_setting_changed)
 	for setting in Global.settings:
 		Global.setting_changed.emit(setting)
 
+func set_master_vol(vol):
+	AudioServer.set_bus_volume_db(0, vol)
+
+func _ready():
+	Utilities.settings_loaded.connect(_settings_loaded)
+	
 	# Fade in all sound if the game wasn't already muted
 	set_master_vol(linear_to_db(Global.settings.volume / 2.0))
 	var fade_bus_in = create_tween()

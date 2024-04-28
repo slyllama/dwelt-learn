@@ -8,11 +8,14 @@ var target_path: String
 var status: int
 var progress: Array[float] # ResourceLoader will put its status details here
 
+func _make_path(map_name):
+	return("maps/" + str(map_name) + "/" + str(map_name) + ".tscn")
+
 func load_map(map_name):
 	if scene_override == true:
 		map_name = custom_scene
 	
-	var path = "maps/" + str(map_name) + "/" + str(map_name) + ".tscn"
+	var path = _make_path(map_name)
 	print("Loading '" + path + "'.")
 	target_path = path
 	ResourceLoader.load_threaded_request(target_path)
@@ -23,7 +26,12 @@ func _ready():
 		if OS.get_name() != "macOS":
 			DisplayServer.cursor_set_custom_image(
 				load("res://generic/tex/cursor_2x.png"))
-	load_map(Global.current_map)
+	if FileAccess.file_exists(_make_path(Global.current_map)):
+		load_map(Global.current_map)
+	else:
+		$ErrorText.text = Utilities.cntr("Error: couldn't load map '" + Global.current_map + "'.")
+		$ErrorText.visible = true
+		$LoadBlack/ProgressBar.visible = false
 
 func _process(_delta):
 	if target_path == null or target_path == "": return

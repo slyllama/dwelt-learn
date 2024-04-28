@@ -29,3 +29,24 @@ grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("2_rl4eh")
 show_percentage = false
+
+[node name="ErrorText" type="RichTextLabel" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.784314)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -247.0
+offset_top = -171.0
+offset_right = 247.0
+offset_bottom = -146.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme = ExtResource("2_rl4eh")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "[center]Error.[/center]"
+fit_content = true
