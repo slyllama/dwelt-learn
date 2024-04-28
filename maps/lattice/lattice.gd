@@ -13,3 +13,5 @@ func _ready():
 func _on_warp_button_pressed():
 	Global.current_map = "test_room"
 	get_tree().change_scene_to_file("res://lib/loading/loading.tscn")
+
+var co = 0

@@ -26,6 +26,9 @@ func _ready():
 		if OS.get_name() != "macOS":
 			DisplayServer.cursor_set_custom_image(
 				load("res://generic/tex/cursor_2x.png"))
+	
+	Utilities.load_settings()
+	
 	if FileAccess.file_exists(_make_path(Global.current_map)):
 		load_map(Global.current_map)
 	else:

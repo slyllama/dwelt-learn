@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://b5oyvmgcreg1s"]
+
+[ext_resource type="Texture2D" uid="uid://dq5pd6dhe5d7w" path="res://maps/lattice/objects/rocksculpt/tex/rocksculpt_diff.png" id="1_n2msp"]
+[ext_resource type="Texture2D" uid="uid://d14tf0ihfua8y" path="res://maps/lattice/objects/rocksculpt/tex/rocksculpt_norm.png" id="2_gs05u"]
+
+[resource]
+albedo_color = Color(0.733005, 0.733005, 0.733005, 1)
+albedo_texture = ExtResource("1_n2msp")
+normal_enabled = true
+normal_texture = ExtResource("2_gs05u")

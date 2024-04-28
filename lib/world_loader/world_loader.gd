@@ -31,8 +31,12 @@ func _settings_loaded():
 func set_master_vol(vol):
 	AudioServer.set_bus_volume_db(0, vol)
 
+func _init():
+	RenderingServer.set_debug_generate_wireframes(true)
+
 func _ready():
 	Utilities.settings_loaded.connect(_settings_loaded)
+	Utilities.load_settings()
 	
 	# Fade in all sound if the game wasn't already muted
 	set_master_vol(linear_to_db(Global.settings.volume / 2.0))
@@ -54,3 +58,11 @@ func _ready():
 		$Music.play()
 	else:
 		print("Missing music nodes!")
+
+var debug_draw = false
+
+func _input(_event):
+	if Input.is_action_just_pressed("test_key"):
+		if debug_draw == false: get_viewport().debug_draw = Viewport.DEBUG_DRAW_WIREFRAME
+		else: get_viewport().debug_draw = Viewport.DEBUG_DRAW_DISABLED
+		debug_draw = !debug_draw
