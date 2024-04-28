@@ -37,11 +37,12 @@ func _ready():
 		Global.settings = JSON.parse_string(settings_json.get_as_text())
 		for setting in Global.SETTINGS:
 			if !setting in Global.settings:
-				print("missing " + setting)
-		print("[Settings] 'settings.json' exists, loading.")
+				Global.settings[setting] = Global.SETTINGS[setting]
+				print("[Settings] Missing setting '" + setting + "' in settings.json, adding it.")
+		print("[Settings] settings.json exists, loading.")
 		settings_json.close()
 	else:
-		print("[Settings] 'settings.json' doesn't exist, creating it.")
+		print("[Settings] settings.json doesn't exist, creating it.")
 		save_settings()
 		Global.settings = Global.SETTINGS
 	

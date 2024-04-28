@@ -13,7 +13,7 @@ func load_map(map_name):
 		map_name = custom_scene
 	
 	var path = "maps/" + str(map_name) + "/" + str(map_name) + ".tscn"
-	print("Loading '" + path + "'")
+	print("Loading '" + path + "'.")
 	target_path = path
 	ResourceLoader.load_threaded_request(target_path)
 

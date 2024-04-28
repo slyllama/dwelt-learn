@@ -73,11 +73,11 @@ func _ready():
 	
 	if FileAccess.file_exists("user://input_data.json"):
 		var inputs_json = FileAccess.open("user://input_data.json", FileAccess.READ)
-		print("[InputSettings] 'inputs.json' exists, loading.")
+		print("[InputSettings] inputs.json exists, loading.")
 		input_data = JSON.parse_string(inputs_json.get_as_text())
 		inputs_json.close()
 	else:
-		print("[InputSettings] 'inputs.json' doesn't exist, creating it.")
+		print("[InputSettings] inputs.json doesn't exist, creating it.")
 		save_input_data()
 	
 	apply_input_data()
