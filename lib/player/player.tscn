@@ -97,7 +97,8 @@ initial_velocity_min = 0.1
 initial_velocity_max = 0.2
 gravity = Vector3(0, 0, 0)
 attractor_interaction_enabled = false
-scale_min = 0.4
+scale_min = 0.2
+scale_max = 0.6
 color_ramp = ExtResource("6_k5syw")
 color_initial_ramp = SubResource("GradientTexture1D_ptkd8")
 

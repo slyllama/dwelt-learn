@@ -20,6 +20,9 @@ var position_locked = false
 var lock_pos = Vector3.ZERO
 var lock_cam_clamp = { "x_lower": 0.0, "x_upper": 0.0, "y_lower": 0.0, "y_upper": 0.0 }
 
+func set_model_scale(new_scale):
+	$Lemonade.scale = Vector3(new_scale, new_scale, new_scale)
+
 func open_radar():
 	radar_open = true
 	Radar.visible = true

@@ -1,0 +1,184 @@
+[gd_scene load_steps=24 format=3 uid="uid://dsf4aknq3seh2"]
+
+[ext_resource type="Script" path="res://maps/lattice/lattice.gd" id="1_hqs2c"]
+[ext_resource type="Texture2D" uid="uid://dtiix3a3h41dj" path="res://maps/lattice/objects/sky.png" id="2_f3fid"]
+[ext_resource type="PackedScene" uid="uid://bcp4um4sjbyx6" path="res://lib/player/player.tscn" id="3_0m0xl"]
+[ext_resource type="PackedScene" uid="uid://e0k8h1ytp7wi" path="res://lib/ui/hud/hud.tscn" id="4_gb0g0"]
+[ext_resource type="Texture2D" uid="uid://copestgn31um5" path="res://maps/test_room/objects/tex/cplace_floor_emit.png" id="7_7wsht"]
+[ext_resource type="Texture2D" uid="uid://baamnrm303pmf" path="res://maps/test_room/objects/tex/cplace_floor_norm.png" id="8_7svgo"]
+[ext_resource type="Texture2D" uid="uid://dinrdf02xeqaq" path="res://generic/tex/fade_ramp.tres" id="9_clv77"]
+[ext_resource type="PackedScene" uid="uid://561pfp20pcr" path="res://maps/lattice/objects/base_test.glb" id="9_shc3s"]
+[ext_resource type="Theme" uid="uid://dfe36tnn0c1ud" path="res://generic/debug_theme.tres" id="10_4jy4i"]
+[ext_resource type="Texture2D" uid="uid://d1fy6jygommc6" path="res://generic/tex/particles/mote.png" id="10_vpwvh"]
+[ext_resource type="ArrayMesh" uid="uid://c48ccnw3gi5h4" path="res://lib/objects/god_ray/god_ray_1.obj" id="11_vmy1k"]
+[ext_resource type="Material" uid="uid://cu31l43wp5syj" path="res://lib/objects/god_ray/mat_god_ray.tres" id="12_n2ekj"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dbpli"]
+panorama = ExtResource("2_f3fid")
+
+[sub_resource type="Sky" id="Sky_x6p1l"]
+sky_material = SubResource("PanoramaSkyMaterial_dbpli")
+
+[sub_resource type="Environment" id="Environment_r5o54"]
+background_mode = 2
+sky = SubResource("Sky_x6p1l")
+ambient_light_source = 2
+ambient_light_color = Color(0.22018, 0.285174, 0.341879, 1)
+ambient_light_energy = 1.4
+tonemap_mode = 2
+tonemap_exposure = 1.35
+fog_enabled = true
+fog_light_color = Color(0.161036, 0.104851, 0.0798084, 1)
+fog_light_energy = 0.0
+fog_density = 0.05
+fog_sky_affect = 0.5
+fog_height = 6.0
+fog_height_density = -0.3
+volumetric_fog_density = 0.07
+volumetric_fog_albedo = Color(0.510177, 0.465192, 0.415054, 1)
+volumetric_fog_length = 4.0
+adjustment_enabled = true
+adjustment_saturation = 1.12
+
+[sub_resource type="QuadMesh" id="QuadMesh_fhx46"]
+size = Vector2(100, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tbe5t"]
+albedo_color = Color(0.722256, 0.722256, 0.722256, 1)
+albedo_texture = ExtResource("7_7wsht")
+normal_enabled = true
+normal_scale = 2.0
+normal_texture = ExtResource("8_7svgo")
+uv1_scale = Vector3(20, 20, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fuk4o"]
+size = Vector3(50, 0.1, 50)
+
+[sub_resource type="Curve" id="Curve_lstkl"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_n7qc6"]
+curve = SubResource("Curve_lstkl")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6f558"]
+emission_shape = 3
+emission_box_extents = Vector3(5, 5, 5)
+initial_velocity_min = 0.05
+initial_velocity_max = 0.05
+gravity = Vector3(0, 0.01, 0)
+scale_min = 0.5
+scale_curve = SubResource("CurveTexture_n7qc6")
+color_ramp = ExtResource("9_clv77")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2dh08"]
+transparency = 1
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("10_vpwvh")
+backlight_enabled = true
+backlight = Color(1, 1, 1, 1)
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_udmxf"]
+material = SubResource("StandardMaterial3D_2dh08")
+size = Vector2(0.06, 0.06)
+orientation = 2
+
+[node name="TestRoom" type="Node3D"]
+script = ExtResource("1_hqs2c")
+
+[node name="Sky" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_r5o54")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.836111, -0.294729, 0.462659, -0.282708, 0.491261, 0.823856, -0.470101, -0.819632, 0.327427, 0, 6.09097, 0)
+light_color = Color(1, 0.819608, 0.639216, 1)
+light_energy = 2.0
+shadow_enabled = true
+directional_shadow_split_1 = 0.3
+directional_shadow_split_2 = 0.4
+directional_shadow_split_3 = 0.7
+directional_shadow_blend_splits = true
+directional_shadow_pancake_size = 10.0
+
+[node name="Player" parent="." instance=ExtResource("3_0m0xl")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0)
+
+[node name="HUD" parent="." instance=ExtResource("4_gb0g0")]
+
+[node name="Ambience" type="AudioStreamPlayer" parent="."]
+volume_db = -3.0
+autoplay = true
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+volume_db = -5.0
+
+[node name="Floor" type="StaticBody3D" parent="."]
+collision_layer = 3
+
+[node name="WideFloor" type="MeshInstance3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.1, 0)
+visible = false
+mesh = SubResource("QuadMesh_fhx46")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_tbe5t")
+
+[node name="Collision" type="CollisionShape3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+shape = SubResource("BoxShape3D_fuk4o")
+
+[node name="Motes" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.13003, -7)
+cast_shadow = 0
+amount = 20
+lifetime = 3.0
+preprocess = 5.0
+speed_scale = 0.5
+visibility_aabb = AABB(-6.5899, -2.60607, -5.6187, 13.1798, 5.21214, 11.2374)
+process_material = SubResource("ParticleProcessMaterial_6f558")
+draw_pass_1 = SubResource("PlaneMesh_udmxf")
+
+[node name="BaseTest" parent="." instance=ExtResource("9_shc3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13)
+
+[node name="Point" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 6.4, -4)
+light_color = Color(1, 0.882353, 0.776471, 1)
+light_energy = 20.0
+omni_range = 9.0
+omni_attenuation = 1.5
+
+[node name="RockLight" type="SpotLight3D" parent="."]
+transform = Transform3D(0.707531, 0.410337, -0.575346, -0.63289, 0.00571127, -0.774221, -0.314406, 0.911916, 0.263739, -8.50063, 1.44151, -14.9531)
+light_energy = 50.0
+spot_range = 80.0
+spot_angle = 40.0
+
+[node name="Buttons" type="CanvasLayer" parent="."]
+
+[node name="WarpButton" type="Button" parent="Buttons"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -192.0
+offset_top = -64.0
+offset_right = -40.0
+offset_bottom = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("10_4jy4i")
+text = "Warp to Test World"
+
+[node name="GodRay1" type="MeshInstance3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -14.5079, 4.80719, -17.0815)
+mesh = ExtResource("11_vmy1k")
+surface_material_override/0 = ExtResource("12_n2ekj")
+
+[connection signal="pressed" from="Buttons/WarpButton" to="." method="_on_warp_button_pressed"]

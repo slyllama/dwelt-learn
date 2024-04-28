@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://cw5r3efj0ygqx"]
+
+[ext_resource type="Texture2D" uid="uid://ddgi7bji2llop" path="res://maps/test_room/objects/kryptis_test/tex/kryptis_emit.png" id="1_6e044"]
+[ext_resource type="Texture2D" uid="uid://8id1cqd5qyio" path="res://maps/test_room/objects/kryptis_test/tex/kryptis_norm.png" id="2_a5cxx"]
+
+[resource]
+albedo_texture = ExtResource("1_6e044")
+metallic = 0.5
+roughness = 0.5
+normal_enabled = true
+normal_texture = ExtResource("2_a5cxx")
+backlight = Color(1, 1, 1, 1)
+uv1_scale = Vector3(36, 36, 36)

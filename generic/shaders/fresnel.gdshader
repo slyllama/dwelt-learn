@@ -1,4 +1,5 @@
 shader_type spatial;
+render_mode shadows_disabled;
 
 uniform sampler2D stars_texture;
 uniform float stars_scale = 5.0;

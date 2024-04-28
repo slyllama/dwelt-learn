@@ -20,6 +20,10 @@ boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/image="res://generic/tex/splash.png"
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="res://audio_bus.tres"
+
 [autoload]
 
 Global="*res://global.gd"

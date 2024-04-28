@@ -4,7 +4,7 @@ extends Node3D
 @export var camera_smoothing = 0.5
 @export var zoom_increment = 0.4
 @export var min_zoom_extent = 2.0
-@export var max_zoom_extent = 5.0
+@export var max_zoom_extent = 6.7
 
 @onready var Cast = get_node("CamArm/Camera/Cast")
 

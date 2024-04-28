@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=23 format=3 uid="uid://dtg3t52t3kle7"]
+[gd_resource type="VisualShader" load_steps=24 format=3 uid="uid://dtg3t52t3kle7"]
 
 [sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_l3aop"]
 default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]
@@ -6,8 +6,7 @@ op_type = 0
 operator = 2
 
 [sub_resource type="Gradient" id="Gradient_s2evw"]
-offsets = PackedFloat32Array(0, 0.697531)
-colors = PackedColorArray(0.540422, 0.540422, 0.540422, 1, 0.122252, 0.122252, 0.122252, 1)
+colors = PackedColorArray(0, 1, 0, 1, 1, 0, 0, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ftq2x"]
 noise_type = 3
@@ -47,9 +46,9 @@ operator = 2
 constant = Color(0.9, 0.9, 0.9, 1)
 
 [sub_resource type="VisualShaderNodeGlobalExpression" id="VisualShaderNodeGlobalExpression_m01vy"]
-size = Vector2(500, 300)
-expression = "uniform vec3 uv1_scale = vec3(1.0, 1.0, 1.0);
-uniform vec3 uv1_offset;
+size = Vector2(1080, 320)
+expression = "const vec3 uv1_scale = vec3(1.0, 1.0, 1.0);
+const vec3 uv1_offset = vec3(0.0, 0.0, 0.0);
 
 void vertex() {
 	UV=UV*uv1_scale.xy+uv1_offset.xy;
@@ -57,6 +56,9 @@ void vertex() {
 	MODELVIEW_MATRIX = MODELVIEW_MATRIX * mat4(vec4(length(MODEL_MATRIX[0].xyz), 0.0, 0.0, 0.0),vec4(0.0, length(MODEL_MATRIX[1].xyz), 0.0, 0.0), vec4(0.0, 0.0, length(MODEL_MATRIX[2].xyz), 0.0), vec4(0.0, 0.0, 0.0, 1.0));
 	MODELVIEW_NORMAL_MATRIX = mat3(MODELVIEW_MATRIX);
 }"
+
+[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_yan3n"]
+constant = 2.0
 
 [sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_nbmn1"]
 default_input_values = [0, 0.0, 1, 2.0]
@@ -105,8 +107,8 @@ uniform sampler2D tex_frg_11;
 
 
 // GlobalExpression:0
-	uniform vec3 uv1_scale = vec3(1.0, 1.0, 1.0);
-	uniform vec3 uv1_offset;
+	const vec3 uv1_scale = vec3(1.0, 1.0, 1.0);
+	const vec3 uv1_offset = vec3(0.0, 0.0, 0.0);
 	
 	void vertex() {
 		UV=UV*uv1_scale.xy+uv1_offset.xy;
@@ -177,25 +179,32 @@ void fragment() {
 	vec2 n_out10p0 = n_out7p0 * vec2(n_out11p0.xy);
 
 
+// FloatConstant:20
+	float n_out20p0 = 2.000000;
+
+
 // Output:0
 	ALBEDO = vec3(n_out19p0.xyz);
 	ALPHA = n_out10p0.x;
+	EMISSION = vec3(n_out20p0);
 	BACKLIGHT = vec3(n_out19p0.xyz);
 
 
 }
 "
+graph_offset = Vector2(-985.445, -234.227)
 modes/blend = 1
 modes/cull = 2
 flags/depth_prepass_alpha = true
 flags/shadows_disabled = true
+nodes/fragment/0/position = Vector2(860, 200)
 nodes/fragment/2/node = SubResource("VisualShaderNodeGlobalExpression_m01vy")
-nodes/fragment/2/position = Vector2(-580, 140)
-nodes/fragment/2/size = Vector2(500, 300)
+nodes/fragment/2/position = Vector2(-1160, 140)
+nodes/fragment/2/size = Vector2(1080, 320)
 nodes/fragment/2/input_ports = ""
 nodes/fragment/2/output_ports = ""
-nodes/fragment/2/expression = "uniform vec3 uv1_scale = vec3(1.0, 1.0, 1.0);
-uniform vec3 uv1_offset;
+nodes/fragment/2/expression = "const vec3 uv1_scale = vec3(1.0, 1.0, 1.0);
+const vec3 uv1_offset = vec3(0.0, 0.0, 0.0);
 
 void vertex() {
 	UV=UV*uv1_scale.xy+uv1_offset.xy;
@@ -204,31 +213,33 @@ void vertex() {
 	MODELVIEW_NORMAL_MATRIX = mat3(MODELVIEW_MATRIX);
 }"
 nodes/fragment/4/node = SubResource("VisualShaderNodeFloatOp_nbmn1")
-nodes/fragment/4/position = Vector2(-340, 480)
+nodes/fragment/4/position = Vector2(-500, 480)
 nodes/fragment/6/node = SubResource("VisualShaderNodeTexture_yxe81")
-nodes/fragment/6/position = Vector2(-580, 480)
+nodes/fragment/6/position = Vector2(-1160, 480)
 nodes/fragment/7/node = SubResource("VisualShaderNodeVectorOp_g3paj")
-nodes/fragment/7/position = Vector2(-140, 480)
+nodes/fragment/7/position = Vector2(-220, 480)
 nodes/fragment/8/node = SubResource("VisualShaderNodeFloatOp_b1y17")
-nodes/fragment/8/position = Vector2(-340, 720)
+nodes/fragment/8/position = Vector2(-500, 720)
 nodes/fragment/9/node = SubResource("VisualShaderNodeTexture_pfr80")
-nodes/fragment/9/position = Vector2(-580, 720)
+nodes/fragment/9/position = Vector2(-1160, 900)
 nodes/fragment/10/node = SubResource("VisualShaderNodeVectorOp_l3aop")
-nodes/fragment/10/position = Vector2(40, 480)
+nodes/fragment/10/position = Vector2(200, 480)
 nodes/fragment/11/node = SubResource("VisualShaderNodeTexture_o4d3c")
-nodes/fragment/11/position = Vector2(-580, 960)
+nodes/fragment/11/position = Vector2(-220, 740)
 nodes/fragment/12/node = SubResource("VisualShaderNodeInput_0m048")
-nodes/fragment/12/position = Vector2(-1180, 960)
+nodes/fragment/12/position = Vector2(-1800, 1320)
 nodes/fragment/13/node = SubResource("VisualShaderNodeVectorOp_lk0ca")
-nodes/fragment/13/position = Vector2(-860, 960)
+nodes/fragment/13/position = Vector2(-1160, 1320)
 nodes/fragment/14/node = SubResource("VisualShaderNodeVectorCompose_vli6j")
-nodes/fragment/14/position = Vector2(-1180, 1040)
+nodes/fragment/14/position = Vector2(-1800, 1480)
 nodes/fragment/16/node = SubResource("VisualShaderNodeVectorOp_y83ql")
-nodes/fragment/16/position = Vector2(-1020, 1040)
+nodes/fragment/16/position = Vector2(-1500, 1480)
 nodes/fragment/17/node = SubResource("VisualShaderNodeInput_u6rdo")
-nodes/fragment/17/position = Vector2(-1480, 1200)
+nodes/fragment/17/position = Vector2(-2260, 1720)
 nodes/fragment/18/node = SubResource("VisualShaderNodeFloatOp_paelp")
-nodes/fragment/18/position = Vector2(-1200, 1200)
+nodes/fragment/18/position = Vector2(-1800, 1720)
 nodes/fragment/19/node = SubResource("VisualShaderNodeColorConstant_qbk0s")
-nodes/fragment/19/position = Vector2(40, 380)
-nodes/fragment/connections = PackedInt32Array(6, 0, 4, 0, 4, 0, 7, 0, 9, 0, 8, 0, 8, 0, 7, 1, 7, 0, 10, 0, 10, 0, 0, 1, 11, 0, 10, 1, 12, 0, 13, 0, 13, 0, 11, 0, 14, 0, 16, 0, 17, 0, 18, 0, 18, 0, 16, 1, 16, 0, 13, 1, 19, 0, 0, 0, 19, 0, 0, 18)
+nodes/fragment/19/position = Vector2(220, 200)
+nodes/fragment/20/node = SubResource("VisualShaderNodeFloatConstant_yan3n")
+nodes/fragment/20/position = Vector2(220, 340)
+nodes/fragment/connections = PackedInt32Array(6, 0, 4, 0, 4, 0, 7, 0, 9, 0, 8, 0, 8, 0, 7, 1, 7, 0, 10, 0, 10, 0, 0, 1, 11, 0, 10, 1, 12, 0, 13, 0, 13, 0, 11, 0, 14, 0, 16, 0, 17, 0, 18, 0, 18, 0, 16, 1, 16, 0, 13, 1, 19, 0, 0, 0, 19, 0, 0, 18, 20, 0, 0, 5)

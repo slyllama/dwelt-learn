@@ -17,7 +17,7 @@ func _setting_changed(get_setting_id):
 		"volume": AudioServer.set_bus_volume_db(0, linear_to_db(Global.settings.volume))
 		"spot_shadows":
 			for child in get_all_children(get_tree().root):
-				if child is SpotLight3D:
+				if child is SpotLight3D or child is OmniLight3D:
 					child.shadow_enabled = Global.settings.spot_shadows
 		"vol_fog": $Sky.get_environment().volumetric_fog_enabled = Global.settings.vol_fog
 	save_settings()
