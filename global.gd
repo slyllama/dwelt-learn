@@ -24,7 +24,7 @@ var SETTINGS = {
 	"fancy_particles": true
 }
 var settings = SETTINGS.duplicate()
-var current_map = "lattice"
+var input_data_loaded = false
 
 ### Game states ###
 

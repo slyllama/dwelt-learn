@@ -69,16 +69,19 @@ func save_input_data(): # save input data to "inputs.json" file
 
 func _ready():
 	expand_input_data()
-	original_input_data = input_data.duplicate()
 	
-	if FileAccess.file_exists("user://input_data.json"):
-		var inputs_json = FileAccess.open("user://input_data.json", FileAccess.READ)
-		print("[InputSettings] inputs.json exists, loading.")
-		input_data = JSON.parse_string(inputs_json.get_as_text())
-		inputs_json.close()
-	else:
-		print("[InputSettings] inputs.json doesn't exist, creating it.")
-		save_input_data()
+	# Only do this once (from the loading screen)
+	if Global.input_data_loaded == false:
+		original_input_data = input_data.duplicate()
+		if FileAccess.file_exists("user://input_data.json"):
+			var inputs_json = FileAccess.open("user://input_data.json", FileAccess.READ)
+			print("[InputSettings] inputs.json exists, loading.")
+			input_data = JSON.parse_string(inputs_json.get_as_text())
+			inputs_json.close()
+		else:
+			print("[InputSettings] inputs.json doesn't exist, creating it.")
+			save_input_data()
+		Global.input_data_loaded = true
 	
 	apply_input_data()
 	Global.connect("left_keybind_select", refresh_input_data)
