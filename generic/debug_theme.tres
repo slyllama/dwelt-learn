@@ -1,6 +1,9 @@
-[gd_resource type="Theme" load_steps=6 format=3 uid="uid://dfe36tnn0c1ud"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://dfe36tnn0c1ud"]
 
 [ext_resource type="FontFile" uid="uid://b1v28gy50d86f" path="res://generic/fonts/red_hat.ttf" id="1_4xjey"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7bfjb"]
+bg_color = Color(0.26235, 0.353909, 0.254445, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_78c76"]
 content_margin_left = 5.0
@@ -32,6 +35,7 @@ bg_color = Color(0.63, 0.63, 0.63, 1)
 
 [resource]
 Button/fonts/font = ExtResource("1_4xjey")
+Button/styles/focus = SubResource("StyleBoxFlat_7bfjb")
 Button/styles/hover = SubResource("StyleBoxFlat_78c76")
 Button/styles/normal = SubResource("StyleBoxFlat_um4et")
 Label/font_sizes/font_size = 16

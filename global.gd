@@ -25,6 +25,7 @@ var SETTINGS = {
 }
 var settings = SETTINGS.duplicate()
 var input_data_loaded = false
+var original_input_data = []
 
 ### Game states ###
 

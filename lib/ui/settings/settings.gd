@@ -1,7 +1,6 @@
 extends CanvasLayer
 
 const InputLine = preload("res://lib/ui/settings/components/stin_input_keybind.tscn")
-var original_input_data = []
 var input_data = [
 	{"id": "move_forward", "name": "Move Forward" },
 	{"id": "move_back", "name": "Move Back" },
@@ -21,6 +20,10 @@ func _get_key(input_id):
 	elif str(action).split(" ")[1] == "button_index=5,":
 		return("Scroll Down")
 	else: return(str(action).split(" ")[2].lstrip("(").rstrip("),"))
+
+# Move the "reset" button to the bottom of the menu after reloading the menu
+func _reset_to_bottom():
+	$Control/Panel/VBox.move_child($Control/Panel/VBox/ResetButton, -1)
 
 func open(): visible = true
 func close(): visible = false
@@ -48,7 +51,8 @@ func refresh_input_data():
 		i.populate(input.name, input.id, _get_key(input.id))
 		input_containers.append(i)
 		$Control/Panel/VBox.add_child(i)
-
+	
+	_reset_to_bottom()
 	# To avoid instantly triggering that input just by setting it
 	# TODO: fix; this isn't that ideal...
 	await get_tree().create_timer(0.2).timeout
@@ -75,12 +79,25 @@ func _ready():
 	
 	# Only do this once (from the loading screen)
 	if Global.input_data_loaded == false:
-		original_input_data = input_data.duplicate()
+		Global.original_input_data = input_data.duplicate()
 		if FileAccess.file_exists("user://input_data.json"):
-			var inputs_json = FileAccess.open("user://input_data.json", FileAccess.READ)
-			print("[InputSettings] inputs.json exists, loading.")
-			input_data = JSON.parse_string(inputs_json.get_as_text())
-			inputs_json.close()
+			var inputs_file = FileAccess.open("user://input_data.json", FileAccess.READ)
+			var inputs_json = JSON.parse_string(inputs_file.get_as_text())
+			
+			# If an entry is missing, we will reset the keymap (for now)
+			var input_file_valid = true
+			for i in Global.original_input_data:
+				if !i in inputs_json:
+					input_file_valid = false
+			
+			if input_file_valid == true:
+				print("[InputSettings] valid inputs.json exists, loading.")
+				input_data = JSON.parse_string(inputs_json.get_as_text())
+				inputs_file.close()
+			else:
+				print("[InputSettings] inputs.json was corrupt, making a new one.")
+				save_input_data()
+			
 		else:
 			print("[InputSettings] inputs.json doesn't exist, creating it.")
 			save_input_data()
@@ -89,11 +106,9 @@ func _ready():
 	apply_input_data()
 	Global.connect("left_keybind_select", refresh_input_data)
 	refresh_input_data()
-	
-	$Control/Panel/VBox.move_child($Control/Panel/VBox/ResetButton, -1)
 
 func _on_button_pressed():
-	input_data = original_input_data.duplicate()
+	input_data = Global.original_input_data.duplicate()
 	apply_input_data()
 	refresh_input_data()
 	Global.settings = Global.SETTINGS.duplicate()
