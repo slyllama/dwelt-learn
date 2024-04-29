@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b74la2t16jrfm"]
+[gd_scene load_steps=24 format=3 uid="uid://b74la2t16jrfm"]
 
 [ext_resource type="Script" path="res://maps/min_test_room/min_test_room.gd" id="1_nt6pl"]
 [ext_resource type="Texture2D" uid="uid://c5duom5wl7px7" path="res://maps/test_room/sky.png" id="2_v0b3q"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://bhwleokhlvwgu" path="res://maps/test_room/sounds/splinter_trial.ogg" id="7_4bdgr"]
 [ext_resource type="Texture2D" uid="uid://copestgn31um5" path="res://maps/test_room/objects/tex/cplace_floor_emit.png" id="8_pk7uq"]
 [ext_resource type="Texture2D" uid="uid://baamnrm303pmf" path="res://maps/test_room/objects/tex/cplace_floor_norm.png" id="9_vsbi2"]
+[ext_resource type="PackedScene" uid="uid://cku34h747ky4i" path="res://maps/min_test_room/test_shapes.glb" id="12_la06l"]
 [ext_resource type="Texture2D" uid="uid://dinrdf02xeqaq" path="res://generic/tex/fade_ramp.tres" id="22_w6hxp"]
 [ext_resource type="Texture2D" uid="uid://d1fy6jygommc6" path="res://generic/tex/particles/mote.png" id="23_io1gf"]
 
@@ -103,7 +104,7 @@ directional_shadow_pancake_size = 10.0
 
 [node name="Player" parent="." instance=ExtResource("3_obgd6")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 2.53554)
 
 [node name="CollFloor" parent="." instance=ExtResource("4_42n7l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
@@ -142,3 +143,6 @@ speed_scale = 0.5
 visibility_aabb = AABB(-6.5899, -2.60607, -5.6187, 13.1798, 5.21214, 11.2374)
 process_material = SubResource("ParticleProcessMaterial_6f558")
 draw_pass_1 = SubResource("PlaneMesh_udmxf")
+
+[node name="test_shapes" parent="." instance=ExtResource("12_la06l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.28433, -2.21666)
