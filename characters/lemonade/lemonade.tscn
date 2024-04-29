@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://ch1n54go1oqrn"]
+[gd_scene load_steps=47 format=3 uid="uid://ch1n54go1oqrn"]
 
 [ext_resource type="PackedScene" uid="uid://dgcneqqcemexj" path="res://characters/lemonade/lemonade_import.glb" id="1_kxeob"]
 [ext_resource type="Material" uid="uid://il4332aimc5d" path="res://characters/lemonade/mat_orb_fresnel.tres" id="2_ge1a3"]
@@ -7,6 +7,8 @@
 [ext_resource type="ArrayMesh" uid="uid://cnojvik40qwcr" path="res://characters/lemonade/v_propel_cone/v_propel_cone.obj" id="5_pqa3t"]
 [ext_resource type="PackedScene" uid="uid://d3hod7745u2ev" path="res://characters/lemonade/radar/radar.tscn" id="6_yb4uw"]
 [ext_resource type="Texture2D" uid="uid://dgkrpn8nt8pvt" path="res://generic/tex/shader_tex/laser.jpeg" id="7_n1bo2"]
+[ext_resource type="Texture2D" uid="uid://dinrdf02xeqaq" path="res://generic/tex/fade_ramp.tres" id="8_4bunu"]
+[ext_resource type="Texture2D" uid="uid://d1fy6jygommc6" path="res://generic/tex/particles/mote.png" id="9_8j81u"]
 
 [sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_u55q6"]
 default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]
@@ -358,6 +360,38 @@ shader_parameter/Speed = 0.5
 shader_parameter/Scale = Vector2(1, 0.6)
 shader_parameter/Ramp = 1.5
 
+[sub_resource type="Curve" id="Curve_85ptv"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_n7qc6"]
+curve = SubResource("Curve_85ptv")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5lbie"]
+spread = 0.0
+initial_velocity_min = 0.2
+initial_velocity_max = 0.4
+gravity = Vector3(0, 0.01, 0)
+scale_min = 0.0
+scale_curve = SubResource("CurveTexture_n7qc6")
+color_ramp = ExtResource("8_4bunu")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2dh08"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("9_8j81u")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ru78x"]
+material = SubResource("StandardMaterial3D_2dh08")
+size = Vector2(0.05, 0.05)
+orientation = 2
+
 [node name="Lemonade" instance=ExtResource("1_kxeob")]
 
 [node name="Skeleton3D" parent="StyxArmature" index="0"]
@@ -447,6 +481,24 @@ transform = Transform3D(1, 8.9407e-08, -1.01328e-06, -1.49012e-07, 1, 2.38419e-0
 
 [node name="Tails_001" parent="StyxArmature/Skeleton3D/Tails_001" index="0"]
 surface_material_override/0 = ExtResource("4_k7hj8")
+
+[node name="Trail" type="GPUParticles3D" parent="StyxArmature/Skeleton3D/Tails_001" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, -1.22569e-13, 0, 1.22569e-13, 1, 2.31339, 0.515663, -4.35404)
+cast_shadow = 0
+emitting = false
+amount = 60
+visibility_aabb = AABB(-6.5899, -2.60607, -5.6187, 13.1798, 5.21214, 11.2374)
+process_material = SubResource("ParticleProcessMaterial_5lbie")
+draw_pass_1 = SubResource("PlaneMesh_ru78x")
+
+[node name="Trail2" type="GPUParticles3D" parent="StyxArmature/Skeleton3D/Tails_001" index="2"]
+transform = Transform3D(1, 5.68434e-14, 0, 0, 1, -1.79412e-13, 0, 1.79412e-13, 1, 2.3134, 0.515661, 4.44034)
+cast_shadow = 0
+emitting = false
+amount = 60
+visibility_aabb = AABB(-6.5899, -2.60607, -5.6187, 13.1798, 5.21214, 11.2374)
+process_material = SubResource("ParticleProcessMaterial_5lbie")
+draw_pass_1 = SubResource("PlaneMesh_ru78x")
 
 [node name="EngineRing" parent="StyxArmature/Skeleton3D" index="7"]
 transform = Transform3D(-4.19583e-07, 0.975778, -0.218762, -8.9407e-08, -0.218762, -0.975778, -1, -2.06754e-07, 2.08616e-07, 1.59831, 0.00324508, -1.25973e-07)

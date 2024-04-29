@@ -87,6 +87,11 @@ layout_mode = 2
 setting_id = "vol_fog"
 setting_title = "Volumetric Fog"
 
+[node name="Particles" parent="Control/Panel/VBox" instance=ExtResource("5_duwqu")]
+layout_mode = 2
+setting_id = "fancy_particles"
+setting_title = "Fancy Particles"
+
 [node name="VolumeControl" parent="Control/Panel/VBox" instance=ExtResource("6_y64kv")]
 layout_mode = 2
 setting_id = "volume"

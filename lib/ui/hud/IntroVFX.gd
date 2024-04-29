@@ -51,5 +51,5 @@ func _ready():
 	Global.dialogue_closed.connect(transition_vfx_out)
 	Global.dialogue_closed_early.connect(transition_vfx_out)
 	
-	Global.player_position_locked.connect(transition_subtle_vfx_in.unbind(4))
+	Global.player_position_locked.connect(transition_subtle_vfx_in.unbind(2))
 	Global.player_position_unlocked.connect(transition_vfx_out)

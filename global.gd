@@ -20,7 +20,8 @@ var SETTINGS = {
 	"camera_sens": 0.65,
 	"volume": 0.00,
 	"spot_shadows": true,
-	"vol_fog": false
+	"vol_fog": true,
+	"fancy_particles": true
 }
 var settings = SETTINGS.duplicate()
 var current_map = "lattice"

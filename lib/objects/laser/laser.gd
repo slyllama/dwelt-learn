@@ -25,7 +25,7 @@ func activate():
 	Global.emit_signal(
 		"player_position_locked",
 		$DockingPoint.global_position,
-		Vector2(global_rotation_degrees.y, 0.0), 40.0, 20.0)
+		Vector2(global_rotation_degrees.y, 0.0))
 	
 	await get_tree().create_timer(0.7).timeout
 	delay_complete = true

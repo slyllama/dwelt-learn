@@ -10,7 +10,7 @@ func toggle_door_test(door_test_state):
 
 func _ready():
 	super()
-	
+
 	$PuzzleDoor/Closed.set_collision_layer_value(2, true)
 	$LaserDetector.activated.connect(toggle_door_test.bind(true))
 	$LaserDetector.deactivated.connect(toggle_door_test.bind(false))

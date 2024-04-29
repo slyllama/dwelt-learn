@@ -141,6 +141,11 @@ offset_bottom = 18.5
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="MinRoomButton" type="Button" parent="LoadPanel/VBox"]
+layout_mode = 2
+theme = ExtResource("2_rl4eh")
+text = "Minimal Test Room"
+
 [node name="TestRoomButton" type="Button" parent="LoadPanel/VBox"]
 layout_mode = 2
 theme = ExtResource("2_rl4eh")
@@ -156,6 +161,7 @@ layout_mode = 2
 theme = ExtResource("2_rl4eh")
 text = "Quit"
 
+[connection signal="pressed" from="LoadPanel/VBox/MinRoomButton" to="." method="_map_button_pressed" binds= ["min_test_room"]]
 [connection signal="pressed" from="LoadPanel/VBox/TestRoomButton" to="." method="_map_button_pressed" binds= ["test_room"]]
 [connection signal="pressed" from="LoadPanel/VBox/ScrapperButton" to="." method="_map_button_pressed" binds= ["lattice"]]
 [connection signal="pressed" from="LoadPanel/VBox/Quit" to="." method="_map_button_pressed" binds= ["quit"]]

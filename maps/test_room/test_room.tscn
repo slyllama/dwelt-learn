@@ -1,10 +1,11 @@
-[gd_scene load_steps=74 format=3 uid="uid://bsetivexkdulh"]
+[gd_scene load_steps=75 format=3 uid="uid://bsetivexkdulh"]
 
 [ext_resource type="Script" path="res://maps/test_room/test_room.gd" id="1_2kdkw"]
 [ext_resource type="Material" uid="uid://4d6tcixxllut" path="res://maps/test_room/objects/rocket_claw/mat_rocket_claw.tres" id="1_q37l3"]
 [ext_resource type="ArrayMesh" uid="uid://cpdlvsk5u8brl" path="res://maps/test_room/objects/rocket_claw/rocket_claw.obj" id="2_7u0dt"]
 [ext_resource type="Texture2D" uid="uid://c5duom5wl7px7" path="res://maps/test_room/sky.png" id="2_g43wj"]
 [ext_resource type="PackedScene" uid="uid://bcp4um4sjbyx6" path="res://lib/player/player.tscn" id="4_1oai2"]
+[ext_resource type="PackedScene" uid="uid://7kut4vy4ymiw" path="res://maps/test_room/objects/coll_floor/coll_floor.tscn" id="4_oko1f"]
 [ext_resource type="PackedScene" uid="uid://e0k8h1ytp7wi" path="res://lib/ui/hud/hud.tscn" id="5_6lqxt"]
 [ext_resource type="Material" uid="uid://rrahcoqndg6d" path="res://maps/test_room/objects/floor/mat_floor.tres" id="6_fjpyi"]
 [ext_resource type="AudioStream" uid="uid://to210dowl6qk" path="res://maps/test_room/sounds/forest_ambience.ogg" id="6_i6drl"]
@@ -414,7 +415,10 @@ directional_shadow_pancake_size = 10.0
 
 [node name="Player" parent="." instance=ExtResource("4_1oai2")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.3, -3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.64393, 6.38356, 3.67822)
+
+[node name="CollFloor" parent="." instance=ExtResource("4_oko1f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 4, 3)
 
 [node name="HUD" parent="." instance=ExtResource("5_6lqxt")]
 

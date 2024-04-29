@@ -1,9 +1,19 @@
 extends CharacterBody3D
 
-@export var hover_height = 3.0
+## Base player speed.
+@export_category("Player Physics")
 @export var speed = 5.0
+@export var hover_height = 3.0
+## Player friction; not recommended to change this unless necessary.
 @export var speed_smoothing = 0.08
+## The amount, in degrees, that the player model will yaw in response to
+## rotation and strafing.
 @export var model_yaw_extent = 20.0
+## The rate at which the player will hover up when the 'glide' key is pressed.
+@export var glide_rate = 0.04
+## The maximum upward force the craft will generate while gliding before it
+## hovers there.
+@export var max_gliding_force = 0.5
 
 @onready var Radar = $Lemonade/StyxArmature/Skeleton3D/BaseRing/Radar
 @onready var RadarAnim = $Lemonade/StyxArmature/Skeleton3D/BaseRing/Radar/AnimationPlayer
@@ -14,6 +24,9 @@ var target_velocity = Vector3.ZERO
 var last_pivot_y_rotation = 0.0
 var rotation_diff = 0.0 # difference between pivot and model rotation - used for animation
 var radar_open = false
+
+var glide = false
+var glide_val = 0.0
 
 # Position locking variables
 var position_locked = false
@@ -35,33 +48,17 @@ func close_radar():
 	if radar_open == false: # skip if player has gone back into an interact area
 		Radar.visible = false
 
-# TODO: camera locking has been disabled for now
-# Apply and lock the position and camera rotation of the player, and limit the
-# extent to which the player can look around.
-# - get_lock_pos: the position in the world to snap to
-# - get_cam_facing: Vector2([x in degrees][y in degrees] to point toward
-# - get_clamp_extent_x: the extent, in degrees, to which the camera can look
-#   in the x direction
-# - get_clamp_extent_y: the extent, in degrees, to which the camera can look
-#   in the y direction
-
-func lock_position(get_lock_pos, get_cam_facing, get_clamp_extent_x, get_clamp_extent_y):
+func lock_position(get_lock_pos, get_cam_facing):
 	lock_pos = get_lock_pos
-	lock_cam_clamp.x_lower = get_cam_facing.x - get_clamp_extent_x
-	lock_cam_clamp.x_upper = get_cam_facing.x + get_clamp_extent_x
-	lock_cam_clamp.y_lower = get_cam_facing.y - get_clamp_extent_y
-	lock_cam_clamp.y_upper = get_cam_facing.y + get_clamp_extent_y
-	
+
 	position_locked = true
 	$FloatUpDown.pause()
 	$Lemonade/AnimationPlayer.play_backwards("Fly")
 	$Stars.amount_ratio = 0.3
-	
-	#%CamPivot.rotation_degrees.y = get_cam_facing.x
-	#%CamPivot.new_cam_y_rotation = get_cam_facing.x
+
 	$Lemonade.rotation_degrees.y = get_cam_facing.x
-	last_pivot_y_rotation = get_cam_facing.x
 	$Lemonade.rotation_degrees.z = 0.0
+	last_pivot_y_rotation = get_cam_facing.x
 
 func unlock_position():
 	if (Input.is_action_pressed("move_forward")
@@ -97,15 +94,21 @@ func _input(_event):
 	# No animations if the player's position is locked
 	if position_locked == true: return
 	
+	# TODO: this all should eventually be in its own module
 	if Input.is_action_just_pressed("move_forward"):
 		$CamPivot.fov_offset = 5.0 # shift the camera back a little when moving
 		$Stars.amount_ratio = 1.0
+		if Global.settings.fancy_particles == true:
+			$Lemonade/StyxArmature/Skeleton3D/Tails_001/Trail.emitting = true
+			$Lemonade/StyxArmature/Skeleton3D/Tails_001/Trail2.emitting = true
 		$SoundHandler.move()
 		$Lemonade/AnimationPlayer.play("Fly")
 		$Anime.anime_in()
 	if Input.is_action_just_released("move_forward"):
 		$CamPivot.fov_offset = 0.0
 		$Stars.amount_ratio = 0.3
+		$Lemonade/StyxArmature/Skeleton3D/Tails_001/Trail.emitting = false
+		$Lemonade/StyxArmature/Skeleton3D/Tails_001/Trail2.emitting = false
 		$SoundHandler.stop_moving()
 		$Lemonade/AnimationPlayer.play_backwards("Fly")
 		$Anime.anime_out()
@@ -118,6 +121,12 @@ func _input(_event):
 		$Stars.amount_ratio = 0.3
 		$SoundHandler.stop_moving()
 		$Lemonade/AnimationPlayer.play_backwards("Fly")
+	
+	if Input.is_action_just_pressed("glide"):
+		glide = true
+	if Input.is_action_just_released("glide"):
+		glide = false
+		glide_val = 0.0
 
 func _physics_process(_delta):
 	forward = 0
@@ -144,16 +153,24 @@ func _physics_process(_delta):
 		strafe_diff -= 10.0
 		side -= 0.5
 	
-	#target_velocity = (-forward * %CamPivot.global_transform.basis.z
-		#+ -side * %CamPivot.global_transform.basis.x)
 	
-	# New velocity calculations which ensures that having the camera facing
-	# down on the player doesn't slow it down
+	if glide == true:
+		if glide_val < max_gliding_force: glide_val += glide_rate
+		else: glide_val -= glide_rate
+	glide_val = clamp(glide_val, 0.0, max_gliding_force)
+
 	target_velocity = forward * Vector3.FORWARD * $CamPivot.global_transform.basis
 	target_velocity += side * Vector3.RIGHT * $CamPivot.global_transform.basis
 	target_velocity = target_velocity.normalized() * Vector3(-1, 0, 1) * speed
 	
+	# Uses the difference between the y-cast and the player's y-position to
+	# generate a damping value, y_diff
 	velocity = lerp(velocity, target_velocity, speed_smoothing)
+	velocity.y -= 0.98 / 1.5
+	var y_diff = Global.player_position.y - Global.raycast_y_point
+	if y_diff < hover_height: velocity.y += hover_height - y_diff
+	velocity.y += glide_val
+	
 	move_and_slide()
 	
 	if velocity.length() > 1.0:
@@ -170,6 +187,5 @@ func _physics_process(_delta):
 	$Lemonade.rotation_degrees.z = clampf(
 		$Lemonade.rotation_degrees.z, -model_yaw_extent, model_yaw_extent)
 
-	position.y = lerp(position.y, Global.raycast_y_point + hover_height, 0.07)
 	Global.player_position = position
 	update_debug()
