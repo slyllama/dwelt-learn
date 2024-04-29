@@ -78,6 +78,7 @@ func update_debug():
 	Global.debug_details_text += "\ndirection = " + Utilities.fstr(%CamPivot.rotation_degrees.y, 1)
 	Global.debug_details_text += "\u00B0 (" + str(snapped($Lemonade.rotation_degrees.y, 1))  + "\u00B0)"
 	Global.debug_details_text += "\nraycast_y_point = " + Utilities.fstr(Global.raycast_y_point)
+	Global.debug_details_text += "\nmouse_in_settings_menu = " + str(Global.mouse_in_settings_menu)
 	if Global.in_area_name != "":
 		Global.debug_details_text += ("\n[color=yellow]Over: '" + str(Global.in_area_name) + "'[/color]")
 

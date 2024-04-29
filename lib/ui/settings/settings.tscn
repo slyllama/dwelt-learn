@@ -1,9 +1,22 @@
-[gd_scene load_steps=7 format=3 uid="uid://bx5xwgdebscc6"]
+[gd_scene load_steps=11 format=3 uid="uid://bx5xwgdebscc6"]
 
 [ext_resource type="Script" path="res://lib/ui/settings/settings.gd" id="1_ttf36"]
 [ext_resource type="Theme" uid="uid://dfe36tnn0c1ud" path="res://generic/debug_theme.tres" id="2_r1d7p"]
+[ext_resource type="Shader" path="res://lib/ui/hud/intro_vfx.gdshader" id="2_yvakn"]
+[ext_resource type="Texture2D" uid="uid://dgkrpn8nt8pvt" path="res://generic/tex/shader_tex/laser.jpeg" id="3_twtho"]
+[ext_resource type="Texture2D" uid="uid://b5nufueq16vw0" path="res://generic/tex/shader_tex/wobble_noise.tres" id="4_1jhny"]
 [ext_resource type="PackedScene" uid="uid://bg5bulncs2ejf" path="res://lib/ui/settings/components/stin_input_toggle.tscn" id="5_duwqu"]
 [ext_resource type="PackedScene" uid="uid://d4avw33snp7bc" path="res://lib/ui/settings/components/stin_input_slider.tscn" id="6_y64kv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0vvej"]
+shader = ExtResource("2_yvakn")
+shader_parameter/base_color = Color(0, 0, 0, 1)
+shader_parameter/size = 0.9
+shader_parameter/exponent = 2.0
+shader_parameter/darkness = 0.5
+shader_parameter/overall_alpha = 0.6
+shader_parameter/smoke_effect = ExtResource("3_twtho")
+shader_parameter/wobble_pattern = ExtResource("4_1jhny")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yc4ml"]
 bg_color = Color(0.0196078, 0.0196078, 0.0196078, 0)
@@ -22,12 +35,13 @@ layer = 4
 script = ExtResource("1_ttf36")
 
 [node name="BG" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_0vvej")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0)
+color = Color(0, 0, 0, 1)
 
 [node name="Control" type="ColorRect" parent="."]
 anchors_preset = 8
@@ -139,6 +153,7 @@ step = 0.05
 [node name="ResetButton" type="Button" parent="Control/Panel/VBox"]
 layout_mode = 2
 size_flags_vertical = 10
+mouse_filter = 1
 theme = ExtResource("2_r1d7p")
 text = "Reset"
 
@@ -153,9 +168,12 @@ offset_right = -20.0
 offset_bottom = 44.0
 grow_horizontal = 0
 size_flags_vertical = 10
+mouse_filter = 1
 theme = ExtResource("2_r1d7p")
 text = "X"
 
+[connection signal="mouse_entered" from="Control" to="." method="_on_control_mouse_entered"]
+[connection signal="mouse_exited" from="Control" to="." method="_on_control_mouse_exited"]
 [connection signal="mouse_entered" from="Control/Panel/VBox/ResetButton" to="." method="_mouseover"]
 [connection signal="pressed" from="Control/Panel/VBox/ResetButton" to="." method="_on_button_pressed"]
 [connection signal="mouse_entered" from="Control/CloseButton" to="." method="_mouseover"]

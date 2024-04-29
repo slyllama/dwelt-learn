@@ -19,6 +19,7 @@ text = "Label"
 [node name="Button" type="Button" parent="."]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+mouse_filter = 1
 theme = ExtResource("2_pjspn")
 text = "Button"
 
@@ -26,6 +27,7 @@ text = "Button"
 visible = false
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
+mouse_filter = 1
 theme = ExtResource("2_pjspn")
 theme_override_fonts/font = ExtResource("3_esj67")
 theme_override_font_sizes/font_size = 14

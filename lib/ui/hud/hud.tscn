@@ -131,35 +131,6 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_n4mbk")
 
-[node name="TopMenu" type="HBoxContainer" parent="."]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -16.0
-offset_top = 46.0
-offset_right = 16.0
-offset_bottom = 78.0
-grow_horizontal = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="DebugButton" type="TextureButton" parent="TopMenu"]
-layout_mode = 2
-focus_mode = 0
-texture_normal = ExtResource("12_ivaak")
-texture_hover = ExtResource("12_u62tc")
-
-[node name="Pad" type="ColorRect" parent="TopMenu"]
-custom_minimum_size = Vector2(16, 0)
-layout_mode = 2
-color = Color(1, 1, 1, 0)
-
-[node name="SettingsButton" type="TextureButton" parent="TopMenu"]
-layout_mode = 2
-focus_mode = 0
-texture_normal = ExtResource("14_ypr06")
-texture_hover = ExtResource("15_mmhdw")
-
 [node name="LoadBlack" type="TextureRect" parent="."]
 visible = false
 anchors_preset = 15
@@ -191,7 +162,39 @@ stream = ExtResource("15_3x38c")
 [node name="Settings" parent="." instance=ExtResource("19_c42st")]
 visible = false
 
-[connection signal="mouse_entered" from="TopMenu/DebugButton" to="." method="_mouseover"]
-[connection signal="pressed" from="TopMenu/DebugButton" to="." method="_on_debug_button_pressed"]
-[connection signal="mouse_entered" from="TopMenu/SettingsButton" to="." method="_mouseover"]
-[connection signal="pressed" from="TopMenu/SettingsButton" to="." method="_on_settings_button_pressed"]
+[node name="TopMenuBase" type="CanvasLayer" parent="."]
+layer = 5
+
+[node name="TopMenu" type="HBoxContainer" parent="TopMenuBase"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -44.0
+offset_top = 46.0
+offset_right = 44.0
+offset_bottom = 78.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="DebugButton" type="TextureButton" parent="TopMenuBase/TopMenu"]
+layout_mode = 2
+focus_mode = 0
+texture_normal = ExtResource("12_ivaak")
+texture_hover = ExtResource("12_u62tc")
+
+[node name="Pad" type="ColorRect" parent="TopMenuBase/TopMenu"]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="SettingsButton" type="TextureButton" parent="TopMenuBase/TopMenu"]
+layout_mode = 2
+focus_mode = 0
+texture_normal = ExtResource("14_ypr06")
+texture_hover = ExtResource("15_mmhdw")
+
+[connection signal="mouse_entered" from="TopMenuBase/TopMenu/DebugButton" to="." method="_mouseover"]
+[connection signal="pressed" from="TopMenuBase/TopMenu/DebugButton" to="." method="_on_debug_button_pressed"]
+[connection signal="mouse_entered" from="TopMenuBase/TopMenu/SettingsButton" to="." method="_mouseover"]
+[connection signal="pressed" from="TopMenuBase/TopMenu/SettingsButton" to="." method="_on_settings_button_pressed"]

@@ -38,7 +38,8 @@ func _on_debug_button_pressed():
 	Global.debug_toggled.emit()
 
 func _on_settings_button_pressed():
-	$Settings.open()
+	if $Settings.visible == false: $Settings.open()
+	else: $Settings.close()
 
 func _mouseover():
 	Global.button_hover.emit()

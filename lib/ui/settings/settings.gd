@@ -102,3 +102,6 @@ func _on_button_pressed():
 
 func _mouseover():
 	Global.button_hover.emit()
+
+func _on_control_mouse_entered(): Global.mouse_in_settings_menu = true
+func _on_control_mouse_exited(): Global.mouse_in_settings_menu = false

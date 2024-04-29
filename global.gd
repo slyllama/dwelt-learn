@@ -42,6 +42,7 @@ var in_action = false
 var in_area_name = ""
 var in_keybind_select = false
 var looking_at = null
+var mouse_in_settings_menu = false
 
 ### World states ###
 var player_position = Vector2.ZERO
