@@ -1,9 +1,6 @@
 extends CanvasLayer
 # Loading screen
 
-@export var scene_override = false
-@export var custom_scene = "lattice"
-
 var target_path: String
 var status: int
 var progress: Array[float] # ResourceLoader will put its status details here
@@ -12,9 +9,14 @@ func _make_path(map_name):
 	return("maps/" + str(map_name) + "/" + str(map_name) + ".tscn")
 
 func load_map(map_name):
-	if scene_override == true:
-		map_name = custom_scene
+	if !FileAccess.file_exists(_make_path(map_name)):
+		$ErrorText.text = Utilities.cntr("Error: couldn't load map '" + map_name + "'.")
+		$ErrorText.visible = true
+		return
 	
+	$LoadBlack/ProgressBar.visible = true
+	$GlowIcon.visible = true
+	$LoadPanel.visible = false
 	var path = _make_path(map_name)
 	print("Loading '" + path + "'.")
 	target_path = path
@@ -26,15 +28,10 @@ func _ready():
 		if OS.get_name() != "macOS":
 			DisplayServer.cursor_set_custom_image(
 				load("res://generic/tex/cursor_2x.png"))
-	
 	Utilities.load_settings()
-	
-	if FileAccess.file_exists(_make_path(Global.current_map)):
-		load_map(Global.current_map)
-	else:
-		$ErrorText.text = Utilities.cntr("Error: couldn't load map '" + Global.current_map + "'.")
-		$ErrorText.visible = true
-		$LoadBlack/ProgressBar.visible = false
+	$LoadBlack/ProgressBar.visible = false
+	$GlowIcon.visible = false
+	$LoadPanel/VBox/TestRoomButton.grab_focus()
 
 func _process(_delta):
 	if target_path == null or target_path == "": return
@@ -49,3 +46,6 @@ func _process(_delta):
 		ResourceLoader.THREAD_LOAD_LOADED:
 			get_tree().change_scene_to_packed(
 				ResourceLoader.load_threaded_get(target_path))
+
+func _map_button_pressed(map_name = ""):
+	load_map(map_name)

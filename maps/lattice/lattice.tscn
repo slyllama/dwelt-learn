@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dsf4aknq3seh2"]
+[gd_scene load_steps=26 format=3 uid="uid://dsf4aknq3seh2"]
 
 [ext_resource type="Script" path="res://maps/lattice/lattice.gd" id="1_hqs2c"]
 [ext_resource type="Texture2D" uid="uid://dtiix3a3h41dj" path="res://maps/lattice/objects/sky.png" id="2_f3fid"]
@@ -13,6 +13,7 @@
 [ext_resource type="ArrayMesh" uid="uid://c48ccnw3gi5h4" path="res://lib/objects/god_ray/god_ray_1.obj" id="11_vmy1k"]
 [ext_resource type="Material" uid="uid://cu31l43wp5syj" path="res://lib/objects/god_ray/mat_god_ray.tres" id="12_n2ekj"]
 [ext_resource type="PackedScene" uid="uid://dbtpfif0ow8be" path="res://maps/lattice/objects/rocksculpt/rocksculpt.glb" id="13_uuy1x"]
+[ext_resource type="PackedScene" uid="uid://i1jp4klishr3" path="res://lib/dialogue/dialogue.tscn" id="14_cieqj"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dbpli"]
 panorama = ExtResource("2_f3fid")
@@ -179,6 +180,7 @@ text = "Warp to Test World"
 
 [node name="GodRay1" type="MeshInstance3D" parent="."]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -14.5079, 4.80719, -17.0815)
+cast_shadow = 0
 mesh = ExtResource("11_vmy1k")
 surface_material_override/0 = ExtResource("12_n2ekj")
 
@@ -190,5 +192,10 @@ transform = Transform3D(1.07303, -0.364494, 0.39466, 0.385965, 1.13624, 0, -0.37
 
 [node name="RockSculpt2" parent="." instance=ExtResource("13_uuy1x")]
 transform = Transform3D(0.94857, 0.276447, -0.154245, -0.279795, 0.96006, 0, 0.148084, 0.043157, 0.988033, -5.3401, 7.27215, -21.1656)
+
+[node name="KryptisDialogue" parent="." instance=ExtResource("14_cieqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, -11.329)
+TYPE = "test_dialogue"
+dialogue_data = Array[String](["Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.", "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."])
 
 [connection signal="pressed" from="Buttons/WarpButton" to="." method="_on_warp_button_pressed"]

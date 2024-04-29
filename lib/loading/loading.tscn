@@ -1,8 +1,34 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4cboiwskjvvh"]
+[gd_scene load_steps=8 format=3 uid="uid://c4cboiwskjvvh"]
 
 [ext_resource type="Script" path="res://lib/loading/loading.gd" id="1_dy6oh"]
 [ext_resource type="Texture2D" uid="uid://e7nlf6qmftkd" path="res://generic/tex/splash.png" id="2_7s2de"]
 [ext_resource type="Theme" uid="uid://dfe36tnn0c1ud" path="res://generic/debug_theme.tres" id="2_rl4eh"]
+[ext_resource type="Texture2D" uid="uid://c1ens2tjsu5wf" path="res://lib/loading/loading_icon.png" id="4_o48hx"]
+
+[sub_resource type="Animation" id="Animation_xdgig"]
+resource_name = "glow"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.352941), Color(1, 1, 1, 1), Color(1, 1, 1, 0.352941)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d6y62"]
+_data = {
+"glow": SubResource("Animation_xdgig")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a36sv"]
+bg_color = Color(0, 0, 0, 1)
 
 [node name="Loading" type="CanvasLayer"]
 script = ExtResource("1_dy6oh")
@@ -50,3 +76,58 @@ theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
 text = "[center]Error.[/center]"
 fit_content = true
+
+[node name="GlowIcon" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -103.0
+offset_top = 230.0
+offset_right = 103.0
+offset_bottom = 384.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_o48hx")
+
+[node name="Anim" type="AnimationPlayer" parent="GlowIcon"]
+libraries = {
+"": SubResource("AnimationLibrary_d6y62")
+}
+autoplay = "glow"
+
+[node name="LoadPanel" type="Panel" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 591.0
+offset_bottom = 628.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_a36sv")
+
+[node name="VBox" type="HBoxContainer" parent="LoadPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -118.0
+offset_top = -12.0
+offset_right = 118.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TestRoomButton" type="Button" parent="LoadPanel/VBox"]
+layout_mode = 2
+theme = ExtResource("2_rl4eh")
+text = "Test Room"
+
+[node name="ScrapperButton" type="Button" parent="LoadPanel/VBox"]
+layout_mode = 2
+theme = ExtResource("2_rl4eh")
+text = "Scrapper Hideout"
+
+[connection signal="pressed" from="LoadPanel/VBox/TestRoomButton" to="." method="_map_button_pressed" binds= ["test_room"]]
+[connection signal="pressed" from="LoadPanel/VBox/ScrapperButton" to="." method="_map_button_pressed" binds= ["lattice"]]
