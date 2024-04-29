@@ -37,3 +37,6 @@ func _process(_delta):
 			$Render.text += "\nRender buffer: " + str(int(mem / 1000000)) + "MB"
 			i = 0
 	i += 1
+
+func _on_map_selection_pressed():
+	get_tree().change_scene_to_file("res://lib/loading/loading.tscn")

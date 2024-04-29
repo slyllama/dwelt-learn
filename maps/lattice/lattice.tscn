@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dsf4aknq3seh2"]
+[gd_scene load_steps=25 format=3 uid="uid://dsf4aknq3seh2"]
 
 [ext_resource type="Script" path="res://maps/lattice/lattice.gd" id="1_hqs2c"]
 [ext_resource type="Texture2D" uid="uid://dtiix3a3h41dj" path="res://maps/lattice/objects/sky.png" id="2_f3fid"]
@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://baamnrm303pmf" path="res://maps/test_room/objects/tex/cplace_floor_norm.png" id="8_7svgo"]
 [ext_resource type="Texture2D" uid="uid://dinrdf02xeqaq" path="res://generic/tex/fade_ramp.tres" id="9_clv77"]
 [ext_resource type="PackedScene" uid="uid://561pfp20pcr" path="res://maps/lattice/objects/base_test.glb" id="9_shc3s"]
-[ext_resource type="Theme" uid="uid://dfe36tnn0c1ud" path="res://generic/debug_theme.tres" id="10_4jy4i"]
 [ext_resource type="Texture2D" uid="uid://d1fy6jygommc6" path="res://generic/tex/particles/mote.png" id="10_vpwvh"]
 [ext_resource type="ArrayMesh" uid="uid://c48ccnw3gi5h4" path="res://lib/objects/god_ray/god_ray_1.obj" id="11_vmy1k"]
 [ext_resource type="Material" uid="uid://cu31l43wp5syj" path="res://lib/objects/god_ray/mat_god_ray.tres" id="12_n2ekj"]
@@ -161,23 +160,6 @@ light_energy = 50.0
 spot_range = 80.0
 spot_angle = 40.0
 
-[node name="Buttons" type="CanvasLayer" parent="."]
-
-[node name="WarpButton" type="Button" parent="Buttons"]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -192.0
-offset_top = -64.0
-offset_right = -40.0
-offset_bottom = -40.0
-grow_horizontal = 0
-grow_vertical = 0
-theme = ExtResource("10_4jy4i")
-text = "Warp to Test World"
-
 [node name="GodRay1" type="MeshInstance3D" parent="."]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -14.5079, 4.80719, -17.0815)
 cast_shadow = 0
@@ -197,5 +179,3 @@ transform = Transform3D(0.94857, 0.276447, -0.154245, -0.279795, 0.96006, 0, 0.1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, -11.329)
 TYPE = "test_dialogue"
 dialogue_data = Array[String](["Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.", "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."])
-
-[connection signal="pressed" from="Buttons/WarpButton" to="." method="_on_warp_button_pressed"]

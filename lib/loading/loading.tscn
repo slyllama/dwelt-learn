@@ -1,9 +1,22 @@
-[gd_scene load_steps=8 format=3 uid="uid://c4cboiwskjvvh"]
+[gd_scene load_steps=12 format=3 uid="uid://c4cboiwskjvvh"]
 
 [ext_resource type="Script" path="res://lib/loading/loading.gd" id="1_dy6oh"]
 [ext_resource type="Texture2D" uid="uid://e7nlf6qmftkd" path="res://generic/tex/splash.png" id="2_7s2de"]
 [ext_resource type="Theme" uid="uid://dfe36tnn0c1ud" path="res://generic/debug_theme.tres" id="2_rl4eh"]
+[ext_resource type="Shader" path="res://lib/ui/hud/intro_vfx.gdshader" id="3_uji0r"]
+[ext_resource type="Texture2D" uid="uid://dgkrpn8nt8pvt" path="res://generic/tex/shader_tex/laser.jpeg" id="4_m1mfr"]
 [ext_resource type="Texture2D" uid="uid://c1ens2tjsu5wf" path="res://lib/loading/loading_icon.png" id="4_o48hx"]
+[ext_resource type="Texture2D" uid="uid://b5nufueq16vw0" path="res://generic/tex/shader_tex/wobble_noise.tres" id="5_rrc76"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2bpxw"]
+shader = ExtResource("3_uji0r")
+shader_parameter/base_color = Color(0.0745098, 0.129412, 0, 1)
+shader_parameter/size = 0.7
+shader_parameter/exponent = 3.0
+shader_parameter/darkness = 0.25
+shader_parameter/overall_alpha = 1.0
+shader_parameter/smoke_effect = ExtResource("4_m1mfr")
+shader_parameter/wobble_pattern = ExtResource("5_rrc76")
 
 [sub_resource type="Animation" id="Animation_xdgig"]
 resource_name = "glow"
@@ -28,7 +41,7 @@ _data = {
 }
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a36sv"]
-bg_color = Color(0, 0, 0, 1)
+bg_color = Color(0, 0, 0, 0)
 
 [node name="Loading" type="CanvasLayer"]
 script = ExtResource("1_dy6oh")
@@ -40,6 +53,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_7s2de")
+
+[node name="BG" type="ColorRect" parent="LoadBlack"]
+material = SubResource("ShaderMaterial_2bpxw")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="ProgressBar" type="ProgressBar" parent="LoadBlack"]
 layout_mode = 1
@@ -101,7 +123,7 @@ autoplay = "glow"
 anchors_preset = 10
 anchor_right = 1.0
 offset_top = 591.0
-offset_bottom = 628.0
+offset_bottom = 648.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_a36sv")
 
@@ -112,10 +134,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -118.0
-offset_top = -12.0
-offset_right = 118.0
-offset_bottom = 12.0
+offset_left = -141.0
+offset_top = -18.5
+offset_right = 142.0
+offset_bottom = 18.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -129,5 +151,11 @@ layout_mode = 2
 theme = ExtResource("2_rl4eh")
 text = "Scrapper Hideout"
 
+[node name="Quit" type="Button" parent="LoadPanel/VBox"]
+layout_mode = 2
+theme = ExtResource("2_rl4eh")
+text = "Quit"
+
 [connection signal="pressed" from="LoadPanel/VBox/TestRoomButton" to="." method="_map_button_pressed" binds= ["test_room"]]
 [connection signal="pressed" from="LoadPanel/VBox/ScrapperButton" to="." method="_map_button_pressed" binds= ["lattice"]]
+[connection signal="pressed" from="LoadPanel/VBox/Quit" to="." method="_map_button_pressed" binds= ["quit"]]

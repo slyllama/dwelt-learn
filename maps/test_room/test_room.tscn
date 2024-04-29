@@ -52,15 +52,15 @@ ambient_light_color = Color(0.22018, 0.285174, 0.341879, 1)
 ambient_light_energy = 1.4
 tonemap_mode = 2
 tonemap_exposure = 1.35
-fog_enabled = true
 fog_light_color = Color(0.161036, 0.104851, 0.0798084, 1)
 fog_light_energy = 0.0
 fog_density = 0.035
 fog_sky_affect = 0.5
 fog_height_density = -0.1
+volumetric_fog_enabled = true
 volumetric_fog_density = 0.07
 volumetric_fog_albedo = Color(0.510177, 0.465192, 0.415054, 1)
-volumetric_fog_length = 7.0
+volumetric_fog_length = 4.5
 
 [sub_resource type="QuadMesh" id="QuadMesh_fhx46"]
 size = Vector2(100, 100)

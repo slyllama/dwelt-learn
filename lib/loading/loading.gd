@@ -48,4 +48,7 @@ func _process(_delta):
 				ResourceLoader.load_threaded_get(target_path))
 
 func _map_button_pressed(map_name = ""):
+	if map_name == "quit":
+		get_tree().quit()
+		return
 	load_map(map_name)

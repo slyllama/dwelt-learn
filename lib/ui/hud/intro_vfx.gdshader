@@ -3,9 +3,10 @@ shader_type canvas_item;
 uniform sampler2D SCREEN_TEXTURE: hint_screen_texture, filter_linear_mipmap;
 uniform sampler2D smoke_effect: filter_nearest, repeat_enable;
 uniform sampler2D wobble_pattern: filter_nearest, repeat_enable;
+uniform vec3 base_color: source_color = vec3(0.0, 0.0, 0.0);
 
 uniform float size: hint_range(0.0, 1.0) = 0.5;
-uniform float exponent: hint_range(0.0, 1.0) = 1.0;
+uniform float exponent: hint_range(0.0, 5.0) = 1.0;
 uniform float darkness: hint_range(0.0, 1.0) = 0.5;
 uniform float overall_alpha: hint_range(0.0, 1.0) = 1.0;
 
@@ -21,5 +22,5 @@ void fragment() {
 	
 	smoke = smoke * vec3(mask);
 	smoke = smoke + vec3(mask) * darkness;
-	COLOR.rgba = vec4(0.0, 0.0, 0.0, pow(smoke.r, exponent) * overall_alpha);
+	COLOR.rgba = vec4(base_color, pow(smoke.r, exponent) * overall_alpha);
 }

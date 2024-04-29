@@ -62,3 +62,20 @@ fit_content = true
 
 [node name="Settings" parent="." instance=ExtResource("4_vgpn7")]
 visible = false
+
+[node name="MapSelection" type="Button" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -158.0
+offset_top = -71.0
+offset_right = -40.0
+offset_bottom = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("3_480m7")
+text = "Map Selection"
+
+[connection signal="pressed" from="MapSelection" to="." method="_on_map_selection_pressed"]
