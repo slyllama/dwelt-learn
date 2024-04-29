@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://c4cboiwskjvvh"]
+[gd_scene load_steps=18 format=3 uid="uid://c4cboiwskjvvh"]
 
 [ext_resource type="Script" path="res://lib/loading/loading.gd" id="1_dy6oh"]
 [ext_resource type="Texture2D" uid="uid://e7nlf6qmftkd" path="res://generic/tex/splash.png" id="2_7s2de"]
+[ext_resource type="PackedScene" uid="uid://bx5xwgdebscc6" path="res://lib/ui/settings/settings.tscn" id="2_k2j3d"]
 [ext_resource type="Theme" uid="uid://dfe36tnn0c1ud" path="res://generic/debug_theme.tres" id="2_rl4eh"]
 [ext_resource type="Shader" path="res://lib/ui/hud/intro_vfx.gdshader" id="3_uji0r"]
 [ext_resource type="Texture2D" uid="uid://dgkrpn8nt8pvt" path="res://generic/tex/shader_tex/laser.jpeg" id="4_m1mfr"]
@@ -10,6 +11,8 @@
 [ext_resource type="AudioStream" uid="uid://drae5tgg8hj47" path="res://generic/hover.ogg" id="8_ldimj"]
 [ext_resource type="AudioStream" uid="uid://bdpc6i58m5r8h" path="res://lib/loading/afterlife.ogg" id="9_kfamo"]
 [ext_resource type="PackedScene" uid="uid://dq3aqaliycowy" path="res://lib/ui/debug_pane/debug_pane.tscn" id="10_ahus4"]
+[ext_resource type="Texture2D" uid="uid://be4uc5abqc2xp" path="res://lib/ui/tex/icon_settings.png" id="11_34oh0"]
+[ext_resource type="Texture2D" uid="uid://bwi1wt5g52tle" path="res://lib/ui/tex/icon_settings_hover.png" id="12_strr3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2bpxw"]
 shader = ExtResource("3_uji0r")
@@ -48,6 +51,9 @@ bg_color = Color(0, 0, 0, 0)
 
 [node name="Loading" type="CanvasLayer"]
 script = ExtResource("1_dy6oh")
+
+[node name="Settings" parent="." instance=ExtResource("2_k2j3d")]
+visible = false
 
 [node name="LoadBlack" type="TextureRect" parent="."]
 anchors_preset = 15
@@ -172,6 +178,24 @@ stream = ExtResource("9_kfamo")
 
 [node name="DebugPane" parent="." instance=ExtResource("10_ahus4")]
 
+[node name="TopMenu" type="HBoxContainer" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -16.0
+offset_top = 46.0
+offset_right = 16.0
+offset_bottom = 78.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="SettingsButton" type="TextureButton" parent="TopMenu"]
+layout_mode = 2
+focus_mode = 0
+texture_normal = ExtResource("11_34oh0")
+texture_hover = ExtResource("12_strr3")
+
 [connection signal="mouse_entered" from="LoadPanel/VBox/MinRoomButton" to="." method="_hover"]
 [connection signal="pressed" from="LoadPanel/VBox/MinRoomButton" to="." method="_map_button_pressed" binds= ["min_test_room"]]
 [connection signal="mouse_entered" from="LoadPanel/VBox/TestRoomButton" to="." method="_hover"]
@@ -180,3 +204,4 @@ stream = ExtResource("9_kfamo")
 [connection signal="pressed" from="LoadPanel/VBox/ScrapperButton" to="." method="_map_button_pressed" binds= ["lattice"]]
 [connection signal="mouse_entered" from="LoadPanel/VBox/Quit" to="." method="_hover"]
 [connection signal="pressed" from="LoadPanel/VBox/Quit" to="." method="_map_button_pressed" binds= ["quit"]]
+[connection signal="pressed" from="TopMenu/SettingsButton" to="." method="_on_settings_button_pressed"]

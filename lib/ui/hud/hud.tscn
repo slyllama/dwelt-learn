@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://e0k8h1ytp7wi"]
+[gd_scene load_steps=24 format=3 uid="uid://e0k8h1ytp7wi"]
 
 [ext_resource type="PackedScene" uid="uid://dq3aqaliycowy" path="res://lib/ui/debug_pane/debug_pane.tscn" id="1_gv0re"]
 [ext_resource type="Script" path="res://lib/ui/hud/hud.gd" id="1_i45xt"]
@@ -15,7 +15,10 @@
 [ext_resource type="Texture2D" uid="uid://dihk47hb2acqo" path="res://lib/ui/tex/icon_tool.png" id="12_ivaak"]
 [ext_resource type="Texture2D" uid="uid://cpnauxmpvkcdb" path="res://lib/ui/tex/icon_tool_hover.png" id="12_u62tc"]
 [ext_resource type="Texture2D" uid="uid://e7nlf6qmftkd" path="res://generic/tex/splash.png" id="14_dbdm6"]
+[ext_resource type="Texture2D" uid="uid://be4uc5abqc2xp" path="res://lib/ui/tex/icon_settings.png" id="14_ypr06"]
 [ext_resource type="AudioStream" uid="uid://drae5tgg8hj47" path="res://generic/hover.ogg" id="15_3x38c"]
+[ext_resource type="Texture2D" uid="uid://bwi1wt5g52tle" path="res://lib/ui/tex/icon_settings_hover.png" id="15_mmhdw"]
+[ext_resource type="PackedScene" uid="uid://bx5xwgdebscc6" path="res://lib/ui/settings/settings.tscn" id="19_c42st"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ulxyu"]
 shader = ExtResource("2_j7o8v")
@@ -146,7 +149,19 @@ focus_mode = 0
 texture_normal = ExtResource("12_ivaak")
 texture_hover = ExtResource("12_u62tc")
 
+[node name="Pad" type="ColorRect" parent="TopMenu"]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="SettingsButton" type="TextureButton" parent="TopMenu"]
+layout_mode = 2
+focus_mode = 0
+texture_normal = ExtResource("14_ypr06")
+texture_hover = ExtResource("15_mmhdw")
+
 [node name="LoadBlack" type="TextureRect" parent="."]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -173,5 +188,10 @@ show_percentage = false
 [node name="ButtonHover" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_3x38c")
 
+[node name="Settings" parent="." instance=ExtResource("19_c42st")]
+visible = false
+
 [connection signal="mouse_entered" from="TopMenu/DebugButton" to="." method="_mouseover"]
 [connection signal="pressed" from="TopMenu/DebugButton" to="." method="_on_debug_button_pressed"]
+[connection signal="mouse_entered" from="TopMenu/SettingsButton" to="." method="_mouseover"]
+[connection signal="pressed" from="TopMenu/SettingsButton" to="." method="_on_settings_button_pressed"]

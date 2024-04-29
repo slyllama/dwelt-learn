@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-const InputLine = preload("res://lib/ui/settings/stin_input_keybind.tscn")
+const InputLine = preload("res://lib/ui/settings/components/stin_input_keybind.tscn")
 var original_input_data = []
 var input_data = [
 	{"id": "move_forward", "name": "Move Forward" },
@@ -21,6 +21,9 @@ func _get_key(input_id):
 	elif str(action).split(" ")[1] == "button_index=5,":
 		return("Scroll Down")
 	else: return(str(action).split(" ")[2].lstrip("(").rstrip("),"))
+
+func open(): visible = true
+func close(): visible = false
 
 func apply_input_data():
 	for i in input_data:
@@ -86,6 +89,8 @@ func _ready():
 	apply_input_data()
 	Global.connect("left_keybind_select", refresh_input_data)
 	refresh_input_data()
+	
+	$Control/Panel/VBox.move_child($Control/Panel/VBox/ResetButton, -1)
 
 func _on_button_pressed():
 	input_data = original_input_data.duplicate()

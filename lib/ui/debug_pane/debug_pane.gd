@@ -5,8 +5,7 @@ extends CanvasLayer
 func _ready():
 	$Render.text = ""
 	Global.debug_toggled.connect(func():
-		visible = Global.debug_state
-		$Settings.visible = Global.debug_state)
+		visible = Global.debug_state)
 	Global.debug_toggled.emit()
 
 func _input(_event):

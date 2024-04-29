@@ -23,8 +23,7 @@ func load_map(map_name):
 		$ErrorText.text = Utilities.cntr("Error: couldn't load map '" + map_name + "'.")
 		$ErrorText.visible = true
 		return
-	
-	$DebugPane/Settings.visible = false
+
 	started = true
 	var music_fade = create_tween()
 	music_fade.tween_method(_set_vol_scale, 1.0, 0.0, 1.0)
@@ -46,7 +45,6 @@ func _ready():
 	
 	# Show debug panes appropriate for the main menu
 	$DebugPane.visible = true
-	$DebugPane/Settings.visible = true
 	$DebugPane/Details.visible = false
 	$DebugPane/MapSelection.visible = false
 	
@@ -83,3 +81,5 @@ func _map_button_pressed(map_name = ""):
 	load_map(map_name)
 
 func _hover(): $LoadPanel/HoverSound.play()
+
+func _on_settings_button_pressed(): $Settings.open()

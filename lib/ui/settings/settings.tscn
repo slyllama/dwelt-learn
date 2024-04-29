@@ -1,19 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://bx5xwgdebscc6"]
+[gd_scene load_steps=7 format=3 uid="uid://bx5xwgdebscc6"]
 
 [ext_resource type="Script" path="res://lib/ui/settings/settings.gd" id="1_ttf36"]
-[ext_resource type="Shader" path="res://lib/ui/dialogue/dialogue.gdshader" id="2_27nbv"]
 [ext_resource type="Theme" uid="uid://dfe36tnn0c1ud" path="res://generic/debug_theme.tres" id="2_r1d7p"]
-[ext_resource type="Texture2D" uid="uid://dsroqhsarregr" path="res://characters/lemonade/radar/tex/holograph_diff.png" id="3_3o7vn"]
-[ext_resource type="PackedScene" uid="uid://bg5bulncs2ejf" path="res://lib/ui/settings/stin_input_toggle.tscn" id="5_duwqu"]
-[ext_resource type="PackedScene" uid="uid://d4avw33snp7bc" path="res://lib/ui/settings/stin_input_slider.tscn" id="6_y64kv"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_m2rom"]
-shader = ExtResource("2_27nbv")
-shader_parameter/scale = 6.0
-shader_parameter/holograph = ExtResource("3_3o7vn")
+[ext_resource type="PackedScene" uid="uid://bg5bulncs2ejf" path="res://lib/ui/settings/components/stin_input_toggle.tscn" id="5_duwqu"]
+[ext_resource type="PackedScene" uid="uid://d4avw33snp7bc" path="res://lib/ui/settings/components/stin_input_slider.tscn" id="6_y64kv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yc4ml"]
-bg_color = Color(0.0196078, 0.0196078, 0.0196078, 0.854902)
+bg_color = Color(0.0196078, 0.0196078, 0.0196078, 0)
 corner_radius_top_left = 2
 corner_radius_top_right = 2
 corner_radius_bottom_right = 2
@@ -28,39 +21,48 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 layer = 4
 script = ExtResource("1_ttf36")
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 1
-anchor_left = 1.0
+[node name="BG" type="ColorRect" parent="."]
+anchors_preset = 15
 anchor_right = 1.0
-offset_left = -420.0
-offset_top = 40.0
-offset_right = -40.0
-offset_bottom = 754.0
-grow_horizontal = 0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
 
-[node name="Panel" type="Panel" parent="Control"]
-material = SubResource("ShaderMaterial_m2rom")
+[node name="Control" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -190.0
+offset_top = -390.0
+offset_right = 190.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Panel" type="ScrollContainer" parent="Control"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 13.0
+offset_right = -20.0
+offset_bottom = -37.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_yc4ml")
+horizontal_scroll_mode = 0
 
 [node name="VBox" type="VBoxContainer" parent="Control/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = 10.0
-offset_right = -10.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="Title" type="RichTextLabel" parent="Control/Panel/VBox"]
+[node name="Graphics" type="RichTextLabel" parent="Control/Panel/VBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
@@ -69,13 +71,8 @@ theme_override_constants/line_separation = -5
 theme_override_font_sizes/normal_font_size = 18
 theme_override_styles/normal = SubResource("StyleBoxFlat_kvdqb")
 bbcode_enabled = true
-text = "[center]Settings[/center]"
+text = "[center]GRAPHICS[/center]"
 fit_content = true
-
-[node name="ResetButton" type="Button" parent="Control/Panel/VBox"]
-layout_mode = 2
-theme = ExtResource("2_r1d7p")
-text = "Reset"
 
 [node name="HQShadowsControl" parent="Control/Panel/VBox" instance=ExtResource("5_duwqu")]
 layout_mode = 2
@@ -91,6 +88,18 @@ setting_title = "Volumetric Fog"
 layout_mode = 2
 setting_id = "fancy_particles"
 setting_title = "Fancy Particles"
+
+[node name="Sound" type="RichTextLabel" parent="Control/Panel/VBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+theme = ExtResource("2_r1d7p")
+theme_override_constants/line_separation = -5
+theme_override_font_sizes/normal_font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_kvdqb")
+bbcode_enabled = true
+text = "[center]SOUND[/center]"
+fit_content = true
 
 [node name="VolumeControl" parent="Control/Panel/VBox" instance=ExtResource("6_y64kv")]
 layout_mode = 2
@@ -109,7 +118,7 @@ theme_override_constants/line_separation = -5
 theme_override_font_sizes/normal_font_size = 18
 theme_override_styles/normal = SubResource("StyleBoxFlat_kvdqb")
 bbcode_enabled = true
-text = "[center]Input[/center]"
+text = "[center]INPUT[/center]"
 fit_content = true
 
 [node name="FOVControl" parent="Control/Panel/VBox" instance=ExtResource("6_y64kv")]
@@ -127,5 +136,27 @@ min_value = 0.5
 max_value = 2.5
 step = 0.05
 
+[node name="ResetButton" type="Button" parent="Control/Panel/VBox"]
+layout_mode = 2
+size_flags_vertical = 10
+theme = ExtResource("2_r1d7p")
+text = "Reset"
+
+[node name="CloseButton" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -42.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 44.0
+grow_horizontal = 0
+size_flags_vertical = 10
+theme = ExtResource("2_r1d7p")
+text = "X"
+
 [connection signal="mouse_entered" from="Control/Panel/VBox/ResetButton" to="." method="_mouseover"]
 [connection signal="pressed" from="Control/Panel/VBox/ResetButton" to="." method="_on_button_pressed"]
+[connection signal="mouse_entered" from="Control/CloseButton" to="." method="_mouseover"]
+[connection signal="pressed" from="Control/CloseButton" to="." method="close"]
