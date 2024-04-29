@@ -16,9 +16,9 @@
 [ext_resource type="Texture2D" uid="uid://cpnauxmpvkcdb" path="res://lib/ui/tex/icon_tool_hover.png" id="12_u62tc"]
 [ext_resource type="Texture2D" uid="uid://e7nlf6qmftkd" path="res://generic/tex/splash.png" id="14_dbdm6"]
 [ext_resource type="Texture2D" uid="uid://be4uc5abqc2xp" path="res://lib/ui/tex/icon_settings.png" id="14_ypr06"]
-[ext_resource type="AudioStream" uid="uid://drae5tgg8hj47" path="res://generic/hover.ogg" id="15_3x38c"]
 [ext_resource type="Texture2D" uid="uid://bwi1wt5g52tle" path="res://lib/ui/tex/icon_settings_hover.png" id="15_mmhdw"]
 [ext_resource type="PackedScene" uid="uid://bx5xwgdebscc6" path="res://lib/ui/settings/settings.tscn" id="19_c42st"]
+[ext_resource type="PackedScene" uid="uid://d24gofb7bfo8k" path="res://lib/ui/hover_sound.tscn" id="19_uwm57"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ulxyu"]
 shader = ExtResource("2_j7o8v")
@@ -156,9 +156,6 @@ theme = ExtResource("6_14irq")
 value = 100.0
 show_percentage = false
 
-[node name="ButtonHover" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("15_3x38c")
-
 [node name="Settings" parent="." instance=ExtResource("19_c42st")]
 visible = false
 
@@ -193,6 +190,8 @@ layout_mode = 2
 focus_mode = 0
 texture_normal = ExtResource("14_ypr06")
 texture_hover = ExtResource("15_mmhdw")
+
+[node name="UIHover" parent="." instance=ExtResource("19_uwm57")]
 
 [connection signal="mouse_entered" from="TopMenuBase/TopMenu/DebugButton" to="." method="_mouseover"]
 [connection signal="pressed" from="TopMenuBase/TopMenu/DebugButton" to="." method="_on_debug_button_pressed"]

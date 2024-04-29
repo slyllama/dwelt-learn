@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c4cboiwskjvvh"]
+[gd_scene load_steps=16 format=3 uid="uid://c4cboiwskjvvh"]
 
 [ext_resource type="Script" path="res://lib/loading/loading.gd" id="1_dy6oh"]
 [ext_resource type="Texture2D" uid="uid://e7nlf6qmftkd" path="res://generic/tex/splash.png" id="2_7s2de"]
@@ -8,11 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://dgkrpn8nt8pvt" path="res://generic/tex/shader_tex/laser.jpeg" id="4_m1mfr"]
 [ext_resource type="Texture2D" uid="uid://c1ens2tjsu5wf" path="res://lib/loading/loading_icon.png" id="4_o48hx"]
 [ext_resource type="Texture2D" uid="uid://b5nufueq16vw0" path="res://generic/tex/shader_tex/wobble_noise.tres" id="5_rrc76"]
-[ext_resource type="AudioStream" uid="uid://drae5tgg8hj47" path="res://generic/hover.ogg" id="8_ldimj"]
-[ext_resource type="AudioStream" uid="uid://bdpc6i58m5r8h" path="res://lib/loading/afterlife.ogg" id="9_kfamo"]
-[ext_resource type="PackedScene" uid="uid://dq3aqaliycowy" path="res://lib/ui/debug_pane/debug_pane.tscn" id="10_ahus4"]
 [ext_resource type="Texture2D" uid="uid://be4uc5abqc2xp" path="res://lib/ui/tex/icon_settings.png" id="11_34oh0"]
 [ext_resource type="Texture2D" uid="uid://bwi1wt5g52tle" path="res://lib/ui/tex/icon_settings_hover.png" id="12_strr3"]
+[ext_resource type="PackedScene" uid="uid://d24gofb7bfo8k" path="res://lib/ui/hover_sound.tscn" id="14_w5m2m"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2bpxw"]
 shader = ExtResource("3_uji0r")
@@ -170,14 +168,6 @@ layout_mode = 2
 theme = ExtResource("2_rl4eh")
 text = "Quit"
 
-[node name="HoverSound" type="AudioStreamPlayer" parent="LoadPanel"]
-stream = ExtResource("8_ldimj")
-
-[node name="Music" type="AudioStreamPlayer" parent="LoadPanel"]
-stream = ExtResource("9_kfamo")
-
-[node name="DebugPane" parent="." instance=ExtResource("10_ahus4")]
-
 [node name="TopMenu" type="HBoxContainer" parent="."]
 anchors_preset = 5
 anchor_left = 0.5
@@ -196,6 +186,8 @@ focus_mode = 0
 texture_normal = ExtResource("11_34oh0")
 texture_hover = ExtResource("12_strr3")
 
+[node name="UIHover" parent="." instance=ExtResource("14_w5m2m")]
+
 [connection signal="mouse_entered" from="LoadPanel/VBox/MinRoomButton" to="." method="_hover"]
 [connection signal="pressed" from="LoadPanel/VBox/MinRoomButton" to="." method="_map_button_pressed" binds= ["min_test_room"]]
 [connection signal="mouse_entered" from="LoadPanel/VBox/TestRoomButton" to="." method="_hover"]
@@ -204,4 +196,5 @@ texture_hover = ExtResource("12_strr3")
 [connection signal="pressed" from="LoadPanel/VBox/ScrapperButton" to="." method="_map_button_pressed" binds= ["lattice"]]
 [connection signal="mouse_entered" from="LoadPanel/VBox/Quit" to="." method="_hover"]
 [connection signal="pressed" from="LoadPanel/VBox/Quit" to="." method="_map_button_pressed" binds= ["quit"]]
+[connection signal="mouse_entered" from="TopMenu/SettingsButton" to="." method="_hover"]
 [connection signal="pressed" from="TopMenu/SettingsButton" to="." method="_on_settings_button_pressed"]

@@ -27,8 +27,7 @@ func _ready():
 	Global.shaders_loaded.connect(_fade_out_black)
 	Global.interact_entered.connect(_toggle_interact_overlay.bind(true))
 	Global.interact_left.connect(_toggle_interact_overlay.bind(false))
-	Global.button_hover.connect(func(): $ButtonHover.play())
-	
+
 	$InteractOverlay.modulate = Color(0.0, 0.0, 0.0, 0.2)
 	$InteractOverlayGlow.modulate.a = 0.2
 	$LoadBlack.visible = true

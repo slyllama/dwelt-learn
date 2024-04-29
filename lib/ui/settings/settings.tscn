@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bx5xwgdebscc6"]
+[gd_scene load_steps=12 format=3 uid="uid://bx5xwgdebscc6"]
 
 [ext_resource type="Script" path="res://lib/ui/settings/settings.gd" id="1_ttf36"]
 [ext_resource type="Theme" uid="uid://dfe36tnn0c1ud" path="res://generic/debug_theme.tres" id="2_r1d7p"]
@@ -29,6 +29,9 @@ corner_radius_bottom_left = 2
 content_margin_top = 12.0
 content_margin_bottom = 10.0
 bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xdjf8"]
+bg_color = Color(0.459199, 0, 0.0975775, 1)
 
 [node name="Settings" type="CanvasLayer"]
 layer = 4
@@ -155,7 +158,15 @@ layout_mode = 2
 size_flags_vertical = 10
 mouse_filter = 1
 theme = ExtResource("2_r1d7p")
-text = "Reset"
+theme_override_styles/normal = SubResource("StyleBoxFlat_xdjf8")
+text = "Defaults"
+
+[node name="LowerCloseButton" type="Button" parent="Control/Panel/VBox"]
+layout_mode = 2
+size_flags_vertical = 8
+mouse_filter = 1
+theme = ExtResource("2_r1d7p")
+text = "Close"
 
 [node name="CloseButton" type="Button" parent="Control"]
 layout_mode = 1
@@ -176,5 +187,7 @@ text = "X"
 [connection signal="mouse_exited" from="Control" to="." method="_on_control_mouse_exited"]
 [connection signal="mouse_entered" from="Control/Panel/VBox/ResetButton" to="." method="_mouseover"]
 [connection signal="pressed" from="Control/Panel/VBox/ResetButton" to="." method="_on_button_pressed"]
+[connection signal="mouse_entered" from="Control/Panel/VBox/LowerCloseButton" to="." method="_mouseover"]
+[connection signal="pressed" from="Control/Panel/VBox/LowerCloseButton" to="." method="close"]
 [connection signal="mouse_entered" from="Control/CloseButton" to="." method="_mouseover"]
 [connection signal="pressed" from="Control/CloseButton" to="." method="close"]

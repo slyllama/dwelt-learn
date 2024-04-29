@@ -24,6 +24,7 @@ func _get_key(input_id):
 # Move the "reset" button to the bottom of the menu after reloading the menu
 func _reset_to_bottom():
 	$Control/Panel/VBox.move_child($Control/Panel/VBox/ResetButton, -1)
+	$Control/Panel/VBox.move_child($Control/Panel/VBox/LowerCloseButton, -1)
 
 func open(): visible = true
 func close(): visible = false
@@ -76,7 +77,7 @@ func save_input_data(): # save input data to "inputs.json" file
 
 func _ready():
 	expand_input_data()
-	
+
 	# Only do this once (from the loading screen)
 	if Global.input_data_loaded == false:
 		Global.original_input_data = input_data.duplicate()

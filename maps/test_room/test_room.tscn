@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=3 uid="uid://bsetivexkdulh"]
+[gd_scene load_steps=74 format=3 uid="uid://bsetivexkdulh"]
 
 [ext_resource type="Script" path="res://maps/test_room/test_room.gd" id="1_2kdkw"]
 [ext_resource type="Material" uid="uid://4d6tcixxllut" path="res://maps/test_room/objects/rocket_claw/mat_rocket_claw.tres" id="1_q37l3"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://e0k8h1ytp7wi" path="res://lib/ui/hud/hud.tscn" id="5_6lqxt"]
 [ext_resource type="Material" uid="uid://rrahcoqndg6d" path="res://maps/test_room/objects/floor/mat_floor.tres" id="6_fjpyi"]
 [ext_resource type="AudioStream" uid="uid://to210dowl6qk" path="res://maps/test_room/sounds/forest_ambience.ogg" id="6_i6drl"]
-[ext_resource type="AudioStream" uid="uid://bhwleokhlvwgu" path="res://maps/test_room/sounds/splinter_trial.ogg" id="6_mh3o3"]
 [ext_resource type="ArrayMesh" uid="uid://bnlpp6ne5jq3y" path="res://maps/test_room/objects/floor/floor.obj" id="6_r1bc3"]
 [ext_resource type="Texture2D" uid="uid://copestgn31um5" path="res://maps/test_room/objects/tex/cplace_floor_emit.png" id="6_yy4rh"]
 [ext_resource type="Texture2D" uid="uid://baamnrm303pmf" path="res://maps/test_room/objects/tex/cplace_floor_norm.png" id="7_y7c80"]
@@ -428,7 +427,6 @@ volume_db = -3.0
 autoplay = true
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_mh3o3")
 volume_db = -5.0
 
 [node name="Floor" type="StaticBody3D" parent="."]

@@ -5,10 +5,6 @@ var target_path: String
 var status: int
 var progress: Array[float] # ResourceLoader will put its status details here
 var started = false
-var vol_scale = 1.0
-
-func _set_vol_scale(get_vol_scale):
-	vol_scale = get_vol_scale
 
 func _make_path(map_name):
 	return("res://maps/" + str(map_name) + "/" + str(map_name) + ".tscn")
@@ -25,9 +21,7 @@ func load_map(map_name):
 		return
 
 	started = true
-	var music_fade = create_tween()
-	music_fade.tween_method(_set_vol_scale, 1.0, 0.0, 1.0)
-	
+
 	$LoadBlack/ProgressBar.visible = true
 	$GlowIcon.visible = true
 	$LoadPanel.visible = false
@@ -42,12 +36,7 @@ func _ready():
 	Global.setting_changed.connect(_setting_changed)
 	for setting in Global.settings: Global.setting_changed.emit(setting)
 	AudioServer.set_bus_volume_db(0, linear_to_db(Global.settings.volume))
-	
-	# Show debug panes appropriate for the main menu
-	$DebugPane.visible = true
-	$DebugPane/Details.visible = false
-	$DebugPane/MapSelection.visible = false
-	
+
 	# Set up for retina
 	if DisplayServer.screen_get_size().x > 2000:
 		if OS.get_name() != "macOS":
@@ -58,13 +47,10 @@ func _ready():
 	$GlowIcon.visible = false
 	
 	$LoadPanel/VBox.get_child(0).grab_focus()
-	await get_tree().create_timer(0.2).timeout
-	$LoadPanel/Music.play()
 
 func _process(_delta):
 	if target_path == null or target_path == "": return
-	if started == true: $LoadPanel/Music.volume_db = linear_to_db(vol_scale)
-	
+
 	status = ResourceLoader.load_threaded_get_status(target_path, progress)
 	match status:
 		ResourceLoader.THREAD_LOAD_IN_PROGRESS:
@@ -80,6 +66,6 @@ func _map_button_pressed(map_name = ""):
 		return
 	load_map(map_name)
 
-func _hover(): $LoadPanel/HoverSound.play()
+func _hover(): Global.button_hover.emit()
 
 func _on_settings_button_pressed(): $Settings.open()

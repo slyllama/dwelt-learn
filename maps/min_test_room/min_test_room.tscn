@@ -1,12 +1,10 @@
-[gd_scene load_steps=24 format=3 uid="uid://b74la2t16jrfm"]
+[gd_scene load_steps=22 format=3 uid="uid://b74la2t16jrfm"]
 
 [ext_resource type="Script" path="res://maps/min_test_room/min_test_room.gd" id="1_nt6pl"]
 [ext_resource type="Texture2D" uid="uid://c5duom5wl7px7" path="res://maps/test_room/sky.png" id="2_v0b3q"]
 [ext_resource type="PackedScene" uid="uid://bcp4um4sjbyx6" path="res://lib/player/player.tscn" id="3_obgd6"]
 [ext_resource type="PackedScene" uid="uid://7kut4vy4ymiw" path="res://maps/test_room/objects/coll_floor/coll_floor.tscn" id="4_42n7l"]
 [ext_resource type="PackedScene" uid="uid://e0k8h1ytp7wi" path="res://lib/ui/hud/hud.tscn" id="5_kj0si"]
-[ext_resource type="AudioStream" uid="uid://to210dowl6qk" path="res://maps/test_room/sounds/forest_ambience.ogg" id="6_eidgv"]
-[ext_resource type="AudioStream" uid="uid://bhwleokhlvwgu" path="res://maps/test_room/sounds/splinter_trial.ogg" id="7_4bdgr"]
 [ext_resource type="Texture2D" uid="uid://copestgn31um5" path="res://maps/test_room/objects/tex/cplace_floor_emit.png" id="8_pk7uq"]
 [ext_resource type="Texture2D" uid="uid://baamnrm303pmf" path="res://maps/test_room/objects/tex/cplace_floor_norm.png" id="9_vsbi2"]
 [ext_resource type="PackedScene" uid="uid://cku34h747ky4i" path="res://maps/min_test_room/test_shapes.glb" id="12_la06l"]
@@ -110,15 +108,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 2.53554)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 
 [node name="HUD" parent="." instance=ExtResource("5_kj0si")]
-
-[node name="Ambience" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_eidgv")
-volume_db = -3.0
-autoplay = true
-
-[node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_4bdgr")
-volume_db = -5.0
 
 [node name="Floor" type="StaticBody3D" parent="."]
 collision_layer = 3
