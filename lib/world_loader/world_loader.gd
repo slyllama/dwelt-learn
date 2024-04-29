@@ -22,12 +22,6 @@ func _setting_changed(get_setting_id):
 		"vol_fog": $Sky.get_environment().volumetric_fog_enabled = Global.settings.vol_fog
 	Utilities.save_settings()
 
-func _settings_loaded():
-	# Apply settings and connect global changes
-	Global.setting_changed.connect(_setting_changed)
-	for setting in Global.settings:
-		Global.setting_changed.emit(setting)
-
 func set_master_vol(vol):
 	AudioServer.set_bus_volume_db(0, vol)
 
@@ -35,8 +29,9 @@ func _init():
 	RenderingServer.set_debug_generate_wireframes(true)
 
 func _ready():
-	Utilities.settings_loaded.connect(_settings_loaded)
-	Utilities.load_settings()
+	Global.setting_changed.connect(_setting_changed)
+	for setting in Global.settings:
+		Global.setting_changed.emit(setting)
 	
 	# Fade in all sound if the game wasn't already muted
 	set_master_vol(linear_to_db(Global.settings.volume / 2.0))
