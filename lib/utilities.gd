@@ -13,6 +13,15 @@ func get_all_children(in_node, arr := []):
 		arr = get_all_children(child,arr)
 	return(arr)
 
+func toggle_full_screen():
+	if Global.settings.full_screen == true:
+		if (DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_WINDOWED
+			or DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_MAXIMIZED):
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	if Global.settings.full_screen == false:
+		if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
+
 ### CONSTRUCTION SCRIPTS
 
 # Get the shortest angle between "from", and "to", even if one or both exceeds 360deg

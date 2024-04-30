@@ -33,11 +33,11 @@ _subresources={
 "materials": {
 "mat_nocheck": {
 "use_external/enabled": true,
-"use_external/path": "res://maps/lattice/objects/mat_placeholder.tres"
+"use_external/path": "res://generic/mat_greybox.tres"
 },
 "mat_placeholder": {
 "use_external/enabled": true,
-"use_external/path": "res://maps/lattice/objects/mat_placeholder.tres"
+"use_external/path": "res://generic/mat_greybox.tres"
 }
 }
 }

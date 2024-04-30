@@ -71,7 +71,9 @@ offset_right = -20.0
 offset_bottom = -37.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_yc4ml")
+follow_focus = true
 horizontal_scroll_mode = 0
 
 [node name="VBox" type="VBoxContainer" parent="Control/Panel"]
@@ -90,6 +92,11 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_kvdqb")
 bbcode_enabled = true
 text = "[center]GRAPHICS[/center]"
 fit_content = true
+
+[node name="HQShadowsControl2" parent="Control/Panel/VBox" instance=ExtResource("5_duwqu")]
+layout_mode = 2
+setting_id = "full_screen"
+setting_title = "Full Screen"
 
 [node name="HQShadowsControl" parent="Control/Panel/VBox" instance=ExtResource("5_duwqu")]
 layout_mode = 2

@@ -82,9 +82,10 @@ func _input(event):
 		if mouse_offset.y < 2.0 and mouse_offset.y > -2.0:
 			mouse_offset.y = 0.0
 	
-	if Global.in_keybind_select == true: return
-	
 	# Process zooms
+	if Global.in_keybind_select == true: return
+	if Global.mouse_in_settings_menu == true: return
+	
 	if Input.is_action_just_pressed("zoom_in"):
 		if camera_distance - zoom_increment > min_zoom_extent:
 			camera_distance -= zoom_increment

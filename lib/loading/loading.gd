@@ -12,6 +12,7 @@ func _make_path(map_name):
 func _setting_changed(get_setting_id):
 	match get_setting_id:
 		"volume": AudioServer.set_bus_volume_db(0, linear_to_db(Global.settings.volume))
+		"full_screen": Utilities.toggle_full_screen()
 	Utilities.save_settings()
 
 func load_map(map_name):
