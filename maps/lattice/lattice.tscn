@@ -1,16 +1,15 @@
-[gd_scene load_steps=25 format=3 uid="uid://dsf4aknq3seh2"]
+[gd_scene load_steps=22 format=3 uid="uid://dsf4aknq3seh2"]
 
 [ext_resource type="Script" path="res://maps/lattice/lattice.gd" id="1_hqs2c"]
-[ext_resource type="Texture2D" uid="uid://c5duom5wl7px7" path="res://maps/test_room/sky.png" id="2_1uuus"]
+[ext_resource type="Texture2D" uid="uid://c5duom5wl7px7" path="res://generic/tex/sky.png" id="2_1uuus"]
 [ext_resource type="PackedScene" uid="uid://bcp4um4sjbyx6" path="res://lib/player/player.tscn" id="3_0m0xl"]
 [ext_resource type="PackedScene" uid="uid://e0k8h1ytp7wi" path="res://lib/ui/hud/hud.tscn" id="4_gb0g0"]
-[ext_resource type="Texture2D" uid="uid://copestgn31um5" path="res://maps/test_room/objects/tex/cplace_floor_emit.png" id="7_7wsht"]
-[ext_resource type="Texture2D" uid="uid://baamnrm303pmf" path="res://maps/test_room/objects/tex/cplace_floor_norm.png" id="8_7svgo"]
+[ext_resource type="AudioStream" uid="uid://to210dowl6qk" path="res://maps/lattice/sounds/forest_ambience.ogg" id="5_ldr5m"]
 [ext_resource type="Texture2D" uid="uid://dinrdf02xeqaq" path="res://generic/tex/fade_ramp.tres" id="9_clv77"]
-[ext_resource type="PackedScene" uid="uid://561pfp20pcr" path="res://maps/lattice/objects/base_test.glb" id="9_shc3s"]
+[ext_resource type="PackedScene" uid="uid://561pfp20pcr" path="res://maps/lattice/objects/greybox.glb" id="9_shc3s"]
 [ext_resource type="Texture2D" uid="uid://d1fy6jygommc6" path="res://generic/tex/particles/mote.png" id="10_vpwvh"]
-[ext_resource type="ArrayMesh" uid="uid://c48ccnw3gi5h4" path="res://lib/objects/god_ray/god_ray_1.obj" id="11_vmy1k"]
-[ext_resource type="Material" uid="uid://cu31l43wp5syj" path="res://lib/objects/god_ray/mat_god_ray.tres" id="12_n2ekj"]
+[ext_resource type="ArrayMesh" uid="uid://c48ccnw3gi5h4" path="res://objects/god_ray/god_ray_1.obj" id="11_vmy1k"]
+[ext_resource type="Material" uid="uid://cu31l43wp5syj" path="res://objects/god_ray/mat_god_ray.tres" id="12_n2ekj"]
 [ext_resource type="PackedScene" uid="uid://dbtpfif0ow8be" path="res://maps/lattice/objects/rocksculpt/rocksculpt.glb" id="13_uuy1x"]
 [ext_resource type="PackedScene" uid="uid://i1jp4klishr3" path="res://lib/dialogue/dialogue.tscn" id="14_cieqj"]
 
@@ -40,17 +39,6 @@ volumetric_fog_albedo = Color(0.510177, 0.465192, 0.415054, 1)
 volumetric_fog_length = 4.0
 adjustment_enabled = true
 adjustment_saturation = 1.12
-
-[sub_resource type="QuadMesh" id="QuadMesh_fhx46"]
-size = Vector2(100, 100)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tbe5t"]
-albedo_color = Color(0.722256, 0.722256, 0.722256, 1)
-albedo_texture = ExtResource("7_7wsht")
-normal_enabled = true
-normal_scale = 2.0
-normal_texture = ExtResource("8_7svgo")
-uv1_scale = Vector3(20, 20, 20)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fuk4o"]
 size = Vector3(50, 0.1, 50)
@@ -113,6 +101,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0)
 [node name="HUD" parent="." instance=ExtResource("4_gb0g0")]
 
 [node name="Ambience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_ldr5m")
 volume_db = -3.0
 autoplay = true
 
@@ -121,13 +110,6 @@ volume_db = -5.0
 
 [node name="Floor" type="StaticBody3D" parent="."]
 collision_layer = 3
-
-[node name="WideFloor" type="MeshInstance3D" parent="Floor"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.1, 0)
-visible = false
-mesh = SubResource("QuadMesh_fhx46")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_tbe5t")
 
 [node name="Collision" type="CollisionShape3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)

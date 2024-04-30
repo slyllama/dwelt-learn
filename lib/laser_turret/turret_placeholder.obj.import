@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cgix1hwbg5e4s"
+path="res://.godot/imported/turret_placeholder.obj-06fb903c6b9a23a516ae36bb039a47c1.mesh"
+
+[deps]
+
+files=["res://.godot/imported/turret_placeholder.obj-06fb903c6b9a23a516ae36bb039a47c1.mesh"]
+
+source_file="res://lib/laser_turret/turret_placeholder.obj"
+dest_files=["res://.godot/imported/turret_placeholder.obj-06fb903c6b9a23a516ae36bb039a47c1.mesh", "res://.godot/imported/turret_placeholder.obj-06fb903c6b9a23a516ae36bb039a47c1.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

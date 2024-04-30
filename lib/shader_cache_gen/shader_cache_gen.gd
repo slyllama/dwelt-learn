@@ -11,8 +11,7 @@ const SHADERS_UID = [
 	"uid://dsggukocef5lg", # propulsion cone
 	"uid://yi627x8xvfu2", # laser
 	"uid://dtg3t52t3kle7", # god ray
-	"uid://dg1bo2f0gnaue", # Kryptis
-	
+
 	"res://generic/shaders/fresnel.gdshader", # fresnel
 	"res://lib/ui/dialogue/dialogue.gdshader", # dialogue (static)
 	"res://lib/ui/dialogue/radial_distort.gdshader", # radial distortion

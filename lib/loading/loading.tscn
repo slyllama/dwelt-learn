@@ -148,15 +148,10 @@ offset_bottom = 18.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MinRoomButton" type="Button" parent="LoadPanel/VBox"]
+[node name="SandboxButton" type="Button" parent="LoadPanel/VBox"]
 layout_mode = 2
 theme = ExtResource("2_rl4eh")
-text = "Minimal Test Room"
-
-[node name="TestRoomButton" type="Button" parent="LoadPanel/VBox"]
-layout_mode = 2
-theme = ExtResource("2_rl4eh")
-text = "Test Room"
+text = "Sandbox"
 
 [node name="ScrapperButton" type="Button" parent="LoadPanel/VBox"]
 layout_mode = 2
@@ -188,10 +183,8 @@ texture_hover = ExtResource("12_strr3")
 
 [node name="UIHover" parent="." instance=ExtResource("14_w5m2m")]
 
-[connection signal="mouse_entered" from="LoadPanel/VBox/MinRoomButton" to="." method="_hover"]
-[connection signal="pressed" from="LoadPanel/VBox/MinRoomButton" to="." method="_map_button_pressed" binds= ["min_test_room"]]
-[connection signal="mouse_entered" from="LoadPanel/VBox/TestRoomButton" to="." method="_hover"]
-[connection signal="pressed" from="LoadPanel/VBox/TestRoomButton" to="." method="_map_button_pressed" binds= ["test_room"]]
+[connection signal="mouse_entered" from="LoadPanel/VBox/SandboxButton" to="." method="_hover"]
+[connection signal="pressed" from="LoadPanel/VBox/SandboxButton" to="." method="_map_button_pressed" binds= ["sandbox"]]
 [connection signal="mouse_entered" from="LoadPanel/VBox/ScrapperButton" to="." method="_hover"]
 [connection signal="pressed" from="LoadPanel/VBox/ScrapperButton" to="." method="_map_button_pressed" binds= ["lattice"]]
 [connection signal="mouse_entered" from="LoadPanel/VBox/Quit" to="." method="_hover"]
