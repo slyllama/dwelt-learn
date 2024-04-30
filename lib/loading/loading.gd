@@ -25,7 +25,6 @@ func load_map(map_name):
 	$LoadBlack/ProgressBar.visible = true
 	$GlowIcon.visible = true
 	$LoadPanel.visible = false
-	$TopMenu.visible = false
 	var path = _make_path(map_name)
 	print("Loading '" + path + "'.")
 	target_path = path
@@ -46,8 +45,8 @@ func _ready():
 	
 	$LoadBlack/ProgressBar.visible = false
 	$GlowIcon.visible = false
-	
-	$LoadPanel/VBox.get_child(0).grab_focus()
+	# Give play button focus
+	$LoadPanel/VBox/ScrapperButton.grab_focus()
 
 func _process(_delta):
 	if target_path == null or target_path == "": return
@@ -65,8 +64,9 @@ func _map_button_pressed(map_name = ""):
 	if map_name == "quit":
 		get_tree().quit()
 		return
+	elif map_name == "settings":
+		$Settings.open()
+		return
 	load_map(map_name)
 
 func _hover(): Global.button_hover.emit()
-
-func _on_settings_button_pressed(): $Settings.open()

@@ -105,10 +105,8 @@ stream = ExtResource("5_ldr5m")
 volume_db = -3.0
 autoplay = true
 
-[node name="Music" type="AudioStreamPlayer" parent="."]
-volume_db = -5.0
-
 [node name="Floor" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.433279, 0)
 collision_layer = 3
 
 [node name="Collision" type="CollisionShape3D" parent="Floor"]
@@ -164,6 +162,6 @@ transform = Transform3D(1.07303, -0.364494, 0.39466, 0.385965, 1.13624, 0, -0.37
 transform = Transform3D(0.94857, 0.276447, -0.154245, -0.279795, 0.96006, 0, 0.148084, 0.043157, 0.988033, -5.3401, 7.27215, -21.1656)
 
 [node name="KryptisDialogue" parent="." instance=ExtResource("14_cieqj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, -11.329)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.34823, -11.329)
 TYPE = "test_dialogue"
 dialogue_data = Array[String](["Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.", "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."])

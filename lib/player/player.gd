@@ -122,12 +122,6 @@ func _input(_event):
 		$Stars.amount_ratio = 0.3
 		$SoundHandler.stop_moving()
 		$Lemonade/AnimationPlayer.play_backwards("Fly")
-	
-	if Input.is_action_just_pressed("glide"):
-		glide = true
-	if Input.is_action_just_released("glide"):
-		glide = false
-		glide_val = 0.0
 
 func _physics_process(_delta):
 	forward = 0
