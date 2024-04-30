@@ -32,9 +32,8 @@ fog_light_color = Color(0.161036, 0.104851, 0.0798084, 1)
 fog_light_energy = 0.0
 fog_density = 0.02
 fog_sky_affect = 0.0
-fog_height_density = -0.1
 volumetric_fog_enabled = true
-volumetric_fog_density = 0.02
+volumetric_fog_density = 0.04
 volumetric_fog_albedo = Color(0.735977, 0.692501, 0.644324, 1)
 volumetric_fog_length = 4.0
 volumetric_fog_sky_affect = 0.0
@@ -104,23 +103,22 @@ directional_shadow_split_3 = 0.7
 directional_shadow_blend_splits = true
 directional_shadow_pancake_size = 10.0
 
+[node name="HUD" parent="." instance=ExtResource("5_kj0si")]
+
 [node name="Player" parent="." instance=ExtResource("3_obgd6")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 2.5)
-
-[node name="HUD" parent="." instance=ExtResource("5_kj0si")]
 
 [node name="Floor" type="StaticBody3D" parent="."]
 collision_layer = 3
 
 [node name="WideFloor" type="MeshInstance3D" parent="Floor"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.1, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 mesh = SubResource("QuadMesh_fhx46")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_tbe5t")
 
 [node name="Collision" type="CollisionShape3D" parent="Floor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 shape = SubResource("BoxShape3D_fuk4o")
 
 [node name="Motes" type="GPUParticles3D" parent="."]
@@ -146,6 +144,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.26572, -0.0499998, -1.06047
 dialogue_data = Array[String](["HELLO!?"])
 
 [node name="LegTest" parent="." instance=ExtResource("12_l4442")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 17.5, -20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 14, -20)
 
 [connection signal="activated" from="LaserDetector" to="." method="_on_laser_detector_activated"]

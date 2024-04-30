@@ -14,7 +14,7 @@ offset_right = 370.0
 offset_bottom = 85.0
 mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("3_egsd7")
-theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/normal_font_size = 14
 bbcode_enabled = true
 text = "[FPS]"
 
@@ -26,7 +26,7 @@ offset_bottom = 399.0
 mouse_filter = 1
 theme_override_constants/line_separation = -5
 theme_override_fonts/normal_font = ExtResource("3_egsd7")
-theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/normal_font_size = 14
 bbcode_enabled = true
 text = "[Details]"
 
@@ -38,7 +38,7 @@ offset_bottom = 518.0
 mouse_filter = 1
 theme_override_constants/line_separation = -5
 theme_override_fonts/normal_font = ExtResource("3_egsd7")
-theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/normal_font_size = 14
 bbcode_enabled = true
 text = "[Render]"
 
@@ -54,7 +54,7 @@ offset_bottom = -40.0
 grow_vertical = 0
 mouse_filter = 2
 theme = ExtResource("3_480m7")
-theme_override_font_sizes/normal_font_size = 18
+theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
 text = "Dwelt Technical Test"
 fit_content = true
