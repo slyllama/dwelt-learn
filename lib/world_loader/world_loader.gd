@@ -1,5 +1,9 @@
 extends Node3D
 
+# All lights in here will be excluded from spotlight shadows. Remember to add
+# to this before calling super().
+var exclude_from_shadow = []
+
 func get_all_children(in_node, arr := []):
 	arr.push_back(in_node)
 	for child in in_node.get_children():
@@ -17,6 +21,7 @@ func _setting_changed(get_setting_id):
 		"volume": AudioServer.set_bus_volume_db(0, linear_to_db(Global.settings.volume))
 		"spot_shadows":
 			for child in get_all_children(get_tree().root):
+				if child in exclude_from_shadow: return
 				if child is SpotLight3D or child is OmniLight3D:
 					child.shadow_enabled = Global.settings.spot_shadows
 		"vol_fog": $Sky.get_environment().volumetric_fog_enabled = Global.settings.vol_fog

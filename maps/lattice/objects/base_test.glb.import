@@ -31,25 +31,13 @@ animation/remove_immutable_tracks=true
 import_script/path=""
 _subresources={
 "materials": {
-"mat_black": {
+"mat_nocheck": {
 "use_external/enabled": true,
-"use_external/path": "res://maps/lattice/objects/mat_t_black.tres"
+"use_external/path": "res://maps/lattice/objects/mat_placeholder.tres"
 },
-"mat_floor": {
+"mat_placeholder": {
 "use_external/enabled": true,
-"use_external/path": "res://maps/lattice/objects/mat_t_greybox.tres"
-},
-"mat_kryptis": {
-"use_external/enabled": true,
-"use_external/path": "res://maps/lattice/objects/mat_t_kryptis.tres"
-},
-"mat_orb": {
-"use_external/enabled": true,
-"use_external/path": "res://characters/lemonade/mat_orb_fresnel.tres"
-},
-"mat_rock": {
-"use_external/enabled": true,
-"use_external/path": "res://maps/lattice/objects/mat_t_bp.tres"
+"use_external/path": "res://maps/lattice/objects/mat_placeholder.tres"
 }
 }
 }

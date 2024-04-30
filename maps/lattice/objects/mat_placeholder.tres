@@ -7,5 +7,6 @@
 albedo_texture = ExtResource("1_g6np0")
 normal_enabled = true
 normal_texture = ExtResource("2_k506k")
-backlight = Color(0.5, 0.5, 0.5, 1)
-uv1_scale = Vector3(128, 128, 128)
+backlight_enabled = true
+backlight = Color(0.25, 0.25, 0.25, 1)
+uv1_scale = Vector3(256, 256, 256)

@@ -373,6 +373,7 @@ initial_velocity_min = 0.2
 initial_velocity_max = 0.4
 gravity = Vector3(0, 0.01, 0)
 scale_min = 0.0
+scale_max = 0.5
 scale_curve = SubResource("CurveTexture_n7qc6")
 color_ramp = ExtResource("8_4bunu")
 
@@ -389,7 +390,7 @@ particles_anim_loop = false
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ru78x"]
 material = SubResource("StandardMaterial3D_2dh08")
-size = Vector2(0.05, 0.05)
+size = Vector2(0.02, 0.02)
 orientation = 2
 
 [node name="Lemonade" instance=ExtResource("1_kxeob")]

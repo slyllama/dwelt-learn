@@ -1,7 +1,7 @@
 [gd_scene load_steps=25 format=3 uid="uid://dsf4aknq3seh2"]
 
 [ext_resource type="Script" path="res://maps/lattice/lattice.gd" id="1_hqs2c"]
-[ext_resource type="Texture2D" uid="uid://dtiix3a3h41dj" path="res://maps/lattice/objects/sky.png" id="2_f3fid"]
+[ext_resource type="Texture2D" uid="uid://c5duom5wl7px7" path="res://maps/test_room/sky.png" id="2_1uuus"]
 [ext_resource type="PackedScene" uid="uid://bcp4um4sjbyx6" path="res://lib/player/player.tscn" id="3_0m0xl"]
 [ext_resource type="PackedScene" uid="uid://e0k8h1ytp7wi" path="res://lib/ui/hud/hud.tscn" id="4_gb0g0"]
 [ext_resource type="Texture2D" uid="uid://copestgn31um5" path="res://maps/test_room/objects/tex/cplace_floor_emit.png" id="7_7wsht"]
@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://i1jp4klishr3" path="res://lib/dialogue/dialogue.tscn" id="14_cieqj"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dbpli"]
-panorama = ExtResource("2_f3fid")
+panorama = ExtResource("2_1uuus")
 
 [sub_resource type="Sky" id="Sky_x6p1l"]
 sky_material = SubResource("PanoramaSkyMaterial_dbpli")
@@ -33,7 +33,7 @@ fog_light_color = Color(0.161036, 0.104851, 0.0798084, 1)
 fog_light_energy = 0.0
 fog_density = 0.05
 fog_sky_affect = 0.5
-fog_height = 6.0
+fog_height = 15.0
 fog_height_density = -0.3
 volumetric_fog_density = 0.07
 volumetric_fog_albedo = Color(0.510177, 0.465192, 0.415054, 1)
@@ -96,9 +96,9 @@ script = ExtResource("1_hqs2c")
 environment = SubResource("Environment_r5o54")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.836111, -0.294729, 0.462659, -0.282708, 0.491261, 0.823856, -0.470101, -0.819632, 0.327427, 0, 6.09097, 0)
+transform = Transform3D(0.923469, -0.00904311, 0.383566, -0.32658, 0.506177, 0.798204, -0.201371, -0.862382, 0.464485, 0, 6.09097, 0)
 light_color = Color(1, 0.819608, 0.639216, 1)
-light_energy = 2.0
+light_energy = 3.0
 shadow_enabled = true
 directional_shadow_split_1 = 0.3
 directional_shadow_split_2 = 0.4
@@ -155,10 +155,16 @@ omni_range = 9.0
 omni_attenuation = 1.5
 
 [node name="RockLight" type="SpotLight3D" parent="."]
-transform = Transform3D(0.707531, 0.410337, -0.575346, -0.63289, 0.00571127, -0.774221, -0.314406, 0.911916, 0.263739, -8.50063, 1.44151, -14.9531)
+transform = Transform3D(0.940478, 0.041147, -0.337354, -1.43343e-08, 0.992644, 0.121072, 0.339854, -0.113866, 0.93356, -6.60313, 9.2881, 4.41683)
 light_energy = 50.0
 spot_range = 80.0
-spot_angle = 40.0
+spot_angle = 30.0
+
+[node name="RocketLight" type="SpotLight3D" parent="."]
+transform = Transform3D(0.965872, -0.0488332, -0.254376, -0.259021, -0.182096, -0.948551, 0, 0.982068, -0.18853, -10.1616, -10.7323, 15.0476)
+light_energy = 90.0
+spot_range = 80.0
+spot_angle = 25.0
 
 [node name="GodRay1" type="MeshInstance3D" parent="."]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -14.5079, 4.80719, -17.0815)
