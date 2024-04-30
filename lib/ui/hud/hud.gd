@@ -24,8 +24,8 @@ func _toggle_interact_overlay(state):
 
 func _fade_out_black():
 	var fade_tween = create_tween()
-	fade_tween.tween_property($LoadBlack, "modulate:a", 0.0, 0.2)
-	fade_tween.tween_callback(func(): $LoadBlack.visible = false)
+	fade_tween.tween_property($LoadOverride/LoadBlack, "modulate:a", 0.0, 0.2)
+	fade_tween.tween_callback(func(): $LoadOverride/LoadBlack.visible = false)
 
 func _ready():
 	Global.shaders_loaded.connect(_fade_out_black)
@@ -34,7 +34,7 @@ func _ready():
 
 	$InteractOverlay.modulate = Color(0.0, 0.0, 0.0, 0.2)
 	$InteractOverlayGlow.modulate.a = 0.2
-	$LoadBlack.visible = true
+	$LoadOverride/LoadBlack.visible = true
 	
 	$HUDButtons.settings_pressed.connect(_toggle_settings)
 

@@ -128,7 +128,16 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_n4mbk")
 
-[node name="LoadBlack" type="TextureRect" parent="."]
+[node name="Settings" parent="." instance=ExtResource("19_c42st")]
+visible = false
+
+[node name="HUDButtons" parent="." instance=ExtResource("15_6wbiv")]
+layer = 5
+
+[node name="LoadOverride" type="CanvasLayer" parent="."]
+layer = 6
+
+[node name="LoadBlack" type="TextureRect" parent="LoadOverride"]
 visible = false
 anchors_preset = 15
 anchor_right = 1.0
@@ -137,7 +146,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("14_dbdm6")
 
-[node name="ProgressBar" type="ProgressBar" parent="LoadBlack"]
+[node name="ProgressBar" type="ProgressBar" parent="LoadOverride/LoadBlack"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -152,11 +161,5 @@ grow_vertical = 0
 theme = ExtResource("6_14irq")
 value = 100.0
 show_percentage = false
-
-[node name="Settings" parent="." instance=ExtResource("19_c42st")]
-visible = false
-
-[node name="HUDButtons" parent="." instance=ExtResource("15_6wbiv")]
-layer = 5
 
 [node name="UIHover" parent="." instance=ExtResource("19_uwm57")]

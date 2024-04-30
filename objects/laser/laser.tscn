@@ -4,17 +4,18 @@
 [ext_resource type="PackedScene" uid="uid://bbt6np1daksl4" path="res://objects/cable/cable.tscn" id="2_qx4ym"]
 [ext_resource type="Script" path="res://objects/laser/Cast.gd" id="3_0t5vk"]
 [ext_resource type="Texture2D" uid="uid://bd7c4x2ajeimr" path="res://generic/tex/shader_tex/floor_diff.png" id="4_7wqge"]
-[ext_resource type="ArrayMesh" uid="uid://cgix1hwbg5e4s" path="res://lib/laser_turret/turret_placeholder.obj" id="5_ax68d"]
+[ext_resource type="ArrayMesh" uid="uid://cgix1hwbg5e4s" path="res://objects/laser_turret/turret_placeholder.obj" id="5_ax68d"]
 [ext_resource type="Texture2D" uid="uid://5bruu4afeor5" path="res://generic/tex/shader_tex/floor_norm.png" id="5_hpnxi"]
 [ext_resource type="PackedScene" uid="uid://c542303ron8x" path="res://lib/interact_area/interact_area.tscn" id="7_6xnlv"]
 [ext_resource type="AudioStream" uid="uid://ksek1nmbm7lq" path="res://objects/laser/enter_laser.ogg" id="8_pae4y"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0uvf0"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rnjon"]
 albedo_texture = ExtResource("4_7wqge")
 normal_enabled = true
 normal_texture = ExtResource("5_hpnxi")
+backlight_enabled = true
 backlight = Color(0.25, 0.25, 0.25, 1)
-uv1_scale = Vector3(64, 64, 64)
+uv1_scale = Vector3(32, 32, 32)
 
 [node name="Laser" type="Node3D"]
 script = ExtResource("1_qy5bo")
@@ -33,7 +34,7 @@ script = ExtResource("3_0t5vk")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
 
 [node name="TurretPlaceholder" type="MeshInstance3D" parent="."]
-material_override = SubResource("StandardMaterial3D_0uvf0")
+material_override = SubResource("StandardMaterial3D_rnjon")
 mesh = ExtResource("5_ax68d")
 
 [node name="DockingPoint" type="Node3D" parent="."]

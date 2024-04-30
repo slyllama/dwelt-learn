@@ -25,6 +25,7 @@ func load_map(map_name):
 	$LoadBlack/ProgressBar.visible = true
 	$GlowIcon.visible = true
 	$LoadPanel.visible = false
+	$TopMenu.visible = false
 	var path = _make_path(map_name)
 	print("Loading '" + path + "'.")
 	target_path = path

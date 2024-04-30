@@ -69,7 +69,7 @@ func expand_input_data():
 			input["type"] = "key"
 			input["code"] = event.physical_keycode
 
-func save_input_data(): # save input data to "inputs.json" file
+func save_input_data(): # save input data to "input_data.json" file
 	expand_input_data()
 	var inputs_json = FileAccess.open("user://input_data.json", FileAccess.WRITE)
 	inputs_json.store_string(JSON.stringify(input_data))
@@ -85,22 +85,12 @@ func _ready():
 			var inputs_file = FileAccess.open("user://input_data.json", FileAccess.READ)
 			var inputs_json = JSON.parse_string(inputs_file.get_as_text())
 			
-			# If an entry is missing, we will reset the keymap (for now)
-			var input_file_valid = true
-			for i in Global.original_input_data:
-				if !i in inputs_json:
-					input_file_valid = false
-			
-			if input_file_valid == true:
-				print("[InputSettings] valid inputs.json exists, loading.")
-				input_data = JSON.parse_string(inputs_json.get_as_text())
-				inputs_file.close()
-			else:
-				print("[InputSettings] inputs.json was corrupt, making a new one.")
-				save_input_data()
-			
+			# TODO: better checking for input data validity
+			print("[InputSettings] valid input_data.json exists, loading.")
+			input_data = inputs_json
+			inputs_file.close()
 		else:
-			print("[InputSettings] inputs.json doesn't exist, creating it.")
+			print("[InputSettings] input_data.json doesn't exist, creating it.")
 			save_input_data()
 		Global.input_data_loaded = true
 	

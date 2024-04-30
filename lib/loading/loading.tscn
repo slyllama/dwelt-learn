@@ -1,26 +1,13 @@
-[gd_scene load_steps=16 format=3 uid="uid://c4cboiwskjvvh"]
+[gd_scene load_steps=12 format=3 uid="uid://c4cboiwskjvvh"]
 
 [ext_resource type="Script" path="res://lib/loading/loading.gd" id="1_dy6oh"]
 [ext_resource type="Texture2D" uid="uid://e7nlf6qmftkd" path="res://generic/tex/splash.png" id="2_7s2de"]
 [ext_resource type="PackedScene" uid="uid://bx5xwgdebscc6" path="res://lib/ui/settings/settings.tscn" id="2_k2j3d"]
 [ext_resource type="Theme" uid="uid://dfe36tnn0c1ud" path="res://generic/debug_theme.tres" id="2_rl4eh"]
-[ext_resource type="Shader" path="res://lib/ui/hud/intro_vfx.gdshader" id="3_uji0r"]
-[ext_resource type="Texture2D" uid="uid://dgkrpn8nt8pvt" path="res://generic/tex/shader_tex/laser.jpeg" id="4_m1mfr"]
 [ext_resource type="Texture2D" uid="uid://c1ens2tjsu5wf" path="res://lib/loading/loading_icon.png" id="4_o48hx"]
-[ext_resource type="Texture2D" uid="uid://b5nufueq16vw0" path="res://generic/tex/shader_tex/wobble_noise.tres" id="5_rrc76"]
 [ext_resource type="Texture2D" uid="uid://be4uc5abqc2xp" path="res://lib/ui/tex/icon_settings.png" id="11_34oh0"]
 [ext_resource type="Texture2D" uid="uid://bwi1wt5g52tle" path="res://lib/ui/tex/icon_settings_hover.png" id="12_strr3"]
 [ext_resource type="PackedScene" uid="uid://d24gofb7bfo8k" path="res://lib/ui/hover_sound.tscn" id="14_w5m2m"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2bpxw"]
-shader = ExtResource("3_uji0r")
-shader_parameter/base_color = Color(0.0745098, 0.129412, 0, 1)
-shader_parameter/size = 0.7
-shader_parameter/exponent = 3.0
-shader_parameter/darkness = 0.25
-shader_parameter/overall_alpha = 1.0
-shader_parameter/smoke_effect = ExtResource("4_m1mfr")
-shader_parameter/wobble_pattern = ExtResource("5_rrc76")
 
 [sub_resource type="Animation" id="Animation_xdgig"]
 resource_name = "glow"
@@ -60,15 +47,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_7s2de")
-
-[node name="BG" type="ColorRect" parent="LoadBlack"]
-material = SubResource("ShaderMaterial_2bpxw")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="ProgressBar" type="ProgressBar" parent="LoadBlack"]
 layout_mode = 1
