@@ -8,8 +8,7 @@ var input_data = [
 	{"id": "strafe_right", "name": "Strafe Right" },
 	{"id": "interact", "name": "Interact" },
 	{"id": "zoom_in", "name": "Zoom In" },
-	{"id": "zoom_out", "name": "Zoom Out" },
-	{"id": "toggle_debug", "name": "Toggle Debug" } ]
+	{"id": "zoom_out", "name": "Zoom Out" } ]
 
 var input_containers = [] # input list nodes, so they can be cleared on refresh
 

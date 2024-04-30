@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b74la2t16jrfm"]
+[gd_scene load_steps=24 format=3 uid="uid://b74la2t16jrfm"]
 
 [ext_resource type="Script" path="res://maps/sandbox/sandbox.gd" id="1_nt6pl"]
 [ext_resource type="Texture2D" uid="uid://c5duom5wl7px7" path="res://generic/tex/sky.png" id="2_v0b3q"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://07n4fhjhunl" path="res://objects/laser/laser.tscn" id="9_puphx"]
 [ext_resource type="PackedScene" uid="uid://cvho6mkc04s7h" path="res://objects/laser_detector/laser_detector.tscn" id="10_7mg0o"]
 [ext_resource type="PackedScene" uid="uid://i1jp4klishr3" path="res://lib/dialogue/dialogue.tscn" id="11_7oal6"]
+[ext_resource type="PackedScene" uid="uid://djgjcyichaft4" path="res://maps/sandbox/leg_test.glb" id="12_l4442"]
 [ext_resource type="Texture2D" uid="uid://dinrdf02xeqaq" path="res://generic/tex/fade_ramp.tres" id="22_w6hxp"]
 [ext_resource type="Texture2D" uid="uid://d1fy6jygommc6" path="res://generic/tex/particles/mote.png" id="23_io1gf"]
 
@@ -143,5 +144,8 @@ start_after_delay = false
 [node name="DialogueArea" parent="." instance=ExtResource("11_7oal6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.26572, -0.0499998, -1.06047)
 dialogue_data = Array[String](["HELLO!?"])
+
+[node name="LegTest" parent="." instance=ExtResource("12_l4442")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 17.5, -20)
 
 [connection signal="activated" from="LaserDetector" to="." method="_on_laser_detector_activated"]

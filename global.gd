@@ -28,7 +28,7 @@ signal setting_changed(setting_id)
 var SETTINGS = {
 	"fov": 75,
 	"camera_sens": 0.65,
-	"volume": 0.00,
+	"volume": 1.00,
 	"spot_shadows": true,
 	"vol_fog": true,
 	"fancy_particles": true,
