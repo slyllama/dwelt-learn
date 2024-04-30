@@ -1,5 +1,9 @@
 extends CanvasLayer
 
+func _toggle_settings():
+	if $Settings.visible == false: $Settings.open()
+	else: $Settings.close()
+
 func _toggle_interact_overlay(state):
 	if state == true:
 		$InteractOverlayGlow/Anim.play("pulse")
@@ -31,14 +35,8 @@ func _ready():
 	$InteractOverlay.modulate = Color(0.0, 0.0, 0.0, 0.2)
 	$InteractOverlayGlow.modulate.a = 0.2
 	$LoadBlack.visible = true
-
-func _on_debug_button_pressed():
-	Global.debug_state = !Global.debug_state
-	Global.debug_toggled.emit()
-
-func _on_settings_button_pressed():
-	if $Settings.visible == false: $Settings.open()
-	else: $Settings.close()
+	
+	$HUDButtons.settings_pressed.connect(_toggle_settings)
 
 func _mouseover():
 	Global.button_hover.emit()

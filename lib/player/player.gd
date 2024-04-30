@@ -154,7 +154,6 @@ func _physics_process(_delta):
 		strafe_diff -= 10.0
 		side -= 0.5
 	
-	
 	if glide == true:
 		if glide_val < max_gliding_force: glide_val += glide_rate
 		else: glide_val -= glide_rate
@@ -187,6 +186,6 @@ func _physics_process(_delta):
 		$Lemonade.rotation.z, rotation_diff + strafe_diff * 0.02, 0.06)
 	$Lemonade.rotation_degrees.z = clampf(
 		$Lemonade.rotation_degrees.z, -model_yaw_extent, model_yaw_extent)
-
+	
 	Global.player_position = position
 	update_debug()

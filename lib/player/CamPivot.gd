@@ -56,13 +56,21 @@ func _input(event):
 			if click_mouse_pos_diff.length() > 2.0:
 				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 				right_mouse_down = true
+				if Global.mouse_is_captured == false:
+					Global.mouse_is_captured = true
+					Global.mouse_captured.emit()
+	
 	if Input.is_action_just_pressed("right_click") or Input.is_action_just_pressed("click"):
 		mouse_in_settings_menu = Global.mouse_in_settings_menu
 		if right_mouse_down == false:
 			click_mouse_pos_diff = Vector2.ZERO
 			click_mouse_pos = get_window().get_mouse_position()
+	
 	if Input.is_action_just_released("right_click") or Input.is_action_just_released("click"):
 		mouse_in_settings_menu = Global.mouse_in_settings_menu
+		if Global.mouse_is_captured == true:
+				Global.mouse_is_captured = false
+				Global.mouse_released.emit()
 		if right_mouse_down == true:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			right_mouse_down = false

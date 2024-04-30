@@ -8,9 +8,19 @@ signal debug_toggled
 signal dialogue_played(dialogue)
 signal dialogue_closed
 signal dialogue_closed_early
+signal entered_keybind_select
 signal interact_entered
 signal interact_left
+signal left_keybind_select
+signal mouse_captured
+signal mouse_released
 signal shaders_loaded # called after ShaderCacheGen has loaded and removed itself
+
+var debug_details_text = "[Details]"
+var debug_state = false
+var in_keybind_select = false
+var mouse_is_captured = false
+var mouse_in_settings_menu = false
 
 ### Settings ###
 
@@ -29,21 +39,15 @@ var original_input_data = []
 
 ### Game states ###
 
-signal entered_keybind_select
-signal left_keybind_select
 signal player_position_locked(get_lock_pos, get_cam_facing, get_clamp_extent_x, get_clamp_extent_y)
 signal player_position_unlocked
 
 var can_move = true
-var debug_details_text = "[Details]"
-var debug_state = false
 var dialogue_active = false
 var dragging_control = false # sliders should report their position so they aren't trapped on camera pan
 var in_action = false
 var in_area_name = ""
-var in_keybind_select = false
 var looking_at = null
-var mouse_in_settings_menu = false
 
 ### World states ###
 var player_position = Vector2.ZERO
