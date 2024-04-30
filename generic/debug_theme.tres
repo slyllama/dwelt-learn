@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://dfe36tnn0c1ud"]
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://dfe36tnn0c1ud"]
 
 [ext_resource type="FontFile" uid="uid://b1v28gy50d86f" path="res://generic/fonts/red_hat.ttf" id="1_4xjey"]
 
@@ -27,6 +27,8 @@ corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0er1m"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ciiu4"]
 bg_color = Color(0.146641, 0.146641, 0.146641, 1)
 
@@ -40,6 +42,7 @@ Button/styles/hover = SubResource("StyleBoxFlat_78c76")
 Button/styles/normal = SubResource("StyleBoxFlat_um4et")
 Label/font_sizes/font_size = 16
 Label/fonts/font = ExtResource("1_4xjey")
+Panel/styles/panel = SubResource("StyleBoxEmpty_0er1m")
 ProgressBar/styles/background = SubResource("StyleBoxFlat_ciiu4")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_xijcw")
 RichTextLabel/font_sizes/normal_font_size = 16

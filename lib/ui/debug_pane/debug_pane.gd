@@ -1,6 +1,32 @@
 extends CanvasLayer
 
 @export var fps_lower_limit = 20
+var marked_points = []
+var marked_point_nodes = []
+const PointMarker = preload("res://lib/ui/debug_pane/point_marker.tscn")
+
+# Utilities for marking and clearing points
+func mark_point_at_player():
+	$ControlPanel/ControlVBox/ClearPoints.visible = true
+	var snapped_point = Vector3(
+		snapped(Global.player_position.x, 0.01),
+		snapped(Global.player_position.y, 0.01),
+		snapped(Global.player_position.z, 0.01))
+	print("[Debug] marked point " + str(snapped_point) + ".")
+	marked_points.append(snapped_point)
+	var marker = PointMarker.instantiate()
+	marker.position = snapped_point
+	marker.position.y += 3.0
+	marker.get_node("Label").text = str(snapped_point)
+	add_child(marker)
+	marked_point_nodes.append(marker)
+
+func clear_points():
+	$ControlPanel/ControlVBox/ClearPoints.visible = false
+	print("[Debug] marked points: " + str(marked_points) + ".")
+	marked_points = []
+	for marker in marked_point_nodes: marker.queue_free()
+	marked_point_nodes = []
 
 func _ready():
 	$Render.text = ""
@@ -11,7 +37,10 @@ func _ready():
 func _input(_event):
 	if Input.is_action_just_pressed("toggle_debug"):
 		Global.debug_state = !Global.debug_state
+		if Global.debug_state == false: clear_points()
 		Global.debug_toggled.emit()
+	if Input.is_action_just_pressed("debug_action"):
+		if Global.debug_state == true: mark_point_at_player()
 
 var i = 0
 
@@ -39,3 +68,7 @@ func _process(_delta):
 
 func _on_map_selection_pressed():
 	get_tree().change_scene_to_file("res://lib/loading/loading.tscn")
+
+func _on_mark_point_pressed(): mark_point_at_player()
+func _on_clear_points_pressed(): clear_points()
+func _mouseover(): Global.button_hover.emit()
