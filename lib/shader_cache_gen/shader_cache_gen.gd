@@ -2,9 +2,7 @@ extends Node3D
 # Load and display shaders in advance so that the game won't hang when a
 # shader is used for the first time.
 
-## Time to hold before clearing meshes and signalling that the shaders have
-## been loaded
-@export var wait_time = 1.0
+var shaders_loaded = false
 
 const SHADERS_UID = [
 	"uid://cupub7pghtysj", # holograph
@@ -21,6 +19,12 @@ const SHADERS_UID = [
 
 var meshes = []
 
+func _load_shaders():
+	if shaders_loaded == false:
+		shaders_loaded = true
+		for mesh in meshes: mesh.queue_free()
+		Global.shaders_loaded.emit()
+
 func _ready():
 	var i = 0
 	for shader in SHADERS_UID:
@@ -32,7 +36,8 @@ func _ready():
 		meshes.append(shader_mesh)
 		add_child(shader_mesh)
 		i += 1
-	
-	await get_tree().create_timer(wait_time).timeout
-	for mesh in meshes: mesh.queue_free()
-	Global.shaders_loaded.emit()
+
+var frame = 0
+func _process(_delta):
+	if frame == 5: _load_shaders()
+	if frame <= 6: frame += 1

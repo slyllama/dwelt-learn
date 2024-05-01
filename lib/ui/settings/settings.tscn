@@ -11,10 +11,10 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0vvej"]
 shader = ExtResource("2_yvakn")
 shader_parameter/base_color = Color(0, 0.729412, 0.32549, 1)
-shader_parameter/size = 0.75
-shader_parameter/exponent = 4.0
+shader_parameter/size = 0.8
+shader_parameter/exponent = 2.0
 shader_parameter/darkness = 0.3
-shader_parameter/overall_alpha = 0.45
+shader_parameter/overall_alpha = 0.3
 shader_parameter/smoke_effect = ExtResource("3_twtho")
 shader_parameter/wobble_pattern = ExtResource("4_1jhny")
 
@@ -24,10 +24,7 @@ border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
+border_color = Color(0.197937, 0.197937, 0.197937, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yc4ml"]
 bg_color = Color(0.0196078, 0.0196078, 0.0196078, 0)
