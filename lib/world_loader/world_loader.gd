@@ -40,3 +40,4 @@ func _ready():
 	Utilities.set_master_vol(0.0)
 	var fade_bus_in = create_tween()
 	fade_bus_in.tween_method(Utilities.set_master_vol, 0.0, Global.settings.volume, 1.5)
+	if get_node_or_null("Music"): get_node("Music").play()

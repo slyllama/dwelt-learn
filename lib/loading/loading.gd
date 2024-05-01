@@ -46,7 +46,7 @@ func _ready():
 	if DisplayServer.screen_get_size().x > 2000:
 		if OS.get_name() != "macOS":
 			DisplayServer.cursor_set_custom_image(
-				load("res://generic/tex/cursor_2x.png"))
+				load("res://generic/tex/ui/cursor_2x.png"))
 	
 	$LoadBlack/ProgressBar.visible = false
 	$GlowIcon.visible = false

@@ -7,3 +7,10 @@ func _ready():
 	
 	super()
 	%Player.set_model_scale(0.2)
+	
+	# Set a spicy angle
+	%Player.rotation_degrees.y += 180.0
+	%Player/CamPivot.rotation_degrees.x += 24.0
+	%Player/CamPivot.new_cam_x_rotation += 24.0
+	%Player/CamPivot.rotation_degrees.y += 10.0
+	%Player/CamPivot.new_cam_y_rotation += 10.0
