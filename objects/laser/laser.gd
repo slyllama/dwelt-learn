@@ -1,6 +1,7 @@
 extends Node3D
 # NOTE: laser acts on collision group 2
 
+@export var object_name = "laser"
 @export var laser_move_speed = 0.5
 @export var laser_limit_angle = Vector2(45.0, 10.0)
 
@@ -35,7 +36,6 @@ func deactivate():
 		if active == true: return
 		overlay_texture.visible = false)
 	Global.player_position_unlocked.emit()
-	Global.interact_entered.emit()
 
 func _ready():
 	# Find the new center for Sprite2Ds when the content scale changes
@@ -54,6 +54,16 @@ func _ready():
 	overlay_texture.modulate.a = 0.0
 
 var start = 2
+
+func _input(_event):
+	if Input.is_action_just_pressed("interact"):
+		if Global.look_object == object_name:
+			if active == false:
+				activate()
+				return
+		if active == true:
+			deactivate()
+			return
 
 func _process(_delta):
 	overlay_texture.scale = lerp(overlay_texture.scale, Vector2(0.7, 0.7), 0.2)

@@ -38,5 +38,6 @@ stream = ExtResource("8_pae4y")
 
 [node name="TurretPlaceholder" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+use_collision = true
 size = Vector3(2, 2, 2)
 material = SubResource("StandardMaterial3D_gkgqs")

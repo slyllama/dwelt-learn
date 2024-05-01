@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://e0k8h1ytp7wi"]
+[gd_scene load_steps=17 format=3 uid="uid://e0k8h1ytp7wi"]
 
 [ext_resource type="PackedScene" uid="uid://dq3aqaliycowy" path="res://lib/ui/debug_pane/debug_pane.tscn" id="1_gv0re"]
 [ext_resource type="Script" path="res://lib/ui/hud/hud.gd" id="1_i45xt"]
@@ -8,11 +8,11 @@
 [ext_resource type="Texture2D" uid="uid://b5nufueq16vw0" path="res://generic/tex/shader_tex/wobble_noise.tres" id="4_q8hty"]
 [ext_resource type="Script" path="res://lib/ui/hud/IntroVFX.gd" id="5_wllky"]
 [ext_resource type="Theme" uid="uid://dfe36tnn0c1ud" path="res://generic/debug_theme.tres" id="6_14irq"]
-[ext_resource type="Texture2D" uid="uid://chs04gxkfh3ag" path="res://lib/ui/tex/interact_overlay_glow.png" id="6_du7uc"]
 [ext_resource type="Texture2D" uid="uid://8kcdl0ahju3s" path="res://lib/ui/tex/interact_overlay.png" id="6_n4mbk"]
 [ext_resource type="Texture2D" uid="uid://b3aaiytpklgal" path="res://lib/ui/tex/vignette.png" id="7_wv8wl"]
 [ext_resource type="Texture2D" uid="uid://bi3k2uagvaf4g" path="res://lib/ui/tex/top_menu_darken.png" id="9_0p1yl"]
 [ext_resource type="PackedScene" uid="uid://bt5sosdm3tncx" path="res://lib/ui/hud/hud_buttons.tscn" id="15_6wbiv"]
+[ext_resource type="Texture2D" uid="uid://danqqg64d8q2k" path="res://generic/dot.png" id="15_cp3ui"]
 [ext_resource type="PackedScene" uid="uid://bx5xwgdebscc6" path="res://lib/ui/settings/settings.tscn" id="19_c42st"]
 [ext_resource type="PackedScene" uid="uid://d24gofb7bfo8k" path="res://lib/ui/hover_sound.tscn" id="19_uwm57"]
 
@@ -25,43 +25,6 @@ shader_parameter/darkness = 0.5
 shader_parameter/overall_alpha = 1.0
 shader_parameter/smoke_effect = ExtResource("3_r5nad")
 shader_parameter/wobble_pattern = ExtResource("4_q8hty")
-
-[sub_resource type="Animation" id="Animation_o35fq"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_ghsgi"]
-resource_name = "pulse"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_lwxj7"]
-_data = {
-"RESET": SubResource("Animation_o35fq"),
-"pulse": SubResource("Animation_ghsgi")
-}
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_i45xt")
@@ -106,21 +69,6 @@ mouse_filter = 2
 texture = ExtResource("9_0p1yl")
 expand_mode = 1
 
-[node name="InteractOverlayGlow" type="TextureRect" parent="."]
-self_modulate = Color(1, 1, 1, 0)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("6_du7uc")
-expand_mode = 3
-
-[node name="Anim" type="AnimationPlayer" parent="InteractOverlayGlow"]
-libraries = {
-"": SubResource("AnimationLibrary_lwxj7")
-}
-
 [node name="InteractOverlay" type="TextureRect" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
@@ -128,7 +76,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_n4mbk")
-expand_mode = 1
 
 [node name="HUDButtons" parent="." instance=ExtResource("15_6wbiv")]
 layer = 5
@@ -166,3 +113,17 @@ value = 100.0
 show_percentage = false
 
 [node name="UIHover" parent="." instance=ExtResource("19_uwm57")]
+
+[node name="Cursor" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("15_cp3ui")

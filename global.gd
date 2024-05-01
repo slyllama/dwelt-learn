@@ -52,3 +52,4 @@ var in_action = false
 var player_position = Vector2.ZERO
 var raycast_y_point = 0.0
 var look_point = null
+var look_object = ""
