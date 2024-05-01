@@ -44,6 +44,12 @@ func deactivate():
 	Global.interact_entered.emit()
 
 func _ready():
+	# Find the new center for Sprite2Ds when the content scale changes
+	# TODO: make a generic class for this
+	Global.setting_changed.connect(func(setting):
+		if setting == "larger_ui":
+			overlay_texture.position = Utilities.get_screen_center())
+	
 	$InteractArea.TYPE = TYPE
 	$InteractArea.activated.connect(activate)
 	$InteractArea.deactivated.connect(deactivate)
@@ -53,7 +59,7 @@ func _ready():
 	$Cable.update()
 	
 	overlay_texture.texture = load("uid://d3xxoqd47y644")
-	overlay_texture.position = Vector2(1920.0, 1080.0) / 2.0
+	overlay_texture.position = Utilities.get_screen_center()
 	add_child(overlay_texture)
 	overlay_texture.modulate.a = 0.0
 

@@ -1,6 +1,7 @@
 extends Node
 
 const SCREEN_SIZE = Vector2(1920.0, 1080.0)
+const LARGE_UI_SCALE = 1.3
 
 signal camera_shaken
 signal button_hover

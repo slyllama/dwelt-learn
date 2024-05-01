@@ -22,6 +22,12 @@ func toggle_full_screen():
 		if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
 
+# Get the center of the window, adjusted by the content scale factor
+func get_screen_center():
+	if Global.settings.larger_ui == true:
+		return(Global.SCREEN_SIZE / Global.LARGE_UI_SCALE / 2.0)
+	else: return(Global.SCREEN_SIZE / 2.0)
+
 ### CONSTRUCTION SCRIPTS
 
 # Get the shortest angle between "from", and "to", even if one or both exceeds 360deg

@@ -14,7 +14,8 @@ func _setting_changed(get_setting_id):
 		"volume": AudioServer.set_bus_volume_db(0, linear_to_db(Global.settings.volume))
 		"full_screen": Utilities.toggle_full_screen()
 		"larger_ui":
-			if Global.settings.larger_ui == true: get_window().content_scale_factor = 1.3
+			if Global.settings.larger_ui == true:
+				get_window().content_scale_factor = Global.LARGE_UI_SCALE
 			else: get_window().content_scale_factor = 1.0
 	Utilities.save_settings()
 
