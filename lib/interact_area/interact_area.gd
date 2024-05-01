@@ -40,7 +40,6 @@ func _input(_event):
 func _process(_delta):
 	if Global.in_area_name != TYPE: 
 		if in_area == true:
-			pdebug("Leaving area.")
 			if active == true:
 				pdebug("Area was active, so deactivating.")
 				deactivate()
