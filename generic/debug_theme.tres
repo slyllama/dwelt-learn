@@ -1,16 +1,14 @@
-[gd_resource type="Theme" load_steps=9 format=3 uid="uid://dfe36tnn0c1ud"]
+[gd_resource type="Theme" load_steps=14 format=3 uid="uid://dfe36tnn0c1ud"]
 
 [ext_resource type="FontFile" uid="uid://b1v28gy50d86f" path="res://generic/fonts/red_hat.ttf" id="1_4xjey"]
+[ext_resource type="Texture2D" uid="uid://d4gts4lvqw0je" path="res://generic/tex/ui/toggle_on.png" id="2_am87g"]
+[ext_resource type="Texture2D" uid="uid://dimw586elxgjl" path="res://generic/tex/ui/toggle_off.png" id="3_x515i"]
+[ext_resource type="Texture2D" uid="uid://d27tc3g61pm80" path="res://generic/tex/ui/slider.png" id="4_15vmq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7bfjb"]
 content_margin_top = 4.0
 content_margin_bottom = 4.0
-bg_color = Color(0.13, 0.2, 0.158, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.533037, 0.533037, 0.533036, 1)
+bg_color = Color(0, 0.729412, 0.32549, 1)
 corner_radius_top_left = 2
 corner_radius_top_right = 2
 corner_radius_bottom_right = 2
@@ -49,6 +47,14 @@ corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vwtc4"]
+bg_color = Color(0, 0.729412, 0.32549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x5pj6"]
+bg_color = Color(0, 0, 0, 1)
+border_width_top = 8
+border_color = Color(0.147672, 0.147672, 0.147672, 1)
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0er1m"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ciiu4"]
@@ -58,11 +64,20 @@ bg_color = Color(0.146641, 0.146641, 0.146641, 1)
 bg_color = Color(0.63, 0.63, 0.63, 1)
 
 [resource]
+Button/colors/font_focus_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
 Button/fonts/font = ExtResource("1_4xjey")
 Button/styles/focus = SubResource("StyleBoxFlat_7bfjb")
 Button/styles/hover = SubResource("StyleBoxFlat_78c76")
 Button/styles/normal = SubResource("StyleBoxFlat_um4et")
+CheckButton/icons/checked = ExtResource("2_am87g")
+CheckButton/icons/unchecked = ExtResource("3_x515i")
 CheckButton/styles/normal = SubResource("StyleBoxFlat_7og0q")
+HSlider/icons/grabber = ExtResource("4_15vmq")
+HSlider/icons/grabber_highlight = null
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_vwtc4")
+HSlider/styles/normal = null
+HSlider/styles/slider = SubResource("StyleBoxFlat_x5pj6")
 Label/font_sizes/font_size = 16
 Label/fonts/font = ExtResource("1_4xjey")
 Panel/styles/panel = SubResource("StyleBoxEmpty_0er1m")

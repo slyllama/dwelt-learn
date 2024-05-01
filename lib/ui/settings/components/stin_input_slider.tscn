@@ -18,8 +18,8 @@ fit_content = true
 [node name="Slider" type="HSlider" parent="."]
 layout_mode = 2
 mouse_filter = 1
+theme = ExtResource("1_d25bt")
 
-[connection signal="changed" from="Slider" to="." method="_on_slider_changed"]
 [connection signal="drag_ended" from="Slider" to="." method="_on_slider_drag_ended"]
 [connection signal="drag_started" from="Slider" to="." method="_on_slider_drag_started"]
 [connection signal="mouse_entered" from="Slider" to="." method="_mouseover"]

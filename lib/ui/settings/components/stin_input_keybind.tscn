@@ -12,13 +12,14 @@ script = ExtResource("1_rqt23")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
-size_flags_horizontal = 2
+size_flags_horizontal = 0
 theme = ExtResource("2_pjspn")
 text = "Label"
 
 [node name="Button" type="Button" parent="."]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+size_flags_horizontal = 10
 mouse_filter = 1
 theme = ExtResource("2_pjspn")
 text = "Button"

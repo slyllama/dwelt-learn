@@ -27,7 +27,7 @@ func transition_subtle_vfx_in():
 	active = true
 	visible = true
 	max_alpha = 0.75
-	max_size = 0.8
+	max_size = 0.7
 	transition_vfx_in()
 
 func transition_vfx_out():

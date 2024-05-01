@@ -57,9 +57,9 @@ offset_bottom = -40.0
 grow_vertical = 0
 mouse_filter = 2
 theme = ExtResource("3_480m7")
-theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
-text = "Dwelt Technical Test"
+text = "DWELT TECHNICAL TEST"
 fit_content = true
 
 [node name="ControlPanel" type="Panel" parent="."]
@@ -68,7 +68,7 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -240.0
+offset_left = -319.0
 offset_top = -240.0
 offset_right = -40.0
 offset_bottom = -40.0
@@ -92,18 +92,17 @@ size_flags_vertical = 8
 mouse_filter = 1
 theme = ExtResource("3_480m7")
 theme_override_styles/normal = SubResource("StyleBoxFlat_mh6ac")
-text = "Export/Clear Points"
+text = "EXPORT AND CLEAR POINTS"
 
 [node name="MarkPoint" type="Button" parent="ControlPanel/ControlVBox"]
 layout_mode = 2
 theme = ExtResource("3_480m7")
-text = "Mark Point
-"
+text = "MARK POINT"
 
 [node name="MapSelection" type="Button" parent="ControlPanel/ControlVBox"]
 layout_mode = 2
 theme = ExtResource("3_480m7")
-text = "Main Menu"
+text = "MENU"
 
 [connection signal="mouse_entered" from="ControlPanel/ControlVBox/ClearPoints" to="." method="_mouseover"]
 [connection signal="pressed" from="ControlPanel/ControlVBox/ClearPoints" to="." method="_on_clear_points_pressed"]

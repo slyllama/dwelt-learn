@@ -13,11 +13,12 @@ uniform float overall_alpha: hint_range(0.0, 1.0) = 1.0;
 const vec2 center = vec2(0.5, 0.5);
 
 void fragment() {
-	float ratio = SCREEN_PIXEL_SIZE.x / SCREEN_PIXEL_SIZE.y;
+	float adj_size = size / 1.2;
+	float ratio = SCREEN_PIXEL_SIZE.x / SCREEN_PIXEL_SIZE.y * 1.5;
 	vec2 scaled_uv = (SCREEN_UV - vec2(0.5, 0.0)) / vec2(ratio, 1.0) + vec2(0.5, 0.0);
-	float mask = (1.0 - smoothstep(size, size - 0.25, length(scaled_uv - center)));
+	float mask = (1.0 - smoothstep(adj_size, adj_size - 0.25, length(scaled_uv - center)));
 	
-	vec2 wobble = texture(wobble_pattern, UV + TIME * 0.1).rg * 0.1;
+	vec2 wobble = texture(wobble_pattern, SCREEN_UV + TIME * 0.1).rg * 0.1;
 	vec3 smoke = texture(smoke_effect, scaled_uv * 1.5 + wobble).rgb;
 	
 	smoke = smoke * vec3(mask);

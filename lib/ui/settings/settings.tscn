@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bx5xwgdebscc6"]
+[gd_scene load_steps=13 format=3 uid="uid://bx5xwgdebscc6"]
 
 [ext_resource type="Script" path="res://lib/ui/settings/settings.gd" id="1_ttf36"]
 [ext_resource type="Theme" uid="uid://dfe36tnn0c1ud" path="res://generic/debug_theme.tres" id="2_r1d7p"]
@@ -10,13 +10,24 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0vvej"]
 shader = ExtResource("2_yvakn")
-shader_parameter/base_color = Color(0, 0, 0, 1)
-shader_parameter/size = 0.9
-shader_parameter/exponent = 2.0
-shader_parameter/darkness = 0.5
-shader_parameter/overall_alpha = 0.6
+shader_parameter/base_color = Color(0, 0.729412, 0.32549, 1)
+shader_parameter/size = 0.75
+shader_parameter/exponent = 4.0
+shader_parameter/darkness = 0.3
+shader_parameter/overall_alpha = 0.45
 shader_parameter/smoke_effect = ExtResource("3_twtho")
 shader_parameter/wobble_pattern = ExtResource("4_1jhny")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vsf57"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yc4ml"]
 bg_color = Color(0.0196078, 0.0196078, 0.0196078, 0)
@@ -31,7 +42,9 @@ content_margin_bottom = 10.0
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xdjf8"]
-bg_color = Color(0.459199, 0, 0.0975775, 1)
+content_margin_top = 3.0
+content_margin_bottom = 3.0
+bg_color = Color(0, 0.729412, 0.32549, 1)
 
 [node name="Settings" type="CanvasLayer"]
 layer = 4
@@ -46,7 +59,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Control" type="ColorRect" parent="."]
+[node name="Control" type="Panel" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -58,7 +71,8 @@ offset_right = 190.0
 offset_bottom = 368.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+theme = ExtResource("2_r1d7p")
+theme_override_styles/panel = SubResource("StyleBoxFlat_vsf57")
 
 [node name="Panel" type="ScrollContainer" parent="Control"]
 layout_mode = 1
@@ -81,13 +95,14 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Graphics" type="RichTextLabel" parent="Control/Panel/VBox"]
+[node name="Title" type="RichTextLabel" parent="Control/Panel/VBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
 theme = ExtResource("2_r1d7p")
+theme_override_colors/default_color = Color(2.31028e-06, 0.730318, 0.326669, 1)
 theme_override_constants/line_separation = -5
-theme_override_font_sizes/normal_font_size = 18
+theme_override_font_sizes/normal_font_size = 22
 theme_override_styles/normal = SubResource("StyleBoxFlat_kvdqb")
 bbcode_enabled = true
 text = "[center]SETTINGS[/center]"
@@ -96,65 +111,91 @@ fit_content = true
 [node name="LargerUI" parent="Control/Panel/VBox" instance=ExtResource("5_duwqu")]
 layout_mode = 2
 setting_id = "larger_ui"
-setting_title = "Larger UI"
+setting_title = "LARGER UI"
 
-[node name="HQShadowsControl2" parent="Control/Panel/VBox" instance=ExtResource("5_duwqu")]
+[node name="FullScreen" parent="Control/Panel/VBox" instance=ExtResource("5_duwqu")]
 layout_mode = 2
 setting_id = "full_screen"
-setting_title = "Full Screen"
+setting_title = "FULL SCREEN"
 
-[node name="HQShadowsControl" parent="Control/Panel/VBox" instance=ExtResource("5_duwqu")]
+[node name="HQShadows" parent="Control/Panel/VBox" instance=ExtResource("5_duwqu")]
 layout_mode = 2
 setting_id = "spot_shadows"
-setting_title = "High Quality Shadows"
+setting_title = "HIGH QUALITY SHADOWS"
 
 [node name="VolFog" parent="Control/Panel/VBox" instance=ExtResource("5_duwqu")]
 layout_mode = 2
 setting_id = "vol_fog"
-setting_title = "Volumetric Fog"
+setting_title = "HIGH QUALITY FOG"
 
 [node name="Particles" parent="Control/Panel/VBox" instance=ExtResource("5_duwqu")]
 layout_mode = 2
 setting_id = "fancy_particles"
-setting_title = "Fancy Particles"
+setting_title = "ADDITIONAL EFFECTS"
 
-[node name="VolumeControl" parent="Control/Panel/VBox" instance=ExtResource("6_y64kv")]
+[node name="Pad" type="ColorRect" parent="Control/Panel/VBox"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+color = Color(0, 0, 0, 0)
+
+[node name="Sep" type="ColorRect" parent="Control/Panel/VBox"]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+color = Color(0, 0.729412, 0.32549, 1)
+
+[node name="Volume" parent="Control/Panel/VBox" instance=ExtResource("6_y64kv")]
 layout_mode = 2
 setting_id = "volume"
-setting_title = "Volume"
+setting_title = "VOLUME"
 output_as_percentage = true
 max_value = 1.0
 step = 0.02
 
-[node name="FOVControl" parent="Control/Panel/VBox" instance=ExtResource("6_y64kv")]
+[node name="Sep2" type="ColorRect" parent="Control/Panel/VBox"]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+color = Color(0, 0.729412, 0.32549, 1)
+
+[node name="FOV" parent="Control/Panel/VBox" instance=ExtResource("6_y64kv")]
 layout_mode = 2
 setting_id = "fov"
-setting_title = "FOV"
+setting_title = "FIELD OF VIEW"
 output_suffix = "°"
 min_value = 50.0
 
-[node name="CamSensControl" parent="Control/Panel/VBox" instance=ExtResource("6_y64kv")]
+[node name="Sep3" type="ColorRect" parent="Control/Panel/VBox"]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+color = Color(0, 0.729412, 0.32549, 1)
+
+[node name="CamSens" parent="Control/Panel/VBox" instance=ExtResource("6_y64kv")]
 layout_mode = 2
 setting_id = "camera_sens"
-setting_title = "Camera Sensitivity"
+setting_title = "ORBIT SENSITIVITY"
 min_value = 0.5
 max_value = 2.5
 step = 0.05
+
+[node name="Sep4" type="ColorRect" parent="Control/Panel/VBox"]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+color = Color(0, 0.729412, 0.32549, 1)
 
 [node name="ResetButton" type="Button" parent="Control/Panel/VBox"]
 layout_mode = 2
 size_flags_vertical = 10
 mouse_filter = 1
 theme = ExtResource("2_r1d7p")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_xdjf8")
-text = "Defaults"
+text = "DEFAULTS"
 
 [node name="LowerCloseButton" type="Button" parent="Control/Panel/VBox"]
 layout_mode = 2
 size_flags_vertical = 8
 mouse_filter = 1
 theme = ExtResource("2_r1d7p")
-text = "Close"
+text = "CLOSE"
 
 [node name="CloseButton" type="Button" parent="Control"]
 layout_mode = 1

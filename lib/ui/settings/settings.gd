@@ -2,22 +2,22 @@ extends CanvasLayer
 
 const InputLine = preload("res://lib/ui/settings/components/stin_input_keybind.tscn")
 var input_data = [
-	{"id": "move_forward", "name": "Move Forward" },
-	{"id": "move_back", "name": "Move Back" },
-	{"id": "strafe_left", "name": "Strafe Left" },
-	{"id": "strafe_right", "name": "Strafe Right" },
-	{"id": "interact", "name": "Interact" },
-	{"id": "zoom_in", "name": "Zoom In" },
-	{"id": "zoom_out", "name": "Zoom Out" } ]
+	{"id": "move_forward", "name": "FORWARD" },
+	{"id": "move_back", "name": "BACK" },
+	{"id": "strafe_left", "name": "STRAFE LEFT" },
+	{"id": "strafe_right", "name": "STRAFE RIGHT" },
+	{"id": "interact", "name": "INTERACT" },
+	{"id": "zoom_in", "name": "ZOOM IN" },
+	{"id": "zoom_out", "name": "ZOOM OUT" } ]
 
 var input_containers = [] # input list nodes, so they can be cleared on refresh
 
 func _get_key(input_id):
 	var action = InputMap.action_get_events(input_id)[0]
 	if str(action).split(" ")[1] == "button_index=4,":
-		return("Scroll Up")
+		return("SCROLL UP")
 	elif str(action).split(" ")[1] == "button_index=5,":
-		return("Scroll Down")
+		return("SCROLL DOWN")
 	else: return(str(action).split(" ")[2].lstrip("(").rstrip("),"))
 
 # Move the "reset" button to the bottom of the menu after reloading the menu

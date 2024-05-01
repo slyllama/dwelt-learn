@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bx5xwgdebscc6" path="res://lib/ui/settings/settings.tscn" id="2_k2j3d"]
 [ext_resource type="Theme" uid="uid://dfe36tnn0c1ud" path="res://generic/debug_theme.tres" id="2_rl4eh"]
 [ext_resource type="Texture2D" uid="uid://c1ens2tjsu5wf" path="res://lib/loading/loading_icon.png" id="4_o48hx"]
-[ext_resource type="Texture2D" uid="uid://d2nv8xnwo132g" path="res://generic/tex/placeholder_logo.png" id="5_s6nor"]
+[ext_resource type="Texture2D" uid="uid://d2nv8xnwo132g" path="res://generic/tex/ui/placeholder_logo.png" id="5_s6nor"]
 [ext_resource type="PackedScene" uid="uid://d24gofb7bfo8k" path="res://lib/ui/hover_sound.tscn" id="14_w5m2m"]
 
 [sub_resource type="Animation" id="Animation_xdgig"]
@@ -155,22 +155,22 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_ujdx1")
 [node name="ScrapperButton" type="Button" parent="LoadPanel/VBox"]
 layout_mode = 2
 theme = ExtResource("2_rl4eh")
-text = "Play"
+text = "PLAY"
 
 [node name="SandboxButton" type="Button" parent="LoadPanel/VBox"]
 layout_mode = 2
 theme = ExtResource("2_rl4eh")
-text = "Developer Sandbox"
+text = "SANDBOX"
 
 [node name="Settings" type="Button" parent="LoadPanel/VBox"]
 layout_mode = 2
 theme = ExtResource("2_rl4eh")
-text = "Settings"
+text = "SETTINGS"
 
 [node name="Quit" type="Button" parent="LoadPanel/VBox"]
 layout_mode = 2
 theme = ExtResource("2_rl4eh")
-text = "Quit"
+text = "QUIT"
 
 [node name="UIHover" parent="." instance=ExtResource("14_w5m2m")]
 
