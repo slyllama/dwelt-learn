@@ -15,23 +15,26 @@ func _setting_changed(get_setting_id):
 	match get_setting_id:
 		"fov": %Player/CamPivot/CamArm/Camera.fov = Global.settings.fov
 		"camera_sens": %Player/CamPivot.camera_sensitivity = Global.settings.camera_sens
-		"volume":
-			# Don't apply volume on first run, because we are fading it in below
-			if first_settings_run == true: Utilities.set_master_vol(Global.settings.volume)
 		"spot_shadows":
 			for child in Utilities.get_all_children(get_tree().root):
 				if child in exclude_from_shadow: return
 				if child is SpotLight3D or child is OmniLight3D:
 					child.shadow_enabled = Global.settings.spot_shadows
 		"vol_fog": $Sky.get_environment().volumetric_fog_enabled = Global.settings.vol_fog
-		"full_screen":
-			if first_settings_run == true: Utilities.toggle_full_screen()
+	
+	# The following are only applied after the first run
+	if first_settings_run == true:
+		match get_setting_id:
+			"full_screen": Utilities.toggle_full_screen()
+			"volume": Utilities.set_master_vol(Global.settings.volume)
+			"larger_ui":
+				if Global.settings.larger_ui == true: get_window().content_scale_factor = 1.3
+				else: get_window().content_scale_factor = 1.0
 	Utilities.save_settings()
 
 func _ready():
 	Global.setting_changed.connect(_setting_changed)
 	for setting in Global.settings: Global.setting_changed.emit(setting)
-	$HUD/Settings/Control/Panel/VBox/LargerUI.visible = false
 	
 	# Fade in all sound if the game wasn't already muted
 	Utilities.set_master_vol(0.0)

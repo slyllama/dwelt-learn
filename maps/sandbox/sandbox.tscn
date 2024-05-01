@@ -144,6 +144,6 @@ transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 7.26572, 0.109395, -1.06047)
 dialogue_data = Array[String](["HELLO!?"])
 
 [node name="LegTest" parent="." instance=ExtResource("12_l4442")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 14, -20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 18.3133, -20)
 
 [connection signal="activated" from="LaserDetector" to="." method="_on_laser_detector_activated"]

@@ -3,7 +3,14 @@
 [ext_resource type="FontFile" uid="uid://b1v28gy50d86f" path="res://generic/fonts/red_hat.ttf" id="1_4xjey"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7bfjb"]
-bg_color = Color(0.26235, 0.353909, 0.254445, 1)
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.13, 0.2, 0.158, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.533037, 0.533037, 0.533036, 1)
 corner_radius_top_left = 2
 corner_radius_top_right = 2
 corner_radius_bottom_right = 2
@@ -11,9 +18,9 @@ corner_radius_bottom_left = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_78c76"]
 content_margin_left = 5.0
-content_margin_top = 1.0
+content_margin_top = 4.0
 content_margin_right = 5.0
-content_margin_bottom = 1.0
+content_margin_bottom = 4.0
 bg_color = Color(0.0807833, 0.0807833, 0.0807833, 1)
 corner_radius_top_left = 2
 corner_radius_top_right = 2
@@ -22,9 +29,9 @@ corner_radius_bottom_left = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_um4et"]
 content_margin_left = 5.0
-content_margin_top = 1.0
+content_margin_top = 4.0
 content_margin_right = 5.0
-content_margin_bottom = 1.0
+content_margin_bottom = 4.0
 bg_color = Color(0.195887, 0.195887, 0.195887, 1)
 corner_radius_top_left = 2
 corner_radius_top_right = 2

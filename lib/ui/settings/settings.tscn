@@ -71,10 +71,10 @@ offset_right = -20.0
 offset_bottom = -37.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_yc4ml")
 follow_focus = true
 horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
 
 [node name="VBox" type="VBoxContainer" parent="Control/Panel"]
 layout_mode = 2
@@ -90,7 +90,7 @@ theme_override_constants/line_separation = -5
 theme_override_font_sizes/normal_font_size = 18
 theme_override_styles/normal = SubResource("StyleBoxFlat_kvdqb")
 bbcode_enabled = true
-text = "[center]GRAPHICS[/center]"
+text = "[center]SETTINGS[/center]"
 fit_content = true
 
 [node name="LargerUI" parent="Control/Panel/VBox" instance=ExtResource("5_duwqu")]
@@ -118,18 +118,6 @@ layout_mode = 2
 setting_id = "fancy_particles"
 setting_title = "Fancy Particles"
 
-[node name="Sound" type="RichTextLabel" parent="Control/Panel/VBox"]
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 1
-theme = ExtResource("2_r1d7p")
-theme_override_constants/line_separation = -5
-theme_override_font_sizes/normal_font_size = 18
-theme_override_styles/normal = SubResource("StyleBoxFlat_kvdqb")
-bbcode_enabled = true
-text = "[center]SOUND[/center]"
-fit_content = true
-
 [node name="VolumeControl" parent="Control/Panel/VBox" instance=ExtResource("6_y64kv")]
 layout_mode = 2
 setting_id = "volume"
@@ -137,18 +125,6 @@ setting_title = "Volume"
 output_as_percentage = true
 max_value = 1.0
 step = 0.02
-
-[node name="Input" type="RichTextLabel" parent="Control/Panel/VBox"]
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 1
-theme = ExtResource("2_r1d7p")
-theme_override_constants/line_separation = -5
-theme_override_font_sizes/normal_font_size = 18
-theme_override_styles/normal = SubResource("StyleBoxFlat_kvdqb")
-bbcode_enabled = true
-text = "[center]INPUT[/center]"
-fit_content = true
 
 [node name="FOVControl" parent="Control/Panel/VBox" instance=ExtResource("6_y64kv")]
 layout_mode = 2
@@ -185,10 +161,10 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -42.0
+offset_left = -50.0
 offset_top = 20.0
 offset_right = -20.0
-offset_bottom = 44.0
+offset_bottom = 50.0
 grow_horizontal = 0
 size_flags_vertical = 10
 mouse_filter = 1
