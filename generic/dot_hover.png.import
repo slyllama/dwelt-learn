@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chs04gxkfh3ag"
-path="res://.godot/imported/interact_overlay_glow.png-92688b29bdc144b46a273128c0d98fd6.ctex"
+uid="uid://bo64vayisk0p"
+path="res://.godot/imported/dot_hover.png-25b93f9825e2b70a32da95b0d47b3634.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://lib/ui/tex/interact_overlay_glow.png"
-dest_files=["res://.godot/imported/interact_overlay_glow.png-92688b29bdc144b46a273128c0d98fd6.ctex"]
+source_file="res://generic/dot_hover.png"
+dest_files=["res://.godot/imported/dot_hover.png-25b93f9825e2b70a32da95b0d47b3634.ctex"]
 
 [params]
 

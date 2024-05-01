@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://e0k8h1ytp7wi"]
+[gd_scene load_steps=18 format=3 uid="uid://e0k8h1ytp7wi"]
 
 [ext_resource type="PackedScene" uid="uid://dq3aqaliycowy" path="res://lib/ui/debug_pane/debug_pane.tscn" id="1_gv0re"]
 [ext_resource type="Script" path="res://lib/ui/hud/hud.gd" id="1_i45xt"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://8kcdl0ahju3s" path="res://lib/ui/tex/interact_overlay.png" id="6_n4mbk"]
 [ext_resource type="Texture2D" uid="uid://b3aaiytpklgal" path="res://lib/ui/tex/vignette.png" id="7_wv8wl"]
 [ext_resource type="Texture2D" uid="uid://bi3k2uagvaf4g" path="res://lib/ui/tex/top_menu_darken.png" id="9_0p1yl"]
+[ext_resource type="Texture2D" uid="uid://bo64vayisk0p" path="res://generic/dot_hover.png" id="11_hcgrr"]
 [ext_resource type="PackedScene" uid="uid://bt5sosdm3tncx" path="res://lib/ui/hud/hud_buttons.tscn" id="15_6wbiv"]
 [ext_resource type="Texture2D" uid="uid://danqqg64d8q2k" path="res://generic/dot.png" id="15_cp3ui"]
 [ext_resource type="PackedScene" uid="uid://bx5xwgdebscc6" path="res://lib/ui/settings/settings.tscn" id="19_c42st"]
@@ -23,6 +24,8 @@ shader_parameter/size = 0.5
 shader_parameter/exponent = 1.0
 shader_parameter/darkness = 0.5
 shader_parameter/overall_alpha = 1.0
+shader_parameter/overall_scale = 1.5
+shader_parameter/time_factor = 0.1
 shader_parameter/smoke_effect = ExtResource("3_r5nad")
 shader_parameter/wobble_pattern = ExtResource("4_q8hty")
 
@@ -56,7 +59,7 @@ mouse_filter = 2
 texture = ExtResource("7_wv8wl")
 expand_mode = 1
 
-[node name="Vignette2" type="TextureRect" parent="."]
+[node name="TopVignette" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0.745098)
 anchors_preset = 5
 anchor_left = 0.5
@@ -76,6 +79,35 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_n4mbk")
+
+[node name="InteractCursor" type="TextureRect" parent="InteractOverlay"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_hcgrr")
+
+[node name="Cursor" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("15_cp3ui")
 
 [node name="HUDButtons" parent="." instance=ExtResource("15_6wbiv")]
 layer = 5
@@ -113,17 +145,3 @@ value = 100.0
 show_percentage = false
 
 [node name="UIHover" parent="." instance=ExtResource("19_uwm57")]
-
-[node name="Cursor" type="TextureRect" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -5.0
-offset_top = -5.0
-offset_right = 5.0
-offset_bottom = 5.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("15_cp3ui")

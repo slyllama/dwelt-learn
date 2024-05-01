@@ -1,18 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://07n4fhjhunl"]
+[gd_scene load_steps=7 format=3 uid="uid://07n4fhjhunl"]
 
 [ext_resource type="Script" path="res://objects/laser/laser.gd" id="1_qy5bo"]
 [ext_resource type="PackedScene" uid="uid://bbt6np1daksl4" path="res://objects/cable/cable.tscn" id="2_qx4ym"]
 [ext_resource type="Script" path="res://objects/laser/Cast.gd" id="3_0t5vk"]
-[ext_resource type="Texture2D" uid="uid://w4xxv7xrtkwl" path="res://objects/laser/tex/laser_diff.png" id="6_pcuov"]
-[ext_resource type="Texture2D" uid="uid://d2kf24780bso0" path="res://objects/laser/tex/laser_norm.png" id="7_ay133"]
-[ext_resource type="Material" uid="uid://bvrbyvctyja7w" path="res://generic/shaders/outline.tres" id="7_ofddx"]
+[ext_resource type="Material" uid="uid://dw2as06h4frii" path="res://objects/laser/turret.tres" id="6_d7f3m"]
 [ext_resource type="AudioStream" uid="uid://ksek1nmbm7lq" path="res://objects/laser/enter_laser.ogg" id="8_pae4y"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gkgqs"]
-next_pass = ExtResource("7_ofddx")
-albedo_texture = ExtResource("6_pcuov")
-normal_enabled = true
-normal_texture = ExtResource("7_ay133")
+[sub_resource type="BoxShape3D" id="BoxShape3D_nt7dx"]
+margin = 0.2
+size = Vector3(2, 2, 2)
 
 [node name="Laser" type="Node3D"]
 script = ExtResource("1_qy5bo")
@@ -22,7 +18,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
 visible = false
 
 [node name="Cast" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1.1)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1, 0.9)
 target_position = Vector3(0, 0, -30)
 collision_mask = 2
 script = ExtResource("3_0t5vk")
@@ -31,13 +27,18 @@ script = ExtResource("3_0t5vk")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
 
 [node name="DockingPoint" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 
 [node name="EnterLaser" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("8_pae4y")
 
-[node name="TurretPlaceholder" type="CSGBox3D" parent="."]
+[node name="Collision" type="Area3D" parent="."]
+
+[node name="Shape" type="CollisionShape3D" parent="Collision"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-use_collision = true
+shape = SubResource("BoxShape3D_nt7dx")
+
+[node name="Placeholder" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 size = Vector3(2, 2, 2)
-material = SubResource("StandardMaterial3D_gkgqs")
+material = ExtResource("6_d7f3m")

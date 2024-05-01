@@ -3,11 +3,14 @@ extends Node3D
 
 @export var object_name = "laser"
 @export var laser_move_speed = 0.5
-@export var laser_limit_angle = Vector2(45.0, 10.0)
+@export var laser_limit_angle = Vector2(45.0, 30.0)
 
 var overlay_texture = Sprite2D.new()
 var delay_complete = false # laser won't start moving until after a short delay
 var active = false
+
+var og_cast_rotation_x
+var og_cast_rotation_y
 
 func activate():
 	active = true
@@ -43,7 +46,11 @@ func _ready():
 	Global.setting_changed.connect(func(setting):
 		if setting == "larger_ui":
 			overlay_texture.position = Utilities.get_screen_center())
-
+	
+	# For measuring and checking limits
+	og_cast_rotation_x = $Cast.rotation_degrees.x
+	og_cast_rotation_y = $Cast.rotation_degrees.y
+	
 	$Cable.visible = true
 	$Cable.end = $Cast.global_position
 	$Cable.update()
@@ -89,6 +96,16 @@ func _process(_delta):
 		$Cast.rotation_degrees.y += laser_move_speed
 	if Input.is_action_pressed("strafe_right"):
 		$Cast.rotation_degrees.y -= laser_move_speed
-
+	
+	# Apply limits
+	$Cast.rotation_degrees.x = clamp(
+		$Cast.rotation_degrees.x,
+		og_cast_rotation_x - laser_limit_angle.y,
+		og_cast_rotation_x + laser_limit_angle.y)
+	$Cast.rotation_degrees.y = clamp(
+		$Cast.rotation_degrees.y,
+		og_cast_rotation_y - laser_limit_angle.x,
+		og_cast_rotation_y + laser_limit_angle.x)
+	
 	if $Cast.cast_is_on_type() == true:
 		$Cast.get_collider().set_active($Cast)
