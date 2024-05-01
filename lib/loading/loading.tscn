@@ -88,17 +88,17 @@ text = "[center]Error.[/center]"
 fit_content = true
 
 [node name="GlowIcon" type="TextureRect" parent="."]
-anchors_preset = 8
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_bottom = 1.0
 offset_left = -103.0
-offset_top = 230.0
+offset_top = -298.0
 offset_right = 103.0
-offset_bottom = 384.0
+offset_bottom = -144.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 texture = ExtResource("4_o48hx")
 
 [node name="Anim" type="AnimationPlayer" parent="GlowIcon"]
