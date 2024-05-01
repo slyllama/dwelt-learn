@@ -104,6 +104,7 @@ offset_bottom = 244.0
 grow_horizontal = 2
 mouse_filter = 2
 texture = ExtResource("9_0p1yl")
+expand_mode = 1
 
 [node name="InteractOverlayGlow" type="TextureRect" parent="."]
 self_modulate = Color(1, 1, 1, 0)
@@ -113,6 +114,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_du7uc")
+expand_mode = 3
 
 [node name="Anim" type="AnimationPlayer" parent="InteractOverlayGlow"]
 libraries = {
@@ -126,15 +128,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_n4mbk")
-
-[node name="Settings" parent="." instance=ExtResource("19_c42st")]
-visible = false
+expand_mode = 1
 
 [node name="HUDButtons" parent="." instance=ExtResource("15_6wbiv")]
 layer = 5
 
-[node name="LoadOverride" type="CanvasLayer" parent="."]
+[node name="Settings" parent="." instance=ExtResource("19_c42st")]
 layer = 6
+visible = false
+
+[node name="LoadOverride" type="CanvasLayer" parent="."]
+layer = 7
 
 [node name="LoadBlack" type="ColorRect" parent="LoadOverride"]
 visible = false

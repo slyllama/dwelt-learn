@@ -103,7 +103,7 @@ text = "Mark Point
 [node name="MapSelection" type="Button" parent="ControlPanel/ControlVBox"]
 layout_mode = 2
 theme = ExtResource("3_480m7")
-text = "Map Selection"
+text = "Main Menu"
 
 [connection signal="mouse_entered" from="ControlPanel/ControlVBox/ClearPoints" to="." method="_mouseover"]
 [connection signal="pressed" from="ControlPanel/ControlVBox/ClearPoints" to="." method="_on_clear_points_pressed"]

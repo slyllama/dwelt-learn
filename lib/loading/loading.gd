@@ -13,6 +13,9 @@ func _setting_changed(get_setting_id):
 	match get_setting_id:
 		"volume": AudioServer.set_bus_volume_db(0, linear_to_db(Global.settings.volume))
 		"full_screen": Utilities.toggle_full_screen()
+		"larger_ui":
+			if Global.settings.larger_ui == true: get_window().content_scale_factor = 1.3
+			else: get_window().content_scale_factor = 1.0
 	Utilities.save_settings()
 
 func load_map(map_name):
@@ -46,7 +49,6 @@ func _ready():
 	
 	$LoadBlack/ProgressBar.visible = false
 	$GlowIcon.visible = false
-	# Give play button focus
 	$LoadPanel/VBox/ScrapperButton.grab_focus()
 
 func _process(_delta):

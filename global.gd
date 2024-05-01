@@ -32,7 +32,8 @@ var SETTINGS = {
 	"spot_shadows": true,
 	"vol_fog": true,
 	"fancy_particles": true,
-	"full_screen": false
+	"full_screen": false,
+	"larger_ui" : false
 }
 var settings = SETTINGS.duplicate()
 var input_data_loaded = false

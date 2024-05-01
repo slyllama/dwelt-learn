@@ -11,6 +11,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_i067v"]
 shader = ExtResource("2_8x6bg")
+shader_parameter/scale = 2.0
 shader_parameter/holograph = ExtResource("3_0hyii")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b0j08"]
@@ -27,27 +28,27 @@ script = ExtResource("1_6fhhv")
 self_modulate = Color(1, 1, 1, 0.784314)
 texture_repeat = 2
 material = SubResource("ShaderMaterial_i067v")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 253.0
-offset_top = 161.0
-offset_right = -252.0
-offset_bottom = -691.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_top = 233.0
+offset_bottom = 233.0
 grow_horizontal = 2
-grow_vertical = 2
 texture = ExtResource("1_i1ywh")
+expand_mode = 1
 stretch_mode = 3
 
 [node name="DText" type="RichTextLabel" parent="Base"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 299.0
-offset_top = 62.0
-offset_right = -299.0
-offset_bottom = -27.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -457.0
+offset_top = -67.0
+offset_right = 457.0
+offset_bottom = 67.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -59,6 +60,7 @@ bbcode_enabled = true
 text = "[center][Dialogue][/center]"
 
 [node name="Details" type="RichTextLabel" parent="Base"]
+visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5

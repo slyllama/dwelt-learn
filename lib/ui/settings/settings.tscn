@@ -93,6 +93,11 @@ bbcode_enabled = true
 text = "[center]GRAPHICS[/center]"
 fit_content = true
 
+[node name="LargerUI" parent="Control/Panel/VBox" instance=ExtResource("5_duwqu")]
+layout_mode = 2
+setting_id = "larger_ui"
+setting_title = "Larger UI"
+
 [node name="HQShadowsControl2" parent="Control/Panel/VBox" instance=ExtResource("5_duwqu")]
 layout_mode = 2
 setting_id = "full_screen"

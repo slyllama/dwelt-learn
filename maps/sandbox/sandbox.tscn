@@ -140,7 +140,7 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -3.5, 2.1, -6.5)
 start_after_delay = false
 
 [node name="DialogueArea" parent="." instance=ExtResource("11_7oal6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.26572, -0.0499998, -1.06047)
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 7.26572, 0.109395, -1.06047)
 dialogue_data = Array[String](["HELLO!?"])
 
 [node name="LegTest" parent="." instance=ExtResource("12_l4442")]

@@ -31,6 +31,7 @@ func _setting_changed(get_setting_id):
 func _ready():
 	Global.setting_changed.connect(_setting_changed)
 	for setting in Global.settings: Global.setting_changed.emit(setting)
+	$HUD/Settings/Control/Panel/VBox/LargerUI.visible = false
 	
 	# Fade in all sound if the game wasn't already muted
 	Utilities.set_master_vol(0.0)
