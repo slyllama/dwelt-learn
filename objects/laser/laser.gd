@@ -1,7 +1,6 @@
 extends Node3D
 # NOTE: laser acts on collision group 2
 
-@export var TYPE = "laser"
 @export var laser_move_speed = 0.5
 @export var laser_limit_angle = Vector2(45.0, 10.0)
 
@@ -10,9 +9,6 @@ var delay_complete = false # laser won't start moving until after a short delay
 var active = false
 
 func activate():
-	# Don't trigger other interactive areas - but don't exclude valid signals, either
-	if Global.in_area_name != TYPE and Global.in_area_name != null: return
-	
 	active = true
 	$EnterLaser.play()
 	overlay_texture.visible = true
@@ -31,8 +27,6 @@ func activate():
 	delay_complete = true
 
 func deactivate():
-	if Global.in_area_name != TYPE and Global.in_area_name != null: return
-	
 	active = false
 	$EnterLaser.play()
 	var fade_tween = create_tween()
@@ -49,11 +43,7 @@ func _ready():
 	Global.setting_changed.connect(func(setting):
 		if setting == "larger_ui":
 			overlay_texture.position = Utilities.get_screen_center())
-	
-	$InteractArea.TYPE = TYPE
-	$InteractArea.activated.connect(activate)
-	$InteractArea.deactivated.connect(deactivate)
-	
+
 	$Cable.visible = true
 	$Cable.end = $Cast.global_position
 	$Cable.update()
@@ -80,7 +70,7 @@ func _process(_delta):
 	if start > 0: start -= 1
 	else: if delay_complete == false: return
 	
-	if $InteractArea.active == false: return
+	if active == false: return
 	if Input.is_action_pressed("move_forward"):
 		$Cast.rotation_degrees.x += laser_move_speed
 	if Input.is_action_pressed("move_back"):
@@ -89,16 +79,6 @@ func _process(_delta):
 		$Cast.rotation_degrees.y += laser_move_speed
 	if Input.is_action_pressed("strafe_right"):
 		$Cast.rotation_degrees.y -= laser_move_speed
-	
-	# Limit the rotation of the laser
-	$Cast.rotation_degrees.x = clampf(
-		$Cast.rotation_degrees.x,
-		-laser_limit_angle.y,
-		laser_limit_angle.y)
-	$Cast.rotation_degrees.y = clampf(
-		$Cast.rotation_degrees.y,
-		-laser_limit_angle.x,
-		laser_limit_angle.x)
-	
+
 	if $Cast.cast_is_on_type() == true:
 		$Cast.get_collider().set_active($Cast)

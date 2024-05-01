@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://07n4fhjhunl"]
+[gd_scene load_steps=9 format=3 uid="uid://07n4fhjhunl"]
 
 [ext_resource type="Script" path="res://objects/laser/laser.gd" id="1_qy5bo"]
 [ext_resource type="PackedScene" uid="uid://bbt6np1daksl4" path="res://objects/cable/cable.tscn" id="2_qx4ym"]
 [ext_resource type="Script" path="res://objects/laser/Cast.gd" id="3_0t5vk"]
 [ext_resource type="Texture2D" uid="uid://w4xxv7xrtkwl" path="res://objects/laser/tex/laser_diff.png" id="6_pcuov"]
-[ext_resource type="PackedScene" uid="uid://c542303ron8x" path="res://lib/interact_area/interact_area.tscn" id="7_6xnlv"]
 [ext_resource type="Texture2D" uid="uid://d2kf24780bso0" path="res://objects/laser/tex/laser_norm.png" id="7_ay133"]
 [ext_resource type="Material" uid="uid://bvrbyvctyja7w" path="res://generic/shaders/outline.tres" id="7_ofddx"]
 [ext_resource type="AudioStream" uid="uid://ksek1nmbm7lq" path="res://objects/laser/enter_laser.ogg" id="8_pae4y"]
@@ -33,8 +32,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
 
 [node name="DockingPoint" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
-
-[node name="InteractArea" parent="." instance=ExtResource("7_6xnlv")]
 
 [node name="EnterLaser" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("8_pae4y")
