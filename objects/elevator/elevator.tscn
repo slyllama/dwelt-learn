@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://d23wqewgge7mv"]
+
+[ext_resource type="Script" path="res://objects/elevator/elevator.gd" id="1_c374k"]
+[ext_resource type="PackedScene" uid="uid://s4i8wd6iwhw6" path="res://lib/ui/smoke_overlay/smoke_overlay.tscn" id="2_j12ca"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_poms6"]
+size = Vector3(0.5, 4, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t6kd2"]
+size = Vector3(1.4, 1.4, 1.4)
+
+[node name="Elevator" type="Node3D"]
+script = ExtResource("1_c374k")
+
+[node name="Column" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+mesh = SubResource("BoxMesh_poms6")
+
+[node name="ActivateBox" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 0)
+
+[node name="Mesh" type="CSGBox3D" parent="ActivateBox"]
+
+[node name="Collision" type="CollisionShape3D" parent="ActivateBox"]
+shape = SubResource("BoxShape3D_t6kd2")
+
+[node name="SmokeOverlay" parent="." instance=ExtResource("2_j12ca")]
