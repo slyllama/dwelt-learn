@@ -16,9 +16,14 @@ func _ready():
 func _process(_delta):
 	if on_object == false:
 		if _is_on_object() == true:
-			on_object = true
-			# Guaranteed to exist
-			Global.look_object = get_collider().get_parent().object_name
+			var oname = get_collider().get_parent().object_name
+			if oname != "ignore":
+				on_object = true
+				Global.look_object = oname
+			else:
+				on_object = false
+				Global.look_object = ""
+				return
 			if Global.in_action == false:
 				Global.interact_entered.emit()
 	else:

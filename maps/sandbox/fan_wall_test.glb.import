@@ -3,18 +3,18 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://djgjcyichaft4"
-path="res://.godot/imported/leg_test.glb-3b6aa8c6a1af44ae0f8be705f104b2f3.scn"
+uid="uid://32pbhrik6f2q"
+path="res://.godot/imported/fan_wall_test.glb-60216ec648bdcc8581e77fa1397f64b3.scn"
 
 [deps]
 
-source_file="res://maps/sandbox/leg_test.glb"
-dest_files=["res://.godot/imported/leg_test.glb-3b6aa8c6a1af44ae0f8be705f104b2f3.scn"]
+source_file="res://maps/sandbox/fan_wall_test.glb"
+dest_files=["res://.godot/imported/fan_wall_test.glb-60216ec648bdcc8581e77fa1397f64b3.scn"]
 
 [params]
 
 nodes/root_type=""
-nodes/root_name="LegTest"
+nodes/root_name="FanWallTest"
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 meshes/ensure_tangents=true

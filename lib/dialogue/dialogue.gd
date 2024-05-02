@@ -2,7 +2,7 @@ extends Node3D
 
 @export var dialogue_data: Array[String]
 @export var object_name = "dialogue"
-@export var dialogue_close_distance = 4.5
+@export var dialogue_close_distance = 9.0
 
 func _play_dialogue():
 	Global.interact_left.emit()
@@ -19,6 +19,9 @@ func _input(_event):
 			if Global.dialogue_active == false:
 				Global.last_used_object = object_name
 				_play_dialogue()
+
+func _ready():
+	if dialogue_data == []: object_name = "ignore"
 
 var count = 6
 func _physics_process(_delta):

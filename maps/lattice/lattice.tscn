@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dsf4aknq3seh2"]
+[gd_scene load_steps=26 format=3 uid="uid://dsf4aknq3seh2"]
 
 [ext_resource type="Script" path="res://maps/lattice/lattice.gd" id="1_hqs2c"]
 [ext_resource type="Texture2D" uid="uid://c5duom5wl7px7" path="res://generic/tex/sky.png" id="2_1uuus"]
@@ -11,10 +11,11 @@
 [ext_resource type="Texture2D" uid="uid://d1fy6jygommc6" path="res://generic/tex/particles/mote.png" id="10_vpwvh"]
 [ext_resource type="ArrayMesh" uid="uid://c48ccnw3gi5h4" path="res://objects/god_ray/god_ray_1.obj" id="11_vmy1k"]
 [ext_resource type="Material" uid="uid://cu31l43wp5syj" path="res://objects/god_ray/mat_god_ray.tres" id="12_n2ekj"]
-[ext_resource type="PackedScene" uid="uid://djgjcyichaft4" path="res://maps/sandbox/leg_test.glb" id="13_8sf1c"]
+[ext_resource type="PackedScene" uid="uid://djgjcyichaft4" path="res://maps/sandbox/rocket.glb" id="13_8sf1c"]
 [ext_resource type="PackedScene" uid="uid://dbtpfif0ow8be" path="res://maps/lattice/objects/rocksculpt/rocksculpt.glb" id="13_uuy1x"]
 [ext_resource type="PackedScene" uid="uid://i1jp4klishr3" path="res://lib/dialogue/dialogue.tscn" id="14_cieqj"]
 [ext_resource type="PackedScene" uid="uid://07n4fhjhunl" path="res://objects/laser/laser.tscn" id="15_145ob"]
+[ext_resource type="PackedScene" uid="uid://32pbhrik6f2q" path="res://maps/sandbox/fan_wall_test.glb" id="16_y3o0w"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dbpli"]
 panorama = ExtResource("2_1uuus")
@@ -183,3 +184,6 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 11.
 
 [node name="Laser" parent="." instance=ExtResource("15_145ob")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.34458, 0.695961, -8.48169)
+
+[node name="FanWallTest" parent="." instance=ExtResource("16_y3o0w")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 10, 0, 40)

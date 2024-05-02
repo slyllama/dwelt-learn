@@ -497,6 +497,7 @@ transform = Transform3D(1, 5.68434e-14, 0, 0, 1, -1.79412e-13, 0, 1.79412e-13, 1
 cast_shadow = 0
 emitting = false
 amount = 60
+randomness = 0.5
 visibility_aabb = AABB(-6.5899, -2.60607, -5.6187, 13.1798, 5.21214, 11.2374)
 process_material = SubResource("ParticleProcessMaterial_5lbie")
 draw_pass_1 = SubResource("PlaneMesh_ru78x")

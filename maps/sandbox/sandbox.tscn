@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b74la2t16jrfm"]
+[gd_scene load_steps=25 format=3 uid="uid://b74la2t16jrfm"]
 
 [ext_resource type="Script" path="res://maps/sandbox/sandbox.gd" id="1_nt6pl"]
 [ext_resource type="Texture2D" uid="uid://c5duom5wl7px7" path="res://generic/tex/sky.png" id="2_v0b3q"]
@@ -9,7 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://07n4fhjhunl" path="res://objects/laser/laser.tscn" id="9_puphx"]
 [ext_resource type="PackedScene" uid="uid://cvho6mkc04s7h" path="res://objects/laser_detector/laser_detector.tscn" id="10_7mg0o"]
 [ext_resource type="PackedScene" uid="uid://i1jp4klishr3" path="res://lib/dialogue/dialogue.tscn" id="11_7oal6"]
-[ext_resource type="PackedScene" uid="uid://djgjcyichaft4" path="res://maps/sandbox/leg_test.glb" id="12_l4442"]
+[ext_resource type="PackedScene" uid="uid://djgjcyichaft4" path="res://maps/sandbox/rocket.glb" id="12_l4442"]
+[ext_resource type="PackedScene" uid="uid://32pbhrik6f2q" path="res://maps/sandbox/fan_wall_test.glb" id="13_3vhtw"]
 [ext_resource type="Texture2D" uid="uid://dinrdf02xeqaq" path="res://generic/tex/fade_ramp.tres" id="22_w6hxp"]
 [ext_resource type="Texture2D" uid="uid://d1fy6jygommc6" path="res://generic/tex/particles/mote.png" id="23_io1gf"]
 
@@ -32,6 +33,8 @@ fog_light_color = Color(0.161036, 0.104851, 0.0798084, 1)
 fog_light_energy = 0.0
 fog_density = 0.02
 fog_sky_affect = 0.0
+fog_height = 24.0
+fog_height_density = -0.12
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.04
 volumetric_fog_albedo = Color(0.735977, 0.692501, 0.644324, 1)
@@ -93,7 +96,7 @@ script = ExtResource("1_nt6pl")
 environment = SubResource("Environment_r5o54")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.720574, -0.00153011, 0.693376, -0.562998, 0.582414, 0.586367, -0.404729, -0.812891, 0.418811, 0, 6.09097, 0)
+transform = Transform3D(0.720574, -0.00153017, 0.693376, -0.562998, 0.582414, 0.586368, -0.404729, -0.812891, 0.418811, 0, 6.09097, 0)
 light_color = Color(1, 0.819608, 0.639216, 1)
 light_energy = 2.0
 shadow_enabled = true
@@ -141,9 +144,15 @@ start_after_delay = false
 
 [node name="DialogueArea" parent="." instance=ExtResource("11_7oal6")]
 transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 7.26572, 0.109395, -1.06047)
-dialogue_data = Array[String](["HELLO!?"])
+dialogue_data = Array[String](["HI?"])
 
 [node name="LegTest" parent="." instance=ExtResource("12_l4442")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 18.3133, -20)
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -20, 11.8133, -20)
+
+[node name="FanWallTest" parent="." instance=ExtResource("13_3vhtw")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -41.509, 2.55, 6.33073)
+
+[node name="FanWallTest2" parent="." instance=ExtResource("13_3vhtw")]
+transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, -40.0473, 2.55, -16.2512)
 
 [connection signal="activated" from="LaserDetector" to="." method="_on_laser_detector_activated"]
