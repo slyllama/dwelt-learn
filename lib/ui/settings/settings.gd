@@ -22,8 +22,7 @@ func _get_key(input_id):
 
 # Move the "reset" button to the bottom of the menu after reloading the menu
 func _reset_to_bottom():
-	$Control/Panel/VBox.move_child($Control/Panel/VBox/ResetButton, -1)
-	$Control/Panel/VBox.move_child($Control/Panel/VBox/LowerCloseButton, -1)
+	$Control/Panel/InputVBox.move_child($Control/Panel/InputVBox/LowerCloseButton, -1)
 
 func open(): visible = true
 func close(): visible = false
@@ -50,7 +49,7 @@ func refresh_input_data():
 		var i = InputLine.instantiate()
 		i.populate(input.name, input.id, _get_key(input.id))
 		input_containers.append(i)
-		$Control/Panel/VBox.add_child(i)
+		$Control/Panel/InputVBox.add_child(i)
 	
 	_reset_to_bottom()
 	# To avoid instantly triggering that input just by setting it

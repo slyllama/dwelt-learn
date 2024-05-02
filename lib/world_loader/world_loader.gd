@@ -38,6 +38,7 @@ func _ready():
 	
 	# Fade in all sound if the game wasn't already muted
 	Utilities.set_master_vol(0.0)
+	await get_tree().create_timer(1.0).timeout
 	var fade_bus_in = create_tween()
 	fade_bus_in.tween_method(Utilities.set_master_vol, 0.0, Global.settings.volume, 1.5)
 	if get_node_or_null("Music"): get_node("Music").play()

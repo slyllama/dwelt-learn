@@ -1,25 +1,19 @@
 [gd_scene load_steps=10 format=3 uid="uid://bx5xwgdebscc6"]
 
 [ext_resource type="Script" path="res://lib/ui/settings/settings.gd" id="1_ttf36"]
+[ext_resource type="Texture2D" uid="uid://d2nv8xnwo132g" path="res://generic/tex/ui/placeholder_logo.png" id="2_3tfr4"]
 [ext_resource type="Theme" uid="uid://dfe36tnn0c1ud" path="res://generic/debug_theme.tres" id="2_r1d7p"]
 [ext_resource type="Texture2D" uid="uid://fk0cfrsqe4we" path="res://generic/tex/ui/decoration.png" id="2_s1oku"]
 [ext_resource type="PackedScene" uid="uid://bg5bulncs2ejf" path="res://lib/ui/settings/components/stin_input_toggle.tscn" id="5_duwqu"]
 [ext_resource type="PackedScene" uid="uid://d4avw33snp7bc" path="res://lib/ui/settings/components/stin_input_slider.tscn" id="6_y64kv"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vsf57"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mavhn"]
 bg_color = Color(0, 0, 0, 1)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
-border_color = Color(0.197937, 0.197937, 0.197937, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yc4ml"]
-bg_color = Color(0.0196078, 0.0196078, 0.0196078, 0)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
+border_color = Color(0.8, 0.8, 0.8, 0.392157)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kvdqb"]
 content_margin_top = 12.0
@@ -43,6 +37,24 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.784314)
 
+[node name="Logo" type="TextureRect" parent="BG"]
+self_modulate = Color(1, 1, 1, 0.784314)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -102.0
+offset_top = -357.0
+offset_right = 102.05
+offset_bottom = -278.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_3tfr4")
+expand_mode = 3
+stretch_mode = 5
+
 [node name="Decoration" type="TextureRect" parent="BG"]
 layout_mode = 1
 anchors_preset = 8
@@ -50,10 +62,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 40.0
-offset_top = -475.0
-offset_right = 296.0
-offset_bottom = -229.0
+offset_left = 203.0
+offset_top = -351.0
+offset_right = 459.0
+offset_bottom = -105.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_s1oku")
@@ -65,10 +77,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -46.0
-offset_top = 478.0
-offset_right = 210.0
-offset_bottom = 724.0
+offset_left = -202.0
+offset_top = 357.0
+offset_right = 54.0
+offset_bottom = 603.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 3.14159
@@ -80,16 +92,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -190.0
-offset_top = -368.0
-offset_right = 190.0
-offset_bottom = 368.0
+offset_left = -373.0
+offset_top = -265.0
+offset_right = 373.0
+offset_bottom = 265.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_r1d7p")
-theme_override_styles/panel = SubResource("StyleBoxFlat_vsf57")
+theme_override_styles/panel = SubResource("StyleBoxFlat_mavhn")
 
-[node name="Panel" type="ScrollContainer" parent="Control"]
+[node name="Panel" type="HBoxContainer" parent="Control"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -100,10 +112,6 @@ offset_right = -20.0
 offset_bottom = -37.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_yc4ml")
-follow_focus = true
-horizontal_scroll_mode = 0
-vertical_scroll_mode = 3
 
 [node name="VBox" type="VBoxContainer" parent="Control/Panel"]
 layout_mode = 2
@@ -205,33 +213,39 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_xdjf8")
 text = "DEFAULTS"
 
-[node name="LowerCloseButton" type="Button" parent="Control/Panel/VBox"]
+[node name="Padding" type="ColorRect" parent="Control/Panel"]
+custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
-size_flags_vertical = 8
+color = Color(0, 0, 0, 0)
+
+[node name="InputVBox" type="VBoxContainer" parent="Control/Panel"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="RichTextLabel" parent="Control/Panel/InputVBox"]
+layout_mode = 2
+size_flags_horizontal = 3
 mouse_filter = 1
 theme = ExtResource("2_r1d7p")
-text = "CLOSE"
+theme_override_colors/default_color = Color(2.31028e-06, 0.730318, 0.326669, 1)
+theme_override_constants/line_separation = -5
+theme_override_font_sizes/normal_font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_kvdqb")
+bbcode_enabled = true
+text = "[center]INPUTS[/center]"
+fit_content = true
 
-[node name="CloseButton" type="Button" parent="Control"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -50.0
-offset_top = 20.0
-offset_right = -20.0
-offset_bottom = 50.0
-grow_horizontal = 0
+[node name="LowerCloseButton" type="Button" parent="Control/Panel/InputVBox"]
+layout_mode = 2
 size_flags_vertical = 10
 mouse_filter = 1
 theme = ExtResource("2_r1d7p")
-text = "X"
+text = "CLOSE"
 
 [connection signal="mouse_entered" from="Control" to="." method="_on_control_mouse_entered"]
 [connection signal="mouse_exited" from="Control" to="." method="_on_control_mouse_exited"]
 [connection signal="mouse_entered" from="Control/Panel/VBox/ResetButton" to="." method="_mouseover"]
 [connection signal="pressed" from="Control/Panel/VBox/ResetButton" to="." method="_on_button_pressed"]
-[connection signal="mouse_entered" from="Control/Panel/VBox/LowerCloseButton" to="." method="_mouseover"]
-[connection signal="pressed" from="Control/Panel/VBox/LowerCloseButton" to="." method="close"]
-[connection signal="mouse_entered" from="Control/CloseButton" to="." method="_mouseover"]
-[connection signal="pressed" from="Control/CloseButton" to="." method="close"]
+[connection signal="mouse_entered" from="Control/Panel/InputVBox/LowerCloseButton" to="." method="_mouseover"]
+[connection signal="pressed" from="Control/Panel/InputVBox/LowerCloseButton" to="." method="close"]

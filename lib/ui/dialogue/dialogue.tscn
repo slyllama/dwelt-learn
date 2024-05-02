@@ -81,6 +81,7 @@ bbcode_enabled = true
 text = "DIALOGUE"
 
 [node name="Proceed" type="Button" parent="Base"]
+layout_mode = 0
 offset_left = 794.0
 offset_top = 326.0
 offset_right = 906.0
