@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ds7v1kxeoggbl"]
+[gd_scene load_steps=13 format=3 uid="uid://ds7v1kxeoggbl"]
 
 [ext_resource type="Script" path="res://lib/ui/dialogue/dialogue.gd" id="1_6fhhv"]
 [ext_resource type="Texture2D" uid="uid://dduothw77bdaf" path="res://lib/ui/dialogue/tex/base.png" id="1_i1ywh"]
@@ -9,10 +9,11 @@
 [ext_resource type="FontFile" uid="uid://b1v28gy50d86f" path="res://generic/fonts/red_hat.ttf" id="4_fptdd"]
 [ext_resource type="Shader" path="res://lib/ui/dialogue/radial_distort.gdshader" id="5_mlith"]
 [ext_resource type="Script" path="res://lib/ui/dialogue/DistortShader.gd" id="6_tb7wh"]
+[ext_resource type="Theme" uid="uid://dfe36tnn0c1ud" path="res://generic/debug_theme.tres" id="8_a7s1u"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_i067v"]
 shader = ExtResource("2_8x6bg")
-shader_parameter/scale = 2.0
+shader_parameter/scale = 5.0
 shader_parameter/holograph = ExtResource("3_0hyii")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b0j08"]
@@ -26,19 +27,20 @@ shader_parameter/thickness = 0.0
 script = ExtResource("1_6fhhv")
 
 [node name="SmokeOverlay" parent="." instance=ExtResource("2_4eef0")]
+layer = 0
 
 [node name="Base" type="TextureRect" parent="."]
-self_modulate = Color(1, 1, 1, 0.784314)
 texture_repeat = 2
 material = SubResource("ShaderMaterial_i067v")
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_top = 233.0
-offset_bottom = 233.0
+offset_left = -534.0
+offset_top = 62.0
+offset_right = 534.0
+offset_bottom = 569.0
 grow_horizontal = 2
 texture = ExtResource("1_i1ywh")
-expand_mode = 1
 stretch_mode = 3
 
 [node name="DText" type="RichTextLabel" parent="Base"]
@@ -48,36 +50,43 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -457.0
-offset_top = -67.0
-offset_right = 457.0
-offset_bottom = 67.0
+offset_left = -364.0
+offset_top = -84.5
+offset_right = 364.0
+offset_bottom = 84.5
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_colors/default_color = Color(0.64, 1, 0.46, 1)
+theme_override_colors/default_color = Color(0.81, 0.81, 0.81, 1)
 theme_override_constants/line_separation = -4
 theme_override_fonts/normal_font = ExtResource("3_y1toj")
-theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
-text = "[center][Dialogue][/center]"
+text = "[Dialogue]"
 
-[node name="Details" type="RichTextLabel" parent="Base"]
-visible = false
+[node name="DTitle" type="RichTextLabel" parent="Base"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -247.0
-offset_top = 21.0
-offset_right = 247.0
-offset_bottom = 66.0
+offset_left = -364.0
+offset_top = 112.0
+offset_right = 130.0
+offset_bottom = 157.0
 grow_horizontal = 2
 mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("4_fptdd")
-theme_override_font_sizes/normal_font_size = 21
+theme_override_font_sizes/normal_font_size = 22
 bbcode_enabled = true
-text = "[center]DIALOGUE[/center]"
+text = "DIALOGUE"
+
+[node name="Proceed" type="Button" parent="Base"]
+offset_left = 794.0
+offset_top = 326.0
+offset_right = 906.0
+offset_bottom = 356.0
+theme = ExtResource("8_a7s1u")
+text = "PROCEED"
 
 [node name="DistortShader" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_b0j08")
@@ -87,3 +96,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("6_tb7wh")
+
+[connection signal="mouse_entered" from="Base/Proceed" to="." method="_mouseover"]
+[connection signal="pressed" from="Base/Proceed" to="." method="_on_proceed_pressed"]

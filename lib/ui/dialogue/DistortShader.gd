@@ -8,7 +8,7 @@ func set_shader_size(ampl):
 func set_shader_force(force):
 	(material as ShaderMaterial).set_shader_parameter("force", force)
 
-func pulse(force = 0.02):
+func pulse(force = 0.01):
 	visible = true
 	var size_tween = create_tween()
 	var force_tween = create_tween()

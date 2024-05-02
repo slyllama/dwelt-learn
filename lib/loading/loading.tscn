@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://c4cboiwskjvvh"]
+[gd_scene load_steps=13 format=3 uid="uid://c4cboiwskjvvh"]
 
 [ext_resource type="Script" path="res://lib/loading/loading.gd" id="1_dy6oh"]
 [ext_resource type="PackedScene" uid="uid://bx5xwgdebscc6" path="res://lib/ui/settings/settings.tscn" id="2_k2j3d"]
 [ext_resource type="Theme" uid="uid://dfe36tnn0c1ud" path="res://generic/debug_theme.tres" id="2_rl4eh"]
 [ext_resource type="Texture2D" uid="uid://c1ens2tjsu5wf" path="res://lib/loading/loading_icon.png" id="4_o48hx"]
 [ext_resource type="Texture2D" uid="uid://d2nv8xnwo132g" path="res://generic/tex/ui/placeholder_logo.png" id="5_s6nor"]
+[ext_resource type="Texture2D" uid="uid://fk0cfrsqe4we" path="res://generic/tex/ui/decoration.png" id="6_kn8kd"]
+[ext_resource type="Theme" uid="uid://ch4overpy78ds" path="res://generic/start_menu.tres" id="6_tdoiq"]
 [ext_resource type="PackedScene" uid="uid://d24gofb7bfo8k" path="res://lib/ui/hover_sound.tscn" id="14_w5m2m"]
 
 [sub_resource type="Animation" id="Animation_xdgig"]
@@ -131,21 +133,11 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Logo" type="TextureRect" parent="LoadPanel/VBox"]
-custom_minimum_size = Vector2(0, 90)
+custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 texture = ExtResource("5_s6nor")
 expand_mode = 1
 stretch_mode = 5
-
-[node name="DweltTitle" type="RichTextLabel" parent="LoadPanel/VBox"]
-modulate = Color(1, 1, 1, 0.470588)
-layout_mode = 2
-mouse_filter = 2
-theme = ExtResource("2_rl4eh")
-theme_override_font_sizes/normal_font_size = 18
-bbcode_enabled = true
-text = "[center]TECHNICAL TEST[/center]"
-fit_content = true
 
 [node name="Panel" type="Panel" parent="LoadPanel/VBox"]
 custom_minimum_size = Vector2(0, 25)
@@ -154,23 +146,40 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_ujdx1")
 
 [node name="ScrapperButton" type="Button" parent="LoadPanel/VBox"]
 layout_mode = 2
-theme = ExtResource("2_rl4eh")
+theme = ExtResource("6_tdoiq")
 text = "PLAY"
 
 [node name="SandboxButton" type="Button" parent="LoadPanel/VBox"]
 layout_mode = 2
-theme = ExtResource("2_rl4eh")
+theme = ExtResource("6_tdoiq")
 text = "SANDBOX"
 
 [node name="Settings" type="Button" parent="LoadPanel/VBox"]
 layout_mode = 2
-theme = ExtResource("2_rl4eh")
+theme = ExtResource("6_tdoiq")
 text = "SETTINGS"
 
 [node name="Quit" type="Button" parent="LoadPanel/VBox"]
 layout_mode = 2
-theme = ExtResource("2_rl4eh")
+theme = ExtResource("6_tdoiq")
 text = "QUIT"
+
+[node name="Decoration" type="TextureRect" parent="LoadPanel"]
+modulate = Color(1, 1, 1, 0.313726)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -271.5
+offset_right = 231.0
+offset_bottom = -25.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("6_kn8kd")
 
 [node name="UIHover" parent="." instance=ExtResource("14_w5m2m")]
 

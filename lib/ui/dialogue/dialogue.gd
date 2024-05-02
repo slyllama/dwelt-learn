@@ -17,7 +17,7 @@ var current_dialogue = []
 var current_place = 0
 
 func _set_text(get_text):
-	$Base/DText.text = "[center]" + get_text + "[/center]"
+	$Base/DText.text = get_text
 
 func close_dialogue():
 	$SmokeOverlay.deactivate()
@@ -94,3 +94,9 @@ func _input(_event):
 		or Global.in_keybind_select == true): return
 	if Input.is_action_just_pressed("interact"):
 		if Global.dialogue_active == true: play_phrase()
+
+func _mouseover():
+	Global.button_hover.emit()
+
+func _on_proceed_pressed():
+	if Global.dialogue_active == true: play_phrase()

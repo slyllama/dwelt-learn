@@ -2,7 +2,7 @@ extends Node3D
 
 @export var dialogue_data: Array[String]
 @export var object_name = "dialogue"
-@export var dialogue_close_distance = 7.0
+@export var dialogue_close_distance = 4.5
 
 func _play_dialogue():
 	Global.interact_left.emit()

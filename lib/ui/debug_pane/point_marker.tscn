@@ -8,7 +8,7 @@ albedo_color = Color(1, 1, 0, 1)
 
 [node name="PointMarker" type="CSGBox3D"]
 cast_shadow = 0
-size = Vector3(0.06, 30, 0.06)
+size = Vector3(0.025, 30, 0.025)
 material = SubResource("StandardMaterial3D_ikheg")
 
 [node name="Label" type="Label3D" parent="."]
@@ -20,5 +20,5 @@ no_depth_test = true
 fixed_size = true
 text = "[Coord]"
 font = ExtResource("1_7wlmy")
-font_size = 27
-outline_size = 10
+font_size = 22
+outline_size = 8
