@@ -24,7 +24,6 @@ func load_map(map_name):
 		$ErrorText.text = Utilities.cntr("Error: couldn't load map '" + map_name + "'.")
 		$ErrorText.visible = true
 		return
-
 	started = true
 
 	$LoadBlack/ProgressBar.visible = true
@@ -65,6 +64,7 @@ func _process(_delta):
 				ResourceLoader.load_threaded_get(target_path))
 
 func _map_button_pressed(map_name = ""):
+	Global.button_click.emit()
 	if map_name == "quit":
 		get_tree().quit()
 		return

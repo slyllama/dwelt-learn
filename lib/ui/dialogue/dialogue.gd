@@ -38,6 +38,7 @@ func close_dialogue():
 
 func play_dialogue(get_dialogue):
 	$SmokeOverlay.activate()
+	$PlaySound.play()
 	current_dialogue = get_dialogue
 	current_place = 0
 	
@@ -57,11 +58,11 @@ func play_dialogue(get_dialogue):
 
 # Animate the presentation of a phrase
 func play_phrase():
+	$ContinueSound.play()
 	if current_place > current_dialogue.size() - 1:
 		#Global.interact_entered.emit()
 		Global.dialogue_closed.emit()
 		return
-
 	transitioning = true
 	var out_text
 	var c = current_dialogue[current_place]

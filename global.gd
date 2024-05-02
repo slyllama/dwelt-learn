@@ -6,6 +6,7 @@ const LARGE_UI_SCALE = 1.3
 signal action_left
 signal camera_shaken
 signal button_hover
+signal button_click
 signal debug_toggled
 signal dialogue_played(dialogue)
 signal dialogue_closed
@@ -48,6 +49,7 @@ var can_move = true
 var dialogue_active = false
 var dragging_control = false # sliders should report their position so they aren't trapped on camera pan
 var in_action = false
+var linear_movement_override = Vector3.ZERO
 
 ### World states ###
 var player_position = Vector2.ZERO

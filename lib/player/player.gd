@@ -49,25 +49,31 @@ func close_radar():
 		Radar.visible = false
 
 func lock_position(get_lock_pos, get_cam_facing):
-	lock_pos = get_lock_pos
-
 	position_locked = true
+	$Collision.disabled = true
+	
+	lock_pos = get_lock_pos
 	$FloatUpDown.pause()
 	$Lemonade/AnimationPlayer.play_backwards("Fly")
 	$Stars.amount_ratio = 0.3
-
 	$Lemonade.rotation_degrees.y = get_cam_facing.x
 	$Lemonade.rotation_degrees.z = 0.0
+	
 	last_pivot_y_rotation = get_cam_facing.x
+	position = lock_pos # should only do this once
 
 func unlock_position():
+	position_locked = false
+	
 	if (Input.is_action_pressed("move_forward")
 		or Input.is_action_pressed("move_back")):
 		# Play movement animation if the player is holding down a movement key
 		# when leaving the laser
 		$Lemonade/AnimationPlayer.play("Fly")
 	$FloatUpDown.play("float")
-	position_locked = false
+	
+	await get_tree().create_timer(0.5).timeout
+	$Collision.disabled = false
 
 func update_debug():
 	Global.debug_details_text = ("position = ("
@@ -79,9 +85,11 @@ func update_debug():
 	Global.debug_details_text += "\u00B0 (" + str(snapped($Lemonade.rotation_degrees.y, 1))  + "\u00B0)"
 	Global.debug_details_text += "\nraycast_y_point = " + Utilities.fstr(Global.raycast_y_point)
 	Global.debug_details_text += "\nlast_used_object = '" + str(Global.last_used_object) + "'"
-	Global.debug_details_text += "\nin_action = " + str(Global.in_action) + ""
+	Global.debug_details_text += "\nin_action = " + str(Global.in_action) + "\n"
 	if Global.look_object != "":
-		Global.debug_details_text += "\n\n[color=yellow]Looking at: " + str(Global.look_object) + "[/color]"
+		Global.debug_details_text += "\n[color=yellow]Looking at: " + str(Global.look_object) + "[/color]"
+	if $Collision.disabled == true:
+		Global.debug_details_text += "\n[color=red]Collision disabled[/color]"
 
 func _ready():
 	Global.connect("player_position_locked", lock_position)
@@ -133,7 +141,7 @@ func _physics_process(_delta):
 	if Global.in_keybind_select == true: return
 
 	if position_locked == true:
-		position = lerp(position, lock_pos, 0.2)
+		position += Global.linear_movement_override
 		Global.player_position = position
 		update_debug()
 		return
@@ -164,7 +172,7 @@ func _physics_process(_delta):
 	velocity.y -= 0.98 / 1.5
 	var y_diff = Global.player_position.y - Global.raycast_y_point
 	if y_diff < hover_height: velocity.y += hover_height - y_diff
-	velocity.y += glide_val
+	else: velocity.y += glide_val
 	
 	move_and_slide()
 	

@@ -25,7 +25,9 @@ func _reset_to_bottom():
 	$Control/Panel/InputVBox.move_child($Control/Panel/InputVBox/LowerCloseButton, -1)
 
 func open(): visible = true
-func close(): visible = false
+func close():
+	Global.button_click.emit()
+	visible = false
 
 func apply_input_data():
 	for i in input_data:

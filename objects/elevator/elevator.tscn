@@ -1,13 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://d23wqewgge7mv"]
+[gd_scene load_steps=9 format=3 uid="uid://d23wqewgge7mv"]
 
 [ext_resource type="Script" path="res://objects/elevator/elevator.gd" id="1_c374k"]
 [ext_resource type="PackedScene" uid="uid://s4i8wd6iwhw6" path="res://lib/ui/smoke_overlay/smoke_overlay.tscn" id="2_j12ca"]
+[ext_resource type="Material" uid="uid://cv238mthfr37m" path="res://objects/elevator/mat_elevator.tres" id="2_wfjvg"]
+[ext_resource type="AudioStream" uid="uid://ksek1nmbm7lq" path="res://objects/laser/enter_laser.ogg" id="4_jyhym"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_poms6"]
-size = Vector3(0.5, 4, 0.5)
+material = ExtResource("2_wfjvg")
+size = Vector3(0.1, 4, 0.1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t6kd2"]
 size = Vector3(1.4, 1.4, 1.4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6827j"]
+size = Vector3(5, 0.1, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_g0a4o"]
+material = ExtResource("2_wfjvg")
+size = Vector3(5, 0.1, 5)
 
 [node name="Elevator" type="Node3D"]
 script = ExtResource("1_c374k")
@@ -16,7 +26,7 @@ script = ExtResource("1_c374k")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 mesh = SubResource("BoxMesh_poms6")
 
-[node name="ActivateBox" type="StaticBody3D" parent="."]
+[node name="ActivateBox" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 0)
 
 [node name="Mesh" type="CSGBox3D" parent="ActivateBox"]
@@ -25,3 +35,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 0)
 shape = SubResource("BoxShape3D_t6kd2")
 
 [node name="SmokeOverlay" parent="." instance=ExtResource("2_j12ca")]
+
+[node name="Floor" type="StaticBody3D" parent="."]
+collision_layer = 2
+
+[node name="Collision" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("BoxShape3D_6827j")
+
+[node name="Mesh" type="CSGMesh3D" parent="Floor"]
+mesh = SubResource("BoxMesh_g0a4o")
+
+[node name="EnterLaser" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_jyhym")

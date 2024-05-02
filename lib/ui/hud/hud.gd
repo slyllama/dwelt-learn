@@ -1,7 +1,8 @@
 extends CanvasLayer
 
 func _toggle_settings():
-	if $Settings.visible == false: $Settings.open()
+	if $Settings.visible == false:
+		$Settings.open()
 	else: $Settings.close()
 
 func _toggle_interact_overlay(state):
