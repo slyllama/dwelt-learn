@@ -79,7 +79,7 @@ func update_debug():
 	Global.debug_details_text += "\u00B0 (" + str(snapped($Lemonade.rotation_degrees.y, 1))  + "\u00B0)"
 	Global.debug_details_text += "\nraycast_y_point = " + Utilities.fstr(Global.raycast_y_point)
 	Global.debug_details_text += "\nlast_used_object = '" + str(Global.last_used_object) + "'"
-	Global.debug_details_text += "\nin_action = '" + str(Global.in_action) + "'"
+	Global.debug_details_text += "\nin_action = " + str(Global.in_action) + ""
 	if Global.look_object != "":
 		Global.debug_details_text += "\n\n[color=yellow]Looking at: " + str(Global.look_object) + "[/color]"
 

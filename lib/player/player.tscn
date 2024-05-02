@@ -127,7 +127,7 @@ v_offset = -0.1
 current = true
 
 [node name="XCast" type="RayCast3D" parent="CamPivot/CamArm/Camera"]
-target_position = Vector3(0, 0, -10)
+target_position = Vector3(0, 0, -8)
 collide_with_areas = true
 script = ExtResource("3_tm7v3")
 

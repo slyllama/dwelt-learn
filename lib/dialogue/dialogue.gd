@@ -9,7 +9,7 @@ func _play_dialogue():
 	Global.dialogue_played.emit(dialogue_data)
 
 func _close_dialogue():
-	Global.leave_action()
+	Utilities.leave_action()
 	Global.dialogue_closed_early.emit()
 
 func _input(_event):

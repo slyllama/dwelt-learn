@@ -53,7 +53,7 @@ operator = 2
 
 [resource]
 code = "shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx, unshaded, shadows_disabled, ambient_light_disabled;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx, depth_test_disabled, unshaded, shadows_disabled, ambient_light_disabled;
 
 uniform sampler2D tex_frg_3;
 uniform sampler2D tex_frg_11;
@@ -110,6 +110,7 @@ void fragment() {
 
 }
 "
+flags/depth_test_disabled = true
 flags/unshaded = true
 flags/shadows_disabled = true
 flags/ambient_light_disabled = true

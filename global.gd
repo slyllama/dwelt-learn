@@ -3,11 +3,7 @@ extends Node
 const SCREEN_SIZE = Vector2(1920.0, 1080.0)
 const LARGE_UI_SCALE = 1.3
 
-func leave_action():
-	if in_action == false: return
-	await get_tree().create_timer(0.2).timeout
-	in_action = false
-
+signal action_left
 signal camera_shaken
 signal button_hover
 signal debug_toggled
@@ -45,7 +41,7 @@ var input_data_loaded = false
 var original_input_data = []
 
 ### Game states ###
-signal player_position_locked(get_lock_pos, get_cam_facing, get_clamp_extent_x, get_clamp_extent_y)
+signal player_position_locked(get_lock_pos, get_cam_facing)
 signal player_position_unlocked
 
 var can_move = true

@@ -1,12 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://e0k8h1ytp7wi"]
+[gd_scene load_steps=14 format=3 uid="uid://e0k8h1ytp7wi"]
 
 [ext_resource type="PackedScene" uid="uid://dq3aqaliycowy" path="res://lib/ui/debug_pane/debug_pane.tscn" id="1_gv0re"]
 [ext_resource type="Script" path="res://lib/ui/hud/hud.gd" id="1_i45xt"]
-[ext_resource type="Shader" path="res://lib/ui/hud/intro_vfx.gdshader" id="2_j7o8v"]
+[ext_resource type="PackedScene" uid="uid://s4i8wd6iwhw6" path="res://lib/ui/smoke_overlay/smoke_overlay.tscn" id="3_gjhsd"]
 [ext_resource type="PackedScene" uid="uid://ds7v1kxeoggbl" path="res://lib/ui/dialogue/dialogue.tscn" id="3_lcfva"]
-[ext_resource type="Texture2D" uid="uid://dgkrpn8nt8pvt" path="res://generic/tex/shader_tex/laser.jpeg" id="3_r5nad"]
-[ext_resource type="Texture2D" uid="uid://b5nufueq16vw0" path="res://generic/tex/shader_tex/wobble_noise.tres" id="4_q8hty"]
-[ext_resource type="Script" path="res://lib/ui/hud/IntroVFX.gd" id="5_wllky"]
 [ext_resource type="Theme" uid="uid://dfe36tnn0c1ud" path="res://generic/debug_theme.tres" id="6_14irq"]
 [ext_resource type="Texture2D" uid="uid://8kcdl0ahju3s" path="res://lib/ui/tex/interact_overlay.png" id="6_n4mbk"]
 [ext_resource type="Texture2D" uid="uid://b3aaiytpklgal" path="res://lib/ui/tex/vignette.png" id="7_wv8wl"]
@@ -17,33 +14,13 @@
 [ext_resource type="PackedScene" uid="uid://bx5xwgdebscc6" path="res://lib/ui/settings/settings.tscn" id="19_c42st"]
 [ext_resource type="PackedScene" uid="uid://d24gofb7bfo8k" path="res://lib/ui/hover_sound.tscn" id="19_uwm57"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ulxyu"]
-shader = ExtResource("2_j7o8v")
-shader_parameter/base_color = Color(0, 0, 0, 1)
-shader_parameter/size = 0.5
-shader_parameter/exponent = 1.0
-shader_parameter/darkness = 0.5
-shader_parameter/overall_alpha = 1.0
-shader_parameter/overall_scale = 1.5
-shader_parameter/time_factor = 0.1
-shader_parameter/smoke_effect = ExtResource("3_r5nad")
-shader_parameter/wobble_pattern = ExtResource("4_q8hty")
-
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_i45xt")
 
-[node name="IntroVFX" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_ulxyu")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-script = ExtResource("5_wllky")
-
 [node name="Dialogue" parent="." instance=ExtResource("3_lcfva")]
 layer = 2
+
+[node name="SmokeOverlay" parent="." instance=ExtResource("3_gjhsd")]
 
 [node name="DebugPane" parent="." instance=ExtResource("1_gv0re")]
 layer = 3

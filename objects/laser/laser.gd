@@ -14,6 +14,7 @@ var og_cast_rotation_y
 
 func activate():
 	active = true
+	$SmokeOverlay.activate()
 	Global.last_used_object = object_name
 	Global.in_action = true
 	$EnterLaser.play()
@@ -34,7 +35,7 @@ func activate():
 
 func deactivate():
 	active = false
-	$EnterLaser.play()
+	$SmokeOverlay.deactivate()
 	var fade_tween = create_tween()
 	fade_tween.tween_property(overlay_texture, "modulate:a", 0.0, 0.1)
 	fade_tween.tween_callback(func():
@@ -42,7 +43,7 @@ func deactivate():
 		overlay_texture.visible = false)
 	Global.player_position_unlocked.emit()
 	
-	Global.leave_action()
+	Utilities.leave_action()
 
 func _ready():
 	# Find the new center for Sprite2Ds when the content scale changes
@@ -69,7 +70,7 @@ var start = 2
 func _input(_event):
 	if Input.is_action_just_pressed("interact"):
 		if Global.look_object == object_name:
-			if active == false:
+			if Global.in_action == false and active == false:
 				activate()
 				return
 		if active == true:

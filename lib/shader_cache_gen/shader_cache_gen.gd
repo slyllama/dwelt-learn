@@ -9,11 +9,11 @@ const SHADERS_UID = [
 	"uid://dsggukocef5lg", # propulsion cone
 	"uid://yi627x8xvfu2", # laser
 	"uid://dtg3t52t3kle7", # god ray
+	"uid://dib8bbgu76bfe", # smoke
 
 	"res://generic/shaders/fresnel.gdshader", # fresnel
 	"res://lib/ui/dialogue/dialogue.gdshader", # dialogue (static)
 	"res://lib/ui/dialogue/radial_distort.gdshader", # radial distortion
-	"res://lib/ui/hud/intro_vfx.gdshader", # intro VFX
 	"res://lib/player/anime_wobble.gdshader" # anime motion
 ]
 
