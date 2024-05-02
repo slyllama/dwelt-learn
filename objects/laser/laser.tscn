@@ -1,14 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://07n4fhjhunl"]
+[gd_scene load_steps=8 format=3 uid="uid://07n4fhjhunl"]
 
 [ext_resource type="Script" path="res://objects/laser/laser.gd" id="1_qy5bo"]
 [ext_resource type="PackedScene" uid="uid://bbt6np1daksl4" path="res://objects/cable/cable.tscn" id="2_qx4ym"]
 [ext_resource type="Script" path="res://objects/laser/Cast.gd" id="3_0t5vk"]
-[ext_resource type="Material" uid="uid://dw2as06h4frii" path="res://objects/laser/turret.tres" id="6_d7f3m"]
+[ext_resource type="Texture2D" uid="uid://dqvooc5gadxy0" path="res://generic/tex/placeholder.png" id="5_l7nk4"]
 [ext_resource type="AudioStream" uid="uid://ksek1nmbm7lq" path="res://objects/laser/enter_laser.ogg" id="8_pae4y"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nt7dx"]
 margin = 0.2
 size = Vector3(2, 2, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lhekj"]
+albedo_texture = ExtResource("5_l7nk4")
 
 [node name="Laser" type="Node3D"]
 script = ExtResource("1_qy5bo")
@@ -41,4 +44,4 @@ shape = SubResource("BoxShape3D_nt7dx")
 [node name="Placeholder" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 size = Vector3(2, 2, 2)
-material = ExtResource("6_d7f3m")
+material = SubResource("StandardMaterial3D_lhekj")

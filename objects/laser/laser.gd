@@ -14,6 +14,8 @@ var og_cast_rotation_y
 
 func activate():
 	active = true
+	Global.last_used_object = object_name
+	Global.in_action = true
 	$EnterLaser.play()
 	overlay_texture.visible = true
 	overlay_texture.scale = Vector2(1.0, 1.0)
@@ -39,6 +41,8 @@ func deactivate():
 		if active == true: return
 		overlay_texture.visible = false)
 	Global.player_position_unlocked.emit()
+	
+	Global.leave_action()
 
 func _ready():
 	# Find the new center for Sprite2Ds when the content scale changes

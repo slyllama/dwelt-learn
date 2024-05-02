@@ -170,8 +170,13 @@ transform = Transform3D(1.07303, -0.364494, 0.39466, 0.385965, 1.13624, 0, -0.37
 transform = Transform3D(0.94857, 0.276447, -0.154245, -0.279795, 0.96006, 0, 0.148084, 0.043157, 0.988033, -5.3401, 7.27215, -21.1656)
 
 [node name="KryptisDialogue" parent="." instance=ExtResource("14_cieqj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.34823, -11.329)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.34823, -10.329)
 dialogue_data = Array[String](["Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.", "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."])
+
+[node name="OtherDialogue" parent="." instance=ExtResource("14_cieqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.34823, -10.329)
+dialogue_data = Array[String](["Ohhh yeah"])
+object_name = "oh_yeah"
 
 [node name="LegTest" parent="." instance=ExtResource("13_8sf1c")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 11.2159, 23.9883)

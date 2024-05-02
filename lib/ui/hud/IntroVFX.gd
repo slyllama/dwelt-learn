@@ -24,6 +24,7 @@ func transition_vfx_in():
 
 # Plays a less intense version of the former
 func transition_subtle_vfx_in():
+	print("[VFX] subtle transition in")
 	active = true
 	visible = true
 	max_alpha = 0.7

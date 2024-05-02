@@ -19,3 +19,4 @@ func _process(_delta):
 	else:
 		Global.look_point = null
 		_stop_looking()
+	if Global.in_action == true: _stop_looking()

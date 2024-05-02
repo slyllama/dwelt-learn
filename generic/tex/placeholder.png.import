@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2kf24780bso0"
-path.s3tc="res://.godot/imported/laser_norm.png-4122c46056c9b2cab613b8bcb4a2af5a.s3tc.ctex"
+uid="uid://dqvooc5gadxy0"
+path.s3tc="res://.godot/imported/placeholder.png-a5dd33be09c4027f764691173ce788fd.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://objects/laser/tex/laser_norm.png"
-dest_files=["res://.godot/imported/laser_norm.png-4122c46056c9b2cab613b8bcb4a2af5a.s3tc.ctex"]
+source_file="res://generic/tex/placeholder.png"
+dest_files=["res://.godot/imported/placeholder.png-a5dd33be09c4027f764691173ce788fd.s3tc.ctex"]
 
 [params]
 
@@ -20,12 +20,12 @@ compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=1
+compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=1
-roughness/src_normal="res://objects/laser/tex/laser_norm.png"
+roughness/mode=0
+roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

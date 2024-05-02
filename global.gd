@@ -3,6 +3,11 @@ extends Node
 const SCREEN_SIZE = Vector2(1920.0, 1080.0)
 const LARGE_UI_SCALE = 1.3
 
+func leave_action():
+	if in_action == false: return
+	await get_tree().create_timer(0.2).timeout
+	in_action = false
+
 signal camera_shaken
 signal button_hover
 signal debug_toggled
@@ -53,3 +58,4 @@ var player_position = Vector2.ZERO
 var raycast_y_point = 0.0
 var look_point = null
 var look_object = ""
+var last_used_object = ""
