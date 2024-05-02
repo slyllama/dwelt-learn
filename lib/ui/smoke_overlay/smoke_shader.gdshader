@@ -9,6 +9,8 @@ uniform float size: hint_range(0.0, 1.0) = 0.5;
 uniform float exponent: hint_range(0.0, 5.0) = 1.0;
 uniform float darkness: hint_range(0.0, 1.0) = 0.5;
 uniform float overall_alpha: hint_range(0.0, 1.0) = 1.0;
+uniform float overall_scale = 1.5;
+uniform float time_factor = 0.1;
 
 const vec2 center = vec2(0.5, 0.5);
 
@@ -18,8 +20,8 @@ void fragment() {
 	vec2 scaled_uv = (SCREEN_UV - vec2(0.5, 0.0)) / vec2(ratio, 1.0) + vec2(0.5, 0.0);
 	float mask = (1.0 - smoothstep(adj_size, adj_size - 0.25, length(scaled_uv - center)));
 	
-	vec2 wobble = texture(wobble_pattern, SCREEN_UV + TIME * 0.1).rg * 0.1;
-	vec3 smoke = texture(smoke_effect, scaled_uv * 1.5 + wobble).rgb;
+	vec2 wobble = texture(wobble_pattern, SCREEN_UV + TIME * time_factor).rg * 0.1;
+	vec3 smoke = texture(smoke_effect, scaled_uv * overall_scale + wobble).rgb;
 	
 	smoke = smoke * vec3(mask);
 	smoke = smoke + vec3(mask) * darkness;

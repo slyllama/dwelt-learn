@@ -20,11 +20,12 @@ func _set_text(get_text):
 	$Base/DText.text = "[center]" + get_text + "[/center]"
 
 func close_dialogue():
+	$SmokeOverlay.deactivate()
+	
 	current_dialogue = []
 	current_place = 0
 	Global.dialogue_active = false
-	Global.in_action = false
-	
+	Utilities.leave_action()
 	emit_signal("closed")
 	
 	transitioning = true
@@ -36,6 +37,7 @@ func close_dialogue():
 	transitioning = false
 
 func play_dialogue(get_dialogue):
+	$SmokeOverlay.activate()
 	current_dialogue = get_dialogue
 	current_place = 0
 	
@@ -43,23 +45,20 @@ func play_dialogue(get_dialogue):
 	# be called by area
 	Global.dialogue_active = true
 	Global.in_action = true
-	
 	$Base.modulate.a = 0.0
 	visible = true
 	emit_signal("opened")
-	Global.interact_left.emit() # hide overlay
 	transitioning = true
 	var fade_in = create_tween()
 	fade_in.tween_property($Base, "modulate:a", 1.0, 0.1)
 	await fade_in.finished
 	transitioning = false
-	
 	play_phrase()
 
 # Animate the presentation of a phrase
 func play_phrase():
 	if current_place > current_dialogue.size() - 1:
-		Global.interact_entered.emit()
+		#Global.interact_entered.emit()
 		Global.dialogue_closed.emit()
 		return
 

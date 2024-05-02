@@ -1,19 +1,22 @@
 extends Node3D
 # NOTE: laser acts on collision group 2
 
-@export var TYPE = "laser"
+@export var object_name = "laser"
 @export var laser_move_speed = 0.5
-@export var laser_limit_angle = Vector2(45.0, 10.0)
+@export var laser_limit_angle = Vector2(45.0, 30.0)
 
 var overlay_texture = Sprite2D.new()
 var delay_complete = false # laser won't start moving until after a short delay
 var active = false
 
+var og_cast_rotation_x
+var og_cast_rotation_y
+
 func activate():
-	# Don't trigger other interactive areas - but don't exclude valid signals, either
-	if Global.in_area_name != TYPE and Global.in_area_name != null: return
-	
 	active = true
+	$SmokeOverlay.activate()
+	Global.last_used_object = object_name
+	Global.in_action = true
 	$EnterLaser.play()
 	overlay_texture.visible = true
 	overlay_texture.scale = Vector2(1.0, 1.0)
@@ -31,17 +34,16 @@ func activate():
 	delay_complete = true
 
 func deactivate():
-	if Global.in_area_name != TYPE and Global.in_area_name != null: return
-	
 	active = false
-	$EnterLaser.play()
+	$SmokeOverlay.deactivate()
 	var fade_tween = create_tween()
 	fade_tween.tween_property(overlay_texture, "modulate:a", 0.0, 0.1)
 	fade_tween.tween_callback(func():
 		if active == true: return
 		overlay_texture.visible = false)
 	Global.player_position_unlocked.emit()
-	Global.interact_entered.emit()
+	
+	Utilities.leave_action()
 
 func _ready():
 	# Find the new center for Sprite2Ds when the content scale changes
@@ -50,9 +52,9 @@ func _ready():
 		if setting == "larger_ui":
 			overlay_texture.position = Utilities.get_screen_center())
 	
-	$InteractArea.TYPE = TYPE
-	$InteractArea.activated.connect(activate)
-	$InteractArea.deactivated.connect(deactivate)
+	# For measuring and checking limits
+	og_cast_rotation_x = $Cast.rotation_degrees.x
+	og_cast_rotation_y = $Cast.rotation_degrees.y
 	
 	$Cable.visible = true
 	$Cable.end = $Cast.global_position
@@ -64,6 +66,16 @@ func _ready():
 	overlay_texture.modulate.a = 0.0
 
 var start = 2
+
+func _input(_event):
+	if Input.is_action_just_pressed("interact"):
+		if Global.look_object == object_name:
+			if Global.in_action == false and active == false:
+				activate()
+				return
+		if active == true:
+			deactivate()
+			return
 
 func _process(_delta):
 	overlay_texture.scale = lerp(overlay_texture.scale, Vector2(0.7, 0.7), 0.2)
@@ -80,7 +92,7 @@ func _process(_delta):
 	if start > 0: start -= 1
 	else: if delay_complete == false: return
 	
-	if $InteractArea.active == false: return
+	if active == false: return
 	if Input.is_action_pressed("move_forward"):
 		$Cast.rotation_degrees.x += laser_move_speed
 	if Input.is_action_pressed("move_back"):
@@ -90,15 +102,15 @@ func _process(_delta):
 	if Input.is_action_pressed("strafe_right"):
 		$Cast.rotation_degrees.y -= laser_move_speed
 	
-	# Limit the rotation of the laser
-	$Cast.rotation_degrees.x = clampf(
+	# Apply limits
+	$Cast.rotation_degrees.x = clamp(
 		$Cast.rotation_degrees.x,
-		-laser_limit_angle.y,
-		laser_limit_angle.y)
-	$Cast.rotation_degrees.y = clampf(
+		og_cast_rotation_x - laser_limit_angle.y,
+		og_cast_rotation_x + laser_limit_angle.y)
+	$Cast.rotation_degrees.y = clamp(
 		$Cast.rotation_degrees.y,
-		-laser_limit_angle.x,
-		laser_limit_angle.x)
+		og_cast_rotation_y - laser_limit_angle.x,
+		og_cast_rotation_y + laser_limit_angle.x)
 	
 	if $Cast.cast_is_on_type() == true:
 		$Cast.get_collider().set_active($Cast)

@@ -6,8 +6,6 @@ extends Node3D
 @export var min_zoom_extent = 2.0
 @export var max_zoom_extent = 6.7
 
-@onready var Cast = get_node("CamArm/Camera/Cast")
-
 var new_cam_y_rotation = 0.0
 var new_cam_x_rotation = 0.0
 var target_y_position
@@ -99,12 +97,7 @@ func _process(_delta):
 	# Zoom camera
 	$CamArm.spring_length = lerpf($CamArm.spring_length, camera_distance, 0.1)
 	$CamArm/Camera.v_offset = lerpf($CamArm/Camera.v_offset, target_y_position, 0.05)
-	
-	# Get what the player is looking up by reading the results of a raycast
-	# Sets the var to 'null' if looking at nothing
-	if Cast.is_colliding(): Global.looking_at = Cast.get_collision_point()
-	else: Global.looking_at = null
-	
+
 	# TODO: make sure this doesn't become too performant
 	$CamArm/Camera.fov = lerp($CamArm/Camera.fov, Global.settings.fov + fov_offset, 0.04)
 	

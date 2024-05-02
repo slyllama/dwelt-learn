@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://lib/player/CamPivot.gd" id="2_73c7o"]
 [ext_resource type="PackedScene" uid="uid://bnvmpcnhjje26" path="res://lib/shader_cache_gen/shader_cache_gen.tscn" id="3_fylyn"]
 [ext_resource type="Script" path="res://lib/player/YCast.gd" id="3_oxn4f"]
-[ext_resource type="PackedScene" uid="uid://cw7452jwdahpu" path="res://lib/ui/highlight_decal/highlight_decal.tscn" id="5_siwwa"]
+[ext_resource type="Script" path="res://lib/player/XCast.gd" id="3_tm7v3"]
 [ext_resource type="PackedScene" uid="uid://blknasrarvsh" path="res://lib/player/sound_handler/sound_handler.tscn" id="5_ymbnw"]
 [ext_resource type="Texture2D" uid="uid://dinrdf02xeqaq" path="res://generic/tex/fade_ramp.tres" id="6_k5syw"]
 [ext_resource type="ArrayMesh" uid="uid://cn0wlud2ukcna" path="res://generic/tex/particles/star.obj" id="7_7rcg7"]
@@ -126,8 +126,10 @@ spring_length = 5.0
 v_offset = -0.1
 current = true
 
-[node name="Cast" type="RayCast3D" parent="CamPivot/CamArm/Camera"]
-target_position = Vector3(0, 0, -20)
+[node name="XCast" type="RayCast3D" parent="CamPivot/CamArm/Camera"]
+target_position = Vector3(0, 0, -8)
+collide_with_areas = true
+script = ExtResource("3_tm7v3")
 
 [node name="ShaderCacheGen" parent="CamPivot/CamArm/Camera" instance=ExtResource("3_fylyn")]
 transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, -2)
@@ -154,11 +156,6 @@ libraries = {
 "": SubResource("AnimationLibrary_k5xan")
 }
 autoplay = "float"
-
-[node name="HighlightDecal" parent="." instance=ExtResource("5_siwwa")]
-transform = Transform3D(1, 0, 0, 0, 0.598849, 0, 0, 0, 1, 0, -2.455, 0)
-visible = false
-debug_only = true
 
 [node name="Stars" type="GPUParticles3D" parent="."]
 material_override = SubResource("StandardMaterial3D_cotlk")

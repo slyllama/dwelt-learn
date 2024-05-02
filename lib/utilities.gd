@@ -1,6 +1,6 @@
 extends Node
 
-### ENGINE SCRIPTS
+### ENGINE/GAME SCRIPTS
 
 # Set the master volume on a scale from 0.0 (muted) to 1.0 (1dB)
 func set_master_vol(vol):
@@ -13,6 +13,7 @@ func get_all_children(in_node, arr := []):
 		arr = get_all_children(child,arr)
 	return(arr)
 
+# Toggle full screen
 func toggle_full_screen():
 	if Global.settings.full_screen == true:
 		if (DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_WINDOWED
@@ -27,6 +28,14 @@ func get_screen_center():
 	if Global.settings.larger_ui == true:
 		return(Global.SCREEN_SIZE / Global.LARGE_UI_SCALE / 2.0)
 	else: return(Global.SCREEN_SIZE / 2.0)
+
+# Prevent issues when spamming the interact key, or trying to interact with a
+# different object in range when already in an action
+func leave_action():
+	if Global.in_action == false: return
+	await get_tree().create_timer(0.2).timeout
+	Global.in_action = false
+	Global.action_left.emit()
 
 ### CONSTRUCTION SCRIPTS
 

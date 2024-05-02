@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://s4i8wd6iwhw6"]
+
+[ext_resource type="Script" path="res://lib/ui/smoke_overlay/smoke_overlay.gd" id="1_1u7r5"]
+[ext_resource type="Material" uid="uid://dib8bbgu76bfe" path="res://lib/ui/smoke_overlay/smoke.tres" id="1_qayah"]
+
+[node name="SmokeOverlay" type="CanvasLayer"]
+layer = 3
+script = ExtResource("1_1u7r5")
+
+[node name="BG" type="ColorRect" parent="."]
+material = ExtResource("1_qayah")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)

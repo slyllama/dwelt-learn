@@ -1,22 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://bx5xwgdebscc6"]
+[gd_scene load_steps=9 format=3 uid="uid://bx5xwgdebscc6"]
 
 [ext_resource type="Script" path="res://lib/ui/settings/settings.gd" id="1_ttf36"]
 [ext_resource type="Theme" uid="uid://dfe36tnn0c1ud" path="res://generic/debug_theme.tres" id="2_r1d7p"]
-[ext_resource type="Shader" path="res://lib/ui/hud/intro_vfx.gdshader" id="2_yvakn"]
-[ext_resource type="Texture2D" uid="uid://dgkrpn8nt8pvt" path="res://generic/tex/shader_tex/laser.jpeg" id="3_twtho"]
-[ext_resource type="Texture2D" uid="uid://b5nufueq16vw0" path="res://generic/tex/shader_tex/wobble_noise.tres" id="4_1jhny"]
 [ext_resource type="PackedScene" uid="uid://bg5bulncs2ejf" path="res://lib/ui/settings/components/stin_input_toggle.tscn" id="5_duwqu"]
 [ext_resource type="PackedScene" uid="uid://d4avw33snp7bc" path="res://lib/ui/settings/components/stin_input_slider.tscn" id="6_y64kv"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0vvej"]
-shader = ExtResource("2_yvakn")
-shader_parameter/base_color = Color(0, 0.729412, 0.32549, 1)
-shader_parameter/size = 0.8
-shader_parameter/exponent = 2.0
-shader_parameter/darkness = 0.3
-shader_parameter/overall_alpha = 0.3
-shader_parameter/smoke_effect = ExtResource("3_twtho")
-shader_parameter/wobble_pattern = ExtResource("4_1jhny")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vsf57"]
 bg_color = Color(0, 0, 0, 1)
@@ -48,7 +35,6 @@ layer = 4
 script = ExtResource("1_ttf36")
 
 [node name="BG" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_0vvej")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
