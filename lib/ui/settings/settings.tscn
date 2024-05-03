@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://bx5xwgdebscc6"]
 
 [ext_resource type="Script" path="res://lib/ui/settings/settings.gd" id="1_ttf36"]
-[ext_resource type="Texture2D" uid="uid://d2nv8xnwo132g" path="res://generic/tex/ui/placeholder_logo.png" id="2_3tfr4"]
+[ext_resource type="Texture2D" uid="uid://d2nv8xnwo132g" path="res://lib/ui/tex/placeholder_logo.png" id="2_3tfr4"]
 [ext_resource type="Theme" uid="uid://dfe36tnn0c1ud" path="res://generic/debug_theme.tres" id="2_r1d7p"]
-[ext_resource type="Texture2D" uid="uid://fk0cfrsqe4we" path="res://generic/tex/ui/decoration.png" id="2_s1oku"]
+[ext_resource type="Texture2D" uid="uid://fk0cfrsqe4we" path="res://lib/ui/tex/decoration.png" id="2_s1oku"]
 [ext_resource type="PackedScene" uid="uid://bg5bulncs2ejf" path="res://lib/ui/settings/components/stin_input_toggle.tscn" id="5_duwqu"]
 [ext_resource type="PackedScene" uid="uid://d4avw33snp7bc" path="res://lib/ui/settings/components/stin_input_slider.tscn" id="6_y64kv"]
 

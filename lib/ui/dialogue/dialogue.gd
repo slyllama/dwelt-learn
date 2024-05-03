@@ -58,7 +58,7 @@ func play_dialogue(get_dialogue):
 
 # Animate the presentation of a phrase
 func play_phrase():
-	$ContinueSound.play()
+	if current_place != 0: $ContinueSound.play()
 	if current_place > current_dialogue.size() - 1:
 		#Global.interact_entered.emit()
 		Global.dialogue_closed.emit()
@@ -85,6 +85,12 @@ func play_phrase():
 	transitioning = false
 
 func _ready():
+	Global.setting_changed.connect(func(setting):
+		if setting == "larger_ui":
+			$Particles.position = Utilities.get_screen_center()
+			$Particles/L.restart()
+			$Particles/R.restart())
+			
 	Global.connect("dialogue_played", play_dialogue)
 	Global.connect("dialogue_closed", close_dialogue)
 	Global.connect("dialogue_closed_early", close_dialogue)

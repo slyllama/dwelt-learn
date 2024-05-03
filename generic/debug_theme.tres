@@ -1,9 +1,9 @@
 [gd_resource type="Theme" load_steps=15 format=3 uid="uid://dfe36tnn0c1ud"]
 
 [ext_resource type="FontFile" uid="uid://b1v28gy50d86f" path="res://generic/fonts/red_hat.ttf" id="1_4xjey"]
-[ext_resource type="Texture2D" uid="uid://d4gts4lvqw0je" path="res://generic/tex/ui/toggle_on.png" id="2_am87g"]
-[ext_resource type="Texture2D" uid="uid://dimw586elxgjl" path="res://generic/tex/ui/toggle_off.png" id="3_x515i"]
-[ext_resource type="Texture2D" uid="uid://d27tc3g61pm80" path="res://generic/tex/ui/slider.png" id="4_15vmq"]
+[ext_resource type="Texture2D" uid="uid://d4gts4lvqw0je" path="res://lib/ui/tex/toggle_on.png" id="2_am87g"]
+[ext_resource type="Texture2D" uid="uid://dimw586elxgjl" path="res://lib/ui/tex/toggle_off.png" id="3_x515i"]
+[ext_resource type="Texture2D" uid="uid://d27tc3g61pm80" path="res://lib/ui/tex/slider.png" id="4_15vmq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7bfjb"]
 content_margin_top = 4.0
