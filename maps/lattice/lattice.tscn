@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dsf4aknq3seh2"]
+[gd_scene load_steps=28 format=3 uid="uid://dsf4aknq3seh2"]
 
 [ext_resource type="Script" path="res://maps/lattice/lattice.gd" id="1_hqs2c"]
 [ext_resource type="Texture2D" uid="uid://c5duom5wl7px7" path="res://generic/tex/sky.png" id="2_1uuus"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://07n4fhjhunl" path="res://objects/laser/laser.tscn" id="15_145ob"]
 [ext_resource type="PackedScene" uid="uid://32pbhrik6f2q" path="res://maps/sandbox/fan_wall_test.glb" id="16_y3o0w"]
 [ext_resource type="PackedScene" uid="uid://d23wqewgge7mv" path="res://objects/elevator/elevator.tscn" id="17_l4sxi"]
+[ext_resource type="PackedScene" uid="uid://bw14qvqobtubd" path="res://maps/sandbox/fourier_test.glb" id="18_acwyw"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dbpli"]
 panorama = ExtResource("2_1uuus")
@@ -193,3 +194,6 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 10, 0,
 [node name="Elevator" parent="." instance=ExtResource("17_l4sxi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -17)
 height = 4
+
+[node name="FourierTest" parent="." instance=ExtResource("18_acwyw")]
+transform = Transform3D(-2.83713, 0, -0.975021, 0, 3, 0, 0.975021, 0, -2.83713, 3.16859, 3.685, 10.5777)

@@ -7,6 +7,7 @@ func _ready():
 	
 	super()
 	%Player.set_model_scale(0.2)
+	$FourierTest/AnimationPlayer.play("Idle")
 	
 	# Set a spicy angle
 	%Player.rotation_degrees.y += 180.0
