@@ -5,6 +5,7 @@ var target_path: String
 var status: int
 var progress: Array[float] # ResourceLoader will put its status details here
 var started = false
+var target_mus_vol = 0.7
 
 func _make_path(map_name):
 	return("res://maps/" + str(map_name) + "/" + str(map_name) + ".tscn")
@@ -50,12 +51,20 @@ func _ready():
 	$LoadBlack/ProgressBar.visible = false
 	$GlowIcon.visible = false
 	$LoadPanel/VBox/ScrapperButton.grab_focus()
+	
+	$Music.volume_db = linear_to_db(target_mus_vol)
+	await get_tree().create_timer(0.5).timeout
+	$Music.play()
 
 func _input(_event):
 	if Input.is_action_just_pressed("toggle_debug"):
 		$FPSCounter.visible = !$FPSCounter.visible
 
 func _process(_delta):
+	if started == true:
+		target_mus_vol = lerp(target_mus_vol, 0.0, 0.1)
+		$Music.volume_db = linear_to_db(target_mus_vol)
+	
 	var colour = "green"
 	if Engine.get_frames_per_second() < 20.0: colour = "red"
 	$FPSCounter.text = ("[right][color=" + colour + "]"

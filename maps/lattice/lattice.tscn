@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c5duom5wl7px7" path="res://generic/tex/sky.png" id="2_1uuus"]
 [ext_resource type="PackedScene" uid="uid://bcp4um4sjbyx6" path="res://lib/player/player.tscn" id="3_0m0xl"]
 [ext_resource type="PackedScene" uid="uid://e0k8h1ytp7wi" path="res://lib/ui/hud/hud.tscn" id="4_gb0g0"]
-[ext_resource type="AudioStream" uid="uid://bjom6nih468j8" path="res://maps/lattice/sounds/nin_test.ogg" id="5_l3x1b"]
+[ext_resource type="AudioStream" uid="uid://bjom6nih468j8" path="res://generic/sounds/music/mus_junker.ogg" id="5_l3x1b"]
 [ext_resource type="AudioStream" uid="uid://to210dowl6qk" path="res://maps/lattice/sounds/forest_ambience.ogg" id="5_ldr5m"]
 [ext_resource type="Texture2D" uid="uid://dinrdf02xeqaq" path="res://generic/tex/fade_ramp.tres" id="9_clv77"]
 [ext_resource type="PackedScene" uid="uid://561pfp20pcr" path="res://maps/lattice/objects/greybox.glb" id="9_shc3s"]
@@ -116,7 +116,7 @@ directional_shadow_pancake_size = 10.0
 
 [node name="Player" parent="." instance=ExtResource("3_0m0xl")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.76421, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.86852, 0)
 
 [node name="HUD" parent="." instance=ExtResource("4_gb0g0")]
 

@@ -1,4 +1,6 @@
 extends Node3D
+# 3D wrapper for the loading screen. This renders the rocket in the background
+# But doesn't do any actual loading work -- see `loading.gd` for that stuff.
 
 const smooth = 0.04
 var ROCKET_PATH = "res://maps/sandbox/rocket_test.glb"
@@ -15,6 +17,8 @@ func _ready():
 	mouse_pos = get_viewport().get_mouse_position()
 	center = get_viewport().size / 2.0
 	ResourceLoader.load_threaded_request(ROCKET_PATH)
+
+	$CanvasLoadOverlay/BG/Flicker.play("flicker")
 
 func _process(_delta):
 	status = ResourceLoader.load_threaded_get_status(ROCKET_PATH, progress)
@@ -44,5 +48,5 @@ func _process(_delta):
 		add_child(rocket)
 		
 		var fade_tween = create_tween()
-		fade_tween.tween_property($LoadOverlay/BG, "modulate:a", 0.0, 1.0)
-		fade_tween.tween_callback(func(): $LoadOverlay/BG.visible = false)
+		fade_tween.tween_property($ModelLoadOverlay/BG, "modulate:a", 0.0, 1.0)
+		fade_tween.tween_callback(func(): $ModelLoadOverlay/BG.visible = false)

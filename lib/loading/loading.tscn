@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://c4cboiwskjvvh"]
+[gd_scene load_steps=30 format=3 uid="uid://c4cboiwskjvvh"]
 
 [ext_resource type="Script" path="res://lib/loading/loading.gd" id="1_dy6oh"]
 [ext_resource type="Script" path="res://lib/loading/loading3d.gd" id="1_iixfr"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dinrdf02xeqaq" path="res://generic/tex/fade_ramp.tres" id="10_g1ts5"]
 [ext_resource type="FontFile" uid="uid://bhk1jyryyb1be" path="res://generic/fonts/plex_mono.otf" id="10_qpunt"]
 [ext_resource type="Texture2D" uid="uid://d1fy6jygommc6" path="res://generic/tex/particles/mote.png" id="11_q2eyy"]
+[ext_resource type="AudioStream" uid="uid://b7uu6koeu0up2" path="res://generic/sounds/music/mus_afterlife.ogg" id="13_juayp"]
 [ext_resource type="PackedScene" uid="uid://d24gofb7bfo8k" path="res://lib/ui/hover_sound.tscn" id="14_w5m2m"]
 
 [sub_resource type="Animation" id="Animation_xdgig"]
@@ -121,14 +122,78 @@ fog_light_color = Color(0, 0, 0, 1)
 fog_height = 13.0
 fog_height_density = -0.5
 
+[sub_resource type="Animation" id="Animation_1eywi"]
+resource_name = "flicker"
+length = 1.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3, 0.4, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_hn2un"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fdd41"]
+_data = {
+"RESET": SubResource("Animation_hn2un"),
+"flicker": SubResource("Animation_1eywi")
+}
+
 [node name="Loading3D" type="Node3D"]
 script = ExtResource("1_iixfr")
+
+[node name="ModelLoadOverlay" type="CanvasLayer" parent="."]
+
+[node name="BG" type="ColorRect" parent="ModelLoadOverlay"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [node name="Loading" type="CanvasLayer" parent="."]
 layer = 2
 script = ExtResource("1_dy6oh")
 
+[node name="Music" type="AudioStreamPlayer" parent="Loading"]
+stream = ExtResource("13_juayp")
+volume_db = -5.0
+
 [node name="FPSCounter" type="RichTextLabel" parent="Loading"]
+visible = false
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -325,15 +390,21 @@ fov = 55.0
 [node name="ENV" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_nw3ri")
 
-[node name="LoadOverlay" type="CanvasLayer" parent="."]
+[node name="CanvasLoadOverlay" type="CanvasLayer" parent="."]
+layer = 4
 
-[node name="BG" type="ColorRect" parent="LoadOverlay"]
+[node name="BG" type="ColorRect" parent="CanvasLoadOverlay"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[node name="Flicker" type="AnimationPlayer" parent="CanvasLoadOverlay/BG"]
+libraries = {
+"": SubResource("AnimationLibrary_fdd41")
+}
 
 [connection signal="mouse_entered" from="Loading/LoadPanel/VBox/ScrapperButton" to="Loading" method="_hover"]
 [connection signal="pressed" from="Loading/LoadPanel/VBox/ScrapperButton" to="Loading" method="_map_button_pressed" binds= ["lattice"]]
