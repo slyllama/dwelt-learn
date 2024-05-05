@@ -29,6 +29,7 @@ var mouse_in_settings_menu = false
 
 ### Settings ###
 signal setting_changed(setting_id)
+signal input_changed
 var SETTINGS = {
 	"fov": 75,
 	"camera_sens": 0.65,

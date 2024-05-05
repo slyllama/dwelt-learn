@@ -5,7 +5,7 @@ extends Node3D
 @export var dialogue_close_distance = 9.0
 
 func _play_dialogue():
-	Global.interact_left.emit()
+	Utilities.enter_action(object_name)
 	Global.dialogue_played.emit(dialogue_data)
 
 func _close_dialogue():
@@ -16,7 +16,6 @@ func _interact():
 	if Global.look_object == object_name:
 		if Global.in_action == true: return
 		if Global.dialogue_active == false:
-			Global.last_used_object = object_name
 			_play_dialogue()
 
 func _input(_event):
@@ -37,7 +36,9 @@ func _physics_process(_delta):
 		count = 6 # don't do this every frame
 		# Distance from the dialogue object to the player
 		var distance = global_position.distance_to(Global.player_position)
+		print(distance)
 		if distance > dialogue_close_distance:
 			if Global.dialogue_active == true:
+				print("doing this")
 				Global.dialogue_closed_early.emit()
 	count -= 1

@@ -13,11 +13,8 @@ func activate():
 	active = true
 	target_speed = elevator_speed / 10.0
 	$SmokeOverlay.activate()
-	Global.last_used_object = object_name
-	Global.in_action = true
-	
 	$EnterLaser.play()
-	Global.interact_left.emit()
+	Utilities.enter_action(object_name)
 	
 	Global.emit_signal(
 		"player_position_locked",
@@ -28,7 +25,6 @@ func deactivate():
 	target_speed = 0.0
 	
 	await get_tree().create_timer(0.2).timeout
-	
 	active = false
 	$SmokeOverlay.deactivate()
 	Utilities.leave_action()

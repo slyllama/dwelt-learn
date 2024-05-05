@@ -12,14 +12,6 @@ var input_data = [
 
 var input_containers = [] # input list nodes, so they can be cleared on refresh
 
-func _get_key(input_id):
-	var action = InputMap.action_get_events(input_id)[0]
-	if str(action).split(" ")[1] == "button_index=4,":
-		return("SCROLL UP")
-	elif str(action).split(" ")[1] == "button_index=5,":
-		return("SCROLL DOWN")
-	else: return(str(action).split(" ")[2].lstrip("(").rstrip("),"))
-
 # Move the "reset" button to the bottom of the menu after reloading the menu
 func _reset_to_bottom():
 	$Control/Panel/InputVBox.move_child($Control/Panel/InputVBox/LowerCloseButton, -1)
@@ -42,6 +34,7 @@ func apply_input_data():
 			InputMap.action_add_event(i.id, e)
 
 func refresh_input_data():
+	Global.input_changed.emit()
 	for node in input_containers: node.queue_free()
 	input_containers = []
 	save_input_data()
@@ -49,7 +42,7 @@ func refresh_input_data():
 	# Update input map display
 	for input in input_data:
 		var i = InputLine.instantiate()
-		i.populate(input.name, input.id, _get_key(input.id))
+		i.populate(input.name, input.id, Utilities.get_key(input.id))
 		input_containers.append(i)
 		$Control/Panel/InputVBox.add_child(i)
 	

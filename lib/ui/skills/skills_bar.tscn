@@ -25,6 +25,7 @@ theme_override_constants/separation = 16
 layout_mode = 2
 size_flags_horizontal = 4
 skill_name = "interact"
+input_mapping = "interact"
 
 [node name="Empty" parent="HBox" instance=ExtResource("2_p2hud")]
 layout_mode = 2

@@ -43,6 +43,15 @@ func leave_action():
 	Global.in_action = false
 	Global.action_left.emit()
 
+# Get the name of an input command as a string
+func get_key(input_id):
+	var action = InputMap.action_get_events(input_id)[0]
+	if str(action).split(" ")[1] == "button_index=4,":
+		return("SCROLL UP")
+	elif str(action).split(" ")[1] == "button_index=5,":
+		return("SCROLL DOWN")
+	else: return(str(action).split(" ")[2].lstrip("(").rstrip("),"))
+
 ### CONSTRUCTION SCRIPTS
 
 # Get the shortest angle between "from", and "to", even if one or both exceeds 360deg
