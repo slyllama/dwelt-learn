@@ -5,20 +5,22 @@ extends TextureButton
 ## Passed to the 'Global.skill_clicked' signal and listened to by others.
 @export var skill_name = "empty"
 @export var input_mapping = "none"
+@export var initial_texture = "UNKNOWN"
 
 const textures = {
 	"UNKNOWN": preload("res://lib/ui/skills/tex/unknown.png"),
-	"CANCEL": preload("res://lib/ui/skills/tex/cancel.png")
+	"CANCEL": preload("res://lib/ui/skills/tex/cancel.png"),
+	"LOCKED": preload("res://lib/ui/skills/tex/locked.png")
 }
 
 func enable():
 	enabled = true
-	$Icon.modulate = Color(1.0, 1.0, 1.0)
+	$Icon.modulate.a = 1.0
 
 func disable():
 	enabled = false
-	self_modulate.a = 0.5
-	$Icon.modulate = Color(0.35, 0.35, 0.35)
+	self_modulate.a = 0.4
+	$Icon.modulate.a = 0.2
 
 func set_texture(tex_name):
 	if !tex_name in textures: return
@@ -32,16 +34,18 @@ func _get_key():
 
 func _ready():
 	disable() # disabled by default
-	self_modulate.a = 0.5
 	_get_key()
+	self_modulate.a = 0.4
 	Global.input_changed.connect(_get_key)
+	
+	set_texture(initial_texture)
 
 func _mouse_entered():
 	if enabled == false: return
 	Global.button_hover.emit()
 	self_modulate.a = 1.0
 
-func _mouse_left(): self_modulate.a = 0.5
+func _mouse_left(): self_modulate.a = 0.4
 
 func _on_pressed():
 	if enabled == false: return
