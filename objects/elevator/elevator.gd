@@ -14,7 +14,6 @@ func activate():
 	target_speed = elevator_speed / 10.0
 	$SmokeOverlay.activate()
 	$EnterLaser.play()
-	Action.activate(object_name, false)
 	
 	Global.emit_signal(
 		"player_position_locked",
@@ -23,22 +22,17 @@ func activate():
 
 func deactivate():
 	target_speed = 0.0
-	
 	await get_tree().create_timer(0.2).timeout
 	active = false
 	$SmokeOverlay.deactivate()
-	Action.deactivate()
 	Global.player_position_unlocked.emit()
 
-func _interact():
-	if Action.target == object_name:
-		if Action.active == false and active == false:
-			activate()
-
 func _ready():
-	Global.skill_clicked.connect(func(skill_name):
-		if skill_name == "interact":
-			_interact())
+	# Object handler-specifics
+	$ObjectHandler.object_name = object_name
+	$ObjectHandler.can_toggle_action = false
+	$ObjectHandler.activated.connect(activate)
+	$ObjectHandler.deactivated.connect(deactivate)
 	
 	height_units = c_height + height * c_height
 	for h in height:
@@ -47,14 +41,10 @@ func _ready():
 		add_child(column)
 	$Floor.position.y = height_units - 2.0
 
-func _input(_event):
-	if Input.is_action_just_pressed("interact"):
-		_interact()
-
 func _physics_process(_delta):
 	Global.linear_movement_override.y = lerp(
 		Global.linear_movement_override.y, target_speed, 0.08)
 	
 	if active == false or height_units == null: return
 	if Global.player_position.y >= height_units:
-		deactivate()
+		$ObjectHandler.deactivate()

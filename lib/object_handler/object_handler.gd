@@ -14,17 +14,23 @@ signal activated
 signal deactivated
 var active = false
 
+func activate():
+	Action.activate(object_name, can_toggle_action)
+	active = true
+	activated.emit()
+
+func deactivate():
+	Action.deactivate()
+	active = false
+	deactivated.emit()
+
 func _interact():
 	if Action.target == object_name:
 		if Action.active == false and active == false:
-			Action.activate(object_name, can_toggle_action)
-			active = true
-			activated.emit()
+			activate()
 			return
 	if active == true:
-		Action.deactivate()
-		active = false
-		deactivated.emit()
+		deactivate()
 		return
 
 func _ready():
