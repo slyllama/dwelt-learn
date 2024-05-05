@@ -37,9 +37,9 @@ func _ready():
 	height_units = c_height + height * c_height
 	for h in height:
 		var column = $Column.duplicate()
-		column.position.y = c_height + h * c_height
+		column.position.y = c_height * 1.5 + h * c_height
 		add_child(column)
-	$Floor.position.y = height_units - 2.0
+	$Floor.position.y = height_units
 
 func _physics_process(_delta):
 	Global.linear_movement_override.y = lerp(

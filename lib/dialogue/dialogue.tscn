@@ -11,6 +11,8 @@ albedo_texture = ExtResource("2_47ujj")
 script = ExtResource("1_kv4hh")
 
 [node name="ObjectHandler" parent="." instance=ExtResource("2_a46ve")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+cube_size = 4.0
 
 [node name="Placeholder" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
