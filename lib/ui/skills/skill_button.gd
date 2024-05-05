@@ -2,15 +2,16 @@ extends TextureButton
 
 ## Whether the skill can be used.
 @export var enabled = true
+## Passed to the 'Global.skill_clicked' signal and listened to by others.
+@export var skill_name = "empty"
 
 func enable():
-	print("enabled")
 	enabled = true
 	modulate = Color(1.0, 1.0, 1.0)
 
 func disable():
-	print("disabled")
 	enabled = false
+	self_modulate.a = 0.5
 	modulate = Color(0.3, 0.3, 0.3)
 
 func _ready():
@@ -27,3 +28,7 @@ func _mouse_entered():
 
 func _mouse_left():
 	self_modulate.a = 0.5
+
+func _on_pressed():
+	if enabled == false: return
+	Global.skill_clicked.emit(skill_name)

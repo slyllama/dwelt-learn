@@ -15,7 +15,9 @@ offset_top = -111.0
 offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 
 [node name="SkillButton" parent="HBox" instance=ExtResource("2_p2hud")]
 layout_mode = 2
 size_flags_horizontal = 6
+skill_name = "interact"

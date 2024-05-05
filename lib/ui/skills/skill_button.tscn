@@ -9,3 +9,4 @@ script = ExtResource("2_dehel")
 
 [connection signal="mouse_entered" from="." to="." method="_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_mouse_left"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

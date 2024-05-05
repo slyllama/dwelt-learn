@@ -18,6 +18,7 @@ signal left_keybind_select
 signal mouse_captured
 signal mouse_released
 signal shaders_loaded # called after ShaderCacheGen has loaded and removed itself
+signal skill_clicked(skill_name)
 
 var debug_details_text = "[Details]"
 var debug_state = false

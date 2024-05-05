@@ -17,6 +17,7 @@ func activate():
 	Global.in_action = true
 	
 	$EnterLaser.play()
+	Global.interact_left.emit()
 	
 	Global.emit_signal(
 		"player_position_locked",
@@ -33,7 +34,16 @@ func deactivate():
 	Utilities.leave_action()
 	Global.player_position_unlocked.emit()
 
+func _interact():
+	if Global.look_object == object_name:
+		if Global.in_action == false and active == false:
+			activate()
+
 func _ready():
+	Global.skill_clicked.connect(func(skill_name):
+		if skill_name == "interact":
+			_interact())
+	
 	height_units = c_height + height * c_height
 	for h in height:
 		var column = $Column.duplicate()
@@ -43,9 +53,7 @@ func _ready():
 
 func _input(_event):
 	if Input.is_action_just_pressed("interact"):
-		if Global.look_object == object_name:
-			if Global.in_action == false and active == false:
-				activate()
+		_interact()
 
 func _physics_process(_delta):
 	Global.linear_movement_override.y = lerp(

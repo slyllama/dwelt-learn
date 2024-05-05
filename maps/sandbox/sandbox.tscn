@@ -117,14 +117,14 @@ process_material = SubResource("ParticleProcessMaterial_6f558")
 draw_pass_1 = SubResource("PlaneMesh_udmxf")
 
 [node name="Laser" parent="." instance=ExtResource("9_puphx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0)
+transform = Transform3D(-0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, -7, 0, 0)
 
 [node name="LaserDetector" parent="." instance=ExtResource("10_7mg0o")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -3.5, 2.1, -6.5)
 start_after_delay = false
 
 [node name="DialogueArea" parent="." instance=ExtResource("11_7oal6")]
-transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 7.26572, 0.109395, -1.06047)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -1)
 dialogue_data = Array[String](["HI?"])
 
 [node name="Rocket" parent="." instance=ExtResource("12_l4442")]
