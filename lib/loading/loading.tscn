@@ -1,12 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://c4cboiwskjvvh"]
+[gd_scene load_steps=26 format=3 uid="uid://c4cboiwskjvvh"]
 
 [ext_resource type="Script" path="res://lib/loading/loading.gd" id="1_dy6oh"]
+[ext_resource type="Script" path="res://lib/loading/loading3d.gd" id="1_iixfr"]
 [ext_resource type="PackedScene" uid="uid://bx5xwgdebscc6" path="res://lib/ui/settings/settings.tscn" id="2_k2j3d"]
 [ext_resource type="Theme" uid="uid://dfe36tnn0c1ud" path="res://generic/debug_theme.tres" id="2_rl4eh"]
 [ext_resource type="Texture2D" uid="uid://c1ens2tjsu5wf" path="res://lib/loading/loading_icon.png" id="4_o48hx"]
 [ext_resource type="Texture2D" uid="uid://d2nv8xnwo132g" path="res://lib/ui/tex/placeholder_logo.png" id="5_s6nor"]
 [ext_resource type="Texture2D" uid="uid://fk0cfrsqe4we" path="res://lib/ui/tex/decoration.png" id="6_kn8kd"]
 [ext_resource type="Theme" uid="uid://ch4overpy78ds" path="res://generic/start_menu.tres" id="6_tdoiq"]
+[ext_resource type="Texture2D" uid="uid://dinrdf02xeqaq" path="res://generic/tex/fade_ramp.tres" id="10_g1ts5"]
+[ext_resource type="FontFile" uid="uid://bhk1jyryyb1be" path="res://generic/fonts/plex_mono.otf" id="10_qpunt"]
+[ext_resource type="Texture2D" uid="uid://d1fy6jygommc6" path="res://generic/tex/particles/mote.png" id="11_q2eyy"]
 [ext_resource type="PackedScene" uid="uid://d24gofb7bfo8k" path="res://lib/ui/hover_sound.tscn" id="14_w5m2m"]
 
 [sub_resource type="Animation" id="Animation_xdgig"]
@@ -36,21 +40,105 @@ bg_color = Color(0, 0, 0, 0)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ujdx1"]
 
-[node name="Loading" type="CanvasLayer"]
+[sub_resource type="Animation" id="Animation_ttsqk"]
+resource_name = "glow"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:light_energy")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [30.0, 15.0, 30.0]
+}
+
+[sub_resource type="Animation" id="Animation_qhmwe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [30.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0rr3t"]
+_data = {
+"RESET": SubResource("Animation_qhmwe"),
+"glow": SubResource("Animation_ttsqk")
+}
+
+[sub_resource type="Curve" id="Curve_y0qfm"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_djjtd"]
+curve = SubResource("Curve_y0qfm")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8wqtw"]
+emission_shape = 3
+emission_box_extents = Vector3(5, 5, 5)
+initial_velocity_min = 0.05
+initial_velocity_max = 0.05
+gravity = Vector3(0, 0.01, 0)
+scale_min = 0.5
+scale_curve = SubResource("CurveTexture_djjtd")
+color_ramp = ExtResource("10_g1ts5")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8rb60"]
+transparency = 1
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("11_q2eyy")
+backlight_enabled = true
+backlight = Color(1, 1, 1, 1)
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_np1p5"]
+material = SubResource("StandardMaterial3D_8rb60")
+size = Vector2(0.2, 0.2)
+orientation = 2
+
+[sub_resource type="Environment" id="Environment_nw3ri"]
+background_mode = 1
+ambient_light_source = 2
+ambient_light_color = Color(0.2, 0.2, 0.2, 1)
+fog_enabled = true
+fog_light_color = Color(0, 0, 0, 1)
+fog_height = 13.0
+fog_height_density = -0.5
+
+[node name="Loading3D" type="Node3D"]
+script = ExtResource("1_iixfr")
+
+[node name="Loading" type="CanvasLayer" parent="."]
 script = ExtResource("1_dy6oh")
 
-[node name="Settings" parent="." instance=ExtResource("2_k2j3d")]
+[node name="Settings" parent="Loading" instance=ExtResource("2_k2j3d")]
 visible = false
 
-[node name="LoadBlack" type="ColorRect" parent="."]
+[node name="LoadBlack" type="ColorRect" parent="Loading"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+color = Color(0, 0, 0, 0)
 
-[node name="ProgressBar" type="ProgressBar" parent="LoadBlack"]
+[node name="ProgressBar" type="ProgressBar" parent="Loading/LoadBlack"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -65,7 +153,7 @@ grow_vertical = 0
 theme = ExtResource("2_rl4eh")
 show_percentage = false
 
-[node name="ErrorText" type="RichTextLabel" parent="."]
+[node name="ErrorText" type="RichTextLabel" parent="Loading"]
 visible = false
 modulate = Color(1, 1, 1, 0.784314)
 anchors_preset = 7
@@ -86,39 +174,43 @@ bbcode_enabled = true
 text = "[center]Error.[/center]"
 fit_content = true
 
-[node name="GlowIcon" type="TextureRect" parent="."]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -103.0
-offset_top = -298.0
-offset_right = 103.0
-offset_bottom = -144.0
-grow_horizontal = 2
-grow_vertical = 0
-texture = ExtResource("4_o48hx")
-
-[node name="Anim" type="AnimationPlayer" parent="GlowIcon"]
-libraries = {
-"": SubResource("AnimationLibrary_d6y62")
-}
-autoplay = "glow"
-
-[node name="LoadPanel" type="Panel" parent="."]
+[node name="GlowIcon" type="TextureRect" parent="Loading"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_top = -140.0
-offset_bottom = -83.0
+offset_left = -86.0
+offset_top = 231.0
+offset_right = 88.0
+offset_bottom = 385.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_o48hx")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Anim" type="AnimationPlayer" parent="Loading/GlowIcon"]
+libraries = {
+"": SubResource("AnimationLibrary_d6y62")
+}
+autoplay = "glow"
+
+[node name="LoadPanel" type="Panel" parent="Loading"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 237.0
+offset_top = -78.0
+offset_right = 237.0
+offset_bottom = -21.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_a36sv")
 
-[node name="VBox" type="VBoxContainer" parent="LoadPanel"]
+[node name="VBox" type="VBoxContainer" parent="Loading/LoadPanel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -132,39 +224,39 @@ offset_bottom = 53.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Logo" type="TextureRect" parent="LoadPanel/VBox"]
+[node name="Logo" type="TextureRect" parent="Loading/LoadPanel/VBox"]
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 texture = ExtResource("5_s6nor")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Panel" type="Panel" parent="LoadPanel/VBox"]
+[node name="Panel" type="Panel" parent="Loading/LoadPanel/VBox"]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_ujdx1")
 
-[node name="ScrapperButton" type="Button" parent="LoadPanel/VBox"]
+[node name="ScrapperButton" type="Button" parent="Loading/LoadPanel/VBox"]
 layout_mode = 2
 theme = ExtResource("6_tdoiq")
 text = "PLAY"
 
-[node name="SandboxButton" type="Button" parent="LoadPanel/VBox"]
+[node name="SandboxButton" type="Button" parent="Loading/LoadPanel/VBox"]
 layout_mode = 2
 theme = ExtResource("6_tdoiq")
 text = "SANDBOX"
 
-[node name="Settings" type="Button" parent="LoadPanel/VBox"]
+[node name="Settings" type="Button" parent="Loading/LoadPanel/VBox"]
 layout_mode = 2
 theme = ExtResource("6_tdoiq")
 text = "SETTINGS"
 
-[node name="Quit" type="Button" parent="LoadPanel/VBox"]
+[node name="Quit" type="Button" parent="Loading/LoadPanel/VBox"]
 layout_mode = 2
 theme = ExtResource("6_tdoiq")
 text = "QUIT"
 
-[node name="Decoration" type="TextureRect" parent="LoadPanel"]
+[node name="Decoration" type="TextureRect" parent="Loading/LoadPanel"]
 modulate = Color(1, 1, 1, 0.313726)
 layout_mode = 1
 anchors_preset = 8
@@ -173,21 +265,65 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -25.0
-offset_top = -271.5
+offset_top = -247.5
 offset_right = 231.0
-offset_bottom = -25.5
+offset_bottom = -1.5
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("6_kn8kd")
 
-[node name="UIHover" parent="." instance=ExtResource("14_w5m2m")]
+[node name="UIHover" parent="Loading" instance=ExtResource("14_w5m2m")]
 
-[connection signal="mouse_entered" from="LoadPanel/VBox/ScrapperButton" to="." method="_hover"]
-[connection signal="pressed" from="LoadPanel/VBox/ScrapperButton" to="." method="_map_button_pressed" binds= ["lattice"]]
-[connection signal="mouse_entered" from="LoadPanel/VBox/SandboxButton" to="." method="_hover"]
-[connection signal="pressed" from="LoadPanel/VBox/SandboxButton" to="." method="_map_button_pressed" binds= ["sandbox"]]
-[connection signal="mouse_entered" from="LoadPanel/VBox/Settings" to="." method="_hover"]
-[connection signal="pressed" from="LoadPanel/VBox/Settings" to="." method="_map_button_pressed" binds= ["settings"]]
-[connection signal="mouse_entered" from="LoadPanel/VBox/Quit" to="." method="_hover"]
-[connection signal="pressed" from="LoadPanel/VBox/Quit" to="." method="_map_button_pressed" binds= ["quit"]]
+[node name="FPSCounter" type="RichTextLabel" parent="Loading"]
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 370.0
+offset_bottom = 85.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("10_qpunt")
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "[FPS]"
+
+[node name="Spot" type="SpotLight3D" parent="."]
+transform = Transform3D(0.895879, -0.389413, -0.213913, 0.229076, 0.817379, -0.528598, 0.380691, 0.424557, 0.821477, -6.30034, -7.37436, 6.35015)
+light_color = Color(1, 0.905, 0.85, 1)
+light_energy = 30.0
+spot_range = 40.0
+spot_attenuation = 0.6
+spot_angle = 50.0
+
+[node name="Glow" type="AnimationPlayer" parent="Spot"]
+libraries = {
+"": SubResource("AnimationLibrary_0rr3t")
+}
+autoplay = "glow"
+
+[node name="Motes" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.64, 0, 0, 0, 0.64, 0, 0, 0, 0.64, 0.389011, 1.36322, 2.68509)
+cast_shadow = 0
+amount = 20
+lifetime = 3.0
+preprocess = 5.0
+speed_scale = 0.5
+visibility_aabb = AABB(-6.5899, -6.37076, -5.6187, 13.1798, 12.7415, 11.2374)
+process_material = SubResource("ParticleProcessMaterial_8wqtw")
+draw_pass_1 = SubResource("PlaneMesh_np1p5")
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(0.967533, 3.60434e-09, -0.252745, -0.0283398, 0.993694, -0.108488, 0.251151, 0.112128, 0.961432, 2.93136, -1.23536, 28.3319)
+current = true
+fov = 55.0
+
+[node name="ENV" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_nw3ri")
+
+[connection signal="mouse_entered" from="Loading/LoadPanel/VBox/ScrapperButton" to="Loading" method="_hover"]
+[connection signal="pressed" from="Loading/LoadPanel/VBox/ScrapperButton" to="Loading" method="_map_button_pressed" binds= ["lattice"]]
+[connection signal="mouse_entered" from="Loading/LoadPanel/VBox/SandboxButton" to="Loading" method="_hover"]
+[connection signal="pressed" from="Loading/LoadPanel/VBox/SandboxButton" to="Loading" method="_map_button_pressed" binds= ["sandbox"]]
+[connection signal="mouse_entered" from="Loading/LoadPanel/VBox/Settings" to="Loading" method="_hover"]
+[connection signal="pressed" from="Loading/LoadPanel/VBox/Settings" to="Loading" method="_map_button_pressed" binds= ["settings"]]
+[connection signal="mouse_entered" from="Loading/LoadPanel/VBox/Quit" to="Loading" method="_hover"]
+[connection signal="pressed" from="Loading/LoadPanel/VBox/Quit" to="Loading" method="_map_button_pressed" binds= ["quit"]]

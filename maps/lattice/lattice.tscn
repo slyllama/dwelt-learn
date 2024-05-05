@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dsf4aknq3seh2"]
+[gd_scene load_steps=31 format=3 uid="uid://dsf4aknq3seh2"]
 
 [ext_resource type="Script" path="res://maps/lattice/lattice.gd" id="1_hqs2c"]
 [ext_resource type="Texture2D" uid="uid://c5duom5wl7px7" path="res://generic/tex/sky.png" id="2_1uuus"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://djgjcyichaft4" path="res://maps/sandbox/rocket.glb" id="13_8sf1c"]
 [ext_resource type="PackedScene" uid="uid://dbtpfif0ow8be" path="res://maps/lattice/objects/rocksculpt/rocksculpt.glb" id="13_uuy1x"]
 [ext_resource type="PackedScene" uid="uid://i1jp4klishr3" path="res://lib/dialogue/dialogue.tscn" id="14_cieqj"]
+[ext_resource type="Shader" uid="uid://c2d3xq5ama4up" path="res://generic/shaders/foggy_floor.tres" id="15_81o25"]
 [ext_resource type="PackedScene" uid="uid://07n4fhjhunl" path="res://objects/laser/laser.tscn" id="15_145ob"]
 [ext_resource type="PackedScene" uid="uid://32pbhrik6f2q" path="res://maps/sandbox/fan_wall_test.glb" id="16_y3o0w"]
 [ext_resource type="PackedScene" uid="uid://d23wqewgge7mv" path="res://objects/elevator/elevator.tscn" id="17_l4sxi"]
@@ -22,12 +23,12 @@
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dbpli"]
 panorama = ExtResource("2_1uuus")
 
-[sub_resource type="Sky" id="Sky_x6p1l"]
+[sub_resource type="Sky" id="Sky_aq0yt"]
 sky_material = SubResource("PanoramaSkyMaterial_dbpli")
 
 [sub_resource type="Environment" id="Environment_r5o54"]
 background_mode = 2
-sky = SubResource("Sky_x6p1l")
+sky = SubResource("Sky_aq0yt")
 ambient_light_source = 2
 ambient_light_color = Color(0.42, 0.36848, 0.3234, 1)
 ambient_light_energy = 2.0
@@ -39,13 +40,15 @@ fog_light_color = Color(0.161036, 0.104851, 0.0798084, 1)
 fog_light_energy = 0.0
 fog_density = 0.075
 fog_sky_affect = 0.5
-fog_height = 15.0
+fog_height = 25.0
 fog_height_density = -0.3
 volumetric_fog_enabled = true
-volumetric_fog_density = 0.04
+volumetric_fog_density = 0.07
 volumetric_fog_albedo = Color(0.510177, 0.465192, 0.415054, 1)
+volumetric_fog_emission = Color(0.209454, 0.156656, 0.0911818, 1)
 volumetric_fog_length = 4.0
 adjustment_enabled = true
+adjustment_brightness = 1.3
 adjustment_saturation = 1.12
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fuk4o"]
@@ -84,6 +87,15 @@ particles_anim_loop = false
 material = SubResource("StandardMaterial3D_2dh08")
 size = Vector2(0.06, 0.06)
 orientation = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6ls83"]
+render_priority = 0
+shader = ExtResource("15_81o25")
+
+[sub_resource type="QuadMesh" id="QuadMesh_w64hu"]
+material = SubResource("ShaderMaterial_6ls83")
+size = Vector2(100, 100)
+orientation = 1
 
 [node name="TestRoom" type="Node3D"]
 script = ExtResource("1_hqs2c")
@@ -155,8 +167,8 @@ spot_angle = 30.0
 [node name="RocketLight" type="SpotLight3D" parent="."]
 transform = Transform3D(0.961227, -0.14479, -0.234687, -0.259021, -0.182096, -0.948551, 0.0946049, 0.972562, -0.212539, -6.4918, -10.7323, 10.5593)
 light_energy = 90.0
-spot_range = 80.0
-spot_angle = 32.0
+spot_range = 110.0
+spot_angle = 27.0
 
 [node name="GodRay1" type="MeshInstance3D" parent="."]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -14.5079, 4.80719, -17.0815)
@@ -183,17 +195,22 @@ dialogue_data = Array[String](["Ohhh yeah"])
 object_name = "oh_yeah"
 
 [node name="LegTest" parent="." instance=ExtResource("13_8sf1c")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 11.2159, 23.9883)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 11, 24)
+
+[node name="FoggyFloor" type="MeshInstance3D" parent="LegTest"]
+transform = Transform3D(-1, 0, 5.76205e-08, 0, 1, 0, -5.76205e-08, 0, -1, 0, -17.5, 0)
+mesh = SubResource("QuadMesh_w64hu")
+skeleton = NodePath("../..")
 
 [node name="Laser" parent="." instance=ExtResource("15_145ob")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.34458, 0.695961, -8.48169)
 
 [node name="FanWallTest" parent="." instance=ExtResource("16_y3o0w")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 10, 0, 40)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 10, -12.5, 40)
 
 [node name="Elevator" parent="." instance=ExtResource("17_l4sxi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -17)
 height = 4
 
 [node name="FourierTest" parent="." instance=ExtResource("18_acwyw")]
-transform = Transform3D(-2.83713, 0, -0.975021, 0, 3, 0, 0.975021, 0, -2.83713, 3.16859, 3.685, 10.5777)
+transform = Transform3D(-1.13485, 0, -0.390009, 0, 1.2, 0, 0.390009, 0, -1.13485, 2.58742, 2.59901, 9.26847)
