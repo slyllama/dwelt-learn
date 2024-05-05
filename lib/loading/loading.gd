@@ -51,9 +51,18 @@ func _ready():
 	$GlowIcon.visible = false
 	$LoadPanel/VBox/ScrapperButton.grab_focus()
 
-func _process(_delta):
-	if target_path == null or target_path == "": return
+func _input(_event):
+	if Input.is_action_just_pressed("toggle_debug"):
+		$FPSCounter.visible = !$FPSCounter.visible
 
+func _process(_delta):
+	var colour = "green"
+	if Engine.get_frames_per_second() < 20.0: colour = "red"
+	$FPSCounter.text = ("[color=" + colour + "]"
+		+ str(Engine.get_frames_per_second()) + "fps[/color]")
+	
+	if target_path == null or target_path == "": return
+	
 	status = ResourceLoader.load_threaded_get_status(target_path, progress)
 	match status:
 		ResourceLoader.THREAD_LOAD_IN_PROGRESS:
