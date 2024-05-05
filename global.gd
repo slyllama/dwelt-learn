@@ -3,6 +3,7 @@ extends Node
 const SCREEN_SIZE = Vector2(1920.0, 1080.0)
 const LARGE_UI_SCALE = 1.3
 
+signal action_entered(can_toggle)
 signal action_left
 signal camera_shaken
 signal button_hover
@@ -18,6 +19,7 @@ signal left_keybind_select
 signal mouse_captured
 signal mouse_released
 signal shaders_loaded # called after ShaderCacheGen has loaded and removed itself
+signal skill_clicked(skill_name)
 
 var debug_details_text = "[Details]"
 var debug_state = false
@@ -27,6 +29,7 @@ var mouse_in_settings_menu = false
 
 ### Settings ###
 signal setting_changed(setting_id)
+signal input_changed
 var SETTINGS = {
 	"fov": 75,
 	"camera_sens": 0.65,

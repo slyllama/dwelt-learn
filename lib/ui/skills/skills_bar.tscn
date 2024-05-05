@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjpojjxt2n5ld"]
+
+[ext_resource type="Script" path="res://lib/ui/skills/skills_bar.gd" id="1_ofqr4"]
+[ext_resource type="PackedScene" uid="uid://ban2jmbcpo0g1" path="res://lib/ui/skills/skill_button.tscn" id="2_p2hud"]
+
+[node name="SkillsBar" type="CanvasLayer"]
+script = ExtResource("1_ofqr4")
+
+[node name="HBox" type="HBoxContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -79.0
+offset_top = -101.0
+offset_right = 79.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Interact" parent="HBox" instance=ExtResource("2_p2hud")]
+layout_mode = 2
+size_flags_horizontal = 4
+skill_name = "interact"
+input_mapping = "interact"
+
+[node name="Locked" parent="HBox" instance=ExtResource("2_p2hud")]
+layout_mode = 2
+size_flags_horizontal = 4
+skill_name = "locked"
+initial_texture = "LOCKED"
+
+[node name="Locked2" parent="HBox" instance=ExtResource("2_p2hud")]
+layout_mode = 2
+size_flags_horizontal = 4
+skill_name = "locked"
+initial_texture = "LOCKED"

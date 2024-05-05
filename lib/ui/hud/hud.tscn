@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://e0k8h1ytp7wi"]
+[gd_scene load_steps=15 format=3 uid="uid://e0k8h1ytp7wi"]
 
 [ext_resource type="PackedScene" uid="uid://dq3aqaliycowy" path="res://lib/ui/debug_pane/debug_pane.tscn" id="1_gv0re"]
 [ext_resource type="Script" path="res://lib/ui/hud/hud.gd" id="1_i45xt"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://8kcdl0ahju3s" path="res://lib/ui/tex/interact_overlay.png" id="6_n4mbk"]
 [ext_resource type="Texture2D" uid="uid://b3aaiytpklgal" path="res://lib/ui/tex/vignette.png" id="7_wv8wl"]
 [ext_resource type="Texture2D" uid="uid://bi3k2uagvaf4g" path="res://lib/ui/tex/top_menu_darken.png" id="9_0p1yl"]
+[ext_resource type="PackedScene" uid="uid://cjpojjxt2n5ld" path="res://lib/ui/skills/skills_bar.tscn" id="11_6aasg"]
 [ext_resource type="Texture2D" uid="uid://bo64vayisk0p" path="res://generic/dot_hover.png" id="11_hcgrr"]
 [ext_resource type="PackedScene" uid="uid://bt5sosdm3tncx" path="res://lib/ui/hud/hud_buttons.tscn" id="15_6wbiv"]
 [ext_resource type="Texture2D" uid="uid://danqqg64d8q2k" path="res://generic/dot.png" id="15_cp3ui"]
@@ -21,9 +22,6 @@ script = ExtResource("1_i45xt")
 layer = 2
 
 [node name="SmokeOverlay" parent="." instance=ExtResource("3_gjhsd")]
-
-[node name="DebugPane" parent="." instance=ExtResource("1_gv0re")]
-layer = 3
 
 [node name="Vignette" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0.862745)
@@ -48,6 +46,23 @@ grow_horizontal = 2
 mouse_filter = 2
 texture = ExtResource("9_0p1yl")
 expand_mode = 1
+
+[node name="BottomVignette" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.392157)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -430.0
+offset_top = -244.0
+offset_right = 430.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("9_0p1yl")
+expand_mode = 1
+flip_v = true
 
 [node name="InteractOverlay" type="TextureRect" parent="."]
 anchors_preset = 15
@@ -86,15 +101,21 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("15_cp3ui")
 
+[node name="DebugPane" parent="." instance=ExtResource("1_gv0re")]
+layer = 99
+
 [node name="HUDButtons" parent="." instance=ExtResource("15_6wbiv")]
 layer = 5
 
-[node name="Settings" parent="." instance=ExtResource("19_c42st")]
+[node name="SkillsBar" parent="." instance=ExtResource("11_6aasg")]
 layer = 6
+
+[node name="Settings" parent="." instance=ExtResource("19_c42st")]
+layer = 100
 visible = false
 
 [node name="LoadOverride" type="CanvasLayer" parent="."]
-layer = 7
+layer = 101
 
 [node name="LoadBlack" type="ColorRect" parent="LoadOverride"]
 visible = false

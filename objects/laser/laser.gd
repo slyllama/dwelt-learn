@@ -13,10 +13,9 @@ var og_cast_rotation_x
 var og_cast_rotation_y
 
 func activate():
+	Utilities.enter_action(object_name)
 	active = true
 	$SmokeOverlay.activate()
-	Global.last_used_object = object_name
-	Global.in_action = true
 	$EnterLaser.play()
 	overlay_texture.visible = true
 	overlay_texture.scale = Vector2(1.0, 1.0)
@@ -28,7 +27,7 @@ func activate():
 	Global.emit_signal(
 		"player_position_locked",
 		$DockingPoint.global_position,
-		Vector2(global_rotation_degrees.y, 0.0))
+		Vector2(rotation_degrees.y, 0.0))
 	
 	await get_tree().create_timer(0.7).timeout
 	delay_complete = true
@@ -45,12 +44,26 @@ func deactivate():
 	
 	Utilities.leave_action()
 
+# TODO: these will all now be in their own functions so they can be called
+# via signal when the skill button is clicked
+func _interact():
+	if Global.look_object == object_name:
+		if Global.in_action == false and active == false:
+			activate()
+			return
+	if active == true:
+		deactivate()
+		return
+
 func _ready():
 	# Find the new center for Sprite2Ds when the content scale changes
 	# TODO: make a generic class for this
 	Global.setting_changed.connect(func(setting):
 		if setting == "larger_ui":
 			overlay_texture.position = Utilities.get_screen_center())
+	Global.skill_clicked.connect(func(skill_name):
+		if skill_name == "interact":
+			_interact())
 	
 	# For measuring and checking limits
 	og_cast_rotation_x = $Cast.rotation_degrees.x
@@ -69,13 +82,7 @@ var start = 2
 
 func _input(_event):
 	if Input.is_action_just_pressed("interact"):
-		if Global.look_object == object_name:
-			if Global.in_action == false and active == false:
-				activate()
-				return
-		if active == true:
-			deactivate()
-			return
+		_interact()
 
 func _process(_delta):
 	overlay_texture.scale = lerp(overlay_texture.scale, Vector2(0.7, 0.7), 0.2)

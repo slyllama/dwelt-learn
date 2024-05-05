@@ -29,6 +29,12 @@ func get_screen_center():
 		return(Global.SCREEN_SIZE / Global.LARGE_UI_SCALE / 2.0)
 	else: return(Global.SCREEN_SIZE / 2.0)
 
+# Perform all the logic and assignments for entering an action
+func enter_action(object_name, can_toggle = true):
+	Global.in_action = true
+	Global.last_used_object = object_name
+	Global.action_entered.emit(can_toggle)
+
 # Prevent issues when spamming the interact key, or trying to interact with a
 # different object in range when already in an action
 func leave_action():
@@ -36,6 +42,15 @@ func leave_action():
 	await get_tree().create_timer(0.2).timeout
 	Global.in_action = false
 	Global.action_left.emit()
+
+# Get the name of an input command as a string
+func get_key(input_id):
+	var action = InputMap.action_get_events(input_id)[0]
+	if str(action).split(" ")[1] == "button_index=4,":
+		return("SCROLL UP")
+	elif str(action).split(" ")[1] == "button_index=5,":
+		return("SCROLL DOWN")
+	else: return(str(action).split(" ")[2].lstrip("(").rstrip("),"))
 
 ### CONSTRUCTION SCRIPTS
 

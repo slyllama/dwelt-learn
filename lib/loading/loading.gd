@@ -59,6 +59,7 @@ func _ready():
 func _input(_event):
 	if Input.is_action_just_pressed("toggle_debug"):
 		$FPSCounter.visible = !$FPSCounter.visible
+		Global.debug_state = $FPSCounter.visible # debug will retain its state
 
 func _process(_delta):
 	if started == true:

@@ -45,7 +45,6 @@ func play_dialogue(get_dialogue):
 	# These are already set by interact_area, but dialogue won't necessarily
 	# be called by area
 	Global.dialogue_active = true
-	Global.in_action = true
 	$Base.modulate.a = 0.0
 	visible = true
 	emit_signal("opened")
