@@ -6,27 +6,22 @@ extends Node3D
 
 func _play_dialogue():
 	Action.activate(object_name, false)
+	Action.untargeted.emit()
 	Global.dialogue_played.emit(dialogue_data)
 
 func _close_dialogue():
-	Action.deactivate()
 	Global.dialogue_closed_early.emit()
-
-func _interact():
-	if Action.target == object_name:
-		if Action.active == true: return
-		if Global.dialogue_active == false:
-			_play_dialogue()
-
-func _input(_event):
-	if Input.is_action_just_pressed("interact"):
-		_interact()
 
 func _ready():
 	if dialogue_data == []: object_name = "ignore"
-	Global.skill_clicked.connect(func(skill_name):
-		if skill_name == "interact":
-			_interact())
+	# Object handler-specifics
+	$ObjectHandler.object_name = object_name
+	$ObjectHandler.activated.connect(_play_dialogue)
+	$ObjectHandler.deactivated.connect(_close_dialogue)
+	# Special action to callback dialogue closing after the fact
+	Global.dialogue_closed.connect(func():
+		if Action.last_target == object_name:
+			$ObjectHandler.deactivate())
 
 var count = 6
 func _physics_process(_delta):
@@ -38,5 +33,5 @@ func _physics_process(_delta):
 		var distance = global_position.distance_to(Global.player_position)
 		if distance > dialogue_close_distance:
 			if Global.dialogue_active == true:
-				Global.dialogue_closed_early.emit()
+				$ObjectHandler.deactivate()
 	count -= 1
