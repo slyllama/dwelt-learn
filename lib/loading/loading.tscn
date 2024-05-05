@@ -40,6 +40,21 @@ bg_color = Color(0, 0, 0, 0)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ujdx1"]
 
+[sub_resource type="Animation" id="Animation_qhmwe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [30.0]
+}
+
 [sub_resource type="Animation" id="Animation_ttsqk"]
 resource_name = "glow"
 length = 4.0
@@ -55,21 +70,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [30.0, 15.0, 30.0]
-}
-
-[sub_resource type="Animation" id="Animation_qhmwe"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:light_energy")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [30.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0rr3t"]
@@ -125,7 +125,23 @@ fog_height_density = -0.5
 script = ExtResource("1_iixfr")
 
 [node name="Loading" type="CanvasLayer" parent="."]
+layer = 2
 script = ExtResource("1_dy6oh")
+
+[node name="FPSCounter" type="RichTextLabel" parent="Loading"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -370.0
+offset_top = 40.0
+offset_right = -40.0
+offset_bottom = 85.0
+grow_horizontal = 0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("10_qpunt")
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "[right][FPS][/right]"
 
 [node name="Settings" parent="Loading" instance=ExtResource("2_k2j3d")]
 visible = false
@@ -175,17 +191,18 @@ text = "[center]Error.[/center]"
 fit_content = true
 
 [node name="GlowIcon" type="TextureRect" parent="Loading"]
-anchors_preset = 8
+modulate = Color(1, 1, 1, 0.352941)
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -86.0
-offset_top = 231.0
-offset_right = 88.0
-offset_bottom = 385.0
+anchor_bottom = 1.0
+offset_left = -87.0
+offset_top = -280.0
+offset_right = 87.0
+offset_bottom = -126.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 texture = ExtResource("4_o48hx")
 expand_mode = 1
 stretch_mode = 5
@@ -202,9 +219,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 237.0
+offset_left = 223.0
 offset_top = -78.0
-offset_right = 237.0
+offset_right = 223.0
 offset_bottom = -21.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -275,17 +292,6 @@ texture = ExtResource("6_kn8kd")
 
 [node name="UIHover" parent="Loading" instance=ExtResource("14_w5m2m")]
 
-[node name="FPSCounter" type="RichTextLabel" parent="Loading"]
-offset_left = 40.0
-offset_top = 40.0
-offset_right = 370.0
-offset_bottom = 85.0
-mouse_filter = 2
-theme_override_fonts/normal_font = ExtResource("10_qpunt")
-theme_override_font_sizes/normal_font_size = 14
-bbcode_enabled = true
-text = "[FPS]"
-
 [node name="Spot" type="SpotLight3D" parent="."]
 transform = Transform3D(0.895879, -0.389413, -0.213913, 0.229076, 0.817379, -0.528598, 0.380691, 0.424557, 0.821477, -6.30034, -7.37436, 6.35015)
 light_color = Color(1, 0.905, 0.85, 1)
@@ -318,6 +324,16 @@ fov = 55.0
 
 [node name="ENV" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_nw3ri")
+
+[node name="LoadOverlay" type="CanvasLayer" parent="."]
+
+[node name="BG" type="ColorRect" parent="LoadOverlay"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [connection signal="mouse_entered" from="Loading/LoadPanel/VBox/ScrapperButton" to="Loading" method="_hover"]
 [connection signal="pressed" from="Loading/LoadPanel/VBox/ScrapperButton" to="Loading" method="_map_button_pressed" binds= ["lattice"]]

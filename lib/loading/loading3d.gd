@@ -1,7 +1,7 @@
 extends Node3D
 
 const smooth = 0.04
-var ROCKET_PATH = "res://maps/sandbox/rocket.glb"
+var ROCKET_PATH = "res://maps/sandbox/rocket_test.glb"
 
 var mouse_pos
 var center
@@ -26,7 +26,7 @@ func _process(_delta):
 		clamp(2.0 * mouse_pos.x / center.x - 1.0, -1.0, 1.0),
 		clamp(2.0 * mouse_pos.y / center.y - 1.0, -1.0, 1.0))
 	
-	$Camera.position.x = lerp($Camera.position.x, 2.9 + adj.x * 0.6, smooth)
+	$Camera.position.x = lerp($Camera.position.x, 2.5 + adj.x * 0.6, smooth)
 	$Camera.position.y = lerp($Camera.position.y, -1.23 + adj.y * 0.3, smooth)
 	
 	if rocket != null:
@@ -42,3 +42,7 @@ func _process(_delta):
 		rocket.position = Vector3(1.4, 0.0, -2.2)
 		rocket.scale = Vector3(0.65, 0.65, 0.65)
 		add_child(rocket)
+		
+		var fade_tween = create_tween()
+		fade_tween.tween_property($LoadOverlay/BG, "modulate:a", 0.0, 1.0)
+		fade_tween.tween_callback(func(): $LoadOverlay/BG.visible = false)

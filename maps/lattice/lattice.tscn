@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://d1fy6jygommc6" path="res://generic/tex/particles/mote.png" id="10_vpwvh"]
 [ext_resource type="ArrayMesh" uid="uid://c48ccnw3gi5h4" path="res://objects/god_ray/god_ray_1.obj" id="11_vmy1k"]
 [ext_resource type="Material" uid="uid://cu31l43wp5syj" path="res://objects/god_ray/mat_god_ray.tres" id="12_n2ekj"]
-[ext_resource type="PackedScene" uid="uid://djgjcyichaft4" path="res://maps/sandbox/rocket.glb" id="13_8sf1c"]
+[ext_resource type="PackedScene" uid="uid://djgjcyichaft4" path="res://maps/sandbox/rocket_test.glb" id="13_8sf1c"]
 [ext_resource type="PackedScene" uid="uid://dbtpfif0ow8be" path="res://maps/lattice/objects/rocksculpt/rocksculpt.glb" id="13_uuy1x"]
 [ext_resource type="PackedScene" uid="uid://i1jp4klishr3" path="res://lib/dialogue/dialogue.tscn" id="14_cieqj"]
 [ext_resource type="Shader" uid="uid://c2d3xq5ama4up" path="res://generic/shaders/foggy_floor.tres" id="15_81o25"]

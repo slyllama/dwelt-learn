@@ -58,8 +58,8 @@ func _input(_event):
 func _process(_delta):
 	var colour = "green"
 	if Engine.get_frames_per_second() < 20.0: colour = "red"
-	$FPSCounter.text = ("[color=" + colour + "]"
-		+ str(Engine.get_frames_per_second()) + "fps[/color]")
+	$FPSCounter.text = ("[right][color=" + colour + "]"
+		+ str(Engine.get_frames_per_second()) + "fps[/color][/right]")
 	
 	if target_path == null or target_path == "": return
 	

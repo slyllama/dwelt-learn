@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://djgjcyichaft4"
-path="res://.godot/imported/rocket.glb-130360109f9f75295962860330461ded.scn"
+path="res://.godot/imported/rocket_test.glb-b514b14f90ee6008daf3d8f1026c699c.scn"
 
 [deps]
 
-source_file="res://maps/sandbox/rocket.glb"
-dest_files=["res://.godot/imported/rocket.glb-130360109f9f75295962860330461ded.scn"]
+source_file="res://maps/sandbox/rocket_test.glb"
+dest_files=["res://.godot/imported/rocket_test.glb-b514b14f90ee6008daf3d8f1026c699c.scn"]
 
 [params]
 
