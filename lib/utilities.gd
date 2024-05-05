@@ -29,6 +29,12 @@ func get_screen_center():
 		return(Global.SCREEN_SIZE / Global.LARGE_UI_SCALE / 2.0)
 	else: return(Global.SCREEN_SIZE / 2.0)
 
+# Perform all the logic and assignments for entering an action
+func enter_action(object_name):
+	Global.in_action = true
+	Global.last_used_object = object_name
+	Global.action_entered.emit()
+
 # Prevent issues when spamming the interact key, or trying to interact with a
 # different object in range when already in an action
 func leave_action():

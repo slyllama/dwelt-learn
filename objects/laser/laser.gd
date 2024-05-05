@@ -13,10 +13,9 @@ var og_cast_rotation_x
 var og_cast_rotation_y
 
 func activate():
+	Utilities.enter_action(object_name)
 	active = true
 	$SmokeOverlay.activate()
-	Global.last_used_object = object_name
-	Global.in_action = true
 	$EnterLaser.play()
 	overlay_texture.visible = true
 	overlay_texture.scale = Vector2(1.0, 1.0)

@@ -21,11 +21,11 @@ grow_vertical = 0
 mouse_filter = 2
 theme_override_constants/separation = 16
 
-[node name="SkillButton" parent="HBox" instance=ExtResource("2_p2hud")]
+[node name="Interact" parent="HBox" instance=ExtResource("2_p2hud")]
 layout_mode = 2
 size_flags_horizontal = 4
 skill_name = "interact"
 
-[node name="EmptyButton" parent="HBox" instance=ExtResource("2_p2hud")]
+[node name="Empty" parent="HBox" instance=ExtResource("2_p2hud")]
 layout_mode = 2
 size_flags_horizontal = 4
