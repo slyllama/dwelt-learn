@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://ban2jmbcpo0g1"]
+
+[ext_resource type="Texture2D" uid="uid://b1broubues35t" path="res://lib/ui/skills/tex/unknown.png" id="1_l6xoo"]
+[ext_resource type="Script" path="res://lib/ui/skills/skill_button.gd" id="2_dehel"]
+
+[node name="SkillButton" type="TextureButton"]
+texture_normal = ExtResource("1_l6xoo")
+script = ExtResource("2_dehel")
+
+[connection signal="mouse_entered" from="." to="." method="_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_mouse_left"]
