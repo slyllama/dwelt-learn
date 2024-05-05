@@ -5,10 +5,8 @@
 [ext_resource type="Script" path="res://objects/laser/Cast.gd" id="3_0t5vk"]
 [ext_resource type="Texture2D" uid="uid://dqvooc5gadxy0" path="res://generic/tex/placeholder.png" id="5_l7nk4"]
 [ext_resource type="PackedScene" uid="uid://s4i8wd6iwhw6" path="res://lib/ui/smoke_overlay/smoke_overlay.tscn" id="6_qjo1e"]
+[ext_resource type="PackedScene" uid="uid://csbchge3673bh" path="res://lib/object_handler/object_handler.tscn" id="7_2554r"]
 [ext_resource type="AudioStream" uid="uid://ksek1nmbm7lq" path="res://objects/laser/enter_laser.ogg" id="8_pae4y"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_nt7dx"]
-size = Vector3(2.4, 2.4, 2.4)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lhekj"]
 albedo_texture = ExtResource("5_l7nk4")
@@ -35,15 +33,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 [node name="EnterLaser" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("8_pae4y")
 
-[node name="Collision" type="StaticBody3D" parent="."]
-
-[node name="Shape" type="CollisionShape3D" parent="Collision"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("BoxShape3D_nt7dx")
-
 [node name="Placeholder" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 size = Vector3(2, 2, 2)
 material = SubResource("StandardMaterial3D_lhekj")
 
 [node name="SmokeOverlay" parent="." instance=ExtResource("6_qjo1e")]
+
+[node name="ObjectHandler" parent="." instance=ExtResource("7_2554r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
