@@ -23,9 +23,6 @@ layer = 2
 
 [node name="SmokeOverlay" parent="." instance=ExtResource("3_gjhsd")]
 
-[node name="DebugPane" parent="." instance=ExtResource("1_gv0re")]
-layer = 3
-
 [node name="Vignette" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0.862745)
 anchors_preset = 15
@@ -103,6 +100,9 @@ offset_bottom = 5.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("15_cp3ui")
+
+[node name="DebugPane" parent="." instance=ExtResource("1_gv0re")]
+layer = 99
 
 [node name="HUDButtons" parent="." instance=ExtResource("15_6wbiv")]
 layer = 5
