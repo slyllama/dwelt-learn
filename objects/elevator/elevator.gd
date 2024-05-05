@@ -14,7 +14,7 @@ func activate():
 	target_speed = elevator_speed / 10.0
 	$SmokeOverlay.activate()
 	$EnterLaser.play()
-	Utilities.enter_action(object_name)
+	Utilities.enter_action(object_name, false)
 	
 	Global.emit_signal(
 		"player_position_locked",

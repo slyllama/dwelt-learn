@@ -30,10 +30,10 @@ func get_screen_center():
 	else: return(Global.SCREEN_SIZE / 2.0)
 
 # Perform all the logic and assignments for entering an action
-func enter_action(object_name):
+func enter_action(object_name, can_toggle = true):
 	Global.in_action = true
 	Global.last_used_object = object_name
-	Global.action_entered.emit()
+	Global.action_entered.emit(can_toggle)
 
 # Prevent issues when spamming the interact key, or trying to interact with a
 # different object in range when already in an action

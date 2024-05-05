@@ -10,12 +10,14 @@ func _ready():
 		if Global.in_action == false:
 			$HBox/Interact.disable())
 	Global.interact_entered.connect($HBox/Interact.enable)
-	Global.action_entered.connect(func():
-		$HBox/Interact.enable()
-		$HBox/Interact.modulate = Color.RED)
+	Global.action_entered.connect(func(can_toggle):
+		if can_toggle == true:
+			$HBox/Interact.enable()
+			$HBox/Interact.set_texture("CANCEL")
+		else: $HBox/Interact.disable())
 	Global.action_left.connect(func():
 		$HBox/Interact.disable()
-		$HBox/Interact.modulate = Color.WHITE)
+		$HBox/Interact.set_texture("UNKNOWN"))
 
 func _on_interact_pressed():
 	if Global.in_action == true: pass
