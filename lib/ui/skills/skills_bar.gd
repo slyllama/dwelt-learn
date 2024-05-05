@@ -4,3 +4,7 @@ extends CanvasLayer
 # (which is rendered as disabled when there is nothing to interact with), but
 # additional skills that are learnt around the Lattice, such as gliding, will
 # appear here. They should show the relevant input key.
+
+func _ready():
+	Global.interact_left.connect($HBox/SkillButton.disable)
+	Global.interact_entered.connect($HBox/SkillButton.enable)

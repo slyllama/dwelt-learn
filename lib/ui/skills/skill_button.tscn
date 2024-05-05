@@ -1,11 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://ban2jmbcpo0g1"]
+[gd_scene load_steps=4 format=3 uid="uid://ban2jmbcpo0g1"]
 
 [ext_resource type="Texture2D" uid="uid://b1broubues35t" path="res://lib/ui/skills/tex/unknown.png" id="1_l6xoo"]
+[ext_resource type="Texture2D" uid="uid://cn6h6t5vpgw3e" path="res://lib/ui/skills/tex/frame.png" id="1_rgtws"]
 [ext_resource type="Script" path="res://lib/ui/skills/skill_button.gd" id="2_dehel"]
 
 [node name="SkillButton" type="TextureButton"]
-texture_normal = ExtResource("1_l6xoo")
+texture_normal = ExtResource("1_rgtws")
 script = ExtResource("2_dehel")
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_l6xoo")
 
 [connection signal="mouse_entered" from="." to="." method="_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_mouse_left"]

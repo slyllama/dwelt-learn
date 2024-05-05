@@ -7,18 +7,15 @@ extends TextureButton
 
 func enable():
 	enabled = true
-	modulate = Color(1.0, 1.0, 1.0)
+	$Icon.modulate = Color(1.0, 1.0, 1.0)
 
 func disable():
 	enabled = false
 	self_modulate.a = 0.5
-	modulate = Color(0.3, 0.3, 0.3)
+	$Icon.modulate = Color(0.35, 0.35, 0.35)
 
 func _ready():
-	Global.interact_left.connect(disable)
-	Global.interact_entered.connect(enable)
-	disable()
-
+	disable() # disabled by default
 	self_modulate.a = 0.5
 
 func _mouse_entered():

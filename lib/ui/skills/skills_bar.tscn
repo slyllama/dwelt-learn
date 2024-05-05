@@ -7,17 +7,25 @@
 script = ExtResource("1_ofqr4")
 
 [node name="HBox" type="HBoxContainer" parent="."]
-anchors_preset = 12
+anchors_preset = 7
+anchor_left = 0.5
 anchor_top = 1.0
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-offset_top = -111.0
-offset_bottom = -40.0
+offset_left = -79.0
+offset_top = -101.0
+offset_right = 79.0
+offset_bottom = -30.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
+theme_override_constants/separation = 16
 
 [node name="SkillButton" parent="HBox" instance=ExtResource("2_p2hud")]
 layout_mode = 2
-size_flags_horizontal = 6
+size_flags_horizontal = 4
 skill_name = "interact"
+
+[node name="EmptyButton" parent="HBox" instance=ExtResource("2_p2hud")]
+layout_mode = 2
+size_flags_horizontal = 4
