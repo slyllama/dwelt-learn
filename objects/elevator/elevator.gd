@@ -31,8 +31,8 @@ func deactivate():
 	Global.player_position_unlocked.emit()
 
 func _interact():
-	if Global.look_object == object_name:
-		if Global.in_action == false and active == false:
+	if Action.target == object_name:
+		if Action.active == false and active == false:
 			activate()
 
 func _ready():

@@ -13,8 +13,8 @@ func _close_dialogue():
 	Global.dialogue_closed_early.emit()
 
 func _interact():
-	if Global.look_object == object_name:
-		if Global.in_action == true: return
+	if Action.target == object_name:
+		if Action.active == true: return
 		if Global.dialogue_active == false:
 			_play_dialogue()
 
@@ -31,7 +31,7 @@ func _ready():
 var count = 6
 func _physics_process(_delta):
 	if count == 0:
-		if (Global.last_used_object != object_name
+		if (Action.last_target != object_name
 			or Global.dialogue_active == false): return
 		count = 6 # don't do this every frame
 		# Distance from the dialogue object to the player

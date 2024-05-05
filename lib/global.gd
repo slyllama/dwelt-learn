@@ -3,8 +3,6 @@ extends Node
 const SCREEN_SIZE = Vector2(1920.0, 1080.0)
 const LARGE_UI_SCALE = 1.3
 
-signal action_entered(can_toggle)
-signal action_left
 signal camera_shaken
 signal button_hover
 signal button_click
@@ -13,8 +11,6 @@ signal dialogue_played(dialogue)
 signal dialogue_closed
 signal dialogue_closed_early
 signal entered_keybind_select
-signal interact_entered
-signal interact_left
 signal left_keybind_select
 signal mouse_captured
 signal mouse_released
@@ -51,12 +47,9 @@ signal player_position_unlocked
 var can_move = true
 var dialogue_active = false
 var dragging_control = false # sliders should report their position so they aren't trapped on camera pan
-var in_action = false
 var linear_movement_override = Vector3.ZERO
 
 ### World states ###
 var player_position = Vector2.ZERO
 var raycast_y_point = 0.0
 var look_point = null
-var look_object = ""
-var last_used_object = ""

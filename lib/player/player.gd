@@ -84,18 +84,18 @@ func update_debug():
 	Global.debug_details_text += "\ndirection = " + Utilities.fstr(%CamPivot.rotation_degrees.y, 1)
 	Global.debug_details_text += "\u00B0 (" + str(snapped($Lemonade.rotation_degrees.y, 1))  + "\u00B0)"
 	Global.debug_details_text += "\nraycast_y_point = " + Utilities.fstr(Global.raycast_y_point)
-	Global.debug_details_text += "\nlast_used_object = '" + str(Global.last_used_object) + "'"
-	Global.debug_details_text += "\nin_action = " + str(Global.in_action) + "\n"
-	if Global.look_object != "":
-		Global.debug_details_text += "\n[color=yellow]Looking at: " + str(Global.look_object) + "[/color]"
+	Global.debug_details_text += "\nlast_used_object = '" + str(Action.last_target) + "'"
+	Global.debug_details_text += "\nin_action = " + str(Action.active) + "\n"
+	if Action.target != "":
+		Global.debug_details_text += "\n[color=yellow]Looking at: " + str(Action.target) + "[/color]"
 	if $Collision.disabled == true:
 		Global.debug_details_text += "\n[color=red]Collision disabled[/color]"
 
 func _ready():
 	Global.connect("player_position_locked", lock_position)
 	Global.connect("player_position_unlocked", unlock_position)
-	Global.connect("interact_entered", open_radar)
-	Global.connect("interact_left", close_radar)
+	Action.targeted.connect(open_radar)
+	Action.untargeted.connect(close_radar)
 	Radar.visible = false
 
 func _input(_event):

@@ -59,7 +59,7 @@ func play_dialogue(get_dialogue):
 func play_phrase():
 	if current_place != 0: $ContinueSound.play()
 	if current_place > current_dialogue.size() - 1:
-		#Global.interact_entered.emit()
+		#Action.targeted.emit()
 		Global.dialogue_closed.emit()
 		return
 	transitioning = true

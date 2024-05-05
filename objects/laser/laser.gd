@@ -47,8 +47,8 @@ func deactivate():
 # TODO: these will all now be in their own functions so they can be called
 # via signal when the skill button is clicked
 func _interact():
-	if Global.look_object == object_name:
-		if Global.in_action == false and active == false:
+	if Action.target == object_name:
+		if Action.active == false and active == false:
 			activate()
 			return
 	if active == true:
