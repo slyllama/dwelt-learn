@@ -10,3 +10,17 @@ signal activated(toggle)
 signal deactivated
 signal targeted # action has been looked at by the cursor
 signal untargeted # cursor has moved away from an action
+
+# Perform all the logic and assignments for entering an action
+func activate(object_name, can_toggle = true):
+	active = true
+	last_target = object_name
+	activated.emit(can_toggle)
+
+# Prevent issues when spamming the interact key, or trying to interact with a
+# different object in range when already in an action
+func deactivate():
+	if active == false: return
+	await get_tree().create_timer(0.2).timeout
+	active = false
+	deactivated.emit()

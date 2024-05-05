@@ -29,20 +29,6 @@ func get_screen_center():
 		return(Global.SCREEN_SIZE / Global.LARGE_UI_SCALE / 2.0)
 	else: return(Global.SCREEN_SIZE / 2.0)
 
-# Perform all the logic and assignments for entering an action
-func enter_action(object_name, can_toggle = true):
-	Action.active = true
-	Action.last_target = object_name
-	Action.activated.emit(can_toggle)
-
-# Prevent issues when spamming the interact key, or trying to interact with a
-# different object in range when already in an action
-func leave_action():
-	if Action.active == false: return
-	await get_tree().create_timer(0.2).timeout
-	Action.active = false
-	Action.deactivated.emit()
-
 # Get the name of an input command as a string
 func get_key(input_id):
 	var action = InputMap.action_get_events(input_id)[0]

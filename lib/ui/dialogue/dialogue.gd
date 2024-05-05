@@ -25,7 +25,7 @@ func close_dialogue():
 	current_dialogue = []
 	current_place = 0
 	Global.dialogue_active = false
-	Utilities.leave_action()
+	Action.deactivate()
 	emit_signal("closed")
 	
 	transitioning = true

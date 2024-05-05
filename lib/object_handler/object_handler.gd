@@ -17,12 +17,12 @@ var active = false
 func _interact():
 	if Action.target == object_name:
 		if Action.active == false and active == false:
-			Utilities.enter_action(object_name, can_toggle_action)
+			Action.activate(object_name, can_toggle_action)
 			active = true
 			activated.emit()
 			return
 	if active == true:
-		Utilities.leave_action()
+		Action.deactivate()
 		active = false
 		deactivated.emit()
 		return

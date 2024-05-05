@@ -5,11 +5,11 @@ extends Node3D
 @export var dialogue_close_distance = 9.0
 
 func _play_dialogue():
-	Utilities.enter_action(object_name, false)
+	Action.activate(object_name, false)
 	Global.dialogue_played.emit(dialogue_data)
 
 func _close_dialogue():
-	Utilities.leave_action()
+	Action.deactivate()
 	Global.dialogue_closed_early.emit()
 
 func _interact():
