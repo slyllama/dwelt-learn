@@ -18,6 +18,8 @@ func _ready():
 	Action.deactivated.connect(func():
 		$HBox/Interact.disable()
 		$HBox/Interact.set_texture("UNKNOWN"))
+	
+	$HBox/Glide.enable()
 
 func _on_interact_pressed():
 	if Action.active == true: pass
