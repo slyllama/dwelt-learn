@@ -140,9 +140,9 @@ func _physics_process(_delta):
 	var strafe_diff = 0.0
 	
 	if Global.in_keybind_select == true: return
-
+	position += Global.linear_movement_override
+	
 	if position_locked == true:
-		position += Global.linear_movement_override
 		Global.player_position = position
 		update_debug()
 		return
@@ -170,7 +170,7 @@ func _physics_process(_delta):
 	# Uses the difference between the y-cast and the player's y-position to
 	# generate a damping value, y_diff
 	velocity = lerp(velocity, target_velocity, speed_smoothing)
-	velocity.y -= 0.98 / 1.5
+	velocity.y -= Global.gravity / 1.5
 	var y_diff = Global.player_position.y - Global.raycast_y_point
 	if y_diff < hover_height: velocity.y += hover_height - y_diff
 	else: velocity.y += glide_val

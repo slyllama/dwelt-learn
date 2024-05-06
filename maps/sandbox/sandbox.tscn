@@ -142,6 +142,6 @@ transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819
 environment = SubResource("Environment_iotnn")
 
 [node name="Updraft" parent="." instance=ExtResource("14_m7as8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, -2, 4)
 
 [connection signal="activated" from="LaserDetector" to="." method="_on_laser_detector_activated"]

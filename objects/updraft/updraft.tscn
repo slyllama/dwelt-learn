@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://dk0s3tibcdcq0"]
+[gd_scene load_steps=17 format=3 uid="uid://dk0s3tibcdcq0"]
 
 [ext_resource type="PackedScene" uid="uid://c35iff81j46sc" path="res://objects/updraft/updraft_model.glb" id="1_6r8vs"]
+[ext_resource type="Script" path="res://objects/updraft/updraft.gd" id="1_gj72g"]
 [ext_resource type="Shader" uid="uid://dlmkx7n01hlq6" path="res://objects/updraft/whirl_center.tres" id="2_l7aic"]
 [ext_resource type="Texture2D" uid="uid://dinrdf02xeqaq" path="res://generic/tex/fade_ramp.tres" id="3_5h4qh"]
 [ext_resource type="Texture2D" uid="uid://d1fy6jygommc6" path="res://generic/tex/particles/mote.png" id="4_m1pur"]
@@ -85,7 +86,11 @@ material = SubResource("StandardMaterial3D_2dh08")
 size = Vector2(0.05, 0.5)
 orientation = 2
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_3ek6y"]
+size = Vector3(3, 10, 3)
+
 [node name="Updraft" type="Node3D"]
+script = ExtResource("1_gj72g")
 
 [node name="Model" parent="." instance=ExtResource("1_6r8vs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
@@ -111,3 +116,13 @@ speed_scale = 0.5
 visibility_aabb = AABB(-2, -8, -1, 4, 16, 2)
 process_material = SubResource("ParticleProcessMaterial_qjt3l")
 draw_pass_1 = SubResource("PlaneMesh_pwm18")
+
+[node name="UpdraftArea" type="Area3D" parent="."]
+collision_layer = 8
+
+[node name="Collision" type="CollisionShape3D" parent="UpdraftArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+shape = SubResource("BoxShape3D_3ek6y")
+
+[connection signal="body_entered" from="UpdraftArea" to="." method="_on_updraft_area_entered"]
+[connection signal="body_exited" from="UpdraftArea" to="." method="_on_updraft_area_exited"]

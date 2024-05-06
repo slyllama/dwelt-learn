@@ -110,6 +110,7 @@ shader_parameter/modulate_a = 0.2
 shader_parameter/noise = ExtResource("12_uaain")
 
 [node name="Player" type="CharacterBody3D"]
+collision_layer = 9
 script = ExtResource("1_2r77g")
 hover_height = 2.0
 
