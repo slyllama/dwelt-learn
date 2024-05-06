@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dk0s3tibcdcq0"]
+[gd_scene load_steps=21 format=3 uid="uid://dk0s3tibcdcq0"]
 
 [ext_resource type="PackedScene" uid="uid://c35iff81j46sc" path="res://objects/updraft/updraft_model.glb" id="1_6r8vs"]
 [ext_resource type="Script" path="res://objects/updraft/updraft.gd" id="1_gj72g"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://dinrdf02xeqaq" path="res://generic/tex/fade_ramp.tres" id="3_5h4qh"]
 [ext_resource type="Texture2D" uid="uid://d1fy6jygommc6" path="res://generic/tex/particles/mote.png" id="4_m1pur"]
 [ext_resource type="Texture2D" uid="uid://d0rbiwmc3jmm8" path="res://objects/updraft/updraft_decal.png" id="6_3nqoh"]
+[ext_resource type="Script" path="res://objects/updraft/Chroma.gd" id="7_5xnoj"]
+[ext_resource type="Shader" path="res://generic/shaders/aberration.gdshader" id="7_xx8sf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_plm2c"]
 render_priority = 0
@@ -90,6 +92,12 @@ orientation = 2
 [sub_resource type="BoxShape3D" id="BoxShape3D_3ek6y"]
 size = Vector3(3, 10, 3)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1tcy7"]
+shader = ExtResource("7_xx8sf")
+shader_parameter/r_displacement = Vector2(3, 0)
+shader_parameter/g_displacement = Vector2(0, 0)
+shader_parameter/b_displacement = Vector2(-3, 0)
+
 [node name="Updraft" type="Node3D"]
 script = ExtResource("1_gj72g")
 
@@ -127,6 +135,20 @@ shape = SubResource("BoxShape3D_3ek6y")
 [node name="Decal" type="Decal" parent="."]
 size = Vector3(3, 5, 3)
 texture_albedo = ExtResource("6_3nqoh")
+
+[node name="FG" type="CanvasLayer" parent="."]
+
+[node name="Chroma" type="ColorRect" parent="FG"]
+visible = false
+material = SubResource("ShaderMaterial_1tcy7")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("7_5xnoj")
 
 [connection signal="body_entered" from="UpdraftArea" to="." method="_on_updraft_area_entered"]
 [connection signal="body_exited" from="UpdraftArea" to="." method="_on_updraft_area_exited"]

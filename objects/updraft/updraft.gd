@@ -19,6 +19,7 @@ func _ready():
 	Action.glide_pressed.connect(func():
 		if player_in_area == true:
 			Global.camera_shaken.emit()
+			$FG/Chroma.updraft()
 			in_updraft = true
 			reached_apex = false
 			target_upward = 0.2)

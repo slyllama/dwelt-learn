@@ -10,11 +10,14 @@ const SHADERS_UID = [
 	"uid://yi627x8xvfu2", # laser
 	"uid://dtg3t52t3kle7", # god ray
 	"uid://dib8bbgu76bfe", # smoke
-
+	"uid://x7hijf0o02h8", # updraft whirl
+	"uid://dlmkx7n01hlq6", # updraft whirl center
+	
 	"res://generic/shaders/fresnel.gdshader", # fresnel
 	"res://lib/ui/dialogue/dialogue.gdshader", # dialogue (static)
 	"res://lib/ui/dialogue/radial_distort.gdshader", # radial distortion
-	"res://lib/player/anime_wobble.gdshader" # anime motion
+	"res://lib/player/anime_wobble.gdshader", # anime motion
+	"res://generic/shaders/aberration.gdshader" # chromatic aberration
 ]
 
 var meshes = []
