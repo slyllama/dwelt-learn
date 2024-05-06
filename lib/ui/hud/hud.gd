@@ -24,8 +24,8 @@ func _fade_out_black():
 
 func _ready():
 	Global.shaders_loaded.connect(_fade_out_black)
-	Global.interact_entered.connect(_toggle_interact_overlay.bind(true))
-	Global.interact_left.connect(_toggle_interact_overlay.bind(false))
+	Action.targeted.connect(_toggle_interact_overlay.bind(true))
+	Action.untargeted.connect(_toggle_interact_overlay.bind(false))
 	
 	$SmokeOverlay/BG.visible = true
 	$InteractOverlay.modulate = Color(0.0, 0.0, 0.0, 0.2)

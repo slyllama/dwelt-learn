@@ -25,7 +25,6 @@ func close_dialogue():
 	current_dialogue = []
 	current_place = 0
 	Global.dialogue_active = false
-	Utilities.leave_action()
 	emit_signal("closed")
 	
 	transitioning = true
@@ -59,7 +58,7 @@ func play_dialogue(get_dialogue):
 func play_phrase():
 	if current_place != 0: $ContinueSound.play()
 	if current_place > current_dialogue.size() - 1:
-		#Global.interact_entered.emit()
+		#Action.targeted.emit()
 		Global.dialogue_closed.emit()
 		return
 	transitioning = true

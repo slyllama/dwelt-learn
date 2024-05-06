@@ -35,7 +35,7 @@ texture = ExtResource("7_wv8wl")
 expand_mode = 1
 
 [node name="TopVignette" type="TextureRect" parent="."]
-modulate = Color(1, 1, 1, 0.745098)
+modulate = Color(1, 1, 1, 0.392157)
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5

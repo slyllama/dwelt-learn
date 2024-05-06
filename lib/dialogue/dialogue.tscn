@@ -2,9 +2,7 @@
 
 [ext_resource type="Script" path="res://lib/dialogue/dialogue.gd" id="1_kv4hh"]
 [ext_resource type="Texture2D" uid="uid://dqvooc5gadxy0" path="res://generic/tex/placeholder.png" id="2_47ujj"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_ynvvx"]
-size = Vector3(2.4, 2.4, 2.4)
+[ext_resource type="PackedScene" uid="uid://csbchge3673bh" path="res://lib/object_handler/object_handler.tscn" id="2_a46ve"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kafb6"]
 albedo_texture = ExtResource("2_47ujj")
@@ -12,11 +10,9 @@ albedo_texture = ExtResource("2_47ujj")
 [node name="DialogueArea" type="Node3D"]
 script = ExtResource("1_kv4hh")
 
-[node name="Collision" type="Area3D" parent="."]
-
-[node name="Shape" type="CollisionShape3D" parent="Collision"]
+[node name="ObjectHandler" parent="." instance=ExtResource("2_a46ve")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("BoxShape3D_ynvvx")
+cube_size = 4.0
 
 [node name="Placeholder" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

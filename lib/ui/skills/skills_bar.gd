@@ -6,18 +6,18 @@ extends CanvasLayer
 # appear here. They should show the relevant input key.
 
 func _ready():
-	Global.interact_left.connect(func():
-		if Global.in_action == false:
+	Action.untargeted.connect(func():
+		if Action.active == false:
 			$HBox/Interact.disable())
-	Global.interact_entered.connect($HBox/Interact.enable)
-	Global.action_entered.connect(func(can_toggle):
+	Action.targeted.connect($HBox/Interact.enable)
+	Action.activated.connect(func(can_toggle):
 		if can_toggle == true:
 			$HBox/Interact.enable()
 			$HBox/Interact.set_texture("CANCEL")
 		else: $HBox/Interact.disable())
-	Global.action_left.connect(func():
+	Action.deactivated.connect(func():
 		$HBox/Interact.disable()
 		$HBox/Interact.set_texture("UNKNOWN"))
 
 func _on_interact_pressed():
-	if Global.in_action == true: pass
+	if Action.active == true: pass

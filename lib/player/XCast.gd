@@ -11,7 +11,7 @@ func _is_on_object():
 
 func _ready():
 	# Forces the cast to re-update after leaving an action
-	Global.action_left.connect(func(): on_object = false)
+	Action.deactivated.connect(func(): on_object = false)
 
 func _process(_delta):
 	if on_object == false:
@@ -19,15 +19,15 @@ func _process(_delta):
 			var oname = get_collider().get_parent().object_name
 			if oname != "ignore":
 				on_object = true
-				Global.look_object = oname
+				Action.target = oname
 			else:
 				on_object = false
-				Global.look_object = ""
+				Action.target = ""
 				return
-			if Global.in_action == false:
-				Global.interact_entered.emit()
+			if Action.active == false:
+				Action.targeted.emit()
 	else:
 		if _is_on_object() == false:
 			on_object = false
-			Global.look_object = ""
-			Global.interact_left.emit()
+			Action.target = ""
+			Action.untargeted.emit()

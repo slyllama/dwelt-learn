@@ -26,8 +26,9 @@ buses/default_bus_layout="res://audio_bus.tres"
 
 [autoload]
 
-Global="*res://global.gd"
+Global="*res://lib/global.gd"
 Utilities="*res://lib/utilities.gd"
+Action="*res://lib/action.gd"
 
 [display]
 
