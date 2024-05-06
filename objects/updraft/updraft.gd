@@ -16,9 +16,10 @@ func _on_updraft_area_exited(body):
 func _ready():
 	Action.glide_pressed.connect(func():
 		if player_in_area == true:
+			Global.camera_shaken.emit()
 			in_updraft = true
 			reached_apex = false
-			target_upward = 0.0)
+			target_upward = 0.2)
 
 func _physics_process(_delta):
 	if Action.active == true: return

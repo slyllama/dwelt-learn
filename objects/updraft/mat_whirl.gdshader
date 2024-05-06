@@ -7,7 +7,7 @@ uniform sampler2D x_alpha_mask;
 uniform sampler2D distortion;
 
 void fragment() {
-	vec2 uv = UV - vec2(TIME * 0.4, 1.0);
+	vec2 uv = UV - vec2(TIME * 0.55, 1.0);
 	
 	vec2 distortion_value = texture(distortion, UV).rg;
 	float whirl_value = texture(whirl_texture, uv + distortion_value * 0.3).r;
@@ -18,4 +18,3 @@ void fragment() {
 	ALPHA = pow(whirl_value, 2.3) * alpha_mask_value * x_alpha_mask_value;
 	ALBEDO = vec3(1.0);
 }
-
