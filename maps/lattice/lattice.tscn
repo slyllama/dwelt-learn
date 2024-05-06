@@ -217,4 +217,4 @@ height = 4
 transform = Transform3D(-1.13485, 0, -0.390009, 0, 1.2, 0, 0.390009, 0, -1.13485, 2.58742, 2.59901, 9.26847)
 
 [node name="Updraft" parent="." instance=ExtResource("20_ib8vs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.72205, -1.61672, 4.84299)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.72205, -1.61672, 3.84299)

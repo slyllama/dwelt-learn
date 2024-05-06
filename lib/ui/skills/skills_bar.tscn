@@ -39,3 +39,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 skill_name = "locked"
 initial_texture = "LOCKED"
+
+[connection signal="button_down" from="HBox/Glide" to="." method="_on_glide_button_down"]
+[connection signal="button_up" from="HBox/Glide" to="." method="_on_glide_button_up"]
+[connection signal="pressed" from="HBox/Glide" to="." method="_on_glide_pressed"]

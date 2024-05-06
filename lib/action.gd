@@ -24,3 +24,11 @@ func deactivate():
 	await get_tree().create_timer(0.2).timeout
 	active = false
 	deactivated.emit()
+
+# Gliding-specific signals
+# TODO: this is a better role-model for skill action handling and should be
+# applied to interactions, too (inputs call these signals from their own homes;
+# these signals are the 'root' messages which are picked up by other things
+# such as updrafts)
+signal glide_pressed # for entering an updraft
+var in_glide = false

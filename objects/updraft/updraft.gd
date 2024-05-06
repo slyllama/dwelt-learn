@@ -13,12 +13,12 @@ func _on_updraft_area_exited(body):
 	if body is CharacterBody3D:
 		player_in_area = false
 
-func _input(_event):
-	if player_in_area == false: return
-	if Input.is_action_just_pressed("skill_glide"):
-		in_updraft = true
-		reached_apex = false
-		target_upward = 0.0
+func _ready():
+	Action.glide_pressed.connect(func():
+		if player_in_area == true:
+			in_updraft = true
+			reached_apex = false
+			target_upward = 0.0)
 
 func _physics_process(_delta):
 	if Action.active == true: return

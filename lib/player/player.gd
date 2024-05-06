@@ -101,9 +101,14 @@ func _ready():
 
 func _input(_event):
 	if Global.in_keybind_select == true: return
-
 	# No animations if the player's position is locked
 	if position_locked == true: return
+	
+	if Input.is_action_just_pressed("skill_glide"):
+		Action.glide_pressed.emit()
+		Action.in_glide = true
+	if Input.is_action_just_released("skill_glide"):
+		Action.in_glide = false
 	
 	# TODO: this all should eventually be in its own module
 	if Input.is_action_just_pressed("move_forward"):
@@ -139,6 +144,9 @@ func _physics_process(_delta):
 	rotation_diff = 0.0
 	var strafe_diff = 0.0
 	
+	if Action.in_glide == true: glide_val = 1.3
+	else: glide_val = 0.0
+	
 	if Global.in_keybind_select == true: return
 	position += Global.linear_movement_override
 	
@@ -148,7 +156,6 @@ func _physics_process(_delta):
 		return
 	
 	# If the position is locked, nothing happens after this point
-
 	if Input.is_action_pressed("move_forward"): forward += 1
 	if Input.is_action_pressed("move_back"): forward -= 1
 	if Input.is_action_pressed("strafe_left"):
