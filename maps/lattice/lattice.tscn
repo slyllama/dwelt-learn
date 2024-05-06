@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dsf4aknq3seh2"]
+[gd_scene load_steps=32 format=3 uid="uid://dsf4aknq3seh2"]
 
 [ext_resource type="Script" path="res://maps/lattice/lattice.gd" id="1_hqs2c"]
 [ext_resource type="Texture2D" uid="uid://c5duom5wl7px7" path="res://generic/tex/sky.png" id="2_1uuus"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://32pbhrik6f2q" path="res://maps/sandbox/fan_wall_test.glb" id="16_y3o0w"]
 [ext_resource type="PackedScene" uid="uid://d23wqewgge7mv" path="res://objects/elevator/elevator.tscn" id="17_l4sxi"]
 [ext_resource type="PackedScene" uid="uid://bw14qvqobtubd" path="res://maps/sandbox/fourier_test.glb" id="18_acwyw"]
+[ext_resource type="PackedScene" uid="uid://dk0s3tibcdcq0" path="res://objects/updraft/updraft.tscn" id="20_ib8vs"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dbpli"]
 panorama = ExtResource("2_1uuus")
@@ -58,7 +59,7 @@ size = Vector3(50, 0.1, 50)
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_n7qc6"]
+[sub_resource type="CurveTexture" id="CurveTexture_2872j"]
 curve = SubResource("Curve_lstkl")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6f558"]
@@ -68,10 +69,10 @@ initial_velocity_min = 0.05
 initial_velocity_max = 0.05
 gravity = Vector3(0, 0.01, 0)
 scale_min = 0.5
-scale_curve = SubResource("CurveTexture_n7qc6")
+scale_curve = SubResource("CurveTexture_2872j")
 color_ramp = ExtResource("9_clv77")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2dh08"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_arrm5"]
 transparency = 1
 cull_mode = 2
 vertex_color_use_as_albedo = true
@@ -84,7 +85,7 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_udmxf"]
-material = SubResource("StandardMaterial3D_2dh08")
+material = SubResource("StandardMaterial3D_arrm5")
 size = Vector2(0.06, 0.06)
 orientation = 2
 
@@ -214,3 +215,6 @@ height = 4
 
 [node name="FourierTest" parent="." instance=ExtResource("18_acwyw")]
 transform = Transform3D(-1.13485, 0, -0.390009, 0, 1.2, 0, 0.390009, 0, -1.13485, 2.58742, 2.59901, 9.26847)
+
+[node name="Updraft" parent="." instance=ExtResource("20_ib8vs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.72205, -1.61672, 4.84299)

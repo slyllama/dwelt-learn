@@ -1,0 +1,113 @@
+[gd_scene load_steps=15 format=3 uid="uid://dk0s3tibcdcq0"]
+
+[ext_resource type="PackedScene" uid="uid://c35iff81j46sc" path="res://objects/updraft/updraft_model.glb" id="1_6r8vs"]
+[ext_resource type="Shader" uid="uid://dlmkx7n01hlq6" path="res://objects/updraft/whirl_center.tres" id="2_l7aic"]
+[ext_resource type="Texture2D" uid="uid://dinrdf02xeqaq" path="res://generic/tex/fade_ramp.tres" id="3_5h4qh"]
+[ext_resource type="Texture2D" uid="uid://d1fy6jygommc6" path="res://generic/tex/particles/mote.png" id="4_m1pur"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_plm2c"]
+render_priority = 0
+shader = ExtResource("2_l7aic")
+
+[sub_resource type="QuadMesh" id="QuadMesh_ovimw"]
+material = SubResource("ShaderMaterial_plm2c")
+size = Vector2(2, 20)
+
+[sub_resource type="Animation" id="Animation_hy8vd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Model:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_yfce6"]
+resource_name = "rotate"
+length = 8.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Model:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4, 8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 3.14159, 0), Vector3(0, 6.28319, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mflkm"]
+_data = {
+"RESET": SubResource("Animation_hy8vd"),
+"rotate": SubResource("Animation_yfce6")
+}
+
+[sub_resource type="Curve" id="Curve_2reyu"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_n7qc6"]
+curve = SubResource("Curve_2reyu")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qjt3l"]
+emission_shape = 3
+emission_box_extents = Vector3(1.2, 1, 1.2)
+initial_velocity_min = 0.05
+initial_velocity_max = 0.05
+gravity = Vector3(0, 20, 0)
+scale_min = 0.5
+scale_curve = SubResource("CurveTexture_n7qc6")
+color_ramp = ExtResource("3_5h4qh")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2dh08"]
+transparency = 1
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("4_m1pur")
+backlight_enabled = true
+backlight = Color(1, 1, 1, 1)
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_pwm18"]
+material = SubResource("StandardMaterial3D_2dh08")
+size = Vector2(0.05, 0.5)
+orientation = 2
+
+[node name="Updraft" type="Node3D"]
+
+[node name="Model" parent="." instance=ExtResource("1_6r8vs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="Center" type="CSGMesh3D" parent="Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ovimw")
+
+[node name="Rotate" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_mflkm")
+}
+autoplay = "rotate"
+
+[node name="Motes" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+cast_shadow = 0
+amount = 50
+lifetime = 3.0
+preprocess = 5.0
+speed_scale = 0.5
+visibility_aabb = AABB(-2, -8, -1, 4, 16, 2)
+process_material = SubResource("ParticleProcessMaterial_qjt3l")
+draw_pass_1 = SubResource("PlaneMesh_pwm18")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b74la2t16jrfm"]
+[gd_scene load_steps=26 format=3 uid="uid://b74la2t16jrfm"]
 
 [ext_resource type="Script" path="res://maps/sandbox/sandbox.gd" id="1_nt6pl"]
 [ext_resource type="PackedScene" uid="uid://bcp4um4sjbyx6" path="res://lib/player/player.tscn" id="3_obgd6"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cvho6mkc04s7h" path="res://objects/laser_detector/laser_detector.tscn" id="10_7mg0o"]
 [ext_resource type="PackedScene" uid="uid://i1jp4klishr3" path="res://lib/dialogue/dialogue.tscn" id="11_7oal6"]
 [ext_resource type="PackedScene" uid="uid://djgjcyichaft4" path="res://maps/sandbox/rocket_test.glb" id="12_l4442"]
+[ext_resource type="PackedScene" uid="uid://dk0s3tibcdcq0" path="res://objects/updraft/updraft.tscn" id="14_m7as8"]
 [ext_resource type="PackedScene" uid="uid://d23wqewgge7mv" path="res://objects/elevator/elevator.tscn" id="14_yrsf4"]
 [ext_resource type="PackedScene" uid="uid://bw14qvqobtubd" path="res://maps/sandbox/fourier_test.glb" id="15_khcxt"]
 [ext_resource type="Texture2D" uid="uid://dinrdf02xeqaq" path="res://generic/tex/fade_ramp.tres" id="22_w6hxp"]
@@ -139,5 +140,8 @@ transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_iotnn")
+
+[node name="Updraft" parent="." instance=ExtResource("14_m7as8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 4)
 
 [connection signal="activated" from="LaserDetector" to="." method="_on_laser_detector_activated"]
