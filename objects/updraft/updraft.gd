@@ -7,10 +7,12 @@ var reached_apex = false
 
 func _on_updraft_area_entered(body):
 	if body is CharacterBody3D:
+		Action.targeted.emit()
 		player_in_area = true
 
 func _on_updraft_area_exited(body):
 	if body is CharacterBody3D:
+		Action.untargeted.emit()
 		player_in_area = false
 
 func _ready():

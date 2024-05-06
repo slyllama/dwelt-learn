@@ -1,7 +1,7 @@
 extends Node
 
 const SCREEN_SIZE = Vector2(1920.0, 1080.0)
-const LARGE_UI_SCALE = 1.3
+const LARGE_UI_SCALE = 1.0
 
 signal camera_shaken
 signal button_hover
@@ -34,7 +34,7 @@ var SETTINGS = {
 	"vol_fog": true,
 	"fancy_particles": true,
 	"full_screen": false,
-	"larger_ui" : false
+	#"larger_ui" : false
 }
 var settings = SETTINGS.duplicate()
 var input_data_loaded = false

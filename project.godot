@@ -37,6 +37,7 @@ window/size/viewport_height=1080
 window/size/mode=2
 window/size/initial_position=Vector2i(50, 50)
 window/stretch/mode="canvas_items"
+window/stretch/scale_mode="integer"
 mouse_cursor/custom_image="res://lib/ui/tex/cursor.png"
 
 [filesystem]

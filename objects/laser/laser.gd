@@ -44,9 +44,9 @@ func deactivate():
 func _ready():
 	# Find the new center for Sprite2Ds when the content scale changes
 	# TODO: make a generic class for this
-	Global.setting_changed.connect(func(setting):
-		if setting == "larger_ui":
-			overlay_texture.position = Utilities.get_screen_center())
+	#Global.setting_changed.connect(func(setting):
+		#if setting == "larger_ui":
+			#overlay_texture.position = Utilities.get_screen_center())
 	
 	# Object handler-specifics
 	$ObjectHandler.object_name = object_name

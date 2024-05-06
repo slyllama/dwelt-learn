@@ -132,6 +132,7 @@ text = "[center]SETTINGS[/center]"
 fit_content = true
 
 [node name="LargerUI" parent="Control/Panel/VBox" instance=ExtResource("5_duwqu")]
+visible = false
 layout_mode = 2
 setting_id = "larger_ui"
 setting_title = "LARGER UI"

@@ -83,12 +83,12 @@ func play_phrase():
 	transitioning = false
 
 func _ready():
-	Global.setting_changed.connect(func(setting):
-		if setting == "larger_ui":
-			$Particles.position = Utilities.get_screen_center()
-			$Particles/L.restart()
-			$Particles/R.restart())
-			
+	#Global.setting_changed.connect(func(setting):
+		#if setting == "larger_ui":
+			#$Particles.position = Utilities.get_screen_center()
+			#$Particles/L.restart()
+			#$Particles/R.restart())
+	
 	Global.connect("dialogue_played", play_dialogue)
 	Global.connect("dialogue_closed", close_dialogue)
 	Global.connect("dialogue_closed_early", close_dialogue)

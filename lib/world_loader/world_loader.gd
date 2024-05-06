@@ -29,9 +29,9 @@ func _setting_changed(get_setting_id):
 		match get_setting_id:
 			"full_screen": Utilities.toggle_full_screen()
 			"volume": Utilities.set_master_vol(Global.settings.volume)
-			"larger_ui":
-				if Global.settings.larger_ui == true: get_window().content_scale_factor = 1.3
-				else: get_window().content_scale_factor = 1.0
+			#"larger_ui":
+				#if Global.settings.larger_ui == true: get_window().content_scale_factor = Global.LARGE_UI_SCALE
+				#else: get_window().content_scale_factor = 1.0
 	Utilities.save_settings()
 
 func _ready():

@@ -25,9 +25,10 @@ func toggle_full_screen():
 
 # Get the center of the window, adjusted by the content scale factor
 func get_screen_center():
-	if Global.settings.larger_ui == true:
-		return(Global.SCREEN_SIZE / Global.LARGE_UI_SCALE / 2.0)
-	else: return(Global.SCREEN_SIZE / 2.0)
+	#if Global.settings.larger_ui == true:
+		#return(Global.SCREEN_SIZE / Global.LARGE_UI_SCALE / 2.0)
+	#else: return(Global.SCREEN_SIZE / 2.0)
+	return(Global.SCREEN_SIZE / 2.0)
 
 # Get the name of an input command as a string
 func get_key(input_id):
