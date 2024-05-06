@@ -48,6 +48,7 @@ func _ready():
 			DisplayServer.cursor_set_custom_image(
 				load("res://lib/ui/tex/cursor_2x.png"))
 	
+	$Settings/MapSelection.visible = false # no need to go to the menu from the menu
 	$LoadBlack/ProgressBar.visible = false
 	$GlowIcon.visible = false
 	$LoadPanel/VBox/ScrapperButton.grab_focus()

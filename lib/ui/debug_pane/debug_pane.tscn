@@ -101,14 +101,7 @@ layout_mode = 2
 theme = ExtResource("3_480m7")
 text = "MARK POINT"
 
-[node name="MapSelection" type="Button" parent="ControlPanel/ControlVBox"]
-layout_mode = 2
-theme = ExtResource("3_480m7")
-text = "MENU"
-
 [connection signal="mouse_entered" from="ControlPanel/ControlVBox/ClearPoints" to="." method="_mouseover"]
 [connection signal="pressed" from="ControlPanel/ControlVBox/ClearPoints" to="." method="_on_clear_points_pressed"]
 [connection signal="mouse_entered" from="ControlPanel/ControlVBox/MarkPoint" to="." method="_mouseover"]
 [connection signal="pressed" from="ControlPanel/ControlVBox/MarkPoint" to="." method="_on_mark_point_pressed"]
-[connection signal="mouse_entered" from="ControlPanel/ControlVBox/MapSelection" to="." method="_mouseover"]
-[connection signal="pressed" from="ControlPanel/ControlVBox/MapSelection" to="." method="_on_map_selection_pressed"]

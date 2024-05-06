@@ -66,9 +66,6 @@ func _process(_delta):
 			i = 0
 	i += 1
 
-func _on_map_selection_pressed():
-	get_tree().change_scene_to_file("res://lib/loading/loading.tscn")
-
 func _on_mark_point_pressed(): mark_point_at_player()
 func _on_clear_points_pressed(): clear_points()
 func _mouseover(): Global.button_hover.emit()
