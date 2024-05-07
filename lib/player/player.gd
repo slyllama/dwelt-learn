@@ -200,3 +200,4 @@ func _physics_process(_delta):
 	
 	Global.player_position = position
 	update_debug()
+	Global.player_y_velocity = velocity.y

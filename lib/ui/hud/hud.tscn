@@ -9,9 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://b3aaiytpklgal" path="res://lib/ui/tex/vignette.png" id="7_wv8wl"]
 [ext_resource type="Texture2D" uid="uid://bi3k2uagvaf4g" path="res://lib/ui/tex/top_menu_darken.png" id="9_0p1yl"]
 [ext_resource type="PackedScene" uid="uid://cjpojjxt2n5ld" path="res://lib/ui/skills/skills_bar.tscn" id="11_6aasg"]
-[ext_resource type="Texture2D" uid="uid://bo64vayisk0p" path="res://generic/dot_hover.png" id="11_hcgrr"]
+[ext_resource type="Texture2D" uid="uid://bo64vayisk0p" path="res://lib/ui/tex/dot_hover.png" id="11_hcgrr"]
 [ext_resource type="PackedScene" uid="uid://bt5sosdm3tncx" path="res://lib/ui/hud/hud_buttons.tscn" id="15_6wbiv"]
-[ext_resource type="Texture2D" uid="uid://danqqg64d8q2k" path="res://generic/dot.png" id="15_cp3ui"]
+[ext_resource type="Texture2D" uid="uid://danqqg64d8q2k" path="res://lib/ui/tex/dot.png" id="15_cp3ui"]
 [ext_resource type="PackedScene" uid="uid://bx5xwgdebscc6" path="res://lib/ui/settings/settings.tscn" id="19_c42st"]
 [ext_resource type="PackedScene" uid="uid://d24gofb7bfo8k" path="res://lib/ui/hover_sound.tscn" id="19_uwm57"]
 

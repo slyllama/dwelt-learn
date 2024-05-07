@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bcp4um4sjbyx6"]
+[gd_scene load_steps=28 format=3 uid="uid://bcp4um4sjbyx6"]
 
 [ext_resource type="Script" path="res://lib/player/player.gd" id="1_2r77g"]
 [ext_resource type="Script" path="res://lib/player/CamPivot.gd" id="2_73c7o"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://lib/player/Anime.gd" id="9_b4cap"]
 [ext_resource type="Shader" path="res://lib/player/anime_wobble.gdshader" id="11_f4obd"]
 [ext_resource type="Texture2D" uid="uid://b5nufueq16vw0" path="res://generic/tex/shader_tex/wobble_noise.tres" id="12_uaain"]
+[ext_resource type="Script" path="res://generic/shaders/trail_3d.gd" id="14_dpv3n"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_yehb5"]
 
@@ -133,6 +134,11 @@ shader = ExtResource("11_f4obd")
 shader_parameter/modulate_a = 0.2
 shader_parameter/noise = ExtResource("12_uaain")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s1f07"]
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 9
 script = ExtResource("1_2r77g")
@@ -202,3 +208,7 @@ material = SubResource("ShaderMaterial_ejrkj")
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("9_15e71")
+
+[node name="Trail3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_s1f07")
+script = ExtResource("14_dpv3n")

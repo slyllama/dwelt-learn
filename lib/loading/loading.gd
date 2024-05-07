@@ -47,6 +47,7 @@ func _ready():
 		if OS.get_name() != "macOS":
 			DisplayServer.cursor_set_custom_image(
 				load("res://lib/ui/tex/cursor_2x.png"))
+	DisplayServer.window_set_min_size(Vector2i(1280, 800))
 	
 	$Settings/MapSelection.visible = false # no need to go to the menu from the menu
 	$LoadBlack/ProgressBar.visible = false
