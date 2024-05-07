@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ds2eovkp6j3mj"
-path.s3tc="res://.godot/imported/leg_norm.jpg-e4eb80c65976f28b623f2d11cabf81c3.s3tc.ctex"
+uid="uid://caqvnh3in2k4e"
+path.s3tc="res://.godot/imported/core_norm.jpg-6d1affc8ad1163d2f0ed386472c6566d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://maps/sandbox/objects/rocket/tex/leg_norm.jpg"
-dest_files=["res://.godot/imported/leg_norm.jpg-e4eb80c65976f28b623f2d11cabf81c3.s3tc.ctex"]
+source_file="res://objects/rocket/tex/core_norm.jpg"
+dest_files=["res://.godot/imported/core_norm.jpg-6d1affc8ad1163d2f0ed386472c6566d.s3tc.ctex"]
 
 [params]
 
@@ -25,7 +25,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://maps/sandbox/rocket_test_rocket_leg_norm.jpg"
+roughness/src_normal="res://maps/sandbox/rocket_test_rocket_core_norm.jpg"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

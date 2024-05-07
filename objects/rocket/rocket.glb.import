@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://djgjcyichaft4"
-path="res://.godot/imported/rocket.glb-d52c51382c203566c06735ea495fbf46.scn"
+path="res://.godot/imported/rocket.glb-1148cc66129204686f115c43e6e41674.scn"
 
 [deps]
 
-source_file="res://maps/sandbox/objects/rocket/rocket.glb"
-dest_files=["res://.godot/imported/rocket.glb-d52c51382c203566c06735ea495fbf46.scn"]
+source_file="res://objects/rocket/rocket.glb"
+dest_files=["res://.godot/imported/rocket.glb-1148cc66129204686f115c43e6e41674.scn"]
 
 [params]
 
@@ -33,11 +33,11 @@ _subresources={
 "materials": {
 "Core": {
 "use_external/enabled": true,
-"use_external/path": "res://maps/sandbox/objects/rocket/core.tres"
+"use_external/path": "res://objects/rocket/mat_core.tres"
 },
 "Leg": {
 "use_external/enabled": true,
-"use_external/path": "res://maps/sandbox/objects/rocket/leg.tres"
+"use_external/path": "res://objects/rocket/mat_leg.tres"
 }
 }
 }

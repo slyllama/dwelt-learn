@@ -83,6 +83,7 @@ func update_debug():
 	Global.debug_details_text += "\nmagnitude = " + Utilities.fstr(velocity.length())
 	Global.debug_details_text += "\ndirection = " + Utilities.fstr(%CamPivot.rotation_degrees.y, 1)
 	Global.debug_details_text += "\u00B0 (" + str(snapped($Lemonade.rotation_degrees.y, 1))  + "\u00B0)"
+	Global.debug_details_text += "\ny_velocity = " + Utilities.fstr(Global.player_y_velocity)
 	Global.debug_details_text += "\nraycast_y_point = " + Utilities.fstr(Global.raycast_y_point)
 	if $Collision.disabled == true:
 		Global.debug_details_text += "\n[color=red]Collision disabled[/color]"

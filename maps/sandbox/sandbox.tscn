@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://07n4fhjhunl" path="res://objects/laser/laser.tscn" id="9_puphx"]
 [ext_resource type="PackedScene" uid="uid://cvho6mkc04s7h" path="res://objects/laser_detector/laser_detector.tscn" id="10_7mg0o"]
 [ext_resource type="PackedScene" uid="uid://i1jp4klishr3" path="res://lib/dialogue/dialogue.tscn" id="11_7oal6"]
-[ext_resource type="PackedScene" uid="uid://djgjcyichaft4" path="res://maps/sandbox/objects/rocket/rocket.glb" id="12_l4442"]
+[ext_resource type="PackedScene" uid="uid://djgjcyichaft4" path="res://objects/rocket/rocket.glb" id="12_l4442"]
 [ext_resource type="PackedScene" uid="uid://dk0s3tibcdcq0" path="res://objects/updraft/updraft.tscn" id="14_m7as8"]
 [ext_resource type="PackedScene" uid="uid://d23wqewgge7mv" path="res://objects/elevator/elevator.tscn" id="14_yrsf4"]
 [ext_resource type="PackedScene" uid="uid://bw14qvqobtubd" path="res://maps/sandbox/objects/fourier.glb" id="15_khcxt"]

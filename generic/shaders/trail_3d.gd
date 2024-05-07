@@ -2,6 +2,9 @@ class_name Trail3D extends MeshInstance3D
 
 const start_color = Color(1.0, 0.0, 0.0, 1.0)
 const end_color = Color(0.0, 1.0, 0.0, 1.0)
+## Y-velocity must pass this value in either direction for the trail to
+## activate.
+const velocity_point = 5.0
 
 var enabled = true
 var running = false
@@ -25,11 +28,14 @@ func _ready():
 	og_pos = _origin()
 
 func _process(delta):
+	# TODO: needs refactoring
 	if enabled == false:
-		if Global.player_y_velocity < 0.5 or Global.player_y_velocity > -0.5:
+		if (Global.player_y_velocity < velocity_point
+			or Global.player_y_velocity > -velocity_point):
 			enabled = true
 	if enabled == true:
-		if Global.player_y_velocity < 0.5 and Global.player_y_velocity > -0.5:
+		if (Global.player_y_velocity < velocity_point
+			and Global.player_y_velocity > -velocity_point):
 			enabled = false
 	
 	if (og_pos - _origin()).length() > 0.1 and enabled:

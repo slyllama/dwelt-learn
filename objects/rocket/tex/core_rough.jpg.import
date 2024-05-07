@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgautpini531t"
-path.s3tc="res://.godot/imported/leg_diff.jpg-9cdf0d6968261cd77bc9c062e3946cc7.s3tc.ctex"
+uid="uid://ce5vpvhqvb8ge"
+path.s3tc="res://.godot/imported/core_rough.jpg-0f2247db21b03477a6648667fbc057c9.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://maps/sandbox/objects/rocket/tex/leg_diff.jpg"
-dest_files=["res://.godot/imported/leg_diff.jpg-9cdf0d6968261cd77bc9c062e3946cc7.s3tc.ctex"]
+source_file="res://objects/rocket/tex/core_rough.jpg"
+dest_files=["res://.godot/imported/core_rough.jpg-0f2247db21b03477a6648667fbc057c9.s3tc.ctex"]
 
 [params]
 

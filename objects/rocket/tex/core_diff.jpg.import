@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dh10cj8hso0fe"
-path.s3tc="res://.godot/imported/core_diff.jpg-d8bdb65d760bf3ef043a3cd5dec89b3e.s3tc.ctex"
+path.s3tc="res://.godot/imported/core_diff.jpg-cdb3d5eddaf6819507c08f1f93bd2f99.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://maps/sandbox/objects/rocket/tex/core_diff.jpg"
-dest_files=["res://.godot/imported/core_diff.jpg-d8bdb65d760bf3ef043a3cd5dec89b3e.s3tc.ctex"]
+source_file="res://objects/rocket/tex/core_diff.jpg"
+dest_files=["res://.godot/imported/core_diff.jpg-cdb3d5eddaf6819507c08f1f93bd2f99.s3tc.ctex"]
 
 [params]
 

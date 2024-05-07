@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://4tjon2cjh27p"
-path.s3tc="res://.godot/imported/leg_rough.jpg-e24b5279ba983f7043150abd93d11574.s3tc.ctex"
+path.s3tc="res://.godot/imported/leg_rough.jpg-79e0f318df0a76359f2c1859b069e663.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://maps/sandbox/objects/rocket/tex/leg_rough.jpg"
-dest_files=["res://.godot/imported/leg_rough.jpg-e24b5279ba983f7043150abd93d11574.s3tc.ctex"]
+source_file="res://objects/rocket/tex/leg_rough.jpg"
+dest_files=["res://.godot/imported/leg_rough.jpg-79e0f318df0a76359f2c1859b069e663.s3tc.ctex"]
 
 [params]
 

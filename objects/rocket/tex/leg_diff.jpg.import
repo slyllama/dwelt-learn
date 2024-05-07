@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://caqvnh3in2k4e"
-path.s3tc="res://.godot/imported/core_norm.jpg-2b0f15d21146134e1047e76cf5bad34c.s3tc.ctex"
+uid="uid://dgautpini531t"
+path.s3tc="res://.godot/imported/leg_diff.jpg-1b8e15d35efec481b737b94bdc7d94be.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://maps/sandbox/objects/rocket/tex/core_norm.jpg"
-dest_files=["res://.godot/imported/core_norm.jpg-2b0f15d21146134e1047e76cf5bad34c.s3tc.ctex"]
+source_file="res://objects/rocket/tex/leg_diff.jpg"
+dest_files=["res://.godot/imported/leg_diff.jpg-1b8e15d35efec481b737b94bdc7d94be.s3tc.ctex"]
 
 [params]
 
@@ -20,12 +20,12 @@ compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=1
+compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=1
-roughness/src_normal="res://maps/sandbox/rocket_test_rocket_core_norm.jpg"
+roughness/mode=0
+roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false
