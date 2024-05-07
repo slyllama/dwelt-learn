@@ -27,16 +27,18 @@ func _ready():
 	mesh = ImmediateMesh.new()
 	og_pos = _origin()
 
+# Player's y-position last frame
+var _p_y = Global.player_position.y
+
 func _process(delta):
-	# TODO: needs refactoring
-	if enabled == false:
-		if (Global.player_y_velocity < velocity_point
-			or Global.player_y_velocity > -velocity_point):
-			enabled = true
-	if enabled == true:
-		if (Global.player_y_velocity < velocity_point
-			and Global.player_y_velocity > -velocity_point):
-			enabled = false
+	# An accurate way of determining whether the player is going up or down
+	var player_y_delta = (_p_y - Global.player_position.y) * 10.0
+	_p_y = Global.player_position.y
+
+	if (Global.in_updraft_zone == true
+		and player_y_delta < -1.0) or Action.in_glide == true:
+		enabled = true
+	else: enabled = false
 	
 	if (og_pos - _origin()).length() > 0.1 and enabled:
 		_append_point()
