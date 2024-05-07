@@ -13,7 +13,7 @@
 [ext_resource type="Script" path="res://lib/player/vfx/Anime.gd" id="9_b4cap"]
 [ext_resource type="Shader" path="res://lib/player/vfx/anime_wobble.gdshader" id="11_f4obd"]
 [ext_resource type="Texture2D" uid="uid://b5nufueq16vw0" path="res://generic/tex/shader_tex/wobble_noise.tres" id="12_uaain"]
-[ext_resource type="Script" path="res://lib/player/vfx/trail_3d.gd" id="14_dpv3n"]
+[ext_resource type="Script" path="res://lib/player/glider/trail_3d.gd" id="14_wxh6c"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_yehb5"]
 
@@ -136,7 +136,7 @@ shader_parameter/noise = ExtResource("12_uaain")
 
 [sub_resource type="Gradient" id="Gradient_s4pwu"]
 offsets = PackedFloat32Array(0, 0.211268, 0.793427, 1)
-colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0.906103, 0.906103, 0.906103, 1, 0, 0, 0, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 0.906103, 0.906103, 0.906103, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_y8f53"]
 gradient = SubResource("Gradient_s4pwu")
@@ -220,4 +220,4 @@ texture = ExtResource("9_15e71")
 
 [node name="Trail3D" type="MeshInstance3D" parent="."]
 material_override = SubResource("StandardMaterial3D_70mgr")
-script = ExtResource("14_dpv3n")
+script = ExtResource("14_wxh6c")
