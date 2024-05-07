@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://32pbhrik6f2q"
-path="res://.godot/imported/fan_wall_test.glb-60216ec648bdcc8581e77fa1397f64b3.scn"
+path="res://.godot/imported/fan_wall.glb-73bd2d415fbaf41d9dac630a485a7523.scn"
 
 [deps]
 
-source_file="res://maps/sandbox/fan_wall_test.glb"
-dest_files=["res://.godot/imported/fan_wall_test.glb-60216ec648bdcc8581e77fa1397f64b3.scn"]
+source_file="res://maps/sandbox/objects/fan_wall.glb"
+dest_files=["res://.godot/imported/fan_wall.glb-73bd2d415fbaf41d9dac630a485a7523.scn"]
 
 [params]
 

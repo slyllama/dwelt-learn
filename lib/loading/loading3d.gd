@@ -3,7 +3,7 @@ extends Node3D
 # But doesn't do any actual loading work -- see `loading.gd` for that stuff.
 
 const smooth = 0.04
-var ROCKET_PATH = "res://maps/sandbox/rocket_test.glb"
+var ROCKET_PATH = "res://maps/sandbox/objects/rocket/rocket.glb"
 
 var mouse_pos
 var center

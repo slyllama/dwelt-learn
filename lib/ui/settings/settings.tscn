@@ -238,16 +238,17 @@ mouse_filter = 1
 theme = ExtResource("2_r1d7p")
 text = "CLOSE"
 
-[node name="MapSelection" type="Button" parent="."]
+[node name="MapSelection" type="Button" parent="Control"]
+layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -96.0
-offset_top = -266.0
+offset_top = 12.0
 offset_right = 96.0
-offset_bottom = -224.0
+offset_bottom = 54.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("2_r1d7p")
@@ -259,5 +260,5 @@ text = "RETURN TO MENU"
 [connection signal="pressed" from="Control/Panel/VBox/ResetButton" to="." method="_on_button_pressed"]
 [connection signal="mouse_entered" from="Control/Panel/InputVBox/LowerCloseButton" to="." method="_mouseover"]
 [connection signal="pressed" from="Control/Panel/InputVBox/LowerCloseButton" to="." method="close"]
-[connection signal="mouse_entered" from="MapSelection" to="." method="_mouseover"]
-[connection signal="pressed" from="MapSelection" to="." method="_on_map_selection_pressed"]
+[connection signal="mouse_entered" from="Control/MapSelection" to="." method="_mouseover"]
+[connection signal="pressed" from="Control/MapSelection" to="." method="_on_map_selection_pressed"]

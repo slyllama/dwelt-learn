@@ -11,14 +11,14 @@
 [ext_resource type="Texture2D" uid="uid://d1fy6jygommc6" path="res://generic/tex/particles/mote.png" id="10_vpwvh"]
 [ext_resource type="ArrayMesh" uid="uid://c48ccnw3gi5h4" path="res://objects/god_ray/god_ray_1.obj" id="11_vmy1k"]
 [ext_resource type="Material" uid="uid://cu31l43wp5syj" path="res://objects/god_ray/mat_god_ray.tres" id="12_n2ekj"]
-[ext_resource type="PackedScene" uid="uid://djgjcyichaft4" path="res://maps/sandbox/rocket_test.glb" id="13_8sf1c"]
+[ext_resource type="PackedScene" uid="uid://djgjcyichaft4" path="res://maps/sandbox/objects/rocket/rocket.glb" id="13_8sf1c"]
 [ext_resource type="PackedScene" uid="uid://dbtpfif0ow8be" path="res://maps/lattice/objects/rocksculpt/rocksculpt.glb" id="13_uuy1x"]
 [ext_resource type="PackedScene" uid="uid://i1jp4klishr3" path="res://lib/dialogue/dialogue.tscn" id="14_cieqj"]
 [ext_resource type="Shader" uid="uid://c2d3xq5ama4up" path="res://generic/shaders/foggy_floor.tres" id="15_81o25"]
 [ext_resource type="PackedScene" uid="uid://07n4fhjhunl" path="res://objects/laser/laser.tscn" id="15_145ob"]
-[ext_resource type="PackedScene" uid="uid://32pbhrik6f2q" path="res://maps/sandbox/fan_wall_test.glb" id="16_y3o0w"]
+[ext_resource type="PackedScene" uid="uid://32pbhrik6f2q" path="res://maps/sandbox/objects/fan_wall.glb" id="16_y3o0w"]
 [ext_resource type="PackedScene" uid="uid://d23wqewgge7mv" path="res://objects/elevator/elevator.tscn" id="17_l4sxi"]
-[ext_resource type="PackedScene" uid="uid://bw14qvqobtubd" path="res://maps/sandbox/fourier_test.glb" id="18_acwyw"]
+[ext_resource type="PackedScene" uid="uid://bw14qvqobtubd" path="res://maps/sandbox/objects/fourier.glb" id="18_acwyw"]
 [ext_resource type="PackedScene" uid="uid://dk0s3tibcdcq0" path="res://objects/updraft/updraft.tscn" id="20_ib8vs"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dbpli"]
@@ -187,11 +187,11 @@ transform = Transform3D(1.07303, -0.364494, 0.39466, 0.385965, 1.13624, 0, -0.37
 transform = Transform3D(0.94857, 0.276447, -0.154245, -0.279795, 0.96006, 0, 0.148084, 0.043157, 0.988033, -5.3401, 7.27215, -21.1656)
 
 [node name="KryptisDialogue" parent="." instance=ExtResource("14_cieqj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.34823, -10.329)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.676076, -10.329)
 dialogue_data = Array[String](["Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.", "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."])
 
 [node name="OtherDialogue" parent="." instance=ExtResource("14_cieqj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.34823, -10.329)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.652568, -10.329)
 dialogue_data = Array[String](["Ohhh yeah"])
 object_name = "oh_yeah"
 
@@ -199,7 +199,6 @@ object_name = "oh_yeah"
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 11, 24)
 
 [node name="FoggyFloor" type="MeshInstance3D" parent="LegTest"]
-transform = Transform3D(-1, 0, 5.76205e-08, 0, 1, 0, -5.76205e-08, 0, -1, 0, -17.5, 0)
 mesh = SubResource("QuadMesh_w64hu")
 skeleton = NodePath("../..")
 
