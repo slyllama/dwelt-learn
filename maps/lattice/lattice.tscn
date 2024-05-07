@@ -177,11 +177,11 @@ transform = Transform3D(1.07303, -0.364494, 0.39466, 0.385965, 1.13624, 0, -0.37
 transform = Transform3D(0.94857, 0.276447, -0.154245, -0.279795, 0.96006, 0, 0.148084, 0.043157, 0.988033, -5.3401, 7.27215, -21.1656)
 
 [node name="KryptisDialogue" parent="." instance=ExtResource("14_cieqj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.676076, -10.329)
+transform = Transform3D(0.976496, 0, -0.215536, 0, 1, 0, 0.215536, 0, 0.976496, -2.29295, 0.676076, -10.5514)
 dialogue_data = Array[String](["Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.", "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."])
 
 [node name="OtherDialogue" parent="." instance=ExtResource("14_cieqj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.652568, -10.329)
+transform = Transform3D(0.601439, 0, 0.798919, 0, 1, 0, -0.798919, 0, 0.601439, -11.5728, 0.334461, -9.81192)
 dialogue_data = Array[String](["Ohhh yeah"])
 object_name = "oh_yeah"
 
@@ -189,7 +189,12 @@ object_name = "oh_yeah"
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 10.5239, 24)
 
 [node name="Laser" parent="." instance=ExtResource("15_145ob")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.34458, 0.695961, -8.48169)
+transform = Transform3D(0.998927, 0, 0.0463045, 0, 1, 0, -0.0463045, 0, 0.998927, 5.34458, 0.695961, -8.48169)
+
+[node name="LaserLight" type="OmniLight3D" parent="Laser"]
+transform = Transform3D(1, 0, 2.23517e-08, 0, 1, 0, -1.86265e-08, 0, 1, -1.43051e-06, 3.03904, 1.70188)
+light_color = Color(0.862745, 0.909804, 0.886275, 1)
+light_energy = 9.0
 
 [node name="FanWall" parent="." instance=ExtResource("16_y3o0w")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 10, -12.5, 40)

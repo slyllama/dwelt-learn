@@ -1,15 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://07n4fhjhunl"]
+[gd_scene load_steps=8 format=3 uid="uid://07n4fhjhunl"]
 
 [ext_resource type="Script" path="res://objects/laser/laser.gd" id="1_qy5bo"]
 [ext_resource type="PackedScene" uid="uid://bbt6np1daksl4" path="res://objects/cable/cable.tscn" id="2_qx4ym"]
 [ext_resource type="Script" path="res://objects/laser/Cast.gd" id="3_0t5vk"]
-[ext_resource type="Texture2D" uid="uid://dqvooc5gadxy0" path="res://generic/tex/placeholder.png" id="5_l7nk4"]
+[ext_resource type="Material" uid="uid://dxsbw4nugrhkj" path="res://maps/lattice/objects/mat_steel_plates.tres" id="5_erc5a"]
 [ext_resource type="PackedScene" uid="uid://s4i8wd6iwhw6" path="res://lib/ui/smoke_overlay/smoke_overlay.tscn" id="6_qjo1e"]
 [ext_resource type="PackedScene" uid="uid://csbchge3673bh" path="res://lib/object_handler/object_handler.tscn" id="7_2554r"]
 [ext_resource type="AudioStream" uid="uid://ksek1nmbm7lq" path="res://objects/laser/enter_laser.ogg" id="8_pae4y"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lhekj"]
-albedo_texture = ExtResource("5_l7nk4")
 
 [node name="Laser" type="Node3D"]
 script = ExtResource("1_qy5bo")
@@ -36,7 +33,7 @@ stream = ExtResource("8_pae4y")
 [node name="Placeholder" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 size = Vector3(2, 2, 2)
-material = SubResource("StandardMaterial3D_lhekj")
+material = ExtResource("5_erc5a")
 
 [node name="SmokeOverlay" parent="." instance=ExtResource("6_qjo1e")]
 
