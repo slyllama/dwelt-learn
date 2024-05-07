@@ -44,10 +44,14 @@ func _ready():
 
 	# Set up for retina
 	if DisplayServer.screen_get_size().x > 2000:
+		DisplayServer.window_set_min_size(Global.MIN_SCREEN_SIZE * 2.0)
+		get_window().content_scale_factor = 2.0
 		if OS.get_name() != "macOS":
 			DisplayServer.cursor_set_custom_image(
 				load("res://lib/ui/tex/cursor_2x.png"))
-	DisplayServer.window_set_min_size(Vector2i(1280, 800))
+	else: DisplayServer.window_set_min_size(Global.MIN_SCREEN_SIZE)
+	
+	print(DisplayServer.window_get_min_size())
 	
 	$Settings/Control/MapSelection.visible = false # no need to go to the menu from the menu
 	$LoadBlack/ProgressBar.visible = false
