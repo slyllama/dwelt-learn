@@ -41,4 +41,4 @@ func _physics_process(_delta):
 	
 	if reached_apex == true:
 		target_upward = lerp(target_upward, 0.0, 0.03)
-	Global.linear_movement_override.y = val * 1.3
+	Global.linear_movement_override.y = val * 1.0

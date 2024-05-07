@@ -1,7 +1,7 @@
 class_name Trail3D extends MeshInstance3D
 
-const start_color = Color(1.0, 0.0, 0.0, 1.0)
-const end_color = Color(0.0, 1.0, 0.0, 1.0)
+const start_color = Color(1.0, 1.0, 1.0, 0.4)
+const end_color = Color(1.0, 1.0, 1.0, 0.0)
 ## Y-velocity must pass this value in either direction for the trail to
 ## activate.
 const velocity_point = 5.0
@@ -34,10 +34,13 @@ func _process(delta):
 	# An accurate way of determining whether the player is going up or down
 	var player_y_delta = (_p_y - Global.player_position.y) * 10.0
 	_p_y = Global.player_position.y
-
-	if (Global.in_updraft_zone == true
-		and player_y_delta < -1.0) or Action.in_glide == true:
-		enabled = true
+	
+	if (player_y_delta < -1.0 and Global.in_updraft_zone
+		or player_y_delta > 0.1 and Action.in_glide):
+		if enabled == false:
+			enabled = true
+			points = []
+			life_points = []
 	else: enabled = false
 	
 	if (og_pos - _origin()).length() > 0.1 and enabled:

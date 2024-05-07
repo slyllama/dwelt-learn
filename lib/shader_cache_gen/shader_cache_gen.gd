@@ -16,7 +16,7 @@ const SHADERS_UID = [
 	"res://generic/shaders/fresnel.gdshader", # fresnel
 	"res://lib/ui/dialogue/dialogue.gdshader", # dialogue (static)
 	"res://lib/ui/dialogue/radial_distort.gdshader", # radial distortion
-	"res://lib/player/anime_wobble.gdshader", # anime motion
+	"res://lib/player/vfx/anime_wobble.gdshader", # anime motion
 	"res://generic/shaders/aberration.gdshader" # chromatic aberration
 ]
 
