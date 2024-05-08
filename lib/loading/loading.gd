@@ -51,7 +51,7 @@ func _ready():
 				load("res://lib/ui/tex/cursor_2x.png"))
 	else: DisplayServer.window_set_min_size(Global.MIN_SCREEN_SIZE)
 	
-	$Settings/Control/MapSelection.visible = false # no need to go to the menu from the menu
+	$Settings/Control/Panel/VBox/MapSelection.visible = false # no need to go to the menu from the menu
 	$LoadBlack/ProgressBar.visible = false
 	$GlowIcon.visible = false
 	$LoadPanel/VBox/ScrapperButton.grab_focus()

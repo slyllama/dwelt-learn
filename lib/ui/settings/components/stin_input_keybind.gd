@@ -33,7 +33,7 @@ func _on_button_pressed():
 	Global.in_keybind_select = true
 	active = true
 	
-	$Button.text = "Enter Input"
+	$Button.text = "PRESS KEY"
 	$CancelButton.visible = true
 
 func _on_cancel_button_pressed():

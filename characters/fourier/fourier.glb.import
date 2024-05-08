@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bw14qvqobtubd"
-path="res://.godot/imported/fourier.glb-3fc237213257b65da549562a960bf0d3.scn"
+path="res://.godot/imported/fourier.glb-975f68221387fbf7443113ce4df1513f.scn"
 
 [deps]
 
-source_file="res://maps/sandbox/objects/fourier.glb"
-dest_files=["res://.godot/imported/fourier.glb-3fc237213257b65da549562a960bf0d3.scn"]
+source_file="res://characters/fourier/fourier.glb"
+dest_files=["res://.godot/imported/fourier.glb-975f68221387fbf7443113ce4df1513f.scn"]
 
 [params]
 

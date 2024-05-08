@@ -9,4 +9,4 @@ normal_enabled = true
 normal_texture = ExtResource("2_tveeq")
 backlight_enabled = true
 backlight = Color(0.25, 0.25, 0.25, 1)
-uv1_scale = Vector3(256, 256, 256)
+uv1_scale = Vector3(8, 8, 8)

@@ -20,7 +20,7 @@ content_margin_top = 12.0
 content_margin_bottom = 10.0
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xdjf8"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6s3qa"]
 content_margin_top = 3.0
 content_margin_bottom = 3.0
 bg_color = Color(0, 0.729412, 0.32549, 1)
@@ -204,9 +204,12 @@ layout_mode = 2
 size_flags_vertical = 10
 mouse_filter = 1
 theme = ExtResource("2_r1d7p")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_xdjf8")
 text = "DEFAULTS"
+
+[node name="MapSelection" type="Button" parent="Control/Panel/VBox"]
+layout_mode = 2
+theme = ExtResource("2_r1d7p")
+text = "RETURN TO MENU"
 
 [node name="Padding" type="ColorRect" parent="Control/Panel"]
 custom_minimum_size = Vector2(30, 0)
@@ -236,29 +239,15 @@ layout_mode = 2
 size_flags_vertical = 10
 mouse_filter = 1
 theme = ExtResource("2_r1d7p")
-text = "CLOSE"
-
-[node name="MapSelection" type="Button" parent="Control"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -96.0
-offset_top = 12.0
-offset_right = 96.0
-offset_bottom = 54.0
-grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("2_r1d7p")
-text = "RETURN TO MENU"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_6s3qa")
+text = "SAVE AND CLOSE"
 
 [connection signal="mouse_entered" from="Control" to="." method="_on_control_mouse_entered"]
 [connection signal="mouse_exited" from="Control" to="." method="_on_control_mouse_exited"]
 [connection signal="mouse_entered" from="Control/Panel/VBox/ResetButton" to="." method="_mouseover"]
 [connection signal="pressed" from="Control/Panel/VBox/ResetButton" to="." method="_on_button_pressed"]
+[connection signal="mouse_entered" from="Control/Panel/VBox/MapSelection" to="." method="_mouseover"]
+[connection signal="pressed" from="Control/Panel/VBox/MapSelection" to="." method="_on_map_selection_pressed"]
 [connection signal="mouse_entered" from="Control/Panel/InputVBox/LowerCloseButton" to="." method="_mouseover"]
 [connection signal="pressed" from="Control/Panel/InputVBox/LowerCloseButton" to="." method="close"]
-[connection signal="mouse_entered" from="Control/MapSelection" to="." method="_mouseover"]
-[connection signal="pressed" from="Control/MapSelection" to="." method="_on_map_selection_pressed"]
