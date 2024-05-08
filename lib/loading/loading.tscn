@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://c4cboiwskjvvh"]
+[gd_scene load_steps=33 format=3 uid="uid://c4cboiwskjvvh"]
 
 [ext_resource type="Script" path="res://lib/loading/loading.gd" id="1_dy6oh"]
 [ext_resource type="Script" path="res://lib/loading/loading3d.gd" id="1_iixfr"]
@@ -172,6 +172,67 @@ tracks/1/keys = {
 _data = {
 "RESET": SubResource("Animation_hn2un"),
 "flicker": SubResource("Animation_1eywi")
+}
+
+[sub_resource type="Animation" id="Animation_6mrla"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CamArm/Camera:v_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CamArm/Camera:h_offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_tsccv"]
+resource_name = "shake"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CamArm/Camera:v_offset")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.24, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CamArm/Camera:h_offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.05, -0.05, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_25tn2"]
+_data = {
+"RESET": SubResource("Animation_6mrla"),
+"shake": SubResource("Animation_tsccv")
 }
 
 [node name="Loading3D" type="Node3D"]
@@ -385,11 +446,6 @@ visibility_aabb = AABB(-6.5899, -6.37076, -5.6187, 13.1798, 12.7415, 11.2374)
 process_material = SubResource("ParticleProcessMaterial_8wqtw")
 draw_pass_1 = SubResource("PlaneMesh_np1p5")
 
-[node name="Camera" type="Camera3D" parent="."]
-transform = Transform3D(0.967533, 3.60434e-09, -0.252745, -0.0283398, 0.993694, -0.108488, 0.251151, 0.112128, 0.961432, 2.93136, -1.23536, 28.3319)
-current = true
-fov = 55.0
-
 [node name="ENV" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_nw3ri")
 
@@ -410,9 +466,24 @@ libraries = {
 "": SubResource("AnimationLibrary_fdd41")
 }
 
+[node name="ShakeAnim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_25tn2")
+}
+
+[node name="CamArm" type="Node3D" parent="."]
+
+[node name="Camera" type="Camera3D" parent="CamArm"]
+transform = Transform3D(0.967533, 2.88347e-08, -0.252745, -0.0283398, 0.993694, -0.108487, 0.251151, 0.112128, 0.961431, 2.93136, -1.23536, 28.3319)
+v_offset = -0.1
+current = true
+fov = 55.0
+
 [connection signal="mouse_entered" from="Loading/LoadPanel/VBox/ScrapperButton" to="Loading" method="_hover"]
+[connection signal="pressed" from="Loading/LoadPanel/VBox/ScrapperButton" to="." method="_shake"]
 [connection signal="pressed" from="Loading/LoadPanel/VBox/ScrapperButton" to="Loading" method="_map_button_pressed" binds= ["lattice"]]
 [connection signal="mouse_entered" from="Loading/LoadPanel/VBox/SandboxButton" to="Loading" method="_hover"]
+[connection signal="pressed" from="Loading/LoadPanel/VBox/SandboxButton" to="." method="_shake"]
 [connection signal="pressed" from="Loading/LoadPanel/VBox/SandboxButton" to="Loading" method="_map_button_pressed" binds= ["sandbox"]]
 [connection signal="mouse_entered" from="Loading/LoadPanel/VBox/Settings" to="Loading" method="_hover"]
 [connection signal="pressed" from="Loading/LoadPanel/VBox/Settings" to="Loading" method="_map_button_pressed" binds= ["settings"]]

@@ -32,8 +32,8 @@ func _process(_delta):
 		clamp(2.0 * mouse_pos.x / center.x - 1.0, -1.0, 1.0),
 		clamp(2.0 * mouse_pos.y / center.y - 1.0, -1.0, 1.0))
 	
-	$Camera.position.x = lerp($Camera.position.x, 2.5 + adj.x * 0.6, smooth)
-	$Camera.position.y = lerp($Camera.position.y, -1.23 + adj.y * 0.3, smooth)
+	$CamArm/Camera.position.x = lerp($CamArm/Camera.position.x, 2.5 + adj.x * 0.6, smooth)
+	$CamArm/Camera.position.y = lerp($CamArm/Camera.position.y, -1.23 + adj.y * 0.3, smooth)
 	
 	if rocket != null:
 		rocket.rotation_degrees.y = lerp(
@@ -52,3 +52,5 @@ func _process(_delta):
 		var fade_tween = create_tween()
 		fade_tween.tween_property($ModelLoadOverlay/BG, "modulate:a", 0.0, 1.0)
 		fade_tween.tween_callback(func(): $ModelLoadOverlay/BG.visible = false)
+
+func _shake(): $ShakeAnim.play("shake")

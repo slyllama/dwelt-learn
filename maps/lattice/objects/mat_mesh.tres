@@ -3,6 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://u6lwfhf4mxa3" path="res://maps/lattice/objects/tex/mesh_alpha.png" id="1_gb2r5"]
 
 [resource]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
 cull_mode = 2
 depth_draw_mode = 2
 albedo_texture = ExtResource("1_gb2r5")

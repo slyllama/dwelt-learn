@@ -29,13 +29,13 @@ op_type = 0
 operator = 2
 
 [sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_fpwt1"]
-constant = 0.5
+constant = 0.3
 
 [sub_resource type="VisualShaderNodeColorOp" id="VisualShaderNodeColorOp_1l4p5"]
 operator = 4
 
 [sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_yvmpt"]
-constant = Color(0.31802, 0.31802, 0.31802, 1)
+constant = Color(0.215902, 0.215902, 0.215902, 1)
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_p1l0t"]
 texture = ExtResource("1_hpmkj")
@@ -122,7 +122,7 @@ void fragment() {
 
 
 // ColorConstant:18
-	vec4 n_out18p0 = vec4(0.318020, 0.318020, 0.318020, 1.000000);
+	vec4 n_out18p0 = vec4(0.215902, 0.215902, 0.215902, 1.000000);
 
 
 	vec3 n_out17p0;
@@ -157,7 +157,7 @@ void fragment() {
 
 
 // FloatConstant:16
-	float n_out16p0 = 0.500000;
+	float n_out16p0 = 0.300000;
 
 
 // Texture2D:3
@@ -172,7 +172,7 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-230.988, 167.425)
+graph_offset = Vector2(-57.574, 170.077)
 nodes/fragment/0/position = Vector2(500, 140)
 nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_p1l0t")
 nodes/fragment/2/position = Vector2(60, 140)

@@ -113,7 +113,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.86852, 0)
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_l3x1b")
-volume_db = -3.0
+volume_db = -4.0
 
 [node name="Ambience" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_ldr5m")
