@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://i1jp4klishr3"]
+[gd_scene load_steps=4 format=3 uid="uid://i1jp4klishr3"]
 
 [ext_resource type="Script" path="res://lib/dialogue/dialogue.gd" id="1_kv4hh"]
 [ext_resource type="PackedScene" uid="uid://csbchge3673bh" path="res://lib/object_handler/object_handler.tscn" id="2_a46ve"]
+[ext_resource type="Material" uid="uid://8dgrpigvgadk" path="res://generic/mat_placeholder.tres" id="3_lsr15"]
 
 [node name="DialogueArea" type="Node3D"]
 script = ExtResource("1_kv4hh")
@@ -13,3 +14,4 @@ cube_size = 4.0
 [node name="Placeholder" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 size = Vector3(2, 2, 2)
+material = ExtResource("3_lsr15")

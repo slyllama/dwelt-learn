@@ -95,7 +95,7 @@ script = ExtResource("1_hqs2c")
 environment = SubResource("Environment_r5o54")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.995407, 0.00361515, -0.0956687, -0.0913986, 0.261521, 0.960861, 0.028493, 0.965191, -0.259989, 0, 6.09097, 0)
+transform = Transform3D(-0.995407, 0.00361514, -0.0956686, -0.0913986, 0.261521, 0.960861, 0.028493, 0.965191, -0.259989, 0, 6.09097, 0)
 light_color = Color(1, 0.819608, 0.639216, 1)
 light_energy = 3.0
 shadow_enabled = true
@@ -187,11 +187,6 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 10.
 
 [node name="Laser" parent="." instance=ExtResource("15_145ob")]
 transform = Transform3D(0.998927, 0, 0.0463045, 0, 1, 0, -0.0463045, 0, 0.998927, 5.34458, 0.695961, -8.48169)
-
-[node name="LaserLight" type="OmniLight3D" parent="Laser"]
-transform = Transform3D(1, 0, 2.23517e-08, 0, 1, 0, -1.86265e-08, 0, 1, -1.43051e-06, 3.03904, 1.70188)
-light_color = Color(0.862745, 0.909804, 0.886275, 1)
-light_energy = 9.0
 
 [node name="FanWall" parent="." instance=ExtResource("16_y3o0w")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 10, -12.5, 40)

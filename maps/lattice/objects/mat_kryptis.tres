@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cdj81twfcon37"]
+
+[ext_resource type="Shader" uid="uid://buxfac6y6wv5d" path="res://maps/lattice/objects/kryptis_w.tres" id="1_qilub"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_qilub")
