@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cwqpqpqsewkvm"
-path.s3tc="res://.godot/imported/steel_norm.png-2d26ac6b2e904cd777799851ff18e1a5.s3tc.ctex"
+path.s3tc="res://.godot/imported/steel_plates_norm.png-d444e6a077a5fa1e29b06b383bab9b33.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://maps/lattice/objects/tex/steel_norm.png"
-dest_files=["res://.godot/imported/steel_norm.png-2d26ac6b2e904cd777799851ff18e1a5.s3tc.ctex"]
+source_file="res://maps/lattice/objects/tex/steel_plates_norm.png"
+dest_files=["res://.godot/imported/steel_plates_norm.png-d444e6a077a5fa1e29b06b383bab9b33.s3tc.ctex"]
 
 [params]
 

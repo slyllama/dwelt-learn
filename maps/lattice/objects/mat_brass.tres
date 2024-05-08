@@ -7,11 +7,11 @@
 [resource]
 albedo_color = Color(0.593134, 0.593134, 0.593134, 1)
 albedo_texture = ExtResource("1_2dn7r")
-metallic = 0.75
+metallic = 0.45
 roughness = 0.9
 roughness_texture = ExtResource("3_0cksv")
 roughness_texture_channel = 4
 normal_enabled = true
 normal_scale = 2.0
 normal_texture = ExtResource("2_1xbr5")
-uv1_scale = Vector3(2, 2, 2)
+uv1_scale = Vector3(4, 4, 4)

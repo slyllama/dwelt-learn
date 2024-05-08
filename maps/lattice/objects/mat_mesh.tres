@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dbxuxmjdf4ied"]
+
+[ext_resource type="Texture2D" uid="uid://u6lwfhf4mxa3" path="res://maps/lattice/objects/tex/mesh_alpha.png" id="1_gb2r5"]
+
+[resource]
+cull_mode = 2
+albedo_texture = ExtResource("1_gb2r5")
+backlight = Color(0.544974, 0.544974, 0.544974, 1)
+uv1_scale = Vector3(32, 32, 32)

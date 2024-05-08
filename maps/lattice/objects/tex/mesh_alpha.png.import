@@ -2,23 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0ikt3ku25oku"
-path="res://.godot/imported/tiles_diff.jpg-58843ae715505f6bfe5c62a85e3dcc49.ctex"
+uid="uid://u6lwfhf4mxa3"
+path.s3tc="res://.godot/imported/mesh_alpha.png-f7270d1636490a08289e62e4896311b5.s3tc.ctex"
 metadata={
-"vram_texture": false
-}
-generator_parameters={
-"md5": "6f6d7e1b3b1064907fdbd78883ca3e93"
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
-source_file="res://maps/lattice/objects/tex/tiles_diff.jpg"
-dest_files=["res://.godot/imported/tiles_diff.jpg-58843ae715505f6bfe5c62a85e3dcc49.ctex"]
+source_file="res://maps/lattice/objects/tex/mesh_alpha.png"
+dest_files=["res://.godot/imported/mesh_alpha.png-f7270d1636490a08289e62e4896311b5.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
@@ -34,4 +32,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

@@ -31,13 +31,17 @@ animation/remove_immutable_tracks=true
 import_script/path=""
 _subresources={
 "materials": {
+"mat_mesh": {
+"use_external/enabled": true,
+"use_external/path": "res://maps/lattice/objects/mat_mesh.tres"
+},
 "mat_placeholder": {
 "use_external/enabled": true,
 "use_external/path": "res://generic/mat_greybox.tres"
 },
 "mat_steel": {
 "use_external/enabled": true,
-"use_external/path": "res://maps/lattice/objects/mat_steel.tres"
+"use_external/path": "res://maps/lattice/objects/mat_brass.tres"
 },
 "mat_tiles": {
 "use_external/enabled": true,
