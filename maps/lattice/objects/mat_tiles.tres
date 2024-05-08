@@ -1,8 +1,10 @@
 [gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://djscwiupjwqw6"]
 
-[ext_resource type="Texture2D" uid="uid://741on4cbv3q1" path="res://maps/lattice/objects/tex/tile_diff.png" id="1_bfsi2"]
+[ext_resource type="Texture2D" uid="uid://0sjdf4lys6uk" path="res://maps/lattice/objects/tex/tile_norm.png" id="2_1teus"]
 
 [resource]
-albedo_color = Color(0.442911, 0.442911, 0.442911, 1)
-albedo_texture = ExtResource("1_bfsi2")
-uv1_scale = Vector3(40, 40, 40)
+albedo_color = Color(0, 0, 0, 1)
+roughness = 0.8
+normal_enabled = true
+normal_texture = ExtResource("2_1teus")
+uv1_scale = Vector3(64, 64, 64)

@@ -52,5 +52,3 @@ func _process(_delta):
 		var fade_tween = create_tween()
 		fade_tween.tween_property($ModelLoadOverlay/BG, "modulate:a", 0.0, 1.0)
 		fade_tween.tween_callback(func(): $ModelLoadOverlay/BG.visible = false)
-
-func _shake(): $ShakeAnim.play("shake")
