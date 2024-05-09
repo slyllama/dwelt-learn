@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dsf4aknq3seh2"]
+[gd_scene load_steps=25 format=3 uid="uid://dsf4aknq3seh2"]
 
 [ext_resource type="Script" path="res://maps/lattice/lattice.gd" id="1_hqs2c"]
 [ext_resource type="Texture2D" uid="uid://c5duom5wl7px7" path="res://generic/tex/sky.png" id="2_1uuus"]
@@ -11,6 +11,7 @@
 [ext_resource type="ArrayMesh" uid="uid://c48ccnw3gi5h4" path="res://objects/god_ray/god_ray_1.obj" id="11_vmy1k"]
 [ext_resource type="PackedScene" uid="uid://djgjcyichaft4" path="res://objects/rocket/rocket.glb" id="13_8sf1c"]
 [ext_resource type="Material" uid="uid://cu31l43wp5syj" path="res://objects/god_ray/mat_god_ray.tres" id="14_phhgt"]
+[ext_resource type="PackedScene" uid="uid://dsf532qii5efv" path="res://characters/euclid/euclid.glb" id="15_18nhw"]
 [ext_resource type="PackedScene" uid="uid://d23wqewgge7mv" path="res://objects/elevator/elevator.tscn" id="17_l4sxi"]
 [ext_resource type="PackedScene" uid="uid://dfi77wxjq1u1l" path="res://maps/lattice/structure.glb" id="18_dqtp6"]
 [ext_resource type="PackedScene" uid="uid://dk0s3tibcdcq0" path="res://objects/updraft/updraft.tscn" id="20_ib8vs"]
@@ -172,3 +173,6 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.3, 27, 1.3)
 cast_shadow = 0
 mesh = ExtResource("11_vmy1k")
 surface_material_override/0 = ExtResource("14_phhgt")
+
+[node name="Euclid" parent="." instance=ExtResource("15_18nhw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 2, 6)

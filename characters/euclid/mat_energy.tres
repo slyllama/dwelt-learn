@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://vxytudcydwsa"]
+
+[ext_resource type="Shader" uid="uid://bja4ecubt8eqx" path="res://characters/euclid/shader_energy.tres" id="1_3as0t"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_3as0t")
+shader_parameter/Color = Color(0.4, 0.709804, 1, 1)
+shader_parameter/Speed = 0.5
+shader_parameter/Scale = Vector2(1, 0.6)
+shader_parameter/Ramp = 3.0
