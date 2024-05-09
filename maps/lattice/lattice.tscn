@@ -90,19 +90,21 @@ script = ExtResource("1_hqs2c")
 environment = SubResource("Environment_r5o54")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.466386, -0.360469, 0.807803, -0.866025, -4.58005e-07, 0.5, -0.180234, -0.932771, -0.312175, 0, 6, 0)
+transform = Transform3D(0.216755, -0.721685, 0.65741, -0.766422, 0.291306, 0.572485, -0.604661, -0.627942, -0.489973, 0, 6, 0)
 light_color = Color(1, 0.819608, 0.639216, 1)
 light_energy = 2.0
 shadow_enabled = true
+shadow_bias = 0.2
 directional_shadow_split_1 = 0.3
 directional_shadow_split_2 = 0.4
 directional_shadow_split_3 = 0.7
 directional_shadow_blend_splits = true
 directional_shadow_pancake_size = 10.0
+sky_mode = 1
 
 [node name="Player" parent="." instance=ExtResource("3_0m0xl")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15.8685, -26)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.9434, 1.5219, 5.51602)
 
 [node name="HUD" parent="." instance=ExtResource("4_gb0g0")]
 
