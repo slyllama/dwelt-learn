@@ -241,7 +241,7 @@ mouse_filter = 1
 theme = ExtResource("2_r1d7p")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_6s3qa")
-text = "SAVE AND CLOSE"
+text = "DONE"
 
 [connection signal="mouse_entered" from="Control" to="." method="_on_control_mouse_entered"]
 [connection signal="mouse_exited" from="Control" to="." method="_on_control_mouse_exited"]

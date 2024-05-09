@@ -23,7 +23,6 @@ func activate():
 func deactivate():
 	active = false
 	target_speed = 0.0
-	await get_tree().create_timer(0.2).timeout
 	$SmokeOverlay.deactivate()
 	Global.player_position_unlocked.emit()
 
@@ -47,5 +46,6 @@ func _physics_process(_delta):
 	if active == false or height_units == null: return
 	Global.linear_movement_override.y = lerp(
 		Global.linear_movement_override.y, target_speed, 0.08)
-	if Global.player_position.y >= height_units:
+	if Global.player_position.y >= height_units + 2.0:
+		Global.linear_movement_override = Vector3.ZERO
 		$ObjectHandler.deactivate()

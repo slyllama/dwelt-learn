@@ -69,6 +69,7 @@ func _process(_delta):
 	if started == true:
 		target_mus_vol = lerp(target_mus_vol, 0.0, 0.1)
 		$Music.volume_db = linear_to_db(target_mus_vol)
+		if target_mus_vol <= 0.1: Utilities.set_master_vol(0.0)
 	
 	var colour = "green"
 	if Engine.get_frames_per_second() < 20.0: colour = "red"

@@ -29,18 +29,15 @@ func _setting_changed(get_setting_id):
 		match get_setting_id:
 			"full_screen": Utilities.toggle_full_screen()
 			"volume": Utilities.set_master_vol(Global.settings.volume)
-			#"larger_ui":
-				#if Global.settings.larger_ui == true: get_window().content_scale_factor = Global.LARGE_UI_SCALE
-				#else: get_window().content_scale_factor = 1.0
 	Utilities.save_settings()
 
 func _ready():
-	Global.setting_changed.connect(_setting_changed)
-	for setting in Global.settings: Global.setting_changed.emit(setting)
-	
 	# Fade in all sound if the game wasn't already muted
 	Utilities.set_master_vol(0.0)
-	await get_tree().create_timer(1.0).timeout
+	Global.setting_changed.connect(_setting_changed)
+	for setting in Global.settings:
+		if !setting == "volume": Global.setting_changed.emit(setting)
+	
 	var fade_bus_in = create_tween()
 	fade_bus_in.tween_method(Utilities.set_master_vol, 0.0, Global.settings.volume, 1.5)
-	if get_node_or_null("Music"): get_node("Music").play()
+	fade_bus_in.tween_callback(func(): Global.setting_changed.emit("volume"))
