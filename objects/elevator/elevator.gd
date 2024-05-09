@@ -21,9 +21,8 @@ func activate():
 		Vector2(global_rotation_degrees.y, 0.0))
 
 func deactivate():
-	target_speed = 0.0
-	await get_tree().create_timer(0.2).timeout
 	active = false
+	target_speed = 0.0
 	$SmokeOverlay.deactivate()
 	Global.player_position_unlocked.emit()
 
@@ -41,10 +40,12 @@ func _ready():
 		add_child(column)
 	$Floor.position.y = height_units
 
+var c = 0
+
 func _physics_process(_delta):
+	if active == false or height_units == null: return
 	Global.linear_movement_override.y = lerp(
 		Global.linear_movement_override.y, target_speed, 0.08)
-	
-	if active == false or height_units == null: return
-	if Global.player_position.y >= height_units:
+	if Global.player_position.y >= height_units + 2.0:
+		Global.linear_movement_override = Vector3.ZERO
 		$ObjectHandler.deactivate()

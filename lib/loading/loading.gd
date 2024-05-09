@@ -51,7 +51,7 @@ func _ready():
 				load("res://lib/ui/tex/cursor_2x.png"))
 	else: DisplayServer.window_set_min_size(Global.MIN_SCREEN_SIZE)
 	
-	$Settings/Control/MapSelection.visible = false # no need to go to the menu from the menu
+	$Settings/Control/Panel/VBox/MapSelection.visible = false # no need to go to the menu from the menu
 	$LoadBlack/ProgressBar.visible = false
 	$GlowIcon.visible = false
 	$LoadPanel/VBox/ScrapperButton.grab_focus()
@@ -69,6 +69,7 @@ func _process(_delta):
 	if started == true:
 		target_mus_vol = lerp(target_mus_vol, 0.0, 0.1)
 		$Music.volume_db = linear_to_db(target_mus_vol)
+		if target_mus_vol <= 0.1: Utilities.set_master_vol(0.0)
 	
 	var colour = "green"
 	if Engine.get_frames_per_second() < 20.0: colour = "red"

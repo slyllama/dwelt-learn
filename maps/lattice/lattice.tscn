@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dsf4aknq3seh2"]
+[gd_scene load_steps=24 format=3 uid="uid://dsf4aknq3seh2"]
 
 [ext_resource type="Script" path="res://maps/lattice/lattice.gd" id="1_hqs2c"]
 [ext_resource type="Texture2D" uid="uid://c5duom5wl7px7" path="res://generic/tex/sky.png" id="2_1uuus"]
@@ -7,17 +7,12 @@
 [ext_resource type="AudioStream" uid="uid://bjom6nih468j8" path="res://generic/sounds/music/mus_junker.ogg" id="5_l3x1b"]
 [ext_resource type="AudioStream" uid="uid://to210dowl6qk" path="res://maps/lattice/sounds/forest_ambience.ogg" id="5_ldr5m"]
 [ext_resource type="Texture2D" uid="uid://dinrdf02xeqaq" path="res://generic/tex/fade_ramp.tres" id="9_clv77"]
-[ext_resource type="PackedScene" uid="uid://561pfp20pcr" path="res://maps/lattice/objects/greybox.glb" id="9_shc3s"]
 [ext_resource type="Texture2D" uid="uid://d1fy6jygommc6" path="res://generic/tex/particles/mote.png" id="10_vpwvh"]
 [ext_resource type="ArrayMesh" uid="uid://c48ccnw3gi5h4" path="res://objects/god_ray/god_ray_1.obj" id="11_vmy1k"]
-[ext_resource type="Material" uid="uid://cu31l43wp5syj" path="res://objects/god_ray/mat_god_ray.tres" id="12_n2ekj"]
 [ext_resource type="PackedScene" uid="uid://djgjcyichaft4" path="res://objects/rocket/rocket.glb" id="13_8sf1c"]
-[ext_resource type="PackedScene" uid="uid://dbtpfif0ow8be" path="res://maps/lattice/objects/rocksculpt/rocksculpt.glb" id="13_uuy1x"]
-[ext_resource type="PackedScene" uid="uid://i1jp4klishr3" path="res://lib/dialogue/dialogue.tscn" id="14_cieqj"]
-[ext_resource type="PackedScene" uid="uid://07n4fhjhunl" path="res://objects/laser/laser.tscn" id="15_145ob"]
-[ext_resource type="PackedScene" uid="uid://32pbhrik6f2q" path="res://maps/sandbox/objects/fan_wall.glb" id="16_y3o0w"]
+[ext_resource type="Material" uid="uid://cu31l43wp5syj" path="res://objects/god_ray/mat_god_ray.tres" id="14_phhgt"]
 [ext_resource type="PackedScene" uid="uid://d23wqewgge7mv" path="res://objects/elevator/elevator.tscn" id="17_l4sxi"]
-[ext_resource type="PackedScene" uid="uid://bw14qvqobtubd" path="res://maps/sandbox/objects/fourier.glb" id="18_acwyw"]
+[ext_resource type="PackedScene" uid="uid://dfi77wxjq1u1l" path="res://maps/lattice/structure.glb" id="18_dqtp6"]
 [ext_resource type="PackedScene" uid="uid://dk0s3tibcdcq0" path="res://objects/updraft/updraft.tscn" id="20_ib8vs"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dbpli"]
@@ -34,21 +29,21 @@ ambient_light_color = Color(0.42, 0.36848, 0.3234, 1)
 ambient_light_energy = 2.0
 tonemap_mode = 2
 tonemap_exposure = 2.0
-tonemap_white = 2.0
+glow_enabled = true
+glow_levels/5 = 0.1
 fog_enabled = true
-fog_light_color = Color(0.161036, 0.104851, 0.0798084, 1)
-fog_light_energy = 0.0
-fog_density = 0.075
+fog_light_color = Color(0.122667, 0.0763775, 0.0557438, 1)
+fog_sun_scatter = 0.02
+fog_density = 0.02
 fog_sky_affect = 0.5
-fog_height = 13.0
-fog_height_density = -0.3
+fog_height = 25.0
+fog_height_density = -0.1
 volumetric_fog_enabled = true
-volumetric_fog_density = 0.07
-volumetric_fog_albedo = Color(0.510177, 0.465192, 0.415054, 1)
-volumetric_fog_emission = Color(0.209454, 0.156656, 0.0911818, 1)
-volumetric_fog_length = 4.0
+volumetric_fog_density = 0.02
+volumetric_fog_albedo = Color(0.873683, 0.76685, 0.723182, 1)
+volumetric_fog_length = 16.0
 adjustment_enabled = true
-adjustment_brightness = 1.3
+adjustment_brightness = 1.1
 adjustment_saturation = 1.12
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fuk4o"]
@@ -88,32 +83,35 @@ material = SubResource("StandardMaterial3D_arrm5")
 size = Vector2(0.06, 0.06)
 orientation = 2
 
-[node name="TestRoom" type="Node3D"]
+[node name="Lattice" type="Node3D"]
 script = ExtResource("1_hqs2c")
 
 [node name="Sky" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_r5o54")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.995407, 0.00361514, -0.0956686, -0.0913986, 0.261521, 0.960861, 0.028493, 0.965191, -0.259989, 0, 6.09097, 0)
+transform = Transform3D(0.216755, -0.721685, 0.65741, -0.766422, 0.291306, 0.572485, -0.604661, -0.627942, -0.489973, 0, 6, 0)
 light_color = Color(1, 0.819608, 0.639216, 1)
-light_energy = 3.0
+light_energy = 2.0
 shadow_enabled = true
+shadow_bias = 0.2
 directional_shadow_split_1 = 0.3
 directional_shadow_split_2 = 0.4
 directional_shadow_split_3 = 0.7
 directional_shadow_blend_splits = true
 directional_shadow_pancake_size = 10.0
+sky_mode = 1
 
 [node name="Player" parent="." instance=ExtResource("3_0m0xl")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.86852, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.9434, 1.5219, 5.51602)
 
 [node name="HUD" parent="." instance=ExtResource("4_gb0g0")]
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_l3x1b")
 volume_db = -4.0
+autoplay = true
 
 [node name="Ambience" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_ldr5m")
@@ -128,7 +126,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 shape = SubResource("BoxShape3D_fuk4o")
 
 [node name="Motes" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.13003, -7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 cast_shadow = 0
 amount = 20
 lifetime = 3.0
@@ -138,78 +136,39 @@ visibility_aabb = AABB(-6.5899, -2.60607, -5.6187, 13.1798, 5.21214, 11.2374)
 process_material = SubResource("ParticleProcessMaterial_6f558")
 draw_pass_1 = SubResource("PlaneMesh_udmxf")
 
-[node name="Point" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 6.4, -4)
-light_color = Color(1, 0.882353, 0.776471, 1)
-light_energy = 20.0
-omni_range = 9.0
-omni_attenuation = 1.5
+[node name="Rocket" parent="." instance=ExtResource("13_8sf1c")]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 24.5, 12)
 
-[node name="RockLight" type="SpotLight3D" parent="."]
-transform = Transform3D(0.940478, 0.041147, -0.337354, -1.43343e-08, 0.992644, 0.121072, 0.339854, -0.113866, 0.93356, -6.60313, 9.2881, 4.41683)
-light_color = Color(1, 0.819608, 0.639216, 1)
-light_energy = 50.0
-spot_range = 80.0
+[node name="Spot" type="SpotLight3D" parent="Rocket"]
+transform = Transform3D(-1, 1.48702e-07, -2.62202e-08, 0, -0.173648, -0.984808, -1.50996e-07, -0.984808, 0.173648, -1.05697e-06, -22, 7)
+light_energy = 65.0
+spot_range = 30.0
 spot_angle = 30.0
 
-[node name="RocketLight" type="SpotLight3D" parent="."]
-transform = Transform3D(0.961227, -0.14479, -0.234687, -0.259021, -0.182096, -0.948551, 0.0946049, 0.972562, -0.212539, -6.4918, -10.7323, 10.5593)
-light_energy = 90.0
-spot_range = 110.0
-spot_angle = 27.0
+[node name="Updraft" parent="." instance=ExtResource("20_ib8vs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, 6)
 
-[node name="GodRay1" type="MeshInstance3D" parent="."]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -14.5079, 4.80719, -17.0815)
-cast_shadow = 0
-mesh = ExtResource("11_vmy1k")
-surface_material_override/0 = ExtResource("12_n2ekj")
-
-[node name="RockSculpt" parent="." instance=ExtResource("13_uuy1x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.24132, 3.55966, -20.0215)
-
-[node name="RockSculpt3" parent="." instance=ExtResource("13_uuy1x")]
-transform = Transform3D(1.07303, -0.364494, 0.39466, 0.385965, 1.13624, 0, -0.373689, 0.126937, 1.13324, 1.6425, -0.760756, -21.0878)
-
-[node name="RockSculpt2" parent="." instance=ExtResource("13_uuy1x")]
-transform = Transform3D(0.94857, 0.276447, -0.154245, -0.279795, 0.96006, 0, 0.148084, 0.043157, 0.988033, -5.3401, 7.27215, -21.1656)
-
-[node name="KryptisDialogue" parent="." instance=ExtResource("14_cieqj")]
-transform = Transform3D(0.976496, 0, -0.215536, 0, 1, 0, 0.215536, 0, 0.976496, -2.29295, 0.676076, -10.5514)
-visible = false
-dialogue_data = Array[String](["Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.", "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."])
-
-[node name="OtherDialogue" parent="." instance=ExtResource("14_cieqj")]
-transform = Transform3D(0.601439, 0, 0.798919, 0, 1, 0, -0.798919, 0, 0.601439, -11.5728, 0.334461, -9.81192)
-visible = false
-dialogue_data = Array[String](["Ohhh yeah"])
-object_name = "oh_yeah"
-
-[node name="Rocket" parent="." instance=ExtResource("13_8sf1c")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 10.5239, 24)
-
-[node name="Laser" parent="." instance=ExtResource("15_145ob")]
-transform = Transform3D(0.998927, 0, 0.0463045, 0, 1, 0, -0.0463045, 0, 0.998927, 5.34458, 0.695961, -8.48169)
-visible = false
-
-[node name="FanWall" parent="." instance=ExtResource("16_y3o0w")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 10, -12.5, 40)
-
-[node name="FanWall2" parent="." instance=ExtResource("16_y3o0w")]
-transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 27, -12.5, 25.75)
-
-[node name="FanWall3" parent="." instance=ExtResource("16_y3o0w")]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -24.75, -12.5, 25.75)
+[node name="Updraft2" parent="." instance=ExtResource("20_ib8vs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, 6)
+object_name = "updraft2"
 
 [node name="Elevator" parent="." instance=ExtResource("17_l4sxi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -17)
-visible = false
-height = 4
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, -7)
+height = 3
 
-[node name="Fourier" parent="." instance=ExtResource("18_acwyw")]
-transform = Transform3D(-1.13485, 0, -0.390009, 0, 1.2, 0, 0.390009, 0, -1.13485, 2.58742, 2.59901, 9.26847)
+[node name="Elevator2" parent="." instance=ExtResource("17_l4sxi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, -7)
+height = 3
+object_name = "elevator2"
 
-[node name="Updraft" parent="." instance=ExtResource("20_ib8vs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.72205, -1.61672, 3.84299)
+[node name="Structure" parent="." instance=ExtResource("18_dqtp6")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 25, 10)
 
-[node name="greybox" parent="." instance=ExtResource("9_shc3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, -13)
+[node name="Structure2" parent="." instance=ExtResource("18_dqtp6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, -10)
+
+[node name="GodRay1" type="MeshInstance3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.3, 27, 1.3)
+cast_shadow = 0
+mesh = ExtResource("11_vmy1k")
+surface_material_override/0 = ExtResource("14_phhgt")

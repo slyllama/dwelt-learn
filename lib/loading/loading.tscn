@@ -326,11 +326,6 @@ layout_mode = 2
 theme = ExtResource("6_tdoiq")
 text = "PLAY"
 
-[node name="SandboxButton" type="Button" parent="Loading/LoadPanel/VBox"]
-layout_mode = 2
-theme = ExtResource("6_tdoiq")
-text = "SANDBOX"
-
 [node name="Settings" type="Button" parent="Loading/LoadPanel/VBox"]
 layout_mode = 2
 theme = ExtResource("6_tdoiq")
@@ -405,18 +400,14 @@ libraries = {
 "": SubResource("AnimationLibrary_fdd41")
 }
 
-[node name="CamArm" type="Node3D" parent="."]
-
-[node name="Camera" type="Camera3D" parent="CamArm"]
-transform = Transform3D(0.967533, 2.88347e-08, -0.252745, -0.0283398, 0.993694, -0.108487, 0.251151, 0.112128, 0.961431, 2.93136, -1.23536, 28.3319)
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(0.967533, 3.06369e-08, -0.252745, -0.0283398, 0.993694, -0.108488, 0.251151, 0.112128, 0.961432, 2.93136, -1.23536, 28.3319)
 v_offset = -0.1
 current = true
 fov = 55.0
 
 [connection signal="mouse_entered" from="Loading/LoadPanel/VBox/ScrapperButton" to="Loading" method="_hover"]
 [connection signal="pressed" from="Loading/LoadPanel/VBox/ScrapperButton" to="Loading" method="_map_button_pressed" binds= ["lattice"]]
-[connection signal="mouse_entered" from="Loading/LoadPanel/VBox/SandboxButton" to="Loading" method="_hover"]
-[connection signal="pressed" from="Loading/LoadPanel/VBox/SandboxButton" to="Loading" method="_map_button_pressed" binds= ["sandbox"]]
 [connection signal="mouse_entered" from="Loading/LoadPanel/VBox/Settings" to="Loading" method="_hover"]
 [connection signal="pressed" from="Loading/LoadPanel/VBox/Settings" to="Loading" method="_map_button_pressed" binds= ["settings"]]
 [connection signal="mouse_entered" from="Loading/LoadPanel/VBox/Quit" to="Loading" method="_hover"]

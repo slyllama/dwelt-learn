@@ -29,7 +29,7 @@ func _interact():
 		if Action.active == false and active == false:
 			activate()
 			return
-	if active == true:
+	if active == true and can_toggle_action == true:
 		deactivate()
 		return
 

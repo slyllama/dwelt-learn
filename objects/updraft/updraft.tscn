@@ -90,7 +90,7 @@ size = Vector2(0.05, 0.5)
 orientation = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3ek6y"]
-size = Vector3(3, 10, 3)
+size = Vector3(3, 11.5, 4.5)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1tcy7"]
 shader = ExtResource("7_xx8sf")
@@ -129,7 +129,7 @@ draw_pass_1 = SubResource("PlaneMesh_pwm18")
 collision_layer = 8
 
 [node name="Collision" type="CollisionShape3D" parent="UpdraftArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.75, 0)
 shape = SubResource("BoxShape3D_3ek6y")
 
 [node name="Decal" type="Decal" parent="."]

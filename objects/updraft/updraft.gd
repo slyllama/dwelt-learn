@@ -1,44 +1,38 @@
 extends Node3D
 
+@export var object_name = "updraft"
+@export var target_speed = 0.3
+@export var acceleration = 0.04
+
 var player_in_area = false
-var in_updraft = false
-var target_upward = 0.0
-var reached_apex = false
+var yv = 0.0
+var yv_target = 0.0
+var yv_ease = 0.0
 
 func _on_updraft_area_entered(body):
 	if body is CharacterBody3D:
-		Action.targeted.emit()
+		Global.updraft_zone = object_name
 		Global.in_updraft_zone = true
 		player_in_area = true
 
 func _on_updraft_area_exited(body):
 	if body is CharacterBody3D:
-		Action.untargeted.emit()
 		Global.in_updraft_zone = false
 		player_in_area = false
+		yv_target = 0.0
 
 func _ready():
 	Action.glide_pressed.connect(func():
-		if player_in_area == true:
+		# Should only attempt if the player is in *this* updraft
+		if player_in_area == true and Global.updraft_zone == object_name:
 			Global.camera_shaken.emit()
 			$FG/Chroma.updraft()
-			in_updraft = true
-			reached_apex = false
-			target_upward = 0.2)
+			yv_target = target_speed)
 
 func _physics_process(_delta):
-	if Action.active == true: return
-	if in_updraft == true:
-		target_upward += 0.01
-	target_upward = clamp(target_upward, 0.0, 1.0)
+	# This checks the *last* used updraft zone, not the *active* one
+	if Global.updraft_zone != object_name or Action.active == true: return
 	
-	var val = ease(target_upward, -2.0)
-	if val > 0.5:
-		if reached_apex == false:
-			in_updraft = false
-		reached_apex = true
-		val = 1.0 - val
-	
-	if reached_apex == true:
-		target_upward = lerp(target_upward, 0.0, 0.03)
-	Global.linear_movement_override.y = val * 1.0
+	yv = lerp(yv, yv_target, acceleration)
+	yv_ease = ease(yv, 0.4)
+	Global.linear_movement_override.y = yv_ease
