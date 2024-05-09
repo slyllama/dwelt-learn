@@ -10,11 +10,13 @@ var reached_apex = false
 func _on_updraft_area_entered(body):
 	if body is CharacterBody3D:
 		Global.updraft_zone = object_name
+		print(Global.current_updraft_zone)
 		Global.in_updraft_zone = true
 		player_in_area = true
 
 func _on_updraft_area_exited(body):
 	if body is CharacterBody3D:
+		print(Global.current_updraft_zone)
 		Global.in_updraft_zone = false
 		player_in_area = false
 
