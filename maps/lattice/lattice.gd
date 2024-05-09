@@ -6,10 +6,9 @@ func _ready():
 	#exclude_from_shadow.append($RockLight)
 	
 	super()
-	$FourierTest/AnimationPlayer.play("Idle")
 	# Set a spicy angle
 	%Player.rotation_degrees.y += 180.0
-	#%Player/CamPivot.rotation_degrees.x += 24.0
-	#%Player/CamPivot.new_cam_x_rotation += 24.0
-	#%Player/CamPivot.rotation_degrees.y += 10.0
-	#%Player/CamPivot.new_cam_y_rotation += 10.0
+	%Player/CamPivot.rotation_degrees.x += 24.0
+	%Player/CamPivot.new_cam_x_rotation += 24.0
+	%Player/CamPivot.rotation_degrees.y += 10.0
+	%Player/CamPivot.new_cam_y_rotation += 10.0
