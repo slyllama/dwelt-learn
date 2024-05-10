@@ -1,10 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://bbt6np1daksl4"]
+[gd_scene load_steps=17 format=3 uid="uid://bbt6np1daksl4"]
 
 [ext_resource type="Shader" uid="uid://yi627x8xvfu2" path="res://generic/shaders/laser.tres" id="1_ga0ie"]
 [ext_resource type="Script" path="res://objects/cable/cable.gd" id="1_tptbn"]
 [ext_resource type="Texture2D" uid="uid://d1fy6jygommc6" path="res://generic/tex/particles/mote.png" id="3_jdu8b"]
 [ext_resource type="Texture2D" uid="uid://c5lyj80wh77au" path="res://generic/tex/particles/laser_contact.png" id="4_qesil"]
-[ext_resource type="Shader" uid="uid://dsggukocef5lg" path="res://characters/lemonade/v_propel_cone/mat_v_propel_cone.tres" id="5_egji0"]
+[ext_resource type="Material" uid="uid://vxytudcydwsa" path="res://characters/euclid/mat_energy.tres" id="5_a48wi"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b5ght"]
 render_priority = 0
@@ -62,14 +62,6 @@ billboard_mode = 3
 particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0067l"]
-render_priority = 0
-shader = ExtResource("5_egji0")
-shader_parameter/Color = Color(1, 1, 1, 1)
-shader_parameter/Speed = 0.2
-shader_parameter/Scale = Vector2(1.5, 1)
-shader_parameter/Ramp = 4.0
 
 [sub_resource type="Animation" id="Animation_g8rhp"]
 length = 0.001
@@ -157,7 +149,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_su511")
 
 [node name="EnergyField" type="CSGSphere3D" parent="Glow"]
 radius = 0.7
-material = SubResource("ShaderMaterial_0067l")
+material = ExtResource("5_a48wi")
 
 [node name="GlowAnim" type="AnimationPlayer" parent="Glow"]
 libraries = {

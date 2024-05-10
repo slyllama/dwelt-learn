@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b13rpsjk6r5jf"
-path.s3tc="res://.godot/imported/lemonade_rough.png-e80eb106bb1e192a11a51010d8743ba3.s3tc.ctex"
+uid="uid://dsroqhsarregr"
+path.s3tc="res://.godot/imported/radar_diff.png-578c8718608f593d3cfffe48cc23aed0.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://characters/lemonade/tex/lemonade_rough.png"
-dest_files=["res://.godot/imported/lemonade_rough.png-e80eb106bb1e192a11a51010d8743ba3.s3tc.ctex"]
+source_file="res://characters/euclid/radar/tex/radar_diff.png"
+dest_files=["res://.godot/imported/radar_diff.png-578c8718608f593d3cfffe48cc23aed0.s3tc.ctex"]
 
 [params]
 
@@ -20,11 +20,11 @@ compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=2
+compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=6
+roughness/mode=0
 roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false

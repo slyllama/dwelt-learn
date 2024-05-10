@@ -4,19 +4,19 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dx4opjbtl5pwj"
-path="res://.godot/imported/radar_import.glb-dfe86dfaaad7c2b2417105e7076bec80.scn"
+path="res://.godot/imported/radar.glb-e6c484080ff13b2e12a496a6fdeb643f.scn"
 
 [deps]
 
-source_file="res://characters/lemonade/radar/radar_import.glb"
-dest_files=["res://.godot/imported/radar_import.glb-dfe86dfaaad7c2b2417105e7076bec80.scn"]
+source_file="res://characters/euclid/radar/radar.glb"
+dest_files=["res://.godot/imported/radar.glb-e6c484080ff13b2e12a496a6fdeb643f.scn"]
 
 [params]
 
 nodes/root_type=""
-nodes/root_name=""
+nodes/root_name="Radar"
 nodes/apply_root_scale=true
-nodes/root_scale=1.0
+nodes/root_scale=0.5
 meshes/ensure_tangents=true
 meshes/generate_lods=true
 meshes/create_shadow_meshes=true
@@ -25,15 +25,15 @@ meshes/lightmap_texel_size=0.2
 meshes/force_disable_compression=false
 skins/use_named_skins=true
 animation/import=true
-animation/fps=30
+animation/fps=60.0
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
 _subresources={
 "materials": {
-"holograph": {
-"use_external/enabled": false,
-"use_external/path": "res://characters/lemonade/radar/holograph.tres"
+"mat_radar": {
+"use_external/enabled": true,
+"use_external/path": "res://characters/euclid/radar/mat_radar.tres"
 }
 }
 }

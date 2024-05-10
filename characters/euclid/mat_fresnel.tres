@@ -1,7 +1,7 @@
 [gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://d0mqxs6mkrqql"]
 
 [ext_resource type="Shader" path="res://generic/shaders/fresnel.gdshader" id="1_soged"]
-[ext_resource type="Texture2D" uid="uid://bpobtu45t8vkb" path="res://characters/lemonade/tex/stars_tile.png" id="2_wldmf"]
+[ext_resource type="Texture2D" uid="uid://bpobtu45t8vkb" path="res://generic/tex/stars_tile.png" id="2_wldmf"]
 
 [sub_resource type="Gradient" id="Gradient_vjhi1"]
 colors = PackedColorArray(1, 0, 0, 1, 0, 1, 0, 1)

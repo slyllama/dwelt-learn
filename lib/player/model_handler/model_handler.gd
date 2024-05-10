@@ -5,9 +5,23 @@ const roll_extent = 20.0
 var anim_moving = false
 var ry_delta = 0.0
 var ry_last = 0.0
+var radar_open = true
 
 var root
 var root_cam_pivot
+
+func open_radar():
+	radar_open = true
+	$Radar.visible = true
+	$Radar/AnimationPlayer.play("RadarKeyAction")
+
+func close_radar():
+	radar_open = false
+	$Radar/AnimationPlayer.play_backwards("RadarKeyAction")
+	await $Radar/AnimationPlayer.animation_finished
+	if radar_open == false: # skip if player has gone back into an interact area
+		$Radar.visible = false
+
 
 func start_moving():
 	anim_moving = true
@@ -22,6 +36,10 @@ func stop_moving():
 func _ready():
 	root = get_parent()
 	root_cam_pivot = root.get_node_or_null("CamPivot")
+	
+	Action.targeted.connect(open_radar)
+	Action.untargeted.connect(close_radar)
+	
 	$Euclid/AnimationPlayer.play("Idle")
 	$Euclid/AnimationPlayer.animation_finished.connect(func(anim):
 		if anim == "Fly" and !anim_moving:

@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://lib/ui/hud/hud.gd" id="1_i45xt"]
 [ext_resource type="PackedScene" uid="uid://s4i8wd6iwhw6" path="res://lib/ui/smoke_overlay/smoke_overlay.tscn" id="3_gjhsd"]
 [ext_resource type="PackedScene" uid="uid://ds7v1kxeoggbl" path="res://lib/ui/dialogue/dialogue.tscn" id="3_lcfva"]
-[ext_resource type="Theme" uid="uid://dfe36tnn0c1ud" path="res://generic/debug_theme.tres" id="6_14irq"]
+[ext_resource type="Theme" uid="uid://dfe36tnn0c1ud" path="res://generic/themes/theme.tres" id="6_14irq"]
 [ext_resource type="Texture2D" uid="uid://8kcdl0ahju3s" path="res://lib/ui/tex/interact_overlay.png" id="6_n4mbk"]
 [ext_resource type="Texture2D" uid="uid://b3aaiytpklgal" path="res://lib/ui/tex/vignette.png" id="7_wv8wl"]
 [ext_resource type="Texture2D" uid="uid://bi3k2uagvaf4g" path="res://lib/ui/tex/top_menu_darken.png" id="9_0p1yl"]

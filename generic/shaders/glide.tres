@@ -23,6 +23,7 @@ void fragment() {
 
 }
 "
+graph_offset = Vector2(-473.884, 118.202)
 modes/cull = 2
 flags/unshaded = true
 nodes/fragment/3/node = SubResource("VisualShaderNodeColorParameter_dwq18")
