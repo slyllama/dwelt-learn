@@ -1,10 +1,9 @@
-[gd_scene load_steps=26 format=3 uid="uid://dsf4aknq3seh2"]
+[gd_scene load_steps=25 format=3 uid="uid://dsf4aknq3seh2"]
 
 [ext_resource type="Script" path="res://maps/lattice/lattice.gd" id="1_hqs2c"]
 [ext_resource type="Texture2D" uid="uid://c5duom5wl7px7" path="res://generic/tex/sky.png" id="2_1uuus"]
 [ext_resource type="PackedScene" uid="uid://bcp4um4sjbyx6" path="res://lib/player/player.tscn" id="3_0m0xl"]
 [ext_resource type="PackedScene" uid="uid://e0k8h1ytp7wi" path="res://lib/ui/hud/hud.tscn" id="4_gb0g0"]
-[ext_resource type="AudioStream" uid="uid://bjom6nih468j8" path="res://generic/sounds/music/mus_junker.ogg" id="5_l3x1b"]
 [ext_resource type="AudioStream" uid="uid://to210dowl6qk" path="res://maps/lattice/sounds/forest_ambience.ogg" id="5_ldr5m"]
 [ext_resource type="Texture2D" uid="uid://dinrdf02xeqaq" path="res://generic/tex/fade_ramp.tres" id="9_clv77"]
 [ext_resource type="Texture2D" uid="uid://d1fy6jygommc6" path="res://generic/tex/particles/mote.png" id="10_vpwvh"]
@@ -28,15 +27,14 @@ background_mode = 2
 sky = SubResource("Sky_aq0yt")
 ambient_light_source = 2
 ambient_light_color = Color(0.42, 0.36848, 0.3234, 1)
-ambient_light_energy = 2.0
 tonemap_mode = 2
 tonemap_exposure = 2.0
 glow_enabled = true
 glow_levels/5 = 0.1
 fog_enabled = true
-fog_light_color = Color(0.122667, 0.0763775, 0.0557438, 1)
+fog_light_color = Color(0, 0, 0, 1)
 fog_sun_scatter = 0.02
-fog_density = 0.02
+fog_density = 0.03
 fog_sky_affect = 0.5
 fog_height = 25.0
 fog_height_density = -0.1
@@ -105,14 +103,9 @@ sky_mode = 1
 
 [node name="Player" parent="." instance=ExtResource("3_0m0xl")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.9434, 1.5219, 5.51602)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -7)
 
 [node name="HUD" parent="." instance=ExtResource("4_gb0g0")]
-
-[node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_l3x1b")
-volume_db = -4.0
-autoplay = true
 
 [node name="Ambience" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_ldr5m")
@@ -138,10 +131,10 @@ process_material = SubResource("ParticleProcessMaterial_6f558")
 draw_pass_1 = SubResource("PlaneMesh_udmxf")
 
 [node name="Rocket" parent="." instance=ExtResource("13_8sf1c")]
-transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 24.5, 12)
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 18.163, 12)
 
 [node name="Spot" type="SpotLight3D" parent="Rocket"]
-transform = Transform3D(-1, 1.48702e-07, -2.62202e-08, 0, -0.173648, -0.984808, -1.50996e-07, -0.984808, 0.173648, -1.05697e-06, -22, 7)
+transform = Transform3D(-1, 1.48702e-07, -2.62201e-08, 0, -0.173648, -0.984808, -1.50996e-07, -0.984808, 0.173648, -1.05697e-06, -20.134, 7)
 light_energy = 65.0
 spot_range = 30.0
 spot_angle = 30.0
@@ -169,15 +162,15 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 25,
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, -10)
 
 [node name="GodRay1" type="MeshInstance3D" parent="."]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.3, 27, 1.3)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.3, 20.663, 1.3)
 cast_shadow = 0
 mesh = ExtResource("11_vmy1k")
 surface_material_override/0 = ExtResource("14_phhgt")
 
 [node name="Laser" parent="." instance=ExtResource("15_qt6cc")]
-transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 10.4745, 0.383279, 7.18844)
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 8.91032, 0.383279, 2.01576)
 
 [node name="DialogueArea" parent="." instance=ExtResource("16_j30j2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.01734, 0.383279, 8.83104)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.45316, 0.383279, 3.65836)
 dialogue_data = Array[String](["HEY THERE IT'S KRUSTY THE SOMETHING"])
 object_name = "dialogue_test"

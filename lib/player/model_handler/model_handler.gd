@@ -10,6 +10,8 @@ var radar_open = true
 var root
 var root_cam_pivot
 
+var engine_ratio = 0.0
+
 func open_radar():
 	radar_open = true
 	$Radar.visible = true
@@ -24,12 +26,14 @@ func close_radar():
 
 
 func start_moving():
+	engine_ratio = 1.0
 	anim_moving = true
 	$Euclid/AnimationTree["parameters/conditions/is_flying"] = true
 	$Euclid/AnimationTree["parameters/conditions/not_flying"] = false
 	$Stars.amount_ratio = 1.0
 
 func stop_moving():
+	engine_ratio = 0.0
 	anim_moving = false
 	$Euclid/AnimationTree["parameters/conditions/is_flying"] = false
 	$Euclid/AnimationTree["parameters/conditions/not_flying"] = true
@@ -43,6 +47,9 @@ func _ready():
 	Action.untargeted.connect(close_radar)
 
 func _process(_delta):
+	$IdleSound.volume_db = linear_to_db(lerp(db_to_linear($IdleSound.volume_db), 1.0 - engine_ratio, 0.1))
+	$RunSound.volume_db = linear_to_db(lerp(db_to_linear($RunSound.volume_db), engine_ratio, 0.1))
+	
 	if root == null: return
 	if root.position_locked == true:
 		rotation_degrees.y = root.lock_dir.x

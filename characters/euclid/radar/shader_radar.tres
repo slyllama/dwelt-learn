@@ -1,6 +1,6 @@
 [gd_resource type="VisualShader" load_steps=15 format=3 uid="uid://cupub7pghtysj"]
 
-[ext_resource type="Texture2D" uid="uid://dsroqhsarregr" path="res://characters/euclid/radar/tex/radar_diff.png" id="1_nst5m"]
+[ext_resource type="Texture2D" uid="uid://dsroqhsarregr" path="res://characters/euclid/tex/radar_diff.png" id="1_nst5m"]
 
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_l7atk"]
 input_name = "time"

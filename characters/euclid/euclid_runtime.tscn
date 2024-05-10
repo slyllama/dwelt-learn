@@ -1,6 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://5k5544ggwcej"]
+[gd_scene load_steps=10 format=3 uid="uid://5k5544ggwcej"]
 
 [ext_resource type="PackedScene" uid="uid://dsf532qii5efv" path="res://characters/euclid/euclid.glb" id="1_me2nu"]
+[ext_resource type="Material" uid="uid://c5yds3a1r2ry6" path="res://characters/euclid/mat_eye.tres" id="2_mel2v"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_rafex"]
+material = ExtResource("2_mel2v")
+size = Vector2(0.12, 0.12)
+orientation = 1
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3uhmt"]
 animation = &"Fly"
@@ -35,58 +41,69 @@ graph_offset = Vector2(-220, -47)
 [node name="Euclid" instance=ExtResource("1_me2nu")]
 
 [node name="Skeleton3D" parent="EuclidArmature" index="0"]
-bones/0/position = Vector3(-0.000349435, -0.026596, 0.00035948)
-bones/0/rotation = Quaternion(-0.00132657, 0.00135632, 0.707905, 0.706305)
+bones/0/position = Vector3(-0.000555657, -0.042292, 0.00057163)
+bones/0/rotation = Quaternion(-0.00745077, 0.00761785, 0.716986, 0.697006)
 bones/1/rotation = Quaternion(-3.55306e-15, 2.12089e-21, 1, 0)
 bones/4/rotation = Quaternion(-0.5, 0.5, -0.5, 0.5)
-bones/6/rotation = Quaternion(0.483589, 0.310972, 0.69448, -0.432591)
+bones/6/rotation = Quaternion(0.480683, 0.312867, 0.696493, -0.431225)
 bones/11/rotation = Quaternion(-0.495268, 0.530618, -0.468395, 0.503746)
-bones/13/position = Vector3(-0.00733944, -0.479832, 0.527641)
-bones/14/position = Vector3(0.133709, 0.632371, -0.313356)
-bones/18/position = Vector3(-0.0237522, -0.479468, -0.527748)
-bones/19/position = Vector3(-0.154108, 0.632011, -0.300671)
+bones/13/position = Vector3(-0.000778163, -0.479977, 0.527641)
+bones/14/position = Vector3(0.133643, 0.632307, -0.317696)
+bones/18/position = Vector3(-0.0262445, -0.479412, -0.527804)
+bones/19/position = Vector3(-0.152314, 0.631744, -0.30445)
 
 [node name="EnergyOuterGlow" parent="EuclidArmature/Skeleton3D" index="0"]
-transform = Transform3D(0.999997, -0.00226223, 3.77775e-05, 0.00226212, 0.99999, 0.00379414, -4.63601e-05, -0.00379404, 0.999993, 0.0580429, -0.0293127, 0.00833943)
+transform = Transform3D(0.999601, -0.0282544, -6.48207e-05, 0.0282493, 0.999374, 0.0213102, -0.000537325, -0.0213035, 0.999773, 0.0578875, -0.0433499, 0.00857157)
 
 [node name="EnergySphere" parent="EuclidArmature/Skeleton3D" index="1"]
-transform = Transform3D(0.999997, -0.00226223, 3.77775e-05, 0.00226212, 0.99999, 0.00379414, -4.63601e-05, -0.00379404, 0.999993, 0.0580429, -0.0293127, 0.00833943)
+transform = Transform3D(0.999601, -0.0282544, -6.48207e-05, 0.0282493, 0.999374, 0.0213102, -0.000537325, -0.0213035, 0.999773, 0.0578875, -0.0433499, 0.00857157)
 
 [node name="Ring" parent="EuclidArmature/Skeleton3D" index="2"]
-transform = Transform3D(0.00226241, 0.999997, 3.75989e-05, -0.99999, 0.00226229, 0.00379403, 0.00379406, -4.61819e-05, 0.999993, -0.000349435, -0.026596, 0.000359495)
+transform = Transform3D(0.0282546, 0.999601, -6.49965e-05, -0.999374, 0.0282494, 0.0213101, 0.0213035, -0.00053715, 0.999773, -0.000555657, -0.042292, 0.000571646)
 
 [node name="BaseRing" parent="EuclidArmature/Skeleton3D" index="3"]
-transform = Transform3D(0.000258356, -0.00226399, 0.999997, 0.0110596, 0.999936, 0.00226095, -0.999939, 0.011059, 0.000283211, -0.052696, -0.401503, -0.00380055)
+transform = Transform3D(-7.70092e-05, -0.0282542, 0.999601, 0.0020189, 0.999599, 0.0282542, -0.999998, 0.00202037, -2.01762e-05, -0.0431397, -0.418455, -0.000184481)
 
 [node name="VPropelCone" parent="EuclidArmature/Skeleton3D" index="4"]
-transform = Transform3D(0.000258356, -0.00226399, 0.999997, 0.0110596, 0.999936, 0.00226095, -0.999939, 0.011059, 0.000283211, 0.0735171, -0.449707, -0.00430112)
+transform = Transform3D(-7.70092e-05, -0.0282542, 0.999601, 0.0020189, 0.999599, 0.0282542, -0.999998, 0.00202037, -2.01762e-05, 0.0842837, -0.463365, -0.000284998)
 
 [node name="Tails" parent="EuclidArmature/Skeleton3D" index="5"]
-transform = Transform3D(0.999998, -0.00226405, -0.000258356, 0.00226107, 0.999936, -0.0110596, 0.000283211, 0.011059, 0.999939, -0.000349498, -0.0265962, 0.000359471)
+transform = Transform3D(0.999601, -0.0282543, 7.7039e-05, 0.0282543, 0.999599, -0.0020189, -2.01762e-05, 0.00202034, 0.999998, -0.000555717, -0.0422921, 0.000571623)
 
 [node name="EyeCentral" parent="EuclidArmature/Skeleton3D" index="6"]
-transform = Transform3D(-0.312873, 0.949795, -0.000258356, -0.949736, -0.312857, -0.0110596, -0.0105852, -0.00321506, 0.999939, 0.158846, 0.428758, 0.00543694)
+transform = Transform3D(-0.288081, 0.957606, 7.7039e-05, -0.957604, -0.288081, -0.0020189, -0.00191112, -0.000655603, 0.999998, 0.146751, 0.417073, 0.00148769)
 
 [node name="EngineRing" parent="EuclidArmature/Skeleton3D" index="7"]
-transform = Transform3D(-3.72923e-05, 0.97627, -0.216555, -0.0037943, -0.216554, -0.976263, -0.999992, 0.000785181, 0.00371229, 0.415209, -0.0248122, 0.00033699)
+transform = Transform3D(6.53212e-05, 0.981569, -0.191106, -0.0213103, -0.191061, -0.981347, -0.999773, 0.00413653, 0.020905, 0.414816, -0.0297094, 0.000330341)
 
 [node name="Wing_L" parent="EuclidArmature/Skeleton3D" index="8"]
-transform = Transform3D(0.999997, -0.00226271, 3.78191e-05, 0.00226268, 0.999991, 0.00379448, -4.64618e-05, -0.00379428, 0.999993, -0.00027813, -0.0230131, 0.000166774)
+transform = Transform3D(0.999601, -0.0282549, -6.47902e-05, 0.0282498, 0.999374, 0.0213105, -0.000537455, -0.0213038, 0.999773, -0.000591099, -0.0364918, 0.000172019)
 
 [node name="Fuselage_L_2" parent="EuclidArmature/Skeleton3D" index="9"]
-transform = Transform3D(0.999997, -0.0022622, 3.80155e-05, 0.00226206, 0.99999, 0.0037942, -4.65973e-05, -0.0037941, 0.999993, -0.000118494, -0.014999, 0.000315368)
+transform = Transform3D(0.999601, -0.0282543, -6.45763e-05, 0.0282492, 0.999374, 0.0213102, -0.000537563, -0.0213036, 0.999773, -0.000666171, -0.0241342, 0.000184417)
 
 [node name="Eyes_002" parent="EuclidArmature/Skeleton3D" index="10"]
-transform = Transform3D(-0.312875, 0.949794, 3.80155e-05, -0.949787, -0.312872, 0.0037942, 0.0036156, 0.001151, 0.999993, -0.586659, 0.0170962, 0.434812)
+transform = Transform3D(-0.288081, 0.957606, -6.45763e-05, -0.957389, -0.288014, 0.0213102, 0.0203882, 0.00620091, 0.999773, -0.587844, 0.000312738, 0.434317)
+
+[node name="Eye2" type="MeshInstance3D" parent="EuclidArmature/Skeleton3D/Eyes_002/Eyes_002" index="0"]
+transform = Transform3D(1.76153e-07, 2.98023e-08, 1, -5.42044e-07, -1, 0, 1, -5.87148e-07, -2.03345e-07, 0, -0.08, 0)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_rafex")
+skeleton = NodePath("../../../Eyes/Eyes")
 
 [node name="Wing_R" parent="EuclidArmature/Skeleton3D" index="11"]
-transform = Transform3D(-0.999997, 0.0022627, 3.76329e-05, -0.00226268, -0.99999, 0.003795, 4.61265e-05, 0.00379515, 0.999993, -0.000576824, -0.038029, -0.00319299)
+transform = Transform3D(-0.999601, 0.0282549, -6.49951e-05, -0.0282498, -0.999374, 0.0213111, 0.000537083, 0.0213046, 0.999773, -0.000448093, -0.0600286, -0.00466093)
 
 [node name="Fuselage_R_2" parent="EuclidArmature/Skeleton3D" index="12"]
-transform = Transform3D(-0.999997, 0.00226215, 3.74458e-05, -0.00226212, -0.99999, 0.00379415, 4.59617e-05, 0.00379405, 0.999993, -0.000445396, -0.0314129, 0.000270367)
+transform = Transform3D(-0.999601, 0.0282543, -6.51585e-05, -0.0282493, -0.999374, 0.0213102, 0.000536923, 0.0213035, 0.999773, -0.000511318, -0.0496041, 0.000564575)
 
 [node name="Eyes" parent="EuclidArmature/Skeleton3D" index="13"]
-transform = Transform3D(-0.312875, 0.949794, 3.74458e-05, -0.949788, -0.312873, 0.00379415, 0.00361535, 0.00115159, 0.999993, -0.587018, -0.00261555, -0.434413)
+transform = Transform3D(-0.288081, 0.957606, -6.51585e-05, -0.957389, -0.288014, 0.0213102, 0.020388, 0.0062015, 0.999773, -0.587633, -0.0436797, -0.434292)
+
+[node name="Eye" type="MeshInstance3D" parent="EuclidArmature/Skeleton3D/Eyes/Eyes" index="0"]
+transform = Transform3D(-4.37114e-08, 8.74228e-08, 1, 0, -1, 8.74228e-08, 1, 3.82137e-15, 4.37114e-08, 0, -0.08, 0)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_rafex")
 
 [node name="AnimationTree" type="AnimationTree" parent="." index="2"]
 tree_root = SubResource("AnimationNodeStateMachine_0wdug")
