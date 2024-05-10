@@ -133,6 +133,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.75, 0)
 shape = SubResource("BoxShape3D_3ek6y")
 
 [node name="Decal" type="Decal" parent="."]
+visible = false
 size = Vector3(3, 1, 3)
 texture_albedo = ExtResource("6_3nqoh")
 
