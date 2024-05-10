@@ -1,16 +1,10 @@
 extends CharacterBody3D
 
-## Base player speed.
 @export_category("Player Physics")
 @export var speed = 5.0
 @export var hover_height = 3.0
-## Player friction; not recommended to change this unless necessary.
 @export var speed_smoothing = 0.08
-## The amount, in degrees, that the player model will yaw in response to
-## rotation and strafing.
 @export var glide_rate = 0.04
-## The maximum upward force the craft will generate while gliding before it
-## hovers there.
 @export var max_gliding_force = 0.5
 
 var forward = 0
@@ -23,13 +17,15 @@ var glide_val = 0.0
 # Position locking variables
 var position_locked = false
 var lock_pos = Vector3.ZERO
+var lock_dir = Vector3.ZERO
 var lock_cam_clamp = { "x_lower": 0.0, "x_upper": 0.0, "y_lower": 0.0, "y_upper": 0.0 }
 
-func lock_position(get_lock_pos, _get_cam_facing):
+func lock_position(get_lock_pos, get_cam_facing):
 	position_locked = true
 	$Collision.disabled = true
 	$ModelHandler.stop_moving()
 	lock_pos = get_lock_pos
+	lock_dir = get_cam_facing
 	position = lock_pos # should only do this once
 
 func unlock_position():
@@ -92,7 +88,7 @@ func _input(_event):
 func _physics_process(_delta):
 	forward = 0
 	side = 0
-
+	
 	if Global.in_keybind_select == true: return
 	position += Global.linear_movement_override
 	

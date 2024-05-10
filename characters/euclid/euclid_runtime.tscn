@@ -1,0 +1,95 @@
+[gd_scene load_steps=8 format=3 uid="uid://5k5544ggwcej"]
+
+[ext_resource type="PackedScene" uid="uid://dsf532qii5efv" path="res://characters/euclid/euclid.glb" id="1_me2nu"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3uhmt"]
+animation = &"Fly"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_k0e6l"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xdc0c"]
+xfade_time = 0.6
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_auv72"]
+xfade_time = 0.25
+priority = 2
+advance_mode = 2
+advance_condition = &"is_flying"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dbsxo"]
+xfade_time = 0.5
+advance_mode = 2
+advance_condition = &"not_flying"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_0wdug"]
+states/Fly/node = SubResource("AnimationNodeAnimation_3uhmt")
+states/Fly/position = Vector2(641, 100)
+states/Idle/node = SubResource("AnimationNodeAnimation_k0e6l")
+states/Idle/position = Vector2(464, 100)
+states/Start/position = Vector2(291, 100)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_xdc0c"), "Idle", "Fly", SubResource("AnimationNodeStateMachineTransition_auv72"), "Fly", "Idle", SubResource("AnimationNodeStateMachineTransition_dbsxo")]
+graph_offset = Vector2(-220, -47)
+
+[node name="Euclid" instance=ExtResource("1_me2nu")]
+
+[node name="Skeleton3D" parent="EuclidArmature" index="0"]
+bones/0/position = Vector3(-0.000152658, -0.011619, 0.000157046)
+bones/0/rotation = Quaternion(-0.00204117, 0.00208694, 0.716112, 0.697979)
+bones/1/rotation = Quaternion(-3.55306e-15, 2.12089e-21, 1, 0)
+bones/4/rotation = Quaternion(-0.5, 0.5, -0.5, 0.5)
+bones/6/rotation = Quaternion(0.48644, 0.309102, 0.692487, -0.433928)
+bones/11/rotation = Quaternion(-0.495268, 0.530618, -0.468395, 0.503746)
+bones/13/position = Vector3(-0.0138607, -0.479687, 0.52764)
+bones/14/position = Vector3(0.133777, 0.632436, -0.308853)
+bones/18/position = Vector3(-0.0210715, -0.479527, -0.527688)
+bones/19/position = Vector3(-0.155904, 0.632278, -0.296887)
+
+[node name="EnergyOuterGlow" parent="EuclidArmature/Skeleton3D" index="0"]
+transform = Transform3D(0.999671, -0.025643, -1.0129e-05, 0.0256426, 0.999654, 0.00583828, -0.000139585, -0.00583662, 0.999983, 0.0582875, -0.0129533, 0.00813735)
+
+[node name="EnergySphere" parent="EuclidArmature/Skeleton3D" index="1"]
+transform = Transform3D(0.999671, -0.025643, -1.0129e-05, 0.0256426, 0.999654, 0.00583828, -0.000139585, -0.00583662, 0.999983, 0.0582875, -0.0129533, 0.00813735)
+
+[node name="Ring" parent="EuclidArmature/Skeleton3D" index="2"]
+transform = Transform3D(0.0256432, 0.999671, -1.03051e-05, -0.999654, 0.0256428, 0.00583817, 0.00583664, -0.000139407, 0.999983, -0.000152658, -0.011619, 0.000157062)
+
+[node name="BaseRing" parent="EuclidArmature/Skeleton3D" index="3"]
+transform = Transform3D(-1.24872e-05, -0.0256429, 0.999671, 0.000679791, 0.999671, 0.0256429, -1, 0.00068, 4.76837e-06, -0.0437192, -0.38767, -9.80094e-05)
+
+[node name="VPropelCone" parent="EuclidArmature/Skeleton3D" index="4"]
+transform = Transform3D(-1.24872e-05, -0.0256429, 0.999671, 0.000679791, 0.999671, 0.0256429, -1, 0.00068, 4.76837e-06, 0.0835865, -0.432913, -0.000130383)
+
+[node name="Tails" parent="EuclidArmature/Skeleton3D" index="5"]
+transform = Transform3D(0.999671, -0.025643, 1.2517e-05, 0.025643, 0.999671, -0.000679791, 4.76837e-06, 0.000679985, 1, -0.000152718, -0.0116192, 0.000157039)
+
+[node name="EyeCentral" parent="EuclidArmature/Skeleton3D" index="6"]
+transform = Transform3D(-0.290582, 0.956851, 1.2517e-05, -0.95685, -0.290582, -0.000679791, -0.000646865, -0.000209685, 1, 0.148353, 0.447361, 0.00046721)
+
+[node name="EngineRing" parent="EuclidArmature/Skeleton3D" index="7"]
+transform = Transform3D(1.06152e-05, 0.981067, -0.193669, -0.00583843, -0.193666, -0.98105, -0.999983, 0.00114106, 0.00572578, 0.41525, -0.000119513, 9.40922e-05)
+
+[node name="Wing_L" parent="EuclidArmature/Skeleton3D" index="8"]
+transform = Transform3D(0.999671, -0.0256435, -1.00434e-05, 0.0256432, 0.999654, 0.00583861, -0.000139624, -0.00583688, 0.999983, -0.000158221, -0.0100548, 6.91116e-05)
+
+[node name="Fuselage_L_2" parent="EuclidArmature/Skeleton3D" index="9"]
+transform = Transform3D(0.999671, -0.025643, -9.88448e-06, 0.0256426, 0.999654, 0.00583835, -0.000139825, -0.00583668, 0.999983, -0.00017029, -0.00654268, 0.000127196)
+
+[node name="Eyes_002" parent="EuclidArmature/Skeleton3D" index="10"]
+transform = Transform3D(-0.290582, 0.95685, -9.88448e-06, -0.956834, -0.290577, 0.00583835, 0.00558355, 0.00170598, 0.999983, -0.587283, 0.0127179, 0.434609)
+
+[node name="Wing_R" parent="EuclidArmature/Skeleton3D" index="11"]
+transform = Transform3D(-0.999671, 0.0256435, -1.03116e-05, -0.0256432, -0.999654, 0.00583914, 0.000139408, 0.00583768, 0.999983, -0.000135154, -0.0166575, -0.00138977)
+
+[node name="Fuselage_R_2" parent="EuclidArmature/Skeleton3D" index="12"]
+transform = Transform3D(-0.999671, 0.0256429, -1.04619e-05, -0.0256426, -0.999654, 0.00583829, 0.000139193, 0.00583664, 0.999983, -0.000145376, -0.0137554, 0.000121832)
+
+[node name="Eyes" parent="EuclidArmature/Skeleton3D" index="13"]
+transform = Transform3D(-0.290582, 0.95685, -1.04619e-05, -0.956834, -0.290577, 0.00583829, 0.00558331, 0.00170657, 0.999983, -0.587249, 0.000430618, -0.434568)
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="2"]
+tree_root = SubResource("AnimationNodeStateMachine_0wdug")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/is_flying = false
+parameters/conditions/not_flying = false

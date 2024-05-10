@@ -25,12 +25,14 @@ func close_radar():
 
 func start_moving():
 	anim_moving = true
-	$Euclid/AnimationPlayer.play("Fly")
+	$Euclid/AnimationTree["parameters/conditions/is_flying"] = true
+	$Euclid/AnimationTree["parameters/conditions/not_flying"] = false
 	$Stars.amount_ratio = 1.0
 
 func stop_moving():
 	anim_moving = false
-	$Euclid/AnimationPlayer.play_backwards("Fly")
+	$Euclid/AnimationTree["parameters/conditions/is_flying"] = false
+	$Euclid/AnimationTree["parameters/conditions/not_flying"] = true
 	$Stars.amount_ratio = 0.3
 
 func _ready():
@@ -39,15 +41,12 @@ func _ready():
 	
 	Action.targeted.connect(open_radar)
 	Action.untargeted.connect(close_radar)
-	
-	$Euclid/AnimationPlayer.play("Idle")
-	$Euclid/AnimationPlayer.animation_finished.connect(func(anim):
-		if anim == "Fly" and !anim_moving:
-			$Euclid/AnimationPlayer.play("Idle"))
 
 func _process(_delta):
 	if root == null: return
-	if root.position_locked == true: return
+	if root.position_locked == true:
+		rotation_degrees.y = root.lock_dir.x
+		return
 	
 	var roll_delta = 0.0
 	ry_delta = 0.0

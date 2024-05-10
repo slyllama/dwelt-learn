@@ -40,7 +40,6 @@ fog_density = 0.02
 fog_sky_affect = 0.5
 fog_height = 25.0
 fog_height_density = -0.1
-volumetric_fog_enabled = true
 volumetric_fog_density = 0.02
 volumetric_fog_albedo = Color(0.873683, 0.76685, 0.723182, 1)
 volumetric_fog_length = 16.0
@@ -176,7 +175,7 @@ mesh = ExtResource("11_vmy1k")
 surface_material_override/0 = ExtResource("14_phhgt")
 
 [node name="Laser" parent="." instance=ExtResource("15_qt6cc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4745, 0.383279, 7.18844)
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 10.4745, 0.383279, 7.18844)
 
 [node name="DialogueArea" parent="." instance=ExtResource("16_j30j2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.01734, 0.383279, 8.83104)

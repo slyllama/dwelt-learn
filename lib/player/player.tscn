@@ -1,12 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://bcp4um4sjbyx6"]
+[gd_scene load_steps=17 format=3 uid="uid://bcp4um4sjbyx6"]
 
 [ext_resource type="Script" path="res://lib/player/player.gd" id="1_2r77g"]
 [ext_resource type="Script" path="res://lib/player/CamPivot.gd" id="2_73c7o"]
 [ext_resource type="PackedScene" uid="uid://bnvmpcnhjje26" path="res://lib/shader_cache_gen/shader_cache_gen.tscn" id="3_fylyn"]
 [ext_resource type="Script" path="res://lib/player/YCast.gd" id="3_oxn4f"]
 [ext_resource type="Script" path="res://lib/player/XCast.gd" id="3_tm7v3"]
-[ext_resource type="Texture2D" uid="uid://dinrdf02xeqaq" path="res://generic/tex/fade_ramp.tres" id="6_k5syw"]
-[ext_resource type="ArrayMesh" uid="uid://cn0wlud2ukcna" path="res://generic/tex/particles/star.obj" id="7_7rcg7"]
 [ext_resource type="Texture2D" uid="uid://cks1xhn81ymh0" path="res://lib/ui/tex/anime.png" id="9_15e71"]
 [ext_resource type="Script" path="res://lib/player/vfx/Anime.gd" id="9_b4cap"]
 [ext_resource type="Shader" path="res://lib/player/vfx/anime_wobble.gdshader" id="11_f4obd"]
@@ -80,37 +78,6 @@ _data = {
 radius = 0.733304
 height = 1.7
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cotlk"]
-transparency = 1
-shading_mode = 0
-vertex_color_use_as_albedo = true
-billboard_mode = 3
-billboard_keep_scale = true
-particles_anim_h_frames = 1
-particles_anim_v_frames = 1
-particles_anim_loop = false
-
-[sub_resource type="Gradient" id="Gradient_r77nj"]
-offsets = PackedFloat32Array(0, 0.218182, 0.627273, 1)
-colors = PackedColorArray(0.6417, 0.93, 0.6417, 1, 2.40654e-07, 0.179482, 0.0808157, 1, 0, 0.554526, 0, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_y1nib"]
-gradient = SubResource("Gradient_r77nj")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xy1xp"]
-emission_shape = 2
-emission_sphere_radius = 0.5
-direction = Vector3(0, 0, 0)
-spread = 180.0
-initial_velocity_min = 0.1
-initial_velocity_max = 0.2
-gravity = Vector3(0, 0, 0)
-attractor_interaction_enabled = false
-scale_min = 0.2
-scale_max = 0.6
-color_ramp = ExtResource("6_k5syw")
-color_initial_ramp = SubResource("GradientTexture1D_y1nib")
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ejrkj"]
 shader = ExtResource("11_f4obd")
 shader_parameter/modulate_a = 0.2
@@ -157,14 +124,6 @@ target_position = Vector3(0, -10, 0)
 collision_mask = 3
 collide_with_areas = true
 script = ExtResource("3_oxn4f")
-
-[node name="Stars" type="GPUParticles3D" parent="."]
-material_override = SubResource("StandardMaterial3D_cotlk")
-cast_shadow = 0
-amount = 30
-amount_ratio = 0.3
-process_material = SubResource("ParticleProcessMaterial_xy1xp")
-draw_pass_1 = ExtResource("7_7rcg7")
 
 [node name="Anime" type="CanvasLayer" parent="."]
 script = ExtResource("9_b4cap")

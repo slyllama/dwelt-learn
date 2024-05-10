@@ -1,11 +1,11 @@
 [gd_scene load_steps=14 format=3 uid="uid://b6tc0kf1kgaml"]
 
-[ext_resource type="PackedScene" uid="uid://dsf532qii5efv" path="res://characters/euclid/euclid.glb" id="1_4nykr"]
 [ext_resource type="Script" path="res://lib/player/model_handler/model_handler.gd" id="1_qtkkf"]
 [ext_resource type="Texture2D" uid="uid://dinrdf02xeqaq" path="res://generic/tex/fade_ramp.tres" id="3_0g80d"]
 [ext_resource type="ArrayMesh" uid="uid://cn0wlud2ukcna" path="res://generic/tex/particles/star.obj" id="4_8srut"]
 [ext_resource type="PackedScene" uid="uid://dx4opjbtl5pwj" path="res://characters/euclid/radar/radar.glb" id="5_ddoy6"]
 [ext_resource type="Script" path="res://lib/player/glider/trail_3d.gd" id="6_c6fhn"]
+[ext_resource type="PackedScene" uid="uid://5k5544ggwcej" path="res://characters/euclid/euclid_runtime.tscn" id="6_m827u"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kmfjv"]
 transparency = 1
@@ -18,8 +18,8 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 
 [sub_resource type="Gradient" id="Gradient_mngmy"]
-offsets = PackedFloat32Array(0, 0.218182, 0.627273, 1)
-colors = PackedColorArray(0.6417, 0.93, 0.6417, 1, 2.40654e-07, 0.179482, 0.0808157, 1, 0, 0.554526, 0, 1, 1, 1, 1, 1)
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(0, 0.2635, 0.51, 1, 0.4, 0.709804, 1, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_ptkd8"]
 gradient = SubResource("Gradient_mngmy")
@@ -31,10 +31,10 @@ direction = Vector3(0, 0, 0)
 spread = 180.0
 initial_velocity_min = 0.1
 initial_velocity_max = 0.2
+angular_velocity_max = 0.5
 gravity = Vector3(0, 0, 0)
 attractor_interaction_enabled = false
-scale_min = 0.2
-scale_max = 0.6
+scale_min = 0.6
 color_ramp = ExtResource("3_0g80d")
 color_initial_ramp = SubResource("GradientTexture1D_ptkd8")
 
@@ -55,8 +55,6 @@ albedo_texture = SubResource("GradientTexture2D_y8f53")
 [node name="ModelHandler" type="Node3D"]
 script = ExtResource("1_qtkkf")
 
-[node name="Euclid" parent="." instance=ExtResource("1_4nykr")]
-
 [node name="Stars" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
 material_override = SubResource("StandardMaterial3D_kmfjv")
@@ -74,3 +72,5 @@ visible = false
 [node name="Trail3D" type="MeshInstance3D" parent="."]
 material_override = SubResource("StandardMaterial3D_cwkau")
 script = ExtResource("6_c6fhn")
+
+[node name="Euclid" parent="." instance=ExtResource("6_m827u")]

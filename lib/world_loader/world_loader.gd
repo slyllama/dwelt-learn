@@ -20,10 +20,7 @@ func _setting_changed(get_setting_id):
 				if child in exclude_from_shadow: return
 				if child is SpotLight3D or child is OmniLight3D:
 					child.shadow_enabled = Global.settings.spot_shadows
-		"vol_fog":
-			if get_node_or_null("Sky") == null: return
-			$Sky.get_environment().volumetric_fog_enabled = Global.settings.vol_fog
-	
+
 	# The following are only applied after the first run
 	if first_settings_run == true:
 		match get_setting_id:
