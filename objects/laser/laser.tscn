@@ -22,7 +22,7 @@ collision_mask = 2
 script = ExtResource("3_0t5vk")
 
 [node name="EndPoint" type="Node3D" parent="Cast"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -30)
 
 [node name="DockingPoint" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)

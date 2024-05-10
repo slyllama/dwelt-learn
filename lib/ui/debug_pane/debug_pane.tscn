@@ -47,23 +47,6 @@ theme_override_font_sizes/normal_font_size = 14
 bbcode_enabled = true
 text = "[Render]"
 
-[node name="DweltTitle" type="RichTextLabel" parent="."]
-modulate = Color(1, 1, 1, 0.470588)
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 40.0
-offset_top = -65.0
-offset_right = 534.0
-offset_bottom = -40.0
-grow_vertical = 0
-mouse_filter = 2
-theme = ExtResource("3_480m7")
-theme_override_font_sizes/normal_font_size = 18
-bbcode_enabled = true
-text = "DWELT TECHNICAL TEST"
-fit_content = true
-
 [node name="ControlPanel" type="Panel" parent="."]
 anchors_preset = 3
 anchor_left = 1.0

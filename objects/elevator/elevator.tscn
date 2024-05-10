@@ -23,7 +23,7 @@ script = ExtResource("1_c374k")
 
 [node name="ObjectHandler" parent="." instance=ExtResource("2_6ng8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 0)
-cube_size = 2.0
+cube_size = 1.5
 can_toggle_action = false
 
 [node name="Mesh" type="CSGBox3D" parent="ObjectHandler"]
