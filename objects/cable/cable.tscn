@@ -1,16 +1,26 @@
-[gd_scene load_steps=18 format=3 uid="uid://bbt6np1daksl4"]
+[gd_scene load_steps=12 format=3 uid="uid://bbt6np1daksl4"]
 
-[ext_resource type="Shader" uid="uid://yi627x8xvfu2" path="res://generic/shaders/laser.tres" id="1_ga0ie"]
+[ext_resource type="Shader" uid="uid://bja4ecubt8eqx" path="res://characters/euclid/shader_energy.tres" id="1_8p5ns"]
 [ext_resource type="Script" path="res://objects/cable/cable.gd" id="1_tptbn"]
 [ext_resource type="Texture2D" uid="uid://d1fy6jygommc6" path="res://generic/tex/particles/mote.png" id="3_jdu8b"]
-[ext_resource type="Texture2D" uid="uid://c5lyj80wh77au" path="res://generic/tex/particles/laser_contact.png" id="4_qesil"]
-[ext_resource type="Shader" uid="uid://dsggukocef5lg" path="res://characters/lemonade/v_propel_cone/mat_v_propel_cone.tres" id="5_egji0"]
+[ext_resource type="Material" uid="uid://vxytudcydwsa" path="res://characters/euclid/mat_energy.tres" id="5_a48wi"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_b5ght"]
+[sub_resource type="CylinderMesh" id="CylinderMesh_aapx1"]
+top_radius = 0.05
+bottom_radius = 0.05
+height = 1.0
+radial_segments = 8
+rings = 2
+cap_top = false
+cap_bottom = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ggvm0"]
 render_priority = 0
-shader = ExtResource("1_ga0ie")
-shader_parameter/Color = Color(1, 1, 1, 1)
-shader_parameter/UVXScale = 1.0
+shader = ExtResource("1_8p5ns")
+shader_parameter/Color = Color(0.4, 0.709804, 1, 1)
+shader_parameter/Speed = 0.5
+shader_parameter/Scale = Vector2(2, 1.2)
+shader_parameter/Ramp = 0.75
 
 [sub_resource type="Gradient" id="Gradient_dn3s2"]
 offsets = PackedFloat32Array(0, 0.290909, 0.4, 0.818182, 1)
@@ -27,7 +37,6 @@ initial_velocity_max = 0.3
 gravity = Vector3(0, 0, 0)
 linear_accel_min = 0.1
 linear_accel_max = 1.0
-scale_min = 2.0
 scale_max = 4.0
 color_ramp = SubResource("GradientTexture1D_g4wim")
 
@@ -46,97 +55,10 @@ material = SubResource("StandardMaterial3D_ducoj")
 size = Vector2(0.1, 0.1)
 orientation = 2
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_oc2w5"]
-size = Vector2(3, 3)
-orientation = 2
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_su511"]
-transparency = 1
-cull_mode = 2
-depth_draw_mode = 1
-no_depth_test = true
-shading_mode = 0
-albedo_color = Color(1, 1, 1, 0.352941)
-albedo_texture = ExtResource("4_qesil")
-billboard_mode = 3
-particles_anim_h_frames = 1
-particles_anim_v_frames = 1
-particles_anim_loop = false
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0067l"]
-render_priority = 0
-shader = ExtResource("5_egji0")
-shader_parameter/Color = Color(1, 1, 1, 1)
-shader_parameter/Speed = 0.2
-shader_parameter/Scale = Vector2(1.5, 1)
-shader_parameter/Ramp = 4.0
-
-[sub_resource type="Animation" id="Animation_g8rhp"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:surface_material_override/0:albedo_color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0.352941)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_tmhr8"]
-resource_name = "glow"
-length = 3.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:surface_material_override/0:albedo_color")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0.392157), Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = false
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.5, 3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, 3.14159), Vector3(0, 0, 6.28319)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_lb4rq"]
-_data = {
-"RESET": SubResource("Animation_g8rhp"),
-"glow": SubResource("Animation_tmhr8")
-}
-
-[node name="Cable" type="CSGCylinder3D"]
+[node name="Cable" type="MeshInstance3D"]
 cast_shadow = 0
-radius = 0.04
-material = SubResource("ShaderMaterial_b5ght")
+mesh = SubResource("CylinderMesh_aapx1")
+surface_material_override/0 = SubResource("ShaderMaterial_ggvm0")
 script = ExtResource("1_tptbn")
 
 [node name="Sparks" type="GPUParticles3D" parent="."]
@@ -150,17 +72,6 @@ randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_7bqph")
 draw_pass_1 = SubResource("PlaneMesh_yhqd0")
 
-[node name="Glow" type="MeshInstance3D" parent="."]
-cast_shadow = 0
-mesh = SubResource("PlaneMesh_oc2w5")
-surface_material_override/0 = SubResource("StandardMaterial3D_su511")
-
-[node name="EnergyField" type="CSGSphere3D" parent="Glow"]
+[node name="Glow" type="CSGSphere3D" parent="."]
 radius = 0.7
-material = SubResource("ShaderMaterial_0067l")
-
-[node name="GlowAnim" type="AnimationPlayer" parent="Glow"]
-libraries = {
-"": SubResource("AnimationLibrary_lb4rq")
-}
-autoplay = "glow"
+material = ExtResource("5_a48wi")

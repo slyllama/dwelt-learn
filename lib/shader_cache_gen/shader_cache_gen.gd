@@ -6,18 +6,18 @@ var shaders_loaded = false
 
 const SHADERS_UID = [
 	"uid://cupub7pghtysj", # holograph
-	"uid://dsggukocef5lg", # propulsion cone
 	"uid://yi627x8xvfu2", # laser
 	"uid://dtg3t52t3kle7", # god ray
 	"uid://dib8bbgu76bfe", # smoke
 	"uid://x7hijf0o02h8", # updraft whirl
 	"uid://dlmkx7n01hlq6", # updraft whirl center
+	"uid://devo837ilys5h", # glider
 	
 	"res://generic/shaders/fresnel.gdshader", # fresnel
 	"res://lib/ui/dialogue/dialogue.gdshader", # dialogue (static)
 	"res://lib/ui/dialogue/radial_distort.gdshader", # radial distortion
 	"res://lib/player/vfx/anime_wobble.gdshader", # anime motion
-	"res://generic/shaders/aberration.gdshader" # chromatic aberration
+	"res://generic/shaders/aberration.gdshader", # chromatic aberration
 ]
 
 var meshes = []

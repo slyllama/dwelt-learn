@@ -6,6 +6,7 @@
 
 [node name="ObjectHandler" type="Area3D"]
 script = ExtResource("1_lvfoe")
+cube_size = 1.0
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_hgv8v")

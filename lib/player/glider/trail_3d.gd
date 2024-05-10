@@ -1,6 +1,6 @@
 class_name Trail3D extends MeshInstance3D
 
-const start_color = Color(1.0, 1.0, 1.0, 0.4)
+const start_color = Color(1.0, 1.0, 1.0, 0.1)
 const end_color = Color(1.0, 1.0, 1.0, 0.0)
 ## Y-velocity must pass this value in either direction for the trail to
 ## activate.

@@ -1,4 +1,4 @@
-extends CSGCylinder3D
+extends MeshInstance3D
 #TODO: particles should come a little forward from the end of the cast point,
 # so we can keep the depth test while avoiding clipping.
 
@@ -16,13 +16,11 @@ func update():
 	look_at(end, Vector3.UP)
 	rotation_degrees.x += 90.0
 	
-	height = global_position.distance_to(end) * 2.0
+	mesh.height = global_position.distance_to(end) * 2.0
 	$Sparks.look_at(end, Vector3.UP)
-	$Sparks.position.y = height / 2.0 - 1.0
+	$Sparks.position.y = mesh.height / 2.0 - 1.0
 	$Glow.look_at(end, Vector3.UP)
-	$Glow.position.y = height / 2.0 - 1.0
-	
-	material.set_shader_parameter("UVXScale", height * 0.02 + 3.0)
+	$Glow.position.y = mesh.height / 2.0 - 1.0
 
 func _ready():
 	# Avoid erroneous particles when the laser first updates its position

@@ -1,0 +1,112 @@
+[gd_scene load_steps=10 format=3 uid="uid://5k5544ggwcej"]
+
+[ext_resource type="PackedScene" uid="uid://dsf532qii5efv" path="res://characters/euclid/euclid.glb" id="1_me2nu"]
+[ext_resource type="Material" uid="uid://c5yds3a1r2ry6" path="res://characters/euclid/mat_eye.tres" id="2_mel2v"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_rafex"]
+material = ExtResource("2_mel2v")
+size = Vector2(0.12, 0.12)
+orientation = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3uhmt"]
+animation = &"Fly"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_k0e6l"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xdc0c"]
+xfade_time = 0.6
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_auv72"]
+xfade_time = 0.25
+priority = 2
+advance_mode = 2
+advance_condition = &"is_flying"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dbsxo"]
+xfade_time = 0.5
+advance_mode = 2
+advance_condition = &"not_flying"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_0wdug"]
+states/Fly/node = SubResource("AnimationNodeAnimation_3uhmt")
+states/Fly/position = Vector2(641, 100)
+states/Idle/node = SubResource("AnimationNodeAnimation_k0e6l")
+states/Idle/position = Vector2(464, 100)
+states/Start/position = Vector2(291, 100)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_xdc0c"), "Idle", "Fly", SubResource("AnimationNodeStateMachineTransition_auv72"), "Fly", "Idle", SubResource("AnimationNodeStateMachineTransition_dbsxo")]
+graph_offset = Vector2(-220, -47)
+
+[node name="Euclid" instance=ExtResource("1_me2nu")]
+
+[node name="Skeleton3D" parent="EuclidArmature" index="0"]
+bones/0/position = Vector3(-0.000555657, -0.042292, 0.00057163)
+bones/0/rotation = Quaternion(-0.00745077, 0.00761785, 0.716986, 0.697006)
+bones/1/rotation = Quaternion(-3.55306e-15, 2.12089e-21, 1, 0)
+bones/4/rotation = Quaternion(-0.5, 0.5, -0.5, 0.5)
+bones/6/rotation = Quaternion(0.480683, 0.312867, 0.696493, -0.431225)
+bones/11/rotation = Quaternion(-0.495268, 0.530618, -0.468395, 0.503746)
+bones/13/position = Vector3(-0.000778163, -0.479977, 0.527641)
+bones/14/position = Vector3(0.133643, 0.632307, -0.317696)
+bones/18/position = Vector3(-0.0262445, -0.479412, -0.527804)
+bones/19/position = Vector3(-0.152314, 0.631744, -0.30445)
+
+[node name="EnergyOuterGlow" parent="EuclidArmature/Skeleton3D" index="0"]
+transform = Transform3D(0.999601, -0.0282544, -6.48207e-05, 0.0282493, 0.999374, 0.0213102, -0.000537325, -0.0213035, 0.999773, 0.0578875, -0.0433499, 0.00857157)
+
+[node name="EnergySphere" parent="EuclidArmature/Skeleton3D" index="1"]
+transform = Transform3D(0.999601, -0.0282544, -6.48207e-05, 0.0282493, 0.999374, 0.0213102, -0.000537325, -0.0213035, 0.999773, 0.0578875, -0.0433499, 0.00857157)
+
+[node name="Ring" parent="EuclidArmature/Skeleton3D" index="2"]
+transform = Transform3D(0.0282546, 0.999601, -6.49965e-05, -0.999374, 0.0282494, 0.0213101, 0.0213035, -0.00053715, 0.999773, -0.000555657, -0.042292, 0.000571646)
+
+[node name="BaseRing" parent="EuclidArmature/Skeleton3D" index="3"]
+transform = Transform3D(-7.70092e-05, -0.0282542, 0.999601, 0.0020189, 0.999599, 0.0282542, -0.999998, 0.00202037, -2.01762e-05, -0.0431397, -0.418455, -0.000184481)
+
+[node name="VPropelCone" parent="EuclidArmature/Skeleton3D" index="4"]
+transform = Transform3D(-7.70092e-05, -0.0282542, 0.999601, 0.0020189, 0.999599, 0.0282542, -0.999998, 0.00202037, -2.01762e-05, 0.0842837, -0.463365, -0.000284998)
+
+[node name="Tails" parent="EuclidArmature/Skeleton3D" index="5"]
+transform = Transform3D(0.999601, -0.0282543, 7.7039e-05, 0.0282543, 0.999599, -0.0020189, -2.01762e-05, 0.00202034, 0.999998, -0.000555717, -0.0422921, 0.000571623)
+
+[node name="EyeCentral" parent="EuclidArmature/Skeleton3D" index="6"]
+transform = Transform3D(-0.288081, 0.957606, 7.7039e-05, -0.957604, -0.288081, -0.0020189, -0.00191112, -0.000655603, 0.999998, 0.146751, 0.417073, 0.00148769)
+
+[node name="EngineRing" parent="EuclidArmature/Skeleton3D" index="7"]
+transform = Transform3D(6.53212e-05, 0.981569, -0.191106, -0.0213103, -0.191061, -0.981347, -0.999773, 0.00413653, 0.020905, 0.414816, -0.0297094, 0.000330341)
+
+[node name="Wing_L" parent="EuclidArmature/Skeleton3D" index="8"]
+transform = Transform3D(0.999601, -0.0282549, -6.47902e-05, 0.0282498, 0.999374, 0.0213105, -0.000537455, -0.0213038, 0.999773, -0.000591099, -0.0364918, 0.000172019)
+
+[node name="Fuselage_L_2" parent="EuclidArmature/Skeleton3D" index="9"]
+transform = Transform3D(0.999601, -0.0282543, -6.45763e-05, 0.0282492, 0.999374, 0.0213102, -0.000537563, -0.0213036, 0.999773, -0.000666171, -0.0241342, 0.000184417)
+
+[node name="Eyes_002" parent="EuclidArmature/Skeleton3D" index="10"]
+transform = Transform3D(-0.288081, 0.957606, -6.45763e-05, -0.957389, -0.288014, 0.0213102, 0.0203882, 0.00620091, 0.999773, -0.587844, 0.000312738, 0.434317)
+
+[node name="Eye2" type="MeshInstance3D" parent="EuclidArmature/Skeleton3D/Eyes_002/Eyes_002" index="0"]
+transform = Transform3D(1.76153e-07, 2.98023e-08, 1, -5.42044e-07, -1, 0, 1, -5.87148e-07, -2.03345e-07, 0, -0.08, 0)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_rafex")
+skeleton = NodePath("../../../Eyes/Eyes")
+
+[node name="Wing_R" parent="EuclidArmature/Skeleton3D" index="11"]
+transform = Transform3D(-0.999601, 0.0282549, -6.49951e-05, -0.0282498, -0.999374, 0.0213111, 0.000537083, 0.0213046, 0.999773, -0.000448093, -0.0600286, -0.00466093)
+
+[node name="Fuselage_R_2" parent="EuclidArmature/Skeleton3D" index="12"]
+transform = Transform3D(-0.999601, 0.0282543, -6.51585e-05, -0.0282493, -0.999374, 0.0213102, 0.000536923, 0.0213035, 0.999773, -0.000511318, -0.0496041, 0.000564575)
+
+[node name="Eyes" parent="EuclidArmature/Skeleton3D" index="13"]
+transform = Transform3D(-0.288081, 0.957606, -6.51585e-05, -0.957389, -0.288014, 0.0213102, 0.020388, 0.0062015, 0.999773, -0.587633, -0.0436797, -0.434292)
+
+[node name="Eye" type="MeshInstance3D" parent="EuclidArmature/Skeleton3D/Eyes/Eyes" index="0"]
+transform = Transform3D(-4.37114e-08, 8.74228e-08, 1, 0, -1, 8.74228e-08, 1, 3.82137e-15, 4.37114e-08, 0, -0.08, 0)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_rafex")
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="2"]
+tree_root = SubResource("AnimationNodeStateMachine_0wdug")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/is_flying = false
+parameters/conditions/not_flying = false

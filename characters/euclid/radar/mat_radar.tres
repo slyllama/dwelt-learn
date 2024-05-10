@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cvcltd75qn0fo"]
+
+[ext_resource type="Shader" uid="uid://cupub7pghtysj" path="res://characters/euclid/radar/shader_radar.tres" id="1_sid80"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_sid80")

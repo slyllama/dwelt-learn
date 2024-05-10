@@ -1,0 +1,41 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://dx4opjbtl5pwj"
+path="res://.godot/imported/radar.glb-e6c484080ff13b2e12a496a6fdeb643f.scn"
+
+[deps]
+
+source_file="res://characters/euclid/radar/radar.glb"
+dest_files=["res://.godot/imported/radar.glb-e6c484080ff13b2e12a496a6fdeb643f.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name="Radar"
+nodes/apply_root_scale=true
+nodes/root_scale=0.5
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=60.0
+animation/trimming=false
+animation/remove_immutable_tracks=true
+import_script/path=""
+_subresources={
+"materials": {
+"mat_radar": {
+"use_external/enabled": true,
+"use_external/path": "res://characters/euclid/radar/mat_radar.tres"
+}
+}
+}
+gltf/naming_version=1
+gltf/embedded_image_handling=1
