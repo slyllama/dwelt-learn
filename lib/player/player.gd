@@ -115,30 +115,26 @@ func _input(_event):
 	# TODO: this all should eventually be in its own module
 	if Input.is_action_just_pressed("move_forward"):
 		$CamPivot.fov_offset = 5.0 # shift the camera back a little when moving
-		$Stars.amount_ratio = 1.0
 		if Global.settings.fancy_particles == true:
 			$Lemonade/StyxArmature/Skeleton3D/Tails_001/Trail.emitting = true
 			$Lemonade/StyxArmature/Skeleton3D/Tails_001/Trail2.emitting = true
 		$SoundHandler.move()
-		$Lemonade/AnimationPlayer.play("Fly")
+		$ModelHandler.start_moving()
 		$Anime.anime_in()
 	if Input.is_action_just_released("move_forward"):
 		$CamPivot.fov_offset = 0.0
-		$Stars.amount_ratio = 0.3
 		$Lemonade/StyxArmature/Skeleton3D/Tails_001/Trail.emitting = false
 		$Lemonade/StyxArmature/Skeleton3D/Tails_001/Trail2.emitting = false
 		$SoundHandler.stop_moving()
-		$Lemonade/AnimationPlayer.play_backwards("Fly")
+		$ModelHandler.stop_moving()
 		$Anime.anime_out()
 	
 	if Input.is_action_just_pressed("move_back"):
-		$Stars.amount_ratio = 1.0
 		$SoundHandler.move()
-		$Lemonade/AnimationPlayer.play("Fly")
+		$ModelHandler.start_moving()
 	if Input.is_action_just_released("move_back"):
-		$Stars.amount_ratio = 0.3
 		$SoundHandler.stop_moving()
-		$Lemonade/AnimationPlayer.play_backwards("Fly")
+		$ModelHandler.stop_moving()
 
 func _physics_process(_delta):
 	forward = 0
