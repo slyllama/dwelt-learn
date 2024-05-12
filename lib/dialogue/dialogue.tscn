@@ -13,5 +13,6 @@ cube_size = 2.0
 
 [node name="Placeholder" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
 size = Vector3(2, 2, 2)
 material = ExtResource("3_lsr15")
