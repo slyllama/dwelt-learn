@@ -10,6 +10,7 @@ var new_cam_y_rotation = 0.0
 var new_cam_x_rotation = 0.0
 var target_y_position
 var camera_distance = 3.7
+var camera_bounce = 0.35
 
 var right_mouse_down = false
 var mouse_offset = Vector2.ZERO
@@ -94,6 +95,11 @@ func _input(event):
 			target_y_position += 0.1
 
 func _process(_delta):
+	if Action.in_glide == true: camera_bounce = 1.0
+	else: camera_bounce = 0.35
+	var target_y_pos = 1.15 - clamp(Global.player_y_velocity * camera_bounce, -1.0, 1.0)
+	position.y = lerp(position.y, target_y_pos, 0.035)
+	
 	# Zoom camera
 	$CamArm.spring_length = lerpf($CamArm.spring_length, camera_distance, 0.1)
 	$CamArm/Camera.v_offset = lerpf($CamArm/Camera.v_offset, target_y_position, 0.05)

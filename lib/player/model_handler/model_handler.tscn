@@ -44,7 +44,7 @@ color_initial_ramp = SubResource("GradientTexture1D_ptkd8")
 offsets = PackedFloat32Array(0, 0.211268, 0.793427, 1)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 0.906103, 0.906103, 0.906103, 1, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_y8f53"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_uk24k"]
 gradient = SubResource("Gradient_2fy1y")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cwkau"]
@@ -52,7 +52,7 @@ transparency = 1
 cull_mode = 2
 shading_mode = 0
 vertex_color_use_as_albedo = true
-albedo_texture = SubResource("GradientTexture2D_y8f53")
+albedo_texture = SubResource("GradientTexture2D_uk24k")
 
 [node name="ModelHandler" type="Node3D"]
 script = ExtResource("1_qtkkf")

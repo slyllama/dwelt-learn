@@ -2,6 +2,9 @@ extends Node3D
 
 const roll_extent = 20.0
 
+@onready var trail_L = $Euclid/EuclidArmature/Skeleton3D/Wing_L/Wing_L/Trail3D
+@onready var trail_R = $Euclid/EuclidArmature/Skeleton3D/Wing_R/Wing_R/Trail3D2
+
 var anim_moving = false
 var ry_delta = 0.0
 var ry_last = 0.0
@@ -52,8 +55,14 @@ func _process(_delta):
 	
 	if root == null: return
 	if root.position_locked == true:
+		rotation.z = 0.0
 		rotation_degrees.y = root.lock_dir.x
+		trail_L.enabled = false
+		trail_R.enabled = false
 		return
+	
+	if trail_L.enabled == false: trail_L.reenable()
+	if trail_R.enabled == false: trail_R.reenable()
 	
 	var roll_delta = 0.0
 	ry_delta = 0.0

@@ -35,6 +35,10 @@ _subresources={
 "use_external/enabled": true,
 "use_external/path": "res://characters/euclid/mat_energy.tres"
 },
+"mat_euclid": {
+"use_external/enabled": true,
+"use_external/path": "res://characters/euclid/mat_euclid.tres"
+},
 "mat_fresnel": {
 "use_external/enabled": true,
 "use_external/path": "res://characters/euclid/mat_fresnel.tres"
@@ -42,4 +46,4 @@ _subresources={
 }
 }
 gltf/naming_version=1
-gltf/embedded_image_handling=2
+gltf/embedded_image_handling=1
