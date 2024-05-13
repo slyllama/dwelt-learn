@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://d23wqewgge7mv" path="res://objects/elevator/elevator.tscn" id="17_l4sxi"]
 [ext_resource type="PackedScene" uid="uid://bw14qvqobtubd" path="res://characters/fourier/fourier.glb" id="17_wxfph"]
 [ext_resource type="PackedScene" uid="uid://b804toes743v0" path="res://maps/lattice/pivot_light.tscn" id="18_7fno8"]
-[ext_resource type="PackedScene" uid="uid://d2ccal7vbqgjx" path="res://maps/lattice/greybox.glb" id="18_8pphe"]
+[ext_resource type="PackedScene" uid="uid://bbrbse4rdrdeg" path="res://maps/lattice/greybox/greybox.glb" id="18_8pphe"]
 [ext_resource type="PackedScene" uid="uid://dk0s3tibcdcq0" path="res://objects/updraft/updraft.tscn" id="20_ib8vs"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dbpli"]
@@ -176,9 +176,6 @@ dialogue_data = Array[String](["Hovering over deadly spinning blades for pleasur
 object_name = "updraft_dialogue"
 dialogue_close_distance = 7.0
 
-[node name="Greybox" parent="." instance=ExtResource("18_8pphe")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
-
 [node name="Path3D" type="Path3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.802554, 0.910717, 17.1301)
 curve = SubResource("Curve3D_ty3u0")
@@ -221,3 +218,5 @@ transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107
 
 [node name="PivotLight9" parent="LightFloor" instance=ExtResource("18_7fno8")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 7, 0)
+
+[node name="greybox" parent="." instance=ExtResource("18_8pphe")]

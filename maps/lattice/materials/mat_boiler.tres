@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://btqofykcxiwbg"]
+
+[ext_resource type="Texture2D" uid="uid://sgba3e6ebus8" path="res://maps/lattice/materials/tex/black_steel_emit.png" id="1_dc63n"]
+[ext_resource type="Texture2D" uid="uid://cenebamy6yf7i" path="res://maps/lattice/materials/tex/black_steel_norm.png" id="2_w6rwy"]
+
+[resource]
+albedo_texture = ExtResource("1_dc63n")
+metallic = 0.6
+roughness = 0.39
+normal_enabled = true
+normal_scale = 0.3
+normal_texture = ExtResource("2_w6rwy")
+uv1_scale = Vector3(4, 4, 4)

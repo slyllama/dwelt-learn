@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://dp2g4ji1g37r1"]
+
+[ext_resource type="Texture2D" uid="uid://d0d73h8b72ppd" path="res://maps/lattice/materials/tex/future_emit.png" id="1_gql5q"]
+[ext_resource type="Texture2D" uid="uid://dp7vpeisgv2x3" path="res://maps/lattice/materials/tex/future_norm.png" id="2_h6vp1"]
+
+[resource]
+albedo_color = Color(0.618617, 0.618617, 0.618617, 1)
+albedo_texture = ExtResource("1_gql5q")
+metallic = 0.65
+roughness = 0.6
+normal_enabled = true
+normal_scale = 0.75
+normal_texture = ExtResource("2_h6vp1")
+uv1_scale = Vector3(5, 5, 5)

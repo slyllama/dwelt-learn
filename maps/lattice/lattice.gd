@@ -5,7 +5,7 @@ func _ready():
 	$VentFan/AnimationPlayer.play("Fan")
 	$Path3D/PathFollow3D/FourierTest/AnimationPlayer.play("Idle")
 
-func _process(delta):
+func _process(_delta):
 	$Path3D/PathFollow3D.progress += 0.05
 	if $Path3D/PathFollow3D.progress_ratio >= 0.99:
 		$Path3D/PathFollow3D.progress = 0.0
