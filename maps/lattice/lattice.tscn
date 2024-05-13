@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dsf4aknq3seh2"]
+[gd_scene load_steps=30 format=3 uid="uid://dsf4aknq3seh2"]
 
 [ext_resource type="Script" path="res://maps/lattice/lattice.gd" id="1_hqs2c"]
 [ext_resource type="Texture2D" uid="uid://c5duom5wl7px7" path="res://generic/tex/sky.png" id="2_1uuus"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://bw14qvqobtubd" path="res://characters/fourier/fourier.glb" id="17_wxfph"]
 [ext_resource type="PackedScene" uid="uid://b804toes743v0" path="res://maps/lattice/pivot_light.tscn" id="18_7fno8"]
 [ext_resource type="PackedScene" uid="uid://bbrbse4rdrdeg" path="res://maps/lattice/greybox/greybox.glb" id="18_8pphe"]
+[ext_resource type="ArrayOccluder3D" uid="uid://c6mstxahwnbb1" path="res://maps/lattice/lattice.occ" id="19_o6ais"]
 [ext_resource type="PackedScene" uid="uid://dk0s3tibcdcq0" path="res://objects/updraft/updraft.tscn" id="20_ib8vs"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dbpli"]
@@ -32,7 +33,6 @@ ambient_light_source = 2
 ambient_light_color = Color(0.42, 0.36848, 0.3234, 1)
 tonemap_mode = 2
 tonemap_exposure = 2.0
-glow_enabled = true
 glow_levels/5 = 0.1
 fog_enabled = true
 fog_light_color = Color(0, 0, 0, 1)
@@ -193,7 +193,6 @@ object_name = "fourier_dialogue"
 dialogue_close_distance = 7.0
 
 [node name="FourierVisible" type="VisibleOnScreenNotifier3D" parent="Path3D/PathFollow3D/FourierTest"]
-aabb = AABB(-0.499318, -0.482764, -0.525263, 0.998635, 0.965529, 1.05053)
 
 [node name="LightFloor" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7, 0)
@@ -217,6 +216,9 @@ transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 0, 7, 0)
 transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 0, 7, 0)
 
 [node name="greybox" parent="." instance=ExtResource("18_8pphe")]
+
+[node name="OCC" type="OccluderInstance3D" parent="."]
+occluder = ExtResource("19_o6ais")
 
 [connection signal="screen_entered" from="Path3D/PathFollow3D/FourierTest/FourierVisible" to="." method="_on_fourier_visible_screen_entered"]
 [connection signal="screen_exited" from="Path3D/PathFollow3D/FourierTest/FourierVisible" to="." method="_on_fourier_visible_screen_exited"]
