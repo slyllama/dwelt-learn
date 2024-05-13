@@ -1,9 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://dk0s3tibcdcq0"]
+[gd_scene load_steps=22 format=3 uid="uid://dk0s3tibcdcq0"]
 
 [ext_resource type="PackedScene" uid="uid://c35iff81j46sc" path="res://objects/updraft/updraft_model.glb" id="1_6r8vs"]
 [ext_resource type="Script" path="res://objects/updraft/updraft.gd" id="1_gj72g"]
 [ext_resource type="Shader" uid="uid://dlmkx7n01hlq6" path="res://objects/updraft/whirl_center.tres" id="2_l7aic"]
-[ext_resource type="Texture2D" uid="uid://dinrdf02xeqaq" path="res://generic/tex/fade_ramp.tres" id="3_5h4qh"]
 [ext_resource type="Texture2D" uid="uid://d1fy6jygommc6" path="res://generic/tex/particles/mote.png" id="4_m1pur"]
 [ext_resource type="Texture2D" uid="uid://d0rbiwmc3jmm8" path="res://objects/updraft/updraft_decal.png" id="6_3nqoh"]
 [ext_resource type="Script" path="res://objects/updraft/Chroma.gd" id="7_5xnoj"]
@@ -55,6 +54,13 @@ _data = {
 "rotate": SubResource("Animation_yfce6")
 }
 
+[sub_resource type="Gradient" id="Gradient_qw0hq"]
+offsets = PackedFloat32Array(0, 0.584906, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_cjilj"]
+gradient = SubResource("Gradient_qw0hq")
+
 [sub_resource type="Curve" id="Curve_2reyu"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
@@ -70,7 +76,8 @@ initial_velocity_max = 0.05
 gravity = Vector3(0, 20, 0)
 scale_min = 0.5
 scale_curve = SubResource("CurveTexture_n7qc6")
-color_ramp = ExtResource("3_5h4qh")
+color = Color(1, 1, 1, 0.0901961)
+color_ramp = SubResource("GradientTexture1D_cjilj")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2dh08"]
 transparency = 1
@@ -90,7 +97,7 @@ size = Vector2(0.05, 0.5)
 orientation = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3ek6y"]
-size = Vector3(3, 11.5, 4.5)
+size = Vector3(3, 7.5, 4.5)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1tcy7"]
 shader = ExtResource("7_xx8sf")
@@ -129,7 +136,7 @@ draw_pass_1 = SubResource("PlaneMesh_pwm18")
 collision_layer = 8
 
 [node name="Collision" type="CollisionShape3D" parent="UpdraftArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.75, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.75, 0)
 shape = SubResource("BoxShape3D_3ek6y")
 
 [node name="Decal" type="Decal" parent="."]

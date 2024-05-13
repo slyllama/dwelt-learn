@@ -34,8 +34,12 @@ _subresources={
 "mat_energy": {
 "use_external/enabled": true,
 "use_external/path": "res://characters/euclid/mat_fresnel.tres"
+},
+"mat_fourier": {
+"use_external/enabled": true,
+"use_external/path": "res://characters/fourier/mat_fourier.tres"
 }
 }
 }
 gltf/naming_version=1
-gltf/embedded_image_handling=2
+gltf/embedded_image_handling=1

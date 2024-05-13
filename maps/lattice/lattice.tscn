@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dsf4aknq3seh2"]
+[gd_scene load_steps=29 format=3 uid="uid://dsf4aknq3seh2"]
 
 [ext_resource type="Script" path="res://maps/lattice/lattice.gd" id="1_hqs2c"]
 [ext_resource type="Texture2D" uid="uid://c5duom5wl7px7" path="res://generic/tex/sky.png" id="2_1uuus"]
@@ -15,7 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://i1jp4klishr3" path="res://lib/dialogue/dialogue.tscn" id="16_j30j2"]
 [ext_resource type="PackedScene" uid="uid://d23wqewgge7mv" path="res://objects/elevator/elevator.tscn" id="17_l4sxi"]
 [ext_resource type="PackedScene" uid="uid://bw14qvqobtubd" path="res://characters/fourier/fourier.glb" id="17_wxfph"]
-[ext_resource type="PackedScene" uid="uid://dfi77wxjq1u1l" path="res://maps/lattice/structure.glb" id="18_dqtp6"]
+[ext_resource type="PackedScene" uid="uid://b804toes743v0" path="res://maps/lattice/pivot_light.tscn" id="18_7fno8"]
+[ext_resource type="PackedScene" uid="uid://d2ccal7vbqgjx" path="res://maps/lattice/greybox.glb" id="18_8pphe"]
 [ext_resource type="PackedScene" uid="uid://dk0s3tibcdcq0" path="res://objects/updraft/updraft.tscn" id="20_ib8vs"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dbpli"]
@@ -84,6 +85,13 @@ material = SubResource("StandardMaterial3D_arrm5")
 size = Vector2(0.06, 0.06)
 orientation = 2
 
+[sub_resource type="Curve3D" id="Curve3D_ty3u0"]
+_data = {
+"points": PackedVector3Array(-1.365, 0, 0, 0, 0, 0, 0, 0, 0, -1.365, 0, 0, 1.875, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 4.33),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
 [node name="Lattice" type="Node3D"]
 script = ExtResource("1_hqs2c")
 
@@ -91,11 +99,10 @@ script = ExtResource("1_hqs2c")
 environment = SubResource("Environment_r5o54")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.567002, -0.616053, 0.546798, -0.624731, 0.11103, 0.772906, -0.536862, -0.779841, -0.321913, 0, 6, 0)
+transform = Transform3D(1, 0, 0, 0, -0.368757, 0.929526, 0, -0.929526, -0.368757, 0, 6, 12.6327)
 light_color = Color(1, 0.819608, 0.639216, 1)
 light_energy = 2.0
 shadow_enabled = true
-shadow_bias = 0.2
 directional_shadow_split_1 = 0.3
 directional_shadow_split_2 = 0.4
 directional_shadow_split_3 = 0.7
@@ -105,7 +112,7 @@ sky_mode = 1
 
 [node name="Player" parent="." instance=ExtResource("3_0m0xl")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.77882, 1.5, 17.476)
 
 [node name="HUD" parent="." instance=ExtResource("4_gb0g0")]
 
@@ -122,7 +129,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 shape = SubResource("BoxShape3D_fuk4o")
 
 [node name="Motes" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 17.5)
 cast_shadow = 0
 amount = 20
 lifetime = 3.0
@@ -133,47 +140,35 @@ process_material = SubResource("ParticleProcessMaterial_6f558")
 draw_pass_1 = SubResource("PlaneMesh_udmxf")
 
 [node name="Rocket" parent="." instance=ExtResource("13_8sf1c")]
-transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 18.163, 12)
+transform = Transform3D(0.960128, 0, 0.279561, 0, 1, 0, -0.279561, 0, 0.960128, 0, 15, 0)
 
 [node name="Spot" type="SpotLight3D" parent="Rocket"]
-transform = Transform3D(-1, 1.48702e-07, -2.62201e-08, 0, -0.173648, -0.984808, -1.50996e-07, -0.984808, 0.173648, -1.05697e-06, -20.134, 7)
+transform = Transform3D(-1, 1.4028e-07, -5.29307e-08, -1.13133e-08, -0.422618, -0.906308, -1.49506e-07, -0.906308, 0.422618, -1.11061e-06, -18.634, 7.5)
 light_energy = 65.0
 spot_range = 30.0
 spot_angle = 30.0
 
-[node name="Updraft" parent="." instance=ExtResource("20_ib8vs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, 6)
-
-[node name="Updraft2" parent="." instance=ExtResource("20_ib8vs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, 6)
-object_name = "updraft2"
-
 [node name="Elevator" parent="." instance=ExtResource("17_l4sxi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, -7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19)
 height = 3
-
-[node name="Elevator2" parent="." instance=ExtResource("17_l4sxi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, -7)
-height = 3
-object_name = "elevator2"
-
-[node name="Structure" parent="." instance=ExtResource("18_dqtp6")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 25, 10)
-
-[node name="Structure2" parent="." instance=ExtResource("18_dqtp6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, -10)
 
 [node name="GodRay1" type="MeshInstance3D" parent="."]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.3, 20.663, 1.3)
+visible = false
 cast_shadow = 0
 mesh = ExtResource("11_vmy1k")
 surface_material_override/0 = ExtResource("14_phhgt")
 
 [node name="Laser" parent="." instance=ExtResource("15_qt6cc")]
 transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 8.91032, 0.383279, 2.01576)
+visible = false
 
 [node name="VentFan" parent="." instance=ExtResource("16_fhj2e")]
-transform = Transform3D(-0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, 17, 1.3, 6)
+transform = Transform3D(0.157693, 0, 0.987488, 0, 1, 0, -0.987488, 0, 0.157693, -0.160114, 1.08405, 24.692)
+
+[node name="Updraft2" parent="VentFan" instance=ExtResource("20_ib8vs")]
+transform = Transform3D(-0.866026, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866026, 0, -1.3, 0)
+object_name = "updraft2"
 
 [node name="DialogueArea2" parent="VentFan" instance=ExtResource("16_j30j2")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
@@ -181,14 +176,48 @@ dialogue_data = Array[String](["Hovering over deadly spinning blades for pleasur
 object_name = "updraft_dialogue"
 dialogue_close_distance = 7.0
 
-[node name="VentFan2" parent="." instance=ExtResource("16_fhj2e")]
-transform = Transform3D(-0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, -17, 1.3, 6)
+[node name="Greybox" parent="." instance=ExtResource("18_8pphe")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
-[node name="FourierTest" parent="." instance=ExtResource("17_wxfph")]
-transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 20.5197, 1.88328, 2.01521)
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.802554, 0.910717, 17.1301)
+curve = SubResource("Curve3D_ty3u0")
 
-[node name="DialogueArea" parent="FourierTest" instance=ExtResource("16_j30j2")]
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="FourierTest" parent="Path3D/PathFollow3D" instance=ExtResource("17_wxfph")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.3, 1)
+
+[node name="DialogueArea" parent="Path3D/PathFollow3D/FourierTest" instance=ExtResource("16_j30j2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 dialogue_data = Array[String](["I've been on this thing... Computing... twenty-seven times today. I can't get enough of it!"])
 object_name = "fourier_dialogue"
 dialogue_close_distance = 7.0
+
+[node name="LightFloor" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="PivotLight" parent="LightFloor" instance=ExtResource("18_7fno8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0)
+
+[node name="PivotLight2" parent="LightFloor" instance=ExtResource("18_7fno8")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 7, 0)
+
+[node name="PivotLight3" parent="LightFloor" instance=ExtResource("18_7fno8")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 7, 0)
+
+[node name="PivotLight4" parent="LightFloor" instance=ExtResource("18_7fno8")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 7, 0)
+
+[node name="PivotLight5" parent="LightFloor" instance=ExtResource("18_7fno8")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 0, 7, 0)
+
+[node name="PivotLight6" parent="LightFloor" instance=ExtResource("18_7fno8")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 7, 0)
+
+[node name="PivotLight7" parent="LightFloor" instance=ExtResource("18_7fno8")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 0, 7, 0)
+
+[node name="PivotLight9" parent="LightFloor" instance=ExtResource("18_7fno8")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 7, 0)

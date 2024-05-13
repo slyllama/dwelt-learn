@@ -3,18 +3,18 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dfi77wxjq1u1l"
-path="res://.godot/imported/structure.glb-b36e225495d215bff2f4fe66f8784528.scn"
+uid="uid://d2ccal7vbqgjx"
+path="res://.godot/imported/greybox.glb-5363ba2d5c0384398b5d9d4e135541d2.scn"
 
 [deps]
 
-source_file="res://maps/lattice/structure.glb"
-dest_files=["res://.godot/imported/structure.glb-b36e225495d215bff2f4fe66f8784528.scn"]
+source_file="res://maps/lattice/greybox.glb"
+dest_files=["res://.godot/imported/greybox.glb-5363ba2d5c0384398b5d9d4e135541d2.scn"]
 
 [params]
 
 nodes/root_type=""
-nodes/root_name="Structure"
+nodes/root_name="Greybox"
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 meshes/ensure_tangents=true
@@ -31,9 +31,9 @@ animation/remove_immutable_tracks=true
 import_script/path=""
 _subresources={
 "materials": {
-"mat_greybox": {
+"mat": {
 "use_external/enabled": true,
-"use_external/path": "res://generic/mat_greybox.tres"
+"use_external/path": "res://maps/lattice/mat_grey.tres"
 }
 }
 }

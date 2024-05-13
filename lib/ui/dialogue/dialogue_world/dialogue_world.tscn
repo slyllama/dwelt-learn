@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://dyhaqy0gi2mf1"]
+
+[ext_resource type="PackedScene" uid="uid://bw14qvqobtubd" path="res://characters/fourier/fourier.glb" id="1_cftm1"]
+[ext_resource type="Script" path="res://lib/ui/dialogue/dialogue_world/dialogue_world.gd" id="1_r6rob"]
+
+[sub_resource type="Environment" id="Environment_mwppl"]
+tonemap_mode = 2
+tonemap_white = 1.5
+adjustment_enabled = true
+adjustment_saturation = 1.2
+
+[node name="DialogueWorld" type="SubViewport"]
+msaa_3d = 2
+screen_space_aa = 1
+script = ExtResource("1_r6rob")
+
+[node name="3DWorld" type="Node3D" parent="."]
+
+[node name="Camera" type="Camera3D" parent="3DWorld"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.909)
+fov = 65.0
+
+[node name="TestModel" parent="3DWorld" instance=ExtResource("1_cftm1")]
+transform = Transform3D(0.924113, 0.10085, 0.36857, 3.72529e-09, 0.964544, -0.263924, -0.382119, 0.243895, 0.891347, 0, 0, 0)
+
+[node name="Sun" type="DirectionalLight3D" parent="3DWorld"]
+transform = Transform3D(0.914261, 0.14385, 0.378727, -7.02123e-09, 0.934838, -0.355074, -0.405126, 0.324631, 0.854686, 0, 0.86546, 0.982372)
+light_energy = 3.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="3DWorld"]
+environment = SubResource("Environment_mwppl")

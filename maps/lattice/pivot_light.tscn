@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://b804toes743v0"]
+
+[node name="PivotLight" type="Node3D"]
+
+[node name="Light" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 0, 0)
+light_color = Color(1, 0.882353, 0.776471, 1)
+light_energy = 6.0
+omni_range = 9.0
