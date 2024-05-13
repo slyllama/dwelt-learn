@@ -6,10 +6,9 @@
 [resource]
 albedo_texture = ExtResource("1_alwpw")
 metallic = 0.8
-roughness = 0.3
+roughness = 0.45
 normal_enabled = true
 normal_scale = 0.5
 normal_texture = ExtResource("2_xnhg5")
-subsurf_scatter_enabled = true
 subsurf_scatter_strength = 0.5
 uv1_scale = Vector3(8, 8, 8)

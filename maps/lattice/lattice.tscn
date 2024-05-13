@@ -140,7 +140,7 @@ process_material = SubResource("ParticleProcessMaterial_6f558")
 draw_pass_1 = SubResource("PlaneMesh_udmxf")
 
 [node name="Rocket" parent="." instance=ExtResource("13_8sf1c")]
-transform = Transform3D(0.960128, 0, 0.279561, 0, 1, 0, -0.279561, 0, 0.960128, 0, 15, 0)
+transform = Transform3D(0.960128, 0, 0.279561, 0, 1, 0, -0.279561, 0, 0.960128, 0, 14.2924, 0)
 
 [node name="Spot" type="SpotLight3D" parent="Rocket"]
 transform = Transform3D(-1, 1.4028e-07, -5.29307e-08, -1.13133e-08, -0.422618, -0.906308, -1.49506e-07, -0.906308, 0.422618, -1.11061e-06, -18.634, 7.5)
@@ -164,7 +164,7 @@ transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 
 visible = false
 
 [node name="VentFan" parent="." instance=ExtResource("16_fhj2e")]
-transform = Transform3D(0.157693, 0, 0.987488, 0, 1, 0, -0.987488, 0, 0.157693, -0.160114, 1.08405, 24.692)
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 0.669077, 1.28921, 23.0866)
 
 [node name="Updraft2" parent="VentFan" instance=ExtResource("20_ib8vs")]
 transform = Transform3D(-0.866026, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866026, 0, -1.3, 0)
@@ -192,31 +192,31 @@ dialogue_data = Array[String](["I've been on this thing... Computing... twenty-s
 object_name = "fourier_dialogue"
 dialogue_close_distance = 7.0
 
+[node name="FourierVisible" type="VisibleOnScreenNotifier3D" parent="Path3D/PathFollow3D/FourierTest"]
+aabb = AABB(-0.499318, -0.482764, -0.525263, 0.998635, 0.965529, 1.05053)
+
 [node name="LightFloor" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7, 0)
 
 [node name="PivotLight" parent="LightFloor" instance=ExtResource("18_7fno8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0)
 
 [node name="PivotLight2" parent="LightFloor" instance=ExtResource("18_7fno8")]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 7, 0)
+transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 0, 7, 0)
 
 [node name="PivotLight3" parent="LightFloor" instance=ExtResource("18_7fno8")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 7, 0)
+transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, 0, 7, 0)
 
 [node name="PivotLight4" parent="LightFloor" instance=ExtResource("18_7fno8")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 7, 0)
-
-[node name="PivotLight5" parent="LightFloor" instance=ExtResource("18_7fno8")]
-transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 0, 7, 0)
-
-[node name="PivotLight6" parent="LightFloor" instance=ExtResource("18_7fno8")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 7, 0)
 
-[node name="PivotLight7" parent="LightFloor" instance=ExtResource("18_7fno8")]
-transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 0, 7, 0)
+[node name="PivotLight5" parent="LightFloor" instance=ExtResource("18_7fno8")]
+transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 0, 7, 0)
 
-[node name="PivotLight9" parent="LightFloor" instance=ExtResource("18_7fno8")]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 7, 0)
+[node name="PivotLight6" parent="LightFloor" instance=ExtResource("18_7fno8")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 0, 7, 0)
 
 [node name="greybox" parent="." instance=ExtResource("18_8pphe")]
+
+[connection signal="screen_entered" from="Path3D/PathFollow3D/FourierTest/FourierVisible" to="." method="_on_fourier_visible_screen_entered"]
+[connection signal="screen_exited" from="Path3D/PathFollow3D/FourierTest/FourierVisible" to="." method="_on_fourier_visible_screen_exited"]

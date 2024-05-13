@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bbrbse4rdrdeg"
-path="res://.godot/imported/greybox.glb-cf14c6d015924f297f07acf3352b1f09.scn"
+uid="uid://dulsifjxaelcj"
+path="res://.godot/imported/floor_piece.glb-fcffc5eac6afd659638f9041dbc0e651.scn"
 
 [deps]
 
-source_file="res://maps/lattice/greybox/greybox.glb"
-dest_files=["res://.godot/imported/greybox.glb-cf14c6d015924f297f07acf3352b1f09.scn"]
+source_file="res://maps/lattice/greybox/floor_piece.glb"
+dest_files=["res://.godot/imported/floor_piece.glb-fcffc5eac6afd659638f9041dbc0e651.scn"]
 
 [params]
 
@@ -38,10 +38,6 @@ _subresources={
 "mat_dirty_gold": {
 "use_external/enabled": true,
 "use_external/path": "res://maps/lattice/materials/mat_gold.tres"
-},
-"mat_placeholder": {
-"use_external/enabled": true,
-"use_external/path": "res://maps/lattice/mat_grey.tres"
 }
 }
 }

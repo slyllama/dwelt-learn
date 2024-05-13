@@ -5,8 +5,7 @@
 
 [resource]
 albedo_texture = ExtResource("1_rtuau")
-metallic = 0.7
+metallic = 0.85
 roughness = 0.45
 normal_enabled = true
-normal_scale = 0.6
 normal_texture = ExtResource("2_t55g5")
