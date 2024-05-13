@@ -4,10 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://cenebamy6yf7i" path="res://maps/lattice/materials/tex/black_steel_norm.png" id="2_w6rwy"]
 
 [resource]
+albedo_color = Color(0.775063, 0.775063, 0.775063, 1)
 albedo_texture = ExtResource("1_dc63n")
 metallic = 0.6
 roughness = 0.39
 normal_enabled = true
-normal_scale = 0.3
+normal_scale = 0.5
 normal_texture = ExtResource("2_w6rwy")
 uv1_scale = Vector3(4, 4, 4)

@@ -40,6 +40,10 @@ window/stretch/aspect="expand"
 window/stretch/scale_mode="integer"
 mouse_cursor/custom_image="res://lib/ui/tex/cursor.png"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godotsize/plugin.cfg")
+
 [filesystem]
 
 import/blender/enabled=false
