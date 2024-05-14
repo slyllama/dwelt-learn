@@ -10,7 +10,9 @@ extends TextureButton
 const textures = {
 	"UNKNOWN": preload("res://lib/ui/skills/tex/unknown.png"),
 	"CANCEL": preload("res://lib/ui/skills/tex/cancel.png"),
-	"LOCKED": preload("res://lib/ui/skills/tex/locked.png")
+	"LOCKED": preload("res://lib/ui/skills/tex/locked.png"),
+	"GLIDE": preload("res://lib/ui/skills/tex/glide.png"),
+	"INTERACT": preload("res://lib/ui/skills/tex/interact.png")
 }
 
 func enable():
