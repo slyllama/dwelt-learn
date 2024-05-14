@@ -44,7 +44,7 @@ func close_dialogue():
 
 func play_dialogue(get_dialogue):
 	$SmokeOverlay.activate()
-	$PlaySound.play()
+	#$PlaySound.play()
 	current_dialogue = get_dialogue.data
 	current_title = str(get_dialogue.title).to_upper()
 	current_place = 0
@@ -53,6 +53,7 @@ func play_dialogue(get_dialogue):
 	if "character" in get_dialogue:
 		if get_dialogue.character != "":
 			$Base/VP3D.visible = true
+			$Base/VP3D/DialogueWorld.load_model(get_dialogue.character)
 		else: $Base/VP3D.visible = false
 	else: $Base/VP3D.visible = false
 	

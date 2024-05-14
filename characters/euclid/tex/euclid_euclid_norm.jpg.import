@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyxqwjwewqqc5"
-path.s3tc="res://.godot/imported/euclid_euclid_diff.jpg-7f5d7d5888f4f535252d5a21cb279a11.s3tc.ctex"
+uid="uid://d0nw55g4wwp3t"
+path.s3tc="res://.godot/imported/euclid_euclid_norm.jpg-bf20056a0fc478b23869043bce8e4fff.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://characters/euclid/euclid_euclid_diff.jpg"
-dest_files=["res://.godot/imported/euclid_euclid_diff.jpg-7f5d7d5888f4f535252d5a21cb279a11.s3tc.ctex"]
+source_file="res://characters/euclid/tex/euclid_euclid_norm.jpg"
+dest_files=["res://.godot/imported/euclid_euclid_norm.jpg-bf20056a0fc478b23869043bce8e4fff.s3tc.ctex"]
 
 [params]
 
@@ -20,15 +20,15 @@ compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=0
-roughness/src_normal=""
+roughness/mode=1
+roughness/src_normal="res://characters/euclid/euclid_euclid_norm.jpg"
 process/fix_alpha_border=true
 process/premult_alpha=false
-process/normal_map_invert_y=false
+process/normal_map_invert_y=true
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0

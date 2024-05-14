@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bu8mhnqek734n"
-path.s3tc="res://.godot/imported/eye_card.png-eb4c2b411f7853d6a11f3758fc14f9e6.s3tc.ctex"
+uid="uid://cyxqwjwewqqc5"
+path.s3tc="res://.godot/imported/euclid_euclid_diff.jpg-0b265fe241475f9bf7db9fec366d578d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://characters/euclid/tex/eye_card.png"
-dest_files=["res://.godot/imported/eye_card.png-eb4c2b411f7853d6a11f3758fc14f9e6.s3tc.ctex"]
+source_file="res://characters/euclid/tex/euclid_euclid_diff.jpg"
+dest_files=["res://.godot/imported/euclid_euclid_diff.jpg-0b265fe241475f9bf7db9fec366d578d.s3tc.ctex"]
 
 [params]
 

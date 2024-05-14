@@ -121,7 +121,6 @@ autoplay = true
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_6m1au")
 volume_db = -5.0
-autoplay = true
 
 [node name="Floor" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.433279, 0)
@@ -194,6 +193,19 @@ dialogue_data = Array[String](["The rusty bot looks out toward nothing with an e
 dialogue_title = "Fourier"
 character = "fourier"
 object_name = "fourier_dialogue"
+dialogue_close_distance = 7.0
+
+[node name="FourierTest2" parent="." instance=ExtResource("17_wxfph")]
+transform = Transform3D(0.561144, 0, 0.827717, 0, 1, 0, -0.827717, 0, 0.561144, 0.377442, 1.77663, 15.9731)
+
+[node name="DialogueArea" parent="FourierTest2" instance=ExtResource("16_j30j2")]
+transform = Transform3D(1.22, 0, 0, 0, 1.22, 0, 0, 0, 1.22, 0, -1.24547, 0)
+dialogue_data = Array[String](["The rusty bot looks out toward nothing with an expression of pure contentment, joints squeaking as they bounce in the air.
+
+<\"I've been on this thing -- computing -- twenty-seven times today. I can't get enough of it!\"> You wonder for a second if you should reach out and see if they really are okay; but it occurs to you that they're probably happier than you are."])
+dialogue_title = "Fourier"
+character = "euclid"
+object_name = "test_more"
 dialogue_close_distance = 7.0
 
 [node name="FloorPieces" type="Node3D" parent="."]
