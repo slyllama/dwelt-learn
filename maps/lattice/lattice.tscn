@@ -231,6 +231,9 @@ material = SubResource("StandardMaterial3D_xs4sr")
 [node name="Crystal" parent="." instance=ExtResource("21_a8l2q")]
 transform = Transform3D(0.909657, 0, 0.41536, 0, 1, 0, -0.41536, 0, 0.909657, -4.5596, -0.134767, 15.5754)
 
+[node name="Crystal4" parent="." instance=ExtResource("21_a8l2q")]
+transform = Transform3D(1.22775, 0.404737, 0.240927, -5.88029e-08, -0.672627, 1.12996, 0.471018, -1.05498, -0.627997, -4.83033, 8.01938, 29.815)
+
 [node name="Crystal2" parent="." instance=ExtResource("21_a8l2q")]
 transform = Transform3D(0.230848, 0, 0.97299, 0, 1, 0, -0.97299, 0, 0.230848, 6.31157, 0.132294, 27.4652)
 
