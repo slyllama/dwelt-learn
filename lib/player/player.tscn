@@ -95,6 +95,7 @@ script = ExtResource("2_73c7o")
 
 [node name="CamArm" type="SpringArm3D" parent="CamPivot"]
 transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 1, 0, 0)
+collision_mask = 2
 shape = SubResource("SphereShape3D_yehb5")
 spring_length = 5.0
 
