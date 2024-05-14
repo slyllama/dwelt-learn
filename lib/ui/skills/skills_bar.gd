@@ -17,7 +17,7 @@ func _ready():
 		else: $HBox/Interact.disable())
 	Action.deactivated.connect(func():
 		$HBox/Interact.disable()
-		$HBox/Interact.set_texture("UNKNOWN"))
+		$HBox/Interact.set_texture("INTERACT"))
 	
 	$HBox/Glide.enable()
 
