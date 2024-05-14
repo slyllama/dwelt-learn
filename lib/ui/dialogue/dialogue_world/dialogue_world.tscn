@@ -17,11 +17,11 @@ script = ExtResource("1_r6rob")
 [node name="3DWorld" type="Node3D" parent="."]
 
 [node name="Camera" type="Camera3D" parent="3DWorld"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.909)
-fov = 65.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+fov = 35.0
 
 [node name="TestModel" parent="3DWorld" instance=ExtResource("1_cftm1")]
-transform = Transform3D(0.924113, 0.10085, 0.36857, 3.72529e-09, 0.964544, -0.263924, -0.382119, 0.243895, 0.891347, 0, 0, 0)
+transform = Transform3D(0.906308, 0, -0.422618, 0, 1, 0, 0.422618, 0, 0.906307, 0, 0, 0)
 
 [node name="Sun" type="DirectionalLight3D" parent="3DWorld"]
 transform = Transform3D(0.914261, 0.14385, 0.378727, -7.02123e-09, 0.934838, -0.355074, -0.405126, 0.324631, 0.854686, 0, 0.86546, 0.982372)

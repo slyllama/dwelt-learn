@@ -35,11 +35,6 @@ func _ready():
 	target_y_position = $CamArm/Camera.v_offset
 	camera_distance = $CamArm.spring_length
 
-	# Zoom in a bit
-	for _i in 2:
-		camera_distance -= zoom_increment
-		target_y_position -= 0.1
-
 # Prevents mouse capturing starting again when the cursor leaves the panel
 var mouse_in_settings_menu = false
 
@@ -88,10 +83,12 @@ func _input(event):
 	if Input.is_action_just_pressed("zoom_in"):
 		if camera_distance - zoom_increment > min_zoom_extent:
 			camera_distance -= zoom_increment
+			$CamArm/Camera/XCast.target_position.z += zoom_increment
 			target_y_position -= 0.1
 	elif Input.is_action_just_pressed("zoom_out"):
 		if camera_distance + zoom_increment < max_zoom_extent:
 			camera_distance += zoom_increment
+			$CamArm/Camera/XCast.target_position.z -= zoom_increment
 			target_y_position += 0.1
 
 func _process(_delta):

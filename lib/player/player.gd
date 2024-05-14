@@ -41,20 +41,15 @@ func unlock_position():
 	$Collision.disabled = false
 
 func update_debug():
-	Global.debug_details_text = ("position = ("
+	Global.debug_details_text = ("Position: "
 		+ Utilities.fstr(global_position.x) + ", "
 		+ Utilities.fstr(global_position.y) + ", "
-		+ Utilities.fstr(global_position.z) + ")")
-	Global.debug_details_text += "\nmagnitude = " + Utilities.fstr(velocity.length())
-	Global.debug_details_text += "\ndirection = " + Utilities.fstr(%CamPivot.rotation_degrees.y, 1)
+		+ Utilities.fstr(global_position.z))
+	Global.debug_details_text += "\nMagnitude: " + Utilities.fstr(velocity.length())
+	Global.debug_details_text += "\nDirection: " + Utilities.fstr(%CamPivot.rotation_degrees.y, 1)
 	Global.debug_details_text += "\u00B0 (" + str(snapped($ModelHandler.rotation_degrees.y, 1))  + "\u00B0)"
-	Global.debug_details_text += "\ny_velocity = " + Utilities.fstr(Global.player_y_velocity)
-	Global.debug_details_text += "\nlinear_movement_override.y = " + Utilities.fstr(Global.linear_movement_override.y)
-	Global.debug_details_text += "\nraycast_y_point = " + Utilities.fstr(Global.raycast_y_point)
+	Global.debug_details_text += "\nVertical speed: " + Utilities.fstr(Global.player_y_velocity * -1.0)
 	if $Collision.disabled == true: Global.debug_details_text += "\n[color=red]Collision disabled[/color]"
-	Global.debug_details_text += "\nAction.active = " + str(Action.active)
-	if Action.last_target != "": Global.debug_details_text += "\nAction.last_target = " + str(Action.last_target)
-	if Action.target != "": Global.debug_details_text += "\n[color=yellow]Action.target = " + str(Action.target) + "[/color]"
 
 func _ready():
 	Global.connect("player_position_locked", lock_position)

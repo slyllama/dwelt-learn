@@ -1,13 +1,18 @@
 extends Node3D
 
-@export var dialogue_data: Array[String]
+@export_multiline var dialogue_data: Array[String]
+@export var dialogue_title = ""
+@export var character = ""
 @export var object_name = "dialogue"
 @export var dialogue_close_distance = 9.0
 
 func _play_dialogue():
 	Action.activate(object_name, false)
 	Action.untargeted.emit()
-	Global.dialogue_played.emit(dialogue_data)
+	Global.dialogue_played.emit({
+		"title": dialogue_title,
+		"data": dialogue_data,
+		"character": character})
 
 func _close_dialogue():
 	Global.dialogue_closed_early.emit()

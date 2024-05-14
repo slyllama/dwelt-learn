@@ -174,7 +174,8 @@ object_name = "updraft2"
 
 [node name="DialogueArea2" parent="VentFan" instance=ExtResource("16_j30j2")]
 transform = Transform3D(1.393, 0, 1.393, 0, 1.97, 0, -1.393, 0, 1.393, 0, -0.97361, 0)
-dialogue_data = Array[String](["Hovering over deadly spinning blades for pleasure? Preposterous. Although, well... You are a formidable Scrapper, after all. Danger and risk are your close companions."])
+dialogue_data = Array[String](["Hovering over deadly spinning blades for pleasure? Preposterous. Although, well... You are a formidable Scrapper, after all. Danger and risk are your close companions. What could the worst outcome be, a thrilling ride?"])
+dialogue_title = "Upward Vent"
 object_name = "updraft_dialogue"
 dialogue_close_distance = 7.0
 
@@ -190,7 +191,11 @@ transform = Transform3D(-0.638311, 0, 0.769778, 0, 1, 0, -0.769778, 0, -0.638311
 
 [node name="DialogueArea" parent="FourierTest" instance=ExtResource("16_j30j2")]
 transform = Transform3D(1.22, 0, 0, 0, 1.22, 0, 0, 0, 1.22, 0, -1.24547, 0)
-dialogue_data = Array[String](["I've been on this thing... Computing... twenty-seven times today. I can't get enough of it!"])
+dialogue_data = Array[String](["The rusty bot looks out toward nothing with an expression of pure contentment, joints squeaking as it bounces in the air.
+
+\"I've been on this thing -- computing -- twenty-seven times today. I can't get enough of it!\""])
+dialogue_title = "Fourier"
+character = "fourier"
 object_name = "fourier_dialogue"
 dialogue_close_distance = 7.0
 

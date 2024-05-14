@@ -14,6 +14,7 @@ var transitioning = false
 
 ### Dialogue-specific variables
 var current_dialogue = []
+var current_title = ""
 var current_place = 0
 
 func _set_text(get_text):
@@ -38,8 +39,16 @@ func close_dialogue():
 func play_dialogue(get_dialogue):
 	$SmokeOverlay.activate()
 	$PlaySound.play()
-	current_dialogue = get_dialogue
+	current_dialogue = get_dialogue.data
+	current_title = str(get_dialogue.title).to_upper()
 	current_place = 0
+	
+	# Show a 3D character, if there is one
+	if "character" in get_dialogue:
+		if get_dialogue.character != "":
+			$VP3D.visible = true
+		else: $VP3D.visible = false
+	else: $VP3D.visible = false
 	
 	# These are already set by interact_area, but dialogue won't necessarily
 	# be called by area
@@ -61,34 +70,30 @@ func play_phrase():
 		#Action.targeted.emit()
 		Global.dialogue_closed.emit()
 		return
+	_set_text(current_dialogue[current_place].replace("--", "\u2013"))
+	
 	transitioning = true
 	var out_text
-	var c = current_dialogue[current_place]
+	var c = current_title
 	for N in NUMS:
 		out_text = ""
 		while len(c) > len(N) - 1: N += N
 		for i in range(0, len(c)):
 			if c[i] != " ": out_text += N[i]
 			else: out_text += " "
-		_set_text(out_text)
+		$Base/DTitle.text = out_text
 		await get_tree().create_timer(FTIME).timeout
 	for m in stagger:
 		for i in range(0, len(c)):
 			if i % m == 0: out_text[i] = c[i]
-			_set_text(out_text)
+			$Base/DTitle.text = out_text
 		await get_tree().create_timer(FTIME).timeout
 	
-	_set_text(c)
+	$Base/DTitle.text = c
 	current_place += 1
 	transitioning = false
 
 func _ready():
-	#Global.setting_changed.connect(func(setting):
-		#if setting == "larger_ui":
-			#$Particles.position = Utilities.get_screen_center()
-			#$Particles/L.restart()
-			#$Particles/R.restart())
-	
 	Global.connect("dialogue_played", play_dialogue)
 	Global.connect("dialogue_closed", close_dialogue)
 	Global.connect("dialogue_closed_early", close_dialogue)

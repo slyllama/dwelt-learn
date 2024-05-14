@@ -9,38 +9,50 @@
 [node name="HUDButtons" type="CanvasLayer"]
 script = ExtResource("1_516wc")
 
-[node name="TopMenu" type="HBoxContainer" parent="."]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -44.0
-offset_top = 46.0
-offset_right = 44.0
-offset_bottom = 78.0
+[node name="Delay" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+
+[node name="TopMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="DebugButton" type="TextureButton" parent="TopMenu"]
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = -72.0
+offset_right = 72.0
+offset_bottom = -40.0
+grow_vertical = 0
+size_flags_horizontal = 2
 focus_mode = 0
 texture_normal = ExtResource("1_bk4hk")
 texture_hover = ExtResource("2_2xk7h")
 
-[node name="Pad" type="ColorRect" parent="TopMenu"]
-custom_minimum_size = Vector2(16, 0)
-layout_mode = 2
-color = Color(1, 1, 1, 0)
-
 [node name="SettingsButton" type="TextureButton" parent="TopMenu"]
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -72.0
+offset_top = -72.0
+offset_right = -40.0
+offset_bottom = -40.0
+grow_horizontal = 0
+grow_vertical = 0
 focus_mode = 0
 texture_normal = ExtResource("3_oyxnh")
 texture_hover = ExtResource("4_yaykg")
-
-[node name="Delay" type="Timer" parent="."]
-wait_time = 0.4
-one_shot = true
 
 [connection signal="mouse_entered" from="TopMenu/DebugButton" to="." method="_mouseover"]
 [connection signal="pressed" from="TopMenu/DebugButton" to="." method="_on_debug_button_pressed"]

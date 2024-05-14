@@ -2,7 +2,7 @@ extends CanvasLayer
 # "Anime" effect which shows when the player moves
 
 @export var time = 0.1
-@export var maximum_alpha = 0.2
+@export var maximum_alpha = 0.45
 
 var active = false
 

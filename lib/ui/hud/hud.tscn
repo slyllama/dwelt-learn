@@ -34,19 +34,6 @@ mouse_filter = 2
 texture = ExtResource("7_wv8wl")
 expand_mode = 1
 
-[node name="TopVignette" type="TextureRect" parent="."]
-modulate = Color(1, 1, 1, 0.392157)
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -430.0
-offset_right = 430.0
-offset_bottom = 244.0
-grow_horizontal = 2
-mouse_filter = 2
-texture = ExtResource("9_0p1yl")
-expand_mode = 1
-
 [node name="BottomVignette" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0.392157)
 anchors_preset = 7
