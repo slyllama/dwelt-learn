@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dyhaqy0gi2mf1"]
+[gd_scene load_steps=5 format=3 uid="uid://dyhaqy0gi2mf1"]
 
 [ext_resource type="PackedScene" uid="uid://bw14qvqobtubd" path="res://characters/fourier/fourier.glb" id="1_cftm1"]
 [ext_resource type="Script" path="res://lib/ui/dialogue/dialogue_world/dialogue_world.gd" id="1_r6rob"]
+[ext_resource type="PackedScene" uid="uid://dsf532qii5efv" path="res://characters/euclid/euclid.glb" id="3_7yrf8"]
 
 [sub_resource type="Environment" id="Environment_mwppl"]
 tonemap_mode = 2
@@ -22,6 +23,7 @@ fov = 35.0
 
 [node name="TestModel" parent="3DWorld" instance=ExtResource("1_cftm1")]
 transform = Transform3D(0.906308, 0, -0.422618, 0, 1, 0, 0.422618, 0, 0.906307, 0, 0, 0)
+visible = false
 
 [node name="Sun" type="DirectionalLight3D" parent="3DWorld"]
 transform = Transform3D(0.994338, 0.049396, -0.0940855, 0, 0.885394, 0.464842, 0.106264, -0.46221, 0.88038, 0, 0.86546, 0.982372)
@@ -29,3 +31,6 @@ light_energy = 3.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="3DWorld"]
 environment = SubResource("Environment_mwppl")
+
+[node name="Euclid" parent="3DWorld" instance=ExtResource("3_7yrf8")]
+transform = Transform3D(-0.956717, -0.0444767, 0.287601, 0, 0.988252, 0.152831, -0.291019, 0.146216, -0.945478, 0, 0, 0)

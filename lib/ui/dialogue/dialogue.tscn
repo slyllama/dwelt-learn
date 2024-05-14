@@ -47,16 +47,43 @@ layer = 0
 
 [node name="Base" type="TextureRect" parent="."]
 texture_repeat = 2
-anchors_preset = 4
+anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
+anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 104.0
-offset_top = -315.0
-offset_right = 1172.0
-offset_bottom = 192.0
+offset_left = -559.0
+offset_top = -312.0
+offset_right = 509.0
+offset_bottom = 195.0
+grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_i1ywh")
 stretch_mode = 3
+
+[node name="VP3D" type="SubViewportContainer" parent="Base"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -278.5
+offset_right = 140.0
+offset_bottom = 278.5
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+stretch = true
+
+[node name="DialogueWorld" parent="Base/VP3D" instance=ExtResource("14_qbvws")]
+own_world_3d = true
+transparent_bg = true
+handle_input_locally = false
+gui_disable_input = true
+size = Vector2i(640, 557)
+render_target_update_mode = 4
 
 [node name="DText" type="RichTextLabel" parent="Base"]
 layout_mode = 1
@@ -73,7 +100,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme_override_colors/default_color = Color(0.7, 0.7, 0.7, 1)
-theme_override_constants/line_separation = -2
 theme_override_fonts/normal_font = ExtResource("6_0uj4r")
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
@@ -128,29 +154,6 @@ volume_db = -5.0
 [node name="ContinueSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_3bocd")
 volume_db = -4.0
-
-[node name="VP3D" type="SubViewportContainer" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -190.0
-offset_top = -439.0
-offset_right = 450.0
-offset_bottom = 118.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-stretch = true
-
-[node name="DialogueWorld" parent="VP3D" instance=ExtResource("14_qbvws")]
-own_world_3d = true
-transparent_bg = true
-handle_input_locally = false
-gui_disable_input = true
-size = Vector2i(640, 557)
-render_target_update_mode = 4
 
 [connection signal="mouse_entered" from="Base/Proceed" to="." method="_mouseover"]
 [connection signal="pressed" from="Base/Proceed" to="." method="_on_proceed_pressed"]

@@ -33,9 +33,9 @@ _subresources={
 "materials": {
 "mat_vent_fan": {
 "use_external/enabled": true,
-"use_external/path": "res://objects/updraft/mat_vent_fan.tres"
+"use_external/path": "res://objects/updraft/vent_fan/mat_vent_fan.tres"
 }
 }
 }
 gltf/naming_version=1
-gltf/embedded_image_handling=1
+gltf/embedded_image_handling=0

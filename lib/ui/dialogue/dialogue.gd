@@ -20,6 +20,12 @@ var current_place = 0
 func _set_text(get_text):
 	$Base/DText.text = get_text
 
+func _format_text(get_text): # add proper dashes, colours, etc
+	var out_text = get_text.replace("--", "\u2013")
+	out_text = out_text.replace("<", "[color=#66b5ff]")
+	out_text = out_text.replace(">", "[/color]")
+	return(out_text)
+
 func close_dialogue():
 	$SmokeOverlay.deactivate()
 	
@@ -46,9 +52,9 @@ func play_dialogue(get_dialogue):
 	# Show a 3D character, if there is one
 	if "character" in get_dialogue:
 		if get_dialogue.character != "":
-			$VP3D.visible = true
-		else: $VP3D.visible = false
-	else: $VP3D.visible = false
+			$Base/VP3D.visible = true
+		else: $Base/VP3D.visible = false
+	else: $Base/VP3D.visible = false
 	
 	# These are already set by interact_area, but dialogue won't necessarily
 	# be called by area
@@ -70,7 +76,7 @@ func play_phrase():
 		#Action.targeted.emit()
 		Global.dialogue_closed.emit()
 		return
-	_set_text(current_dialogue[current_place].replace("--", "\u2013"))
+	_set_text(_format_text(current_dialogue[current_place]))
 	
 	transitioning = true
 	var out_text

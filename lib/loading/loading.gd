@@ -40,7 +40,7 @@ func _ready():
 	Utilities.load_settings()
 	Global.setting_changed.connect(_setting_changed)
 	for setting in Global.settings: Global.setting_changed.emit(setting)
-	AudioServer.set_bus_volume_db(0, linear_to_db(Global.settings.volume))
+	target_mus_vol = Global.settings.volume
 
 	# Set up for retina
 	if DisplayServer.screen_get_size().x > 2000:
@@ -66,10 +66,9 @@ func _input(_event):
 		Global.debug_state = $FPSCounter.visible # debug will retain its state
 
 func _process(_delta):
-	if started == true:
-		target_mus_vol = lerp(target_mus_vol, 0.0, 0.1)
-		$Music.volume_db = linear_to_db(target_mus_vol)
-		if target_mus_vol <= 0.1: Utilities.set_master_vol(0.0)
+	if started == true: target_mus_vol = lerp(target_mus_vol, 0.0, 0.1)
+	$Music.volume_db = linear_to_db(target_mus_vol)
+	if target_mus_vol <= 0.1: Utilities.set_master_vol(0.0)
 	
 	var colour = "green"
 	if Engine.get_frames_per_second() < 20.0: colour = "red"
@@ -84,6 +83,7 @@ func _process(_delta):
 			$LoadBlack/ProgressBar.value = lerp(
 				$LoadBlack/ProgressBar.value, progress[0] * 100.0, 0.1)
 		ResourceLoader.THREAD_LOAD_LOADED:
+			Utilities.set_master_vol(0.0) # prevent one frame of full volume!
 			get_tree().change_scene_to_packed(
 				ResourceLoader.load_threaded_get(target_path))
 
