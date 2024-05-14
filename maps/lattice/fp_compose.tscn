@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://b804toes743v0"]
+
+[ext_resource type="PackedScene" uid="uid://dulsifjxaelcj" path="res://maps/lattice/models/floor_piece.glb" id="1_mwmfb"]
+[ext_resource type="PackedScene" uid="uid://xwgsn8aognne" path="res://maps/lattice/models/cogs.glb" id="2_wy6wg"]
+
+[node name="PivotLight" type="Node3D"]
+
+[node name="Light" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.9736, 6.8643, -5.88871)
+light_color = Color(1, 0.882353, 0.776471, 1)
+light_energy = 26.0
+light_indirect_energy = 0.0
+distance_fade_enabled = true
+distance_fade_begin = 25.0
+omni_range = 10.0
+
+[node name="floor_piece" parent="." instance=ExtResource("1_mwmfb")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="floor_piece2" parent="." instance=ExtResource("1_mwmfb")]
+transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, 0, 0, 0)
+
+[node name="cogs" parent="." instance=ExtResource("2_wy6wg")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="cogs2" parent="." instance=ExtResource("2_wy6wg")]
+transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, 0, 0, 0)

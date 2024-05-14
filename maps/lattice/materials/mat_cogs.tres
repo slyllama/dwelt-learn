@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://dm1is20q2uqg4"]
+
+[ext_resource type="Texture2D" uid="uid://diwoe2td75vgk" path="res://maps/lattice/materials/tex/cogs_diff.png" id="1_eh5gi"]
+[ext_resource type="Texture2D" uid="uid://dcti0q25rfcj3" path="res://maps/lattice/materials/tex/cogs_norm.png" id="2_1aa1u"]
+
+[resource]
+albedo_texture = ExtResource("1_eh5gi")
+metallic = 0.8
+roughness = 0.45
+normal_enabled = true
+normal_scale = 0.5
+normal_texture = ExtResource("2_1aa1u")
+subsurf_scatter_strength = 0.5

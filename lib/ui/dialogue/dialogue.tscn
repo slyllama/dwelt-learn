@@ -91,6 +91,7 @@ bbcode_enabled = true
 text = "[Dialogue]"
 
 [node name="DTitle" type="RichTextLabel" parent="Base"]
+visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5

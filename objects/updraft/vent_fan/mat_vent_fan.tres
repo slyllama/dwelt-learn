@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://ngfv2k6soteg"]
+
+[ext_resource type="Texture2D" uid="uid://b7qmgdo542is6" path="res://objects/updraft/vent_fan/tex/vent_fan_emit.jpg" id="1_rtuau"]
+[ext_resource type="Texture2D" uid="uid://cwm0ri1c4u5kn" path="res://objects/updraft/vent_fan/tex/vent_fan_norm.jpg" id="2_t55g5"]
+
+[resource]
+albedo_texture = ExtResource("1_rtuau")
+metallic = 0.85
+roughness = 0.45
+normal_enabled = true
+normal_texture = ExtResource("2_t55g5")
