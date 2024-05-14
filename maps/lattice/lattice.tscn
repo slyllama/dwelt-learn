@@ -94,6 +94,7 @@ albedo_texture = ExtResource("19_rlvoa")
 script = ExtResource("1_hqs2c")
 
 [node name="Sky" type="WorldEnvironment" parent="."]
+unique_name_in_owner = true
 environment = SubResource("Environment_r5o54")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
