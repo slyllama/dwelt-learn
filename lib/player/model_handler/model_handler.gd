@@ -15,6 +15,10 @@ var root_cam_pivot
 
 var engine_ratio = 0.0
 
+func _glide_started():
+	$GW/AnimationPlayer.play("ExtendWings")
+	$GW2/AnimationPlayer.play("ExtendWings")
+
 func open_radar():
 	radar_open = true
 	$Radar.visible = true
@@ -26,7 +30,6 @@ func close_radar():
 	await $Radar/AnimationPlayer.animation_finished
 	if radar_open == false: # skip if player has gone back into an interact area
 		$Radar.visible = false
-
 
 func start_moving():
 	engine_ratio = 1.0
@@ -48,10 +51,13 @@ func _ready():
 	
 	Action.targeted.connect(open_radar)
 	Action.untargeted.connect(close_radar)
+	_glide_started()
 
 func _process(_delta):
-	$IdleSound.volume_db = linear_to_db(lerp(db_to_linear($IdleSound.volume_db), 1.0 - engine_ratio, 0.1))
-	$RunSound.volume_db = linear_to_db(lerp(db_to_linear($RunSound.volume_db), engine_ratio, 0.1))
+	$IdleSound.volume_db = linear_to_db(lerp(
+		db_to_linear($IdleSound.volume_db), 1.0 - engine_ratio, 0.1))
+	$RunSound.volume_db = linear_to_db(lerp(
+		db_to_linear($RunSound.volume_db), engine_ratio, 0.1))
 	
 	if root == null: return
 	if root.position_locked == true:

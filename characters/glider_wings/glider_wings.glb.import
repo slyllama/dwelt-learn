@@ -33,7 +33,7 @@ _subresources={
 "materials": {
 "mat_uv": {
 "use_external/enabled": true,
-"use_external/path": "res://characters/euclid/mat_fresnel.tres"
+"use_external/path": "res://characters/glider_wings/mat_glider.tres"
 }
 }
 }
