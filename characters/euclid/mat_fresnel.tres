@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://d0mqxs6mkrqql"]
 
-[ext_resource type="Shader" path="res://generic/shaders/fresnel.gdshader" id="1_soged"]
+[ext_resource type="Shader" path="res://generic/shaders/shader_fresnel.gdshader" id="1_soged"]
 [ext_resource type="Texture2D" uid="uid://bpobtu45t8vkb" path="res://generic/tex/stars_tile.png" id="2_wldmf"]
 
 [sub_resource type="Gradient" id="Gradient_vjhi1"]

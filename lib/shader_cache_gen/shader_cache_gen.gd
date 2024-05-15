@@ -13,11 +13,10 @@ const SHADERS_UID = [
 	"uid://dlmkx7n01hlq6", # updraft whirl center
 	"uid://devo837ilys5h", # glider
 	
-	"res://generic/shaders/fresnel.gdshader", # fresnel
-	"res://lib/ui/dialogue/dialogue.gdshader", # dialogue (static)
-	"res://lib/ui/dialogue/radial_distort.gdshader", # radial distortion
-	"res://lib/player/vfx/anime_wobble.gdshader", # anime motion
-	"res://generic/shaders/aberration.gdshader", # chromatic aberration
+	"res://generic/shaders/shader_fresnel.gdshader", # fresnel
+	"res://lib/ui/dialogue/shader_distort.gdshader", # radial distortion
+	"res://lib/player/vfx/shader_anime.gdshader", # anime motion
+	"res://generic/shaders/shader_aberration.gdshader", # chromatic aberration
 ]
 
 var meshes = []

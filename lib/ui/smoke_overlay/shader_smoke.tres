@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://dib8bbgu76bfe"]
 
-[ext_resource type="Shader" path="res://lib/ui/smoke_overlay/smoke_shader.gdshader" id="1_sb5fg"]
+[ext_resource type="Shader" path="res://lib/ui/smoke_overlay/shader_smoke.gdshader" id="1_sb5fg"]
 [ext_resource type="Texture2D" uid="uid://dgkrpn8nt8pvt" path="res://generic/tex/shader_tex/laser.jpeg" id="2_2s5bo"]
 [ext_resource type="Texture2D" uid="uid://b5nufueq16vw0" path="res://generic/tex/shader_tex/wobble_noise.tres" id="3_fjtev"]
 

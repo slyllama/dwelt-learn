@@ -160,8 +160,7 @@ cast_shadow = 0
 mesh = ExtResource("11_vmy1k")
 
 [node name="Laser" parent="." instance=ExtResource("15_qt6cc")]
-transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 8.91032, 0.383279, 2.01576)
-visible = false
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 7.7158, -0.082312, 24.9609)
 
 [node name="VentFan" parent="." instance=ExtResource("16_fhj2e")]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 0.669077, 1.28921, 23.0866)
