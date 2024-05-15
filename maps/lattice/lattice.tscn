@@ -1,11 +1,11 @@
-[gd_scene load_steps=32 format=3 uid="uid://dsf4aknq3seh2"]
+[gd_scene load_steps=30 format=3 uid="uid://dsf4aknq3seh2"]
 
 [ext_resource type="Script" path="res://maps/lattice/lattice.gd" id="1_hqs2c"]
 [ext_resource type="Texture2D" uid="uid://c5duom5wl7px7" path="res://generic/tex/sky.png" id="2_1uuus"]
 [ext_resource type="PackedScene" uid="uid://bcp4um4sjbyx6" path="res://lib/player/player.tscn" id="3_0m0xl"]
 [ext_resource type="PackedScene" uid="uid://e0k8h1ytp7wi" path="res://lib/ui/hud/hud.tscn" id="4_gb0g0"]
 [ext_resource type="AudioStream" uid="uid://to210dowl6qk" path="res://maps/lattice/sounds/forest_ambience.ogg" id="5_ldr5m"]
-[ext_resource type="AudioStream" uid="uid://bjom6nih468j8" path="res://generic/sounds/music/mus_junker.ogg" id="6_6m1au"]
+[ext_resource type="AudioStream" uid="uid://dr8f70tdjbeji" path="res://generic/sounds/music/mus_patchwork.mp3" id="6_b1vu2"]
 [ext_resource type="Texture2D" uid="uid://dinrdf02xeqaq" path="res://generic/tex/fade_ramp.tres" id="9_clv77"]
 [ext_resource type="Texture2D" uid="uid://d1fy6jygommc6" path="res://generic/tex/particles/mote.png" id="10_vpwvh"]
 [ext_resource type="ArrayMesh" uid="uid://c48ccnw3gi5h4" path="res://objects/god_ray/god_ray.obj" id="11_vmy1k"]
@@ -18,9 +18,8 @@
 [ext_resource type="PackedScene" uid="uid://bw14qvqobtubd" path="res://characters/fourier/fourier.glb" id="17_wxfph"]
 [ext_resource type="PackedScene" uid="uid://b804toes743v0" path="res://maps/lattice/fp_compose.tscn" id="18_7fno8"]
 [ext_resource type="PackedScene" uid="uid://bbrbse4rdrdeg" path="res://maps/lattice/models/greybox.glb" id="18_8pphe"]
-[ext_resource type="Texture2D" uid="uid://bg28a18vnbu6n" path="res://maps/lattice/materials/tex/bobinho_diff.jpg" id="19_rlvoa"]
 [ext_resource type="PackedScene" uid="uid://dk0s3tibcdcq0" path="res://objects/updraft/updraft.tscn" id="20_ib8vs"]
-[ext_resource type="PackedScene" uid="uid://ce4aesf3g5fet" path="res://maps/lattice/models/crystal.glb" id="21_a8l2q"]
+[ext_resource type="PackedScene" uid="uid://dpxnpda25fr1t" path="res://maps/lattice/models/mushroom_cluster.glb" id="21_pc35o"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dbpli"]
 panorama = ExtResource("2_1uuus")
@@ -87,9 +86,6 @@ material = SubResource("StandardMaterial3D_arrm5")
 size = Vector2(0.06, 0.06)
 orientation = 2
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xs4sr"]
-albedo_texture = ExtResource("19_rlvoa")
-
 [node name="Lattice" type="Node3D"]
 script = ExtResource("1_hqs2c")
 
@@ -121,8 +117,9 @@ stream = ExtResource("5_ldr5m")
 autoplay = true
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_6m1au")
-volume_db = -5.0
+stream = ExtResource("6_b1vu2")
+volume_db = -1.0
+autoplay = true
 
 [node name="Floor" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.433279, 0)
@@ -231,22 +228,7 @@ transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 0, 7, 0)
 [node name="FPCompose6" parent="FloorPieces" instance=ExtResource("18_7fno8")]
 transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 0, 7, 0)
 
-[node name="MattieBox" type="CSGBox3D" parent="FloorPieces"]
-transform = Transform3D(0.959972, 0.280097, 1.22434e-08, 0, -4.37114e-08, 1, 0.280097, -0.959972, -4.19617e-08, -6.63595, 9.69278, 18.1058)
-visible = false
-size = Vector3(5, 5, 5)
-material = SubResource("StandardMaterial3D_xs4sr")
-
 [node name="Greybox" parent="." instance=ExtResource("18_8pphe")]
 
-[node name="Crystal" parent="." instance=ExtResource("21_a8l2q")]
-transform = Transform3D(0.909657, 0, 0.41536, 0, 1, 0, -0.41536, 0, 0.909657, -4.5596, -0.134767, 15.5754)
-
-[node name="Crystal4" parent="." instance=ExtResource("21_a8l2q")]
-transform = Transform3D(1.22775, 0.404737, 0.240927, -5.88029e-08, -0.672627, 1.12996, 0.471018, -1.05498, -0.627997, -4.83033, 8.01938, 29.815)
-
-[node name="Crystal2" parent="." instance=ExtResource("21_a8l2q")]
-transform = Transform3D(0.230848, 0, 0.97299, 0, 1, 0, -0.97299, 0, 0.230848, 6.31157, 0.132294, 27.4652)
-
-[node name="Crystal3" parent="." instance=ExtResource("21_a8l2q")]
-transform = Transform3D(0.019106, -0.155213, 1.29056, -0.614368, 1.13636, 0.145763, -1.14551, -0.612049, -0.0566514, 6.31157, 1.66729, 29.7031)
+[node name="MushroomCluster" parent="." instance=ExtResource("21_pc35o")]
+transform = Transform3D(0.611996, 0, 0.790861, 0, 1, 0, -0.790861, 0, 0.611996, 2.66351, -0.039493, 20.9354)
