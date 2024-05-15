@@ -18,13 +18,14 @@ var first_settings_run = false
 func _setting_changed(get_setting_id):
 	if first_settings_run == false: first_settings_run = true
 	match get_setting_id:
-		"fov": %Player/CamPivot/CamArm/Camera.fov = Global.settings.fov
-		"camera_sens": %Player/CamPivot.camera_sensitivity = Global.settings.camera_sens
-		"spot_shadows":
-			for child in Utilities.get_all_children(get_tree().root):
-				if child in exclude_from_shadow: return
-				if child is SpotLight3D or child is OmniLight3D:
-					child.shadow_enabled = Global.settings.spot_shadows
+		"fov": 
+			%Player/CamPivot/CamArm/Camera.fov = Global.settings.fov
+		"camera_sensitivity":
+			%Player/CamPivot.camera_sensitivity = Global.settings.camera_sensitivity
+		"volumetric_fog":
+			%Sky.environment.volumetric_fog_enabled = Global.settings.volumetric_fog
+		"bloom":
+			%Sky.environment.glow_enabled = Global.settings.bloom
 
 	# The following are only applied after the first run
 	if first_settings_run == true:

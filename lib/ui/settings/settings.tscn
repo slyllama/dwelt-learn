@@ -136,10 +136,15 @@ layout_mode = 2
 setting_id = "full_screen"
 setting_title = "FULL SCREEN"
 
-[node name="HQShadows" parent="Control/Panel/VBox" instance=ExtResource("5_duwqu")]
+[node name="VolShadows" parent="Control/Panel/VBox" instance=ExtResource("5_duwqu")]
 layout_mode = 2
-setting_id = "spot_shadows"
-setting_title = "HIGH QUALITY SHADOWS"
+setting_id = "volumetric_fog"
+setting_title = "VOLUMETRIC FOG"
+
+[node name="Bloom" parent="Control/Panel/VBox" instance=ExtResource("5_duwqu")]
+layout_mode = 2
+setting_id = "bloom"
+setting_title = "BLOOM"
 
 [node name="Pad" type="ColorRect" parent="Control/Panel/VBox"]
 custom_minimum_size = Vector2(0, 10)

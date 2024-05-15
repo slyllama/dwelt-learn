@@ -28,11 +28,12 @@ var mouse_in_settings_menu = false
 signal setting_changed(setting_id)
 signal input_changed
 var SETTINGS = {
-	"fov": 75,
-	"camera_sens": 0.65,
+	"fov": 80,
+	"camera_sensitivity": 0.65,
 	"volume": 1.00,
-	"spot_shadows": true,
-	"full_screen": false
+	"full_screen": false,
+	"volumetric_fog": true,
+	"bloom": true
 }
 var settings = SETTINGS.duplicate()
 var input_data_loaded = false

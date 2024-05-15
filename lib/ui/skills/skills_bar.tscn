@@ -25,20 +25,17 @@ alignment = 1
 [node name="Interact" parent="HBox" instance=ExtResource("2_p2hud")]
 layout_mode = 2
 size_flags_horizontal = 4
+highlight_enabled = true
 skill_name = "interact"
 input_mapping = "interact"
+initial_texture = "INTERACT"
 
 [node name="Glide" parent="HBox" instance=ExtResource("2_p2hud")]
 layout_mode = 2
 size_flags_horizontal = 4
 skill_name = "skill_glide"
 input_mapping = "skill_glide"
-
-[node name="Locked2" parent="HBox" instance=ExtResource("2_p2hud")]
-layout_mode = 2
-size_flags_horizontal = 4
-skill_name = "locked"
-initial_texture = "LOCKED"
+initial_texture = "GLIDE"
 
 [connection signal="button_down" from="HBox/Glide" to="." method="_on_glide_button_down"]
 [connection signal="button_up" from="HBox/Glide" to="." method="_on_glide_button_up"]

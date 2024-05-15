@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://b804toes743v0"]
+[gd_scene load_steps=5 format=3 uid="uid://b804toes743v0"]
 
 [ext_resource type="PackedScene" uid="uid://dulsifjxaelcj" path="res://maps/lattice/models/floor_piece.glb" id="1_mwmfb"]
 [ext_resource type="PackedScene" uid="uid://xwgsn8aognne" path="res://maps/lattice/models/cogs.glb" id="2_wy6wg"]
+[ext_resource type="PackedScene" uid="uid://cxuhf34eh2d24" path="res://maps/lattice/models/mushrooms.glb" id="3_7lexo"]
+[ext_resource type="PackedScene" uid="uid://dpxnpda25fr1t" path="res://maps/lattice/models/mushroom_cluster.glb" id="4_7neg8"]
 
 [node name="PivotLight" type="Node3D"]
 
@@ -26,3 +28,18 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 
 
 [node name="cogs2" parent="." instance=ExtResource("2_wy6wg")]
 transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, 0, 0, 0)
+
+[node name="Mushrooms5" parent="." instance=ExtResource("3_7lexo")]
+transform = Transform3D(0.227457, 0, -0.891439, 0, 0.92, 0, 0.891439, 0, 0.227457, 29.358, 1.03509, -7.17498)
+
+[node name="Mushrooms6" parent="." instance=ExtResource("3_7lexo")]
+transform = Transform3D(0.459778, 0, -0.796872, 0, 0.92, 0, 0.796872, 0, 0.459778, 26.5409, -0.845358, -15.4524)
+
+[node name="Mushrooms7" parent="." instance=ExtResource("3_7lexo")]
+transform = Transform3D(0.439843, -0.0951441, -0.802425, 0.0457327, 0.915067, -0.0834321, 0.806751, 0, 0.442214, 30.644, 5.46018, -5.81364)
+
+[node name="Mushrooms" parent="." instance=ExtResource("3_7lexo")]
+transform = Transform3D(0.247236, 0, -0.968955, 0, 1, 0, 0.968955, 0, 0.247236, 29.5059, 4.59382, -8.18316)
+
+[node name="MushroomCluster" parent="." instance=ExtResource("4_7neg8")]
+transform = Transform3D(2.2, 0, 0, 0, 2.2, 0, 0, 0, 2.2, 21.0381, -0.235028, -18.7024)

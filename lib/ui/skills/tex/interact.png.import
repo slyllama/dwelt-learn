@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3xxoqd47y644"
-path="res://.godot/imported/laser_overlay.png-a17df253f22f39bf742855a09eb3c01d.ctex"
+uid="uid://b8gp3eq32srjn"
+path="res://.godot/imported/interact.png-a54faeefc762eab210e649379ed99014.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://objects/laser/tex/laser_overlay.png"
-dest_files=["res://.godot/imported/laser_overlay.png-a17df253f22f39bf742855a09eb3c01d.ctex"]
+source_file="res://lib/ui/skills/tex/interact.png"
+dest_files=["res://.godot/imported/interact.png-a54faeefc762eab210e649379ed99014.ctex"]
 
 [params]
 

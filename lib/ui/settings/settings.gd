@@ -7,6 +7,7 @@ var input_data = [
 	{"id": "strafe_left", "name": "STRAFE LEFT" },
 	{"id": "strafe_right", "name": "STRAFE RIGHT" },
 	{"id": "interact", "name": "INTERACT" },
+	{"id": "skill_glide", "name": "GLIDE" },
 	{"id": "zoom_in", "name": "ZOOM IN" },
 	{"id": "zoom_out", "name": "ZOOM OUT" } ]
 

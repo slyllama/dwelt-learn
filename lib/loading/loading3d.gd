@@ -15,8 +15,6 @@ var progress = []
 
 func _ready():
 	mouse_pos = get_viewport().get_mouse_position()
-	# TODO: why is this different on different screens?
-	#center = get_viewport().size / 2.0
 	center = get_viewport().size
 	ResourceLoader.load_threaded_request(ROCKET_PATH)
 

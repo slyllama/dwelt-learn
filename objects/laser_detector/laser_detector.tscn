@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cvho6mkc04s7h"]
 
 [ext_resource type="Script" path="res://objects/laser_detector/laser_detector.gd" id="1_mqits"]
-[ext_resource type="Material" uid="uid://8oy0j0kdyonq" path="res://objects/laser_detector/light_up_material.tres" id="2_vdh0b"]
+[ext_resource type="Material" uid="uid://8oy0j0kdyonq" path="res://objects/laser_detector/mat_light.tres" id="2_vdh0b"]
 [ext_resource type="FontFile" uid="uid://b1v28gy50d86f" path="res://generic/fonts/red_hat.ttf" id="3_r5f1i"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k8s5v"]

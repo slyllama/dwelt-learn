@@ -3,20 +3,20 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bbrbse4rdrdeg"
-path="res://.godot/imported/greybox.glb-75c1523476ab57f0954fa6231acd0afa.scn"
+uid="uid://dpxnpda25fr1t"
+path="res://.godot/imported/mushroom_cluster.glb-1ea0efec1ad4610c2fce5658e6d6a99b.scn"
 
 [deps]
 
-source_file="res://maps/lattice/models/greybox.glb"
-dest_files=["res://.godot/imported/greybox.glb-75c1523476ab57f0954fa6231acd0afa.scn"]
+source_file="res://maps/lattice/models/mushroom_cluster.glb"
+dest_files=["res://.godot/imported/mushroom_cluster.glb-1ea0efec1ad4610c2fce5658e6d6a99b.scn"]
 
 [params]
 
 nodes/root_type=""
-nodes/root_name=""
+nodes/root_name="MushroomCluster"
 nodes/apply_root_scale=true
-nodes/root_scale=1.0
+nodes/root_scale=3.0
 meshes/ensure_tangents=true
 meshes/generate_lods=true
 meshes/create_shadow_meshes=false
@@ -31,9 +31,9 @@ animation/remove_immutable_tracks=true
 import_script/path=""
 _subresources={
 "materials": {
-"mat_placeholder": {
+"mat_energy": {
 "use_external/enabled": true,
-"use_external/path": "res://generic/mat_greybox.tres"
+"use_external/path": "res://characters/euclid/mat_fresnel.tres"
 }
 }
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b6tc0kf1kgaml"]
+[gd_scene load_steps=17 format=3 uid="uid://b6tc0kf1kgaml"]
 
 [ext_resource type="Script" path="res://lib/player/model_handler/model_handler.gd" id="1_qtkkf"]
 [ext_resource type="Texture2D" uid="uid://dinrdf02xeqaq" path="res://generic/tex/fade_ramp.tres" id="3_0g80d"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://5k5544ggwcej" path="res://characters/euclid/euclid_runtime.tscn" id="6_m827u"]
 [ext_resource type="AudioStream" uid="uid://bvlbuvi51c083" path="res://characters/euclid/sounds/engine_idle.ogg" id="7_k3bkt"]
 [ext_resource type="AudioStream" uid="uid://cg5kvfmxlxvjj" path="res://characters/euclid/sounds/engine_fly.ogg" id="8_umolb"]
+[ext_resource type="PackedScene" uid="uid://d2fpdhx7h40bm" path="res://characters/glider_wings/glider_wings.glb" id="9_swf03"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kmfjv"]
 transparency = 1
@@ -84,3 +85,9 @@ autoplay = true
 [node name="RunSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_umolb")
 autoplay = true
+
+[node name="GW" parent="." instance=ExtResource("9_swf03")]
+transform = Transform3D(1.19, 0, 0, 0, 1.19, 0, 0, 0, 1.19, 0, 0.11177, 1)
+
+[node name="GW2" parent="GW" instance=ExtResource("9_swf03")]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
