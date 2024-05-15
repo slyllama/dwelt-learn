@@ -14,10 +14,6 @@ func _setting_changed(get_setting_id):
 	match get_setting_id:
 		"volume": AudioServer.set_bus_volume_db(0, linear_to_db(Global.settings.volume))
 		"full_screen": Utilities.toggle_full_screen()
-		#"larger_ui":
-			#if Global.settings.larger_ui == true:
-				#get_window().content_scale_factor = Global.LARGE_UI_SCALE
-			#else: get_window().content_scale_factor = 1.0
 	Utilities.save_settings()
 
 func load_map(map_name):
@@ -64,8 +60,6 @@ func _input(_event):
 	if Input.is_action_just_pressed("toggle_debug"):
 		$FPSCounter.visible = !$FPSCounter.visible
 		Global.debug_state = $FPSCounter.visible # debug will retain its state
-	if Input.is_action_just_pressed("debug_action"):
-		load_map("test_map")
 
 func _process(_delta):
 	if started == true: target_mus_vol = lerp(target_mus_vol, 0.0, 0.1)

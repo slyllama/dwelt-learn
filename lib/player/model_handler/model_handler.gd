@@ -38,14 +38,12 @@ func _set_shader_level(val):
 		node.get_active_material(0).set_shader_parameter("alpha_float", val)
 
 func _glide_started():
-	print("[Glide] starting.")
 	in_glide = true
 	$GW/AnimationPlayer.play("ExtendWings")
 	$GW/GW2/AnimationPlayer.play("ExtendWings")
 	glider_target_alpha = 0.75
 
 func _glide_ended():
-	print("[Glide] ending.")
 	in_glide = false
 	$GW/AnimationPlayer.play_backwards("ExtendWings")
 	$GW/GW2/AnimationPlayer.play_backwards("ExtendWings")
@@ -87,11 +85,6 @@ func _ready():
 	Action.targeted.connect(open_radar)
 	Action.untargeted.connect(close_radar)
 
-func _input(_event):
-	if Input.is_action_just_pressed("debug_action"):
-		if in_glide == false: _glide_started()
-		else: _glide_ended()
-
 func _process(_delta):
 	$IdleSound.volume_db = linear_to_db(lerp(
 		db_to_linear($IdleSound.volume_db), 1.0 - engine_ratio, 0.1))
@@ -106,10 +99,10 @@ func _process(_delta):
 		trail_R.enabled = false
 		return
 	
-	if Global.player_y_velocity < -1.0:
+	if Action.in_glide == true:
 		if in_glide == false: _glide_started()
-	else:
-		if in_glide == true: _glide_ended()
+	else: if in_glide == true: _glide_ended()
+	
 	glider_alpha = lerp(glider_alpha, glider_target_alpha, 0.08)
 	if glider_alpha > 0.0:
 		if $GW.visible == false: $GW.visible = true
