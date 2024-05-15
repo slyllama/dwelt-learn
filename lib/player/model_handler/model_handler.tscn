@@ -87,7 +87,7 @@ stream = ExtResource("8_umolb")
 autoplay = true
 
 [node name="GW" parent="." instance=ExtResource("9_swf03")]
-transform = Transform3D(1.19, 0, 0, 0, 1.19, 0, 0, 0, 1.19, 0, 0.476718, 1)
+transform = Transform3D(1.19, 0, 0, 0, 1.19, 0, 0, 0, 1.19, 0, 0.11177, 1)
 
-[node name="GW2" parent="." instance=ExtResource("9_swf03")]
-transform = Transform3D(-1.19, 0, 0, 0, 1.19, 0, 0, 0, 1.19, 0, 0.476718, 1)
+[node name="GW2" parent="GW" instance=ExtResource("9_swf03")]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)

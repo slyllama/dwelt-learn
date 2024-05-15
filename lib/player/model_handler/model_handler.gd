@@ -13,11 +13,43 @@ var radar_open = true
 var root
 var root_cam_pivot
 
-var engine_ratio = 0.0
+var engine_ratio = 0.0 # sound
+
+# Save references to glider mesh instances so we can change shader parameters
+# on them via _set_shader_level(val)
+var in_glide = false
+var glider_nodes = []
+var glider_target_alpha = 0.0
+var glider_alpha = 0.0
+
+# Utility to recursively retrieve all children of a node
+func get_all_children(node) -> Array:
+	var nodes : Array = []
+	for N in node.get_children():
+		if N.get_child_count() > 0:
+			nodes.append(N)
+			nodes.append_array(get_all_children(N))
+		else:
+			nodes.append(N)
+	return nodes
+
+func _set_shader_level(val):
+	for node in glider_nodes:
+		node.get_active_material(0).set_shader_parameter("alpha_float", val)
 
 func _glide_started():
+	print("[Glide] starting.")
+	in_glide = true
 	$GW/AnimationPlayer.play("ExtendWings")
-	$GW2/AnimationPlayer.play("ExtendWings")
+	$GW/GW2/AnimationPlayer.play("ExtendWings")
+	glider_target_alpha = 0.75
+
+func _glide_ended():
+	print("[Glide] ending.")
+	in_glide = false
+	$GW/AnimationPlayer.play_backwards("ExtendWings")
+	$GW/GW2/AnimationPlayer.play_backwards("ExtendWings")
+	glider_target_alpha = 0.0
 
 func open_radar():
 	radar_open = true
@@ -48,10 +80,17 @@ func stop_moving():
 func _ready():
 	root = get_parent()
 	root_cam_pivot = root.get_node_or_null("CamPivot")
+	for node in get_all_children($GW):
+		if node is MeshInstance3D:
+			glider_nodes.append(node)
 	
 	Action.targeted.connect(open_radar)
 	Action.untargeted.connect(close_radar)
-	_glide_started()
+
+func _input(_event):
+	if Input.is_action_just_pressed("debug_action"):
+		if in_glide == false: _glide_started()
+		else: _glide_ended()
 
 func _process(_delta):
 	$IdleSound.volume_db = linear_to_db(lerp(
@@ -66,6 +105,17 @@ func _process(_delta):
 		trail_L.enabled = false
 		trail_R.enabled = false
 		return
+	
+	if Global.player_y_velocity < -1.0:
+		if in_glide == false: _glide_started()
+	else:
+		if in_glide == true: _glide_ended()
+	glider_alpha = lerp(glider_alpha, glider_target_alpha, 0.08)
+	if glider_alpha > 0.0:
+		if $GW.visible == false: $GW.visible = true
+		_set_shader_level(glider_alpha)
+	else:
+		if $GW.visible == true: $GW.visible = false
 	
 	if trail_L.enabled == false: trail_L.reenable()
 	if trail_R.enabled == false: trail_R.reenable()

@@ -64,6 +64,8 @@ func _input(_event):
 	if Input.is_action_just_pressed("toggle_debug"):
 		$FPSCounter.visible = !$FPSCounter.visible
 		Global.debug_state = $FPSCounter.visible # debug will retain its state
+	if Input.is_action_just_pressed("debug_action"):
+		load_map("test_map")
 
 func _process(_delta):
 	if started == true: target_mus_vol = lerp(target_mus_vol, 0.0, 0.1)

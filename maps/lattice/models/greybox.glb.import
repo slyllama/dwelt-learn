@@ -31,13 +31,9 @@ animation/remove_immutable_tracks=true
 import_script/path=""
 _subresources={
 "materials": {
-"mat_boiler": {
-"use_external/enabled": true,
-"use_external/path": "res://maps/lattice/materials/mat_boiler.tres"
-},
 "mat_placeholder": {
 "use_external/enabled": true,
-"use_external/path": "res://maps/lattice/materials/mat_grey.tres"
+"use_external/path": "res://generic/mat_greybox.tres"
 }
 }
 }
