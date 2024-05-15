@@ -25,13 +25,10 @@ func toggle_full_screen():
 
 # Get the center of the window, adjusted by the content scale factor
 func get_screen_center():
-	#if Global.settings.larger_ui == true:
-		#return(Global.SCREEN_SIZE / Global.LARGE_UI_SCALE / 2.0)
-	#else: return(Global.SCREEN_SIZE / 2.0)
 	return(Global.SCREEN_SIZE / 2.0)
 
 # Get the name of an input command as a string
-func get_key(input_id):
+func get_key(input_id) -> String:
 	var action = InputMap.action_get_events(input_id)[0]
 	if str(action).split(" ")[1] == "button_index=4,":
 		return("SCROLL UP")
@@ -42,13 +39,13 @@ func get_key(input_id):
 ### CONSTRUCTION SCRIPTS
 
 # Get the shortest angle between "from", and "to", even if one or both exceeds 360deg
-func short_angle_dist(from, to):
+func short_angle_dist(from, to) -> float:
 	var max_angle = PI * 2
 	var difference = fmod(to - from, max_angle)
 	return fmod(2 * difference, max_angle) - difference
 
 # Return a float "num" as a string to 2 decimal places, or snapped to "place"
-func fstr(num, place = 0.01):
+func fstr(num, place = 0.01) -> String:
 	return(str(snapped(num, place)))
 
 # Return string as centered BBCode text

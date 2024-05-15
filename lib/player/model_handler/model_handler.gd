@@ -22,17 +22,6 @@ var glider_nodes = []
 var glider_target_alpha = 0.0
 var glider_alpha = 0.0
 
-# Utility to recursively retrieve all children of a node
-func get_all_children(node) -> Array:
-	var nodes : Array = []
-	for N in node.get_children():
-		if N.get_child_count() > 0:
-			nodes.append(N)
-			nodes.append_array(get_all_children(N))
-		else:
-			nodes.append(N)
-	return nodes
-
 func _set_shader_level(val):
 	for node in glider_nodes:
 		node.get_active_material(0).set_shader_parameter("alpha_float", val)
@@ -41,7 +30,7 @@ func _glide_started():
 	in_glide = true
 	$GW/AnimationPlayer.play("ExtendWings")
 	$GW/GW2/AnimationPlayer.play("ExtendWings")
-	glider_target_alpha = 0.75
+	glider_target_alpha = 0.45
 
 func _glide_ended():
 	in_glide = false
@@ -78,7 +67,7 @@ func stop_moving():
 func _ready():
 	root = get_parent()
 	root_cam_pivot = root.get_node_or_null("CamPivot")
-	for node in get_all_children($GW):
+	for node in Utilities.get_all_children($GW):
 		if node is MeshInstance3D:
 			glider_nodes.append(node)
 	
