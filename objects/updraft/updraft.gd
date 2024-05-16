@@ -26,6 +26,7 @@ func _ready():
 		# Should only attempt if the player is in *this* updraft
 		if player_in_area == true and Global.updraft_zone == object_name and Global.dialogue_active == false:
 			Global.camera_shaken.emit()
+			$Updraft.play()
 			$FG/Chroma.updraft()
 			yv_target = target_speed)
 

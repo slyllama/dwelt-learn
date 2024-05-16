@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bcp4um4sjbyx6" path="res://lib/player/player.tscn" id="3_0m0xl"]
 [ext_resource type="PackedScene" uid="uid://e0k8h1ytp7wi" path="res://lib/ui/hud/hud.tscn" id="4_gb0g0"]
 [ext_resource type="AudioStream" uid="uid://to210dowl6qk" path="res://maps/lattice/sounds/forest_ambience.ogg" id="5_ldr5m"]
-[ext_resource type="AudioStream" uid="uid://dr8f70tdjbeji" path="res://generic/sounds/music/mus_patchwork.mp3" id="6_b1vu2"]
+[ext_resource type="AudioStream" uid="uid://cgdlxmmhitac7" path="res://generic/sounds/music/mus_shell.mp3" id="6_ewrbr"]
 [ext_resource type="Texture2D" uid="uid://dinrdf02xeqaq" path="res://generic/tex/fade_ramp.tres" id="9_clv77"]
 [ext_resource type="Texture2D" uid="uid://d1fy6jygommc6" path="res://generic/tex/particles/mote.png" id="10_vpwvh"]
 [ext_resource type="ArrayMesh" uid="uid://c48ccnw3gi5h4" path="res://objects/god_ray/god_ray.obj" id="11_vmy1k"]
@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://q6mjnwesy72v" path="res://objects/updraft/vent_fan/vent_fan.glb" id="16_fhj2e"]
 [ext_resource type="PackedScene" uid="uid://i1jp4klishr3" path="res://lib/dialogue/dialogue.tscn" id="16_j30j2"]
 [ext_resource type="PackedScene" uid="uid://d23wqewgge7mv" path="res://objects/elevator/elevator.tscn" id="17_l4sxi"]
-[ext_resource type="AudioStream" uid="uid://xw8eek5x1xwg" path="res://objects/updraft/vent_fan/vent_fan.ogg" id="17_paoks"]
+[ext_resource type="AudioStream" uid="uid://xw8eek5x1xwg" path="res://objects/updraft/sound/vent_fan.ogg" id="17_paoks"]
 [ext_resource type="PackedScene" uid="uid://bw14qvqobtubd" path="res://characters/fourier/fourier.glb" id="17_wxfph"]
 [ext_resource type="PackedScene" uid="uid://b804toes743v0" path="res://maps/lattice/fp_compose.tscn" id="18_7fno8"]
 [ext_resource type="PackedScene" uid="uid://bbrbse4rdrdeg" path="res://maps/lattice/models/greybox.glb" id="18_8pphe"]
@@ -118,9 +118,8 @@ stream = ExtResource("5_ldr5m")
 autoplay = true
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_b1vu2")
-volume_db = -1.0
-autoplay = true
+stream = ExtResource("6_ewrbr")
+volume_db = -4.0
 
 [node name="Floor" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.433279, 0)
@@ -177,8 +176,6 @@ dialogue_close_distance = 7.0
 
 [node name="VentFanSound" type="AudioStreamPlayer3D" parent="VentFan"]
 stream = ExtResource("17_paoks")
-unit_size = 8.0
-max_db = 1.0
 autoplay = true
 
 [node name="FourierTest" parent="." instance=ExtResource("17_wxfph")]

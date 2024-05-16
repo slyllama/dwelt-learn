@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ds7v1kxeoggbl"]
+[gd_scene load_steps=15 format=3 uid="uid://ds7v1kxeoggbl"]
 
 [ext_resource type="Script" path="res://lib/ui/dialogue/dialogue.gd" id="1_6fhhv"]
 [ext_resource type="Texture2D" uid="uid://dduothw77bdaf" path="res://lib/ui/dialogue/tex/base.png" id="1_i1ywh"]
@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://nyvmwj526bbr" path="res://generic/fonts/alegreya.ttf" id="6_0uj4r"]
 [ext_resource type="Script" path="res://lib/ui/dialogue/DistortShader.gd" id="6_tb7wh"]
 [ext_resource type="Shader" path="res://lib/ui/dialogue/shader_distort.gdshader" id="7_50264"]
+[ext_resource type="AudioStream" uid="uid://gspni8xs632w" path="res://generic/sounds/play_dialogue.ogg" id="10_ayfgg"]
 [ext_resource type="AudioStream" uid="uid://d17c68aqvdewo" path="res://generic/sounds/click.ogg" id="12_3bocd"]
 [ext_resource type="PackedScene" uid="uid://dyhaqy0gi2mf1" path="res://lib/ui/dialogue/dialogue_world/dialogue_world.tscn" id="14_qbvws"]
 
@@ -149,6 +150,9 @@ script = ExtResource("6_tb7wh")
 [node name="ContinueSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_3bocd")
 volume_db = -4.0
+
+[node name="PlayDialogue" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_ayfgg")
 
 [connection signal="mouse_entered" from="Base/Proceed" to="." method="_mouseover"]
 [connection signal="pressed" from="Base/Proceed" to="." method="_on_proceed_pressed"]

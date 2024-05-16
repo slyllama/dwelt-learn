@@ -56,10 +56,9 @@ func _ready():
 	Global.connect("player_position_unlocked", unlock_position)
 
 func _input(_event):
-	if Global.in_keybind_select == true: return
-	
 	# No animations if the player's position is locked
 	if position_locked == true: return
+	if Global.in_keybind_select == true: return
 	
 	if Input.is_action_just_pressed("skill_glide"):
 		Action.glide_pressed.emit()
@@ -99,6 +98,11 @@ func _physics_process(_delta):
 	if Input.is_action_pressed("move_back"): forward -= 1
 	if Input.is_action_pressed("strafe_left"): side += 0.5
 	if Input.is_action_pressed("strafe_right"): side -= 0.5
+	forward -= Input.get_joy_axis(0, JOY_AXIS_RIGHT_Y)
+	side -= Input.get_joy_axis(0, JOY_AXIS_RIGHT_X) * 0.5
+	
+	forward = clamp(forward, -1.0, 1.0)
+	side = clamp(side, -1.0, 1.0)
 	
 	if glide == true:
 		if glide_val < max_gliding_force: glide_val += glide_rate

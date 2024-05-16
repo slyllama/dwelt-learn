@@ -1,10 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://dk0s3tibcdcq0"]
+[gd_scene load_steps=22 format=3 uid="uid://dk0s3tibcdcq0"]
 
 [ext_resource type="PackedScene" uid="uid://c35iff81j46sc" path="res://objects/updraft/updraft_model.glb" id="1_6r8vs"]
 [ext_resource type="Script" path="res://objects/updraft/updraft.gd" id="1_gj72g"]
 [ext_resource type="Shader" uid="uid://dlmkx7n01hlq6" path="res://objects/updraft/shader_whirl_center.tres" id="2_l7aic"]
 [ext_resource type="Texture2D" uid="uid://d1fy6jygommc6" path="res://generic/tex/particles/mote.png" id="4_m1pur"]
 [ext_resource type="Script" path="res://objects/updraft/Chroma.gd" id="7_5xnoj"]
+[ext_resource type="AudioStream" uid="uid://cwrp6hvgnjhfg" path="res://objects/updraft/sound/updraft.ogg" id="7_h5ndv"]
 [ext_resource type="Shader" path="res://generic/shaders/shader_aberration.gdshader" id="7_xx8sf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_plm2c"]
@@ -151,6 +152,11 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 script = ExtResource("7_5xnoj")
+
+[node name="Updraft" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("7_h5ndv")
+volume_db = 2.0
+unit_size = 14.0
 
 [connection signal="body_entered" from="UpdraftArea" to="." method="_on_updraft_area_entered"]
 [connection signal="body_exited" from="UpdraftArea" to="." method="_on_updraft_area_exited"]

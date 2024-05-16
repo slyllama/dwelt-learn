@@ -44,6 +44,7 @@ func close_dialogue():
 	transitioning = false
 
 func play_dialogue(get_dialogue):
+	$PlayDialogue.play()
 	$SmokeOverlay.activate()
 	current_dialogue = get_dialogue.data
 	current_title = str(_format_text(get_dialogue.title)).to_upper()

@@ -80,10 +80,12 @@ script = ExtResource("6_c6fhn")
 
 [node name="IdleSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_k3bkt")
+volume_db = 3.0
 autoplay = true
 
 [node name="RunSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_umolb")
+volume_db = 3.0
 autoplay = true
 
 [node name="GW" parent="." instance=ExtResource("9_swf03")]

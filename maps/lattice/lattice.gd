@@ -6,3 +6,6 @@ func _ready():
 	super()
 	$VentFan/AnimationPlayer.play("Fan")
 	$FourierTest/AnimationPlayer.play("Idle")
+	
+	await get_tree().create_timer(3.0).timeout
+	$Music.play()
