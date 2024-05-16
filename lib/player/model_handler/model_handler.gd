@@ -30,12 +30,14 @@ func _glide_started():
 	in_glide = true
 	$GW/AnimationPlayer.play("ExtendWings")
 	$GW/GW2/AnimationPlayer.play("ExtendWings")
+	$GlideSound.play()
 	glider_target_alpha = 0.45
 
 func _glide_ended():
 	in_glide = false
 	$GW/AnimationPlayer.play_backwards("ExtendWings")
 	$GW/GW2/AnimationPlayer.play_backwards("ExtendWings")
+	$GlideSound.stop()
 	glider_target_alpha = 0.0
 
 func open_radar():

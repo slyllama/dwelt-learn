@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b6tc0kf1kgaml"]
+[gd_scene load_steps=21 format=3 uid="uid://b6tc0kf1kgaml"]
 
 [ext_resource type="Script" path="res://lib/player/model_handler/model_handler.gd" id="1_qtkkf"]
 [ext_resource type="Texture2D" uid="uid://dinrdf02xeqaq" path="res://generic/tex/fade_ramp.tres" id="3_0g80d"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://5k5544ggwcej" path="res://characters/euclid/euclid_runtime.tscn" id="6_m827u"]
 [ext_resource type="AudioStream" uid="uid://bvlbuvi51c083" path="res://characters/euclid/sounds/engine_idle.ogg" id="7_k3bkt"]
 [ext_resource type="AudioStream" uid="uid://cg5kvfmxlxvjj" path="res://characters/euclid/sounds/engine_fly.ogg" id="8_umolb"]
+[ext_resource type="AudioStream" uid="uid://bjoiwln0ccbl" path="res://characters/euclid/sounds/glider_open.ogg" id="9_k1l4n"]
 [ext_resource type="PackedScene" uid="uid://d2fpdhx7h40bm" path="res://characters/glider_wings/glider_wings.glb" id="9_swf03"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kmfjv"]
@@ -55,6 +56,33 @@ shading_mode = 0
 vertex_color_use_as_albedo = true
 albedo_texture = SubResource("GradientTexture2D_uk24k")
 
+[sub_resource type="Animation" id="Animation_uxqd1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -0.0349066)]
+}
+
 [sub_resource type="Animation" id="Animation_pugsj"]
 resource_name = "bounce"
 length = 1.2
@@ -82,33 +110,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, -0.0174533), Vector3(0, 0, 0), Vector3(0.0174533, 0, 0), Vector3(0, 0, -0.0174533)]
-}
-
-[sub_resource type="Animation" id="Animation_uxqd1"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0.1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, -0.0349066)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xf7h3"]
@@ -150,8 +151,12 @@ stream = ExtResource("8_umolb")
 volume_db = 3.0
 autoplay = true
 
+[node name="GlideSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_k1l4n")
+volume_db = -7.0
+
 [node name="GW" parent="." instance=ExtResource("9_swf03")]
-transform = Transform3D(1.18928, 0.0415304, 0, -0.0415304, 1.18928, 0, 0, 0, 1.19, 0, 0.1, 1)
+transform = Transform3D(1.18928, 0.0415306, 0, -0.0415306, 1.18928, 0, 0, 0, 1.19, 0, 0.1, 1)
 
 [node name="GW2" parent="GW" instance=ExtResource("9_swf03")]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
