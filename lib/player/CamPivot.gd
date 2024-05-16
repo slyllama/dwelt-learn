@@ -24,17 +24,17 @@ var fov_offset = 0.0
 var click_mouse_pos = Vector2.ZERO
 var click_mouse_pos_diff = Vector2.ZERO
 
-func _zoom(dir):
+func _zoom(dir, zoom_scale = 1.0):
 	if dir == "in":
-		if camera_distance - zoom_increment > min_zoom_extent:
-			camera_distance -= zoom_increment
-			$CamArm/Camera/XCast.target_position.z += zoom_increment
-			target_y_position -= 0.1
+		if camera_distance - zoom_increment * zoom_scale > min_zoom_extent:
+			camera_distance -= zoom_increment * zoom_scale
+			$CamArm/Camera/XCast.target_position.z += zoom_increment * zoom_scale
+			target_y_position -= 0.1 * zoom_scale
 	elif dir == "out":
-		if camera_distance + zoom_increment < max_zoom_extent:
-			camera_distance += zoom_increment
-			$CamArm/Camera/XCast.target_position.z -= zoom_increment
-			target_y_position += 0.1
+		if camera_distance + zoom_increment * zoom_scale < max_zoom_extent:
+			camera_distance += zoom_increment * zoom_scale
+			$CamArm/Camera/XCast.target_position.z -= zoom_increment * zoom_scale
+			target_y_position += 0.1 * zoom_scale
 
 func _shake_cam(): $ShakeAnim.play("shake")
 
@@ -94,11 +94,7 @@ func _input(event):
 	
 	if Input.is_action_just_pressed("zoom_in"): _zoom("in")
 	elif Input.is_action_just_pressed("zoom_out"): _zoom("out")
-	
-	if Global.settings_opened == false:
-		if Utilities.is_joy_button(event, JOY_BUTTON_DPAD_UP): _zoom("in")
-		elif Utilities.is_joy_button(event, JOY_BUTTON_DPAD_DOWN): _zoom("out")
-	
+
 func _process(_delta):
 	# Position smoothing - more intense when gliding
 	if Action.in_glide == true: camera_bounce = 1.0
@@ -106,6 +102,10 @@ func _process(_delta):
 	var target_y_pos = 1.15 - clamp(Global.player_y_velocity * camera_bounce, -1.0, 1.0)
 	position.y = lerp(position.y, target_y_pos, 0.035)
 	
+	if Global.settings_opened == false:
+		if Input.is_joy_button_pressed(0, JOY_BUTTON_DPAD_UP): _zoom("in", 0.25)
+		elif Input.is_joy_button_pressed(0, JOY_BUTTON_DPAD_DOWN): _zoom("out", 0.25)
+		
 	# Adjust camera zoom and FOV
 	$CamArm.spring_length = lerpf($CamArm.spring_length, camera_distance, 0.1)
 	$CamArm/Camera.v_offset = lerpf($CamArm/Camera.v_offset, target_y_position, 0.05)

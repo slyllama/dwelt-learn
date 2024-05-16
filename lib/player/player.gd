@@ -55,7 +55,7 @@ func _ready():
 	Global.connect("player_position_locked", lock_position)
 	Global.connect("player_position_unlocked", unlock_position)
 
-func _input(event):
+func _input(_event):
 	# No animations if the player's position is locked
 	if position_locked == true: return
 	if Global.in_keybind_select == true: return
