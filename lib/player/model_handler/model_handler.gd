@@ -88,6 +88,7 @@ func _process(_delta):
 		trail_R.enabled = false
 		return
 	
+	
 	if Action.in_glide == true:
 		if in_glide == false: _glide_started()
 	else: if in_glide == true: _glide_ended()

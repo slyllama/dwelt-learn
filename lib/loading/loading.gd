@@ -12,7 +12,7 @@ func _make_path(map_name):
 
 func _setting_changed(get_setting_id):
 	match get_setting_id:
-		"volume": AudioServer.set_bus_volume_db(0, linear_to_db(Global.settings.volume))
+		"volume": Utilities.set_master_vol(Global.settings.volume)
 		"full_screen": Utilities.toggle_full_screen()
 	Utilities.save_settings()
 
@@ -35,9 +35,9 @@ func _ready():
 	# Load and populate settings (including menu)
 	Utilities.load_settings()
 	Global.setting_changed.connect(_setting_changed)
-	for setting in Global.settings: Global.setting_changed.emit(setting)
-	target_mus_vol = Global.settings.volume
-
+	for setting in Global.settings:
+		Global.setting_changed.emit(setting)
+	
 	# Set up for retina
 	if DisplayServer.screen_get_size().x > 2000:
 		DisplayServer.window_set_min_size(Global.MIN_SCREEN_SIZE * 2.0)
@@ -68,7 +68,7 @@ func _input(_event):
 func _process(_delta):
 	if started == true: target_mus_vol = lerp(target_mus_vol, 0.0, 0.1)
 	$Music.volume_db = linear_to_db(target_mus_vol)
-	if target_mus_vol <= 0.1: Utilities.set_master_vol(0.0)
+	#if target_mus_vol <= 0.1: Utilities.set_master_vol(0.0)
 	
 	var colour = "green"
 	if Engine.get_frames_per_second() < 20.0: colour = "red"

@@ -23,7 +23,8 @@ func _input(event):
 		# Keybind change happens here
 		if Input.is_anything_pressed():
 			if (Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
-				or Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT)): return
+				or Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT)
+				or event is InputEventJoypadButton or event is InputEventJoypadMotion): return
 			InputMap.action_erase_events(action_id)
 			InputMap.action_add_event(action_id, event)
 			Global.emit_signal("left_keybind_select")
