@@ -70,11 +70,20 @@ func _input(event):
 			right_mouse_down = false
 	
 	if event is InputEventMouseMotion and right_mouse_down == true:
+		print(mouse_offset)
 		mouse_offset = event.relative
 		if mouse_offset.x < 2.0 and mouse_offset.x > -2.0:
 			mouse_offset.x = 0.0
 		if mouse_offset.y < 2.0 and mouse_offset.y > -2.0:
 			mouse_offset.y = 0.0
+	
+	if event is InputEventJoypadMotion:
+		var controller_motion = false
+		if event.get_axis() == 2:
+			if event.get_axis_value() != 0.0: controller_motion = true
+		if event.get_axis() == 3:
+			if event.get_axis_value() != 0.0: controller_motion = true
+		right_mouse_down = controller_motion
 	
 	# Process zooms
 	if Global.in_keybind_select == true: return
@@ -108,7 +117,9 @@ func _process(_delta):
 	if right_mouse_down == true:
 		new_cam_y_rotation += -mouse_offset.x / 1.5 * camera_sensitivity
 		new_cam_x_rotation += -mouse_offset.y / 2.0 * camera_sensitivity
-		
+		new_cam_y_rotation += Input.get_joy_axis(0, 2) * camera_sensitivity * 3.5
+		new_cam_x_rotation += Input.get_joy_axis(0, 3) * camera_sensitivity * 1.5
+	
 		# Clamp the camera's rotation when the player is locked into position
 		#if get_parent().position_locked == true:
 			#new_cam_y_rotation = lerp(new_cam_y_rotation, clampf(

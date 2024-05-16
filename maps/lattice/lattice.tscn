@@ -88,6 +88,7 @@ orientation = 2
 
 [node name="Lattice" type="Node3D"]
 script = ExtResource("1_hqs2c")
+map_name = "lattice"
 
 [node name="Sky" type="WorldEnvironment" parent="."]
 unique_name_in_owner = true

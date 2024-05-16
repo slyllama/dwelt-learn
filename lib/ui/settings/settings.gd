@@ -17,7 +17,10 @@ var input_containers = [] # input list nodes, so they can be cleared on refresh
 func _reset_to_bottom():
 	$Control/Panel/InputVBox.move_child($Control/Panel/InputVBox/LowerCloseButton, -1)
 
-func open(): visible = true
+func open():
+	$Control/Panel/InputVBox/LowerCloseButton.grab_focus()
+	visible = true
+
 func close():
 	Global.button_click.emit()
 	visible = false
@@ -92,7 +95,7 @@ func _ready():
 	Global.connect("left_keybind_select", refresh_input_data)
 	refresh_input_data()
 
-func _input(_event):
+func _input(event):
 	# Right click to close settings menu
 	if Input.is_action_just_pressed("right_click"):
 		if visible == true: close()

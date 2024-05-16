@@ -4,6 +4,8 @@ extends Node3D
 # called from the inheriting script in order for everything to be loaded
 # properly.
 
+@export var map_name = "untitled"
+
 # All lights in here will be excluded from spotlight shadows. Remember to add
 # to this before calling super().
 var exclude_from_shadow = []
@@ -12,7 +14,6 @@ var exclude_from_shadow = []
 # spring arm will prevent the camera from clipping through them. Remember to
 # add to this before calling super().
 var spring_arm_objects = []
-
 var first_settings_run = false
 
 func _setting_changed(get_setting_id):
@@ -40,6 +41,10 @@ func _ready():
 	Global.setting_changed.connect(_setting_changed)
 	for setting in Global.settings:
 		if !setting == "volume": Global.setting_changed.emit(setting)
+	
+	Save.save_loaded.connect(func(): 
+		%Player.global_position = Save.get_data("lattice", "player_position"))
+	Save.save_loaded.emit() # TODO: debug only
 	
 	var col_count = 0
 	for o in spring_arm_objects:

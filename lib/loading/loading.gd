@@ -52,6 +52,10 @@ func _ready():
 	$GlowIcon.visible = false
 	$LoadPanel/VBox/ScrapperButton.grab_focus()
 	
+	# Regain focus on the settings button after it is closed, for controllers
+	$Settings/Control/Panel/InputVBox/LowerCloseButton.pressed.connect(
+		func(): $LoadPanel/VBox/Settings.grab_focus())
+	
 	$Music.volume_db = linear_to_db(target_mus_vol)
 	await get_tree().create_timer(0.5).timeout
 	$Music.play()
