@@ -2,6 +2,14 @@ extends Node
 
 ### ENGINE/GAME SCRIPTS
 
+func is_joy_button(event, button, state = "pressed") -> bool:
+	if event is InputEventJoypadButton:
+		if event.button_index == button:
+			if state == "pressed" and event.pressed: return(true)
+			if state == "released" and event.released: return(true)
+		return(false)
+	return(false)
+
 # Set the master volume on a scale from 0.0 (muted) to 1.0 (1dB)
 func set_master_vol(vol):
 	AudioServer.set_bus_volume_db(0, linear_to_db(vol))

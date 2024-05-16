@@ -20,10 +20,12 @@ func _reset_to_bottom():
 func open():
 	$Control/Panel/InputVBox/LowerCloseButton.grab_focus()
 	visible = true
+	Global.settings_opened = true
 
 func close():
 	Global.button_click.emit()
 	visible = false
+	Global.settings_opened = false
 
 func apply_input_data():
 	for i in input_data:
@@ -95,7 +97,8 @@ func _ready():
 	Global.connect("left_keybind_select", refresh_input_data)
 	refresh_input_data()
 
-func _input(_event):
+func _input(event):
+	if Utilities.is_joy_button(event, JOY_BUTTON_START): open()
 	# Right click to close settings menu
 	if Input.is_action_just_pressed("right_click"):
 		if visible == true: close()

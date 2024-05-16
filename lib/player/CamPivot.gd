@@ -24,6 +24,18 @@ var fov_offset = 0.0
 var click_mouse_pos = Vector2.ZERO
 var click_mouse_pos_diff = Vector2.ZERO
 
+func _zoom(dir):
+	if dir == "in":
+		if camera_distance - zoom_increment > min_zoom_extent:
+			camera_distance -= zoom_increment
+			$CamArm/Camera/XCast.target_position.z += zoom_increment
+			target_y_position -= 0.1
+	elif dir == "out":
+		if camera_distance + zoom_increment < max_zoom_extent:
+			camera_distance += zoom_increment
+			$CamArm/Camera/XCast.target_position.z -= zoom_increment
+			target_y_position += 0.1
+
 func _shake_cam(): $ShakeAnim.play("shake")
 
 func _ready():
@@ -80,17 +92,13 @@ func _input(event):
 	if Global.in_keybind_select == true: return
 	if Global.mouse_in_settings_menu == true: return
 	
-	if Input.is_action_just_pressed("zoom_in"):
-		if camera_distance - zoom_increment > min_zoom_extent:
-			camera_distance -= zoom_increment
-			$CamArm/Camera/XCast.target_position.z += zoom_increment
-			target_y_position -= 0.1
-	elif Input.is_action_just_pressed("zoom_out"):
-		if camera_distance + zoom_increment < max_zoom_extent:
-			camera_distance += zoom_increment
-			$CamArm/Camera/XCast.target_position.z -= zoom_increment
-			target_y_position += 0.1
-
+	if Input.is_action_just_pressed("zoom_in"): _zoom("in")
+	elif Input.is_action_just_pressed("zoom_out"): _zoom("out")
+	
+	if Global.settings_opened == false:
+		if Utilities.is_joy_button(event, JOY_BUTTON_DPAD_UP): _zoom("in")
+		elif Utilities.is_joy_button(event, JOY_BUTTON_DPAD_DOWN): _zoom("out")
+	
 func _process(_delta):
 	# Position smoothing - more intense when gliding
 	if Action.in_glide == true: camera_bounce = 1.0

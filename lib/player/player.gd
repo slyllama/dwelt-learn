@@ -55,15 +55,17 @@ func _ready():
 	Global.connect("player_position_locked", lock_position)
 	Global.connect("player_position_unlocked", unlock_position)
 
-func _input(_event):
+func _input(event):
 	# No animations if the player's position is locked
 	if position_locked == true: return
 	if Global.in_keybind_select == true: return
-	
-	if Input.is_action_just_pressed("skill_glide"):
+
+	if (Input.is_action_just_pressed("skill_glide")
+		or Input.is_action_just_pressed("right_shoulder")):
 		Action.glide_pressed.emit()
 		Action.in_glide = true
-	if Input.is_action_just_released("skill_glide"):
+	if (Input.is_action_just_released("skill_glide")
+		or Input.is_action_just_released("right_shoulder")):
 		Action.in_glide = false
 	
 	# TODO: this all should eventually be in its own module
@@ -85,14 +87,14 @@ func _physics_process(_delta):
 	
 	if Global.in_keybind_select == true: return
 	position += Global.linear_movement_override
-	
+
 	if Action.in_glide == true: glide_val = 1.3
 	else: glide_val = 0.0
 	if position_locked == true:
 		Global.player_position = position
 		update_debug()
 		return
-	
+
 	# If the position is locked, nothing happens after this point
 	if Input.is_action_pressed("move_forward"): forward += 1
 	if Input.is_action_pressed("move_back"): forward -= 1
@@ -103,6 +105,9 @@ func _physics_process(_delta):
 	
 	forward = clamp(forward, -1.0, 1.0)
 	side = clamp(side, -1.0, 1.0)
+	
+	if Action.in_glide == true and Global.player_y_velocity < -1.0:
+		forward += 0.15
 	
 	if glide == true:
 		if glide_val < max_gliding_force: glide_val += glide_rate

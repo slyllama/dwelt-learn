@@ -8,13 +8,13 @@ func _ready():
 		visible = Global.debug_state)
 	Global.debug_toggled.emit()
 
-func _input(_event):
-	if Input.is_action_just_pressed("toggle_debug"):
+func _input(event):
+	if (Input.is_action_just_pressed("toggle_debug")
+		or Utilities.is_joy_button(event, JOY_BUTTON_BACK)):
 		Global.debug_state = !Global.debug_state
 		Global.debug_toggled.emit()
 
 var i = 0
-
 func _process(_delta):
 	var colour = "green"
 	$Details.text = str(Global.debug_details_text)

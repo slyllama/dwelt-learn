@@ -38,6 +38,7 @@ var SETTINGS = {
 var settings = SETTINGS.duplicate()
 var input_data_loaded = false
 var original_input_data = []
+var settings_opened = false
 
 ### Game states ###
 signal player_position_locked(get_lock_pos, get_cam_facing)
