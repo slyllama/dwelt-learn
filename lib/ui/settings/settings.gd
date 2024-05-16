@@ -98,7 +98,9 @@ func _ready():
 	refresh_input_data()
 
 func _input(event):
-	if Utilities.is_joy_button(event, JOY_BUTTON_START): open()
+	if Utilities.is_joy_button(event, JOY_BUTTON_START):
+		if visible == false: open()
+		else: close()
 	# Right click to close settings menu
 	if Input.is_action_just_pressed("right_click"):
 		if visible == true: close()

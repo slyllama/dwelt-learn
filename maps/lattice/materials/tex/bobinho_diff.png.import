@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bg28a18vnbu6n"
-path.s3tc="res://.godot/imported/bobinho_diff.jpg-cec409ab26b882aa35473a98ca3c8349.s3tc.ctex"
+uid="uid://b8tilddyrej0n"
+path.s3tc="res://.godot/imported/bobinho_diff.png-b26bc47566be2a7c4dc410c573046aa5.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://maps/lattice/materials/tex/bobinho_diff.jpg"
-dest_files=["res://.godot/imported/bobinho_diff.jpg-cec409ab26b882aa35473a98ca3c8349.s3tc.ctex"]
+source_file="res://maps/lattice/materials/tex/bobinho_diff.png"
+dest_files=["res://.godot/imported/bobinho_diff.png-b26bc47566be2a7c4dc410c573046aa5.s3tc.ctex"]
 
 [params]
 

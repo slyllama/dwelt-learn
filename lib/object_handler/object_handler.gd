@@ -38,5 +38,6 @@ func _ready():
 		if skill_name == "interact": _interact())
 	$Collision.shape.set_size(Vector3(cube_size, cube_size, cube_size))
 
-func _input(_event):
-	if Input.is_action_just_pressed("interact"): _interact()
+func _input(event):
+	if (Input.is_action_just_pressed("interact")
+		or Utilities.is_joy_button(event, JOY_BUTTON_A)): _interact()
