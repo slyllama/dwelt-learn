@@ -70,20 +70,19 @@ func _input(event):
 			right_mouse_down = false
 	
 	if event is InputEventMouseMotion and right_mouse_down == true:
-		print(mouse_offset)
 		mouse_offset = event.relative
 		if mouse_offset.x < 2.0 and mouse_offset.x > -2.0:
 			mouse_offset.x = 0.0
 		if mouse_offset.y < 2.0 and mouse_offset.y > -2.0:
 			mouse_offset.y = 0.0
 	
-	if event is InputEventJoypadMotion:
-		var controller_motion = false
-		if event.get_axis() == 2:
-			if event.get_axis_value() != 0.0: controller_motion = true
-		if event.get_axis() == 3:
-			if event.get_axis_value() != 0.0: controller_motion = true
-		right_mouse_down = controller_motion
+	#var controller_motion = false
+	#if event is InputEventJoypadMotion:
+		#if event.get_axis() == JOY_AXIS_RIGHT_X:
+			#if event.get_axis_value() != 0.0: controller_motion = true
+		#if event.get_axis() == JOY_AXIS_RIGHT_Y:
+			#if event.get_axis_value() != 0.0: controller_motion = true
+		#right_mouse_down = controller_motion
 	
 	# Process zooms
 	if Global.in_keybind_select == true: return
@@ -101,45 +100,30 @@ func _input(event):
 			target_y_position += 0.1
 
 func _process(_delta):
+	# Position smoothing - more intense when gliding
 	if Action.in_glide == true: camera_bounce = 1.0
 	else: camera_bounce = 0.35
 	var target_y_pos = 1.15 - clamp(Global.player_y_velocity * camera_bounce, -1.0, 1.0)
 	position.y = lerp(position.y, target_y_pos, 0.035)
 	
-	# Zoom camera
+	# Adjust camera zoom and FOV
 	$CamArm.spring_length = lerpf($CamArm.spring_length, camera_distance, 0.1)
 	$CamArm/Camera.v_offset = lerpf($CamArm/Camera.v_offset, target_y_position, 0.05)
-
-	# TODO: make sure this doesn't become too performant
 	$CamArm/Camera.fov = lerp($CamArm/Camera.fov, Global.settings.fov + fov_offset, 0.04)
 	
 	last_mouse_offset = mouse_offset
-	if right_mouse_down == true:
-		new_cam_y_rotation += -mouse_offset.x / 1.5 * camera_sensitivity
-		new_cam_x_rotation += -mouse_offset.y / 2.0 * camera_sensitivity
-		new_cam_y_rotation += Input.get_joy_axis(0, 2) * camera_sensitivity * 3.5
-		new_cam_x_rotation += Input.get_joy_axis(0, 3) * camera_sensitivity * 1.5
+	# Rotate the camera eight by using the mouse or the controller.
+	# TODO: camera rotation probably needs to be clamped
+	#if right_mouse_down == true:
+	new_cam_y_rotation += -mouse_offset.x / 1.5 * camera_sensitivity
+	new_cam_x_rotation += -mouse_offset.y / 2.0 * camera_sensitivity
+	new_cam_y_rotation += Input.get_joy_axis(0, JOY_AXIS_RIGHT_X) * camera_sensitivity * 3.5
+	new_cam_x_rotation += Input.get_joy_axis(0, JOY_AXIS_RIGHT_Y) * camera_sensitivity * 1.5
 	
-		# Clamp the camera's rotation when the player is locked into position
-		#if get_parent().position_locked == true:
-			#new_cam_y_rotation = lerp(new_cam_y_rotation, clampf(
-				#new_cam_y_rotation,
-				#get_parent().lock_cam_clamp.x_lower,
-				#get_parent().lock_cam_clamp.x_upper), 0.1)
-			#new_cam_x_rotation = clampf(
-				#new_cam_x_rotation,
-				#get_parent().lock_cam_clamp.y_lower,
-				#get_parent().lock_cam_clamp.y_upper)
-		
-		rotation_degrees.y = lerpf(
-			rotation_degrees.y, new_cam_y_rotation, camera_smoothing)
-		rotation_degrees.x = lerpf(
-			rotation_degrees.x, new_cam_x_rotation, camera_smoothing)
-		
-		# Prevent weird interactions with floor/top of axis
-		rotation_degrees.x = clampf(
-			rotation_degrees.x, -60.0, 45.0)
+	# Apply and clamp camera rotation
+	rotation_degrees.y = lerpf(rotation_degrees.y, new_cam_y_rotation, camera_smoothing)
+	rotation_degrees.x = lerpf(rotation_degrees.x, new_cam_x_rotation, camera_smoothing)
+	rotation_degrees.x = clampf(rotation_degrees.x, -60.0, 45.0)
 
-		# Ensure that the camera will never get stuck in an eternally rotating situation
-		if last_mouse_offset == mouse_offset:
-			mouse_offset = Vector2.ZERO
+	# (Ensure that the camera will never get stuck in an eternally rotating situation)
+	if last_mouse_offset == mouse_offset: mouse_offset = Vector2.ZERO

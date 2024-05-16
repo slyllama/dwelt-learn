@@ -183,7 +183,7 @@ color = Color(0.4, 0.709804, 1, 1)
 
 [node name="CamSens" parent="Control/Panel/VBox" instance=ExtResource("6_y64kv")]
 layout_mode = 2
-setting_id = "camera_sens"
+setting_id = "camera_sensitivity"
 setting_title = "ORBIT SENSITIVITY"
 min_value = 0.5
 max_value = 2.5

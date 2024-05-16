@@ -95,7 +95,7 @@ func _ready():
 	Global.connect("left_keybind_select", refresh_input_data)
 	refresh_input_data()
 
-func _input(event):
+func _input(_event):
 	# Right click to close settings menu
 	if Input.is_action_just_pressed("right_click"):
 		if visible == true: close()
