@@ -18,7 +18,7 @@ func _setting_changed(get_setting_id):
 
 func load_map(map_name):
 	if !FileAccess.file_exists(_make_path(map_name)):
-		$ErrorText.text = Utilities.cntr("Error: couldn't load map '" + map_name + "'.")
+		$ErrorText.text = Utilities.cntr("[Load] error: couldn't load map '" + map_name + "'.")
 		$ErrorText.visible = true
 		return
 	started = true
@@ -27,7 +27,7 @@ func load_map(map_name):
 	$GlowIcon.visible = true
 	$LoadPanel.visible = false
 	var path = _make_path(map_name)
-	print("Loading '" + path + "'.")
+	print("[Load] loading '" + path + "'.")
 	target_path = path
 	ResourceLoader.load_threaded_request(target_path)
 

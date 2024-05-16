@@ -44,7 +44,7 @@ func _ready():
 	
 	Save.save_loaded.connect(func(): 
 		%Player.global_position = Save.get_data("lattice", "player_position"))
-	Save.save_loaded.emit() # TODO: debug only
+	Save.load_from_file()
 	
 	var col_count = 0
 	for o in spring_arm_objects:
@@ -53,8 +53,15 @@ func _ready():
 				col_count += 1
 				n.set_collision_layer_value(2, true)
 		if col_count > 0: print("[" + str(o) + "] setting spring-arm collision mask for "
-			+ str(col_count) + " object(s)")
+			+ str(col_count) + " object(s).")
 	
 	var fade_bus_in = create_tween()
 	fade_bus_in.tween_method(Utilities.set_master_vol, 0.0, Global.settings.volume, 1.5)
 	fade_bus_in.tween_callback(func(): Global.setting_changed.emit("volume"))
+
+func _notification(what):
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		Save.set_data(map_name, "player_position", Global.player_position)
+		Save.save_to_file()
+		await get_tree().create_timer(0.5).timeout
+		get_tree().quit() # default behavior
