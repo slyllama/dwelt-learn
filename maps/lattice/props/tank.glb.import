@@ -3,20 +3,20 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dpxnpda25fr1t"
-path="res://.godot/imported/mushroom_cluster.glb-1ea0efec1ad4610c2fce5658e6d6a99b.scn"
+uid="uid://bdock8rc758qp"
+path="res://.godot/imported/tank.glb-45931389830fa30fbcdbd520a809e1ba.scn"
 
 [deps]
 
-source_file="res://maps/lattice/models/mushroom_cluster.glb"
-dest_files=["res://.godot/imported/mushroom_cluster.glb-1ea0efec1ad4610c2fce5658e6d6a99b.scn"]
+source_file="res://maps/lattice/props/tank.glb"
+dest_files=["res://.godot/imported/tank.glb-45931389830fa30fbcdbd520a809e1ba.scn"]
 
 [params]
 
 nodes/root_type=""
-nodes/root_name="MushroomCluster"
+nodes/root_name="EssenceTank"
 nodes/apply_root_scale=true
-nodes/root_scale=3.0
+nodes/root_scale=1.0
 meshes/ensure_tangents=true
 meshes/generate_lods=true
 meshes/create_shadow_meshes=false
@@ -34,6 +34,10 @@ _subresources={
 "mat_energy": {
 "use_external/enabled": true,
 "use_external/path": "res://characters/euclid/mat_fresnel.tres"
+},
+"mat_tank": {
+"use_external/enabled": true,
+"use_external/path": "res://maps/lattice/materials/mat_tank.tres"
 }
 }
 }

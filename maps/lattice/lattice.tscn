@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dsf4aknq3seh2"]
+[gd_scene load_steps=32 format=3 uid="uid://dsf4aknq3seh2"]
 
 [ext_resource type="Script" path="res://maps/lattice/lattice.gd" id="1_hqs2c"]
 [ext_resource type="Texture2D" uid="uid://c5duom5wl7px7" path="res://generic/tex/sky.png" id="2_1uuus"]
@@ -17,10 +17,11 @@
 [ext_resource type="AudioStream" uid="uid://xw8eek5x1xwg" path="res://objects/updraft/sound/vent_fan.ogg" id="17_paoks"]
 [ext_resource type="PackedScene" uid="uid://bw14qvqobtubd" path="res://characters/fourier/fourier.glb" id="17_wxfph"]
 [ext_resource type="PackedScene" uid="uid://b804toes743v0" path="res://maps/lattice/fp_compose.tscn" id="18_7fno8"]
-[ext_resource type="PackedScene" uid="uid://bbrbse4rdrdeg" path="res://maps/lattice/models/greybox.glb" id="18_8pphe"]
-[ext_resource type="PackedScene" uid="uid://btw3t8vjin5bm" path="res://maps/lattice/models/floor_piece_alternate.glb" id="19_32vag"]
+[ext_resource type="PackedScene" uid="uid://bbrbse4rdrdeg" path="res://maps/lattice/level/greybox.glb" id="18_8pphe"]
+[ext_resource type="PackedScene" uid="uid://btw3t8vjin5bm" path="res://maps/lattice/level/floor_piece_alt.glb" id="19_32vag"]
 [ext_resource type="PackedScene" uid="uid://dk0s3tibcdcq0" path="res://objects/updraft/updraft.tscn" id="20_ib8vs"]
-[ext_resource type="PackedScene" uid="uid://dpxnpda25fr1t" path="res://maps/lattice/models/mushroom_cluster.glb" id="21_pc35o"]
+[ext_resource type="PackedScene" uid="uid://dpxnpda25fr1t" path="res://maps/lattice/props/mushroom_cluster.glb" id="21_pc35o"]
+[ext_resource type="PackedScene" uid="uid://bdock8rc758qp" path="res://maps/lattice/props/tank.glb" id="22_iujst"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dbpli"]
 panorama = ExtResource("2_1uuus")
@@ -217,6 +218,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0)
 transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 0, 7, 0)
 
 [node name="Greybox" parent="." instance=ExtResource("18_8pphe")]
+
+[node name="Tank" parent="Greybox" instance=ExtResource("22_iujst")]
+transform = Transform3D(0.799758, 0, -0.600323, 0, 1, 0, 0.600323, 0, 0.799758, 10.331, 0, 24.955)
+
+[node name="Tank2" parent="Greybox" instance=ExtResource("22_iujst")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.94, 0, 23.981)
+
+[node name="TankDialogue" parent="Greybox/Tank2" instance=ExtResource("16_j30j2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -0.744324)
+dialogue_data = Array[String](["The rusty bot looks out toward the ventilator with an expression of pure contentment, joints squeaking as they bounce in the air.
+
+<\"I've been on this thing -- computing -- twenty-seven times today. I can't get enough of it!\"> You wonder for a second if you should reach out and see if they really are okay; but it occurs to you that they're probably happier than you are."])
+dialogue_title = "Essence Tanks"
+character = "tank"
+object_name = "essence_notes"
+dialogue_close_distance = 7.0
+
+[node name="Tank3" parent="Greybox" instance=ExtResource("22_iujst")]
+transform = Transform3D(0.987494, 0, 0.157658, 0, 1, 0, -0.157658, 0, 0.987494, 4.284, 0, 26.791)
 
 [node name="MushroomCluster" parent="." instance=ExtResource("21_pc35o")]
 transform = Transform3D(0.611996, 0, 0.790861, 0, 1, 0, -0.790861, 0, 0.611996, 2.66351, -0.039493, 20.9354)

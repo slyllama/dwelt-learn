@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://xwgsn8aognne"
-path="res://.godot/imported/cogs.glb-db814e4c68864430d1ae846e53331965.scn"
+path="res://.godot/imported/cogs.glb-9def320dd743865e519083a043362681.scn"
 
 [deps]
 
-source_file="res://maps/lattice/models/cogs.glb"
-dest_files=["res://.godot/imported/cogs.glb-db814e4c68864430d1ae846e53331965.scn"]
+source_file="res://maps/lattice/props/cogs.glb"
+dest_files=["res://.godot/imported/cogs.glb-9def320dd743865e519083a043362681.scn"]
 
 [params]
 

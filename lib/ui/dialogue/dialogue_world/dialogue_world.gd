@@ -12,7 +12,13 @@ const MODEL_DATA = {
 		"rotation_degrees": Vector3(0.0, -20.0, 0.0)},
 	"euclid": {
 		"path": "res://characters/euclid/euclid.glb",
-		"rotation_degrees": Vector3(0.0, 160.0, 0.0)}
+		"rotation_degrees": Vector3(0.0, 160.0, 0.0)},
+	"tank": {
+		"path": "res://maps/lattice/props/tank.glb",
+		"rotation_degrees": Vector3(0.0, 15.0, 0.0),
+		"offset": Vector3(-0.1, -0.7, 0.0),
+		"scale": 0.5
+	}
 }
 
 func load_model(model_name):
@@ -37,7 +43,13 @@ func _process(_delta):
 			Model = get_model.instantiate()
 			$World.add_child(Model)
 			Model.position.z = -1.0
-			Model.get_node("AnimationPlayer").play("Idle")
+			if Model.get_node_or_null("AnimationPlayer") != null:
+				Model.get_node("AnimationPlayer").play("Idle")
 			if "rotation_degrees" in MODEL_DATA[current_model]:
 				Model.rotation_degrees = MODEL_DATA[current_model].rotation_degrees
+			if "scale" in MODEL_DATA[current_model]:
+				var s = MODEL_DATA[current_model].scale
+				Model.scale = Vector3(s, s, s)
+			if "offset" in MODEL_DATA[current_model]:
+				Model.position += MODEL_DATA[current_model].offset
 			loaded = true

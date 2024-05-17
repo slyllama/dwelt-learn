@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://b804toes743v0"]
 
-[ext_resource type="PackedScene" uid="uid://dulsifjxaelcj" path="res://maps/lattice/models/floor_piece.glb" id="1_mwmfb"]
-[ext_resource type="PackedScene" uid="uid://xwgsn8aognne" path="res://maps/lattice/models/cogs.glb" id="2_wy6wg"]
-[ext_resource type="PackedScene" uid="uid://cxuhf34eh2d24" path="res://maps/lattice/models/mushrooms.glb" id="3_7lexo"]
-[ext_resource type="PackedScene" uid="uid://dpxnpda25fr1t" path="res://maps/lattice/models/mushroom_cluster.glb" id="4_7neg8"]
+[ext_resource type="PackedScene" uid="uid://dulsifjxaelcj" path="res://maps/lattice/level/floor_piece.glb" id="1_mwmfb"]
+[ext_resource type="PackedScene" uid="uid://xwgsn8aognne" path="res://maps/lattice/props/cogs.glb" id="2_wy6wg"]
+[ext_resource type="PackedScene" uid="uid://cxuhf34eh2d24" path="res://maps/lattice/props/mushrooms.glb" id="3_7lexo"]
+[ext_resource type="PackedScene" uid="uid://dpxnpda25fr1t" path="res://maps/lattice/props/mushroom_cluster.glb" id="4_7neg8"]
 
 [node name="PivotLight" type="Node3D"]
 

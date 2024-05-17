@@ -21,7 +21,8 @@ fov = 35.0
 
 [node name="Sun" type="DirectionalLight3D" parent="World"]
 transform = Transform3D(0.994338, 0.049396, -0.0940855, 0, 0.885394, 0.464842, 0.106264, -0.46221, 0.88038, 0, 0.86546, 0.982372)
-light_energy = 3.0
+light_color = Color(0.92395, 0.850615, 0.734948, 1)
+light_energy = 2.4
 
 [node name="ENV" type="WorldEnvironment" parent="World"]
 environment = SubResource("Environment_mwppl")

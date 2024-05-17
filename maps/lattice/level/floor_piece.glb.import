@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bbrbse4rdrdeg"
-path="res://.godot/imported/greybox.glb-75c1523476ab57f0954fa6231acd0afa.scn"
+uid="uid://dulsifjxaelcj"
+path="res://.godot/imported/floor_piece.glb-db337794b6147bfc7b76dca253c62f2f.scn"
 
 [deps]
 
-source_file="res://maps/lattice/models/greybox.glb"
-dest_files=["res://.godot/imported/greybox.glb-75c1523476ab57f0954fa6231acd0afa.scn"]
+source_file="res://maps/lattice/level/floor_piece.glb"
+dest_files=["res://.godot/imported/floor_piece.glb-db337794b6147bfc7b76dca253c62f2f.scn"]
 
 [params]
 
@@ -31,9 +31,17 @@ animation/remove_immutable_tracks=true
 import_script/path=""
 _subresources={
 "materials": {
-"mat_placeholder": {
+"mat_bobinho": {
 "use_external/enabled": true,
-"use_external/path": "res://generic/mat_greybox.tres"
+"use_external/path": "res://maps/lattice/materials/mat_scrapbanner.tres"
+},
+"mat_boiler": {
+"use_external/enabled": true,
+"use_external/path": "res://maps/lattice/materials/mat_boiler.tres"
+},
+"mat_dirty_gold": {
+"use_external/enabled": true,
+"use_external/path": "res://maps/lattice/materials/mat_gold.tres"
 }
 }
 }

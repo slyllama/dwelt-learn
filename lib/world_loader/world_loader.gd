@@ -48,7 +48,7 @@ func _ready():
 	
 	var col_count = 0
 	for o in spring_arm_objects:
-		for n in o.get_children():
+		for n in Utilities.get_all_children(o):
 			if n is StaticBody3D:
 				col_count += 1
 				n.set_collision_layer_value(2, true)
