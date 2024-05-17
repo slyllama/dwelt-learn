@@ -1,6 +1,7 @@
 shader_type spatial;
 render_mode cull_disabled, unshaded;
 
+uniform vec4 base_color: source_color = vec4(1.0, 1.0, 1.0, 1.0);
 uniform sampler2D whirl_texture: repeat_enable;
 uniform sampler2D alpha_mask;
 uniform sampler2D x_alpha_mask;
@@ -16,5 +17,5 @@ void fragment() {
 	float x_alpha_mask_value = texture(x_alpha_mask, UV).r;
 	
 	ALPHA = pow(whirl_value, 2.3) * alpha_mask_value * x_alpha_mask_value;
-	ALBEDO = vec3(1.0);
+	ALBEDO = vec3(base_color.rgb);
 }

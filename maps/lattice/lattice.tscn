@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://dsf4aknq3seh2"]
+[gd_scene load_steps=33 format=3 uid="uid://dsf4aknq3seh2"]
 
 [ext_resource type="Script" path="res://maps/lattice/lattice.gd" id="1_hqs2c"]
 [ext_resource type="Texture2D" uid="uid://c5duom5wl7px7" path="res://generic/tex/sky.png" id="2_1uuus"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://dk0s3tibcdcq0" path="res://objects/updraft/updraft.tscn" id="20_ib8vs"]
 [ext_resource type="PackedScene" uid="uid://dpxnpda25fr1t" path="res://maps/lattice/props/mushroom_cluster.glb" id="21_pc35o"]
 [ext_resource type="PackedScene" uid="uid://bdock8rc758qp" path="res://maps/lattice/props/tank.glb" id="22_iujst"]
+[ext_resource type="PackedScene" uid="uid://d3wu1w4amd36m" path="res://objects/insight/insight.tscn" id="23_hbglv"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dbpli"]
 panorama = ExtResource("2_1uuus")
@@ -58,7 +59,7 @@ size = Vector3(50, 0.1, 50)
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_2872j"]
+[sub_resource type="CurveTexture" id="CurveTexture_exr7w"]
 curve = SubResource("Curve_lstkl")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6f558"]
@@ -68,10 +69,10 @@ initial_velocity_min = 0.05
 initial_velocity_max = 0.05
 gravity = Vector3(0, 0.01, 0)
 scale_min = 0.5
-scale_curve = SubResource("CurveTexture_2872j")
+scale_curve = SubResource("CurveTexture_exr7w")
 color_ramp = ExtResource("9_clv77")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_arrm5"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b4sji"]
 transparency = 1
 cull_mode = 2
 vertex_color_use_as_albedo = true
@@ -84,7 +85,7 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_udmxf"]
-material = SubResource("StandardMaterial3D_arrm5")
+material = SubResource("StandardMaterial3D_b4sji")
 size = Vector2(0.06, 0.06)
 orientation = 2
 
@@ -240,3 +241,6 @@ transform = Transform3D(0.987494, 0, 0.157658, 0, 1, 0, -0.157658, 0, 0.987494, 
 
 [node name="MushroomCluster" parent="." instance=ExtResource("21_pc35o")]
 transform = Transform3D(0.611996, 0, 0.790861, 0, 1, 0, -0.790861, 0, 0.611996, 2.66351, -0.039493, 20.9354)
+
+[node name="Insight" parent="." instance=ExtResource("23_hbglv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, 12)
