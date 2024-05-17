@@ -54,6 +54,6 @@ var linear_movement_override = Vector3.ZERO
 var player_y_velocity = 0.0
 
 ### World states ###
-var player_position = Vector2.ZERO
+var player_position = Vector3.ZERO
 var raycast_y_point = 0.0
 var look_point = null
