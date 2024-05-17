@@ -25,3 +25,7 @@ func _physics_process(_delta):
 				if node.get_node_or_null("Light") != null:
 					node.get_node("Light").visible = true
 			on_second_floor = false
+
+func _on_laser_detector_activated():
+	$LaserDetector/PlayDialogue.play()
+	Global.camera_shaken.emit()

@@ -24,6 +24,7 @@ func _format_text(get_text): # add proper dashes, colours, etc
 	var out_text = get_text.replace("--", "\u2013")
 	out_text = out_text.replace("<", "[color=#66b5ff]")
 	out_text = out_text.replace(">", "[/color]")
+	out_text = out_text.replace("$", "[font_size=6] [/font_size]")
 	return(out_text)
 
 func close_dialogue():

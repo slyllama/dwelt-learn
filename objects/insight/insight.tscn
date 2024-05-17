@@ -81,6 +81,7 @@ draw_pass_1 = SubResource("PlaneMesh_kpung")
 
 [node name="TestSphere" type="CSGSphere3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 0)
+visible = false
 radius = 0.75
 radial_segments = 24
 rings = 12

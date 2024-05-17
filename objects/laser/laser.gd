@@ -2,7 +2,7 @@ extends Node3D
 # NOTE: laser acts on collision group 2
 
 @export var object_name = "laser"
-@export var laser_move_speed = 0.5
+@export var laser_move_speed = 0.3
 @export var laser_limit_angle = Vector2(45.0, 30.0)
 
 var delay_complete = false # laser won't start moving until after a short delay
@@ -58,16 +58,18 @@ func _process(_delta):
 	if start > 0: start -= 1
 	else: if delay_complete == false: return
 	
+	# Also prevents camera movement on controller from moving the laser
+	# TODO: joy axis check in Utilities so you can use player movement to control the laser instead
 	if active == false: return
-	if Input.is_action_pressed("move_forward"):
+	if Input.is_action_pressed("ui_up") and !Input.get_joy_axis(0, JOY_AXIS_LEFT_Y):
 		$Cast.rotation_degrees.x += laser_move_speed
-	if Input.is_action_pressed("move_back"):
+	if Input.is_action_pressed("ui_down") and !Input.get_joy_axis(0, JOY_AXIS_LEFT_Y):
 		$Cast.rotation_degrees.x -= laser_move_speed
-	if Input.is_action_pressed("strafe_left"):
+	if Input.is_action_pressed("ui_left") and !Input.get_joy_axis(0, JOY_AXIS_LEFT_X):
 		$Cast.rotation_degrees.y += laser_move_speed
-	if Input.is_action_pressed("strafe_right"):
+	if Input.is_action_pressed("ui_right") and !Input.get_joy_axis(0, JOY_AXIS_LEFT_X):
 		$Cast.rotation_degrees.y -= laser_move_speed
-	
+
 	# Apply limits
 	$Cast.rotation_degrees.x = clamp(
 		$Cast.rotation_degrees.x,

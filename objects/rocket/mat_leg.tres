@@ -11,3 +11,6 @@ roughness = 0.5
 roughness_texture = ExtResource("3_emmjw")
 normal_enabled = true
 normal_texture = ExtResource("2_rlfn1")
+distance_fade_mode = 2
+distance_fade_min_distance = 1.0
+distance_fade_max_distance = 5.0
