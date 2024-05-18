@@ -61,7 +61,7 @@ size = Vector3(50, 0.1, 50)
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_exr7w"]
+[sub_resource type="CurveTexture" id="CurveTexture_x80g6"]
 curve = SubResource("Curve_lstkl")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6f558"]
@@ -71,10 +71,10 @@ initial_velocity_min = 0.05
 initial_velocity_max = 0.05
 gravity = Vector3(0, 0.01, 0)
 scale_min = 0.5
-scale_curve = SubResource("CurveTexture_exr7w")
+scale_curve = SubResource("CurveTexture_x80g6")
 color_ramp = ExtResource("9_clv77")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b4sji"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r8kvd"]
 transparency = 1
 cull_mode = 2
 vertex_color_use_as_albedo = true
@@ -87,7 +87,7 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_udmxf"]
-material = SubResource("StandardMaterial3D_b4sji")
+material = SubResource("StandardMaterial3D_r8kvd")
 size = Vector2(0.06, 0.06)
 orientation = 2
 

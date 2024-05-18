@@ -14,31 +14,52 @@ var root
 var root_cam_pivot
 
 var engine_ratio = 0.0 # sound
+var expn = 1.10
+var target_expn = 10.0
 
 # Save references to glider mesh instances so we can change shader parameters
 # on them via _set_shader_level(val)
 var in_glide = false
 var glider_nodes = []
-var glider_target_alpha = 0.0
+#var glider_target_alpha = 0.0
 var glider_alpha = 0.0
 
 func _set_shader_level(val):
+	glider_alpha = val
 	for node in glider_nodes:
 		node.get_active_material(0).set_shader_parameter("alpha_float", val)
 
+func _set_shader_expn(get_expn):
+	for node in glider_nodes:
+		node.get_active_material(0).set_shader_parameter("exponent", get_expn)
+
+func _glider_flicker_in():
+	var t = create_tween().tween_method(_set_shader_level, 0.0, 0.5, 0.1)
+	await t.finished
+	t = create_tween().tween_method(_set_shader_level, 0.5, 0.0, 0.1)
+	await t.finished
+	t = create_tween().tween_method(_set_shader_level, 0.0, 0.5, 0.2)
+
+func _glider_flicker_out():
+	var t = create_tween().tween_method(_set_shader_level, 0.5, 0.0, 0.1)
+	await t.finished
+	t = create_tween().tween_method(_set_shader_level, 0.0, 0.5, 0.1)
+	await t.finished
+	t = create_tween().tween_method(_set_shader_level, 0.5, 0.0, 0.2)
+
 func _glide_started():
+	_glider_flicker_in()
 	in_glide = true
 	$GW/AnimationPlayer.play("ExtendWings")
 	$GW/GW2/AnimationPlayer.play("ExtendWings")
 	$GlideSound.play()
-	glider_target_alpha = 0.45
 
 func _glide_ended():
+	_glider_flicker_out()
 	in_glide = false
 	$GW/AnimationPlayer.play_backwards("ExtendWings")
 	$GW/GW2/AnimationPlayer.play_backwards("ExtendWings")
 	$GlideSound.stop()
-	glider_target_alpha = 0.0
 
 func open_radar():
 	radar_open = true
@@ -90,17 +111,17 @@ func _process(_delta):
 		trail_R.enabled = false
 		return
 	
-	
 	if Action.in_glide == true:
 		if in_glide == false: _glide_started()
 	else: if in_glide == true: _glide_ended()
 	
-	glider_alpha = lerp(glider_alpha, glider_target_alpha, 0.08)
 	if glider_alpha > 0.0:
-		if $GW.visible == false: $GW.visible = true
-		_set_shader_level(glider_alpha)
+		_set_shader_expn(expn)
+		if $GW.visible == false:
+			$GW.visible = true
 	else:
-		if $GW.visible == true: $GW.visible = false
+		if $GW.visible == true:
+			$GW.visible = false
 	
 	if trail_L.enabled == false: trail_L.reenable()
 	if trail_R.enabled == false: trail_R.reenable()
@@ -123,3 +144,11 @@ func _process(_delta):
 		rotation.z, ry_delta + roll_delta * 0.02, 0.06)
 	rotation_degrees.z = clampf(
 		rotation_degrees.z, -roll_extent, roll_extent)
+	
+	expn = lerp(expn, target_expn, 0.2)
+	if expn > 9.95:
+		target_expn = 1.0
+		return
+	if expn < 1.05:
+		target_expn = 10.0
+		return

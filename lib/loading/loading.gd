@@ -61,6 +61,8 @@ func _ready():
 	$Music.play()
 
 func _input(_event):
+	if Input.is_action_just_pressed("debug_action"):
+		load_map("test")
 	if Input.is_action_just_pressed("toggle_debug"):
 		$FPSCounter.visible = !$FPSCounter.visible
 		Global.debug_state = $FPSCounter.visible # debug will retain its state
