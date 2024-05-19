@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 var active = false
-var max_alpha = 0.7
+var max_alpha = 0.5
 
 func _set_alpha(alpha):
 	$BG.material.set_shader_parameter("overall_alpha", alpha)

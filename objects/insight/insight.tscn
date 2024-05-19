@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://d3wu1w4amd36m"]
+[gd_scene load_steps=17 format=3 uid="uid://d3wu1w4amd36m"]
 
 [ext_resource type="Script" path="res://objects/insight/insight.gd" id="1_adjom"]
 [ext_resource type="PackedScene" uid="uid://dtuoy5rvcxu7b" path="res://objects/insight/insight_model.glb" id="1_j7cxf"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://d1fy6jygommc6" path="res://generic/tex/particles/mote.png" id="5_8yxhf"]
 [ext_resource type="Material" uid="uid://tw4cr3kd2jfj" path="res://objects/insight/mat_insight_fractal.tres" id="6_sqf44"]
 [ext_resource type="PackedScene" uid="uid://csbchge3673bh" path="res://lib/object_handler/object_handler.tscn" id="7_eu0w7"]
+[ext_resource type="Material" uid="uid://8dgrpigvgadk" path="res://generic/mat_placeholder.tres" id="9_jcei1"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_v3sn8"]
 material = ExtResource("3_ku1lu")
@@ -94,4 +95,11 @@ material = ExtResource("6_sqf44")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 cube_size = 2.0
 
+[node name="Placeholder" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 2, 4.37114e-08)
+cast_shadow = 0
+size = Vector3(1.6, 1.6, 1.6)
+material = ExtResource("9_jcei1")
+
 [connection signal="activated" from="ObjectHandler" to="." method="_on_object_handler_activated"]
+[connection signal="deactivated" from="ObjectHandler" to="." method="_on_object_handler_deactivated"]

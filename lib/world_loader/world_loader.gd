@@ -35,6 +35,15 @@ func _setting_changed(get_setting_id):
 			"volume": Utilities.set_master_vol(Global.settings.volume)
 	Utilities.save_settings()
 
+func setup_insights():
+	if get_node_or_null("Insights") == null:
+		print("[WorldLoader] no insights!")
+		return
+	var insight_count = 0
+	for i in %Insights.get_children():
+		insight_count += 1
+	print("[WorldLoader] found " + str(insight_count) + " insights.")
+
 func _ready():
 	# Fade in all sound if the game wasn't already muted
 	Utilities.set_master_vol(0.0)
@@ -45,6 +54,7 @@ func _ready():
 	Save.save_loaded.connect(func(): 
 		%Player.global_position = Save.get_data("lattice", "player_position"))
 	Save.load_from_file()
+	setup_insights()
 	
 	var col_count = 0
 	for o in spring_arm_objects:

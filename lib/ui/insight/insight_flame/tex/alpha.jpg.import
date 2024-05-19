@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmh7y6nm7lavt"
-path="res://.godot/imported/base_1.png-52349427bec9d22512aad394420c8fdd.ctex"
+uid="uid://hhti18gehokg"
+path="res://.godot/imported/alpha.jpg-98277f58395b464896be0ac59e3c45da.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://lib/ui/insight/tex/base_1.png"
-dest_files=["res://.godot/imported/base_1.png-52349427bec9d22512aad394420c8fdd.ctex"]
+source_file="res://lib/ui/insight/insight_flame/tex/alpha.jpg"
+dest_files=["res://.godot/imported/alpha.jpg-98277f58395b464896be0ac59e3c45da.ctex"]
 
 [params]
 
@@ -26,7 +26,7 @@ mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
 process/fix_alpha_border=true
-process/premult_alpha=true
+process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false

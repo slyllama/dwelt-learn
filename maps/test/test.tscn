@@ -109,6 +109,12 @@ environment = SubResource("Environment_dxoaf")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 5)
 
+[node name="Insights" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="Insight" parent="Insights" instance=ExtResource("12_sl0pd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
+
 [node name="Floor" type="StaticBody3D" parent="."]
 collision_layer = 3
 
@@ -144,9 +150,6 @@ autoplay = true
 [node name="MushroomCluster" parent="." instance=ExtResource("11_3jr7i")]
 transform = Transform3D(-0.629578, 0, -0.776937, 0, 1, 0, 0.776937, 0, -0.629578, -1.08866, 0, -3.93834)
 
-[node name="Insight" parent="." instance=ExtResource("12_sl0pd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
-
 [node name="FourierTest" parent="." instance=ExtResource("13_r7xks")]
 transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 8, 1.5, -4)
 
@@ -159,5 +162,3 @@ dialogue_title = "Fourier -- Observer-Class"
 character = "fourier"
 object_name = "fourier_dialogue"
 dialogue_close_distance = 7.0
-
-[connection signal="insight_activated" from="Insight" to="." method="_on_insight_insight_activated"]

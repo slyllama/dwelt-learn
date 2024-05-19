@@ -8,6 +8,3 @@ func _ready():
 	$VentFan/AnimationPlayer.play("Fan")
 	%Player.position = Vector3(0.0, 3.0, 5.0)
 	%Sky.environment.volumetric_fog_enabled = false
-
-func _on_insight_insight_activated():
-	print("HELLO???????")

@@ -12,6 +12,8 @@ signal dialogue_played(dialogue)
 signal dialogue_closed
 signal dialogue_closed_early
 signal entered_keybind_select
+signal insight_pane_opened
+signal insight_pane_closed
 signal left_keybind_select
 signal mouse_captured
 signal mouse_released

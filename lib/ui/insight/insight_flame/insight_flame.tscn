@@ -1,0 +1,67 @@
+[gd_scene load_steps=14 format=3 uid="uid://wdeo36yae7ww"]
+
+[ext_resource type="Script" path="res://lib/ui/insight/insight_flame/insight_flame.gd" id="1_0jkxu"]
+[ext_resource type="Shader" path="res://lib/ui/insight/insight_flame/shader_flame.gdshader" id="1_kwh18"]
+[ext_resource type="Texture2D" uid="uid://dgby5tl60l5ol" path="res://lib/ui/insight/insight_flame/tex/white.jpg" id="1_qyni6"]
+[ext_resource type="Texture2D" uid="uid://hhti18gehokg" path="res://lib/ui/insight/insight_flame/tex/alpha.jpg" id="2_5denc"]
+[ext_resource type="Texture2D" uid="uid://de2mx08i2ldui" path="res://lib/ui/insight/insight_flame/tex/particle.png" id="2_iyup4"]
+[ext_resource type="Texture2D" uid="uid://b5nufueq16vw0" path="res://generic/tex/shader_tex/wobble_noise.tres" id="3_mqq1k"]
+[ext_resource type="Texture2D" uid="uid://m5h1iuhs84e4" path="res://lib/ui/insight/insight_flame/tex/glow.png" id="5_bv6an"]
+
+[sub_resource type="Gradient" id="Gradient_qw0hq"]
+offsets = PackedFloat32Array(0, 0.188679, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.607843, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qtmrg"]
+gradient = SubResource("Gradient_qw0hq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_g58en"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(60, 60, 60)
+angle_max = 360.0
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+angular_velocity_max = 1.0
+radial_velocity_min = 2.0
+radial_velocity_max = 2.0
+gravity = Vector3(0, -90, 0)
+scale_min = 0.25
+color_ramp = SubResource("GradientTexture1D_qtmrg")
+
+[sub_resource type="Gradient" id="Gradient_sfwwi"]
+offsets = PackedFloat32Array(0.117371, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hpqbg"]
+gradient = SubResource("Gradient_sfwwi")
+fill_from = Vector2(1, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5didx"]
+shader = ExtResource("1_kwh18")
+shader_parameter/exponent = 10.0
+shader_parameter/alpha_scale = 1.0
+shader_parameter/alpha_channel = ExtResource("2_5denc")
+shader_parameter/noise = ExtResource("3_mqq1k")
+shader_parameter/influence_gradient = SubResource("GradientTexture2D_hpqbg")
+
+[node name="InsightFlame" type="Node2D"]
+script = ExtResource("1_0jkxu")
+
+[node name="Particles" type="GPUParticles2D" parent="."]
+position = Vector2(0, -55)
+process_material = SubResource("ParticleProcessMaterial_g58en")
+texture = ExtResource("2_iyup4")
+lifetime = 2.0
+speed_scale = 0.6
+
+[node name="Flame" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_5didx")
+position = Vector2(11, -104)
+scale = Vector2(0.847656, 0.923828)
+texture = ExtResource("1_qyni6")
+
+[node name="Glow" type="Sprite2D" parent="."]
+position = Vector2(0, -48)
+texture = ExtResource("5_bv6an")
