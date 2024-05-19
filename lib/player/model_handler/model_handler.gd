@@ -96,6 +96,10 @@ func _ready():
 	
 	Action.targeted.connect(open_radar)
 	Action.untargeted.connect(close_radar)
+	
+	# Debug visibility
+	Global.debug_player_visibility_changed.connect(func():
+		visible = Global.debug_player_visible)
 
 func _process(_delta):
 	$IdleSound.volume_db = linear_to_db(lerp(

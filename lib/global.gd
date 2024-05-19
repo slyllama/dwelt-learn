@@ -7,7 +7,6 @@ const LARGE_UI_SCALE = 1.0
 signal camera_shaken
 signal button_hover
 signal button_click
-signal debug_toggled
 signal dialogue_played(dialogue)
 signal dialogue_closed
 signal dialogue_closed_early
@@ -20,11 +19,18 @@ signal mouse_released
 signal shaders_loaded # called after ShaderCacheGen has loaded and removed itself
 signal skill_clicked(skill_name)
 
-var debug_details_text = "[Details]"
-var debug_state = false
 var in_keybind_select = false
 var mouse_is_captured = false
 var mouse_in_settings_menu = false
+
+### Debug signals and parameters
+
+signal debug_toggled
+signal debug_player_visibility_changed
+
+var debug_details_text = "[Details]"
+var debug_state = false
+var debug_player_visible = true
 
 ### Settings ###
 signal setting_changed(setting_id)

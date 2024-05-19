@@ -32,6 +32,11 @@ func _ready():
 	$SmokeOverlay/BG.visible = true
 	$InteractOverlay.modulate = Color(0.0, 0.0, 0.0, 0.2)
 	$LoadOverride/LoadBlack.visible = true
+	
+	# Debug visibility
+	Global.debug_player_visibility_changed.connect(func():
+		$Cursor.visible = Global.debug_player_visible
+		$InteractOverlay/InteractCursor.visible = Global.debug_player_visible)
 
 func _mouseover():
 	Global.button_hover.emit()
