@@ -86,6 +86,7 @@ orientation = 2
 
 [node name="Test" type="Node3D"]
 script = ExtResource("1_fvnbx")
+map_name = "test"
 
 [node name="HUD" parent="." instance=ExtResource("1_3q1w7")]
 

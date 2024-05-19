@@ -47,6 +47,7 @@ signal player_position_locked(get_lock_pos, get_cam_facing)
 signal player_position_unlocked
 
 var can_move = true
+var current_map = ""
 var dialogue_active = false
 var dragging_control = false # sliders should report their position so they aren't trapped on camera pan
 var gravity = 0.98

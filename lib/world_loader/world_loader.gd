@@ -19,14 +19,10 @@ var first_settings_run = false
 func _setting_changed(get_setting_id):
 	if first_settings_run == false: first_settings_run = true
 	match get_setting_id:
-		"fov": 
-			%Player/CamPivot/CamArm/Camera.fov = Global.settings.fov
-		"camera_sensitivity":
-			%Player/CamPivot.camera_sensitivity = Global.settings.camera_sensitivity
-		"volumetric_fog":
-			%Sky.environment.volumetric_fog_enabled = Global.settings.volumetric_fog
-		"bloom":
-			%Sky.environment.glow_enabled = Global.settings.bloom
+		"fov": %Player/CamPivot/CamArm/Camera.fov = Global.settings.fov
+		"camera_sensitivity": %Player/CamPivot.camera_sensitivity = Global.settings.camera_sensitivity
+		"volumetric_fog": %Sky.environment.volumetric_fog_enabled = Global.settings.volumetric_fog
+		"bloom": %Sky.environment.glow_enabled = Global.settings.bloom
 
 	# The following are only applied after the first run
 	if first_settings_run == true:
@@ -51,11 +47,20 @@ func _ready():
 	for setting in Global.settings:
 		if !setting == "volume": Global.setting_changed.emit(setting)
 	
+	# ===== DATA TO SAVE
+	Save.game_saved.connect(func():
+		Save.set_data(map_name, "player_position", Global.player_position)
+		Save.save_to_file())
+	
+	# ===== DATA TO LOAD
+	Global.current_map = map_name
 	Save.save_loaded.connect(func(): 
-		%Player.global_position = Save.get_data("lattice", "player_position"))
+		if Save.get_data(Global.current_map, "player_position") != null:
+			%Player.global_position = Save.get_data(Global.current_map, "player_position"))
 	Save.load_from_file()
 	setup_insights()
 	
+	# Set spring arm collisions
 	var col_count = 0
 	for o in spring_arm_objects:
 		for n in Utilities.get_all_children(o):
@@ -70,8 +75,8 @@ func _ready():
 	fade_bus_in.tween_callback(func(): Global.setting_changed.emit("volume"))
 
 func _notification(what):
+	# Save the game on quit via Save.game_saved
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
-		Save.set_data(map_name, "player_position", Global.player_position)
-		Save.save_to_file()
+		Save.game_saved.emit()
 		await get_tree().create_timer(0.5).timeout
-		get_tree().quit() # default behavior
+		get_tree().quit()

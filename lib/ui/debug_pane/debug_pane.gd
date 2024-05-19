@@ -38,3 +38,13 @@ func _process(_delta):
 	i += 1
 
 func _mouseover(): Global.button_hover.emit()
+
+func _on_print_save_data_pressed():
+	print(Save.save_data)
+
+func _on_save_pressed():
+	Save.game_saved.emit()
+
+func _on_reset_save_data_pressed():
+	Save.reset_file()
+	get_tree().change_scene_to_file("res://lib/loading/loading.tscn")
