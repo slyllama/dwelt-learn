@@ -136,9 +136,10 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 visible = false
 
 [node name="Trail3D" type="MeshInstance3D" parent="."]
+visible = false
 material_override = SubResource("StandardMaterial3D_cwkau")
 script = ExtResource("6_c6fhn")
-start_alpha = 0.3
+diffuse_color = Color(1, 1, 1, 1)
 
 [node name="Euclid" parent="." instance=ExtResource("6_m827u")]
 

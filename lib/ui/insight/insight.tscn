@@ -1,0 +1,50 @@
+[gd_scene load_steps=10 format=3 uid="uid://dp2blk7gd88n2"]
+
+[ext_resource type="Script" path="res://lib/ui/insight/insight.gd" id="1_6dq0b"]
+[ext_resource type="PackedScene" uid="uid://sihpp2cwoyfc" path="res://lib/ui/sprite_center.tscn" id="1_vrxdd"]
+[ext_resource type="PackedScene" uid="uid://s4i8wd6iwhw6" path="res://lib/ui/smoke_overlay/smoke_overlay.tscn" id="2_br3yf"]
+[ext_resource type="Texture2D" uid="uid://cmh7y6nm7lavt" path="res://lib/ui/insight/tex/base_1.png" id="3_d7rqi"]
+[ext_resource type="Shader" path="res://lib/ui/insight/shader_ripple.gdshader" id="4_olawv"]
+[ext_resource type="Texture2D" uid="uid://diq3dkelcpf84" path="res://lib/ui/insight/tex/base_2.png" id="4_rb6os"]
+[ext_resource type="Texture2D" uid="uid://b5nufueq16vw0" path="res://generic/tex/shader_tex/wobble_noise.tres" id="5_mvkds"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vqs23"]
+shader = ExtResource("4_olawv")
+shader_parameter/alpha_scale = 0.265
+shader_parameter/noise = ExtResource("5_mvkds")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_avwom"]
+shader = ExtResource("4_olawv")
+shader_parameter/alpha_scale = 1.0
+shader_parameter/noise = ExtResource("5_mvkds")
+
+[node name="Insight" type="CanvasLayer"]
+script = ExtResource("1_6dq0b")
+
+[node name="Darken" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.196078)
+
+[node name="SmokeOverlay" parent="." instance=ExtResource("2_br3yf")]
+
+[node name="SpriteCenter" parent="." instance=ExtResource("1_vrxdd")]
+
+[node name="Base1" type="Sprite2D" parent="SpriteCenter"]
+z_index = -1
+texture = ExtResource("3_d7rqi")
+
+[node name="Base2" type="Sprite2D" parent="SpriteCenter"]
+modulate = Color(1, 1, 1, 0.588235)
+z_index = -1
+material = SubResource("ShaderMaterial_vqs23")
+texture = ExtResource("4_rb6os")
+
+[node name="Base3" type="Sprite2D" parent="SpriteCenter"]
+z_index = -1
+material = SubResource("ShaderMaterial_avwom")
+texture = ExtResource("4_rb6os")
+flip_h = true

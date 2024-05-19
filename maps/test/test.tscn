@@ -129,6 +129,7 @@ draw_pass_1 = SubResource("PlaneMesh_k7b7a")
 
 [node name="Updraft" parent="." instance=ExtResource("6_mmoa4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
+acceleration = 0.1
 
 [node name="VentFan" parent="." instance=ExtResource("9_uampq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2279, -7)
