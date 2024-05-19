@@ -13,6 +13,7 @@ var center
 var is_open = false
 var insight_count = 7
 var completed = 5
+var primed = false
 
 var insight_nodes = []
 var completed_nodes = []
@@ -54,6 +55,7 @@ func update_completed_nodes():
 		line_nodes.append(blur)
 
 func open():
+	primed = false
 	update_completed_nodes()
 	$SmokeOverlay.activate()
 	is_open = true
@@ -69,6 +71,13 @@ func close():
 	trans_tween.tween_method(_set_trans_state, 1.0, 0.0, 0.25)
 	trans_tween.tween_callback(func():
 		if is_open == false: visible = false)
+
+func play_after_dialogue(dialogue_data):
+	primed = true
+	Global.dialogue_played.emit({
+		"title": "insight",
+		"data": ["test"],
+		"character": ""})
 
 func _ready():
 	mouse_pos = get_viewport().get_mouse_position()
@@ -89,7 +98,9 @@ func _ready():
 		for j in insight_nodes:
 			j.get_child(0).rotation_degrees = - j.rotation_degrees
 	
-	Global.insight_pane_opened.connect(func(): if !is_open: open())
+	Global.insight_pane_opened.connect(func(): if !is_open: play_after_dialogue(null))
+	Global.dialogue_closed.connect(func(): if primed == true:
+		open())
 	Global.insight_pane_closed.connect(func(): if is_open: close())
 
 func _process(_delta):

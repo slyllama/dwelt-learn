@@ -20,6 +20,8 @@ func activate():
 	activated.emit()
 
 func deactivate():
+	# Prevent issues in cases where an action is performed after dialogue
+	if Global.dialogue_active == true: return
 	Action.deactivate()
 	active = false
 	deactivated.emit()
