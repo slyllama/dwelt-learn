@@ -28,7 +28,7 @@ func _format_text(get_text): # add proper dashes, colours, etc
 	return(out_text)
 
 func close_dialogue():
-	$SmokeOverlay.deactivate()
+	Global.smoke_faded.emit("in")
 	
 	current_dialogue = []
 	current_title = ""
@@ -46,7 +46,7 @@ func close_dialogue():
 
 func play_dialogue(get_dialogue):
 	$PlayDialogue.play()
-	$SmokeOverlay.activate()
+	Global.smoke_faded.emit("in")
 	current_dialogue = get_dialogue.data
 	current_title = str(_format_text(get_dialogue.title)).to_upper()
 	current_place = 0

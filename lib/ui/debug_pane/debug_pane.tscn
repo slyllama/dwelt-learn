@@ -79,7 +79,7 @@ layout_mode = 2
 theme = ExtResource("3_okmvy")
 theme_override_constants/line_separation = 6
 bbcode_enabled = true
-text = "[right]Save Data Actions[/right]"
+text = "[right]Data Actions[/right]"
 fit_content = true
 
 [node name="PrintSaveData" type="Button" parent="CmdPanel/CmdVBox"]
@@ -104,6 +104,14 @@ theme_override_font_sizes/font_size = 14
 theme_override_styles/normal = SubResource("StyleBoxFlat_6oyn3")
 text = "Reset Save Data"
 
+[node name="ResetSettings" type="Button" parent="CmdPanel/CmdVBox"]
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("3_okmvy")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_6oyn3")
+text = "Reset Settings"
+
 [node name="Padding" type="Control" parent="CmdPanel/CmdVBox"]
 custom_minimum_size = Vector2(0, 14)
 layout_mode = 2
@@ -126,4 +134,5 @@ text = "Hide Player"
 [connection signal="pressed" from="CmdPanel/CmdVBox/PrintSaveData" to="." method="_on_print_save_data_pressed"]
 [connection signal="pressed" from="CmdPanel/CmdVBox/Save" to="." method="_on_save_pressed"]
 [connection signal="pressed" from="CmdPanel/CmdVBox/ResetSaveData" to="." method="_on_reset_save_data_pressed"]
+[connection signal="pressed" from="CmdPanel/CmdVBox/ResetSettings" to="." method="_on_reset_settings_pressed"]
 [connection signal="pressed" from="CmdPanel/CmdVBox/TogglePlayerVis" to="." method="_on_toggle_player_vis_pressed"]

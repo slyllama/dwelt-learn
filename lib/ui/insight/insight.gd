@@ -57,7 +57,7 @@ func update_completed_nodes():
 func open():
 	primed = false
 	update_completed_nodes()
-	$SmokeOverlay.activate()
+	Global.smoke_faded.emit("in")
 	is_open = true
 	visible = true
 	var trans_tween = create_tween()
@@ -65,7 +65,7 @@ func open():
 	for c in completed_nodes: c.open()
 
 func close():
-	$SmokeOverlay.deactivate()
+	Global.smoke_faded.emit("out")
 	is_open = false
 	var trans_tween = create_tween()
 	trans_tween.tween_method(_set_trans_state, 1.0, 0.0, 0.25)
@@ -75,8 +75,8 @@ func close():
 func play_after_dialogue(dialogue_data):
 	primed = true
 	Global.dialogue_played.emit({
-		"title": "insight",
-		"data": ["test"],
+		"title": "Insight",
+		"data": ["Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."],
 		"character": ""})
 
 func _ready():

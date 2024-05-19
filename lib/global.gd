@@ -18,6 +18,7 @@ signal mouse_captured
 signal mouse_released
 signal shaders_loaded # called after ShaderCacheGen has loaded and removed itself
 signal skill_clicked(skill_name)
+signal smoke_faded(dir)
 
 var in_keybind_select = false
 var mouse_is_captured = false

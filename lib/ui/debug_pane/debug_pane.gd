@@ -39,6 +39,8 @@ func _process(_delta):
 
 func _mouseover(): Global.button_hover.emit()
 
+# Debug actions
+
 func _on_print_save_data_pressed(): print(Save.save_data)
 
 func _on_save_pressed(): Save.game_saved.emit()
@@ -53,3 +55,8 @@ func _on_toggle_player_vis_pressed():
 		$CmdPanel/CmdVBox/TogglePlayerVis.text = "Hide Player"
 	else: $CmdPanel/CmdVBox/TogglePlayerVis.text = "Show Player"
 	Global.debug_player_visibility_changed.emit()
+
+func _on_reset_settings_pressed():
+	DirAccess.remove_absolute("user://settings.json")
+	DirAccess.remove_absolute("user://input_data.json")
+	get_tree().change_scene_to_file("res://lib/loading/loading.tscn")

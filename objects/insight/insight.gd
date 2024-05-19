@@ -7,7 +7,6 @@ func _ready():
 	$ObjectHandler.object_name = object_name
 
 func _on_object_handler_activated():
-	
 	Global.insight_pane_opened.emit()
 	Action.activate(object_name, false)
 	Action.untargeted.emit()

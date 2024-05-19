@@ -12,7 +12,7 @@ var target_speed = 0.0 # used for lerping
 func activate():
 	active = true
 	target_speed = elevator_speed / 10.0
-	$SmokeOverlay.activate()
+	Global.smoke_faded.emit("in")
 	$EnterLaser.play()
 	
 	Global.emit_signal(
@@ -23,7 +23,7 @@ func activate():
 func deactivate():
 	active = false
 	target_speed = 0.0
-	$SmokeOverlay.deactivate()
+	Global.smoke_faded.emit("out")
 	Global.player_position_unlocked.emit()
 
 func _ready():

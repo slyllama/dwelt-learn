@@ -21,4 +21,7 @@ func deactivate():
 		if active == false: $BG.visible = false)
 
 func _ready():
+	Global.smoke_faded.connect(func(dir):
+		if dir == "in": activate()
+		else: deactivate())
 	$BG.visible = false

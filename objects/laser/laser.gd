@@ -13,7 +13,7 @@ var og_cast_rotation_y
 
 func activate():
 	active = true
-	$SmokeOverlay.activate()
+	Global.smoke_faded.emit("in")
 	$EnterLaser.play()
 
 	delay_complete = false
@@ -27,7 +27,7 @@ func activate():
 
 func deactivate():
 	active = false
-	$SmokeOverlay.deactivate()
+	Global.smoke_faded.emit("in")
 	Global.player_position_unlocked.emit()
 
 func _ready():
