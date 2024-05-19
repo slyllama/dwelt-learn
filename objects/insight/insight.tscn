@@ -1,11 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://d3wu1w4amd36m"]
+[gd_scene load_steps=16 format=3 uid="uid://d3wu1w4amd36m"]
 
+[ext_resource type="Script" path="res://objects/insight/insight.gd" id="1_adjom"]
 [ext_resource type="PackedScene" uid="uid://dtuoy5rvcxu7b" path="res://objects/insight/insight_model.glb" id="1_j7cxf"]
 [ext_resource type="Texture2D" uid="uid://bgwytb8x1uak3" path="res://objects/insight/tex/insight_decal.png" id="2_amydo"]
 [ext_resource type="Material" uid="uid://ddsbkakurhn2p" path="res://objects/insight/mat_insight_blur.tres" id="3_ku1lu"]
 [ext_resource type="Texture2D" uid="uid://dinrdf02xeqaq" path="res://generic/tex/fade_ramp.tres" id="4_4k2e2"]
 [ext_resource type="Texture2D" uid="uid://d1fy6jygommc6" path="res://generic/tex/particles/mote.png" id="5_8yxhf"]
 [ext_resource type="Material" uid="uid://tw4cr3kd2jfj" path="res://objects/insight/mat_insight_fractal.tres" id="6_sqf44"]
+[ext_resource type="PackedScene" uid="uid://csbchge3673bh" path="res://lib/object_handler/object_handler.tscn" id="7_eu0w7"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_v3sn8"]
 material = ExtResource("3_ku1lu")
@@ -50,6 +52,7 @@ size = Vector2(0.06, 0.06)
 orientation = 2
 
 [node name="Insight" type="Node3D"]
+script = ExtResource("1_adjom")
 
 [node name="UpdraftModel" parent="." instance=ExtResource("1_j7cxf")]
 transform = Transform3D(0.9, 0, 0, 0, 0.2, 0, 0, 0, 0.9, 0, 0.366901, 0)
@@ -86,3 +89,9 @@ radius = 0.75
 radial_segments = 24
 rings = 12
 material = ExtResource("6_sqf44")
+
+[node name="ObjectHandler" parent="." instance=ExtResource("7_eu0w7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+cube_size = 2.0
+
+[connection signal="activated" from="ObjectHandler" to="." method="_on_object_handler_activated"]

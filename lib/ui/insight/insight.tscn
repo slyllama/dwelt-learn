@@ -10,30 +10,23 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vqs23"]
 shader = ExtResource("4_olawv")
-shader_parameter/alpha_scale = 0.265
+shader_parameter/alpha_scale = 0.25
 shader_parameter/noise = ExtResource("5_mvkds")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_avwom"]
 shader = ExtResource("4_olawv")
-shader_parameter/alpha_scale = 1.0
+shader_parameter/alpha_scale = 0.5
 shader_parameter/noise = ExtResource("5_mvkds")
 
 [node name="Insight" type="CanvasLayer"]
 script = ExtResource("1_6dq0b")
-
-[node name="Darken" type="ColorRect" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.196078)
 
 [node name="SmokeOverlay" parent="." instance=ExtResource("2_br3yf")]
 
 [node name="SpriteCenter" parent="." instance=ExtResource("1_vrxdd")]
 
 [node name="Base1" type="Sprite2D" parent="SpriteCenter"]
+modulate = Color(1, 1, 1, 0.784314)
 z_index = -1
 texture = ExtResource("3_d7rqi")
 
@@ -41,10 +34,12 @@ texture = ExtResource("3_d7rqi")
 modulate = Color(1, 1, 1, 0.588235)
 z_index = -1
 material = SubResource("ShaderMaterial_vqs23")
+scale = Vector2(0.75, 0.75)
 texture = ExtResource("4_rb6os")
 
 [node name="Base3" type="Sprite2D" parent="SpriteCenter"]
 z_index = -1
 material = SubResource("ShaderMaterial_avwom")
+scale = Vector2(0.8, 0.8)
 texture = ExtResource("4_rb6os")
 flip_h = true

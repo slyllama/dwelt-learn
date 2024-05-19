@@ -49,6 +49,7 @@ func update_debug():
 	Global.debug_details_text += "\nDirection: " + Utilities.fstr(%CamPivot.rotation_degrees.y, 1)
 	Global.debug_details_text += "\u00B0 (" + str(snapped($ModelHandler.rotation_degrees.y, 1))  + "\u00B0)"
 	Global.debug_details_text += "\nVertical speed: " + Utilities.fstr(Global.player_y_velocity * -1.0)
+	if Action.target != "": Global.debug_details_text += "\n[color=yellow]Action target: " + str(Action.target)
 	if $Collision.disabled == true: Global.debug_details_text += "\n[color=red]Collision disabled[/color]"
 
 func _ready():
