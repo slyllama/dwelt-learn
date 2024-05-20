@@ -11,8 +11,6 @@ var mouse_pos
 var center
 
 var is_open = false
-var insight_count = 7
-var completed = 5
 var primed = false
 
 var insight_nodes = []
@@ -40,8 +38,7 @@ func update_completed_nodes():
 	for l in line_nodes: l.queue_free()
 	completed_nodes = []
 	line_nodes = []
-	completed = clamp(completed, 0, insight_count)
-	for c in completed:
+	for c in Global.insights_collected:
 		var comp_node = InsightFlame.instantiate()
 		insight_nodes[c].get_child(0).add_child(comp_node)
 		completed_nodes.append(comp_node)
@@ -58,9 +55,7 @@ func open():
 	is_open = true
 	primed = false
 	visible = true
-	
-	Global.printc("[Insight] opened!")
-	
+
 	$OpenSound.play()
 	update_completed_nodes()
 	Global.smoke_faded.emit("in")
@@ -94,9 +89,9 @@ func _ready():
 	center = get_viewport().size
 	visible = false
 	
-	for i in insight_count:
+	for i in Global.insights_total:
 		var i_container = Node2D.new()
-		i_container.rotation_degrees = 360.0 / insight_count * i - 90.0
+		i_container.rotation_degrees = 360.0 / Global.insights_total * i - 90.0
 		$SpriteCenter.add_child(i_container)
 		insight_nodes.append(i_container)
 		

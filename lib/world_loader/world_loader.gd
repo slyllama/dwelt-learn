@@ -6,9 +6,6 @@ extends Node3D
 
 @export var map_name = "untitled"
 
-var collected_insights = 0
-var insights_total: int
-
 # All lights in here will be excluded from spotlight shadows. Remember to add
 # to this before calling super().
 var exclude_from_shadow = []
@@ -36,12 +33,13 @@ func _setting_changed(get_setting_id):
 
 # Get the total number of insights
 func insights_setup():
+	Global.insights_total = 0
 	if get_node_or_null("Insights") == null:
 		Global.printc("[WorldLoader] no insights!")
 		return
 	for i in %Insights.get_children():
-		insights_total += 1
-	Global.printc("[WorldLoader] found " + str(insights_total) + " insight(s).")
+		Global.insights_total += 1
+	Global.printc("[WorldLoader] found " + str(Global.insights_total) + " insight(s).")
 	insights_refresh()
 
 # Display only the current insight, based on collected_insights
@@ -49,7 +47,7 @@ func insights_refresh():
 	if get_node_or_null("Insights") == null: return
 	for i in %Insights.get_children().size():
 		var n = %Insights.get_children()[i]
-		if i == collected_insights: n.visible = true
+		if i == Global.insights_collected: n.visible = true
 		else: n.visible = false
 
 func _ready():
@@ -63,13 +61,13 @@ func _ready():
 		if !setting == "volume": Global.setting_changed.emit(setting)
 	
 	Action.insight_advanced.connect(func():
-		collected_insights += 1
+		Global.insights_collected += 1
 		insights_refresh())
 	
 	# ===== DATA TO SAVE =====
 	Save.game_saved.connect(func():
 		Save.set_data(map_name, "player_position", Global.player_ground_position)
-		Save.set_data(map_name, "collected_insights", collected_insights)
+		Save.set_data(map_name, "collected_insights", Global.insights_collected)
 		Save.save_to_file())
 	
 	# ===== DATA TO LOAD =====
@@ -78,11 +76,9 @@ func _ready():
 		var s_player_position = Save.get_data(Global.current_map, "player_position")
 		if s_player_position != null: %Player.global_position = s_player_position
 		var s_collected_insights = Save.get_data(Global.current_map, "collected_insights")
-		if s_collected_insights != null: collected_insights = s_collected_insights)
+		if s_collected_insights != null: Global.insights_collected = s_collected_insights)
 	Save.load_from_file()
-	if Save.save_data == {}:
-		Global.printc("[WorldLoader->Save] saving empty.")
-		Save.game_saved.emit()
+	
 	insights_setup()
 	
 	# Set spring arm collisions

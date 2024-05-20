@@ -10,10 +10,11 @@ func _ready():
 
 func _on_object_handler_activated():
 	if Action.target != object_name: return
+	Action.insight_advanced.emit()
 	Global.insight_pane_opened.emit(dialogue_data)
 	# Needs to be separate from insight_pane_opened because players can open
 	# the Insight pane without advancing (i.e., from the rocket)
-	Action.insight_advanced.emit()
+	
 	Action.activate(object_name, false)
 	Action.in_insight_dialogue = true
 	Action.untargeted.emit()
