@@ -84,6 +84,8 @@ func _input(_event):
 	if Input.is_action_just_pressed("move_back"): $ModelHandler.start_moving()
 	if Input.is_action_just_released("move_back"): $ModelHandler.stop_moving()
 
+var c = 0
+
 func _physics_process(_delta):
 	forward = 0
 	side = 0
@@ -132,4 +134,11 @@ func _physics_process(_delta):
 	
 	Global.player_position = position
 	Global.player_y_velocity = velocity.y
+	if c == 30:
+		if velocity.y > -1.0 and velocity.y < 1.0:
+			Global.player_ground_position = position
+		Global.printc(Global.player_ground_position)
+		c = 0
 	update_debug()
+	
+	c += 1

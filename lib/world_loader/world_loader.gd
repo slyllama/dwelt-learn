@@ -44,6 +44,7 @@ func setup_insights():
 
 func _ready():
 	Action.deactivate() # interesting bug where an action will persist across maps
+	Action.in_glide = false
 	
 	# Fade in all sound if the game wasn't already muted
 	Utilities.set_master_vol(0.0)
@@ -53,7 +54,7 @@ func _ready():
 	
 	# ===== DATA TO SAVE
 	Save.game_saved.connect(func():
-		Save.set_data(map_name, "player_position", Global.player_position)
+		Save.set_data(map_name, "player_position", Global.player_ground_position)
 		Save.save_to_file())
 	
 	# ===== DATA TO LOAD

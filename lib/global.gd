@@ -71,11 +71,12 @@ var dialogue_active = false
 var dragging_control = false # sliders should report their position so they aren't trapped on camera pan
 var gravity = 0.98
 var in_updraft_zone = false
-var updraft_zone = ""
 var linear_movement_override = Vector3.ZERO
 var player_y_velocity = 0.0
+var updraft_zone = ""
 
 ### World states ###
 var player_position = Vector3.ZERO
+var player_ground_position = Vector3.ZERO
 var raycast_y_point = 0.0
 var look_point = null
