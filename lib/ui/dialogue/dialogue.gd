@@ -17,6 +17,10 @@ var current_dialogue = []
 var current_title = ""
 var current_place = 0
 
+func _set_base_exponent(exponent):
+	$Base.material.set_shader_parameter("exponent", 0.2 + (1.0 - exponent) * 10.0)
+	$Base.material.set_shader_parameter("alpha_scale", exponent)
+
 func _set_text(get_text):
 	$Base/DText.text = get_text
 
@@ -38,7 +42,7 @@ func close_dialogue():
 	
 	transitioning = true
 	var fade_in = create_tween()
-	fade_in.tween_property($Base, "modulate:a", 0.0, 0.25)
+	fade_in.tween_method(_set_base_exponent, 1.0, 0.0, 0.1)
 	await fade_in.finished
 	visible = false
 	$Base/DText.text = ""
@@ -58,16 +62,15 @@ func play_dialogue(get_dialogue):
 			$Base/VP3D/DialogueWorld.load_model(get_dialogue.character)
 		else: $Base/VP3D.visible = false
 	else: $Base/VP3D.visible = false
-	
+
 	# These are already set by interact_area, but dialogue won't necessarily
 	# be called by area
 	Global.dialogue_active = true
-	$Base.modulate.a = 0.0
 	visible = true
 	emit_signal("opened")
 	transitioning = true
 	var fade_in = create_tween()
-	fade_in.tween_property($Base, "modulate:a", 1.0, 0.1)
+	fade_in.tween_method(_set_base_exponent, 0.0, 1.0, 0.1)
 	await fade_in.finished
 	transitioning = false
 	play_phrase()
