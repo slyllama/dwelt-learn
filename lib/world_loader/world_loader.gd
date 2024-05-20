@@ -6,7 +6,7 @@ extends Node3D
 
 @export var map_name = "untitled"
 
-var insights_collected = 3
+var collected_insights = 0
 var insights_total: int
 
 # All lights in here will be excluded from spotlight shadows. Remember to add
@@ -34,13 +34,23 @@ func _setting_changed(get_setting_id):
 			"volume": Utilities.set_master_vol(Global.settings.volume)
 	Utilities.save_settings()
 
-func setup_insights():
+# Get the total number of insights
+func insights_setup():
 	if get_node_or_null("Insights") == null:
 		Global.printc("[WorldLoader] no insights!")
 		return
 	for i in %Insights.get_children():
 		insights_total += 1
 	Global.printc("[WorldLoader] found " + str(insights_total) + " insight(s).")
+	insights_refresh()
+
+# Display only the current insight, based on collected_insights
+func insights_refresh():
+	if get_node_or_null("Insights") == null: return
+	for i in %Insights.get_children().size():
+		var n = %Insights.get_children()[i]
+		if i == collected_insights: n.visible = true
+		else: n.visible = false
 
 func _ready():
 	Action.deactivate() # interesting bug where an action will persist across maps
@@ -52,18 +62,21 @@ func _ready():
 	for setting in Global.settings:
 		if !setting == "volume": Global.setting_changed.emit(setting)
 	
-	# ===== DATA TO SAVE
+	# ===== DATA TO SAVE =====
 	Save.game_saved.connect(func():
 		Save.set_data(map_name, "player_position", Global.player_ground_position)
+		Save.set_data(map_name, "collected_insights", collected_insights)
 		Save.save_to_file())
 	
-	# ===== DATA TO LOAD
+	# ===== DATA TO LOAD =====
 	Global.current_map = map_name
-	Save.save_loaded.connect(func(): 
-		if Save.get_data(Global.current_map, "player_position") != null:
-			%Player.global_position = Save.get_data(Global.current_map, "player_position"))
+	Save.save_loaded.connect(func():
+		var s_player_position = Save.get_data(Global.current_map, "player_position")
+		if s_player_position != null: %Player.global_position = s_player_position
+		var s_collected_insights = Save.get_data(Global.current_map, "collected_insights")
+		if s_collected_insights != null: collected_insights = s_collected_insights)
 	Save.load_from_file()
-	setup_insights()
+	insights_setup()
 	
 	# Set spring arm collisions
 	var col_count = 0
@@ -72,7 +85,8 @@ func _ready():
 			if n is StaticBody3D:
 				col_count += 1
 				n.set_collision_layer_value(2, true)
-		if col_count > 0: Global.printc("[" + str(o) + "] setting spring-arm collision mask for "
+		if col_count > 0: Global.printc("[" + str(o)
+			+ "] setting spring-arm collision mask for "
 			+ str(col_count) + " object(s).")
 	
 	var fade_bus_in = create_tween()
