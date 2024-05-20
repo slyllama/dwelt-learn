@@ -59,6 +59,8 @@ func open():
 	primed = false
 	visible = true
 	
+	Global.printc("[Insight] opened!")
+	
 	$OpenSound.play()
 	update_completed_nodes()
 	Global.smoke_faded.emit("in")

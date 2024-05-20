@@ -27,11 +27,13 @@ func load_map(map_name):
 	$GlowIcon.visible = true
 	$LoadPanel.visible = false
 	var path = _make_path(map_name)
-	print("[Load] loading '" + path + "'.")
+	Global.printc("[Load] loading '" + path + "'.")
 	target_path = path
 	ResourceLoader.load_threaded_request(target_path)
 
 func _ready():
+	for _i in 20: Global.printc("\n", true) # prime the debug buffer!
+	
 	# Load and populate settings (including menu)
 	Utilities.load_settings()
 	Global.setting_changed.connect(_setting_changed)

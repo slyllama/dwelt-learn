@@ -24,21 +24,21 @@ func set_data(map, param, value):
 	save_data[map][param] = value
 
 func reset_file():
-	print("[Save] resetting save.dat!")
+	Global.printc("[Save] resetting save.dat!")
 	var save_file = FileAccess.open("user://save.dat", FileAccess.WRITE)
 	save_file.store_var({ })
 	save_file.close()
 
 func load_from_file():
 	if FileAccess.file_exists("user://save.dat"):
-		print("[Save] save.dat exists, loading.")
+		Global.printc("[Save] save.dat exists, loading.")
 		var save_file = FileAccess.open("user://save.dat", FileAccess.READ)
 		save_data = save_file.get_var()
 		save_loaded.emit()
-	else: print("[Save] no existing save.dat.")
+	else: Global.printc("[Save] no existing save.dat.")
 
 func save_to_file():
-	print("[Save] saving to save.dat.")
+	Global.printc("[Save] saving to save.dat.")
 
 	# Write to file
 	var save_file = FileAccess.open("user://save.dat", FileAccess.WRITE)

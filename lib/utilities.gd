@@ -74,14 +74,14 @@ func load_settings():
 	if FileAccess.file_exists("user://settings.json"):
 		var settings_json = FileAccess.open("user://settings.json", FileAccess.READ)
 		Global.settings = JSON.parse_string(settings_json.get_as_text())
-		print("[Settings] settings.json exists, loading.")
+		Global.printc("[Settings] settings.json exists, loading.")
 		for setting in Global.SETTINGS:
 			if !setting in Global.settings:
 				Global.settings[setting] = Global.SETTINGS[setting]
-				print("[Settings] Missing setting '" + setting + "' in settings.json, adding it.")
+				Global.printc("[Settings] Missing setting '" + setting + "' in settings.json, adding it.")
 		settings_json.close()
 	else:
-		print("[Settings] settings.json doesn't exist, creating it.")
+		Global.printc("[Settings] settings.json doesn't exist, creating it.")
 		save_settings()
 		Global.settings = Global.SETTINGS
 	settings_loaded.emit()

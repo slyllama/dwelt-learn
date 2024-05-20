@@ -28,10 +28,22 @@ var mouse_in_settings_menu = false
 
 signal debug_toggled
 signal debug_player_visibility_changed
+signal printc_buffer_updated
+
+const PRINTC_BUFFER_SIZE = 30
 
 var debug_details_text = "[Details]"
 var debug_state = false
 var debug_player_visible = true
+var printc_buffer = []
+
+func printc(string, no_stdin = false):
+	if no_stdin == false: print(string)
+	printc_buffer.append(string)
+	printc_buffer_updated.emit()
+	if printc_buffer.size() > PRINTC_BUFFER_SIZE:
+		for i in printc_buffer.size() - PRINTC_BUFFER_SIZE:
+			printc_buffer.pop_front()
 
 ### Settings ###
 signal setting_changed(setting_id)

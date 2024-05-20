@@ -6,6 +6,9 @@ extends Node3D
 
 @export var map_name = "untitled"
 
+var insights_collected = 3
+var insights_total: int
+
 # All lights in here will be excluded from spotlight shadows. Remember to add
 # to this before calling super().
 var exclude_from_shadow = []
@@ -33,12 +36,11 @@ func _setting_changed(get_setting_id):
 
 func setup_insights():
 	if get_node_or_null("Insights") == null:
-		print("[WorldLoader] no insights!")
+		Global.printc("[WorldLoader] no insights!")
 		return
-	var insight_count = 0
 	for i in %Insights.get_children():
-		insight_count += 1
-	print("[WorldLoader] found " + str(insight_count) + " insights.")
+		insights_total += 1
+	Global.printc("[WorldLoader] found " + str(insights_total) + " insight(s).")
 
 func _ready():
 	# Fade in all sound if the game wasn't already muted
@@ -67,7 +69,7 @@ func _ready():
 			if n is StaticBody3D:
 				col_count += 1
 				n.set_collision_layer_value(2, true)
-		if col_count > 0: print("[" + str(o) + "] setting spring-arm collision mask for "
+		if col_count > 0: Global.printc("[" + str(o) + "] setting spring-arm collision mask for "
 			+ str(col_count) + " object(s).")
 	
 	var fade_bus_in = create_tween()

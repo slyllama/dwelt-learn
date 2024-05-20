@@ -1,8 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://dq3aqaliycowy"]
+[gd_scene load_steps=10 format=3 uid="uid://dq3aqaliycowy"]
 
 [ext_resource type="Script" path="res://lib/ui/debug_pane/debug_pane.gd" id="1_sn71f"]
 [ext_resource type="FontFile" uid="uid://bhk1jyryyb1be" path="res://generic/fonts/plex_mono.otf" id="3_egsd7"]
+[ext_resource type="Shader" path="res://lib/ui/debug_pane/shader_console_gradient.gdshader" id="3_ntk44"]
 [ext_resource type="Theme" uid="uid://dfe36tnn0c1ud" path="res://generic/themes/theme.tres" id="3_okmvy"]
+
+[sub_resource type="Gradient" id="Gradient_pioew"]
+offsets = PackedFloat32Array(0.643192, 0.962441)
+colors = PackedColorArray(1, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xetjm"]
+gradient = SubResource("Gradient_pioew")
+fill_from = Vector2(1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gvdcb"]
+shader = ExtResource("3_ntk44")
+shader_parameter/size = Vector2(1840, 300)
+shader_parameter/gradient = SubResource("GradientTexture2D_xetjm")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hcrcg"]
 
@@ -37,11 +51,31 @@ offset_top = 84.0
 offset_right = 628.0
 offset_bottom = 399.0
 mouse_filter = 1
-theme_override_constants/line_separation = -5
+theme_override_constants/line_separation = -3
 theme_override_fonts/normal_font = ExtResource("3_egsd7")
 theme_override_font_sizes/normal_font_size = 14
 bbcode_enabled = true
 text = "[Details]"
+
+[node name="Console" type="RichTextLabel" parent="."]
+material = SubResource("ShaderMaterial_gvdcb")
+custom_minimum_size = Vector2(0, 300)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = -432.0
+offset_right = -40.0
+offset_bottom = -132.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/line_separation = -3
+theme_override_fonts/normal_font = ExtResource("3_egsd7")
+theme_override_font_sizes/normal_font_size = 13
+bbcode_enabled = true
+text = "[Console]"
 
 [node name="Render" type="RichTextLabel" parent="."]
 offset_left = 40.0

@@ -85,11 +85,11 @@ func _ready():
 			var inputs_json = JSON.parse_string(inputs_file.get_as_text())
 			
 			# TODO: better checking for input data validity
-			print("[InputSettings] valid input_data.json exists, loading.")
+			Global.printc("[InputSettings] valid input_data.json exists, loading.")
 			input_data = inputs_json
 			inputs_file.close()
 		else:
-			print("[InputSettings] input_data.json doesn't exist, creating it.")
+			Global.printc("[InputSettings] input_data.json doesn't exist, creating it.")
 			save_input_data()
 		Global.input_data_loaded = true
 	

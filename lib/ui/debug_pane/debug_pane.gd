@@ -7,6 +7,20 @@ func _ready():
 	Global.debug_toggled.connect(func():
 		visible = Global.debug_state)
 	Global.debug_toggled.emit()
+	
+	# Print debug statements to the screen as well as STDIN
+	Global.printc_buffer_updated.connect(func():
+		var printc_line_buffer = []
+		var printc_str_buffer = ""
+		var line_count = 0
+		for l in Global.printc_buffer:
+			for n in l.split("\n"):
+				printc_line_buffer.insert(0, n)
+		for l in printc_line_buffer:
+			if line_count < 18:
+				printc_str_buffer = str(l) + "\n" + printc_str_buffer
+			line_count += 1
+		$Console.text = printc_str_buffer)
 
 func _input(event):
 	if (Input.is_action_just_pressed("toggle_debug")
@@ -42,8 +56,7 @@ func _mouseover(): Global.button_hover.emit()
 # Debug actions
 
 func _on_print_save_data_pressed():
-	print("[Save] Data\n-------\n"
-		+ Save.save_data + "\n-------")
+	Global.printc("[Save] Data: " + str(Save.save_data))
 
 func _on_save_pressed(): Save.game_saved.emit()
 
