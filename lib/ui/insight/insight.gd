@@ -119,7 +119,9 @@ func _ready():
 
 func _input(_event):
 	if Input.is_action_just_pressed("right_click"):
-		if is_open == true and !Action.in_insight_dialogue: close()
+		if is_open == true and !Action.in_insight_dialogue:
+			Action.deactivate()
+			Global.insight_pane_closed.emit()
 
 func _process(_delta):
 	mouse_pos = get_viewport().get_mouse_position()
