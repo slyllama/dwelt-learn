@@ -18,7 +18,7 @@ var current_title = ""
 var current_place = 0
 
 func _set_base_exponent(exponent):
-	$Base.material.set_shader_parameter("exponent", 0.2 + (1.0 - exponent) * 10.0)
+	$Base.material.set_shader_parameter("exponent", 0.05 + (1.0 - exponent) * 10.0)
 	$Base.material.set_shader_parameter("alpha_scale", exponent)
 
 func _set_text(get_text):
@@ -32,12 +32,13 @@ func _format_text(get_text): # add proper dashes, colours, etc
 	return(out_text)
 
 func close_dialogue():
-	Global.smoke_faded.emit("in")
+	Global.smoke_faded.emit("out")
+	Global.dialogue_active = false
 	
 	current_dialogue = []
 	current_title = ""
 	current_place = 0
-	Global.dialogue_active = false
+	
 	emit_signal("closed")
 	
 	transitioning = true
@@ -118,8 +119,7 @@ func _input(event):
 		or Utilities.is_joy_button(event, JOY_BUTTON_A)):
 			if Global.dialogue_active == true: play_phrase()
 
-func _mouseover():
-	Global.button_hover.emit()
+func _mouseover(): Global.button_hover.emit()
 
 func _on_proceed_pressed():
 	if Global.dialogue_active == true: play_phrase()

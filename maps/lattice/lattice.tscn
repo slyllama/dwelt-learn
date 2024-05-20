@@ -116,6 +116,18 @@ sky_mode = 1
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.77882, 1.5, 17.476)
 
+[node name="Insights" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="Insight" parent="Insights" instance=ExtResource("23_hbglv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, 12)
+object_name = "hey_there"
+dialogue_data = Array[String](["If you see this message, the system is working. Yeeey!"])
+
+[node name="Insight2" parent="Insights" instance=ExtResource("23_hbglv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.8516, 0, 9.05536)
+dialogue_data = Array[String](["Test dialogue!"])
+
 [node name="HUD" parent="." instance=ExtResource("4_gb0g0")]
 
 [node name="Ambience" type="AudioStreamPlayer" parent="."]
@@ -243,9 +255,6 @@ transform = Transform3D(0.987494, 0, 0.157658, 0, 1, 0, -0.157658, 0, 0.987494, 
 
 [node name="MushroomCluster" parent="." instance=ExtResource("21_pc35o")]
 transform = Transform3D(0.611996, 0, 0.790861, 0, 1, 0, -0.790861, 0, 0.611996, 2.66351, -0.039493, 20.9354)
-
-[node name="Insight" parent="." instance=ExtResource("23_hbglv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, 12)
 
 [node name="LaserDetector" parent="." instance=ExtResource("24_dbxhx")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 7, 4, 26)

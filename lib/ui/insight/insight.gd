@@ -55,28 +55,36 @@ func update_completed_nodes():
 		line_nodes.append(blur)
 
 func open():
+	is_open = true
 	primed = false
+	visible = true
+	
+	$OpenSound.play()
 	update_completed_nodes()
 	Global.smoke_faded.emit("in")
-	is_open = true
-	visible = true
-	var trans_tween = create_tween()
-	trans_tween.tween_method(_set_trans_state, 0.0, 1.0, 0.2)
 	for c in completed_nodes: c.open()
+	
+	var trans_tween = create_tween()
+	trans_tween.tween_method(_set_trans_state, 0.0, 1.0, 0.4)
+	
+	# TODO: janky; might need improving
+	await get_tree().create_timer(0.1).timeout
+	Action.in_insight_dialogue = false
 
 func close():
-	Global.smoke_faded.emit("out")
 	is_open = false
+	Global.smoke_faded.emit("out")
+	
 	var trans_tween = create_tween()
 	trans_tween.tween_method(_set_trans_state, 1.0, 0.0, 0.25)
 	trans_tween.tween_callback(func():
 		if is_open == false: visible = false)
 
-func play_after_dialogue(dialogue_data):
+func play_after_dialogue(get_dialogue_data):
 	primed = true
 	Global.dialogue_played.emit({
 		"title": "Insight",
-		"data": ["Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."],
+		"data": get_dialogue_data,
 		"character": ""})
 
 func _ready():
@@ -98,18 +106,28 @@ func _ready():
 		for j in insight_nodes:
 			j.get_child(0).rotation_degrees = - j.rotation_degrees
 	
-	Global.insight_pane_opened.connect(func(): if !is_open: play_after_dialogue(null))
-	Global.dialogue_closed.connect(func(): if primed == true:
-		open())
+	# Will play dialogue first if there is any, or will skip it and go
+	# straight to the insight if the array is empty (default behaviour)
+	Global.insight_pane_opened.connect(func(dialogue_data):
+		if !is_open:
+			if dialogue_data == []:
+				Action.in_insight_dialogue = true
+				open()
+			else: play_after_dialogue(dialogue_data))
+	Global.dialogue_closed.connect(func(): if primed == true: open())
 	Global.insight_pane_closed.connect(func(): if is_open: close())
+
+func _input(_event):
+	if Input.is_action_just_pressed("right_click"):
+		if is_open == true and !Action.in_insight_dialogue: close()
 
 func _process(_delta):
 	mouse_pos = get_viewport().get_mouse_position()
 	if mouse_pos == null: return
 	
 	var adj = Vector2(
-		clamp(2.0 * mouse_pos.x / center.x - 1.0, -1.0, 1.0) + 0.5,
-		clamp(2.0 * mouse_pos.y / center.y - 1.0, -1.0, 1.0) + 0.5)
+		clamp(2.0 * mouse_pos.x / center.x - 1.0, -1.0, 1.0) + (get_window().content_scale_factor - 1.0) * 0.5,
+		clamp(2.0 * mouse_pos.y / center.y - 1.0, -1.0, 1.0) + (get_window().content_scale_factor - 1.0) * 0.5)
 	$SpriteCenter.set_pos(adj * 20.0 + Vector2(0.0, -20.0), 0.055)
 
 	var count = 0

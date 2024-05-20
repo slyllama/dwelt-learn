@@ -17,4 +17,5 @@ void fragment(){
 	COLOR = color;
 	COLOR.a = COLOR.a * pow(
 		texture(radar, SCREEN_UV * 10.0 + vec2(0.0, TIME * 0.1)).r, 0.5);
+	//COLOR.rgb *= log2(2.0 + 1.0 * (1.0 - state));
 }

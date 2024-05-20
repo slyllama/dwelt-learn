@@ -115,6 +115,7 @@ unique_name_in_owner = true
 
 [node name="Insight" parent="Insights" instance=ExtResource("12_sl0pd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
+dialogue_data = Array[String](["Test dialogue!"])
 
 [node name="Floor" type="StaticBody3D" parent="."]
 collision_layer = 3

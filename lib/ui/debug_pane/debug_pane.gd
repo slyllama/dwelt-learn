@@ -41,7 +41,9 @@ func _mouseover(): Global.button_hover.emit()
 
 # Debug actions
 
-func _on_print_save_data_pressed(): print(Save.save_data)
+func _on_print_save_data_pressed():
+	print("[Save] Data\n-------\n"
+		+ Save.save_data + "\n-------")
 
 func _on_save_pressed(): Save.game_saved.emit()
 
