@@ -20,6 +20,7 @@ var current_place = 0
 func _set_base_exponent(exponent):
 	$Base.material.set_shader_parameter("exponent", 0.05 + (1.0 - exponent) * 10.0)
 	$Base.material.set_shader_parameter("alpha_scale", exponent)
+	$Base.modulate.a = exponent
 
 func _set_text(get_text):
 	$Base/DText.text = get_text

@@ -43,6 +43,8 @@ func setup_insights():
 	Global.printc("[WorldLoader] found " + str(insights_total) + " insight(s).")
 
 func _ready():
+	Action.deactivate() # interesting bug where an action will persist across maps
+	
 	# Fade in all sound if the game wasn't already muted
 	Utilities.set_master_vol(0.0)
 	Global.setting_changed.connect(_setting_changed)

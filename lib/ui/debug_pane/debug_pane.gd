@@ -5,6 +5,7 @@ extends CanvasLayer
 func _ready():
 	$Render.text = ""
 	Global.debug_toggled.connect(func():
+		
 		visible = Global.debug_state)
 	Global.debug_toggled.emit()
 	
@@ -14,7 +15,7 @@ func _ready():
 		var printc_str_buffer = ""
 		var line_count = 0
 		for l in Global.printc_buffer:
-			for n in l.split("\n"):
+			for n in str(l).split("\n"):
 				printc_line_buffer.insert(0, n)
 		for l in printc_line_buffer:
 			if line_count < 18:

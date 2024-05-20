@@ -14,6 +14,8 @@ const SHADERS = [
 	"res://generic/shaders/shader_glide.tres",
 	"res://generic/shaders/shader_laser.tres",
 	"res://lib/player/vfx/shader_anime.gdshader",
+	"res://lib/ui/debug_pane/shader_console_gradient.gdshader",
+	"res://lib/ui/dialogue/shader_fizzle_dialogue.gdshader",
 	"res://lib/ui/insight/insight_flame/shader_flame.gdshader",
 	"res://lib/ui/insight/shader_blur.gdshader",
 	"res://lib/ui/insight/shader_ripple.gdshader",
