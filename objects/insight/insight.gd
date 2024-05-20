@@ -8,21 +8,14 @@ func _ready():
 	$ObjectHandler.object_name = object_name
 
 func _on_object_handler_activated():
+	if Action.target != object_name: return
 	Global.insight_pane_opened.emit(dialogue_data)
 	Action.activate(object_name, false)
 	Action.in_insight_dialogue = true
 	Action.untargeted.emit()
+	Global.can_move = false
 
 func _on_object_handler_deactivated():
-	if Action.last_target == object_name:
-		Global.insight_pane_closed.emit()
-
-var count = 6
-func _physics_process(_delta):
-	if count == 0:
-		if (Action.last_target != object_name): return
-		count = 6 # don't do this every frame
-		# Distance from the dialogue object to the player
-		var distance = global_position.distance_to(Global.player_position)
-		if distance > 5.0: $ObjectHandler.deactivate()
-	count -= 1
+	if Action.last_target != object_name: return
+	Global.insight_pane_closed.emit()
+	Global.can_move = true

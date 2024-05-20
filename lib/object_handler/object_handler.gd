@@ -13,6 +13,10 @@ extends Area3D
 signal activated
 signal deactivated
 var active = false
+var ignore_dialogue = false
+
+func set_ignore_dialogue(state):
+	ignore_dialogue = state
 
 func activate():
 	Action.activate(object_name, can_toggle_action)
@@ -22,7 +26,8 @@ func activate():
 func deactivate():
 	if active == false: return
 	# Prevent issues in cases where an action is performed after dialogue
-	if Global.dialogue_active or Action.in_insight_dialogue: return
+	if ignore_dialogue == false:
+		if Global.dialogue_active or Action.in_insight_dialogue: return
 	Action.deactivate()
 	active = false
 	deactivated.emit()

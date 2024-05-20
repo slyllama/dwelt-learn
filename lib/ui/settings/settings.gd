@@ -120,5 +120,5 @@ func _on_control_mouse_entered(): Global.mouse_in_settings_menu = true
 func _on_control_mouse_exited(): Global.mouse_in_settings_menu = false
 
 func _on_map_selection_pressed():
-	Save.save_to_file()
+	Save.game_saved.emit()
 	get_tree().change_scene_to_file("res://lib/loading/loading.tscn")

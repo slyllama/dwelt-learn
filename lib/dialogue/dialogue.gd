@@ -15,12 +15,14 @@ func _play_dialogue():
 		"character": character})
 
 func _close_dialogue():
+	Global.printc("ping!")
 	Global.dialogue_closed_early.emit()
 
 func _ready():
 	if dialogue_data == []: object_name = "ignore"
 	# Object handler-specifics
 	$ObjectHandler.object_name = object_name
+	$ObjectHandler.set_ignore_dialogue(true)
 	$ObjectHandler.activated.connect(_play_dialogue)
 	$ObjectHandler.deactivated.connect(_close_dialogue)
 	# Special action to callback dialogue closing after the fact
@@ -37,6 +39,7 @@ func _physics_process(_delta):
 		# Distance from the dialogue object to the player
 		var distance = global_position.distance_to(Global.player_position)
 		if distance > dialogue_close_distance:
+			
 			if Global.dialogue_active == true:
 				$ObjectHandler.deactivate()
 	count -= 1
