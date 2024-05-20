@@ -9,6 +9,7 @@ extends Area3D
 @export var object_name = "none"
 @export var cube_size = 3.0
 @export var can_toggle_action = true
+@export var interactable = true # deactivations are still possible
 
 signal activated
 signal deactivated
@@ -33,7 +34,7 @@ func deactivate():
 	deactivated.emit()
 
 func _interact():
-	if Action.target == object_name:
+	if Action.target == object_name and interactable == true:
 		if Action.active == false and active == false:
 			activate()
 			return

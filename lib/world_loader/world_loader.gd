@@ -62,6 +62,10 @@ func _ready():
 	for setting in Global.settings:
 		if !setting == "volume": Global.setting_changed.emit(setting)
 	
+	Action.insight_advanced.connect(func():
+		collected_insights += 1
+		insights_refresh())
+	
 	# ===== DATA TO SAVE =====
 	Save.game_saved.connect(func():
 		Save.set_data(map_name, "player_position", Global.player_ground_position)
@@ -76,6 +80,9 @@ func _ready():
 		var s_collected_insights = Save.get_data(Global.current_map, "collected_insights")
 		if s_collected_insights != null: collected_insights = s_collected_insights)
 	Save.load_from_file()
+	if Save.save_data == {}:
+		Global.printc("[WorldLoader->Save] saving empty.")
+		Save.game_saved.emit()
 	insights_setup()
 	
 	# Set spring arm collisions
