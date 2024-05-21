@@ -4,11 +4,17 @@ var on_second_floor = false
 
 func _ready():
 	spring_arm_objects = [$Greybox]
-	
 	super()
+	
+	####### Custom save data for Lattice #######
+	Save.save_loaded.connect(func():
+		if Save.get_data(map_name, "laser_siax_orientation") != null:
+			Global.printc("setting orientation", "yellow")
+			$Laser/Cast.rotation_degrees = Save.get_data(map_name, "laser_siax_orientation"))
+	Save.load_from_file()
+	
 	$Greybox/VentFan/AnimationPlayer.play("Fan")
 	$FourierTest/AnimationPlayer.play("Idle")
-	
 	await get_tree().create_timer(3.0).timeout
 	$Music.play()
 
@@ -29,3 +35,6 @@ func _physics_process(_delta):
 func _on_laser_detector_activated():
 	$LaserDetector/PlayDialogue.play()
 	Global.camera_shaken.emit()
+
+func _on_laser_player_left(object_name, cast_rotation):
+	Save.set_data(map_name, "laser_" + object_name + "_orientation", cast_rotation)

@@ -7,6 +7,7 @@ extends Node3D
 
 var delay_complete = false # laser won't start moving until after a short delay
 var active = false
+signal player_left(object_name, cast_rotation)
 
 var og_cast_rotation_x
 var og_cast_rotation_y
@@ -29,6 +30,8 @@ func deactivate():
 	active = false
 	Global.smoke_faded.emit("out")
 	Global.player_position_unlocked.emit()
+	
+	player_left.emit(object_name, $Cast.rotation_degrees)
 
 func _ready():
 	# Object handler-specifics
