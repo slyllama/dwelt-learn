@@ -37,9 +37,10 @@ var debug_state = false
 var debug_player_visible = true
 var printc_buffer = []
 
-func printc(string, no_stdin = false):
-	if no_stdin == false: print(string)
-	printc_buffer.append(string)
+func printc(string, color = "white", no_stdin = false):
+	var string_fmt = "[color=" + color + " ]" + string + "[/color]" # add color
+	if no_stdin == false: print_rich(string_fmt)
+	printc_buffer.append(string_fmt)
 	printc_buffer_updated.emit()
 	if printc_buffer.size() > PRINTC_BUFFER_SIZE:
 		for i in printc_buffer.size() - PRINTC_BUFFER_SIZE:

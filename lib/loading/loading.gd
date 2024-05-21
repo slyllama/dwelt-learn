@@ -32,7 +32,7 @@ func load_map(map_name):
 	ResourceLoader.load_threaded_request(target_path)
 
 func _ready():
-	for _i in 20: Global.printc("\n", true) # prime the debug buffer!
+	for _i in 20: Global.printc("\n", "white", true) # prime the debug buffer!
 	
 	# Load and populate settings (including menu)
 	Utilities.load_settings()

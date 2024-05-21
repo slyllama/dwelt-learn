@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://yyd0ltle0un5"]
+[gd_scene load_steps=28 format=3 uid="uid://yyd0ltle0un5"]
 
 [ext_resource type="PackedScene" uid="uid://e0k8h1ytp7wi" path="res://lib/ui/hud/hud.tscn" id="1_3q1w7"]
 [ext_resource type="Script" path="res://maps/test/test.gd" id="1_fvnbx"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bw14qvqobtubd" path="res://characters/fourier/fourier.glb" id="13_r7xks"]
 [ext_resource type="PackedScene" uid="uid://i1jp4klishr3" path="res://lib/dialogue/dialogue.tscn" id="14_ucrvw"]
 [ext_resource type="PackedScene" uid="uid://bdock8rc758qp" path="res://maps/lattice/props/tank.glb" id="15_yru8h"]
+[ext_resource type="PackedScene" uid="uid://07n4fhjhunl" path="res://objects/laser/laser.tscn" id="16_qr5ys"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_srq28"]
 sky_top_color = Color(0.411965, 0.674422, 0.819215, 1)
@@ -174,3 +175,7 @@ dialogue_close_distance = 7.0
 
 [node name="EssenceTank" parent="." instance=ExtResource("15_yru8h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0, -2)
+
+[node name="Laser" parent="." instance=ExtResource("16_qr5ys")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -7, 0, 0)
+object_name = "save_test_laser"

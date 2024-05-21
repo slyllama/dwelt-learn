@@ -58,7 +58,7 @@ func _mouseover(): Global.button_hover.emit()
 
 func _on_print_save_data_pressed():
 	Save.game_saved.emit()
-	Global.printc("[Save] Data: " + str(Save.save_data))
+	Global.printc("[Save] Data: " + str(Save.save_data[Global.current_map]))
 
 func _on_save_pressed():
 	Save.game_saved.emit()

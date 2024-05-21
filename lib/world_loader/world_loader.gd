@@ -5,6 +5,11 @@ extends Node3D
 # properly.
 
 @export var map_name = "untitled"
+## Set this value to [code]true[/code] to allow the [code]WorldLoader[/code]'s
+## extended script to handle custom save data before being processed.
+## [code]Save.save_loaded()[/code] [b]must[/b] be called at the end of the
+## extended script's [code]_ready()[/code] function if this option is set.
+@export var custom_data_load_signal = false
 
 # All lights in here will be excluded from spotlight shadows. Remember to add
 # to this before calling super().
@@ -80,7 +85,8 @@ func _ready():
 		if s_player_position != null: %Player.global_position = s_player_position
 		var s_collected_insights = Save.get_data(Global.current_map, "collected_insights")
 		if s_collected_insights != null: Global.insights_collected = s_collected_insights)
-	Save.load_from_file()
+	
+	if custom_data_load_signal == false: Save.load_from_file()
 	
 	insights_setup()
 	
