@@ -52,7 +52,7 @@ func _ready():
 	$Settings/Control/Panel/VBox/MapSelection.visible = false # no need to go to the menu from the menu
 	$LoadBlack/ProgressBar.visible = false
 	$GlowIcon.visible = false
-	$LoadPanel/VBox/ScrapperButton.grab_focus()
+	$LoadPanel/VBox/Play.grab_focus()
 	
 	# Regain focus on the settings button after it is closed, for controllers
 	$Settings/Control/Panel/InputVBox/LowerCloseButton.pressed.connect(

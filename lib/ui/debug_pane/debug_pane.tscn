@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dq3aqaliycowy"]
+[gd_scene load_steps=11 format=3 uid="uid://dq3aqaliycowy"]
 
 [ext_resource type="Script" path="res://lib/ui/debug_pane/debug_pane.gd" id="1_sn71f"]
 [ext_resource type="FontFile" uid="uid://bhk1jyryyb1be" path="res://generic/fonts/plex_mono.otf" id="3_egsd7"]
 [ext_resource type="Shader" path="res://lib/ui/debug_pane/shader_console_gradient.gdshader" id="3_ntk44"]
 [ext_resource type="Theme" uid="uid://dfe36tnn0c1ud" path="res://generic/themes/theme.tres" id="3_okmvy"]
+[ext_resource type="Script" path="res://lib/ui/clicky_button/clicky_button.gd" id="5_ojek2"]
 
 [sub_resource type="Gradient" id="Gradient_pioew"]
 offsets = PackedFloat32Array(0.643192, 0.962441)
@@ -124,6 +125,7 @@ focus_mode = 0
 theme = ExtResource("3_okmvy")
 theme_override_font_sizes/font_size = 14
 text = "Print Save Data"
+script = ExtResource("5_ojek2")
 
 [node name="Save" type="Button" parent="CmdPanel/CmdVBox"]
 layout_mode = 2
@@ -131,6 +133,7 @@ focus_mode = 0
 theme = ExtResource("3_okmvy")
 theme_override_font_sizes/font_size = 14
 text = "Save To File"
+script = ExtResource("5_ojek2")
 
 [node name="ResetSaveData" type="Button" parent="CmdPanel/CmdVBox"]
 layout_mode = 2
@@ -139,6 +142,7 @@ theme = ExtResource("3_okmvy")
 theme_override_font_sizes/font_size = 14
 theme_override_styles/normal = SubResource("StyleBoxFlat_6oyn3")
 text = "Reset Save Data"
+script = ExtResource("5_ojek2")
 
 [node name="ResetSettings" type="Button" parent="CmdPanel/CmdVBox"]
 layout_mode = 2
@@ -147,6 +151,7 @@ theme = ExtResource("3_okmvy")
 theme_override_font_sizes/font_size = 14
 theme_override_styles/normal = SubResource("StyleBoxFlat_6oyn3")
 text = "Reset Settings"
+script = ExtResource("5_ojek2")
 
 [node name="Padding" type="Control" parent="CmdPanel/CmdVBox"]
 custom_minimum_size = Vector2(0, 14)
@@ -166,6 +171,7 @@ focus_mode = 0
 theme = ExtResource("3_okmvy")
 theme_override_font_sizes/font_size = 14
 text = "Hide Player"
+script = ExtResource("5_ojek2")
 
 [connection signal="pressed" from="CmdPanel/CmdVBox/PrintSaveData" to="." method="_on_print_save_data_pressed"]
 [connection signal="pressed" from="CmdPanel/CmdVBox/Save" to="." method="_on_save_pressed"]

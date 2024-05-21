@@ -15,7 +15,6 @@ func _play_dialogue():
 		"character": character})
 
 func _close_dialogue():
-	Global.printc("ping!")
 	Global.dialogue_closed_early.emit()
 
 func _ready():

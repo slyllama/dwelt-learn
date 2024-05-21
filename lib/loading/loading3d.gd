@@ -17,7 +17,8 @@ func _ready():
 	mouse_pos = get_viewport().get_mouse_position()
 	center = get_viewport().size
 	ResourceLoader.load_threaded_request(ROCKET_PATH)
-
+	
+	$CanvasLoadOverlay.visible = true
 	$CanvasLoadOverlay/BG/Flicker.play("flicker")
 
 func _process(_delta):
