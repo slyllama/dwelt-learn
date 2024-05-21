@@ -19,7 +19,7 @@ var first_settings_run = false
 func _setting_changed(get_setting_id):
 	if first_settings_run == false: first_settings_run = true
 	match get_setting_id:
-		"fov": %Player/CamPivot/CamArm/Camera.fov = Global.settings.fov
+		"fov": %Player/CamPivot/Camera.fov = Global.settings.fov
 		"camera_sensitivity": %Player/CamPivot.camera_sensitivity = Global.settings.camera_sensitivity
 		"volumetric_fog": %Sky.environment.volumetric_fog_enabled = Global.settings.volumetric_fog
 		"bloom": %Sky.environment.glow_enabled = Global.settings.bloom

@@ -19,7 +19,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CamArm/Camera:v_offset")
+tracks/0/path = NodePath("Camera:v_offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -31,7 +31,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CamArm/Camera:h_offset")
+tracks/1/path = NodePath("Camera:h_offset")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -47,7 +47,7 @@ length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CamArm/Camera:v_offset")
+tracks/0/path = NodePath("Camera:v_offset")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -59,7 +59,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CamArm/Camera:h_offset")
+tracks/1/path = NodePath("Camera:h_offset")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -94,6 +94,14 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15, 0)
 script = ExtResource("2_73c7o")
 
+[node name="Camera" type="Camera3D" parent="CamPivot"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 1, 0, 0)
+v_offset = -0.1
+current = true
+
+[node name="ShaderCacheGen" parent="CamPivot/Camera" instance=ExtResource("3_fylyn")]
+transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, -2)
+
 [node name="CamArm" type="SpringArm3D" parent="CamPivot"]
 transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 1, 0, 0)
 collision_mask = 2
@@ -101,17 +109,14 @@ shape = SubResource("SphereShape3D_yehb5")
 spring_length = 5.0
 margin = 0.1
 
-[node name="Camera" type="Camera3D" parent="CamPivot/CamArm"]
-v_offset = -0.1
-current = true
+[node name="CamAttach" type="Node3D" parent="CamPivot/CamArm"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="XCast" type="RayCast3D" parent="CamPivot/CamArm/Camera"]
+[node name="XCast" type="RayCast3D" parent="CamPivot/CamArm/CamAttach"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 target_position = Vector3(0, 0, -8)
 collide_with_areas = true
 script = ExtResource("3_tm7v3")
-
-[node name="ShaderCacheGen" parent="CamPivot/CamArm/Camera" instance=ExtResource("3_fylyn")]
-transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, -2)
 
 [node name="ShakeAnim" type="AnimationPlayer" parent="CamPivot"]
 libraries = {

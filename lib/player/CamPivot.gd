@@ -28,13 +28,13 @@ func _zoom(dir, zoom_scale = 1.0):
 	if dir == "in":
 		if camera_distance - zoom_increment * zoom_scale > min_zoom_extent:
 			camera_distance -= zoom_increment * zoom_scale
-			$CamArm/Camera/XCast.target_position.z += zoom_increment * zoom_scale
-			target_y_position -= 0.1 * zoom_scale
+			$CamArm/CamAttach/XCast.target_position.z += zoom_increment * zoom_scale
+			target_y_position -= 0.2 * zoom_scale
 	elif dir == "out":
 		if camera_distance + zoom_increment * zoom_scale < max_zoom_extent:
 			camera_distance += zoom_increment * zoom_scale
-			$CamArm/Camera/XCast.target_position.z -= zoom_increment * zoom_scale
-			target_y_position += 0.1 * zoom_scale
+			$CamArm/CamAttach/XCast.target_position.z -= zoom_increment * zoom_scale
+			target_y_position += 0.2 * zoom_scale
 
 func _shake_cam(): $ShakeAnim.play("shake")
 
@@ -44,7 +44,7 @@ func _ready():
 	# awkward snaps
 	new_cam_y_rotation = rotation_degrees.y
 	new_cam_x_rotation = rotation_degrees.x
-	target_y_position = $CamArm/Camera.v_offset
+	target_y_position = 1.2
 	camera_distance = $CamArm.spring_length
 
 # Prevents mouse capturing starting again when the cursor leaves the panel
@@ -96,20 +96,23 @@ func _input(event):
 	elif Input.is_action_just_pressed("zoom_out"): _zoom("out")
 
 func _process(_delta):
+	if !Global.settings_opened and !Action.active:
+		if Input.is_joy_button_pressed(0, JOY_BUTTON_DPAD_UP): _zoom("in", 0.25)
+		elif Input.is_joy_button_pressed(0, JOY_BUTTON_DPAD_DOWN): _zoom("out", 0.25)
+	
+	$Camera.position = lerp(
+		$Camera.position, $CamArm/CamAttach.position + Vector3(1.0, 0.0, 0.0), 0.06)
+	
 	# Position smoothing - more intense when gliding
 	if Action.in_glide == true: camera_bounce = 1.0
 	else: camera_bounce = 0.35
 	var target_y_pos = 1.15 - clamp(Global.player_y_velocity * camera_bounce, -1.0, 1.0)
 	position.y = lerp(position.y, target_y_pos, 0.035)
 	
-	if !Global.settings_opened and !Action.active:
-		if Input.is_joy_button_pressed(0, JOY_BUTTON_DPAD_UP): _zoom("in", 0.25)
-		elif Input.is_joy_button_pressed(0, JOY_BUTTON_DPAD_DOWN): _zoom("out", 0.25)
-		
 	# Adjust camera zoom and FOV
 	$CamArm.spring_length = lerpf($CamArm.spring_length, camera_distance, 0.1)
-	$CamArm/Camera.v_offset = lerpf($CamArm/Camera.v_offset, target_y_position, 0.05)
-	$CamArm/Camera.fov = lerp($CamArm/Camera.fov, Global.settings.fov + fov_offset, 0.04)
+	$Camera.v_offset = lerpf($Camera.v_offset, target_y_position, 0.05)
+	$Camera.fov = lerp($Camera.fov, Global.settings.fov + fov_offset, 0.04)
 	
 	last_mouse_offset = mouse_offset
 	# Rotate the camera by using the mouse or the controller.
