@@ -81,29 +81,14 @@ func play_dialogue(get_dialogue):
 func play_phrase():
 	if current_place != 0: $ContinueSound.play()
 	if current_place > current_dialogue.size() - 1:
-		#Action.targeted.emit()
+		Global.printc("close dialogue", "yellow")
 		Global.dialogue_closed.emit()
 		return
 	_set_text(_format_text(current_dialogue[current_place]))
 	
 	transitioning = true
-	var out_text
-	var c = current_title
-	for N in NUMS:
-		out_text = ""
-		while len(c) > len(N) - 1: N += N
-		for i in range(0, len(c)):
-			if c[i] != " ": out_text += N[i]
-			else: out_text += " "
-		$Base/DTitle.text = out_text
-		await get_tree().create_timer(FTIME).timeout
-	for m in stagger:
-		for i in range(0, len(c)):
-			if i % m == 0: out_text[i] = c[i]
-			$Base/DTitle.text = out_text
-		await get_tree().create_timer(FTIME).timeout
-	
-	$Base/DTitle.text = c
+	$Base/DTitle.animate(current_title)
+	await $Base/DTitle.anim_finished
 	current_place += 1
 	transitioning = false
 

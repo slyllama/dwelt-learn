@@ -9,13 +9,13 @@ var NUMS = [
 var stagger = [5, 4, 3, 2, 1]
 const FTIME = 0.05
 var transitioning
-var current_place = 0
 
 func animate(get_text):
+	text = ""
 	if transitioning == true: return
 	
 	transitioning = true
-	var out_text
+	var out_text = ""
 	var c = get_text
 	for N in NUMS:
 		out_text = ""
@@ -32,6 +32,6 @@ func animate(get_text):
 		await get_tree().create_timer(FTIME).timeout
 	
 	text = c
-	current_place += 1
 	transitioning = false
+	
 	anim_finished.emit()

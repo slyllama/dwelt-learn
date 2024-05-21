@@ -14,10 +14,6 @@ func _ready():
 
 	Save.load_from_file()
 
-func _input(_event):
-	if Input.is_action_just_pressed("debug_action"):
-		$HUD/TextLabelAnim.animate("ALLOUGH THIS IS")
-
 func _on_laser_player_left(object_name, cast_rotation_degrees):
 	Save.set_data(map_name, "laser_" + object_name + "_orientation", cast_rotation_degrees)
 func _on_laser_detector_activated(): $VentHandler.turn_on()
