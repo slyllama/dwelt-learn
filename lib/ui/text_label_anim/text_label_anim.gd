@@ -10,7 +10,7 @@ var stagger = [5, 4, 3, 2, 1]
 const FTIME = 0.05
 var transitioning
 
-func animate(get_text):
+func animate(get_text, center = false):
 	text = ""
 	if transitioning == true: return
 	
@@ -23,15 +23,22 @@ func animate(get_text):
 		for i in range(0, len(c)):
 			if c[i] != " ": out_text += N[i]
 			else: out_text += " "
-		text = out_text
+		
+		if center: text = "[center]" + out_text + "[/center]"
+		else: text = out_text
+		
 		await get_tree().create_timer(FTIME).timeout
 	for m in stagger:
 		for i in range(0, len(c)):
 			if i % m == 0: out_text[i] = c[i]
-			text = out_text
+			if center: text = "[center]" + out_text + "[/center]"
+			else: text = out_text
 		await get_tree().create_timer(FTIME).timeout
 	
-	text = c
+	if center: text = "[center]" + c + "[/center]"
+	else: text = c
 	transitioning = false
-	
 	anim_finished.emit()
+
+func _ready():
+	text = ""

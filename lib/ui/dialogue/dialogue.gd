@@ -3,13 +3,6 @@ extends CanvasLayer
 signal opened
 signal closed
 
-const FTIME = 0.05
-var NUMS = [
-	"4354076982764985762487698756983276459876458745",
-	"9548764307598769640698564359876249826498376598",
-	"3847650110249287326987634444876587360908743658" 
-]
-var stagger = [5, 4, 3, 2, 1]
 var transitioning = false
 
 ### Dialogue-specific variables

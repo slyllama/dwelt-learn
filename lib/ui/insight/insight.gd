@@ -28,6 +28,7 @@ func _set_trans_state(val): # a value between 0 and 1 for tweening
 	$SpriteCenter/Base1.material.set_shader_parameter("alpha_scale", ease_val * 0.5)
 	$SpriteCenter/Base2.material.set_shader_parameter("alpha_scale", ease_val * 1.0)
 	$SpriteCenter/Base3.material.set_shader_parameter("alpha_scale", ease_val * 0.8)
+	$SpriteCenter/InsightTitle.modulate.a = val
 	$BG.material.set_shader_parameter("state", ease_val)
 	
 	for c in line_nodes:
@@ -74,6 +75,8 @@ func open():
 
 	$OpenSound.play()
 	$OpenDelay.start()
+	$SpriteCenter/InsightTitle.animate("INSIGHTS", true)
+	
 	update_completed_nodes()
 	Global.smoke_faded.emit("in")
 	for c in completed_nodes: c.open()
@@ -81,7 +84,6 @@ func open():
 	var trans_tween = create_tween()
 	trans_tween.tween_method(_set_trans_state, 0.0, 1.0, 0.4)
 	
-	# TODO: janky; might need improving
 	await get_tree().create_timer(0.1).timeout
 	Action.in_insight_dialogue = false
 

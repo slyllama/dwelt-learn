@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dp2blk7gd88n2"]
+[gd_scene load_steps=17 format=3 uid="uid://dp2blk7gd88n2"]
 
 [ext_resource type="Script" path="res://lib/ui/insight/insight.gd" id="1_6dq0b"]
 [ext_resource type="PackedScene" uid="uid://sihpp2cwoyfc" path="res://lib/ui/sprite_center.tscn" id="1_vrxdd"]
@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://dsroqhsarregr" path="res://characters/euclid/tex/radar_diff.png" id="4_sklih"]
 [ext_resource type="Texture2D" uid="uid://b5nufueq16vw0" path="res://generic/tex/shader_tex/wobble_noise.tres" id="5_mvkds"]
 [ext_resource type="AudioStream" uid="uid://b25jscbfl1es7" path="res://lib/ui/insight/open_insight.ogg" id="10_s0upf"]
+[ext_resource type="FontFile" uid="uid://bhk1jyryyb1be" path="res://generic/fonts/plex_mono.otf" id="11_i12l7"]
+[ext_resource type="Script" path="res://lib/ui/text_label_anim/text_label_anim.gd" id="12_b62ph"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_as573"]
 shader = ExtResource("2_epenr")
@@ -80,6 +82,18 @@ material = SubResource("ShaderMaterial_avwom")
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("4_rb6os")
 flip_h = true
+
+[node name="InsightTitle" type="RichTextLabel" parent="SpriteCenter"]
+offset_left = -250.0
+offset_top = -170.0
+offset_right = 250.0
+offset_bottom = -120.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("11_i12l7")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]INSIGHTS[/center]"
+script = ExtResource("12_b62ph")
 
 [node name="OpenSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_s0upf")
