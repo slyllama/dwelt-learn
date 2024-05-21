@@ -31,6 +31,7 @@ func deactivate():
 	Global.smoke_faded.emit("out")
 	Global.player_position_unlocked.emit()
 	
+	Global.printc("[Laser -> " + object_name + "] player exited!", "magenta")
 	player_left.emit(object_name, $Cast.rotation_degrees)
 
 func _ready():
@@ -63,15 +64,15 @@ func _process(_delta):
 	
 	# Also prevents camera movement on controller from moving the laser
 	# TODO: joy axis check in Utilities so you can use player movement to control the laser instead
-	if active == false: return
-	if Input.is_action_pressed("ui_up") and !Input.get_joy_axis(0, JOY_AXIS_LEFT_Y):
-		$Cast.rotation_degrees.x += laser_move_speed
-	if Input.is_action_pressed("ui_down") and !Input.get_joy_axis(0, JOY_AXIS_LEFT_Y):
-		$Cast.rotation_degrees.x -= laser_move_speed
-	if Input.is_action_pressed("ui_left") and !Input.get_joy_axis(0, JOY_AXIS_LEFT_X):
-		$Cast.rotation_degrees.y += laser_move_speed
-	if Input.is_action_pressed("ui_right") and !Input.get_joy_axis(0, JOY_AXIS_LEFT_X):
-		$Cast.rotation_degrees.y -= laser_move_speed
+	if active == true:
+		if Input.is_action_pressed("ui_up") and !Input.get_joy_axis(0, JOY_AXIS_LEFT_Y):
+			$Cast.rotation_degrees.x += laser_move_speed
+		if Input.is_action_pressed("ui_down") and !Input.get_joy_axis(0, JOY_AXIS_LEFT_Y):
+			$Cast.rotation_degrees.x -= laser_move_speed
+		if Input.is_action_pressed("ui_left") and !Input.get_joy_axis(0, JOY_AXIS_LEFT_X):
+			$Cast.rotation_degrees.y += laser_move_speed
+		if Input.is_action_pressed("ui_right") and !Input.get_joy_axis(0, JOY_AXIS_LEFT_X):
+			$Cast.rotation_degrees.y -= laser_move_speed
 
 	# Apply limits
 	$Cast.rotation_degrees.x = clamp(

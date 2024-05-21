@@ -108,6 +108,7 @@ func _ready():
 func _notification(what):
 	# Save the game on quit via Save.game_saved
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		Global.printc("[WorldLoader] GAME QUIT NOTIFICATION RECEIVED.")
 		Save.game_saved.emit()
 		await get_tree().create_timer(0.5).timeout
 		get_tree().quit()
