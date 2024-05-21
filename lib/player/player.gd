@@ -45,11 +45,19 @@ func update_debug():
 		+ Utilities.fstr(global_position.x) + ", "
 		+ Utilities.fstr(global_position.y) + ", "
 		+ Utilities.fstr(global_position.z))
+	Global.debug_details_text += ("\nLast ground position: "
+		+ Utilities.fstr(Global.player_ground_position.x) + ", "
+		+ Utilities.fstr(Global.player_ground_position.y) + ", "
+		+ Utilities.fstr(Global.player_ground_position.z))
 	Global.debug_details_text += "\nMagnitude: " + Utilities.fstr(velocity.length())
 	Global.debug_details_text += "\nDirection: " + Utilities.fstr(%CamPivot.rotation_degrees.y, 1)
 	Global.debug_details_text += "\u00B0 (" + str(snapped($ModelHandler.rotation_degrees.y, 1))  + "\u00B0)"
 	Global.debug_details_text += "\nVertical speed: " + Utilities.fstr(Global.player_y_velocity * -1.0)
-	if $Collision.disabled == true: Global.debug_details_text += "\n[color=red]Collision disabled[/color]"
+	if Action.target != "": Global.debug_details_text += "\n[color=yellow]Action target: " + str(Action.target)
+	if Action.last_target != "": Global.debug_details_text += "\n[color=yellow]Last action target: " + str(Action.last_target)
+	if Action.active: Global.debug_details_text += "\n[color=yellow]In action: true"
+	if $Collision.disabled: Global.debug_details_text += "\n[color=red]Collision disabled[/color]"
+	if !Global.can_move: Global.debug_details_text += "\n[color=red]Movement disabled[/color]"
 
 func _ready():
 	Global.connect("player_position_locked", lock_position)
@@ -57,8 +65,8 @@ func _ready():
 
 func _input(_event):
 	# No animations if the player's position is locked
-	if position_locked == true: return
-	if Global.in_keybind_select == true: return
+	if position_locked: return
+	if Global.in_keybind_select: return
 
 	if (Input.is_action_just_pressed("skill_glide")
 		or Input.is_action_just_pressed("right_shoulder")):
@@ -80,6 +88,8 @@ func _input(_event):
 	
 	if Input.is_action_just_pressed("move_back"): $ModelHandler.start_moving()
 	if Input.is_action_just_released("move_back"): $ModelHandler.stop_moving()
+
+var c = 0
 
 func _physics_process(_delta):
 	forward = 0
@@ -118,6 +128,8 @@ func _physics_process(_delta):
 	target_velocity += side * Vector3.RIGHT * $CamPivot.global_transform.basis
 	target_velocity = target_velocity.normalized() * Vector3(-1, 0, 1) * speed
 	
+	if Global.can_move == false: target_velocity = Vector3.ZERO
+	
 	# Uses the difference between the y-cast and the player's y-position to
 	# generate a damping value, y_diff
 	velocity = lerp(velocity, target_velocity, speed_smoothing)
@@ -125,8 +137,14 @@ func _physics_process(_delta):
 	var y_diff = Global.player_position.y - Global.raycast_y_point
 	if y_diff < hover_height: velocity.y += hover_height - y_diff
 	else: velocity.y += glide_val
+	
 	move_and_slide()
 	
-	Global.player_position = position
+	Global.player_position = global_position
 	Global.player_y_velocity = velocity.y
+	if c == 30:
+		if velocity.y > -1.0 and velocity.y < 1.0:
+			Global.player_ground_position = global_position
+		c = 0
 	update_debug()
+	c += 1

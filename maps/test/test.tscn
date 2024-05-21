@@ -1,0 +1,172 @@
+[gd_scene load_steps=26 format=3 uid="uid://yyd0ltle0un5"]
+
+[ext_resource type="PackedScene" uid="uid://e0k8h1ytp7wi" path="res://lib/ui/hud/hud.tscn" id="1_3q1w7"]
+[ext_resource type="Script" path="res://maps/test/test.gd" id="1_fvnbx"]
+[ext_resource type="PackedScene" uid="uid://bcp4um4sjbyx6" path="res://lib/player/player.tscn" id="1_wua70"]
+[ext_resource type="Texture2D" uid="uid://bd7c4x2ajeimr" path="res://generic/tex/shader_tex/floor_diff.png" id="2_3dm53"]
+[ext_resource type="Texture2D" uid="uid://dinrdf02xeqaq" path="res://generic/tex/fade_ramp.tres" id="2_qqlgb"]
+[ext_resource type="Texture2D" uid="uid://d1fy6jygommc6" path="res://generic/tex/particles/mote.png" id="3_hvkgi"]
+[ext_resource type="Texture2D" uid="uid://5bruu4afeor5" path="res://generic/tex/shader_tex/floor_norm.png" id="3_xldvb"]
+[ext_resource type="PackedScene" uid="uid://dk0s3tibcdcq0" path="res://objects/updraft/updraft.tscn" id="6_mmoa4"]
+[ext_resource type="PackedScene" uid="uid://q6mjnwesy72v" path="res://objects/updraft/vent_fan/vent_fan.glb" id="9_uampq"]
+[ext_resource type="AudioStream" uid="uid://xw8eek5x1xwg" path="res://objects/updraft/sound/vent_fan.ogg" id="10_jncr3"]
+[ext_resource type="PackedScene" uid="uid://dpxnpda25fr1t" path="res://maps/lattice/props/mushroom_cluster.glb" id="11_3jr7i"]
+[ext_resource type="PackedScene" uid="uid://d3wu1w4amd36m" path="res://objects/insight/insight.tscn" id="12_sl0pd"]
+[ext_resource type="PackedScene" uid="uid://bw14qvqobtubd" path="res://characters/fourier/fourier.glb" id="13_r7xks"]
+[ext_resource type="PackedScene" uid="uid://i1jp4klishr3" path="res://lib/dialogue/dialogue.tscn" id="14_ucrvw"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_srq28"]
+sky_top_color = Color(0.411965, 0.674422, 0.819215, 1)
+
+[sub_resource type="Sky" id="Sky_87eso"]
+sky_material = SubResource("ProceduralSkyMaterial_srq28")
+
+[sub_resource type="Environment" id="Environment_dxoaf"]
+background_mode = 1
+background_color = Color(0.586214, 0.586214, 0.586214, 1)
+sky = SubResource("Sky_87eso")
+tonemap_mode = 2
+tonemap_exposure = 1.25
+volumetric_fog_density = 0.03
+volumetric_fog_albedo = Color(0.5, 0.5, 0.5, 1)
+volumetric_fog_length = 32.0
+adjustment_enabled = true
+adjustment_saturation = 1.25
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bhgh8"]
+albedo_color = Color(0.25, 0.25, 0.25, 1)
+albedo_texture = ExtResource("2_3dm53")
+normal_enabled = true
+normal_scale = 2.0
+normal_texture = ExtResource("3_xldvb")
+backlight = Color(0.25, 0.25, 0.25, 1)
+uv1_scale = Vector3(128, 128, 128)
+
+[sub_resource type="QuadMesh" id="QuadMesh_ixi6y"]
+material = SubResource("StandardMaterial3D_bhgh8")
+size = Vector2(100, 100)
+orientation = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ofh4r"]
+size = Vector3(100, 0.1, 100)
+
+[sub_resource type="Curve" id="Curve_hi6aq"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_exr7w"]
+curve = SubResource("Curve_hi6aq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xa72n"]
+emission_shape = 3
+emission_box_extents = Vector3(5, 5, 5)
+initial_velocity_min = 0.05
+initial_velocity_max = 0.05
+gravity = Vector3(0, 0.01, 0)
+scale_min = 0.5
+scale_curve = SubResource("CurveTexture_exr7w")
+color_ramp = ExtResource("2_qqlgb")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b4sji"]
+transparency = 1
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_hvkgi")
+backlight_enabled = true
+backlight = Color(1, 1, 1, 1)
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_k7b7a"]
+material = SubResource("StandardMaterial3D_b4sji")
+size = Vector2(0.06, 0.06)
+orientation = 2
+
+[node name="Test" type="Node3D"]
+script = ExtResource("1_fvnbx")
+map_name = "test"
+
+[node name="HUD" parent="." instance=ExtResource("1_3q1w7")]
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.258819, -0.836516, 0.482963, 0, 0.5, 0.866025, -0.965926, -0.224144, 0.12941, 0, 6, 0)
+light_energy = 2.0
+light_bake_mode = 1
+shadow_enabled = true
+directional_shadow_split_1 = 0.3
+directional_shadow_split_2 = 0.4
+directional_shadow_split_3 = 0.7
+directional_shadow_blend_splits = true
+directional_shadow_pancake_size = 10.0
+sky_mode = 1
+
+[node name="Sky" type="WorldEnvironment" parent="."]
+unique_name_in_owner = true
+environment = SubResource("Environment_dxoaf")
+
+[node name="Player" parent="." instance=ExtResource("1_wua70")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 5)
+
+[node name="Insights" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="Insight" parent="Insights" instance=ExtResource("12_sl0pd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
+object_name = "insight_1"
+dialogue_data = Array[String](["Test dialogue!"])
+
+[node name="Insight2" parent="Insights" instance=ExtResource("12_sl0pd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
+object_name = "insight_2"
+dialogue_data = Array[String](["Test dialogue!"])
+
+[node name="Floor" type="StaticBody3D" parent="."]
+collision_layer = 3
+
+[node name="Mesh" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("QuadMesh_ixi6y")
+skeleton = NodePath("../..")
+
+[node name="Collision" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("BoxShape3D_ofh4r")
+
+[node name="Motes" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+cast_shadow = 0
+amount = 20
+lifetime = 3.0
+preprocess = 5.0
+speed_scale = 0.5
+visibility_aabb = AABB(-6.5899, -2.60607, -5.6187, 13.1798, 5.21214, 11.2374)
+process_material = SubResource("ParticleProcessMaterial_xa72n")
+draw_pass_1 = SubResource("PlaneMesh_k7b7a")
+
+[node name="Updraft" parent="." instance=ExtResource("6_mmoa4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
+acceleration = 0.1
+
+[node name="VentFan" parent="." instance=ExtResource("9_uampq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2279, -7)
+
+[node name="VentFanSound" type="AudioStreamPlayer3D" parent="VentFan"]
+stream = ExtResource("10_jncr3")
+autoplay = true
+
+[node name="MushroomCluster" parent="." instance=ExtResource("11_3jr7i")]
+transform = Transform3D(-0.629578, 0, -0.776937, 0, 1, 0, 0.776937, 0, -0.629578, -1.08866, 0, -3.93834)
+
+[node name="FourierTest" parent="." instance=ExtResource("13_r7xks")]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 8, 1.5, -4)
+
+[node name="DialogueArea" parent="FourierTest" instance=ExtResource("14_ucrvw")]
+transform = Transform3D(1.02, 0, 1.19209e-07, 0, 1.02, 0, -1.19209e-07, 0, 1.02, 0, -0.972716, 0)
+dialogue_data = Array[String](["The rusty bot looks out toward the ventilator with an expression of pure contentment, joints squeaking as they bounce in the air.
+$
+<\"I've been on this thing -- computing -- twenty-seven times today. I can't get enough of it!\"> You wonder for a second if you should reach out and see if they really are okay; but it occurs to you that they're probably happier than you are."])
+dialogue_title = "Fourier -- Observer-Class"
+character = "fourier"
+object_name = "fourier_dialogue"
+dialogue_close_distance = 7.0

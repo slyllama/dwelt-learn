@@ -1,11 +1,11 @@
-[gd_scene load_steps=32 format=3 uid="uid://dsf4aknq3seh2"]
+[gd_scene load_steps=35 format=3 uid="uid://dsf4aknq3seh2"]
 
 [ext_resource type="Script" path="res://maps/lattice/lattice.gd" id="1_hqs2c"]
 [ext_resource type="Texture2D" uid="uid://c5duom5wl7px7" path="res://generic/tex/sky.png" id="2_1uuus"]
 [ext_resource type="PackedScene" uid="uid://bcp4um4sjbyx6" path="res://lib/player/player.tscn" id="3_0m0xl"]
 [ext_resource type="PackedScene" uid="uid://e0k8h1ytp7wi" path="res://lib/ui/hud/hud.tscn" id="4_gb0g0"]
 [ext_resource type="AudioStream" uid="uid://to210dowl6qk" path="res://maps/lattice/sounds/forest_ambience.ogg" id="5_ldr5m"]
-[ext_resource type="AudioStream" uid="uid://cgdlxmmhitac7" path="res://generic/sounds/music/mus_shell.mp3" id="6_ewrbr"]
+[ext_resource type="AudioStream" uid="uid://d0ombff17mapf" path="res://generic/sounds/music/mus_shell.ogg" id="6_rr5ow"]
 [ext_resource type="Texture2D" uid="uid://dinrdf02xeqaq" path="res://generic/tex/fade_ramp.tres" id="9_clv77"]
 [ext_resource type="Texture2D" uid="uid://d1fy6jygommc6" path="res://generic/tex/particles/mote.png" id="10_vpwvh"]
 [ext_resource type="ArrayMesh" uid="uid://c48ccnw3gi5h4" path="res://objects/god_ray/god_ray.obj" id="11_vmy1k"]
@@ -22,6 +22,9 @@
 [ext_resource type="PackedScene" uid="uid://dk0s3tibcdcq0" path="res://objects/updraft/updraft.tscn" id="20_ib8vs"]
 [ext_resource type="PackedScene" uid="uid://dpxnpda25fr1t" path="res://maps/lattice/props/mushroom_cluster.glb" id="21_pc35o"]
 [ext_resource type="PackedScene" uid="uid://bdock8rc758qp" path="res://maps/lattice/props/tank.glb" id="22_iujst"]
+[ext_resource type="PackedScene" uid="uid://d3wu1w4amd36m" path="res://objects/insight/insight.tscn" id="23_hbglv"]
+[ext_resource type="PackedScene" uid="uid://cvho6mkc04s7h" path="res://objects/laser_detector/laser_detector.tscn" id="24_dbxhx"]
+[ext_resource type="AudioStream" uid="uid://gspni8xs632w" path="res://generic/sounds/play_dialogue.ogg" id="25_71yxt"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dbpli"]
 panorama = ExtResource("2_1uuus")
@@ -58,7 +61,7 @@ size = Vector3(50, 0.1, 50)
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_2872j"]
+[sub_resource type="CurveTexture" id="CurveTexture_x80g6"]
 curve = SubResource("Curve_lstkl")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6f558"]
@@ -68,10 +71,10 @@ initial_velocity_min = 0.05
 initial_velocity_max = 0.05
 gravity = Vector3(0, 0.01, 0)
 scale_min = 0.5
-scale_curve = SubResource("CurveTexture_2872j")
+scale_curve = SubResource("CurveTexture_x80g6")
 color_ramp = ExtResource("9_clv77")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_arrm5"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r8kvd"]
 transparency = 1
 cull_mode = 2
 vertex_color_use_as_albedo = true
@@ -84,7 +87,7 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_udmxf"]
-material = SubResource("StandardMaterial3D_arrm5")
+material = SubResource("StandardMaterial3D_r8kvd")
 size = Vector2(0.06, 0.06)
 orientation = 2
 
@@ -113,6 +116,18 @@ sky_mode = 1
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.77882, 1.5, 17.476)
 
+[node name="Insights" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="Insight" parent="Insights" instance=ExtResource("23_hbglv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, 12)
+object_name = "hey_there"
+dialogue_data = Array[String](["If you see this message, the system is working. Yeeey!"])
+
+[node name="Insight2" parent="Insights" instance=ExtResource("23_hbglv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.8516, 0, 9.05536)
+dialogue_data = Array[String](["Test dialogue!"])
+
 [node name="HUD" parent="." instance=ExtResource("4_gb0g0")]
 
 [node name="Ambience" type="AudioStreamPlayer" parent="."]
@@ -120,8 +135,8 @@ stream = ExtResource("5_ldr5m")
 autoplay = true
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_ewrbr")
-volume_db = -4.0
+stream = ExtResource("6_rr5ow")
+volume_db = -2.0
 
 [node name="Floor" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.433279, 0)
@@ -162,7 +177,7 @@ cast_shadow = 0
 mesh = ExtResource("11_vmy1k")
 
 [node name="Laser" parent="." instance=ExtResource("15_qt6cc")]
-transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 7.7158, -0.082312, 24.9609)
+transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, 11.0594, -0.082312, 13.9214)
 
 [node name="VentFan" parent="." instance=ExtResource("16_fhj2e")]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 0.669077, 1.28921, 23.0866)
@@ -186,7 +201,7 @@ transform = Transform3D(0.390851, 0, 1.23985, 0, 1.3, 0, -1.23985, 0, 0.390851, 
 [node name="DialogueArea" parent="FourierTest" instance=ExtResource("16_j30j2")]
 transform = Transform3D(1.02, 0, 1.19209e-07, 0, 1.02, 0, -1.19209e-07, 0, 1.02, 0, -0.972716, 0)
 dialogue_data = Array[String](["The rusty bot looks out toward the ventilator with an expression of pure contentment, joints squeaking as they bounce in the air.
-
+$
 <\"I've been on this thing -- computing -- twenty-seven times today. I can't get enough of it!\"> You wonder for a second if you should reach out and see if they really are okay; but it occurs to you that they're probably happier than you are."])
 dialogue_title = "Fourier -- Observer-Class"
 character = "fourier"
@@ -227,9 +242,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.94, 0, 23.981)
 
 [node name="TankDialogue" parent="Greybox/Tank2" instance=ExtResource("16_j30j2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -0.744324)
-dialogue_data = Array[String](["The rusty bot looks out toward the ventilator with an expression of pure contentment, joints squeaking as they bounce in the air.
-
-<\"I've been on this thing -- computing -- twenty-seven times today. I can't get enough of it!\"> You wonder for a second if you should reach out and see if they really are okay; but it occurs to you that they're probably happier than you are."])
+dialogue_data = Array[String](["These tanks haven't been labeled -- and likely for good reason. Unwatched and unsecured, their contents are probably flaccid and stale, fit only for diluting other product to keep things on the cheap.
+$
+It's not a practice  the Scrappers might once have engaged in, but times are changing. Competition is fierce, and the populace has become more desparate than ever to get their inlets into <any> kind of emotional gratification."])
 dialogue_title = "Essence Tanks"
 character = "tank"
 object_name = "essence_notes"
@@ -240,3 +255,13 @@ transform = Transform3D(0.987494, 0, 0.157658, 0, 1, 0, -0.157658, 0, 0.987494, 
 
 [node name="MushroomCluster" parent="." instance=ExtResource("21_pc35o")]
 transform = Transform3D(0.611996, 0, 0.790861, 0, 1, 0, -0.790861, 0, 0.611996, 2.66351, -0.039493, 20.9354)
+
+[node name="LaserDetector" parent="." instance=ExtResource("24_dbxhx")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 7, 4, 26)
+delay_time = 0.0
+
+[node name="PlayDialogue" type="AudioStreamPlayer" parent="LaserDetector"]
+stream = ExtResource("25_71yxt")
+volume_db = -1.0
+
+[connection signal="activated" from="LaserDetector" to="." method="_on_laser_detector_activated"]

@@ -19,6 +19,9 @@ var og_pos
 var points = []
 var life_points = []
 
+var delayed = true # removed by delay timer
+var delay_timer = Timer.new()
+
 func _basis(): return(get_global_transform().basis)
 func _origin(): return(get_global_transform().origin)
 
@@ -36,6 +39,11 @@ func _ready():
 	
 	start_color = Color(diffuse_color, start_alpha)
 	end_color = Color(diffuse_color, end_alpha)
+	
+	add_child(delay_timer)
+	delay_timer.set_wait_time(2.0)
+	delay_timer.timeout.connect(func(): delayed = false)
+	delay_timer.start()
 
 # Player's y-position last frame
 var _p_y = Global.player_position.y
@@ -46,6 +54,7 @@ func reenable():
 	life_points = []
 
 func _process(delta):
+	if delayed == true: return # prevent odd trails as the game starts
 	# An accurate way of determining whether the player is going up or down
 	var player_y_delta = (_p_y - Global.player_position.y) * 10.0
 	_p_y = Global.player_position.y

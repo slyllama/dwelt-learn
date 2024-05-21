@@ -28,7 +28,7 @@ func load_model(model_name):
 	loaded = false
 	if Model != null: Model.queue_free()
 	if !model_name in MODEL_DATA:
-		print("[DialogueWorld] no model for character '" + model_name + "'!")
+		Global.printc("[DialogueWorld] no model for character '" + model_name + "'!")
 	ResourceLoader.load_threaded_request(MODEL_DATA[model_name].path)
 
 func _ready(): pass

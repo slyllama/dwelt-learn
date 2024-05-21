@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://07n4fhjhunl"]
+[gd_scene load_steps=7 format=3 uid="uid://07n4fhjhunl"]
 
 [ext_resource type="Script" path="res://objects/laser/laser.gd" id="1_qy5bo"]
 [ext_resource type="PackedScene" uid="uid://bbt6np1daksl4" path="res://objects/cable/cable.tscn" id="2_qx4ym"]
 [ext_resource type="Script" path="res://objects/laser/Cast.gd" id="3_0t5vk"]
 [ext_resource type="Material" uid="uid://8dgrpigvgadk" path="res://generic/mat_placeholder.tres" id="5_2bpdy"]
-[ext_resource type="PackedScene" uid="uid://s4i8wd6iwhw6" path="res://lib/ui/smoke_overlay/smoke_overlay.tscn" id="6_qjo1e"]
 [ext_resource type="PackedScene" uid="uid://csbchge3673bh" path="res://lib/object_handler/object_handler.tscn" id="7_2554r"]
 [ext_resource type="AudioStream" uid="uid://ksek1nmbm7lq" path="res://objects/laser/enter_laser.ogg" id="8_pae4y"]
 
@@ -34,8 +33,6 @@ stream = ExtResource("8_pae4y")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 size = Vector3(2, 2, 2)
 material = ExtResource("5_2bpdy")
-
-[node name="SmokeOverlay" parent="." instance=ExtResource("6_qjo1e")]
 
 [node name="ObjectHandler" parent="." instance=ExtResource("7_2554r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

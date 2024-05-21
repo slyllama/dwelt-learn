@@ -4,19 +4,26 @@ extends Node3D
 
 var shaders_loaded = false
 
-const SHADERS_UID = [
-	"uid://cupub7pghtysj", # holograph
-	"uid://yi627x8xvfu2", # laser
-	"uid://dtg3t52t3kle7", # god ray
-	"uid://dib8bbgu76bfe", # smoke
-	"uid://x7hijf0o02h8", # updraft whirl
-	"uid://dlmkx7n01hlq6", # updraft whirl center
-	"uid://devo837ilys5h", # glider
-	
-	"res://generic/shaders/shader_fresnel.gdshader", # fresnel
-	"res://lib/ui/dialogue/shader_distort.gdshader", # radial distortion
-	"res://lib/player/vfx/shader_anime.gdshader", # anime motion
-	"res://generic/shaders/shader_aberration.gdshader", # chromatic aberration
+const SHADERS = [
+	"res://characters/euclid/radar/shader_radar.tres",
+	"res://characters/euclid/shader_energy.tres",
+	"res://characters/glider_wings/shader_glider.gdshader",
+	"res://generic/shaders/shader_aberration.gdshader",
+	"res://generic/shaders/shader_fractal.gdshader",
+	"res://generic/shaders/shader_fresnel.gdshader",
+	"res://generic/shaders/shader_glide.tres",
+	"res://generic/shaders/shader_laser.tres",
+	"res://lib/player/vfx/shader_anime.gdshader",
+	"res://lib/ui/debug_pane/shader_console_gradient.gdshader",
+	"res://lib/ui/dialogue/shader_fizzle_dialogue.gdshader",
+	"res://lib/ui/insight/insight_flame/shader_flame.gdshader",
+	"res://lib/ui/insight/shader_blur.gdshader",
+	"res://lib/ui/insight/shader_ripple.gdshader",
+	"res://lib/ui/smoke_overlay/shader_smoke.gdshader",
+	"res://lib/ui/smoke_overlay/shader_smoke.tres",
+	"res://objects/god_ray/shader_god_ray.tres",
+	"res://objects/updraft/shader_whirl.gdshader",
+	"res://objects/updraft/shader_whirl_center.tres"
 ]
 
 var meshes = []
@@ -29,7 +36,7 @@ func _load_shaders():
 
 func _ready():
 	var i = 0
-	for shader in SHADERS_UID:
+	for shader in SHADERS:
 		var shader_mesh = CSGBox3D.new()
 		shader_mesh.size = Vector3(0.1, 0.1, 0.1)
 		shader_mesh.position = Vector3(0.11 * i, 0.0, 0.0)

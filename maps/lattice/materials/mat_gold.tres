@@ -12,3 +12,6 @@ normal_scale = 0.45
 normal_texture = ExtResource("2_xnhg5")
 subsurf_scatter_strength = 0.5
 uv1_scale = Vector3(12, 12, 12)
+distance_fade_mode = 2
+distance_fade_min_distance = 1.0
+distance_fade_max_distance = 2.0

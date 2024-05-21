@@ -127,7 +127,7 @@ material_override = SubResource("StandardMaterial3D_kmfjv")
 cast_shadow = 0
 amount = 30
 amount_ratio = 0.3
-visibility_aabb = AABB(-1.58066, -2.05205, -4, 3.16133, 4.1041, 8)
+visibility_aabb = AABB(-1.02193, -0.526392, -1.25502, 2.04387, 1.05278, 2.51004)
 process_material = SubResource("ParticleProcessMaterial_4brgs")
 draw_pass_1 = ExtResource("4_8srut")
 
@@ -136,8 +136,10 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 visible = false
 
 [node name="Trail3D" type="MeshInstance3D" parent="."]
+visible = false
 material_override = SubResource("StandardMaterial3D_cwkau")
 script = ExtResource("6_c6fhn")
+diffuse_color = Color(1, 1, 1, 1)
 
 [node name="Euclid" parent="." instance=ExtResource("6_m827u")]
 
@@ -153,7 +155,7 @@ autoplay = true
 
 [node name="GlideSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_k1l4n")
-volume_db = -7.0
+volume_db = -14.0
 
 [node name="GW" parent="." instance=ExtResource("9_swf03")]
 transform = Transform3D(1.18928, 0.0415306, 0, -0.0415306, 1.18928, 0, 0, 0, 1.19, 0, 0.1, 1)

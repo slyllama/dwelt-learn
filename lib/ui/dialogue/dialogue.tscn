@@ -1,15 +1,20 @@
-[gd_scene load_steps=15 format=3 uid="uid://ds7v1kxeoggbl"]
+[gd_scene load_steps=14 format=3 uid="uid://ds7v1kxeoggbl"]
 
 [ext_resource type="Script" path="res://lib/ui/dialogue/dialogue.gd" id="1_6fhhv"]
 [ext_resource type="Texture2D" uid="uid://dduothw77bdaf" path="res://lib/ui/dialogue/tex/base.png" id="1_i1ywh"]
-[ext_resource type="PackedScene" uid="uid://s4i8wd6iwhw6" path="res://lib/ui/smoke_overlay/smoke_overlay.tscn" id="2_4eef0"]
+[ext_resource type="Shader" path="res://lib/ui/dialogue/shader_fizzle_dialogue.gdshader" id="2_qcequ"]
+[ext_resource type="Texture2D" uid="uid://dsroqhsarregr" path="res://characters/euclid/tex/radar_diff.png" id="3_ou11o"]
 [ext_resource type="FontFile" uid="uid://bhk1jyryyb1be" path="res://generic/fonts/plex_mono.otf" id="3_y1toj"]
 [ext_resource type="FontFile" uid="uid://nyvmwj526bbr" path="res://generic/fonts/alegreya.ttf" id="6_0uj4r"]
-[ext_resource type="Script" path="res://lib/ui/dialogue/DistortShader.gd" id="6_tb7wh"]
-[ext_resource type="Shader" path="res://lib/ui/dialogue/shader_distort.gdshader" id="7_50264"]
 [ext_resource type="AudioStream" uid="uid://gspni8xs632w" path="res://generic/sounds/play_dialogue.ogg" id="10_ayfgg"]
 [ext_resource type="AudioStream" uid="uid://d17c68aqvdewo" path="res://generic/sounds/click.ogg" id="12_3bocd"]
 [ext_resource type="PackedScene" uid="uid://dyhaqy0gi2mf1" path="res://lib/ui/dialogue/dialogue_world/dialogue_world.tscn" id="14_qbvws"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0o6vm"]
+shader = ExtResource("2_qcequ")
+shader_parameter/exponent = 0.01
+shader_parameter/alpha_scale = 1.0
+shader_parameter/radar_texture = ExtResource("3_ou11o")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f812m"]
 content_margin_left = 10.0
@@ -32,21 +37,12 @@ content_margin_right = 10.0
 content_margin_bottom = 6.0
 bg_color = Color(0.4, 0.709804, 1, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_b0j08"]
-shader = ExtResource("7_50264")
-shader_parameter/center = Vector2(0.5, 0.25)
-shader_parameter/force = 0.01
-shader_parameter/size = 0.0
-shader_parameter/thickness = 0.0
-
 [node name="Dialogue" type="CanvasLayer"]
 script = ExtResource("1_6fhhv")
 
-[node name="SmokeOverlay" parent="." instance=ExtResource("2_4eef0")]
-layer = 0
-
 [node name="Base" type="TextureRect" parent="."]
 texture_repeat = 2
+material = SubResource("ShaderMaterial_0o6vm")
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -58,6 +54,7 @@ offset_right = 509.0
 offset_bottom = 195.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("1_i1ywh")
 stretch_mode = 3
 
@@ -138,21 +135,13 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_dy2bg")
 theme_override_styles/focus = SubResource("StyleBoxFlat_mg74j")
 text = "PROCEED"
 
-[node name="DistortShader" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_b0j08")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("6_tb7wh")
-
 [node name="ContinueSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_3bocd")
 volume_db = -4.0
 
 [node name="PlayDialogue" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_ayfgg")
+volume_db = -1.0
 
 [connection signal="mouse_entered" from="Base/Proceed" to="." method="_mouseover"]
 [connection signal="pressed" from="Base/Proceed" to="." method="_on_proceed_pressed"]

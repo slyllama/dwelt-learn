@@ -23,6 +23,7 @@ gradient = SubResource("Gradient_6d2gg")
 [resource]
 render_priority = 0
 shader = ExtResource("1_vgblc")
+shader_parameter/base_color = Color(1, 1, 1, 1)
 shader_parameter/whirl_texture = ExtResource("2_oeny8")
 shader_parameter/alpha_mask = SubResource("GradientTexture2D_hffj6")
 shader_parameter/x_alpha_mask = SubResource("GradientTexture2D_wn5ox")

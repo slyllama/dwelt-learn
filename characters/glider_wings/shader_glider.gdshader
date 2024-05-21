@@ -1,10 +1,11 @@
 shader_type spatial;
 render_mode shadows_disabled;
 
+uniform sampler2D holo_texture: filter_linear_mipmap, repeat_enable;
 uniform vec4 fresnel_color: source_color;
-uniform float fresnel_amount = 1.0;
-uniform float fresnel_intensity = 1.0;
 uniform float alpha_float = 1.0;
+uniform float overall_scale = 6.0;
+uniform float exponent = 1.0;
 
 vec3 fresnel_glow(float amount, float intensity, vec3 color, vec3 normal, vec3 view)
 {
@@ -14,10 +15,11 @@ vec3 fresnel_glow(float amount, float intensity, vec3 color, vec3 normal, vec3 v
 void fragment()
 {
 	vec2 adjusted_screen_uv = SCREEN_UV;
-	vec3 fresnel = fresnel_glow(fresnel_amount, fresnel_intensity, fresnel_color.rgb, NORMAL, VIEW);
+	vec3 fresnel = fresnel_glow(1.0, 0.2, fresnel_color.rgb, NORMAL, VIEW);
 	
 	ALBEDO = fresnel * 4.0;
-	ALPHA = alpha_float;
+	//ALPHA = alpha_float;
+	ALPHA = pow(texture(holo_texture, SCREEN_UV * overall_scale + vec2(0.0, TIME * 0.2)).r, exponent) * alpha_float;
 	EMISSION = fresnel;
 	SPECULAR = 0.0;
 }

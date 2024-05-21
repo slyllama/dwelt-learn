@@ -9,7 +9,7 @@ func _ready():
 	
 	if Engine.is_editor_hint() == true: return
 	if !setting_id in Global.settings:
-		print("[Settings] tried to load setting '" + str(setting_id) +"' but it doesn't exist.")
+		Global.printc("[Settings] tried to load setting '" + str(setting_id) +"' but it doesn't exist.")
 		queue_free()
 		return
 	

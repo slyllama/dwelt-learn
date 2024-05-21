@@ -102,7 +102,7 @@ func _process(_delta):
 	var target_y_pos = 1.15 - clamp(Global.player_y_velocity * camera_bounce, -1.0, 1.0)
 	position.y = lerp(position.y, target_y_pos, 0.035)
 	
-	if Global.settings_opened == false:
+	if !Global.settings_opened and !Action.active:
 		if Input.is_joy_button_pressed(0, JOY_BUTTON_DPAD_UP): _zoom("in", 0.25)
 		elif Input.is_joy_button_pressed(0, JOY_BUTTON_DPAD_DOWN): _zoom("out", 0.25)
 		

@@ -5,8 +5,12 @@ var on_object = false
 func _is_on_object():
 	var o = false
 	if get_collider() != null:
-		if "object_name" in get_collider().get_parent():
-			o = true
+		var p = get_collider().get_parent()
+		if "object_name" in p:
+			if "interactable" in p:
+				# Prevent non-interactable objects from triggering this
+				if p.interactable == true: o = true
+			else: o = true
 	return(o)
 
 func _ready():

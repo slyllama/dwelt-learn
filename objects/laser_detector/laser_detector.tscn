@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cvho6mkc04s7h"]
+[gd_scene load_steps=4 format=3 uid="uid://cvho6mkc04s7h"]
 
 [ext_resource type="Script" path="res://objects/laser_detector/laser_detector.gd" id="1_mqits"]
 [ext_resource type="Material" uid="uid://8oy0j0kdyonq" path="res://objects/laser_detector/mat_light.tres" id="2_vdh0b"]
-[ext_resource type="FontFile" uid="uid://b1v28gy50d86f" path="res://generic/fonts/red_hat.ttf" id="3_r5f1i"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k8s5v"]
 size = Vector3(2, 2, 2)
@@ -17,19 +16,6 @@ size = Vector3(2, 2, 2)
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_k8s5v")
-
-[node name="Label" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.16746, 0)
-visible = false
-pixel_size = 0.001
-billboard = 1
-no_depth_test = true
-fixed_size = true
-modulate = Color(1, 1, 0, 1)
-text = "Barries"
-font = ExtResource("3_r5f1i")
-font_size = 27
-outline_size = 6
 
 [node name="DelayTimer" type="Timer" parent="."]
 one_shot = true

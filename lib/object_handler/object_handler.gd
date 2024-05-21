@@ -9,10 +9,15 @@ extends Area3D
 @export var object_name = "none"
 @export var cube_size = 3.0
 @export var can_toggle_action = true
+@export var interactable = true # deactivations are still possible
 
 signal activated
 signal deactivated
 var active = false
+var ignore_dialogue = false
+
+func set_ignore_dialogue(state):
+	ignore_dialogue = state
 
 func activate():
 	Action.activate(object_name, can_toggle_action)
@@ -20,12 +25,16 @@ func activate():
 	activated.emit()
 
 func deactivate():
+	if active == false: return
+	# Prevent issues in cases where an action is performed after dialogue
+	if ignore_dialogue == false:
+		if Global.dialogue_active or Action.in_insight_dialogue: return
 	Action.deactivate()
 	active = false
 	deactivated.emit()
 
 func _interact():
-	if Action.target == object_name:
+	if Action.target == object_name and interactable == true:
 		if Action.active == false and active == false:
 			activate()
 			return

@@ -27,11 +27,13 @@ func load_map(map_name):
 	$GlowIcon.visible = true
 	$LoadPanel.visible = false
 	var path = _make_path(map_name)
-	print("[Load] loading '" + path + "'.")
+	Global.printc("[Load] loading '" + path + "'.")
 	target_path = path
 	ResourceLoader.load_threaded_request(target_path)
 
 func _ready():
+	for _i in 20: Global.printc("\n", true) # prime the debug buffer!
+	
 	# Load and populate settings (including menu)
 	Utilities.load_settings()
 	Global.setting_changed.connect(_setting_changed)
@@ -61,6 +63,8 @@ func _ready():
 	$Music.play()
 
 func _input(_event):
+	if Input.is_action_just_pressed("debug_action"):
+		load_map("test")
 	if Input.is_action_just_pressed("toggle_debug"):
 		$FPSCounter.visible = !$FPSCounter.visible
 		Global.debug_state = $FPSCounter.visible # debug will retain its state

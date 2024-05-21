@@ -5,9 +5,11 @@ extends Node
 var active = false # is an action active?
 var target = "" # the action currently targeted by the cursor
 var last_target = "" # the last action which was targeted by the cursor
+var in_insight_dialogue = false
 
 signal activated(toggle)
 signal deactivated
+signal insight_advanced # player has reached an insight, revealing the next
 signal targeted # action has been looked at by the cursor
 signal untargeted # cursor has moved away from an action
 

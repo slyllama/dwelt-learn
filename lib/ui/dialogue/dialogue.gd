@@ -17,6 +17,11 @@ var current_dialogue = []
 var current_title = ""
 var current_place = 0
 
+func _set_base_exponent(exponent):
+	$Base.material.set_shader_parameter("exponent", 0.05 + (1.0 - exponent) * 10.0)
+	$Base.material.set_shader_parameter("alpha_scale", exponent)
+	$Base.modulate.a = exponent
+
 func _set_text(get_text):
 	$Base/DText.text = get_text
 
@@ -24,20 +29,22 @@ func _format_text(get_text): # add proper dashes, colours, etc
 	var out_text = get_text.replace("--", "\u2013")
 	out_text = out_text.replace("<", "[color=#66b5ff]")
 	out_text = out_text.replace(">", "[/color]")
+	out_text = out_text.replace("$", "[font_size=6] [/font_size]")
 	return(out_text)
 
 func close_dialogue():
-	$SmokeOverlay.deactivate()
+	Global.smoke_faded.emit("out")
+	Global.dialogue_active = false
 	
 	current_dialogue = []
 	current_title = ""
 	current_place = 0
-	Global.dialogue_active = false
+	
 	emit_signal("closed")
 	
 	transitioning = true
 	var fade_in = create_tween()
-	fade_in.tween_property($Base, "modulate:a", 0.0, 0.25)
+	fade_in.tween_method(_set_base_exponent, 1.0, 0.0, 0.1)
 	await fade_in.finished
 	visible = false
 	$Base/DText.text = ""
@@ -45,7 +52,7 @@ func close_dialogue():
 
 func play_dialogue(get_dialogue):
 	$PlayDialogue.play()
-	$SmokeOverlay.activate()
+	Global.smoke_faded.emit("in")
 	current_dialogue = get_dialogue.data
 	current_title = str(_format_text(get_dialogue.title)).to_upper()
 	current_place = 0
@@ -57,16 +64,15 @@ func play_dialogue(get_dialogue):
 			$Base/VP3D/DialogueWorld.load_model(get_dialogue.character)
 		else: $Base/VP3D.visible = false
 	else: $Base/VP3D.visible = false
-	
+
 	# These are already set by interact_area, but dialogue won't necessarily
 	# be called by area
 	Global.dialogue_active = true
-	$Base.modulate.a = 0.0
 	visible = true
 	emit_signal("opened")
 	transitioning = true
 	var fade_in = create_tween()
-	fade_in.tween_property($Base, "modulate:a", 1.0, 0.1)
+	fade_in.tween_method(_set_base_exponent, 0.0, 1.0, 0.1)
 	await fade_in.finished
 	transitioning = false
 	play_phrase()
@@ -114,8 +120,7 @@ func _input(event):
 		or Utilities.is_joy_button(event, JOY_BUTTON_A)):
 			if Global.dialogue_active == true: play_phrase()
 
-func _mouseover():
-	Global.button_hover.emit()
+func _mouseover(): Global.button_hover.emit()
 
 func _on_proceed_pressed():
 	if Global.dialogue_active == true: play_phrase()

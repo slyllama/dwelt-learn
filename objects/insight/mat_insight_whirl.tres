@@ -1,0 +1,30 @@
+[gd_resource type="ShaderMaterial" load_steps=8 format=3 uid="uid://c0vkgclfblqqp"]
+
+[ext_resource type="Shader" path="res://objects/updraft/shader_whirl.gdshader" id="1_me1ar"]
+[ext_resource type="Texture2D" uid="uid://b5nufueq16vw0" path="res://generic/tex/shader_tex/wobble_noise.tres" id="2_18g2l"]
+[ext_resource type="Texture2D" uid="uid://dgkrpn8nt8pvt" path="res://generic/tex/shader_tex/laser.jpeg" id="3_qoqgt"]
+
+[sub_resource type="Gradient" id="Gradient_87f1r"]
+offsets = PackedFloat32Array(0, 0.105634, 0.669014, 0.811321)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0.937107, 0.937107, 0.937107, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hffj6"]
+gradient = SubResource("Gradient_87f1r")
+fill_from = Vector2(1, 0)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="Gradient" id="Gradient_6d2gg"]
+offsets = PackedFloat32Array(0, 0.149194, 0.298387, 0.637097, 0.818548, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0.0807833, 0.0807833, 0.0807833, 1, 0.115254, 0.115254, 0.115254, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wn5ox"]
+gradient = SubResource("Gradient_6d2gg")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_me1ar")
+shader_parameter/base_color = Color(0.486275, 0.8, 1, 1)
+shader_parameter/whirl_texture = ExtResource("3_qoqgt")
+shader_parameter/alpha_mask = SubResource("GradientTexture2D_hffj6")
+shader_parameter/x_alpha_mask = SubResource("GradientTexture2D_wn5ox")
+shader_parameter/distortion = ExtResource("2_18g2l")
