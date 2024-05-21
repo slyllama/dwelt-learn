@@ -101,10 +101,11 @@ material = ExtResource("6_sqf44")
 
 [node name="ObjectHandler" parent="." instance=ExtResource("7_eu0w7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-cube_size = 2.0
+cube_size = 3.0
 
 [node name="Placeholder" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 2, 4.37114e-08)
+visible = false
 cast_shadow = 0
 size = Vector3(1.6, 1.6, 1.6)
 material = SubResource("StandardMaterial3D_colx3")
