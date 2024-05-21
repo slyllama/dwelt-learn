@@ -44,7 +44,7 @@ func insights_setup():
 		return
 	for i in %Insights.get_children():
 		Global.insights_total += 1
-	Global.printc("[WorldLoader] found " + str(Global.insights_total) + " insight(s).")
+	Global.printc("[WorldLoader] found " + str(Global.insights_total) + " Insight(s).")
 	Global.insights_counted.emit()
 	insights_refresh()
 

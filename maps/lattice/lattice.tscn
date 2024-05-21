@@ -122,12 +122,18 @@ unique_name_in_owner = true
 
 [node name="Insight" parent="Insights" instance=ExtResource("23_hbglv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, 12)
-object_name = "hey_there"
-dialogue_data = Array[String](["If you see this message, the system is working. Yeeey!"])
+object_name = "insight_1"
+dialogue_data = Array[String](["First Insight!"])
 
 [node name="Insight2" parent="Insights" instance=ExtResource("23_hbglv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.8516, 0, 9.05536)
-dialogue_data = Array[String](["Test dialogue!"])
+object_name = "insight_2"
+dialogue_data = Array[String](["Second Insight!"])
+
+[node name="Insight3" parent="Insights" instance=ExtResource("23_hbglv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.9108, 4.76837e-07, 8.23633)
+object_name = "insight_3"
+dialogue_data = Array[String](["Third Insight!"])
 
 [node name="HUD" parent="." instance=ExtResource("4_gb0g0")]
 

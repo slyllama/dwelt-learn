@@ -10,13 +10,13 @@ var stagger = [5, 4, 3, 2, 1]
 const FTIME = 0.05
 var transitioning
 
-func animate(get_text, center = false):
+func animate(get_anim_text, center = false):
 	text = ""
 	if transitioning == true: return
 	
 	transitioning = true
 	var out_text = ""
-	var c = get_text
+	var c = get_anim_text
 	for N in NUMS:
 		out_text = ""
 		while len(c) > len(N) - 1: N += N
