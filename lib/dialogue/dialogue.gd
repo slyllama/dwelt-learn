@@ -21,10 +21,8 @@ func _ready():
 	if dialogue_data == []: object_name = "ignore"
 	# Object handler-specifics
 	$ObjectHandler.object_name = object_name
-	$ObjectHandler.set_ignore_dialogue(true)
 	$ObjectHandler.activated.connect(_play_dialogue)
 	$ObjectHandler.deactivated.connect(func():
-		Global.printc("Dialogue closing because deactivated", "yellow")
 		_close_dialogue())
 	# Special action to callback dialogue closing after the fact
 	Global.dialogue_closed.connect(func():

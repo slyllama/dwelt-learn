@@ -12,6 +12,7 @@ var center
 
 var is_open = false
 var primed = false
+var can_close = false
 
 var insight_nodes = []
 var completed_nodes = []
@@ -72,6 +73,7 @@ func open():
 	visible = true
 
 	$OpenSound.play()
+	$OpenDelay.start()
 	update_completed_nodes()
 	Global.smoke_faded.emit("in")
 	for c in completed_nodes: c.open()
@@ -84,8 +86,11 @@ func open():
 	Action.in_insight_dialogue = false
 
 func close():
+	if can_close == false: return
+	can_close = false
 	is_open = false
 	Global.smoke_faded.emit("out")
+	Global.can_move = true
 	
 	var trans_tween = create_tween()
 	trans_tween.tween_method(_set_trans_state, 1.0, 0.0, 0.25)
@@ -118,7 +123,7 @@ func _ready():
 	Global.insight_pane_closed.connect(func(): if is_open: close())
 
 func _input(_event):
-	if Input.is_action_just_pressed("right_click"):
+	if Input.is_action_just_pressed("right_click") or Input.is_action_just_pressed("interact"):
 		if is_open == true and !Action.in_insight_dialogue:
 			Action.deactivate()
 			Global.insight_pane_closed.emit()
@@ -139,3 +144,5 @@ func _process(_delta):
 	$SpriteCenter/Base2.position = adj * 30.0
 	$SpriteCenter/Base2.rotation_degrees -= 0.12
 	$SpriteCenter/Base3.rotation_degrees -= 0.07
+
+func _on_open_delay_timeout(): can_close = true

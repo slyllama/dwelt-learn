@@ -81,7 +81,6 @@ func play_dialogue(get_dialogue):
 func play_phrase():
 	if current_place != 0: $ContinueSound.play()
 	if current_place > current_dialogue.size() - 1:
-		Global.printc("close dialogue", "yellow")
 		Global.dialogue_closed.emit()
 		return
 	_set_text(_format_text(current_dialogue[current_place]))

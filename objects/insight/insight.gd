@@ -23,7 +23,6 @@ func _on_object_handler_activated():
 func _on_object_handler_deactivated():
 	if Action.last_target != object_name: return
 	Global.insight_pane_closed.emit()
-	Global.can_move = true
 
 func _on_visibility_changed():
 	interactable = visible
