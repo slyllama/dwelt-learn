@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://yyd0ltle0un5"]
+[gd_scene load_steps=28 format=3 uid="uid://yyd0ltle0un5"]
 
 [ext_resource type="PackedScene" uid="uid://e0k8h1ytp7wi" path="res://lib/ui/hud/hud.tscn" id="1_3q1w7"]
 [ext_resource type="Script" path="res://maps/test/test.gd" id="1_fvnbx"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bd7c4x2ajeimr" path="res://generic/tex/shader_tex/floor_diff.png" id="2_3dm53"]
 [ext_resource type="Texture2D" uid="uid://dinrdf02xeqaq" path="res://generic/tex/fade_ramp.tres" id="2_qqlgb"]
 [ext_resource type="Texture2D" uid="uid://d1fy6jygommc6" path="res://generic/tex/particles/mote.png" id="3_hvkgi"]
+[ext_resource type="Script" path="res://lib/ui/text_label_anim/text_label_anim.gd" id="3_tq14h"]
 [ext_resource type="Texture2D" uid="uid://5bruu4afeor5" path="res://generic/tex/shader_tex/floor_norm.png" id="3_xldvb"]
 [ext_resource type="PackedScene" uid="uid://b85g73m6ogrhp" path="res://objects/updraft/vent_handler.tscn" id="9_7ftuj"]
 [ext_resource type="PackedScene" uid="uid://dpxnpda25fr1t" path="res://maps/lattice/props/mushroom_cluster.glb" id="11_3jr7i"]
@@ -90,6 +91,21 @@ script = ExtResource("1_fvnbx")
 map_name = "test"
 
 [node name="HUD" parent="." instance=ExtResource("1_3q1w7")]
+
+[node name="TextLabelAnim" type="RichTextLabel" parent="HUD"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -193.0
+offset_top = -67.0
+offset_right = 193.0
+offset_bottom = 67.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "HELLO"
+script = ExtResource("3_tq14h")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.258819, -0.836516, 0.482963, 0, 0.5, 0.866025, -0.965926, -0.224144, 0.12941, 0, 6, 0)
