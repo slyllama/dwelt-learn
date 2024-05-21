@@ -51,8 +51,11 @@ func insights_refresh():
 		else: n.visible = false
 
 func _ready():
+	# Reset everything so that ghost data doesn't persist after returning to the menu
 	Action.deactivate() # interesting bug where an action will persist across maps
 	Action.in_glide = false
+	Global.insights_collected = 0
+	Global.insights_total = 0
 	
 	# Fade in all sound if the game wasn't already muted
 	Utilities.set_master_vol(0.0)
