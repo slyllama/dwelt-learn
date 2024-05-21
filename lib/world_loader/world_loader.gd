@@ -40,6 +40,7 @@ func insights_setup():
 	for i in %Insights.get_children():
 		Global.insights_total += 1
 	Global.printc("[WorldLoader] found " + str(Global.insights_total) + " insight(s).")
+	Global.insights_counted.emit()
 	insights_refresh()
 
 # Display only the current insight, based on collected_insights
@@ -55,8 +56,7 @@ func _ready():
 	Action.deactivate() # interesting bug where an action will persist across maps
 	Action.in_glide = false
 	Global.insights_collected = 0
-	Global.insights_total = 0
-	
+
 	# Fade in all sound if the game wasn't already muted
 	Utilities.set_master_vol(0.0)
 	Global.setting_changed.connect(_setting_changed)

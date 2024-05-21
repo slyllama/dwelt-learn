@@ -33,6 +33,21 @@ func _set_trans_state(val): # a value between 0 and 1 for tweening
 		c.modulate.a = ease_val * 0.7
 		c.position.x = 230.0 + (1.0 - ease_val) * 100.0
 
+func populate():
+	for i in Global.insights_total:
+		var i_container = Node2D.new()
+		i_container.rotation_degrees = 360.0 / Global.insights_total * i - 90.0
+		$SpriteCenter.add_child(i_container)
+		insight_nodes.append(i_container)
+		
+		var i_sprite = Sprite2D.new()
+		i_sprite.scale = Vector2(0.55, 0.55)
+		i_sprite.texture = INODE
+		i_container.add_child(i_sprite)
+		
+		for j in insight_nodes:
+			j.get_child(0).rotation_degrees = - j.rotation_degrees
+
 func update_completed_nodes():
 	for c in completed_nodes: c.queue_free()
 	for l in line_nodes: l.queue_free()
@@ -89,19 +104,7 @@ func _ready():
 	center = get_viewport().size
 	visible = false
 	
-	for i in Global.insights_total:
-		var i_container = Node2D.new()
-		i_container.rotation_degrees = 360.0 / Global.insights_total * i - 90.0
-		$SpriteCenter.add_child(i_container)
-		insight_nodes.append(i_container)
-		
-		var i_sprite = Sprite2D.new()
-		i_sprite.scale = Vector2(0.55, 0.55)
-		i_sprite.texture = INODE
-		i_container.add_child(i_sprite)
-		
-		for j in insight_nodes:
-			j.get_child(0).rotation_degrees = - j.rotation_degrees
+	Global.insights_counted.connect(populate)
 	
 	# Will play dialogue first if there is any, or will skip it and go
 	# straight to the insight if the array is empty (default behaviour)

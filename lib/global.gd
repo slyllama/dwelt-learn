@@ -70,12 +70,16 @@ var current_map = ""
 var dialogue_active = false
 var dragging_control = false # sliders should report their position so they aren't trapped on camera pan
 var gravity = 0.98
-var insights_collected = 0
-var insights_total = 0
 var in_updraft_zone = false
 var linear_movement_override = Vector3.ZERO
 var player_y_velocity = 0.0
 var updraft_zone = ""
+
+### Insights ###
+signal insights_counted # emitted when the WorldLoader has counted how many insights there are
+
+var insights_collected = 0
+var insights_total = 0
 
 ### World states ###
 var player_position = Vector3.ZERO
