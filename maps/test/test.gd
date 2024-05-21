@@ -6,6 +6,7 @@ func _ready():
 	Global.debug_toggled.emit()
 	
 	%Sky.environment.volumetric_fog_enabled = false
+	$VentHandler.turn_off()
 
 	Save.save_loaded.connect(func():
 		if Save.get_data(map_name, "laser_kopa_orientation") != null:
@@ -13,12 +14,8 @@ func _ready():
 
 	Save.load_from_file()
 
-func _input(_event):
-	if Input.is_action_just_pressed("debug_action"):
-		if $VentHandler.is_running:
-			$VentHandler.turn_off()
-			return
-		else: $VentHandler.turn_on()
-
 func _on_laser_player_left(object_name, cast_rotation_degrees):
 	Save.set_data(map_name, "laser_" + object_name + "_orientation", cast_rotation_degrees)
+
+func _on_laser_detector_activated(): $VentHandler.turn_on()
+func _on_laser_detector_deactivated(): $VentHandler.turn_off()

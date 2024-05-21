@@ -26,5 +26,3 @@ func _ready():
 func _process(_delta):
 	$VentFan/AnimationPlayer.speed_scale = lerp(
 		$VentFan/AnimationPlayer.speed_scale, on_scale * 2.0, 0.05)
-	#$VentFanSound.volume_db = lerp(
-		#$VentFanSound.volume_db, linear_to_db(on_scale), 0.05)

@@ -12,6 +12,7 @@ script = ExtResource("1_mqits")
 
 [node name="Box" type="CSGBox3D" parent="."]
 material_override = ExtResource("2_vdh0b")
+cast_shadow = 0
 size = Vector3(2, 2, 2)
 
 [node name="Collision" type="CollisionShape3D" parent="."]
