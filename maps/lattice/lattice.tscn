@@ -234,13 +234,16 @@ transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 0, 7, 0)
 
 [node name="Greybox" parent="." instance=ExtResource("18_8pphe")]
 
-[node name="Tank" parent="Greybox" instance=ExtResource("22_iujst")]
+[node name="MushroomCluster" parent="." instance=ExtResource("21_pc35o")]
+transform = Transform3D(0.611996, 0, 0.790861, 0, 1, 0, -0.790861, 0, 0.611996, 2.66351, -0.039493, 20.9354)
+
+[node name="Tank" parent="." instance=ExtResource("22_iujst")]
 transform = Transform3D(0.799758, 0, -0.600323, 0, 1, 0, 0.600323, 0, 0.799758, 10.331, 0, 24.955)
 
-[node name="Tank2" parent="Greybox" instance=ExtResource("22_iujst")]
+[node name="Tank2" parent="." instance=ExtResource("22_iujst")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.94, 0, 23.981)
 
-[node name="TankDialogue" parent="Greybox/Tank2" instance=ExtResource("16_j30j2")]
+[node name="TankDialogue" parent="Tank2" instance=ExtResource("16_j30j2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -0.744324)
 dialogue_data = Array[String](["These tanks haven't been labeled -- and likely for good reason. Unwatched and unsecured, their contents are probably flaccid and stale, fit only for diluting other product to keep things on the cheap.
 $
@@ -250,11 +253,8 @@ character = "tank"
 object_name = "essence_notes"
 dialogue_close_distance = 7.0
 
-[node name="Tank3" parent="Greybox" instance=ExtResource("22_iujst")]
+[node name="Tank3" parent="." instance=ExtResource("22_iujst")]
 transform = Transform3D(0.987494, 0, 0.157658, 0, 1, 0, -0.157658, 0, 0.987494, 4.284, 0, 26.791)
-
-[node name="MushroomCluster" parent="." instance=ExtResource("21_pc35o")]
-transform = Transform3D(0.611996, 0, 0.790861, 0, 1, 0, -0.790861, 0, 0.611996, 2.66351, -0.039493, 20.9354)
 
 [node name="LaserDetector" parent="." instance=ExtResource("24_dbxhx")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 7, 4, 26)

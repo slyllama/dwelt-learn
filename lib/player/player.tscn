@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://b6tc0kf1kgaml" path="res://lib/player/model_handler/model_handler.tscn" id="15_a350m"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_yehb5"]
+radius = 0.001
 
 [sub_resource type="Animation" id="Animation_6mrla"]
 length = 0.001
@@ -98,6 +99,7 @@ transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 
 collision_mask = 2
 shape = SubResource("SphereShape3D_yehb5")
 spring_length = 5.0
+margin = 0.1
 
 [node name="Camera" type="Camera3D" parent="CamPivot/CamArm"]
 v_offset = -0.1

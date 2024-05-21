@@ -27,7 +27,7 @@ func activate():
 
 func deactivate():
 	active = false
-	Global.smoke_faded.emit("in")
+	Global.smoke_faded.emit("out")
 	Global.player_position_unlocked.emit()
 
 func _ready():

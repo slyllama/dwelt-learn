@@ -112,9 +112,8 @@ func _process(_delta):
 	$CamArm/Camera.fov = lerp($CamArm/Camera.fov, Global.settings.fov + fov_offset, 0.04)
 	
 	last_mouse_offset = mouse_offset
-	# Rotate the camera eight by using the mouse or the controller.
-	# TODO: camera rotation probably needs to be clamped
-	#if right_mouse_down == true:
+	# Rotate the camera by using the mouse or the controller.
+	
 	new_cam_y_rotation += -mouse_offset.x / 1.5 * camera_sensitivity
 	new_cam_x_rotation += -mouse_offset.y / 2.0 * camera_sensitivity
 	new_cam_y_rotation -= Input.get_joy_axis(0, JOY_AXIS_LEFT_X) * camera_sensitivity * 3.5

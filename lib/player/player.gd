@@ -59,13 +59,20 @@ func update_debug():
 	if $Collision.disabled: Global.debug_details_text += "\n[color=red]Collision disabled[/color]"
 	if !Global.can_move: Global.debug_details_text += "\n[color=red]Movement disabled[/color]"
 
+var spring_arm_mask
+
 func _ready():
+	spring_arm_mask = $CamPivot/CamArm.collision_mask
 	Global.connect("player_position_locked", lock_position)
 	Global.connect("player_position_unlocked", unlock_position)
+	
+	Action.activated.connect(func(_toggle): $CamPivot/CamArm.collision_mask = 0)
+	Global.dialogue_played.connect(func(_i): $CamPivot/CamArm.collision_mask = spring_arm_mask)
+	Action.deactivated.connect(func(): $CamPivot/CamArm.collision_mask = spring_arm_mask)
 
 func _input(_event):
 	# No animations if the player's position is locked
-	if position_locked: return
+	if position_locked or !Global.can_move: return
 	if Global.in_keybind_select: return
 
 	if (Input.is_action_just_pressed("skill_glide")
@@ -128,7 +135,8 @@ func _physics_process(_delta):
 	target_velocity += side * Vector3.RIGHT * $CamPivot.global_transform.basis
 	target_velocity = target_velocity.normalized() * Vector3(-1, 0, 1) * speed
 	
-	if Global.can_move == false: target_velocity = Vector3.ZERO
+	if Global.can_move == false:
+		target_velocity = Vector3.ZERO
 	
 	# Uses the difference between the y-cast and the player's y-position to
 	# generate a damping value, y_diff

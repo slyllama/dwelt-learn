@@ -96,24 +96,34 @@ func _ready():
 	
 	Action.targeted.connect(open_radar)
 	Action.untargeted.connect(close_radar)
+	Global.insight_pane_closed.connect(stop_moving)
 	
 	# Debug visibility
 	Global.debug_player_visibility_changed.connect(func():
 		visible = Global.debug_player_visible)
 
+func _stop_movement():
+	if Action.in_glide == true: _glide_ended()
+	Action.in_glide = false
+	rotation.z = 0.0
+	
+	trail_L.enabled = false
+	trail_R.enabled = false
+
 func _process(_delta):
+	if root == null: return
+	if root.position_locked == true:
+		_stop_movement()
+		rotation_degrees.y = root.lock_dir.x
+		return
+	if !Global.can_move:
+		_stop_movement()
+		return
+	
 	$IdleSound.volume_db = linear_to_db(lerp(
 		db_to_linear($IdleSound.volume_db), 1.0 - engine_ratio, 0.1))
 	$RunSound.volume_db = linear_to_db(lerp(
 		db_to_linear($RunSound.volume_db), engine_ratio, 0.1))
-	
-	if root == null: return
-	if root.position_locked == true:
-		rotation.z = 0.0
-		rotation_degrees.y = root.lock_dir.x
-		trail_L.enabled = false
-		trail_R.enabled = false
-		return
 	
 	if Action.in_glide == true:
 		if in_glide == false: _glide_started()
