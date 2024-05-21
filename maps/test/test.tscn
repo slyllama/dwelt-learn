@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://yyd0ltle0un5"]
+[gd_scene load_steps=26 format=3 uid="uid://yyd0ltle0un5"]
 
 [ext_resource type="PackedScene" uid="uid://e0k8h1ytp7wi" path="res://lib/ui/hud/hud.tscn" id="1_3q1w7"]
 [ext_resource type="Script" path="res://maps/test/test.gd" id="1_fvnbx"]
@@ -7,9 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dinrdf02xeqaq" path="res://generic/tex/fade_ramp.tres" id="2_qqlgb"]
 [ext_resource type="Texture2D" uid="uid://d1fy6jygommc6" path="res://generic/tex/particles/mote.png" id="3_hvkgi"]
 [ext_resource type="Texture2D" uid="uid://5bruu4afeor5" path="res://generic/tex/shader_tex/floor_norm.png" id="3_xldvb"]
-[ext_resource type="PackedScene" uid="uid://dk0s3tibcdcq0" path="res://objects/updraft/updraft.tscn" id="6_mmoa4"]
-[ext_resource type="PackedScene" uid="uid://q6mjnwesy72v" path="res://objects/updraft/vent_fan/vent_fan.glb" id="9_uampq"]
-[ext_resource type="AudioStream" uid="uid://xw8eek5x1xwg" path="res://objects/updraft/sound/vent_fan.ogg" id="10_jncr3"]
+[ext_resource type="PackedScene" uid="uid://b85g73m6ogrhp" path="res://objects/updraft/vent_handler.tscn" id="9_7ftuj"]
 [ext_resource type="PackedScene" uid="uid://dpxnpda25fr1t" path="res://maps/lattice/props/mushroom_cluster.glb" id="11_3jr7i"]
 [ext_resource type="PackedScene" uid="uid://d3wu1w4amd36m" path="res://objects/insight/insight.tscn" id="12_sl0pd"]
 [ext_resource type="PackedScene" uid="uid://bw14qvqobtubd" path="res://characters/fourier/fourier.glb" id="13_r7xks"]
@@ -146,16 +144,8 @@ visibility_aabb = AABB(-6.5899, -2.60607, -5.6187, 13.1798, 5.21214, 11.2374)
 process_material = SubResource("ParticleProcessMaterial_xa72n")
 draw_pass_1 = SubResource("PlaneMesh_k7b7a")
 
-[node name="Updraft" parent="." instance=ExtResource("6_mmoa4")]
+[node name="VentHandler" parent="." instance=ExtResource("9_7ftuj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
-acceleration = 0.1
-
-[node name="VentFan" parent="." instance=ExtResource("9_uampq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2279, -7)
-
-[node name="VentFanSound" type="AudioStreamPlayer3D" parent="VentFan"]
-stream = ExtResource("10_jncr3")
-autoplay = true
 
 [node name="MushroomCluster" parent="." instance=ExtResource("11_3jr7i")]
 transform = Transform3D(-0.629578, 0, -0.776937, 0, 1, 0, 0.776937, 0, -0.629578, -1.08866, 0, -3.93834)

@@ -4,6 +4,7 @@ extends Node3D
 @export var target_speed = 0.3
 @export var acceleration = 0.04
 
+var enabled = true
 var player_in_area = false
 var yv = 0.0
 var yv_target = 0.0
@@ -23,6 +24,7 @@ func _on_updraft_area_exited(body):
 
 func _ready():
 	Action.glide_pressed.connect(func():
+		if enabled == false: return
 		# Should only attempt if the player is in *this* updraft
 		if player_in_area == true and Global.updraft_zone == object_name and Global.dialogue_active == false:
 			Global.camera_shaken.emit()
@@ -35,6 +37,8 @@ func _physics_process(_delta):
 	# This checks the *last* used updraft zone, not the *active* one
 	if Global.updraft_zone != object_name or Action.active == true: return
 	
+	if enabled == false: yv_target = 0.0
 	yv = lerp(yv, yv_target, acceleration)
+	
 	yv_ease = ease(yv, 0.4)
 	Global.linear_movement_override.y = yv_ease
