@@ -13,7 +13,7 @@
 [ext_resource type="Script" path="res://lib/ui/clicky_button/clicky_button.gd" id="10_vdu7x"]
 [ext_resource type="Texture2D" uid="uid://d1fy6jygommc6" path="res://generic/tex/particles/mote.png" id="11_q2eyy"]
 [ext_resource type="AudioStream" uid="uid://b7uu6koeu0up2" path="res://generic/sounds/music/mus_afterlife.ogg" id="13_juayp"]
-[ext_resource type="PackedScene" uid="uid://d24gofb7bfo8k" path="res://lib/ui/hover_sound.tscn" id="14_w5m2m"]
+[ext_resource type="PackedScene" uid="uid://d24gofb7bfo8k" path="res://lib/ui/hover_sound/hover_sound.tscn" id="14_w5m2m"]
 
 [sub_resource type="Animation" id="Animation_xdgig"]
 resource_name = "glow"

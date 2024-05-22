@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://d24gofb7bfo8k"]
 
 [ext_resource type="AudioStream" uid="uid://drae5tgg8hj47" path="res://generic/sounds/hover.ogg" id="1_ew6ku"]
-[ext_resource type="Script" path="res://lib/ui/hover_sound.gd" id="2_03rdo"]
+[ext_resource type="Script" path="res://lib/ui/hover_sound/hover_sound.gd" id="2_03rdo"]
 [ext_resource type="AudioStream" uid="uid://d17c68aqvdewo" path="res://generic/sounds/click.ogg" id="3_6xcbn"]
 
 [node name="UIHover" type="AudioStreamPlayer"]

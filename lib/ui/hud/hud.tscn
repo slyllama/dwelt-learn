@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://e0k8h1ytp7wi"]
+[gd_scene load_steps=16 format=3 uid="uid://e0k8h1ytp7wi"]
 
 [ext_resource type="PackedScene" uid="uid://dq3aqaliycowy" path="res://lib/ui/debug_pane/debug_pane.tscn" id="1_gv0re"]
 [ext_resource type="Script" path="res://lib/ui/hud/hud.gd" id="1_i45xt"]
@@ -10,10 +10,11 @@
 [ext_resource type="PackedScene" uid="uid://cjpojjxt2n5ld" path="res://lib/ui/skills/skills_bar.tscn" id="11_6aasg"]
 [ext_resource type="Texture2D" uid="uid://bo64vayisk0p" path="res://lib/ui/tex/dot_hover.png" id="11_hcgrr"]
 [ext_resource type="PackedScene" uid="uid://dp2blk7gd88n2" path="res://lib/ui/insight/insight.tscn" id="12_rcdd6"]
+[ext_resource type="PackedScene" uid="uid://b6bvm7et230dg" path="res://lib/ui/input_hints/input_hints.tscn" id="13_eft55"]
 [ext_resource type="PackedScene" uid="uid://bt5sosdm3tncx" path="res://lib/ui/hud/hud_buttons.tscn" id="15_6wbiv"]
 [ext_resource type="Texture2D" uid="uid://danqqg64d8q2k" path="res://lib/ui/tex/dot.png" id="15_cp3ui"]
 [ext_resource type="PackedScene" uid="uid://bx5xwgdebscc6" path="res://lib/ui/settings/settings.tscn" id="19_c42st"]
-[ext_resource type="PackedScene" uid="uid://d24gofb7bfo8k" path="res://lib/ui/hover_sound.tscn" id="19_uwm57"]
+[ext_resource type="PackedScene" uid="uid://d24gofb7bfo8k" path="res://lib/ui/hover_sound/hover_sound.tscn" id="19_uwm57"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_i45xt")
@@ -98,6 +99,8 @@ layer = 5
 layer = 6
 
 [node name="Insight" parent="." instance=ExtResource("12_rcdd6")]
+
+[node name="InputHints" parent="." instance=ExtResource("13_eft55")]
 
 [node name="Settings" parent="." instance=ExtResource("19_c42st")]
 layer = 100
