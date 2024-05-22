@@ -8,7 +8,7 @@ script = ExtResource("1_op2p0")
 [node name="Container" type="VBoxContainer" parent="."]
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_top = 140.0
+offset_top = 69.0
 offset_right = 562.0
 grow_vertical = 2
 mouse_filter = 2

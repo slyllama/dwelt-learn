@@ -94,8 +94,13 @@ func _ready():
 		if node is MeshInstance3D:
 			glider_nodes.append(node)
 	
-	Action.targeted.connect(open_radar)
-	Action.untargeted.connect(close_radar)
+	Action.targeted.connect(func():
+		Global.input_hint_played.emit([{
+		"title": "Interact", "description": "Inspect curiosity.", "key": "#" }], 0.0)
+		open_radar())
+	Action.untargeted.connect(func():
+		Global.input_hint_cleared.emit()
+		close_radar())
 	Global.insight_pane_closed.connect(stop_moving)
 	
 	# Debug visibility
