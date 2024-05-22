@@ -27,7 +27,6 @@ func _format_text(get_text): # add proper dashes, colours, etc
 
 func close_dialogue():
 	Global.smoke_faded.emit("out")
-	Global.input_hint_cleared.emit()
 	Global.dialogue_active = false
 	
 	current_dialogue = []
@@ -47,8 +46,6 @@ func close_dialogue():
 func play_dialogue(get_dialogue):
 	$PlayDialogue.play()
 	Global.smoke_faded.emit("in")
-	Global.input_hint_played.emit([{
-		"title": "Continue", "description": "Proceed with dialogue.", "key": "#" }], 0.0)
 	current_dialogue = get_dialogue.data
 	current_title = str(_format_text(get_dialogue.title)).to_upper()
 	current_place = 0
