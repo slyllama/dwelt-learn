@@ -31,12 +31,15 @@ var mouse_in_settings_menu = false
 signal debug_toggled
 signal debug_player_visibility_changed
 signal printc_buffer_updated
+signal debug_popup_opened
+signal debug_popup_closed
 
 const PRINTC_BUFFER_SIZE = 30
 
 var debug_details_text = "[Details]"
 var debug_state = false
 var debug_player_visible = true
+var debug_popup_is_open = false
 var printc_buffer = []
 
 func printc(string, color = "white", no_stdin = false):

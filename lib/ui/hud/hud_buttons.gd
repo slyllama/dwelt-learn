@@ -30,3 +30,10 @@ func fade_in():
 func _ready():
 	Global.mouse_captured.connect(fade_out)
 	Global.mouse_released.connect(fade_in)
+
+func _on_debug_popup_button_pressed():
+	if !Global.debug_state: # show the debug pane if it already isn't visible
+		Global.debug_state = true
+		Global.debug_toggled.emit()
+	if Global.debug_popup_is_open: Global.debug_popup_closed.emit()
+	else: Global.debug_popup_opened.emit()

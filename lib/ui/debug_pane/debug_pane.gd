@@ -5,9 +5,16 @@ extends CanvasLayer
 func _ready():
 	$Render.text = ""
 	Global.debug_toggled.connect(func():
-		
 		visible = Global.debug_state)
 	Global.debug_toggled.emit()
+	
+	Global.debug_popup_opened.connect(func():
+		Global.debug_popup_is_open = true
+		$CmdPanel/CmdVBox.visible = true)
+	Global.debug_popup_closed.connect(func():
+		Global.debug_popup_is_open = false
+		$CmdPanel/CmdVBox.visible = false)
+	Global.debug_popup_closed.emit()
 	
 	# Print debug statements to the screen as well as STDIN
 	Global.printc_buffer_updated.connect(func():
@@ -63,9 +70,11 @@ func _mouseover(): Global.button_hover.emit()
 func _on_print_save_data_pressed():
 	Save.game_saved.emit()
 	Global.printc("[Save] Data: " + str(Save.save_data[Global.current_map]))
+	Global.debug_popup_closed.emit()
 
 func _on_save_pressed():
 	Save.game_saved.emit()
+	Global.debug_popup_closed.emit()
 
 func _on_reset_save_data_pressed():
 	Save.reset_file()
@@ -74,11 +83,15 @@ func _on_reset_save_data_pressed():
 func _on_toggle_player_vis_pressed():
 	Global.debug_player_visible = !Global.debug_player_visible
 	if Global.debug_player_visible:
-		$CmdPanel/CmdVBox/TogglePlayerVis.text = "Hide Player"
-	else: $CmdPanel/CmdVBox/TogglePlayerVis.text = "Show Player"
+		$CmdPanel/CmdVBox/TogglePlayerVis.text = "Hide player"
+	else: $CmdPanel/CmdVBox/TogglePlayerVis.text = "Show player"
 	Global.debug_player_visibility_changed.emit()
+	Global.debug_popup_closed.emit()
 
 func _on_reset_settings_pressed():
 	DirAccess.remove_absolute("user://settings.json")
 	DirAccess.remove_absolute("user://input_data.json")
+	get_tree().change_scene_to_file("res://lib/loading/loading.tscn")
+
+func _on_return_to_menu_pressed():
 	get_tree().change_scene_to_file("res://lib/loading/loading.tscn")
