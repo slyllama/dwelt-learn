@@ -4,13 +4,18 @@ extends Panel
 @export var description: String = "Input hint description."
 @export var key_text: String = "#"
 
-func _set_trans(val):
+func _set_trans(val, white = true):
+	var ease_val = ease(val, 2.0)
 	modulate.a = val
-	self_modulate = Color(1.0 - val, 1.0 - val, 1.0 - val, 1.0)
+	if white == true: material.set_shader_parameter("base_color", 1.0 - ease_val)
+	material.set_shader_parameter("alpha_scale", val)
+
+func fade_out(white = true):
+	var fade = create_tween()
+	fade.tween_method(_set_trans.bind(white), 1.0, 0.0, 0.3)
 
 func _ready():
 	modulate.a = 1.0
-	self_modulate = Color(1.0, 1.0, 1.0, 1.0)
 	$Title.text = str(title).to_upper()
 	$Description.text = description
 	$Panel/Key.text = Utilities.cntr(str(key_text).to_upper())

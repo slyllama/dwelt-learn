@@ -2,18 +2,22 @@ extends CanvasLayer
 
 const HintCard = preload("res://lib/ui/input_hints/hint_card.tscn")
 var card_data = [
-	{ "title": "1", "description": "1 description.", "key": "1" },
-	{ "title": "2", "description": "2 description.", "key": "2" } ]
+	{ "title": "INTERACT", "description": "Look at a nearby curiosity.", "key": "F" },
+	{ "title": "GLIDE", "description": "Soar in updrafts; hover while descending.", "key": "E" } ]
 var card_nodes = []
 var transitioning = false
 var active = false
 
 func clear_hints():
-	var fade = create_tween()
-	fade.tween_property($Container, "modulate:a", 0.0, 0.2)
+	for c in card_nodes.size():
+		var cn = card_nodes[card_nodes.size() - 1 -c] # reverse
+		if active == false:
+			cn.fade_out(false)
+			await get_tree().create_timer(0.3).timeout
 
 # If clear_time is 0, the hints will remain until cleared by clear_hints()
 func show_hints(get_card_data, clear_time = 0.0):
+	$ClearTimer.stop()
 	active = true
 	$Container.modulate.a = 1.0
 	for c in card_nodes: c.queue_free()
@@ -39,4 +43,5 @@ func _input(_event):
 		show_hints(card_data, 2.0)
 
 func _on_clear_timer_timeout():
+	active = false
 	clear_hints()

@@ -1,11 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://bocissxgni5dt"]
+[gd_scene load_steps=10 format=3 uid="uid://bocissxgni5dt"]
 
 [ext_resource type="Script" path="res://lib/ui/input_hints/hint_card.gd" id="1_25ewk"]
 [ext_resource type="FontFile" uid="uid://b1v28gy50d86f" path="res://generic/fonts/red_hat.ttf" id="1_k8k71"]
 [ext_resource type="FontFile" uid="uid://nyvmwj526bbr" path="res://generic/fonts/alegreya.ttf" id="2_1ak2y"]
+[ext_resource type="Shader" path="res://lib/ui/input_hints/shader_hint_card.gdshader" id="4_2gd7u"]
+[ext_resource type="FontFile" uid="uid://bhk1jyryyb1be" path="res://generic/fonts/plex_mono.otf" id="4_it01f"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wrksn"]
-bg_color = Color(0, 0, 0, 0.588235)
+[sub_resource type="Gradient" id="Gradient_pb8em"]
+offsets = PackedFloat32Array(0, 0.786885, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_d2ji1"]
+gradient = SubResource("Gradient_pb8em")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cfp21"]
+resource_local_to_scene = true
+shader = ExtResource("4_2gd7u")
+shader_parameter/alpha_scale = 1.0
+shader_parameter/base_color = 1.0
+shader_parameter/gradient_texture = SubResource("GradientTexture2D_d2ji1")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ld3ji"]
 bg_color = Color(0, 0, 0, 1)
@@ -13,16 +26,17 @@ border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
 [node name="HintCard" type="Panel"]
+material = SubResource("ShaderMaterial_cfp21")
 custom_minimum_size = Vector2(400, 70)
 offset_right = 768.0
 offset_bottom = 70.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_wrksn")
 script = ExtResource("1_25ewk")
 
 [node name="Title" type="RichTextLabel" parent="."]
@@ -73,12 +87,23 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/default_color = Color(0.699653, 0.699653, 0.699653, 1)
-theme_override_fonts/normal_font = ExtResource("1_k8k71")
-theme_override_font_sizes/normal_font_size = 28
+theme_override_fonts/normal_font = ExtResource("4_it01f")
+theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
 text = "[center]#[/center]"
 scroll_active = false
 autowrap_mode = 0
+
+[node name="WhiteFlash" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

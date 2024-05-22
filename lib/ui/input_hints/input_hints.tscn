@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://b6bvm7et230dg"]
+[gd_scene load_steps=2 format=3 uid="uid://b6bvm7et230dg"]
 
 [ext_resource type="Script" path="res://lib/ui/input_hints/input_hints.gd" id="1_op2p0"]
-[ext_resource type="PackedScene" uid="uid://bocissxgni5dt" path="res://lib/ui/input_hints/hint_card.tscn" id="2_pwh75"]
 
 [node name="InputHints" type="CanvasLayer"]
 script = ExtResource("1_op2p0")
@@ -14,9 +13,6 @@ offset_right = 562.0
 grow_vertical = 2
 mouse_filter = 2
 theme_override_constants/separation = 4
-
-[node name="HintCard" parent="Container" instance=ExtResource("2_pwh75")]
-layout_mode = 2
 
 [node name="ClearTimer" type="Timer" parent="."]
 one_shot = true

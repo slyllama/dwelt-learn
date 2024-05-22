@@ -38,7 +38,7 @@ var debug_player_visible = true
 var printc_buffer = []
 
 func printc(string, color = "white", no_stdin = false):
-	var string_fmt = "[color=" + color + " ]" + string + "[/color]" # add color
+	var string_fmt = "[color=" + color + " ]" + str(string) + "[/color]" # add color
 	if no_stdin == false: print_rich(string_fmt)
 	printc_buffer.append(string_fmt)
 	printc_buffer_updated.emit()
