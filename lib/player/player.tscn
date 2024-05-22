@@ -110,10 +110,8 @@ spring_length = 5.0
 margin = 0.1
 
 [node name="CamAttach" type="Node3D" parent="CamPivot/CamArm"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="XCast" type="RayCast3D" parent="CamPivot/CamArm/CamAttach"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 target_position = Vector3(0, 0, -8)
 collide_with_areas = true
 script = ExtResource("3_tm7v3")

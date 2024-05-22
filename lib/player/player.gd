@@ -45,14 +45,12 @@ func update_debug():
 		+ Utilities.fstr(global_position.x) + ", "
 		+ Utilities.fstr(global_position.y) + ", "
 		+ Utilities.fstr(global_position.z))
-	Global.debug_details_text += ("\nLast ground position: "
-		+ Utilities.fstr(Global.player_ground_position.x) + ", "
-		+ Utilities.fstr(Global.player_ground_position.y) + ", "
-		+ Utilities.fstr(Global.player_ground_position.z))
-	Global.debug_details_text += "\nMagnitude: " + Utilities.fstr(velocity.length())
+	
+	Global.debug_details_text += "\nGround speed: " + Utilities.fstr(velocity.length())
+	Global.debug_details_text += "\nVertical speed: " + Utilities.fstr(Global.player_y_velocity * -1.0)
 	Global.debug_details_text += "\nDirection: " + Utilities.fstr(%CamPivot.rotation_degrees.y, 1)
 	Global.debug_details_text += "\u00B0 (" + str(snapped($ModelHandler.rotation_degrees.y, 1))  + "\u00B0)"
-	Global.debug_details_text += "\nVertical speed: " + Utilities.fstr(Global.player_y_velocity * -1.0)
+	
 	if Action.target != "": Global.debug_details_text += "\n[color=yellow]Action target: " + str(Action.target)
 	if Action.last_target != "": Global.debug_details_text += "\n[color=yellow]Last action target: " + str(Action.last_target)
 	if Action.active: Global.debug_details_text += "\n[color=yellow]In action: true"

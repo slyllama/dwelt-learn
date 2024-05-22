@@ -58,6 +58,8 @@ func _ready():
 	$Settings/Control/Panel/InputVBox/LowerCloseButton.pressed.connect(
 		func(): $LoadPanel/VBox/Settings.grab_focus())
 	
+	if Global.debug_state: $FPSCounter.visible = true
+	
 	$Music.volume_db = linear_to_db(target_mus_vol)
 	await get_tree().create_timer(0.5).timeout
 	$Music.play()
