@@ -11,6 +11,8 @@ signal dialogue_played(dialogue)
 signal dialogue_closed
 signal dialogue_closed_early
 signal entered_keybind_select
+signal input_hint_played(data, clear_time)
+signal input_hint_cleared
 signal insight_pane_opened(dialogue_data)
 signal insight_pane_closed
 signal left_keybind_select

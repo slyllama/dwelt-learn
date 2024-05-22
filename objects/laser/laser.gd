@@ -9,12 +9,16 @@ var delay_complete = false # laser won't start moving until after a short delay
 var active = false
 signal player_left(object_name, cast_rotation)
 
+var laser_input_hints = [
+	{ "title": "ORIENT", "description": "Adjust the position of the laser.", "key": "#" } ]
+
 var og_cast_rotation_x
 var og_cast_rotation_y
 
 func activate():
 	active = true
 	Global.smoke_faded.emit("in")
+	Global.input_hint_played.emit(laser_input_hints, 0.0)
 	$EnterLaser.play()
 
 	delay_complete = false
@@ -29,6 +33,7 @@ func activate():
 func deactivate():
 	active = false
 	Global.smoke_faded.emit("out")
+	Global.input_hint_cleared.emit()
 	Global.player_position_unlocked.emit()
 	
 	Global.printc("[Laser -> " + object_name + "] player exited!", "magenta")

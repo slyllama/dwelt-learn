@@ -1,9 +1,6 @@
 extends CanvasLayer
 
 const HintCard = preload("res://lib/ui/input_hints/hint_card.tscn")
-var card_data = [
-	{ "title": "INTERACT", "description": "Look at a nearby curiosity.", "key": "F" },
-	{ "title": "GLIDE", "description": "Soar in updrafts; hover while descending.", "key": "E" } ]
 var card_nodes = []
 var transitioning = false
 var active = false
@@ -38,9 +35,11 @@ func show_hints(get_card_data, clear_time = 0.0):
 		$ClearTimer.set_wait_time(clear_time)
 		$ClearTimer.start()
 
-func _input(_event):
-	if Input.is_action_just_pressed("debug_action"):
-		show_hints(card_data, 2.0)
+func _ready():
+	Global.input_hint_played.connect(show_hints)
+	Global.input_hint_cleared.connect(func():
+		active = false
+		clear_hints())
 
 func _on_clear_timer_timeout():
 	active = false

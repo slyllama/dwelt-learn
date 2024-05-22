@@ -4,6 +4,10 @@ extends Node3D
 # called from the inheriting script in order for everything to be loaded
 # properly.
 
+var tutorial_input_data = [
+	{ "title": "INTERACT", "description": "Look at a nearby curiosity.", "key": "F" },
+	{ "title": "GLIDE", "description": "Soar in updrafts; hover while descending.", "key": "E" } ]
+
 @export var map_name = "untitled"
 ## Set this value to [code]true[/code] to allow the [code]WorldLoader[/code]'s
 ## extended script to handle custom save data before being processed.
@@ -90,8 +94,7 @@ func _ready():
 		var s_collected_insights = Save.get_data(Global.current_map, "collected_insights")
 		if s_collected_insights != null: Global.insights_collected = s_collected_insights)
 	
-	if custom_data_load_signal == false:
-		proc_save()
+	if custom_data_load_signal == false: proc_save()
 	
 	# Set spring arm collisions
 	var col_count = 0
@@ -107,6 +110,11 @@ func _ready():
 	var fade_bus_in = create_tween()
 	fade_bus_in.tween_method(Utilities.set_master_vol, 0.0, Global.settings.volume, 1.5)
 	fade_bus_in.tween_callback(func(): Global.setting_changed.emit("volume"))
+	
+	await get_tree().create_timer(1.0).timeout
+	if Save.get_data("dwelt", "tutorial_inputs_shown") == null:
+		Global.input_hint_played.emit(tutorial_input_data, 5.0)
+		Save.set_data("dwelt", "tutorial_inputs_shown", true)
 
 func _notification(what):
 	# Save the game on quit via Save.game_saved

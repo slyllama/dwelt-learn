@@ -23,6 +23,7 @@ script = ExtResource("1_i45xt")
 layer = 2
 
 [node name="SmokeOverlay" parent="." instance=ExtResource("3_gjhsd")]
+layer = 1
 
 [node name="Vignette" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0.862745)
