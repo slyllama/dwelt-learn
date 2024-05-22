@@ -10,7 +10,7 @@ func _ready():
 	Save.save_loaded.connect(func():
 		if Save.get_data(map_name, "laser_siax_orientation") != null:
 			$Laser/Cast.rotation_degrees = Save.get_data(map_name, "laser_siax_orientation"))
-	Save.load_from_file()
+	proc_save() # trigger save loading now that customs have been added
 	
 	$Greybox/VentFan/AnimationPlayer.play("Fan")
 	$FourierTest/AnimationPlayer.play("Idle")

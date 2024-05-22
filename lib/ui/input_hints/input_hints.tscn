@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6bvm7et230dg"]
+
+[ext_resource type="Script" path="res://lib/ui/input_hints/input_hints.gd" id="1_op2p0"]
+
+[node name="InputHints" type="CanvasLayer"]
+script = ExtResource("1_op2p0")
+
+[node name="Container" type="VBoxContainer" parent="."]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_top = 140.0
+offset_right = 562.0
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 4
+
+[node name="ClearTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="ClearTimer" to="." method="_on_clear_timer_timeout"]

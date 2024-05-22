@@ -11,6 +11,8 @@ signal dialogue_played(dialogue)
 signal dialogue_closed
 signal dialogue_closed_early
 signal entered_keybind_select
+signal input_hint_played(data, clear_time)
+signal input_hint_cleared
 signal insight_pane_opened(dialogue_data)
 signal insight_pane_closed
 signal left_keybind_select
@@ -38,7 +40,7 @@ var debug_player_visible = true
 var printc_buffer = []
 
 func printc(string, color = "white", no_stdin = false):
-	var string_fmt = "[color=" + color + " ]" + string + "[/color]" # add color
+	var string_fmt = "[color=" + color + " ]" + str(string) + "[/color]" # add color
 	if no_stdin == false: print_rich(string_fmt)
 	printc_buffer.append(string_fmt)
 	printc_buffer_updated.emit()
