@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlh432uhe5amc"]
+
+[ext_resource type="Script" path="res://lib/ui/insight_indicator/insight_indicator.gd" id="1_nn7kv"]
+[ext_resource type="PackedScene" uid="uid://wdeo36yae7ww" path="res://lib/ui/insight/insight_flame/insight_flame.tscn" id="2_q8nlx"]
+
+[node name="InsightIndicator" type="CanvasLayer"]
+script = ExtResource("1_nn7kv")
+
+[node name="Pos" parent="." instance=ExtResource("2_q8nlx")]
+position = Vector2(760, 103)
+scale = Vector2(0.25, 0.25)
+
+[node name="Line" type="ColorRect" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -250.0
+offset_top = 100.0
+offset_right = 250.0
+offset_bottom = 102.0
+grow_horizontal = 2
+color = Color(1, 1, 1, 0.784314)

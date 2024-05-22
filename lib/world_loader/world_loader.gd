@@ -25,6 +25,8 @@ var exclude_from_shadow = []
 var spring_arm_objects = []
 var first_settings_run = false
 
+var InsightVisibilityNotifier: VisibleOnScreenNotifier3D
+
 func _setting_changed(get_setting_id):
 	if first_settings_run == false: first_settings_run = true
 	match get_setting_id:
@@ -54,11 +56,28 @@ func insights_setup():
 
 # Display only the current insight, based on collected_insights
 func insights_refresh():
+	if InsightVisibilityNotifier != null: InsightVisibilityNotifier.free()
+	var insight_found = false
+	
 	if get_node_or_null("Insights") == null: return
 	for i in %Insights.get_children().size():
 		var n = %Insights.get_children()[i]
-		if i == Global.insights_collected: n.visible = true
+		if i == Global.insights_collected:
+			n.visible = true
+			insight_found = true
+			Global.insight_current_position = n.global_position
+			
+			InsightVisibilityNotifier = VisibleOnScreenNotifier3D.new()
+			add_child(InsightVisibilityNotifier)
+			
+			InsightVisibilityNotifier.global_position = n.global_position
+			InsightVisibilityNotifier.screen_entered.connect(
+				func(): Global.insight_visible = true)
+			InsightVisibilityNotifier.screen_exited.connect(
+				func(): Global.insight_visible = false)
+			
 		else: n.visible = false
+	Global.insight_on_map = insight_found
 
 func proc_save():
 	Save.load_from_file()
