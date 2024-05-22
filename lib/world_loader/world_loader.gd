@@ -56,6 +56,10 @@ func insights_refresh():
 		if i == Global.insights_collected: n.visible = true
 		else: n.visible = false
 
+func proc_save():
+	Save.load_from_file()
+	insights_setup()
+
 func _ready():
 	# Reset everything so that ghost data doesn't persist after returning to the menu
 	Action.deactivate() # interesting bug where an action will persist across maps
@@ -86,9 +90,8 @@ func _ready():
 		var s_collected_insights = Save.get_data(Global.current_map, "collected_insights")
 		if s_collected_insights != null: Global.insights_collected = s_collected_insights)
 	
-	if custom_data_load_signal == false: Save.load_from_file()
-	
-	insights_setup()
+	if custom_data_load_signal == false:
+		proc_save()
 	
 	# Set spring arm collisions
 	var col_count = 0

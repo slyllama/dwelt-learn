@@ -11,8 +11,7 @@ func _ready():
 	Save.save_loaded.connect(func():
 		if Save.get_data(map_name, "laser_kopa_orientation") != null:
 			$Laser/Cast.rotation_degrees = Save.get_data(map_name, "laser_kopa_orientation"))
-
-	Save.load_from_file()
+	proc_save() # trigger save loading now that customs have been added
 
 func _on_laser_player_left(object_name, cast_rotation_degrees):
 	Save.set_data(map_name, "laser_" + object_name + "_orientation", cast_rotation_degrees)
