@@ -52,6 +52,7 @@ texture_normal = ExtResource("1_bk4hk")
 texture_hover = ExtResource("2_2xk7h")
 
 [node name="DebugPopupButton" type="TextureButton" parent="TopMenu"]
+visible = false
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0

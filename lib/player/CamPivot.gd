@@ -61,7 +61,6 @@ func _input(event):
 			if mouse_in_settings_menu == true: return
 			if click_mouse_pos_diff.length() > 2.0:
 				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-				Global.debug_popup_closed.emit()
 				right_mouse_down = true
 				if Global.mouse_is_captured == false:
 					Global.mouse_is_captured = true

@@ -35,6 +35,10 @@ func _input(event):
 		or Utilities.is_joy_button(event, JOY_BUTTON_BACK)):
 		Global.debug_state = !Global.debug_state
 		Global.debug_toggled.emit()
+	
+	if Input.is_action_just_pressed("right_click"):
+		Global.debug_popup_closed.emit()
+	
 	# Quick shortcut for returning to the menu
 	if Input.is_action_just_pressed("ui_cancel"):
 		Save.game_saved.emit()
@@ -77,6 +81,8 @@ func _on_save_pressed():
 	Global.debug_popup_closed.emit()
 
 func _on_reset_save_data_pressed():
+	Global.debug_state = false
+	Global.debug_toggled.emit()
 	Save.reset_file()
 	get_tree().change_scene_to_file("res://lib/loading/loading.tscn")
 
