@@ -14,6 +14,9 @@ func clear_hints():
 
 # If clear_time is 0, the hints will remain until cleared by clear_hints()
 func show_hints(get_card_data, clear_time = 0.0):
+	# Simultaneous changes will cause the hint to just disappear immediately
+	await get_tree().create_timer(0.2).timeout
+	
 	$ClearTimer.stop()
 	active = true
 	$Container.modulate.a = 1.0

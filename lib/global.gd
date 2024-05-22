@@ -85,6 +85,10 @@ var updraft_zone = ""
 signal insights_counted # emitted when the WorldLoader has counted how many insights there are
 
 var insights_collected = 0
+var insight_current_position: Vector3 # used by the Insight indicator to calculate the angle
+var insight_camera_position: Vector2
+var insight_visible = false # managed by WorldLoader's VisibilityInsightNotifier
+var insight_on_map = false
 var insights_total = 0
 
 ### World states ###

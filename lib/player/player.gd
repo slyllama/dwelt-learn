@@ -147,6 +147,8 @@ func _physics_process(_delta):
 	move_and_slide()
 	
 	Global.player_position = global_position
+	Global.insight_camera_position = $CamPivot/Camera.unproject_position(
+		Global.insight_current_position)
 	Global.player_y_velocity = velocity.y
 	if c == 30:
 		if velocity.y > -1.0 and velocity.y < 1.0:
