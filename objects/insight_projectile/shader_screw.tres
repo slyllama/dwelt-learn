@@ -69,7 +69,7 @@ op_type = 0
 operator = 2
 
 [sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_1chdj"]
-constant = Color(1, 0, 1, 1)
+constant = Color(0.32549, 0.568627, 0.890196, 1)
 
 [resource]
 resource_local_to_scene = true
@@ -86,7 +86,7 @@ uniform float exponent = 2;
 
 void fragment() {
 // ColorConstant:9
-	vec4 n_out9p0 = vec4(1.000000, 0.000000, 1.000000, 1.000000);
+	vec4 n_out9p0 = vec4(0.325490, 0.568627, 0.890196, 1.000000);
 
 
 // FloatParameter:17
@@ -161,6 +161,7 @@ void fragment() {
 
 }
 "
+graph_offset = Vector2(145, 223)
 modes/cull = 2
 flags/unshaded = true
 nodes/fragment/0/position = Vector2(1400, 140)

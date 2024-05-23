@@ -26,7 +26,8 @@ var exclude_from_shadow = []
 var spring_arm_objects = []
 var first_settings_run = false
 
-var InsightVisibilityNotifier: VisibleOnScreenNotifier3D
+var PingCooldown = Timer.new()
+var ping_cooling = false
 
 func _setting_changed(get_setting_id):
 	if first_settings_run == false: first_settings_run = true
@@ -57,7 +58,6 @@ func insights_setup():
 
 # Display only the current insight, based on collected_insights
 func insights_refresh():
-	if InsightVisibilityNotifier != null: InsightVisibilityNotifier.free()
 	var insight_found = false
 	
 	if get_node_or_null("Insights") == null: return
@@ -68,24 +68,20 @@ func insights_refresh():
 			insight_found = true
 			Global.insight_current_position = n.global_position
 			
-			InsightVisibilityNotifier = VisibleOnScreenNotifier3D.new()
-			add_child(InsightVisibilityNotifier)
-			
-			InsightVisibilityNotifier.global_position = n.global_position
-			InsightVisibilityNotifier.screen_entered.connect(
-				func(): Global.insight_visible = true)
-			InsightVisibilityNotifier.screen_exited.connect(
-				func(): Global.insight_visible = false)
-			
 		else: n.visible = false
 	Global.insight_on_map = insight_found
 
 func fire_ping():
+	if ping_cooling or !Global.insight_on_map: return
+	ping_cooling = true
+	PingCooldown.start()
+	
+	insights_refresh()
 	var inp = InsightProjectile.instantiate()
 	add_child(inp)
 		
 	inp.global_position = Global.player_position
-	inp.rotation_degrees.y = Global.camera_y_rotation + 90.0
+	inp.look_at(Global.insight_current_position)
 	inp.fire()
 
 func proc_save():
@@ -108,6 +104,10 @@ func _ready():
 		Global.insights_collected += 1
 		insights_refresh())
 	
+	PingCooldown.set_wait_time(1.0)
+	PingCooldown.one_shot = true
+	PingCooldown.timeout.connect(func(): ping_cooling = false)
+	add_child(PingCooldown)
 	Global.ping.connect(fire_ping)
 	
 	# ===== DATA TO SAVE =====
