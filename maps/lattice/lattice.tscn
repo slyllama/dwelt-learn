@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dsf4aknq3seh2"]
+[gd_scene load_steps=33 format=3 uid="uid://dsf4aknq3seh2"]
 
 [ext_resource type="Script" path="res://maps/lattice/lattice.gd" id="1_hqs2c"]
 [ext_resource type="Texture2D" uid="uid://c5duom5wl7px7" path="res://generic/tex/sky.png" id="2_1uuus"]
@@ -11,15 +11,13 @@
 [ext_resource type="ArrayMesh" uid="uid://c48ccnw3gi5h4" path="res://objects/god_ray/god_ray.obj" id="11_vmy1k"]
 [ext_resource type="PackedScene" uid="uid://djgjcyichaft4" path="res://objects/rocket/rocket.glb" id="13_8sf1c"]
 [ext_resource type="PackedScene" uid="uid://07n4fhjhunl" path="res://objects/laser/laser.tscn" id="15_qt6cc"]
-[ext_resource type="PackedScene" uid="uid://q6mjnwesy72v" path="res://objects/updraft/vent_fan/vent_fan.glb" id="16_fhj2e"]
 [ext_resource type="PackedScene" uid="uid://i1jp4klishr3" path="res://lib/dialogue/dialogue.tscn" id="16_j30j2"]
 [ext_resource type="PackedScene" uid="uid://d23wqewgge7mv" path="res://objects/elevator/elevator.tscn" id="17_l4sxi"]
-[ext_resource type="AudioStream" uid="uid://xw8eek5x1xwg" path="res://objects/updraft/sound/vent_fan.ogg" id="17_paoks"]
 [ext_resource type="PackedScene" uid="uid://bw14qvqobtubd" path="res://characters/fourier/fourier.glb" id="17_wxfph"]
 [ext_resource type="PackedScene" uid="uid://b804toes743v0" path="res://maps/lattice/fp_compose.tscn" id="18_7fno8"]
 [ext_resource type="PackedScene" uid="uid://bbrbse4rdrdeg" path="res://maps/lattice/level/greybox.glb" id="18_8pphe"]
 [ext_resource type="PackedScene" uid="uid://btw3t8vjin5bm" path="res://maps/lattice/level/floor_piece_alt.glb" id="19_32vag"]
-[ext_resource type="PackedScene" uid="uid://dk0s3tibcdcq0" path="res://objects/updraft/updraft.tscn" id="20_ib8vs"]
+[ext_resource type="PackedScene" uid="uid://b85g73m6ogrhp" path="res://objects/updraft/vent_handler.tscn" id="19_hvhe0"]
 [ext_resource type="PackedScene" uid="uid://dpxnpda25fr1t" path="res://maps/lattice/props/mushroom_cluster.glb" id="21_pc35o"]
 [ext_resource type="PackedScene" uid="uid://bdock8rc758qp" path="res://maps/lattice/props/tank.glb" id="22_iujst"]
 [ext_resource type="PackedScene" uid="uid://d3wu1w4amd36m" path="res://objects/insight/insight.tscn" id="23_hbglv"]
@@ -121,19 +119,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.77882, 1.5, 17.476)
 unique_name_in_owner = true
 
 [node name="Insight" parent="Insights" instance=ExtResource("23_hbglv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, 12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 12, 11)
 object_name = "insight_1"
 dialogue_data = Array[String](["First Insight!"])
 
 [node name="Insight2" parent="Insights" instance=ExtResource("23_hbglv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.8516, 0, 9.05536)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 12, 11)
 object_name = "insight_2"
 dialogue_data = Array[String](["Second Insight!"])
-
-[node name="Insight3" parent="Insights" instance=ExtResource("23_hbglv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.9108, 4.76837e-07, 8.23633)
-object_name = "insight_3"
-dialogue_data = Array[String](["Third Insight!"])
 
 [node name="HUD" parent="." instance=ExtResource("4_gb0g0")]
 
@@ -184,7 +177,7 @@ cast_shadow = 0
 mesh = ExtResource("11_vmy1k")
 
 [node name="Laser" parent="." instance=ExtResource("15_qt6cc")]
-transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, 11.0594, -0.082312, 13.9214)
+transform = Transform3D(-0.561838, 0, 0.827247, 0, 1, 0, -0.827247, 0, -0.561838, 12.5046, 0.164409, 12.1707)
 object_name = "siax"
 
 [node name="FourierTest" parent="." instance=ExtResource("17_wxfph")]
@@ -226,21 +219,15 @@ transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 0, 7, 0)
 
 [node name="Greybox" parent="." instance=ExtResource("18_8pphe")]
 
-[node name="VentFan" parent="Greybox" instance=ExtResource("16_fhj2e")]
-transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 0.669077, 1.28921, 23.0866)
+[node name="VentHandler" parent="Greybox" instance=ExtResource("19_hvhe0")]
+transform = Transform3D(-0.666533, 0, 0.745476, 0, 1, 0, -0.745476, 0, -0.666533, 0.500311, 0.0488482, 23.2545)
 
-[node name="Updraft" parent="Greybox/VentFan" instance=ExtResource("20_ib8vs")]
-object_name = "updraft2"
-
-[node name="DialogueArea" parent="Greybox/VentFan" instance=ExtResource("16_j30j2")]
+[node name="DialogueArea" parent="Greybox/VentHandler" instance=ExtResource("16_j30j2")]
+transform = Transform3D(0.998441, 0, 0.0558215, 0, 1, 0, -0.0558215, 0, 0.998441, 0.0126781, 1.24036, 0.237722)
 dialogue_data = Array[String](["Hovering over deadly spinning blades for pleasure? Preposterous, although, well... You are a formidable Scrapper, after all. Danger and risk are your close companions."])
 dialogue_title = "Upward Ventilator"
 object_name = "updraft_dialogue"
 dialogue_close_distance = 7.0
-
-[node name="VentFanSound" type="AudioStreamPlayer3D" parent="Greybox/VentFan"]
-stream = ExtResource("17_paoks")
-autoplay = true
 
 [node name="MushroomCluster" parent="." instance=ExtResource("21_pc35o")]
 transform = Transform3D(0.611996, 0, 0.790861, 0, 1, 0, -0.790861, 0, 0.611996, 2.66351, -0.039493, 20.9354)
@@ -265,7 +252,7 @@ dialogue_close_distance = 7.0
 transform = Transform3D(0.987494, 0, 0.157658, 0, 1, 0, -0.157658, 0, 0.987494, 4.284, 0, 26.791)
 
 [node name="LaserDetector" parent="." instance=ExtResource("24_dbxhx")]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 7, 4, 26)
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 3.96906, 5.64628, 14.8081)
 delay_time = 0.0
 
 [node name="PlayDialogue" type="AudioStreamPlayer" parent="LaserDetector"]
@@ -274,3 +261,4 @@ volume_db = -1.0
 
 [connection signal="player_left" from="Laser" to="." method="_on_laser_player_left"]
 [connection signal="activated" from="LaserDetector" to="." method="_on_laser_detector_activated"]
+[connection signal="deactivated" from="LaserDetector" to="." method="_on_laser_detector_deactivated"]

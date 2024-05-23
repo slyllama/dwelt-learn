@@ -4,16 +4,18 @@
 [ext_resource type="Material" uid="uid://8oy0j0kdyonq" path="res://objects/laser_detector/mat_light.tres" id="2_vdh0b"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k8s5v"]
-size = Vector3(2, 2, 2)
+size = Vector3(1.5, 1.5, 1.5)
 
 [node name="LaserDetector" type="StaticBody3D"]
 collision_layer = 3
 script = ExtResource("1_mqits")
 
-[node name="Box" type="CSGBox3D" parent="."]
+[node name="Box" type="CSGSphere3D" parent="."]
 material_override = ExtResource("2_vdh0b")
 cast_shadow = 0
-size = Vector3(2, 2, 2)
+radius = 1.0
+radial_segments = 24
+rings = 12
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_k8s5v")

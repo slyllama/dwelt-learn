@@ -3,10 +3,11 @@
 [ext_resource type="Script" path="res://lib/object_handler/object_handler.gd" id="1_lvfoe"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hgv8v"]
+resource_local_to_scene = true
+size = Vector3(3, 2, 3)
 
 [node name="ObjectHandler" type="Area3D"]
 script = ExtResource("1_lvfoe")
-cube_size = 1.0
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_hgv8v")

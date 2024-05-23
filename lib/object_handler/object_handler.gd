@@ -1,3 +1,4 @@
+@tool
 extends Area3D
 # object_handler.gd
 # A generic object handler. it looks out for action events and fires signals
@@ -7,7 +8,7 @@ extends Area3D
 ## This object name is used by the action handler and must be specified by the
 ## parent scene.
 @export var object_name = "none"
-@export var cube_size = 3.0
+@export var collision_size = Vector3(1.0, 1.0, 1.0)
 @export var can_toggle_action = true
 @export var interactable = true # deactivations are still possible
 
@@ -36,10 +37,12 @@ func _interact():
 		return
 
 func _ready():
-	Global.skill_clicked.connect(func(skill_name):
-		if skill_name == "interact": _interact())
-	$Collision.shape.set_size(Vector3(cube_size, cube_size, cube_size))
+	if !Engine.is_editor_hint():
+		Global.skill_clicked.connect(func(skill_name):
+			if skill_name == "interact": _interact())
+	$Collision.shape.size = Vector3(collision_size)
 
 func _input(event):
+	if Engine.is_editor_hint(): return
 	if (Input.is_action_just_pressed("interact")
 		or Utilities.is_joy_button(event, JOY_BUTTON_A)): _interact()

@@ -12,7 +12,7 @@ func _ready():
 			$Laser/Cast.rotation_degrees = Save.get_data(map_name, "laser_siax_orientation"))
 	proc_save() # trigger save loading now that customs have been added
 	
-	$Greybox/VentFan/AnimationPlayer.play("Fan")
+	$Greybox/VentHandler.turn_off()
 	$FourierTest/AnimationPlayer.play("Idle")
 	await get_tree().create_timer(3.0).timeout
 	$Music.play()
@@ -32,8 +32,11 @@ func _physics_process(_delta):
 			on_second_floor = false
 
 func _on_laser_detector_activated():
-	$LaserDetector/PlayDialogue.play()
+	$Greybox/VentHandler.turn_on()
 	Global.camera_shaken.emit()
 
 func _on_laser_player_left(object_name, cast_rotation):
 	Save.set_data(map_name, "laser_" + object_name + "_orientation", cast_rotation)
+
+func _on_laser_detector_deactivated():
+	$Greybox/VentHandler.turn_off()
