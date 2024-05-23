@@ -37,6 +37,7 @@ func get_screen_center():
 
 # Get the name of an input command as a string
 func get_key(input_id) -> String:
+	if InputMap.action_get_events(input_id) == []: return("[!]")
 	var action = InputMap.action_get_events(input_id)[0]
 	if str(action).split(" ")[1] == "button_index=4,":
 		return("SCROLL UP")
