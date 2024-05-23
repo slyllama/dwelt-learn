@@ -1,7 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://brd2lvmduo8su"]
+[gd_scene load_steps=3 format=3 uid="uid://brd2lvmduo8su"]
 
 [ext_resource type="PackedScene" uid="uid://othtmd5soseu" path="res://objects/insight_projectile/screw.glb" id="1_ensh8"]
+[ext_resource type="Script" path="res://objects/insight_projectile/insight_projectile.gd" id="1_l3bnk"]
 
 [node name="InsightProjectile" type="Node3D"]
+script = ExtResource("1_l3bnk")
 
 [node name="Screw" parent="." instance=ExtResource("1_ensh8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.660605, -0.240366, -9.53674e-07)

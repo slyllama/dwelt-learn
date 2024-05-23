@@ -5,3 +5,6 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_p5gno")
+shader_parameter/alpha_scale = 1.0
+shader_parameter/uv_x_pos = 0.0
+shader_parameter/exponent = 2.0

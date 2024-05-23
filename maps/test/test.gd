@@ -22,6 +22,7 @@ func _input(_event):
 		
 		inp.global_position = Global.player_position
 		inp.rotation_degrees.y = Global.camera_y_rotation + 90.0
+		inp.fire()
 
 func _on_laser_player_left(object_name, cast_rotation_degrees):
 	Save.set_data(map_name, "laser_" + object_name + "_orientation", cast_rotation_degrees)
