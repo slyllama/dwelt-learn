@@ -1,6 +1,9 @@
 extends "res://lib/world_loader/world_loader.gd"
 
 func _ready():
+	interact_objects = [
+		$Insights/Insight, $Insights/Insight2, $FourierTest/DialogueArea, $Laser]
+	
 	super()
 	Global.debug_state = true
 	Global.debug_toggled.emit()

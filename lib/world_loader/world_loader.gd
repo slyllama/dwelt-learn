@@ -24,6 +24,7 @@ var exclude_from_shadow = []
 # spring arm will prevent the camera from clipping through them. Remember to
 # add to this before calling super().
 var spring_arm_objects = []
+var interact_objects = []
 var first_settings_run = false
 
 var PingCooldown = Timer.new()
@@ -83,6 +84,9 @@ func fire_ping():
 	inp.global_position = Global.player_position
 	inp.look_at(Global.insight_current_position)
 	inp.fire()
+	
+	for i in interact_objects:
+		Global.printc("[WorldLoader -> " + str(i) + "]", "green")
 
 func proc_save():
 	Save.load_from_file()
