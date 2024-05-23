@@ -51,9 +51,9 @@ func update_debug():
 	Global.debug_details_text += "\nDirection: " + Utilities.fstr(%CamPivot.rotation_degrees.y, 1)
 	Global.debug_details_text += "\u00B0 (" + str(snapped($ModelHandler.rotation_degrees.y, 1))  + "\u00B0)"
 	
-	if Action.target != "": Global.debug_details_text += "\n[color=yellow]Action target: " + str(Action.target)
-	if Action.last_target != "": Global.debug_details_text += "\n[color=yellow]Last action target: " + str(Action.last_target)
-	if Action.active: Global.debug_details_text += "\n[color=yellow]In action: true"
+	if Action.target != "": Global.debug_details_text += "\n[color=yellow]Target: " + str(Action.target)
+	if Action.last_target != "": Global.debug_details_text += "\n[color=yellow]Last action: " + str(Action.last_target)
+	if Action.active: Global.debug_details_text += "\n[color=yellow]Interaction[/color]"
 	if $Collision.disabled: Global.debug_details_text += "\n[color=red]Collision disabled[/color]"
 	if !Global.can_move: Global.debug_details_text += "\n[color=red]Movement disabled[/color]"
 

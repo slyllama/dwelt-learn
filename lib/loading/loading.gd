@@ -33,6 +33,8 @@ func load_map(map_name):
 
 func _ready():
 	for _i in 20: Global.printc("\n", "white", true) # prime the debug buffer!
+	Global.current_map = ""
+	Global.printc("--- This is Dwelt (Technical Test) ---", "cyan")
 	
 	# Load and populate settings (including menu)
 	Utilities.load_settings()
@@ -57,32 +59,18 @@ func _ready():
 	# Regain focus on the settings button after it is closed, for controllers
 	$Settings/Control/Panel/InputVBox/LowerCloseButton.pressed.connect(
 		func(): $LoadPanel/VBox/Settings.grab_focus())
-	
-	if Global.debug_state: $FPSCounter.visible = true
-	
+
 	$Music.volume_db = linear_to_db(target_mus_vol)
 	await get_tree().create_timer(0.5).timeout
 	$Music.play()
 
 func _input(_event):
-	if Input.is_action_just_pressed("debug_action"):
-		load_map("test")
-	if Input.is_action_just_pressed("toggle_debug"):
-		$FPSCounter.visible = !$FPSCounter.visible
-		Global.debug_state = $FPSCounter.visible # debug will retain its state
+	if Input.is_action_just_pressed("debug_action"): load_map("test")
 
 func _process(_delta):
 	if started == true: target_mus_vol = lerp(target_mus_vol, 0.0, 0.1)
 	$Music.volume_db = linear_to_db(target_mus_vol)
-	#if target_mus_vol <= 0.1: Utilities.set_master_vol(0.0)
-	
-	var colour = "green"
-	if Engine.get_frames_per_second() < 20.0: colour = "red"
-	$FPSCounter.text = ("[right][color=" + colour + "]"
-		+ str(Engine.get_frames_per_second()) + "fps[/color][/right]")
-	
-	if target_path == null or target_path == "": return
-	
+
 	status = ResourceLoader.load_threaded_get_status(target_path, progress)
 	match status:
 		ResourceLoader.THREAD_LOAD_IN_PROGRESS:
@@ -104,3 +92,10 @@ func _map_button_pressed(map_name = ""):
 	load_map(map_name)
 
 func _hover(): Global.button_hover.emit()
+
+func _on_debug_popup_button_pressed():
+	if !Global.debug_state: # show the debug pane if it already isn't visible
+		Global.debug_state = true
+		Global.debug_toggled.emit()
+	if Global.debug_popup_is_open: Global.debug_popup_closed.emit()
+	else: Global.debug_popup_opened.emit()

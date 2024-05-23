@@ -114,6 +114,7 @@ func _ready():
 		if s_collected_insights != null: Global.insights_collected = s_collected_insights)
 	
 	if custom_data_load_signal == false: proc_save()
+	$HUD/DebugPane.update()
 	
 	# Set spring arm collisions
 	var col_count = 0

@@ -21,7 +21,7 @@ border_color = Color(0.322788, 0.322788, 0.322788, 1)
 border_blend = true
 
 [resource]
-Button/colors/font_color = Color(0.461736, 0.461735, 0.461735, 1)
+Button/colors/font_color = Color(0.678944, 0.678944, 0.678943, 1)
 Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
 Button/font_sizes/font_size = 13
 Button/fonts/font = ExtResource("1_wyo3l")

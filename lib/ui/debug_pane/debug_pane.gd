@@ -2,6 +2,17 @@ extends CanvasLayer
 
 @export var fps_lower_limit = 20
 
+# Special parameters for loading screen - hide certain elements
+func update():
+	var hide_nodes = [  # nodes to be hidden if not on a map (i.e., in the main menu)
+		$Details, $Render, $CmdPanel/CmdVBox/Save, $CmdPanel/CmdVBox/Padding,
+		$CmdPanel/CmdVBox/TogglePlayerVis, $CmdPanel/CmdVBox/Padding2,
+		$CmdPanel/CmdVBox/ReturnToMenu ]
+	if Global.current_map == "":
+		for h in hide_nodes: h.visible = false
+	else: for h in hide_nodes: h.visible = true
+	Global.debug_toggled.emit()
+
 func _ready():
 	$Render.text = ""
 	Global.debug_toggled.connect(func():
@@ -29,6 +40,7 @@ func _ready():
 				printc_str_buffer = str(l) + "\n" + printc_str_buffer
 			line_count += 1
 		$Console.text = printc_str_buffer)
+	update()
 
 func _input(event):
 	if (Input.is_action_just_pressed("toggle_debug")
@@ -47,13 +59,14 @@ func _input(event):
 var i = 0
 func _process(_delta):
 	var colour = "green"
-	$Details.text = str(Global.debug_details_text)
 	var fps = Engine.get_frames_per_second()
 	if fps < fps_lower_limit:
 		colour = "red"
 	$FPSCounter.text = ("[color=" + colour + "]"
 		+ str(Engine.get_frames_per_second()) + "fps[/color]")
 	
+	if Global.current_map == "": return # no map data to retrieve
+	$Details.text = str(Global.debug_details_text)
 	# Only get render profiling data if the debugger is on (this is a little
 	# more expensive). We also don't refresh this every frame
 	if Global.debug_state == true:
@@ -73,7 +86,9 @@ func _mouseover(): Global.button_hover.emit()
 
 func _on_print_save_data_pressed():
 	Save.game_saved.emit()
-	Global.printc("[Save] Data: " + str(Save.save_data[Global.current_map]))
+	if Global.current_map != "": # print all maps if in the main menu
+		Global.printc("[Save] Data: " + str(Save.save_data[Global.current_map]))
+	else: Global.Global.printc("[Save] Data: " + str(Save.save_data))
 	Global.debug_popup_closed.emit()
 
 func _on_save_pressed():
@@ -100,4 +115,5 @@ func _on_reset_settings_pressed():
 	get_tree().change_scene_to_file("res://lib/loading/loading.tscn")
 
 func _on_return_to_menu_pressed():
+	Save.game_saved.emit()
 	get_tree().change_scene_to_file("res://lib/loading/loading.tscn")
