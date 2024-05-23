@@ -28,3 +28,15 @@ func anime_out():
 
 func _ready():
 	$AnimeTex.visible = false
+
+var can_move = true
+func _process(_delta): # prevent motion when locked
+	if get_parent().get_node("Collision").disabled:
+		if can_move:
+			active = false
+			can_move = false
+			anime_out()
+	else:
+		if !can_move:
+			can_move = true
+			if Input.is_action_pressed("move_forward"): anime_in()
