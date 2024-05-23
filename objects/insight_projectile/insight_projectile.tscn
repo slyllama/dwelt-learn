@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://brd2lvmduo8su"]
+
+[ext_resource type="PackedScene" uid="uid://othtmd5soseu" path="res://objects/insight_projectile/screw.glb" id="1_ensh8"]
+
+[node name="InsightProjectile" type="Node3D"]
+
+[node name="Screw" parent="." instance=ExtResource("1_ensh8")]
