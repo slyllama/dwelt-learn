@@ -57,6 +57,13 @@ func short_angle_dist(from, to) -> float:
 func fstr(num, place = 0.01) -> String:
 	return(str(snapped(num, place)))
 
+# Return a vector "vec" as a string to 2 decimal places, or snapped to "place"
+func vecstr(vec, place = 0.01) -> String:
+	return("("
+		+ str(snapped(vec.x, place)) + ", "
+		+ str(snapped(vec.y, place)) + ", "
+		+ str(snapped(vec.z, place)) + ")")
+
 # Return string as centered BBCode text
 func cntr(get_text: String):
 	return("[center]" + get_text + "[/center]")

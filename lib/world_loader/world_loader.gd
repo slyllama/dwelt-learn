@@ -86,7 +86,7 @@ func fire_ping():
 	inp.fire()
 	
 	for i in interact_objects:
-		Global.printc("[WorldLoader -> " + str(i) + "]", "green")
+		Global.printc("[WorldLoader -> " + Utilities.vecstr(i.global_position) + "]", "green")
 
 func proc_save():
 	Save.load_from_file()
