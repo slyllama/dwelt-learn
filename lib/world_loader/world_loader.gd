@@ -4,6 +4,7 @@ extends Node3D
 # called from the inheriting script in order for everything to be loaded
 # properly.
 
+const InsightProjectile = preload("res://objects/insight_projectile/insight_projectile.tscn")
 var tutorial_input_data = [
 	{ "title": "INTERACT", "description": "Look at a nearby curiosity.", "key": "F" },
 	{ "title": "GLIDE", "description": "Soar in updrafts; hover while descending.", "key": "E" } ]
@@ -79,6 +80,14 @@ func insights_refresh():
 		else: n.visible = false
 	Global.insight_on_map = insight_found
 
+func fire_ping():
+	var inp = InsightProjectile.instantiate()
+	add_child(inp)
+		
+	inp.global_position = Global.player_position
+	inp.rotation_degrees.y = Global.camera_y_rotation + 90.0
+	inp.fire()
+
 func proc_save():
 	Save.load_from_file()
 	insights_setup()
@@ -98,6 +107,8 @@ func _ready():
 	Action.insight_advanced.connect(func():
 		Global.insights_collected += 1
 		insights_refresh())
+	
+	Global.ping.connect(fire_ping)
 	
 	# ===== DATA TO SAVE =====
 	Save.game_saved.connect(func():
@@ -135,6 +146,10 @@ func _ready():
 	if Save.get_data("dwelt", "tutorial_inputs_shown") == null:
 		Global.input_hint_played.emit(tutorial_input_data, 5.0)
 		Save.set_data("dwelt", "tutorial_inputs_shown", true)
+
+func _input(_event):
+	if Input.is_action_just_pressed("skill_ping"):
+		fire_ping()
 
 func _notification(what):
 	# Save the game on quit via Save.game_saved

@@ -29,4 +29,6 @@ func _on_interact_pressed(): if Action.active == true: pass
 func _on_glide_pressed(): Action.glide_pressed.emit()
 func _on_glide_button_down(): Action.in_glide = true
 func _on_glide_button_up(): Action.in_glide = false
-func _on_ping_pressed(): Global.printc("Ping! ", "yellow")
+func _on_ping_pressed(): 
+	Global.ping.emit()
+	Global.printc("Ping! ", "yellow")

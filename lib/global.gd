@@ -18,6 +18,7 @@ signal insight_pane_closed
 signal left_keybind_select
 signal mouse_captured
 signal mouse_released
+signal ping
 signal shaders_loaded # called after ShaderCacheGen has loaded and removed itself
 signal skill_clicked(skill_name)
 signal smoke_faded(dir)
