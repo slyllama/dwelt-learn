@@ -10,6 +10,7 @@ func _ready():
 	
 	%Sky.environment.volumetric_fog_enabled = false
 	$VentHandler.turn_off()
+	$FourierTest/AnimationPlayer.play("Idle")
 
 	Save.save_loaded.connect(func():
 		if Save.get_data(map_name, "laser_kopa_orientation") != null:

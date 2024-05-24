@@ -21,7 +21,7 @@ op_type = 0
 operator = 2
 
 [sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_vw3fn"]
-default_input_values = [0, 0.0, 1, 0.1]
+default_input_values = [0, 0.0, 1, 0.25]
 operator = 2
 
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_2iou6"]
@@ -108,7 +108,7 @@ void fragment() {
 
 
 // FloatOp:13
-	float n_in13p1 = 0.10000;
+	float n_in13p1 = 0.25000;
 	float n_out13p0 = n_out11p0.x * n_in13p1;
 
 

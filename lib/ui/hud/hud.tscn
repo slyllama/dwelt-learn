@@ -75,6 +75,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("11_hcgrr")
+expand_mode = 1
 
 [node name="Cursor" type="TextureRect" parent="."]
 anchors_preset = 8
@@ -89,6 +90,7 @@ offset_bottom = 5.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("15_cp3ui")
+expand_mode = 1
 
 [node name="DebugPane" parent="." instance=ExtResource("1_gv0re")]
 layer = 99

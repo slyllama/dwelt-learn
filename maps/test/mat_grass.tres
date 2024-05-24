@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://kh2plmnv1ech"]
+
+[ext_resource type="Shader" path="res://maps/test/shader_grass.gdshader" id="1_ttlos"]
+[ext_resource type="Texture2D" uid="uid://bs741bgut5a12" path="res://maps/test/tex/grass_diff.jpg" id="2_2g34m"]
+[ext_resource type="Texture2D" uid="uid://bdf3crxtcmk6s" path="res://maps/test/tex/grass_light_mask.png" id="2_ni0ce"]
+[ext_resource type="Texture2D" uid="uid://cts31uub3rhry" path="res://maps/test/tex/grass_detail_norm.jpg" id="2_xuhov"]
+[ext_resource type="Texture2D" uid="uid://mpv4to8kftlb" path="res://maps/test/grass_norm.png" id="4_adf8a"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_ttlos")
+shader_parameter/scale = 7.0
+shader_parameter/grass_texture = ExtResource("2_2g34m")
+shader_parameter/light_mask = ExtResource("2_ni0ce")
+shader_parameter/normal_map = ExtResource("4_adf8a")
+shader_parameter/detailed_normal_map = ExtResource("2_xuhov")
