@@ -24,6 +24,8 @@ func set_active(get_caster):
 	fade_tween.tween_method(_set_box_color, INIT_COLOR, Color.WHITE, 0.4)
 	caster = get_caster
 	
+	Global.camera_shaken.emit(0.5)
+	
 	if delay_time > 0.0:
 		$DelayTimer.wait_time = delay_time
 		$DelayTimer.start()
