@@ -79,12 +79,13 @@ func fire_ping():
 	PingCooldown.start()
 	Global.printc("Ping!", "yellow")
 	
-	# Process nearby interactables. TODO: not by proximity yet
+	# Process nearby interactables
 	for i in interact_objects:
-		var nodule = PingNodule.instantiate()
-		add_child(nodule)
-		nodule.global_position = i.global_position
-		Global.printc("[WorldLoader -> " + Utilities.vecstr(i.global_position) + "]", "green")
+		if Utilities.get_is_valid_interactable(i, 20.0):
+			var nodule = PingNodule.instantiate()
+			add_child(nodule)
+			nodule.global_position = i.global_position
+			Global.printc("[WorldLoader -> " + Utilities.vecstr(i.global_position) + "]", "green")
 	
 	# Process Insights, if there is one
 	if !Global.insight_on_map: return

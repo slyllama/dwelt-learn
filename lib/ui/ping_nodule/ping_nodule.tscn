@@ -1,8 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://dlvabr5agcgx1"]
+[gd_scene load_steps=5 format=3 uid="uid://dlvabr5agcgx1"]
 
 [ext_resource type="Script" path="res://lib/ui/ping_nodule/ping_nodule.gd" id="1_apn1a"]
+[ext_resource type="PackedScene" uid="uid://dtuoy5rvcxu7b" path="res://objects/insight/insight_model.glb" id="2_r58wn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ca7m5"]
+no_depth_test = true
+shading_mode = 0
 
 [sub_resource type="BoxMesh" id="BoxMesh_hxdn3"]
+material = SubResource("StandardMaterial3D_ca7m5")
 size = Vector3(0.5, 0.5, 0.5)
 
 [node name="PingNodule" type="Node3D"]
@@ -11,3 +17,12 @@ script = ExtResource("1_apn1a")
 [node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 mesh = SubResource("BoxMesh_hxdn3")
+
+[node name="UpdraftModel" parent="Mesh" instance=ExtResource("2_r58wn")]
+transform = Transform3D(0.35, 0, 0, 0, 0.14, 0, 0, 0, 0.35, 0, -0.6, 0)
+
+[node name="RemoveTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="RemoveTimer" to="." method="_on_remove_timer_timeout"]

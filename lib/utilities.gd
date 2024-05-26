@@ -35,6 +35,19 @@ func toggle_full_screen():
 func get_screen_center():
 	return(Global.SCREEN_SIZE / 2.0)
 
+# Perform checks to see if a node is actually interactable; used for ping
+# skills and stuff like that
+func get_is_valid_interactable(node, distance_to_player = 0.0):
+	# if `distance_to_player` is 0.0, this check won't happen
+	if distance_to_player > 0.0:
+		var dist = Vector3(Global.player_position).distance_to(node.global_position)
+		if dist > distance_to_player: return(false)
+	
+	if !node.get_parent().visible: return(false)
+	if "interactable" in node:
+		if !node.interactable: return(false)
+	return(true)
+
 # Get the name of an input command as a string
 func get_key(input_id) -> String:
 	if InputMap.action_get_events(input_id) == []: return("[!]")

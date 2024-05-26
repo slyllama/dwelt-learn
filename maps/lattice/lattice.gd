@@ -3,6 +3,14 @@ extends "res://lib/world_loader/world_loader.gd"
 var on_second_floor = false
 
 func _ready():
+	interact_objects = [
+		$Elevator,
+		$Laser,
+		$FourierTest/DialogueArea,
+		$Greybox/VentHandler/DialogueArea,
+		$Tank2/TankDialogue,
+		$LaserDetector/DialogueArea
+	]
 	spring_arm_objects = [$Greybox]
 	super()
 	
