@@ -1,14 +1,12 @@
-[gd_scene load_steps=29 format=3 uid="uid://yyd0ltle0un5"]
+[gd_scene load_steps=27 format=3 uid="uid://yyd0ltle0un5"]
 
 [ext_resource type="PackedScene" uid="uid://e0k8h1ytp7wi" path="res://lib/ui/hud/hud.tscn" id="1_3q1w7"]
 [ext_resource type="Script" path="res://maps/test/test.gd" id="1_fvnbx"]
 [ext_resource type="PackedScene" uid="uid://bcp4um4sjbyx6" path="res://lib/player/player.tscn" id="1_wua70"]
 [ext_resource type="Texture2D" uid="uid://bd7c4x2ajeimr" path="res://generic/tex/shader_tex/floor_diff.png" id="2_3dm53"]
 [ext_resource type="Texture2D" uid="uid://dinrdf02xeqaq" path="res://generic/tex/fade_ramp.tres" id="2_qqlgb"]
-[ext_resource type="Texture2D" uid="uid://ckvqvbnojerm0" path="res://maps/test/test.jpg" id="3_47lcq"]
 [ext_resource type="Texture2D" uid="uid://d1fy6jygommc6" path="res://generic/tex/particles/mote.png" id="3_hvkgi"]
 [ext_resource type="Texture2D" uid="uid://5bruu4afeor5" path="res://generic/tex/shader_tex/floor_norm.png" id="3_xldvb"]
-[ext_resource type="PackedScene" uid="uid://dgquuxc4yeetw" path="res://maps/test/grass_plane.glb" id="5_04fgp"]
 [ext_resource type="PackedScene" uid="uid://b85g73m6ogrhp" path="res://objects/updraft/vent_handler.tscn" id="9_7ftuj"]
 [ext_resource type="PackedScene" uid="uid://dpxnpda25fr1t" path="res://maps/lattice/props/mushroom_cluster.glb" id="11_3jr7i"]
 [ext_resource type="PackedScene" uid="uid://d3wu1w4amd36m" path="res://objects/insight/insight.tscn" id="12_sl0pd"]
@@ -18,25 +16,23 @@
 [ext_resource type="PackedScene" uid="uid://bdock8rc758qp" path="res://maps/lattice/props/tank.glb" id="15_yru8h"]
 [ext_resource type="PackedScene" uid="uid://07n4fhjhunl" path="res://objects/laser/laser.tscn" id="16_qr5ys"]
 
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_6dt48"]
-panorama = ExtResource("3_47lcq")
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_srq28"]
+sky_top_color = Color(0.411965, 0.674422, 0.819215, 1)
 
 [sub_resource type="Sky" id="Sky_87eso"]
-sky_material = SubResource("PanoramaSkyMaterial_6dt48")
+sky_material = SubResource("ProceduralSkyMaterial_srq28")
 
 [sub_resource type="Environment" id="Environment_dxoaf"]
-background_mode = 2
+background_mode = 1
 background_color = Color(0.586214, 0.586214, 0.586214, 1)
 sky = SubResource("Sky_87eso")
 tonemap_mode = 2
 tonemap_exposure = 1.25
-fog_light_color = Color(0.642171, 0.673633, 0.723069, 1)
-fog_sky_affect = 0.1
-volumetric_fog_density = 0.04
-volumetric_fog_albedo = Color(0.689481, 0.565513, 0.800559, 1)
-volumetric_fog_length = 4.0
+volumetric_fog_density = 0.03
+volumetric_fog_albedo = Color(0.5, 0.5, 0.5, 1)
+volumetric_fog_length = 32.0
 adjustment_enabled = true
-adjustment_saturation = 1.35
+adjustment_saturation = 1.25
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bhgh8"]
 albedo_color = Color(0.25, 0.25, 0.25, 1)
@@ -114,29 +110,25 @@ environment = SubResource("Environment_dxoaf")
 
 [node name="Player" parent="." instance=ExtResource("1_wua70")]
 unique_name_in_owner = true
-transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 4, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 5)
 
 [node name="Insights" type="Node3D" parent="."]
 unique_name_in_owner = true
 
 [node name="Insight" parent="Insights" instance=ExtResource("12_sl0pd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.4811, -4.76837e-07, -5.80175)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
 object_name = "insight_1"
 dialogue_data = Array[String](["Test dialogue!"])
 
 [node name="Insight2" parent="Insights" instance=ExtResource("12_sl0pd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.68438, -1.4398, 11.4995)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
 object_name = "insight_2"
 dialogue_data = Array[String](["Test dialogue!"])
 
 [node name="Floor" type="StaticBody3D" parent="."]
 collision_layer = 3
 
-[node name="Grass" parent="Floor" instance=ExtResource("5_04fgp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
-
 [node name="Mesh" type="MeshInstance3D" parent="Floor"]
-visible = false
 mesh = SubResource("QuadMesh_ixi6y")
 skeleton = NodePath("../..")
 
@@ -155,16 +147,13 @@ process_material = SubResource("ParticleProcessMaterial_xa72n")
 draw_pass_1 = SubResource("PlaneMesh_k7b7a")
 
 [node name="VentHandler" parent="." instance=ExtResource("9_7ftuj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.44426, -1.03435, -5.23856)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
 
 [node name="MushroomCluster" parent="." instance=ExtResource("11_3jr7i")]
-transform = Transform3D(-0.629578, 0, -0.776937, 0, 1, 0, 0.776937, 0, -0.629578, -3.46601, -0.911753, -1.85585)
-
-[node name="MushroomCluster2" parent="." instance=ExtResource("11_3jr7i")]
-transform = Transform3D(0.409859, 0, 0.912148, 0, 1, 0, -0.912148, 0, 0.409859, -9.9043, 0.200755, 5.58712)
+transform = Transform3D(-0.629578, 0, -0.776937, 0, 1, 0, 0.776937, 0, -0.629578, -1.08866, 0, -3.93834)
 
 [node name="FourierTest" parent="." instance=ExtResource("13_r7xks")]
-transform = Transform3D(1.18208, 0, -0.541, 0, 1.3, 0, 0.541, 0, 1.18208, 8, 2.95758, -4)
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 8, 1.5, -4)
 
 [node name="DialogueArea" parent="FourierTest" instance=ExtResource("14_ucrvw")]
 transform = Transform3D(1.02, 0, 1.19209e-07, 0, 1.02, 0, -1.19209e-07, 0, 1.02, 0, -0.972716, 0)
@@ -177,20 +166,14 @@ object_name = "fourier_dialogue"
 dialogue_close_distance = 7.0
 
 [node name="EssenceTank" parent="." instance=ExtResource("15_yru8h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.35745, -0.366155, -6.82651)
-
-[node name="EssenceTank2" parent="." instance=ExtResource("15_yru8h")]
-transform = Transform3D(0.908107, 0, -0.418739, 0, 1, 0, 0.418739, 0, 0.908107, -6.90518, -0.366155, -8.58513)
-
-[node name="EssenceTank3" parent="." instance=ExtResource("15_yru8h")]
-transform = Transform3D(0.466201, 0, -0.884679, 0, 1, 0, 0.884679, 0, 0.466201, -10.9667, 0.202406, 3.28372)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, -9)
 
 [node name="Laser" parent="." instance=ExtResource("16_qr5ys")]
-transform = Transform3D(0.869822, 0, 0.493365, 0, 1, 0, -0.493365, 0, 0.869822, 8.70844, -1.70446, 6.77003)
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -7, 0, 0)
 object_name = "kopa"
 
 [node name="LaserDetector" parent="." instance=ExtResource("15_mdlo6")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 4.12341, 1.25796, -4.5014)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.46242, 1, -5.64786)
 delay_time = 0.0
 
 [connection signal="player_left" from="Laser" to="." method="_on_laser_player_left"]
