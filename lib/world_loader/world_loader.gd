@@ -77,7 +77,7 @@ func fire_ping():
 	if ping_cooling: return
 	ping_cooling = true
 	PingCooldown.start()
-	Global.printc("Ping!", "yellow")
+	Global.camera_shaken.emit(0.5)
 	
 	# Process nearby interactables
 	for i in interact_objects:
@@ -85,7 +85,6 @@ func fire_ping():
 			var nodule = PingNodule.instantiate()
 			add_child(nodule)
 			nodule.global_position = i.global_position
-			Global.printc("[WorldLoader -> " + Utilities.vecstr(i.global_position) + "]", "green")
 	
 	# Process Insights, if there is one
 	if !Global.insight_on_map: return
