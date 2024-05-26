@@ -3,29 +3,6 @@ extends Node3D
 # shader is used for the first time.
 
 var shaders_loaded = false
-
-const SHADERS = [
-	"res://characters/euclid/radar/shader_radar.tres",
-	"res://characters/euclid/shader_energy.tres",
-	"res://characters/glider_wings/shader_glider.gdshader",
-	"res://generic/shaders/shader_aberration.gdshader",
-	"res://generic/shaders/shader_fractal.gdshader",
-	"res://generic/shaders/shader_fresnel.gdshader",
-	"res://generic/shaders/shader_glide.tres",
-	"res://generic/shaders/shader_laser.tres",
-	"res://lib/player/vfx/shader_anime.gdshader",
-	"res://lib/ui/debug_pane/shader_console_gradient.gdshader",
-	"res://lib/ui/dialogue/shader_fizzle_dialogue.gdshader",
-	"res://lib/ui/insight/insight_flame/shader_flame.gdshader",
-	"res://lib/ui/insight/shader_blur.gdshader",
-	"res://lib/ui/insight/shader_ripple.gdshader",
-	"res://lib/ui/smoke_overlay/shader_smoke.gdshader",
-	"res://lib/ui/smoke_overlay/shader_smoke.tres",
-	"res://objects/god_ray/shader_god_ray.tres",
-	"res://objects/updraft/shader_whirl.gdshader",
-	"res://objects/updraft/shader_whirl_center.tres"
-]
-
 var meshes = []
 
 func _load_shaders():
@@ -36,7 +13,13 @@ func _load_shaders():
 
 func _ready():
 	var i = 0
-	for shader in SHADERS:
+	
+	var shaders_file = FileAccess.open("res://shader_list.txt", FileAccess.READ)
+	var shaders_list = shaders_file.get_as_text().split("\n")
+	shaders_file.close()
+	
+	for shader in shaders_list:
+		#Global.printc("[ShaderCacheGen] compiling shader " + str(shader) + "...", "gray")
 		var shader_mesh = CSGBox3D.new()
 		shader_mesh.size = Vector3(0.1, 0.1, 0.1)
 		shader_mesh.position = Vector3(0.11 * i, 0.0, 0.0)
@@ -45,6 +28,7 @@ func _ready():
 		meshes.append(shader_mesh)
 		add_child(shader_mesh)
 		i += 1
+	Global.printc("[ShaderCacheGen] finished compiling " + str(i) + " shader(s).")
 
 var frame = 0
 func _process(_delta):
