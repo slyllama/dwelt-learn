@@ -252,12 +252,19 @@ dialogue_close_distance = 7.0
 transform = Transform3D(0.987494, 0, 0.157658, 0, 1, 0, -0.157658, 0, 0.987494, 4.284, 0, 26.791)
 
 [node name="LaserDetector" parent="." instance=ExtResource("24_dbxhx")]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 3.96906, 5.64628, 14.8081)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 2, 22)
 delay_time = 0.0
 
 [node name="PlayDialogue" type="AudioStreamPlayer" parent="LaserDetector"]
 stream = ExtResource("25_71yxt")
 volume_db = -1.0
+
+[node name="DialogueArea" parent="LaserDetector" instance=ExtResource("16_j30j2")]
+transform = Transform3D(1.49766, 0, 0.0837322, 0, 1.5, 0, -0.0837322, 0, 1.49766, 0, 0, 0)
+dialogue_data = Array[String](["A good old energy conduit. The technology for these absorption plates was salvaged from some forgotten cavern folded into the Lattice, and while their designs are reproducible, they are not truly <understood>."])
+dialogue_title = "Energy Reciever"
+object_name = "energy_receiver"
+dialogue_close_distance = 7.0
 
 [connection signal="player_left" from="Laser" to="." method="_on_laser_player_left"]
 [connection signal="activated" from="LaserDetector" to="." method="_on_laser_detector_activated"]

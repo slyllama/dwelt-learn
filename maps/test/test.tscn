@@ -180,11 +180,11 @@ dialogue_close_distance = 7.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, -9)
 
 [node name="Laser" parent="." instance=ExtResource("16_qr5ys")]
-transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -7, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 1)
 object_name = "kopa"
 
 [node name="LaserDetector" parent="." instance=ExtResource("15_mdlo6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.46242, 1, -5.64786)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2, -6)
 delay_time = 0.0
 
 [connection signal="player_left" from="Laser" to="." method="_on_laser_player_left"]
