@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://bcp4um4sjbyx6"]
+[gd_scene load_steps=18 format=3 uid="uid://bcp4um4sjbyx6"]
 
 [ext_resource type="Script" path="res://lib/player/player.gd" id="1_2r77g"]
 [ext_resource type="Script" path="res://lib/player/CamPivot.gd" id="2_73c7o"]
 [ext_resource type="PackedScene" uid="uid://bnvmpcnhjje26" path="res://lib/shader_cache_gen/shader_cache_gen.tscn" id="3_fylyn"]
 [ext_resource type="Script" path="res://lib/player/YCast.gd" id="3_oxn4f"]
 [ext_resource type="Script" path="res://lib/player/XCast.gd" id="3_tm7v3"]
+[ext_resource type="Script" path="res://lib/player/ShakeAnim.gd" id="5_dtpjv"]
 [ext_resource type="Texture2D" uid="uid://cks1xhn81ymh0" path="res://lib/ui/tex/anime.png" id="9_15e71"]
 [ext_resource type="Script" path="res://lib/player/vfx/Anime.gd" id="9_b4cap"]
 [ext_resource type="Shader" path="res://lib/player/vfx/shader_anime.gdshader" id="11_f4obd"]
@@ -120,6 +121,7 @@ script = ExtResource("3_tm7v3")
 libraries = {
 "": SubResource("AnimationLibrary_25tn2")
 }
+script = ExtResource("5_dtpjv")
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)

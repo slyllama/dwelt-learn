@@ -35,8 +35,22 @@ func toggle_full_screen():
 func get_screen_center():
 	return(Global.SCREEN_SIZE / 2.0)
 
+# Perform checks to see if a node is actually interactable; used for ping
+# skills and stuff like that
+func get_is_valid_interactable(node, distance_to_player = 0.0):
+	# if `distance_to_player` is 0.0, this check won't happen
+	if distance_to_player > 0.0:
+		var dist = Vector3(Global.player_position).distance_to(node.global_position)
+		if dist > distance_to_player: return(false)
+	
+	if !node.get_parent().visible: return(false)
+	if "interactable" in node:
+		if !node.interactable: return(false)
+	return(true)
+
 # Get the name of an input command as a string
 func get_key(input_id) -> String:
+	if InputMap.action_get_events(input_id) == []: return("[!]")
 	var action = InputMap.action_get_events(input_id)[0]
 	if str(action).split(" ")[1] == "button_index=4,":
 		return("SCROLL UP")
@@ -55,6 +69,13 @@ func short_angle_dist(from, to) -> float:
 # Return a float "num" as a string to 2 decimal places, or snapped to "place"
 func fstr(num, place = 0.01) -> String:
 	return(str(snapped(num, place)))
+
+# Return a vector "vec" as a string to 2 decimal places, or snapped to "place"
+func vecstr(vec, place = 0.01) -> String:
+	return("("
+		+ str(snapped(vec.x, place)) + ", "
+		+ str(snapped(vec.y, place)) + ", "
+		+ str(snapped(vec.z, place)) + ")")
 
 # Return string as centered BBCode text
 func cntr(get_text: String):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://yyd0ltle0un5"]
+[gd_scene load_steps=28 format=3 uid="uid://yyd0ltle0un5"]
 
 [ext_resource type="PackedScene" uid="uid://e0k8h1ytp7wi" path="res://lib/ui/hud/hud.tscn" id="1_3q1w7"]
 [ext_resource type="Script" path="res://maps/test/test.gd" id="1_fvnbx"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bd7c4x2ajeimr" path="res://generic/tex/shader_tex/floor_diff.png" id="2_3dm53"]
 [ext_resource type="Texture2D" uid="uid://dinrdf02xeqaq" path="res://generic/tex/fade_ramp.tres" id="2_qqlgb"]
 [ext_resource type="Texture2D" uid="uid://d1fy6jygommc6" path="res://generic/tex/particles/mote.png" id="3_hvkgi"]
+[ext_resource type="Texture2D" uid="uid://c5duom5wl7px7" path="res://generic/tex/sky.png" id="3_mt7r7"]
 [ext_resource type="Texture2D" uid="uid://5bruu4afeor5" path="res://generic/tex/shader_tex/floor_norm.png" id="3_xldvb"]
 [ext_resource type="PackedScene" uid="uid://b85g73m6ogrhp" path="res://objects/updraft/vent_handler.tscn" id="9_7ftuj"]
 [ext_resource type="PackedScene" uid="uid://dpxnpda25fr1t" path="res://maps/lattice/props/mushroom_cluster.glb" id="11_3jr7i"]
@@ -16,26 +17,36 @@
 [ext_resource type="PackedScene" uid="uid://bdock8rc758qp" path="res://maps/lattice/props/tank.glb" id="15_yru8h"]
 [ext_resource type="PackedScene" uid="uid://07n4fhjhunl" path="res://objects/laser/laser.tscn" id="16_qr5ys"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_srq28"]
-sky_top_color = Color(0.411965, 0.674422, 0.819215, 1)
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_lvxdd"]
+panorama = ExtResource("3_mt7r7")
 
-[sub_resource type="Sky" id="Sky_87eso"]
-sky_material = SubResource("ProceduralSkyMaterial_srq28")
+[sub_resource type="Sky" id="Sky_aq0yt"]
+sky_material = SubResource("PanoramaSkyMaterial_lvxdd")
 
-[sub_resource type="Environment" id="Environment_dxoaf"]
-background_mode = 1
-background_color = Color(0.586214, 0.586214, 0.586214, 1)
-sky = SubResource("Sky_87eso")
+[sub_resource type="Environment" id="Environment_ni4hb"]
+background_mode = 2
+sky = SubResource("Sky_aq0yt")
+ambient_light_source = 2
+ambient_light_color = Color(0.42, 0.36848, 0.3234, 1)
 tonemap_mode = 2
-tonemap_exposure = 1.25
-volumetric_fog_density = 0.03
-volumetric_fog_albedo = Color(0.5, 0.5, 0.5, 1)
-volumetric_fog_length = 32.0
+tonemap_exposure = 2.0
+glow_levels/5 = 0.1
+fog_enabled = true
+fog_light_color = Color(0, 0, 0, 1)
+fog_density = 0.03
+fog_sky_affect = 0.0
+fog_height = 25.0
+fog_height_density = -0.1
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.04
+volumetric_fog_albedo = Color(0.5, 0.331583, 0.265, 1)
+volumetric_fog_length = 8.0
 adjustment_enabled = true
-adjustment_saturation = 1.25
+adjustment_brightness = 1.1
+adjustment_saturation = 1.12
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bhgh8"]
-albedo_color = Color(0.25, 0.25, 0.25, 1)
+albedo_color = Color(0.509286, 0.509286, 0.509286, 1)
 albedo_texture = ExtResource("2_3dm53")
 normal_enabled = true
 normal_scale = 2.0
@@ -45,11 +56,11 @@ uv1_scale = Vector3(128, 128, 128)
 
 [sub_resource type="QuadMesh" id="QuadMesh_ixi6y"]
 material = SubResource("StandardMaterial3D_bhgh8")
-size = Vector2(100, 100)
+size = Vector2(200, 200)
 orientation = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ofh4r"]
-size = Vector3(100, 0.1, 100)
+size = Vector3(200, 0.1, 200)
 
 [sub_resource type="Curve" id="Curve_hi6aq"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -92,6 +103,10 @@ custom_data_load_signal = true
 
 [node name="HUD" parent="." instance=ExtResource("1_3q1w7")]
 
+[node name="Sky" type="WorldEnvironment" parent="."]
+unique_name_in_owner = true
+environment = SubResource("Environment_ni4hb")
+
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.258819, -0.836516, 0.482963, 0, 0.5, 0.866025, -0.965926, -0.224144, 0.12941, 0, 6, 0)
 light_energy = 2.0
@@ -103,10 +118,6 @@ directional_shadow_split_3 = 0.7
 directional_shadow_blend_splits = true
 directional_shadow_pancake_size = 10.0
 sky_mode = 1
-
-[node name="Sky" type="WorldEnvironment" parent="."]
-unique_name_in_owner = true
-environment = SubResource("Environment_dxoaf")
 
 [node name="Player" parent="." instance=ExtResource("1_wua70")]
 unique_name_in_owner = true
@@ -169,11 +180,11 @@ dialogue_close_distance = 7.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, -9)
 
 [node name="Laser" parent="." instance=ExtResource("16_qr5ys")]
-transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -7, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 1)
 object_name = "kopa"
 
 [node name="LaserDetector" parent="." instance=ExtResource("15_mdlo6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.46242, 1, -5.64786)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2, -6)
 delay_time = 0.0
 
 [connection signal="player_left" from="Laser" to="." method="_on_laser_player_left"]

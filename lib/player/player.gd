@@ -41,11 +41,7 @@ func unlock_position():
 	$Collision.disabled = false
 
 func update_debug():
-	Global.debug_details_text = ("Position: "
-		+ Utilities.fstr(global_position.x) + ", "
-		+ Utilities.fstr(global_position.y) + ", "
-		+ Utilities.fstr(global_position.z))
-	
+	Global.debug_details_text = "Position: " + Utilities.vecstr(global_position)
 	Global.debug_details_text += "\nGround speed: " + Utilities.fstr(velocity.length())
 	Global.debug_details_text += "\nVertical speed: " + Utilities.fstr(Global.player_y_velocity * -1.0)
 	Global.debug_details_text += "\nDirection: " + Utilities.fstr(%CamPivot.rotation_degrees.y, 1)

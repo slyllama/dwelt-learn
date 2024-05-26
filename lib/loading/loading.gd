@@ -42,6 +42,8 @@ func _ready():
 	for setting in Global.settings:
 		Global.setting_changed.emit(setting)
 	
+	Global.debug_toggled.emit() # make the toolbar button reappear
+	
 	# Set up for retina
 	if DisplayServer.screen_get_size().x > 2000:
 		DisplayServer.window_set_min_size(Global.MIN_SCREEN_SIZE * 2.0)

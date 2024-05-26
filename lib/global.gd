@@ -4,7 +4,7 @@ const SCREEN_SIZE = Vector2(1920.0, 1080.0)
 const MIN_SCREEN_SIZE = Vector2(800.0, 600.0)
 const LARGE_UI_SCALE = 1.0
 
-signal camera_shaken
+signal camera_shaken(intensity)
 signal button_hover
 signal button_click
 signal dialogue_played(dialogue)
@@ -18,6 +18,7 @@ signal insight_pane_closed
 signal left_keybind_select
 signal mouse_captured
 signal mouse_released
+signal ping
 signal shaders_loaded # called after ShaderCacheGen has loaded and removed itself
 signal skill_clicked(skill_name)
 signal smoke_faded(dir)

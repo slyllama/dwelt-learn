@@ -36,10 +36,7 @@ func _zoom(dir, zoom_scale = 1.0):
 			$CamArm/CamAttach/XCast.target_position.z -= zoom_increment * zoom_scale
 			target_y_position += 0.2 * zoom_scale
 
-func _shake_cam(): $ShakeAnim.play("shake")
-
 func _ready():
-	Global.camera_shaken.connect(_shake_cam)
 	# Apply the original rotation of the pivot point so there won't be any
 	# awkward snaps
 	new_cam_y_rotation = rotation_degrees.y
@@ -52,7 +49,7 @@ var mouse_in_settings_menu = false
 
 func _input(event):
 	if Global.dragging_control == true: return
-	
+
 	# Only move the camera after the actuation threshold has been passed --
 	# see click_mouse_pos_diff above. Should work for both left and right click
 	if event is InputEventMouseMotion:
