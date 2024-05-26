@@ -5,6 +5,7 @@ extends Node3D
 # properly.
 
 const InsightProjectile = preload("res://objects/insight_projectile/insight_projectile.tscn")
+const PingNodule = preload("res://lib/ui/ping_nodule/ping_nodule.tscn")
 var tutorial_input_data = [
 	{ "title": "INTERACT", "description": "Look at a nearby curiosity.", "key": "F" },
 	{ "title": "GLIDE", "description": "Soar in updrafts; hover while descending.", "key": "E" } ]
@@ -73,20 +74,26 @@ func insights_refresh():
 	Global.insight_on_map = insight_found
 
 func fire_ping():
-	if ping_cooling or !Global.insight_on_map: return
+	if ping_cooling: return
 	ping_cooling = true
 	PingCooldown.start()
+	Global.printc("Ping!", "yellow")
 	
+	# Process nearby interactables. TODO: not by proximity yet
+	for i in interact_objects:
+		var nodule = PingNodule.instantiate()
+		add_child(nodule)
+		nodule.global_position = i.global_position
+		Global.printc("[WorldLoader -> " + Utilities.vecstr(i.global_position) + "]", "green")
+	
+	# Process Insights, if there is one
+	if !Global.insight_on_map: return
 	insights_refresh()
 	var inp = InsightProjectile.instantiate()
 	add_child(inp)
-		
 	inp.global_position = Global.player_position
 	inp.look_at(Global.insight_current_position)
 	inp.fire()
-	
-	for i in interact_objects:
-		Global.printc("[WorldLoader -> " + Utilities.vecstr(i.global_position) + "]", "green")
 
 func proc_save():
 	Save.load_from_file()
