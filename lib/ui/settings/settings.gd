@@ -27,6 +27,11 @@ func close():
 	visible = false
 	Global.settings_opened = false
 
+func _assign_controller_button(action, button):
+	var e = InputEventJoypadButton.new()
+	e.set_button_index(button)
+	InputMap.action_add_event(action, e)
+
 func apply_input_data():
 	for i in input_data:
 		InputMap.action_erase_events(i.id)
@@ -38,6 +43,11 @@ func apply_input_data():
 			var e = InputEventMouseButton.new()
 			e.button_index = i.code
 			InputMap.action_add_event(i.id, e)
+	
+	# Set controller mappings
+	_assign_controller_button("interact", JOY_BUTTON_A)
+	_assign_controller_button("toggle_debug", JOY_BUTTON_BACK)
+	_assign_controller_button("skill_ping", JOY_BUTTON_Y)
 
 func refresh_input_data():
 	Global.input_changed.emit()

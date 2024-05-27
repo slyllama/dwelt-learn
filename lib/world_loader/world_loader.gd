@@ -96,6 +96,7 @@ func fire_ping():
 	PingCooldown.start()
 	PingSound.play()
 	Global.camera_shaken.emit(0.5)
+	Input.start_joy_vibration(0, 0.05, 0.15, 0.09)
 	
 	# Process Insights, if there is one
 	if Global.insight_on_map:

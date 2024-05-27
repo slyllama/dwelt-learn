@@ -93,11 +93,10 @@ func _ready():
 	Global.connect("dialogue_closed_early", close_dialogue)
 	visible = false
 
-func _input(event):
+func _input(_event):
 	if (transitioning == true or Global.dialogue_active == false
 		or Global.in_keybind_select == true): return
-	if (Input.is_action_just_pressed("interact")
-		or Utilities.is_joy_button(event, JOY_BUTTON_A)):
+	if Input.is_action_just_pressed("interact"):
 			if Global.dialogue_active == true: play_phrase()
 
 func _mouseover(): Global.button_hover.emit()
