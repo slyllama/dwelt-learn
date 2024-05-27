@@ -7,7 +7,7 @@ var y_target = 2.0
 
 func _set_alpha(val):
 	var ev = ease(val, 2.6)
-	$Flame.get_surface_override_material(0).set_shader_parameter("alpha_scale", ev)
+	$Mesh.get_surface_override_material(0).set_shader_parameter("alpha_scale", ev)
 
 func _ready():
 	_set_alpha(0.0)
@@ -24,4 +24,4 @@ func _on_remove_timer_timeout():
 	fade_tween.tween_callback(queue_free)
 
 func _process(_delta):
-	$Flame.position.y = lerp($Flame.position.y, y_target, 0.06)
+	$Mesh.position.y = lerp($Mesh.position.y, y_target, 0.06)

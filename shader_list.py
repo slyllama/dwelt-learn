@@ -16,7 +16,7 @@ for file in result_tscn:
     if "shader_" in file:
         result += fmt(file)
 
-result = result.rstrip(",")
+result = result.rstrip(",") + ("\r\n")
 
 f = open("shader_list.txt", "w")
 f.write(result)

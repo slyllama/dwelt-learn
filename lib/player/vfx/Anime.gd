@@ -22,8 +22,7 @@ func anime_out():
 	var fade_tween = create_tween()
 	fade_tween.tween_method(_set_alpha, maximum_alpha, 0.0, time)
 	fade_tween.tween_callback(func():
-		if active == true:
-			return
+		if active == true: return
 		$AnimeTex.visible = false)
 
 func _ready():
@@ -33,7 +32,7 @@ var can_move = true
 func _process(_delta): # prevent motion when locked
 	if get_parent().get_node("Collision").disabled:
 		if can_move:
-			active = false
+			#active = false
 			can_move = false
 			anime_out()
 	else:

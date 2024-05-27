@@ -120,12 +120,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.77882, 1.5, 17.476)
 unique_name_in_owner = true
 
 [node name="Insight" parent="Insights" instance=ExtResource("23_hbglv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 12, 11)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 12, 20)
 object_name = "insight_1"
 dialogue_data = Array[String](["First Insight!"])
 
 [node name="Insight2" parent="Insights" instance=ExtResource("23_hbglv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 12, 11)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 12, 15)
+object_name = "insight_2"
+dialogue_data = Array[String](["Second Insight!"])
+
+[node name="Insight3" parent="Insights" instance=ExtResource("23_hbglv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 12, -4)
 object_name = "insight_2"
 dialogue_data = Array[String](["Second Insight!"])
 
