@@ -6,10 +6,9 @@ var faded = false
 func _on_debug_button_pressed():
 	Global.debug_state = !Global.debug_state
 	Global.debug_toggled.emit()
-func _on_settings_button_pressed():
-	settings_pressed.emit()
-func _mouseover():
-	Global.button_hover.emit()
+func _on_settings_button_pressed(): settings_pressed.emit()
+func _mouseover(): Global.button_hover.emit()
+func _focus(): Global.button_hover.emit()
 
 func fade_out():
 	$Delay.start()

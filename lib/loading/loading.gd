@@ -7,6 +7,8 @@ var progress: Array[float] # ResourceLoader will put its status details here
 var started = false
 var target_mus_vol = 0.7
 
+var settings_last_button # focus will be given back to this button
+
 func _make_path(map_name):
 	return("res://maps/" + str(map_name) + "/" + str(map_name) + ".tscn")
 
@@ -44,6 +46,7 @@ func _ready():
 	Global.printc("--- This is Dwelt (Technical Test) ---", "cyan")
 	
 	$HUDButtons.settings_pressed.connect(func():
+		settings_last_button = $HUDButtons/TopMenu/SettingsButton
 		$Settings.open()
 		return)
 	
@@ -64,14 +67,20 @@ func _ready():
 				load("res://lib/ui/tex/cursor_2x.png"))
 	else: DisplayServer.window_set_min_size(Global.MIN_SCREEN_SIZE)
 	
+	# Focus assignments
+	$LoadPanel/VBox/Quit.focus_neighbor_bottom = "../../../HUDButtons/TopMenu/DebugButton"
+	$HUDButtons/TopMenu/DebugButton.focus_neighbor_top = "../../../LoadPanel/VBox/Quit"
+	$HUDButtons/TopMenu/SettingsButton.focus_neighbor_top = "../../../LoadPanel/VBox/Quit"
+	$HUDButtons/TopMenu/DebugPopupButton.focus_neighbor_top = "../../../LoadPanel/VBox/Quit"
+	
 	$Settings/Control/Panel/VBox/MapSelection.visible = false # no need to go to the menu from the menu
 	$LoadBlack/ProgressBar.visible = false
 	$GlowIcon.visible = false
 	$LoadPanel/VBox/Play.grab_focus()
 	
-	# Regain focus on the settings button after it is closed, for controllers
+	# Regain focus on the correct settings button after it is closed, for controllers
 	$Settings/Control/Panel/InputVBox/LowerCloseButton.pressed.connect(
-		func(): $LoadPanel/VBox/Settings.grab_focus())
+		func(): settings_last_button.grab_focus())
 
 	$Music.volume_db = linear_to_db(target_mus_vol)
 	await get_tree().create_timer(0.5).timeout
@@ -101,6 +110,7 @@ func _map_button_pressed(map_name = ""):
 		return
 	elif map_name == "settings":
 		$Settings.open()
+		settings_last_button = $LoadPanel/VBox/Settings
 		return
 	load_map(map_name)
 

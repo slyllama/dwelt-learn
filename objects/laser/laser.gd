@@ -70,19 +70,19 @@ func _process(_delta):
 	if active == true:
 		if (Input.is_action_pressed("ui_up")
 			or Input.is_action_pressed("move_forward")
-			or Input.get_joy_axis(0, JOY_AXIS_LEFT_Y)):
+			or Input.get_joy_axis(0, JOY_AXIS_RIGHT_Y)):
 			$Cast.rotation_degrees.x += laser_move_speed
 		if (Input.is_action_pressed("ui_down")
 			or Input.is_action_pressed("move_back")
-			or Input.get_joy_axis(0, JOY_AXIS_LEFT_Y)):
+			or Input.get_joy_axis(0, JOY_AXIS_RIGHT_Y)):
 			$Cast.rotation_degrees.x -= laser_move_speed
 		if (Input.is_action_pressed("ui_left")
 			or Input.is_action_pressed("strafe_left")
-			or Input.get_joy_axis(0, JOY_AXIS_LEFT_X)):
+			or Input.get_joy_axis(0, JOY_AXIS_RIGHT_X)):
 			$Cast.rotation_degrees.y += laser_move_speed
 		if (Input.is_action_pressed("ui_right")
 			or Input.is_action_pressed("strafe_right")
-			or Input.get_joy_axis(0, JOY_AXIS_LEFT_X)):
+			or Input.get_joy_axis(0, JOY_AXIS_RIGHT_X)):
 			$Cast.rotation_degrees.y -= laser_move_speed
 
 	# Apply limits

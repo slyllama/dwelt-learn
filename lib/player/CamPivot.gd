@@ -118,9 +118,9 @@ func _process(_delta):
 	
 	new_cam_y_rotation += -mouse_offset.x / 1.5 * camera_sensitivity
 	new_cam_x_rotation += -mouse_offset.y / 2.0 * camera_sensitivity
-	new_cam_y_rotation -= Input.get_joy_axis(0, JOY_AXIS_LEFT_X) * camera_sensitivity * 3.5
-	new_cam_x_rotation += Input.get_joy_axis(0, JOY_AXIS_LEFT_Y) * camera_sensitivity * 1.2
-	
+	new_cam_y_rotation -= Input.get_joy_axis(0, JOY_AXIS_RIGHT_X) * camera_sensitivity * 3.5
+	new_cam_x_rotation -= Input.get_joy_axis(0, JOY_AXIS_RIGHT_Y) * camera_sensitivity * 0.8
+
 	# Apply and clamp camera rotation
 	rotation_degrees.y = lerpf(rotation_degrees.y, new_cam_y_rotation, camera_smoothing)
 	rotation_degrees.x = lerpf(rotation_degrees.x, new_cam_x_rotation, camera_smoothing)

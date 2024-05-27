@@ -7,6 +7,9 @@ extends CharacterBody3D
 @export var glide_rate = 0.04
 @export var max_gliding_force = 0.5
 
+signal joy_forward_just_pressed
+signal joy_forward_just_released
+
 var forward = 0
 var side = 0
 var target_velocity = Vector3.ZERO
@@ -19,6 +22,7 @@ var position_locked = false
 var lock_pos = Vector3.ZERO
 var lock_dir = Vector3.ZERO
 var lock_cam_clamp = { "x_lower": 0.0, "x_upper": 0.0, "y_lower": 0.0, "y_upper": 0.0 }
+var moving = false
 
 func lock_position(get_lock_pos, get_cam_facing):
 	position_locked = true
@@ -57,12 +61,34 @@ var spring_arm_mask
 
 func _ready():
 	spring_arm_mask = $CamPivot/CamArm.collision_mask
+	
+	# Bindings
 	Global.connect("player_position_locked", lock_position)
 	Global.connect("player_position_unlocked", unlock_position)
+	joy_forward_just_pressed.connect(_start_moving)
+	joy_forward_just_released.connect(_stop_moving)
 	
 	Action.activated.connect(func(_toggle): $CamPivot/CamArm.collision_mask = 0)
 	Global.dialogue_played.connect(func(_i): $CamPivot/CamArm.collision_mask = spring_arm_mask)
 	Action.deactivated.connect(func(): $CamPivot/CamArm.collision_mask = spring_arm_mask)
+
+func _start_moving():
+	# These are unfortunately being repeated at the moment, but we need to
+	# prevent the controller from actuating these.
+	if position_locked or !Global.can_move: return
+	if Global.in_keybind_select: return
+	
+	if moving: return # no double-ups from multiple inputs
+	moving = true
+	$CamPivot.fov_offset = 5.0 # shift the camera back a little when moving
+	$ModelHandler.start_moving()
+	$Anime.anime_in()
+
+func _stop_moving():
+	moving = false
+	$CamPivot.fov_offset = 0.0
+	$ModelHandler.stop_moving()
+	$Anime.anime_out()
 
 func _input(_event):
 	# No animations if the player's position is locked
@@ -77,22 +103,26 @@ func _input(_event):
 		or Input.is_action_just_released("right_shoulder")):
 		Action.in_glide = false
 	
-	# TODO: this all should eventually be in its own module
-	if Input.is_action_just_pressed("move_forward"):
-		$CamPivot.fov_offset = 5.0 # shift the camera back a little when moving
-		$ModelHandler.start_moving()
-		$Anime.anime_in()
-	if Input.is_action_just_released("move_forward"):
-		$CamPivot.fov_offset = 0.0
-		$ModelHandler.stop_moving()
-		$Anime.anime_out()
-	
+	if Input.is_action_just_pressed("move_forward"): _start_moving()
+	if Input.is_action_just_released("move_forward"): _start_moving()
 	if Input.is_action_just_pressed("move_back"): $ModelHandler.start_moving()
 	if Input.is_action_just_released("move_back"): $ModelHandler.stop_moving()
 
 var c = 0
+var joy_forward = false
 
 func _physics_process(_delta):
+	# See if the movement stick is being pressed
+	if (Input.get_joy_axis(0, JOY_AXIS_LEFT_Y) != 0
+		or Input.get_joy_axis(0, JOY_AXIS_LEFT_X) != 0):
+		if !joy_forward:
+			joy_forward_just_pressed.emit()
+			joy_forward = true
+	else:
+		if joy_forward:
+			joy_forward_just_released.emit()
+			joy_forward = false
+	
 	forward = 0
 	side = 0
 	
@@ -111,8 +141,8 @@ func _physics_process(_delta):
 	if Input.is_action_pressed("move_back"): forward -= 1
 	if Input.is_action_pressed("strafe_left"): side += 0.5
 	if Input.is_action_pressed("strafe_right"): side -= 0.5
-	forward -= Input.get_joy_axis(0, JOY_AXIS_RIGHT_Y)
-	side -= Input.get_joy_axis(0, JOY_AXIS_RIGHT_X) * 0.5
+	forward -= Input.get_joy_axis(0, JOY_AXIS_LEFT_Y)
+	side -= Input.get_joy_axis(0, JOY_AXIS_LEFT_X) * 0.5
 	
 	forward = clamp(forward, -1.0, 1.0)
 	side = clamp(side, -1.0, 1.0)

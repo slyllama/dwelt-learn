@@ -34,9 +34,9 @@ offset_top = -62.0
 offset_right = 62.0
 offset_bottom = -30.0
 grow_vertical = 0
-focus_mode = 0
 texture_normal = ExtResource("3_oyxnh")
 texture_hover = ExtResource("4_yaykg")
+texture_focused = ExtResource("4_yaykg")
 
 [node name="DebugButton" type="TextureButton" parent="TopMenu"]
 layout_mode = 1
@@ -49,9 +49,9 @@ offset_right = 112.0
 offset_bottom = -30.0
 grow_vertical = 0
 size_flags_horizontal = 2
-focus_mode = 0
 texture_normal = ExtResource("1_bk4hk")
 texture_hover = ExtResource("2_2xk7h")
+texture_focused = ExtResource("2_2xk7h")
 
 [node name="DebugPopupButton" type="TextureButton" parent="TopMenu"]
 visible = false
@@ -65,13 +65,16 @@ offset_right = 162.0
 offset_bottom = -30.0
 grow_vertical = 0
 size_flags_horizontal = 2
-focus_mode = 0
 texture_normal = ExtResource("6_mp8nd")
 texture_hover = ExtResource("7_nqof2")
+texture_focused = ExtResource("7_nqof2")
 
+[connection signal="focus_entered" from="TopMenu/SettingsButton" to="." method="_focus"]
 [connection signal="mouse_entered" from="TopMenu/SettingsButton" to="." method="_mouseover"]
 [connection signal="pressed" from="TopMenu/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="focus_entered" from="TopMenu/DebugButton" to="." method="_focus"]
 [connection signal="mouse_entered" from="TopMenu/DebugButton" to="." method="_mouseover"]
 [connection signal="pressed" from="TopMenu/DebugButton" to="." method="_on_debug_button_pressed"]
+[connection signal="focus_entered" from="TopMenu/DebugPopupButton" to="." method="_focus"]
 [connection signal="mouse_entered" from="TopMenu/DebugPopupButton" to="." method="_mouseover"]
 [connection signal="pressed" from="TopMenu/DebugPopupButton" to="." method="_on_debug_popup_button_pressed"]
