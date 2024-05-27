@@ -16,7 +16,8 @@ const textures = {
 	"CANCEL": preload("res://lib/ui/skills/tex/cancel.png"),
 	"LOCKED": preload("res://lib/ui/skills/tex/locked.png"),
 	"GLIDE": preload("res://lib/ui/skills/tex/glide.png"),
-	"INTERACT": preload("res://lib/ui/skills/tex/interact.png")
+	"INTERACT": preload("res://lib/ui/skills/tex/interact.png"),
+	"PING": preload("res://lib/ui/skills/tex/ping.png")
 }
 
 func enable():

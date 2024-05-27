@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://07n4fhjhunl"]
+[gd_scene load_steps=10 format=3 uid="uid://07n4fhjhunl"]
 
 [ext_resource type="Script" path="res://objects/laser/laser.gd" id="1_qy5bo"]
 [ext_resource type="PackedScene" uid="uid://bbt6np1daksl4" path="res://objects/cable/cable.tscn" id="2_qx4ym"]
@@ -19,6 +19,9 @@ uv1_scale = Vector3(2, 2, 2)
 distance_fade_mode = 2
 distance_fade_min_distance = 1.0
 distance_fade_max_distance = 2.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eydll"]
+size = Vector3(2, 2, 2)
 
 [node name="Laser" type="Node3D"]
 script = ExtResource("1_qy5bo")
@@ -48,5 +51,11 @@ size = Vector3(2, 2, 2)
 material = SubResource("StandardMaterial3D_80sux")
 
 [node name="ObjectHandler" parent="." instance=ExtResource("7_2554r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.02193, 0)
-collision_size = Vector3(3, 2, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_size = Vector3(2.2, 2.2, 2.2)
+
+[node name="Body" type="StaticBody3D" parent="."]
+
+[node name="Box" type="CollisionShape3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_eydll")

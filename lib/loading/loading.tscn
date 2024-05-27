@@ -119,13 +119,14 @@ orientation = 2
 background_mode = 1
 ambient_light_source = 2
 ambient_light_color = Color(0.347817, 0.347817, 0.347817, 1)
+tonemap_mode = 2
+glow_enabled = true
 fog_enabled = true
 fog_light_color = Color(0, 0, 0, 1)
 fog_height = 13.0
 fog_height_density = -0.5
 adjustment_enabled = true
-adjustment_brightness = 1.3
-adjustment_saturation = 1.3
+adjustment_saturation = 1.2
 
 [sub_resource type="Animation" id="Animation_hn2un"]
 length = 0.001

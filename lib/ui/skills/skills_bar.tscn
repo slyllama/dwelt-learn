@@ -35,6 +35,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 skill_name = "skill_ping"
 input_mapping = "skill_ping"
+initial_texture = "PING"
 
 [node name="Glide" parent="HBox" instance=ExtResource("2_p2hud")]
 layout_mode = 2

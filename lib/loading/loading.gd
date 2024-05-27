@@ -22,6 +22,13 @@ func load_map(map_name):
 		$ErrorText.visible = true
 		return
 	started = true
+	get_parent().cam_x_offset = -6.0
+	get_parent().cam_z_offset = 16.0
+	var fade_tween = create_tween()
+	fade_tween.tween_property($LoadBlack, "color", Color.BLACK, 1.0)
+	var fov_tween = create_tween()
+	fov_tween.tween_method(func(i):
+		get_parent().get_node("Camera").fov = i, 55.0, 45.0, 1.0)
 
 	$LoadBlack/ProgressBar.visible = true
 	$GlowIcon.visible = true

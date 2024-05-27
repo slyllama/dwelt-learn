@@ -7,6 +7,8 @@ var ROCKET_PATH = "res://objects/rocket/rocket.glb"
 
 var mouse_pos
 var center
+var cam_x_offset = 0.0
+var cam_z_offset = 0.0
 
 var status
 var loaded = false
@@ -14,6 +16,7 @@ var rocket
 var progress = []
 
 func _ready():
+	cam_z_offset = $Camera.position.z
 	mouse_pos = get_viewport().get_mouse_position()
 	center = get_viewport().size
 	ResourceLoader.load_threaded_request(ROCKET_PATH)
@@ -31,8 +34,9 @@ func _process(_delta):
 		clamp(2.0 * mouse_pos.x / center.x - 1.0, -1.0, 1.0),
 		clamp(2.0 * mouse_pos.y / center.y - 1.0, -1.0, 1.0))
 	
-	$Camera.position.x = lerp($Camera.position.x, 2.5 + adj.x * 0.6, smooth)
+	$Camera.position.x = lerp($Camera.position.x, 2.5 + adj.x * 0.6 + cam_x_offset, smooth)
 	$Camera.position.y = lerp($Camera.position.y, -1.23 + adj.y * 0.3, smooth)
+	$Camera.position.z = lerp($Camera.position.z, cam_z_offset, smooth)
 	
 	if rocket != null:
 		rocket.rotation_degrees.y = lerp(
