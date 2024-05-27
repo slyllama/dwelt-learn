@@ -43,6 +43,10 @@ func _ready():
 	Global.current_map = ""
 	Global.printc("--- This is Dwelt (Technical Test) ---", "cyan")
 	
+	$HUDButtons.settings_pressed.connect(func():
+		$Settings.open()
+		return)
+	
 	# Load and populate settings (including menu)
 	Utilities.load_settings()
 	Global.setting_changed.connect(_setting_changed)
