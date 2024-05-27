@@ -104,7 +104,7 @@ func _input(_event):
 		Action.in_glide = false
 	
 	if Input.is_action_just_pressed("move_forward"): _start_moving()
-	if Input.is_action_just_released("move_forward"): _start_moving()
+	if Input.is_action_just_released("move_forward"): _stop_moving()
 	if Input.is_action_just_pressed("move_back"): $ModelHandler.start_moving()
 	if Input.is_action_just_released("move_back"): $ModelHandler.stop_moving()
 
