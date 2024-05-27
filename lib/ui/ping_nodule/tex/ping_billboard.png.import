@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://hhti18gehokg"
-path.s3tc="res://.godot/imported/alpha.jpg-98277f58395b464896be0ac59e3c45da.s3tc.ctex"
+uid="uid://pa8rg6y5hbk"
+path.s3tc="res://.godot/imported/ping_billboard.png-f89c4444c439d086a8387c2fbf71e02c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://lib/ui/insight/insight_flame/tex/alpha.jpg"
-dest_files=["res://.godot/imported/alpha.jpg-98277f58395b464896be0ac59e3c45da.s3tc.ctex"]
+source_file="res://lib/ui/ping_nodule/tex/ping_billboard.png"
+dest_files=["res://.godot/imported/ping_billboard.png-f89c4444c439d086a8387c2fbf71e02c.s3tc.ctex"]
 
 [params]
 

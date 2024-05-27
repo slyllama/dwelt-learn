@@ -1,28 +1,86 @@
-[gd_scene load_steps=5 format=3 uid="uid://dlvabr5agcgx1"]
+[gd_scene load_steps=6 format=3 uid="uid://dlvabr5agcgx1"]
 
 [ext_resource type="Script" path="res://lib/ui/ping_nodule/ping_nodule.gd" id="1_apn1a"]
-[ext_resource type="PackedScene" uid="uid://dtuoy5rvcxu7b" path="res://objects/insight/insight_model.glb" id="2_r58wn"]
+[ext_resource type="Texture2D" uid="uid://pa8rg6y5hbk" path="res://lib/ui/ping_nodule/tex/ping_billboard.png" id="2_u3lji"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ca7m5"]
-no_depth_test = true
-shading_mode = 0
+[sub_resource type="QuadMesh" id="QuadMesh_rxuwq"]
+size = Vector2(1.5, 1.5)
 
-[sub_resource type="BoxMesh" id="BoxMesh_hxdn3"]
-material = SubResource("StandardMaterial3D_ca7m5")
-size = Vector3(0.5, 0.5, 0.5)
+[sub_resource type="Shader" id="Shader_i6rk8"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.2.2.stable's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_disabled,diffuse_burley,specular_schlick_ggx,unshaded,depth_test_disabled;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_linear_mipmap,repeat_enable;
+uniform float point_size : hint_range(0,128);
+uniform float roughness : hint_range(0,1);
+uniform sampler2D texture_metallic : hint_default_white,filter_linear_mipmap,repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r,filter_linear_mipmap,repeat_enable;
+uniform float specular;
+uniform float metallic;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+uniform float alpha_scale = 1.0;
+
+
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+	MODELVIEW_MATRIX = VIEW_MATRIX * mat4(INV_VIEW_MATRIX[0], INV_VIEW_MATRIX[1], INV_VIEW_MATRIX[2], MODEL_MATRIX[3]);
+	MODELVIEW_MATRIX = MODELVIEW_MATRIX * mat4(vec4(length(MODEL_MATRIX[0].xyz), 0.0, 0.0, 0.0), vec4(0.0, length(MODEL_MATRIX[1].xyz), 0.0, 0.0), vec4(0.0, 0.0, length(MODEL_MATRIX[2].xyz), 0.0), vec4(0.0, 0.0, 0.0, 1.0));
+	MODELVIEW_NORMAL_MATRIX = mat3(MODELVIEW_MATRIX);
+}
+
+
+
+
+
+
+void fragment() {
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	albedo_tex *= COLOR;
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
+	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+	ALPHA *= albedo.a * albedo_tex.a * alpha_scale;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kkota"]
+render_priority = 0
+shader = SubResource("Shader_i6rk8")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/alpha_scale = 0.0
+shader_parameter/texture_albedo = ExtResource("2_u3lji")
 
 [node name="PingNodule" type="Node3D"]
 script = ExtResource("1_apn1a")
 
-[node name="Mesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-mesh = SubResource("BoxMesh_hxdn3")
-
-[node name="UpdraftModel" parent="Mesh" instance=ExtResource("2_r58wn")]
-transform = Transform3D(0.35, 0, 0, 0, 0.14, 0, 0, 0, 0.35, 0, -0.6, 0)
-
 [node name="RemoveTimer" type="Timer" parent="."]
-wait_time = 3.0
 one_shot = true
+
+[node name="Flame" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_rxuwq")
+surface_material_override/0 = SubResource("ShaderMaterial_kkota")
 
 [connection signal="timeout" from="RemoveTimer" to="." method="_on_remove_timer_timeout"]

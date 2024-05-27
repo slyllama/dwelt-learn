@@ -93,6 +93,7 @@ orientation = 2
 script = ExtResource("1_hqs2c")
 map_name = "lattice"
 custom_data_load_signal = true
+music_disabled_on_load = true
 
 [node name="Sky" type="WorldEnvironment" parent="."]
 unique_name_in_owner = true

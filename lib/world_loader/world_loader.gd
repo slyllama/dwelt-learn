@@ -16,6 +16,7 @@ var tutorial_input_data = [
 ## [code]Save.save_loaded()[/code] [b]must[/b] be called at the end of the
 ## extended script's [code]_ready()[/code] function if this option is set.
 @export var custom_data_load_signal = false
+@export var music_disabled_on_load = false
 
 # All lights in here will be excluded from spotlight shadows. Remember to add
 # to this before calling super().
@@ -79,21 +80,21 @@ func fire_ping():
 	PingCooldown.start()
 	Global.camera_shaken.emit(0.5)
 	
+	# Process Insights, if there is one
+	if Global.insight_on_map:
+		insights_refresh()
+		var inp = InsightProjectile.instantiate()
+		add_child(inp)
+		inp.global_position = Global.player_position
+		inp.look_at(Global.insight_current_position)
+		inp.fire()
+	
 	# Process nearby interactables
 	for i in interact_objects:
 		if Utilities.get_is_valid_interactable(i, 20.0):
 			var nodule = PingNodule.instantiate()
 			add_child(nodule)
 			nodule.global_position = i.global_position
-	
-	# Process Insights, if there is one
-	if !Global.insight_on_map: return
-	insights_refresh()
-	var inp = InsightProjectile.instantiate()
-	add_child(inp)
-	inp.global_position = Global.player_position
-	inp.look_at(Global.insight_current_position)
-	inp.fire()
 
 func proc_save():
 	Save.load_from_file()
@@ -157,6 +158,10 @@ func _ready():
 	if Save.get_data("dwelt", "tutorial_inputs_shown") == null:
 		Global.input_hint_played.emit(tutorial_input_data, 5.0)
 		Save.set_data("dwelt", "tutorial_inputs_shown", true)
+	
+	if !music_disabled_on_load:
+		if get_node_or_null("Music") != null:
+			get_node_or_null("Music").play()
 
 func _input(_event):
 	if Input.is_action_just_pressed("skill_ping"):

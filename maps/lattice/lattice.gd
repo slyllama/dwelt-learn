@@ -22,8 +22,6 @@ func _ready():
 	
 	$Greybox/VentHandler.turn_off()
 	$FourierTest/AnimationPlayer.play("Idle")
-	await get_tree().create_timer(3.0).timeout
-	$Music.play()
 
 func _physics_process(_delta):
 	if Global.player_position.y > 10.0:
