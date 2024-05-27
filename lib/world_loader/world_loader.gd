@@ -30,6 +30,7 @@ var interact_objects = []
 var first_settings_run = false
 
 var PingCooldown = Timer.new()
+var PingSound = AudioStreamPlayer.new()
 var ping_cooling = false
 
 func _setting_changed(get_setting_id):
@@ -78,6 +79,7 @@ func fire_ping():
 	if ping_cooling: return
 	ping_cooling = true
 	PingCooldown.start()
+	PingSound.play()
 	Global.camera_shaken.emit(0.5)
 	
 	# Process Insights, if there is one
@@ -101,6 +103,9 @@ func proc_save():
 	insights_setup()
 
 func _ready():
+	PingSound.stream = load("res://lib/ui/ping_nodule/ping.ogg")
+	add_child(PingSound)
+	
 	# Reset everything so that ghost data doesn't persist after returning to the menu
 	Action.deactivate() # interesting bug where an action will persist across maps
 	Action.in_glide = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://yyd0ltle0un5"]
+[gd_scene load_steps=29 format=3 uid="uid://yyd0ltle0un5"]
 
 [ext_resource type="PackedScene" uid="uid://e0k8h1ytp7wi" path="res://lib/ui/hud/hud.tscn" id="1_3q1w7"]
 [ext_resource type="Script" path="res://maps/test/test.gd" id="1_fvnbx"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://cvho6mkc04s7h" path="res://objects/laser_detector/laser_detector.tscn" id="15_mdlo6"]
 [ext_resource type="PackedScene" uid="uid://bdock8rc758qp" path="res://maps/lattice/props/tank.glb" id="15_yru8h"]
 [ext_resource type="PackedScene" uid="uid://07n4fhjhunl" path="res://objects/laser/laser.tscn" id="16_qr5ys"]
+[ext_resource type="AudioStream" uid="uid://c62xqceplif7s" path="res://maps/test/lava.ogg" id="17_ifxop"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_lvxdd"]
 panorama = ExtResource("3_mt7r7")
@@ -186,6 +187,11 @@ object_name = "kopa"
 [node name="LaserDetector" parent="." instance=ExtResource("15_mdlo6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2, -6)
 delay_time = 0.0
+
+[node name="Ambience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_ifxop")
+volume_db = -7.0
+autoplay = true
 
 [connection signal="player_left" from="Laser" to="." method="_on_laser_player_left"]
 [connection signal="activated" from="LaserDetector" to="." method="_on_laser_detector_activated"]
