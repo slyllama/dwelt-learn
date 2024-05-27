@@ -67,6 +67,9 @@ func _ready():
 				load("res://lib/ui/tex/cursor_2x.png"))
 	else: DisplayServer.window_set_min_size(Global.MIN_SCREEN_SIZE)
 	
+	# First-run controller check
+	$InputTools.check_for_controller()
+	
 	# Focus assignments
 	$LoadPanel/VBox/Quit.focus_neighbor_bottom = "../../../HUDButtons/TopMenu/DebugButton"
 	$HUDButtons/TopMenu/DebugButton.focus_neighbor_top = "../../../LoadPanel/VBox/Quit"

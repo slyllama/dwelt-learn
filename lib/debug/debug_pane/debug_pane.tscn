@@ -150,6 +150,14 @@ text = "Hide player"
 alignment = 0
 script = ExtResource("5_ojek2")
 
+[node name="EmitControllerInput" type="Button" parent="CmdPanel/CmdVBox"]
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("5_tfl4g")
+text = "Emit controller input"
+alignment = 0
+script = ExtResource("5_ojek2")
+
 [node name="Padding2" type="ColorRect" parent="CmdPanel/CmdVBox"]
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
@@ -168,4 +176,5 @@ script = ExtResource("5_ojek2")
 [connection signal="pressed" from="CmdPanel/CmdVBox/ResetSaveData" to="." method="_on_reset_save_data_pressed"]
 [connection signal="pressed" from="CmdPanel/CmdVBox/ResetSettings" to="." method="_on_reset_settings_pressed"]
 [connection signal="pressed" from="CmdPanel/CmdVBox/TogglePlayerVis" to="." method="_on_toggle_player_vis_pressed"]
+[connection signal="pressed" from="CmdPanel/CmdVBox/EmitControllerInput" to="." method="_on_emit_controller_input_pressed"]
 [connection signal="pressed" from="CmdPanel/CmdVBox/ReturnToMenu" to="." method="_on_return_to_menu_pressed"]

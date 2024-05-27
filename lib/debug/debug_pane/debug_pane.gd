@@ -49,7 +49,7 @@ func _input(_event):
 	
 	if Input.is_action_just_pressed("right_click"):
 		Global.debug_popup_closed.emit()
-	
+
 	# Quick shortcut for returning to the menu
 	if Input.is_action_just_pressed("ui_cancel"):
 		Save.game_saved.emit()
@@ -116,3 +116,9 @@ func _on_reset_settings_pressed():
 func _on_return_to_menu_pressed():
 	Save.game_saved.emit()
 	get_tree().change_scene_to_file("res://lib/loading/loading.tscn")
+
+func _on_emit_controller_input_pressed():
+	Global.printc("[DebugPane] simulated joy button.", "yellow")
+	var controller_test_event = InputEventJoypadButton.new()
+	controller_test_event.pressed = true
+	Input.parse_input_event(controller_test_event)

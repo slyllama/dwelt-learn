@@ -38,5 +38,6 @@ func _ready():
 		$Cursor.visible = Global.debug_player_visible
 		$InteractOverlay/InteractCursor.visible = Global.debug_player_visible)
 
+# TODO: check if necessary anymore
 func _mouseover():
 	Global.button_hover.emit()
