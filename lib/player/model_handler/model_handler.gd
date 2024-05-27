@@ -95,7 +95,10 @@ func _ready():
 			glider_nodes.append(node)
 	
 	Action.targeted.connect(func():
-		Global.input_hint_played.emit([ { "title": "Interact", "description": "Inspect nearby curiosities.", "key": "#" } ], 0.0)
+		Global.input_hint_played.emit([ {
+			"title": "Interact",
+			"description": "Inspect nearby curiosities.",
+			"key": "interact" } ], 0.0)
 		open_radar())
 	Action.untargeted.connect(func():
 		if !Action.active:

@@ -122,3 +122,9 @@ func _on_emit_controller_input_pressed():
 	var controller_test_event = InputEventJoypadButton.new()
 	controller_test_event.pressed = true
 	Input.parse_input_event(controller_test_event)
+	Input.action_press("interact")
+	Input.action_release("interact")
+	controller_test_event.pressed = false
+
+func _on_print_input_map_pressed():
+	Global.printc(str(InputMap.action_get_events("interact")))

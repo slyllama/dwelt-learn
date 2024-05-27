@@ -14,11 +14,21 @@ func fade_out(white = true):
 	var fade = create_tween()
 	fade.tween_method(_set_trans.bind(white), 1.0, 0.0, 0.3)
 
+func update_input():
+	if Global.input_mode == Global.InputModes.CONTROLLER:
+		$Panel/Key.visible = false
+	if Global.input_mode == Global.InputModes.KEYBOARD:
+		$Panel/Key.visible = true
+		if "skill_" in key_text or key_text == "interact":
+			$Panel/Key.text = Utilities.cntr(
+				Utilities.get_key(key_text).left(2))
+
 func _ready():
 	modulate.a = 1.0
 	$Title.text = str(title).to_upper()
 	$Description.text = description
-	$Panel/Key.text = Utilities.cntr(str(key_text).to_upper())
+	Global.input_mode_switched.connect(update_input)
+	update_input()
 	
 	var fade = create_tween()
 	fade.tween_method(_set_trans, 0.0, 1.0, 0.2)

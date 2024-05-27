@@ -8,7 +8,7 @@ const InsightProjectile = preload("res://objects/insight_projectile/insight_proj
 const PingNodule = preload("res://lib/ui/ping_nodule/ping_nodule.tscn")
 var tutorial_input_data = [
 	{ "title": "INTERACT", "description": "Look at a nearby curiosity.", "key": "F" },
-	{ "title": "GLIDE", "description": "Soar in updrafts; hover while descending.", "key": "E" } ]
+	{ "title": "GLIDE", "description": "Soar in updrafts; hover while descending.", "key": "skill_glide" } ]
 
 @export var map_name = "untitled"
 ## Set this value to [code]true[/code] to allow the [code]WorldLoader[/code]'s

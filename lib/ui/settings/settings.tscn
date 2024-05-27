@@ -229,6 +229,24 @@ bbcode_enabled = true
 text = "[center]INPUTS[/center]"
 fit_content = true
 
+[node name="MappingNode" type="RichTextLabel" parent="Control/Panel/InputVBox"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+theme = ExtResource("4_iyw7p")
+theme_override_colors/default_color = Color(0.427493, 0.427493, 0.427493, 1)
+theme_override_constants/line_separation = -4
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "[center]CONTROLLER INPUT MAPPING TO COME IN A SUBSEQUENT TECHNICAL TEST.[/center]"
+fit_content = true
+
+[node name="Sep4" type="ColorRect" parent="Control/Panel/InputVBox"]
+custom_minimum_size = Vector2(0, 7)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
 [node name="LowerCloseButton" type="Button" parent="Control/Panel/InputVBox"]
 layout_mode = 2
 size_flags_vertical = 10
