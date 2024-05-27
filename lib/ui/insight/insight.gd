@@ -80,7 +80,7 @@ func open():
 	update_completed_nodes()
 	Global.smoke_faded.emit("in")
 	Global.input_hint_played.emit([{
-		"title": "Close", "description": "Dismiss Insight.", "key": "#" }], 0.0)
+		"title": "Close", "description": "Dismiss Insight.", "key": ["interact"] }], 0.0)
 	for c in completed_nodes: c.open()
 	
 	var trans_tween = create_tween()

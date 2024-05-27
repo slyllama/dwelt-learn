@@ -10,8 +10,8 @@ func clear_hints():
 	active = false
 	
 	for c in card_nodes.size():
-		var cn = card_nodes[card_nodes.size() - 1 -c] # reverse
 		if active == false:
+			var cn = card_nodes[card_nodes.size() - 1 - c] # reverse
 			cn.fade_out(false)
 			await get_tree().create_timer(0.3).timeout
 

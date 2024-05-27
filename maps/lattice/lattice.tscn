@@ -247,7 +247,7 @@ transform = Transform3D(0.799758, 0, -0.600323, 0, 1, 0, 0.600323, 0, 0.799758, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.94, 0, 23.981)
 
 [node name="TankDialogue" parent="Tank2" instance=ExtResource("16_j30j2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.38109, 0)
+transform = Transform3D(2.1, 0, 0, 0, 2.1, 0, 0, 0, 2.1, 0, 2.38109, 0)
 dialogue_data = Array[String](["These tanks haven't been labeled -- and likely for good reason. Unwatched and unsecured, their contents are probably flaccid and stale, fit only for diluting other product to keep things on the cheap.
 $
 It's not a practice  the Scrappers might once have engaged in, but times are changing. Competition is fierce, and the populace has become more desparate than ever to get their inlets into <any> kind of emotional gratification."])
