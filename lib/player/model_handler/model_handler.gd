@@ -159,6 +159,10 @@ func _process(_delta):
 	# Slowly turns to match the camera
 	rotation.y = lerp_angle(rotation.y, ry_last, 0.06)
 	
+	# Uses the velocity of the player to tilt the model
+	rotation.x = lerp_angle(rotation.x, Global.player_y_velocity * -0.05, 0.06)
+	rotation_degrees.x = clamp(rotation_degrees.x, -8.0, 8.0)
+	
 	rotation.z = lerpf(
 		rotation.z, ry_delta + roll_delta * 0.02, 0.06)
 	rotation_degrees.z = clampf(
