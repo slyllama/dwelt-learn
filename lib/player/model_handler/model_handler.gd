@@ -98,7 +98,8 @@ func _ready():
 		Global.input_hint_played.emit([ { "title": "Interact", "description": "Inspect nearby curiosities.", "key": "#" } ], 0.0)
 		open_radar())
 	Action.untargeted.connect(func():
-		Global.input_hint_cleared.emit()
+		if !Action.active:
+			Global.input_hint_cleared.emit()
 		close_radar())
 	Global.insight_pane_closed.connect(stop_moving)
 	

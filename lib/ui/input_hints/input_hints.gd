@@ -6,7 +6,9 @@ var transitioning = false
 var active = false
 
 func clear_hints():
+	if !active : return
 	active = false
+	
 	for c in card_nodes.size():
 		var cn = card_nodes[card_nodes.size() - 1 -c] # reverse
 		if active == false:
@@ -16,7 +18,7 @@ func clear_hints():
 # If clear_time is 0, the hints will remain until cleared by clear_hints()
 func show_hints(get_card_data, clear_time = 0.0):
 	active = true
-	
+	await get_tree().create_timer(0.1).timeout
 	$ClearTimer.stop()
 	$Container.modulate.a = 1.0
 	for c in card_nodes: c.queue_free()

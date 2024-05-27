@@ -23,9 +23,9 @@ func activate():
 		$DockingPoint.global_position,
 		Vector2(rotation_degrees.y, 0.0))
 	
-	await get_tree().create_timer(0.2).timeout
 	Global.input_hint_played.emit([
 		{ "title": "ORIENT", "description": "Adjust the position of the laser.", "key": "#" } ], 0.0)
+	await get_tree().create_timer(0.4).timeout
 	delay_complete = true
 
 func deactivate():
