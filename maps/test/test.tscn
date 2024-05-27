@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://yyd0ltle0un5"]
+[gd_scene load_steps=31 format=3 uid="uid://yyd0ltle0un5"]
 
 [ext_resource type="PackedScene" uid="uid://e0k8h1ytp7wi" path="res://lib/ui/hud/hud.tscn" id="1_3q1w7"]
 [ext_resource type="Script" path="res://maps/test/test.gd" id="1_fvnbx"]
@@ -17,6 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://bdock8rc758qp" path="res://maps/lattice/props/tank.glb" id="15_yru8h"]
 [ext_resource type="PackedScene" uid="uid://07n4fhjhunl" path="res://objects/laser/laser.tscn" id="16_qr5ys"]
 [ext_resource type="AudioStream" uid="uid://c62xqceplif7s" path="res://maps/test/lava.ogg" id="17_ifxop"]
+[ext_resource type="Script" path="res://lib/debug/debug_flag/debug_flag.gd" id="18_fje8s"]
+[ext_resource type="Texture2D" uid="uid://chb02gji54q0j" path="res://lib/debug/debug_flag/tex/controller_icon.png" id="19_1pd7c"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_lvxdd"]
 panorama = ExtResource("3_mt7r7")
@@ -197,12 +199,18 @@ autoplay = true
 unique_name_in_owner = true
 
 [node name="SP" type="Marker3D" parent="SavePoints"]
+script = ExtResource("18_fje8s")
+custom_texture = ExtResource("19_1pd7c")
 
 [node name="SP2" type="Marker3D" parent="SavePoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0)
+script = ExtResource("18_fje8s")
+custom_texture = ExtResource("19_1pd7c")
 
 [node name="SP3" type="Marker3D" parent="SavePoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 0)
+script = ExtResource("18_fje8s")
+custom_texture = ExtResource("19_1pd7c")
 
 [connection signal="player_left" from="Laser" to="." method="_on_laser_player_left"]
 [connection signal="activated" from="LaserDetector" to="." method="_on_laser_detector_activated"]

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://danqqg64d8q2k"
-path.s3tc="res://.godot/imported/dot.png-0256cae45afad91322adfa47a42046de.s3tc.ctex"
+uid="uid://chb02gji54q0j"
+path.s3tc="res://.godot/imported/controller_icon.png-00f81b5af6c09f50f1743c73b30dfd61.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://lib/ui/tex/dot.png"
-dest_files=["res://.godot/imported/dot.png-0256cae45afad91322adfa47a42046de.s3tc.ctex"]
+source_file="res://lib/debug/debug_flag/tex/controller_icon.png"
+dest_files=["res://.godot/imported/controller_icon.png-00f81b5af6c09f50f1743c73b30dfd61.s3tc.ctex"]
 
 [params]
 
