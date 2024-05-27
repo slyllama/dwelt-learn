@@ -15,7 +15,7 @@ func _ready():
 	var i = 0
 	
 	var shaders_file = FileAccess.open("res://shader_list.txt", FileAccess.READ)
-	var shaders_list = shaders_file.get_as_text().split("\n")
+	var shaders_list = shaders_file.get_as_text().split(",")
 	shaders_file.close()
 	
 	for shader in shaders_list:

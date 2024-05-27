@@ -168,7 +168,7 @@ transform = Transform3D(-0.629578, 0, -0.776937, 0, 1, 0, 0.776937, 0, -0.629578
 transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 8, 1.5, -4)
 
 [node name="DialogueArea" parent="FourierTest" instance=ExtResource("14_ucrvw")]
-transform = Transform3D(1.02, 0, 1.19209e-07, 0, 1.02, 0, -1.19209e-07, 0, 1.02, 0, -0.972716, 0)
+transform = Transform3D(1, 0, 1.16872e-07, 0, 1, 0, -1.16872e-07, 0, 1, 0, 0.2, 0)
 dialogue_data = Array[String](["The rusty bot looks out toward the ventilator with an expression of pure contentment, joints squeaking as they bounce in the air.
 $
 <\"I've been on this thing -- computing -- twenty-seven times today. I can't get enough of it!\"> You wonder for a second if you should reach out and see if they really are okay; but it occurs to you that they're probably happier than you are.", "God I hope this works."])
@@ -192,6 +192,17 @@ delay_time = 0.0
 stream = ExtResource("17_ifxop")
 volume_db = -7.0
 autoplay = true
+
+[node name="SavePoints" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="SP" type="Marker3D" parent="SavePoints"]
+
+[node name="SP2" type="Marker3D" parent="SavePoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0)
+
+[node name="SP3" type="Marker3D" parent="SavePoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 0)
 
 [connection signal="player_left" from="Laser" to="." method="_on_laser_player_left"]
 [connection signal="activated" from="LaserDetector" to="." method="_on_laser_detector_activated"]

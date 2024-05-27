@@ -27,7 +27,7 @@ func _ready():
 		if enabled == false: return
 		# Should only attempt if the player is in *this* updraft
 		if player_in_area == true and Global.updraft_zone == object_name and Global.dialogue_active == false:
-			Global.camera_shaken.emit()
+			Global.camera_shaken.emit(2.0)
 			Input.start_joy_vibration(0, 0.1, 0.23, 0.2)
 			$Updraft.play()
 			$FG/Chroma.updraft()

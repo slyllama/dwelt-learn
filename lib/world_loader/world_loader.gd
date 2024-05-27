@@ -33,6 +33,21 @@ var PingCooldown = Timer.new()
 var PingSound = AudioStreamPlayer.new()
 var ping_cooling = false
 
+func _get_nearest_save_point(height = 1.5):
+	if get_node_or_null("SavePoints") == null:
+		Global.printc("[WorldLoader] no save point data!", "red")
+	
+	var nearest_point
+	var closest_dist = 9999.99
+	for point in %SavePoints.get_children():
+		var s_player_position = Save.get_data(Global.current_map, "player_position")
+		var dist = Vector3(s_player_position).distance_to(point.global_position)
+		if dist < closest_dist:
+			closest_dist = dist
+			nearest_point = point
+	# Returns adding the specified height
+	return(nearest_point.global_position + Vector3(0, height, 0))
+
 func _setting_changed(get_setting_id):
 	if first_settings_run == false: first_settings_run = true
 	match get_setting_id:
@@ -129,15 +144,15 @@ func _ready():
 	
 	# ===== DATA TO SAVE =====
 	Save.game_saved.connect(func():
-		Save.set_data(map_name, "player_position", Global.player_ground_position)
+		Save.set_data(map_name, "player_position", Global.player_position)
 		Save.set_data(map_name, "collected_insights", Global.insights_collected)
 		Save.save_to_file())
 	
 	# ===== DATA TO LOAD =====
 	Global.current_map = map_name
 	Save.save_loaded.connect(func():
-		var s_player_position = Save.get_data(Global.current_map, "player_position")
-		if s_player_position != null: %Player.global_position = s_player_position
+		if Save.get_data(Global.current_map, "player_position") != null:
+			%Player.global_position = _get_nearest_save_point()
 		var s_collected_insights = Save.get_data(Global.current_map, "collected_insights")
 		if s_collected_insights != null: Global.insights_collected = s_collected_insights)
 	
@@ -169,6 +184,8 @@ func _ready():
 			get_node_or_null("Music").play()
 
 func _input(_event):
+	if Input.is_action_just_pressed("debug_action"):
+		_get_nearest_save_point()
 	if Input.is_action_just_pressed("skill_ping"):
 		fire_ping()
 

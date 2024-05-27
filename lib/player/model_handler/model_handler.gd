@@ -34,18 +34,18 @@ func _set_shader_expn(get_expn):
 		node.get_active_material(0).set_shader_parameter("exponent", get_expn)
 
 func _glider_flicker_in():
-	var t = create_tween().tween_method(_set_shader_level, 0.0, 0.5, 0.1)
+	var t = create_tween().tween_method(_set_shader_level, 0.0, 0.7, 0.1)
 	await t.finished
-	t = create_tween().tween_method(_set_shader_level, 0.5, 0.0, 0.1)
+	t = create_tween().tween_method(_set_shader_level, 0.7, 0.0, 0.1)
 	await t.finished
-	t = create_tween().tween_method(_set_shader_level, 0.0, 0.5, 0.2)
+	t = create_tween().tween_method(_set_shader_level, 0.0, 0.7, 0.2)
 
 func _glider_flicker_out():
-	var t = create_tween().tween_method(_set_shader_level, 0.5, 0.0, 0.1)
+	var t = create_tween().tween_method(_set_shader_level, 0.7, 0.0, 0.1)
 	await t.finished
-	t = create_tween().tween_method(_set_shader_level, 0.0, 0.5, 0.1)
+	t = create_tween().tween_method(_set_shader_level, 0.0, 0.7, 0.1)
 	await t.finished
-	t = create_tween().tween_method(_set_shader_level, 0.5, 0.0, 0.2)
+	t = create_tween().tween_method(_set_shader_level, 0.7, 0.0, 0.2)
 
 func _glide_started():
 	_glider_flicker_in()

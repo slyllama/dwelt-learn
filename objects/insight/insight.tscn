@@ -91,7 +91,8 @@ rings = 12
 material = ExtResource("6_sqf44")
 
 [node name="ObjectHandler" parent="." instance=ExtResource("7_eu0w7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+collision_size = Vector3(1.5, 3, 1.5)
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="activated" from="ObjectHandler" to="." method="_on_object_handler_activated"]

@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://b85g73m6ogrhp"]
+[gd_scene load_steps=6 format=3 uid="uid://b85g73m6ogrhp"]
 
 [ext_resource type="Script" path="res://objects/updraft/vent_handler.gd" id="1_tr3ae"]
 [ext_resource type="PackedScene" uid="uid://q6mjnwesy72v" path="res://objects/updraft/vent_fan/vent_fan.glb" id="2_g118f"]
 [ext_resource type="PackedScene" uid="uid://dk0s3tibcdcq0" path="res://objects/updraft/updraft.tscn" id="3_foc1n"]
 [ext_resource type="AudioStream" uid="uid://xw8eek5x1xwg" path="res://objects/updraft/sound/vent_fan.ogg" id="4_a2ene"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d1fhw"]
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
 
 [node name="VentHandler" type="Node3D"]
 script = ExtResource("1_tr3ae")
@@ -17,3 +21,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 [node name="VentFanSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_a2ene")
 autoplay = true
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0298059, 0)
+radius = 2.6
+height = 0.01
+sides = 16
+material = SubResource("StandardMaterial3D_d1fhw")

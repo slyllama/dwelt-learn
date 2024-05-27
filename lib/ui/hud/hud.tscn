@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://e0k8h1ytp7wi"]
 
-[ext_resource type="PackedScene" uid="uid://dq3aqaliycowy" path="res://lib/ui/debug_pane/debug_pane.tscn" id="1_gv0re"]
+[ext_resource type="PackedScene" uid="uid://dq3aqaliycowy" path="res://lib/debug/debug_pane/debug_pane.tscn" id="1_gv0re"]
 [ext_resource type="Script" path="res://lib/ui/hud/hud.gd" id="1_i45xt"]
 [ext_resource type="PackedScene" uid="uid://s4i8wd6iwhw6" path="res://lib/ui/smoke_overlay/smoke_overlay.tscn" id="3_gjhsd"]
 [ext_resource type="PackedScene" uid="uid://ds7v1kxeoggbl" path="res://lib/ui/dialogue/dialogue.tscn" id="3_lcfva"]

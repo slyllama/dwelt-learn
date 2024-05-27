@@ -267,6 +267,12 @@ dialogue_title = "Energy Reciever"
 object_name = "energy_receiver"
 dialogue_close_distance = 7.0
 
+[node name="SavePoints" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="SP" type="Marker3D" parent="SavePoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 18)
+
 [connection signal="player_left" from="Laser" to="." method="_on_laser_player_left"]
 [connection signal="activated" from="LaserDetector" to="." method="_on_laser_detector_activated"]
 [connection signal="deactivated" from="LaserDetector" to="." method="_on_laser_detector_deactivated"]
