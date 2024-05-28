@@ -4,6 +4,8 @@ const SCREEN_SIZE = Vector2(1920.0, 1080.0)
 const MIN_SCREEN_SIZE = Vector2(800.0, 600.0)
 const LARGE_UI_SCALE = 1.0
 
+enum InputModes { KEYBOARD, CONTROLLER }
+
 signal camera_shaken(intensity)
 signal button_hover
 signal button_click
@@ -13,6 +15,7 @@ signal dialogue_closed_early
 signal entered_keybind_select
 signal input_hint_played(data, clear_time)
 signal input_hint_cleared
+signal input_mode_switched
 signal insight_pane_opened(dialogue_data)
 signal insight_pane_closed
 signal left_keybind_select
@@ -24,6 +27,7 @@ signal skill_clicked(skill_name)
 signal smoke_faded(dir)
 
 var in_keybind_select = false
+var input_mode = InputModes.KEYBOARD
 var mouse_is_captured = false
 var mouse_in_settings_menu = false
 

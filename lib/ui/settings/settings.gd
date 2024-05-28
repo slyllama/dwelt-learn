@@ -1,15 +1,6 @@
 extends CanvasLayer
 
 const InputLine = preload("res://lib/ui/settings/components/stin_input_keybind.tscn")
-var input_data = [
-	{"id": "move_forward", "name": "FORWARD" },
-	{"id": "move_back", "name": "BACK" },
-	{"id": "strafe_left", "name": "STRAFE LEFT" },
-	{"id": "strafe_right", "name": "STRAFE RIGHT" },
-	{"id": "interact", "name": "INTERACT" },
-	{"id": "skill_glide", "name": "GLIDE" },
-	{"id": "zoom_in", "name": "ZOOM IN" },
-	{"id": "zoom_out", "name": "ZOOM OUT" } ]
 
 var input_containers = [] # input list nodes, so they can be cleared on refresh
 
@@ -33,7 +24,7 @@ func _assign_controller_button(action, button):
 	InputMap.action_add_event(action, e)
 
 func apply_input_data():
-	for i in input_data:
+	for i in Utilities.input_data:
 		InputMap.action_erase_events(i.id)
 		if i.type == "key":
 			var e = InputEventKey.new()
@@ -56,7 +47,7 @@ func refresh_input_data():
 	save_input_data()
 	
 	# Update input map display
-	for input in input_data:
+	for input in Utilities.input_data:
 		var i = InputLine.instantiate()
 		i.populate(input.name, input.id, Utilities.get_key(input.id))
 		input_containers.append(i)
@@ -69,7 +60,7 @@ func refresh_input_data():
 	Global.in_keybind_select = false
 
 func expand_input_data():
-	for input in input_data:
+	for input in Utilities.input_data:
 		var event = InputMap.action_get_events(input.id)[0]
 		if event is InputEventMouseButton:
 			input["type"] = "mouse"
@@ -81,7 +72,7 @@ func expand_input_data():
 func save_input_data(): # save input data to "input_data.json" file
 	expand_input_data()
 	var inputs_json = FileAccess.open("user://input_data.json", FileAccess.WRITE)
-	inputs_json.store_string(JSON.stringify(input_data))
+	inputs_json.store_string(JSON.stringify(Utilities.input_data))
 	inputs_json.close()
 
 func _ready():
@@ -89,14 +80,14 @@ func _ready():
 
 	# Only do this once (from the loading screen)
 	if Global.input_data_loaded == false:
-		Global.original_input_data = input_data.duplicate()
+		Global.original_input_data = Utilities.input_data.duplicate()
 		if FileAccess.file_exists("user://input_data.json"):
 			var inputs_file = FileAccess.open("user://input_data.json", FileAccess.READ)
 			var inputs_json = JSON.parse_string(inputs_file.get_as_text())
 			
 			# TODO: better checking for input data validity
 			Global.printc("[InputSettings] valid input_data.json exists, loading.")
-			input_data = inputs_json
+			Utilities.input_data = inputs_json
 			inputs_file.close()
 		else:
 			Global.printc("[InputSettings] input_data.json doesn't exist, creating it.")
@@ -116,7 +107,7 @@ func _input(event):
 		if visible == true: close()
 
 func _on_button_pressed():
-	input_data = Global.original_input_data.duplicate()
+	Utilities.input_data = Global.original_input_data.duplicate()
 	apply_input_data()
 	refresh_input_data()
 	Global.settings = Global.SETTINGS.duplicate()

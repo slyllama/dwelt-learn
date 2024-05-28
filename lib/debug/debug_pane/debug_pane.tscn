@@ -105,7 +105,6 @@ alignment = 2
 
 [node name="Save" type="Button" parent="CmdPanel/CmdVBox"]
 layout_mode = 2
-focus_mode = 0
 theme = ExtResource("5_tfl4g")
 text = "Save"
 alignment = 0
@@ -113,15 +112,20 @@ script = ExtResource("5_ojek2")
 
 [node name="PrintSaveData" type="Button" parent="CmdPanel/CmdVBox"]
 layout_mode = 2
-focus_mode = 0
 theme = ExtResource("5_tfl4g")
 text = "Print save data"
 alignment = 0
 script = ExtResource("5_ojek2")
 
+[node name="PrintInputMap" type="Button" parent="CmdPanel/CmdVBox"]
+layout_mode = 2
+theme = ExtResource("5_tfl4g")
+text = "Print input map"
+alignment = 0
+script = ExtResource("5_ojek2")
+
 [node name="ResetSaveData" type="Button" parent="CmdPanel/CmdVBox"]
 layout_mode = 2
-focus_mode = 0
 theme = ExtResource("5_tfl4g")
 theme_override_colors/font_color = Color(0.82, 0.1886, 0.199123, 1)
 text = "Clear save data"
@@ -130,7 +134,6 @@ script = ExtResource("5_ojek2")
 
 [node name="ResetSettings" type="Button" parent="CmdPanel/CmdVBox"]
 layout_mode = 2
-focus_mode = 0
 theme = ExtResource("5_tfl4g")
 theme_override_colors/font_color = Color(0.819608, 0.188235, 0.2, 1)
 text = "Reset settings"
@@ -144,9 +147,15 @@ color = Color(0.169245, 0.169245, 0.169245, 1)
 
 [node name="TogglePlayerVis" type="Button" parent="CmdPanel/CmdVBox"]
 layout_mode = 2
-focus_mode = 0
 theme = ExtResource("5_tfl4g")
 text = "Hide player"
+alignment = 0
+script = ExtResource("5_ojek2")
+
+[node name="EmitControllerInput" type="Button" parent="CmdPanel/CmdVBox"]
+layout_mode = 2
+theme = ExtResource("5_tfl4g")
+text = "Emit controller input"
 alignment = 0
 script = ExtResource("5_ojek2")
 
@@ -157,15 +166,24 @@ color = Color(0.169245, 0.169245, 0.169245, 1)
 
 [node name="ReturnToMenu" type="Button" parent="CmdPanel/CmdVBox"]
 layout_mode = 2
-focus_mode = 0
 theme = ExtResource("5_tfl4g")
 text = "Exit to menu"
 alignment = 0
 script = ExtResource("5_ojek2")
 
+[node name="ClosePopup" type="Button" parent="CmdPanel/CmdVBox"]
+layout_mode = 2
+theme = ExtResource("5_tfl4g")
+text = "(Close this menu)"
+alignment = 0
+script = ExtResource("5_ojek2")
+
 [connection signal="pressed" from="CmdPanel/CmdVBox/Save" to="." method="_on_save_pressed"]
 [connection signal="pressed" from="CmdPanel/CmdVBox/PrintSaveData" to="." method="_on_print_save_data_pressed"]
+[connection signal="pressed" from="CmdPanel/CmdVBox/PrintInputMap" to="." method="_on_print_input_map_pressed"]
 [connection signal="pressed" from="CmdPanel/CmdVBox/ResetSaveData" to="." method="_on_reset_save_data_pressed"]
 [connection signal="pressed" from="CmdPanel/CmdVBox/ResetSettings" to="." method="_on_reset_settings_pressed"]
 [connection signal="pressed" from="CmdPanel/CmdVBox/TogglePlayerVis" to="." method="_on_toggle_player_vis_pressed"]
+[connection signal="pressed" from="CmdPanel/CmdVBox/EmitControllerInput" to="." method="_on_emit_controller_input_pressed"]
 [connection signal="pressed" from="CmdPanel/CmdVBox/ReturnToMenu" to="." method="_on_return_to_menu_pressed"]
+[connection signal="pressed" from="CmdPanel/CmdVBox/ClosePopup" to="." method="_on_close_popup_pressed"]

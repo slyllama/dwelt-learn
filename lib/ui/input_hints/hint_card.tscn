@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bocissxgni5dt"]
+[gd_scene load_steps=11 format=3 uid="uid://bocissxgni5dt"]
 
 [ext_resource type="Script" path="res://lib/ui/input_hints/hint_card.gd" id="1_25ewk"]
 [ext_resource type="FontFile" uid="uid://b1v28gy50d86f" path="res://generic/fonts/red_hat.ttf" id="1_k8k71"]
@@ -32,6 +32,8 @@ corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xlfur"]
+
 [node name="HintCard" type="Panel"]
 material = SubResource("ShaderMaterial_cfp21")
 custom_minimum_size = Vector2(400, 70)
@@ -39,50 +41,27 @@ offset_right = 768.0
 offset_bottom = 70.0
 script = ExtResource("1_25ewk")
 
-[node name="Title" type="RichTextLabel" parent="."]
+[node name="Container" type="HBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 81.0
-offset_top = -23.0
-offset_bottom = 3.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/normal_font = ExtResource("1_k8k71")
-theme_override_font_sizes/normal_font_size = 20
-text = "INPUT HINT"
-scroll_active = false
-autowrap_mode = 0
 
-[node name="Description" type="RichTextLabel" parent="."]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 81.0
-offset_top = -2.0
-offset_bottom = 19.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/default_color = Color(0.59, 0.849667, 1, 1)
-theme_override_fonts/normal_font = ExtResource("2_1ak2y")
-theme_override_font_sizes/normal_font_size = 18
-text = "Input hint description."
-scroll_active = false
-autowrap_mode = 0
+[node name="Padding" type="ColorRect" parent="Container"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
 
-[node name="Panel" type="Panel" parent="."]
-layout_mode = 0
-offset_left = 29.0
-offset_top = 15.0
-offset_right = 69.0
-offset_bottom = 55.0
+[node name="KeyPanelTemplate" type="Panel" parent="Container"]
+visible = false
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_ld3ji")
 
-[node name="Key" type="RichTextLabel" parent="Panel"]
+[node name="Key" type="RichTextLabel" parent="Container/KeyPanelTemplate"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -94,16 +73,54 @@ theme_override_colors/default_color = Color(0.699653, 0.699653, 0.699653, 1)
 theme_override_fonts/normal_font = ExtResource("4_it01f")
 theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
-text = "[center]#[/center]"
+text = "[center]?[/center]"
 scroll_active = false
 autowrap_mode = 0
 
-[node name="WhiteFlash" type="ColorRect" parent="."]
-visible = false
+[node name="TextContainer" type="Panel" parent="Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_xlfur")
+
+[node name="Title" type="RichTextLabel" parent="Container/TextContainer"]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 14
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.5
+offset_left = 13.0
+offset_top = -23.0
+offset_right = 13.0
+offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("1_k8k71")
+theme_override_font_sizes/normal_font_size = 20
+text = "INPUT HINT"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Description" type="RichTextLabel" parent="Container/TextContainer"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 13.0
+offset_top = -2.0
+offset_right = 13.0
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.59, 0.849667, 1, 1)
+theme_override_fonts/normal_font = ExtResource("2_1ak2y")
+theme_override_font_sizes/normal_font_size = 18
+text = "Input hint description."
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Control" type="Control" parent="Container"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Container"]
+layout_mode = 2

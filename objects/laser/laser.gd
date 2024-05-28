@@ -24,7 +24,16 @@ func activate():
 		Vector2(rotation_degrees.y, 0.0))
 	
 	Global.input_hint_played.emit([
-		{ "title": "ORIENT", "description": "Adjust the position of the laser.", "key": "#" } ], 0.0)
+		{
+			"title": "ORIENT",
+			"description": "Adjust the position of the laser.",
+			"key": ["strafe_right", "strafe_left", "move_back", "move_forward"]
+		},
+		{
+			"title": "EXIT",
+			"description": "Detach from the laser.",
+			"key": ["interact"]
+		}], 0.0)
 	await get_tree().create_timer(0.4).timeout
 	delay_complete = true
 

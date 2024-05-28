@@ -22,5 +22,5 @@ func _on_toggle_pressed():
 	Global.settings[setting_id] = !Global.settings[setting_id]
 	Global.setting_changed.emit(setting_id)
 
-func _on_toggle_mouse_entered():
-	Global.button_hover.emit()
+func _on_toggle_mouse_entered(): Global.button_hover.emit()
+func _on_toggle_focus_entered(): Global.button_hover.emit()

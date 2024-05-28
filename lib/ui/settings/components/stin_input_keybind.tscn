@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dssjh323af85u"]
+[gd_scene load_steps=5 format=3 uid="uid://dssjh323af85u"]
 
 [ext_resource type="Script" path="res://lib/ui/settings/components/stin_input_keybind.gd" id="1_rqt23"]
 [ext_resource type="Theme" uid="uid://dfe36tnn0c1ud" path="res://generic/themes/theme.tres" id="2_pjspn"]
+[ext_resource type="Script" path="res://lib/ui/clicky_button/clicky_button.gd" id="3_1jrue"]
 [ext_resource type="FontFile" uid="uid://bhk1jyryyb1be" path="res://generic/fonts/plex_mono.otf" id="3_esj67"]
 
 [node name="InputLine" type="HBoxContainer"]
@@ -23,6 +24,7 @@ size_flags_horizontal = 10
 mouse_filter = 1
 theme = ExtResource("2_pjspn")
 text = "Button"
+script = ExtResource("3_1jrue")
 
 [node name="CancelButton" type="Button" parent="."]
 visible = false
@@ -33,6 +35,7 @@ theme = ExtResource("2_pjspn")
 theme_override_fonts/font = ExtResource("3_esj67")
 theme_override_font_sizes/font_size = 14
 text = "X"
+script = ExtResource("3_1jrue")
 
 [connection signal="mouse_entered" from="Button" to="." method="_mouseover"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

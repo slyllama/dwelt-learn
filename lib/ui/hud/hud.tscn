@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://e0k8h1ytp7wi"]
+[gd_scene load_steps=17 format=3 uid="uid://e0k8h1ytp7wi"]
 
 [ext_resource type="PackedScene" uid="uid://dq3aqaliycowy" path="res://lib/debug/debug_pane/debug_pane.tscn" id="1_gv0re"]
 [ext_resource type="Script" path="res://lib/ui/hud/hud.gd" id="1_i45xt"]
+[ext_resource type="PackedScene" uid="uid://b5ast1f22qol1" path="res://lib/input_tools/input_tools.tscn" id="2_sqml7"]
 [ext_resource type="PackedScene" uid="uid://s4i8wd6iwhw6" path="res://lib/ui/smoke_overlay/smoke_overlay.tscn" id="3_gjhsd"]
 [ext_resource type="PackedScene" uid="uid://ds7v1kxeoggbl" path="res://lib/ui/dialogue/dialogue.tscn" id="3_lcfva"]
 [ext_resource type="Texture2D" uid="uid://8kcdl0ahju3s" path="res://lib/ui/tex/interact_overlay.png" id="6_n4mbk"]
@@ -18,6 +19,8 @@
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_i45xt")
+
+[node name="InputTools" parent="." instance=ExtResource("2_sqml7")]
 
 [node name="Dialogue" parent="." instance=ExtResource("3_lcfva")]
 layer = 2

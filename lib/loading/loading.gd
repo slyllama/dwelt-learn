@@ -46,6 +46,7 @@ func _ready():
 	Global.printc("--- This is Dwelt (Technical Test) ---", "cyan")
 	
 	$HUDButtons.settings_pressed.connect(func():
+		Global.button_click.emit()
 		settings_last_button = $HUDButtons/TopMenu/SettingsButton
 		$Settings.open()
 		return)
@@ -67,11 +68,16 @@ func _ready():
 				load("res://lib/ui/tex/cursor_2x.png"))
 	else: DisplayServer.window_set_min_size(Global.MIN_SCREEN_SIZE)
 	
+	# First-run controller check
+	$InputTools.check_for_controller()
+	
 	# Focus assignments
 	$LoadPanel/VBox/Quit.focus_neighbor_bottom = "../../../HUDButtons/TopMenu/DebugButton"
 	$HUDButtons/TopMenu/DebugButton.focus_neighbor_top = "../../../LoadPanel/VBox/Quit"
 	$HUDButtons/TopMenu/SettingsButton.focus_neighbor_top = "../../../LoadPanel/VBox/Quit"
 	$HUDButtons/TopMenu/DebugPopupButton.focus_neighbor_top = "../../../LoadPanel/VBox/Quit"
+	Global.debug_toggled.connect(func():
+		if !Global.debug_state: $HUDButtons/TopMenu/DebugButton.grab_focus())
 	
 	$Settings/Control/Panel/VBox/MapSelection.visible = false # no need to go to the menu from the menu
 	$LoadBlack/ProgressBar.visible = false
@@ -83,8 +89,9 @@ func _ready():
 		func(): settings_last_button.grab_focus())
 
 	$Music.volume_db = linear_to_db(target_mus_vol)
-	await get_tree().create_timer(0.5).timeout
-	$Music.play()
+	if !get_parent().disable_music:
+		await get_tree().create_timer(0.5).timeout
+		$Music.play()
 
 func _input(_event):
 	if Input.is_action_just_pressed("debug_action"): load_map("test")

@@ -10,6 +10,7 @@ func _set_alpha(a):
 	$AnimeTex.material.set_shader_parameter("modulate_a", a)
 
 func anime_in():
+	if active: return # don't restart
 	active = true
 	$AnimeTex.material.set_shader_parameter("modulate_a", 0.0)
 	$AnimeTex.visible = true

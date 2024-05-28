@@ -1,5 +1,16 @@
 extends Node
 
+var input_data = [
+	{"id": "move_forward", "name": "FORWARD" },
+	{"id": "move_back", "name": "BACK" },
+	{"id": "strafe_left", "name": "STRAFE LEFT" },
+	{"id": "strafe_right", "name": "STRAFE RIGHT" },
+	{"id": "interact", "name": "INTERACT" },
+	{"id": "skill_glide", "name": "GLIDE" },
+	{"id": "skill_ping", "name": "PING" },
+	{"id": "zoom_in", "name": "ZOOM IN" },
+	{"id": "zoom_out", "name": "ZOOM OUT" } ]
+
 ### ENGINE/GAME SCRIPTS
 
 func is_joy_button(event, button, state = "pressed") -> bool:

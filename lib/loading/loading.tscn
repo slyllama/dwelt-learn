@@ -1,9 +1,10 @@
-[gd_scene load_steps=32 format=3 uid="uid://c4cboiwskjvvh"]
+[gd_scene load_steps=33 format=3 uid="uid://c4cboiwskjvvh"]
 
 [ext_resource type="Script" path="res://lib/loading/loading.gd" id="1_dy6oh"]
 [ext_resource type="Script" path="res://lib/loading/loading3d.gd" id="1_iixfr"]
 [ext_resource type="PackedScene" uid="uid://bx5xwgdebscc6" path="res://lib/ui/settings/settings.tscn" id="2_k2j3d"]
 [ext_resource type="Theme" uid="uid://dfe36tnn0c1ud" path="res://generic/themes/theme.tres" id="2_rl4eh"]
+[ext_resource type="PackedScene" uid="uid://b5ast1f22qol1" path="res://lib/input_tools/input_tools.tscn" id="3_qyxxt"]
 [ext_resource type="PackedScene" uid="uid://dq3aqaliycowy" path="res://lib/debug/debug_pane/debug_pane.tscn" id="4_hhqni"]
 [ext_resource type="Texture2D" uid="uid://c1ens2tjsu5wf" path="res://lib/loading/loading_icon.png" id="4_o48hx"]
 [ext_resource type="Texture2D" uid="uid://d2nv8xnwo132g" path="res://lib/ui/tex/placeholder_logo.png" id="5_s6nor"]
@@ -179,6 +180,7 @@ _data = {
 
 [node name="Loading3D" type="Node3D"]
 script = ExtResource("1_iixfr")
+disable_music = true
 
 [node name="ModelLoadOverlay" type="CanvasLayer" parent="."]
 
@@ -193,6 +195,8 @@ color = Color(0, 0, 0, 1)
 [node name="Loading" type="CanvasLayer" parent="."]
 layer = 2
 script = ExtResource("1_dy6oh")
+
+[node name="InputTools" parent="Loading" instance=ExtResource("3_qyxxt")]
 
 [node name="Music" type="AudioStreamPlayer" parent="Loading"]
 stream = ExtResource("13_juayp")
