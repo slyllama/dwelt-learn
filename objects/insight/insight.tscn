@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://d3wu1w4amd36m"]
+[gd_scene load_steps=15 format=3 uid="uid://d3wu1w4amd36m"]
 
 [ext_resource type="Script" path="res://objects/insight/insight.gd" id="1_adjom"]
 [ext_resource type="PackedScene" uid="uid://dtuoy5rvcxu7b" path="res://objects/insight/insight_model.glb" id="1_j7cxf"]
@@ -6,7 +6,6 @@
 [ext_resource type="Material" uid="uid://ddsbkakurhn2p" path="res://objects/insight/mat_insight_blur.tres" id="3_ku1lu"]
 [ext_resource type="Texture2D" uid="uid://dinrdf02xeqaq" path="res://generic/tex/fade_ramp.tres" id="4_4k2e2"]
 [ext_resource type="Texture2D" uid="uid://d1fy6jygommc6" path="res://generic/tex/particles/mote.png" id="5_8yxhf"]
-[ext_resource type="Material" uid="uid://tw4cr3kd2jfj" path="res://objects/insight/mat_insight_fractal.tres" id="6_sqf44"]
 [ext_resource type="PackedScene" uid="uid://csbchge3673bh" path="res://lib/object_handler/object_handler.tscn" id="7_eu0w7"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_v3sn8"]
@@ -15,7 +14,7 @@ size = Vector2(5, 5)
 
 [sub_resource type="QuadMesh" id="QuadMesh_atf1g"]
 material = ExtResource("3_ku1lu")
-size = Vector2(1, 10)
+size = Vector2(1, 16)
 
 [sub_resource type="Curve" id="Curve_14buf"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -55,7 +54,7 @@ orientation = 2
 script = ExtResource("1_adjom")
 
 [node name="UpdraftModel" parent="." instance=ExtResource("1_j7cxf")]
-transform = Transform3D(0.9, 0, 0, 0, 0.2, 0, 0, 0, 0.9, 0, 0.366901, 0)
+transform = Transform3D(0.7, 0, 0, 0, 0.3, 0, 0, 0, 0.7, 0, 0.366901, 0)
 
 [node name="Decal" type="Decal" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.458545, 0)
@@ -64,11 +63,11 @@ texture_albedo = ExtResource("2_amydo")
 modulate = Color(0.486275, 0.807843, 1, 1)
 
 [node name="Blur" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3669, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3669, 0)
 mesh = SubResource("QuadMesh_v3sn8")
 
 [node name="Beacon" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.3669, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.3669, 0)
 mesh = SubResource("QuadMesh_atf1g")
 
 [node name="Motes" type="GPUParticles3D" parent="."]
@@ -81,14 +80,6 @@ speed_scale = 0.5
 visibility_aabb = AABB(-1, -1, -1, 2, 2, 2)
 process_material = SubResource("ParticleProcessMaterial_l35g1")
 draw_pass_1 = SubResource("PlaneMesh_kpung")
-
-[node name="TestSphere" type="CSGSphere3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 0)
-visible = false
-radius = 0.75
-radial_segments = 24
-rings = 12
-material = ExtResource("6_sqf44")
 
 [node name="ObjectHandler" parent="." instance=ExtResource("7_eu0w7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)

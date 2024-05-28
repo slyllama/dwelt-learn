@@ -121,17 +121,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.77882, 1.5, 17.476)
 unique_name_in_owner = true
 
 [node name="Insight" parent="Insights" instance=ExtResource("23_hbglv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 12, 20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 1, 20)
 object_name = "insight_1"
 dialogue_data = Array[String](["First Insight!"])
 
 [node name="Insight2" parent="Insights" instance=ExtResource("23_hbglv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 12, 15)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 12, 19)
 object_name = "insight_2"
 dialogue_data = Array[String](["Second Insight!"])
 
 [node name="Insight3" parent="Insights" instance=ExtResource("23_hbglv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 12, -4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 12, -7)
 object_name = "insight_2"
 dialogue_data = Array[String](["Second Insight!"])
 
@@ -229,13 +229,6 @@ transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 0, 7, 0)
 [node name="VentHandler" parent="Greybox" instance=ExtResource("19_hvhe0")]
 transform = Transform3D(-0.666533, 0, 0.745476, 0, 1, 0, -0.745476, 0, -0.666533, 0.500311, 0.0488482, 23.2545)
 
-[node name="DialogueArea" parent="Greybox/VentHandler" instance=ExtResource("16_j30j2")]
-transform = Transform3D(1.63682, 0, 1.14927, 0, 3, 0, -1.14927, 0, 1.63682, -0.248732, 2.01992, -0.509287)
-dialogue_data = Array[String](["Hovering over deadly spinning blades for pleasure? Preposterous, although, well... You are a formidable Scrapper, after all. Danger and risk are your close companions."])
-dialogue_title = "Upward Ventilator"
-object_name = "updraft_dialogue"
-dialogue_close_distance = 7.0
-
 [node name="MushroomCluster" parent="." instance=ExtResource("21_pc35o")]
 transform = Transform3D(0.611996, 0, 0.790861, 0, 1, 0, -0.790861, 0, 0.611996, 2.66351, -0.039493, 20.9354)
 
@@ -278,6 +271,11 @@ unique_name_in_owner = true
 
 [node name="SP" type="Marker3D" parent="SavePoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 18)
+script = ExtResource("24_0csbc")
+custom_texture = ExtResource("25_xrdwe")
+
+[node name="SP4" type="Marker3D" parent="SavePoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 17)
 script = ExtResource("24_0csbc")
 custom_texture = ExtResource("25_xrdwe")
 

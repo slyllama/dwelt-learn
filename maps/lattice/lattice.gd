@@ -1,13 +1,13 @@
 extends "res://lib/world_loader/world_loader.gd"
 
 var on_second_floor = false
+var played_glider_hint = false
 
 func _ready():
 	interact_objects = [
 		$Elevator,
 		$Laser,
 		$FourierTest/DialogueArea,
-		$Greybox/VentHandler/DialogueArea,
 		$Tank2/TankDialogue,
 		$LaserDetector/DialogueArea
 	]
@@ -42,6 +42,15 @@ func _physics_process(_delta):
 			on_second_floor = false
 
 func _on_laser_detector_activated():
+	if !played_glider_hint:
+		if Save.get_data(map_name, "gliding_hint_played") == null:
+			played_glider_hint = true
+			Global.input_hint_played.emit([{
+				"title": "Glide",
+				"description": "Soar in updrafts!", 
+				"key": ["skill_glide"]
+			}], 5.0)
+			Save.set_data(map_name, "gliding_hint_played", played_glider_hint)
 	$Greybox/VentHandler.turn_on()
 	Global.camera_shaken.emit()
 

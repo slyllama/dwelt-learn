@@ -15,16 +15,6 @@ var tutorial_input_data = [{
 		"title": "PING",
 		"description": "Identify nearby curiosities and Insights.", 
 		"key": ["skill_ping"]
-	},
-	{
-		"title": "INTERACT",
-		"description": "Look at a nearby curiosity.", 
-		"key": ["interact"]
-	},
-	{
-		"title": "GLIDE",
-		"description": "Soar in updrafts; hover while descending.",
-		"key": ["skill_glide"]
 	}]
 
 @export var map_name = "untitled"
