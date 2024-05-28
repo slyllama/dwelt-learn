@@ -20,6 +20,7 @@ func _set_trans(val, white = true):
 func fade_out(white = true):
 	var fade = create_tween()
 	fade.tween_method(_set_trans.bind(white), 1.0, 0.0, 0.3)
+	fade.tween_callback(queue_free)
 
 func update_input():
 	for k in key_panels: k.queue_free() # reset array of keys

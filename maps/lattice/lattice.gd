@@ -1,5 +1,10 @@
 extends "res://lib/world_loader/world_loader.gd"
 
+# These will disappear when on the second floor
+@onready var first_floor_components = [
+	$Tank, $Tank2, $Tank3, $MushroomCluster, $Motes, $Elevator, $FourierTest,
+	$Laser, $FourierRotate ]
+
 var on_second_floor = false
 var played_glider_hint = false
 
@@ -31,12 +36,14 @@ func _physics_process(_delta):
 	if Global.player_position.y > 10.0:
 		if on_second_floor == false:
 			for node in $FloorPieces.get_children():
+				for n in first_floor_components: n.visible = false
 				if node.get_node_or_null("Light") != null:
 					node.get_node("Light").visible = false
 			on_second_floor = true
 	else:
 		if on_second_floor == true:
 			for node in $FloorPieces.get_children():
+				for n in first_floor_components: n.visible = true
 				if node.get_node_or_null("Light") != null:
 					node.get_node("Light").visible = true
 			on_second_floor = false

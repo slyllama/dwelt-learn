@@ -110,13 +110,6 @@ text = "Save"
 alignment = 0
 script = ExtResource("5_ojek2")
 
-[node name="PrintSaveData" type="Button" parent="CmdPanel/CmdVBox"]
-layout_mode = 2
-theme = ExtResource("5_tfl4g")
-text = "Print save data"
-alignment = 0
-script = ExtResource("5_ojek2")
-
 [node name="PrintInputMap" type="Button" parent="CmdPanel/CmdVBox"]
 layout_mode = 2
 theme = ExtResource("5_tfl4g")
@@ -179,7 +172,6 @@ alignment = 0
 script = ExtResource("5_ojek2")
 
 [connection signal="pressed" from="CmdPanel/CmdVBox/Save" to="." method="_on_save_pressed"]
-[connection signal="pressed" from="CmdPanel/CmdVBox/PrintSaveData" to="." method="_on_print_save_data_pressed"]
 [connection signal="pressed" from="CmdPanel/CmdVBox/PrintInputMap" to="." method="_on_print_input_map_pressed"]
 [connection signal="pressed" from="CmdPanel/CmdVBox/ResetSaveData" to="." method="_on_reset_save_data_pressed"]
 [connection signal="pressed" from="CmdPanel/CmdVBox/ResetSettings" to="." method="_on_reset_settings_pressed"]

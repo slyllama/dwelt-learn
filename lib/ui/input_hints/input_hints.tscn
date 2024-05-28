@@ -17,4 +17,9 @@ theme_override_constants/separation = 4
 [node name="ClearTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="CheckTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
 [connection signal="timeout" from="ClearTimer" to="." method="_on_clear_timer_timeout"]
+[connection signal="timeout" from="CheckTimer" to="." method="_on_check_timer_timeout"]
