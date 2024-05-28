@@ -17,6 +17,7 @@ func cancel():
 	active = false
 	$CancelButton.visible = false
 	populate(action_name, action_id, key_id)
+	$Button.grab_focus()
 
 func _input(event):
 	if active == true:

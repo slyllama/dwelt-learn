@@ -95,7 +95,10 @@ func _ready():
 		Global.input_data_loaded = true
 	
 	apply_input_data()
-	Global.connect("left_keybind_select", refresh_input_data)
+	#Global.connect("left_keybind_select", refresh_input_data)
+	Global.left_keybind_select.connect(func():
+		refresh_input_data()
+		$Control/Panel/InputVBox/LowerCloseButton.grab_focus())
 	refresh_input_data()
 
 func _input(event):
