@@ -6,9 +6,9 @@ class_name ClickyButton extends Button
 var overridden = false
 
 func _ready():
-	mouse_entered.connect(func():
-		if !is_visible_in_tree(): return
-		Global.button_hover.emit())
+	#mouse_entered.connect(func():
+		#if !is_visible_in_tree(): return
+		#Global.button_hover.emit())
 	focus_entered.connect(func():
 		if !is_visible_in_tree(): return
 		if override_once == true:

@@ -12,6 +12,8 @@ extends VBoxContainer
 @export var max_value: float = 100
 @export var step: float = 1
 
+var in_focus = false
+
 func fstr(num, place = 0.01): # copied from Utilities for @tool
 	return(str(snapped(num, place)))
 
@@ -54,6 +56,13 @@ func _on_slider_drag_ended(_value_changed):
 
 func _on_slider_value_changed(value):
 	update_title(value)
+	if in_focus:
+		Global.settings[setting_id] = $Slider.value
+		Global.setting_changed.emit(setting_id)
 
-func _mouseover(): Global.button_hover.emit()
-func _on_slider_focus_entered(): Global.button_hover.emit()
+func _on_slider_focus_entered():
+	in_focus = true
+	Global.button_hover.emit()
+
+func _on_slider_focus_exited():
+	in_focus = false

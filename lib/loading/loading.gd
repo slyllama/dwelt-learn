@@ -79,7 +79,7 @@ func _ready():
 	$HUDButtons/TopMenu/DebugPopupButton.focus_neighbor_top = "../../../LoadPanel/VBox/Quit"
 	Global.debug_toggled.connect(func():
 		if !Global.debug_state: $HUDButtons/TopMenu/DebugButton.grab_focus())
-	
+
 	$Settings/Control/Panel/VBox/MapSelection.visible = false # no need to go to the menu from the menu
 	$LoadBlack/ProgressBar.visible = false
 	$GlowIcon.visible = false

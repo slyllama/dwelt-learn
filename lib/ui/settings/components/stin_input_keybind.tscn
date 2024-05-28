@@ -37,7 +37,5 @@ theme_override_font_sizes/font_size = 14
 text = "X"
 script = ExtResource("3_1jrue")
 
-[connection signal="mouse_entered" from="Button" to="." method="_mouseover"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
-[connection signal="mouse_entered" from="CancelButton" to="." method="_mouseover"]
 [connection signal="pressed" from="CancelButton" to="." method="_on_cancel_button_pressed"]
