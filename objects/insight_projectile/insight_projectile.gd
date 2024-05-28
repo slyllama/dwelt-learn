@@ -7,5 +7,5 @@ func _set_trans(val):
 
 func fire():
 	var fire_tween = create_tween()
-	fire_tween.tween_method(_set_trans, 0.0, 1.0, 1.0)
+	fire_tween.tween_method(_set_trans, 0.0, 1.0, 2.0)
 	fire_tween.tween_callback(queue_free)
