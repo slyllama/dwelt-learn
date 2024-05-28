@@ -4,13 +4,15 @@ extends CanvasLayer
 
 # Special parameters for loading screen - hide certain elements
 func update():
+	Global.printc("running popup update", "cyan")
 	var hide_nodes = [  # nodes to be hidden if not on a map (i.e., in the main menu)
 		$Details, $Render, $CmdPanel/CmdVBox/Save, $CmdPanel/CmdVBox/Padding,
 		$CmdPanel/CmdVBox/TogglePlayerVis, $CmdPanel/CmdVBox/Padding2,
 		$CmdPanel/CmdVBox/ReturnToMenu ]
 	if Global.current_map == "":
 		for h in hide_nodes: h.visible = false
-	else: for h in hide_nodes: h.visible = true
+	else:
+		for h in hide_nodes: h.visible = true
 	Global.debug_toggled.emit()
 
 func _ready():
@@ -41,7 +43,6 @@ func _ready():
 				printc_str_buffer = str(l) + "\n" + printc_str_buffer
 			line_count += 1
 		$Console.text = printc_str_buffer)
-	update()
 
 func _input(_event):
 	if Input.is_action_just_pressed("toggle_debug"):

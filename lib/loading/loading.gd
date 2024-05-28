@@ -58,6 +58,7 @@ func _ready():
 		Global.setting_changed.emit(setting)
 	
 	Global.debug_toggled.emit() # make the toolbar button reappear
+	$DebugPane.update()
 	
 	# Set up for retina
 	if DisplayServer.screen_get_size().x > 2000:
