@@ -180,6 +180,7 @@ _data = {
 
 [node name="Loading3D" type="Node3D"]
 script = ExtResource("1_iixfr")
+disable_music = true
 
 [node name="ModelLoadOverlay" type="CanvasLayer" parent="."]
 

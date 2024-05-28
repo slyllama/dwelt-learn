@@ -139,8 +139,11 @@ script = ExtResource("9_b4cap")
 
 [node name="AnimeTex" type="TextureRect" parent="Anime"]
 material = SubResource("ShaderMaterial_ejrkj")
-offset_right = 1920.0
-offset_bottom = 1080.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("9_15e71")
 
 [node name="ModelHandler" parent="." instance=ExtResource("15_a350m")]

@@ -5,6 +5,8 @@ extends Node3D
 const smooth = 0.04
 var ROCKET_PATH = "res://objects/rocket/rocket.glb"
 
+@export var disable_music = false
+
 var mouse_pos
 var center
 var cam_x_offset = 0.0
