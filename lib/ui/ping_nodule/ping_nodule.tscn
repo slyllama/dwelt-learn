@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dlvabr5agcgx1"]
 
 [ext_resource type="Script" path="res://lib/ui/ping_nodule/ping_nodule.gd" id="1_apn1a"]
-[ext_resource type="Shader" path="res://generic/shaders/shader_flag.gdshader" id="2_hkmb2"]
+[ext_resource type="Shader" path="res://generic/shaders/sp_flag.gdshader" id="2_hkmb2"]
 [ext_resource type="Texture2D" uid="uid://pa8rg6y5hbk" path="res://lib/ui/ping_nodule/tex/ping_billboard.png" id="2_u3lji"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_rxuwq"]

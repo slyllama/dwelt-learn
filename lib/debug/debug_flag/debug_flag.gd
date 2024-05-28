@@ -17,7 +17,7 @@ func _ready():
 	Flag.mesh.orientation = PlaneMesh.FACE_Z
 	
 	var FlagMaterial = ShaderMaterial.new()
-	FlagMaterial.shader = load("res://generic/shaders/shader_flag.gdshader")
+	FlagMaterial.shader = load("res://generic/shaders/sp_flag.gdshader")
 	FlagMaterial.set_shader_parameter("texture_albedo", tex_to_use)
 	Flag.set_surface_override_material(0, FlagMaterial)
 	

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://lib/ui/input_hints/hint_card.gd" id="1_25ewk"]
 [ext_resource type="FontFile" uid="uid://b1v28gy50d86f" path="res://generic/fonts/red_hat.ttf" id="1_k8k71"]
 [ext_resource type="FontFile" uid="uid://nyvmwj526bbr" path="res://generic/fonts/alegreya.ttf" id="2_1ak2y"]
-[ext_resource type="Shader" path="res://lib/ui/input_hints/shader_hint_card.gdshader" id="4_2gd7u"]
+[ext_resource type="Shader" path="res://lib/ui/input_hints/sc_hint_card.gdshader" id="4_2gd7u"]
 [ext_resource type="FontFile" uid="uid://bhk1jyryyb1be" path="res://generic/fonts/plex_mono.otf" id="4_it01f"]
 
 [sub_resource type="Gradient" id="Gradient_pb8em"]

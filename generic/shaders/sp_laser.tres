@@ -1,6 +1,6 @@
 [gd_resource type="VisualShader" load_steps=16 format=3 uid="uid://yi627x8xvfu2"]
 
-[ext_resource type="Texture2D" uid="uid://dgkrpn8nt8pvt" path="res://generic/tex/shader_tex/laser.jpeg" id="1_7m3a0"]
+[ext_resource type="Texture2D" uid="uid://dgkrpn8nt8pvt" path="res://generic/tex/shader_tex/laser.jpeg" id="1_1ehm7"]
 
 [sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_h3uqy"]
 default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]
@@ -42,7 +42,7 @@ default_value = Color(0.834546, 0.964625, 1, 1)
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_4hr6g"]
 expanded_output_ports = [0]
-texture = ExtResource("1_7m3a0")
+texture = ExtResource("1_1ehm7")
 
 [sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_ylnrq"]
 default_input_values = [0, 0.0, 1, 1.5]

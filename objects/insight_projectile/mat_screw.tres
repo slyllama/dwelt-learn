@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bwxiyilnhltgu"]
 
-[ext_resource type="Shader" uid="uid://26h8k1gg3c8x" path="res://objects/insight_projectile/shader_screw.tres" id="1_p5gno"]
+[ext_resource type="Shader" uid="uid://26h8k1gg3c8x" path="res://objects/insight_projectile/sp_screw.tres" id="1_p5gno"]
 
 [resource]
 render_priority = 0

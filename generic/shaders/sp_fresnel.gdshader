@@ -7,6 +7,7 @@ uniform sampler2D noise_texture;
 uniform vec4 fresnel_color: source_color;
 uniform float fresnel_amount = 1.0;
 uniform float fresnel_intensity = 1.0;
+uniform sampler2D smoke_texture: filter_linear_mipmap, repeat_enable;
 
 vec3 fresnel_glow(float amount, float intensity, vec3 color, vec3 normal, vec3 view)
 {
@@ -22,6 +23,6 @@ void fragment()
 	
 	vec4 tex_col = texture(stars_texture, adjusted_screen_uv * stars_scale + noise_final * 0.4);
 	ALBEDO = vec3(0, 0, 0);
-	EMISSION = tex_col.rgb / 4.0 + fresnel;
+	EMISSION = (tex_col.rgb + pow(texture(smoke_texture, UV * 1.4 + TIME * 0.05).rgb, vec3(3.5)) * 0.45) / 4.0 + fresnel;
 	SPECULAR = 0.0;
 }

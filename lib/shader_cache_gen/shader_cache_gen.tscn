@@ -4,3 +4,6 @@
 
 [node name="ShaderCacheGen" type="Node3D"]
 script = ExtResource("1_txime")
+
+[node name="CSGen" type="CanvasLayer" parent="."]
+layer = -1

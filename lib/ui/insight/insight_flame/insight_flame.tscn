@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://wdeo36yae7ww"]
 
 [ext_resource type="Script" path="res://lib/ui/insight/insight_flame/insight_flame.gd" id="1_0jkxu"]
-[ext_resource type="Shader" path="res://lib/ui/insight/insight_flame/shader_flame.gdshader" id="1_kwh18"]
+[ext_resource type="Shader" path="res://lib/ui/insight/insight_flame/sc_flame.gdshader" id="1_kwh18"]
 [ext_resource type="Texture2D" uid="uid://dgby5tl60l5ol" path="res://lib/ui/insight/insight_flame/tex/white.jpg" id="1_qyni6"]
 [ext_resource type="Texture2D" uid="uid://hhti18gehokg" path="res://lib/ui/insight/insight_flame/tex/alpha.jpg" id="2_5denc"]
 [ext_resource type="Texture2D" uid="uid://de2mx08i2ldui" path="res://lib/ui/insight/insight_flame/tex/particle.png" id="2_iyup4"]

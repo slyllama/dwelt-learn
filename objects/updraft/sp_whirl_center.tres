@@ -1,7 +1,7 @@
 [gd_resource type="VisualShader" load_steps=25 format=3 uid="uid://dlmkx7n01hlq6"]
 
-[ext_resource type="Texture2D" uid="uid://dgkrpn8nt8pvt" path="res://generic/tex/shader_tex/laser.jpeg" id="1_1eari"]
-[ext_resource type="Texture2D" uid="uid://b5nufueq16vw0" path="res://generic/tex/shader_tex/wobble_noise.tres" id="1_4sl6k"]
+[ext_resource type="Texture2D" uid="uid://b5nufueq16vw0" path="res://generic/tex/shader_tex/wobble_noise.tres" id="1_y0llr"]
+[ext_resource type="Texture2D" uid="uid://dgkrpn8nt8pvt" path="res://generic/tex/shader_tex/laser.jpeg" id="2_6d1hx"]
 
 [sub_resource type="Gradient" id="Gradient_801d1"]
 offsets = PackedFloat32Array(0.0994764, 0.565445, 0.863874)
@@ -38,7 +38,7 @@ op_type = 0
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_6by6t"]
 expanded_output_ports = [0]
-texture = ExtResource("1_4sl6k")
+texture = ExtResource("1_y0llr")
 
 [sub_resource type="VisualShaderNodeVectorCompose" id="VisualShaderNodeVectorCompose_dita2"]
 op_type = 0
@@ -69,7 +69,7 @@ void vertex() {
 }"
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_cihod"]
-texture = ExtResource("1_1eari")
+texture = ExtResource("2_6d1hx")
 
 [sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_wrnxg"]
 default_input_values = [0, 0.0, 1, 2.0]

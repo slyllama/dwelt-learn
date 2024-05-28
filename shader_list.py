@@ -13,7 +13,7 @@ for file in result_gdshader:
     result += fmt(file)
 
 for file in result_tscn:
-    if "shader_" in file:
+    if "sc_" in file or "sp_" in file:
         result += fmt(file)
 
 result = result.rstrip(",") + ("\r\n")

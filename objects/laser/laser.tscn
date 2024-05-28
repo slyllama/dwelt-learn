@@ -39,6 +39,11 @@ script = ExtResource("3_0t5vk")
 [node name="EndPoint" type="Node3D" parent="Cast"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -30)
 
+[node name="Placeholder2" type="CSGBox3D" parent="Cast"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.8)
+size = Vector3(0.5, 0.5, 2)
+material = SubResource("StandardMaterial3D_80sux")
+
 [node name="DockingPoint" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 

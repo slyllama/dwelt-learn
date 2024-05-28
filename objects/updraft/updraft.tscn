@@ -2,11 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://c35iff81j46sc" path="res://objects/updraft/updraft_model.glb" id="1_6r8vs"]
 [ext_resource type="Script" path="res://objects/updraft/updraft.gd" id="1_gj72g"]
-[ext_resource type="Shader" uid="uid://dlmkx7n01hlq6" path="res://objects/updraft/shader_whirl_center.tres" id="2_l7aic"]
+[ext_resource type="Shader" uid="uid://dlmkx7n01hlq6" path="res://objects/updraft/sp_whirl_center.tres" id="2_l7aic"]
 [ext_resource type="Texture2D" uid="uid://d1fy6jygommc6" path="res://generic/tex/particles/mote.png" id="4_m1pur"]
 [ext_resource type="Script" path="res://objects/updraft/Chroma.gd" id="7_5xnoj"]
 [ext_resource type="AudioStream" uid="uid://cwrp6hvgnjhfg" path="res://objects/updraft/sound/updraft.ogg" id="7_h5ndv"]
-[ext_resource type="Shader" path="res://generic/shaders/shader_aberration.gdshader" id="7_xx8sf"]
+[ext_resource type="Shader" path="res://generic/shaders/sc_aberration.gdshader" id="7_xx8sf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_plm2c"]
 render_priority = 0

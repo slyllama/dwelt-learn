@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://lib/player/ShakeAnim.gd" id="5_dtpjv"]
 [ext_resource type="Texture2D" uid="uid://cks1xhn81ymh0" path="res://lib/ui/tex/anime.png" id="9_15e71"]
 [ext_resource type="Script" path="res://lib/player/vfx/Anime.gd" id="9_b4cap"]
-[ext_resource type="Shader" path="res://lib/player/vfx/shader_anime.gdshader" id="11_f4obd"]
+[ext_resource type="Shader" path="res://lib/player/vfx/sc_anime.gdshader" id="11_f4obd"]
 [ext_resource type="Texture2D" uid="uid://b5nufueq16vw0" path="res://generic/tex/shader_tex/wobble_noise.tres" id="12_uaain"]
 [ext_resource type="PackedScene" uid="uid://b6tc0kf1kgaml" path="res://lib/player/model_handler/model_handler.tscn" id="15_a350m"]
 

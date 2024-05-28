@@ -1,11 +1,11 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://dxnjjcs5nhu25"]
 
-[ext_resource type="Shader" path="res://characters/glider_wings/shader_glider.gdshader" id="1_b8r45"]
+[ext_resource type="Shader" path="res://characters/glider_wings/sp_glider.gdshader" id="1_1a0x1"]
 [ext_resource type="Texture2D" uid="uid://dsroqhsarregr" path="res://characters/euclid/tex/radar_diff.png" id="2_0n5mw"]
 
 [resource]
 render_priority = 0
-shader = ExtResource("1_b8r45")
+shader = ExtResource("1_1a0x1")
 shader_parameter/fresnel_color = Color(0.4, 0.71, 1, 1)
 shader_parameter/alpha_float = 0.7
 shader_parameter/overall_scale = 12.0

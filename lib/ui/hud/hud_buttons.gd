@@ -7,8 +7,11 @@ func _on_debug_button_pressed():
 	Global.debug_state = !Global.debug_state
 	Global.debug_toggled.emit()
 func _on_settings_button_pressed(): settings_pressed.emit()
-func _mouseover(): Global.button_hover.emit()
-func _focus(): Global.button_hover.emit()
+func _mouseover():
+	Global.button_hover.emit()
+func _focus():
+	if Global.debug_state:
+		Global.button_hover.emit()
 
 func fade_out():
 	$Delay.start()
@@ -31,9 +34,12 @@ func _ready():
 	Global.mouse_released.connect(fade_in)
 	
 	Global.debug_toggled.connect(func():
-		if Global.debug_state: $TopMenu/DebugPopupButton.grab_focus()
+		if Global.debug_state:
+			$TopMenu/DebugPopupButton.grab_focus()
+		else: $TopMenu/DebugPopupButton.release_focus()
 		$TopMenu/DebugPopupButton.visible = Global.debug_state)
-	Global.debug_popup_closed.connect(func(): $TopMenu/DebugPopupButton.grab_focus())
+	Global.debug_popup_closed.connect(func():
+		$TopMenu/DebugPopupButton.grab_focus())
 
 func _on_debug_popup_button_pressed():
 	if !Global.debug_state: # show the debug pane if it already isn't visible

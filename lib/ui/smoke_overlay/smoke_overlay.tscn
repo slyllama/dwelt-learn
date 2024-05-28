@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://s4i8wd6iwhw6"]
 
 [ext_resource type="Script" path="res://lib/ui/smoke_overlay/smoke_overlay.gd" id="1_1u7r5"]
-[ext_resource type="Material" uid="uid://dib8bbgu76bfe" path="res://lib/ui/smoke_overlay/shader_smoke.tres" id="1_qayah"]
+[ext_resource type="Material" uid="uid://dib8bbgu76bfe" path="res://lib/ui/smoke_overlay/mat_smoke.tres" id="1_qayah"]
 
 [node name="SmokeOverlay" type="CanvasLayer"]
 layer = 3

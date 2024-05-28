@@ -1,6 +1,6 @@
 [gd_resource type="VisualShader" load_steps=16 format=3 uid="uid://cupub7pghtysj"]
 
-[ext_resource type="Texture2D" uid="uid://dsroqhsarregr" path="res://characters/euclid/tex/radar_diff.png" id="1_nst5m"]
+[ext_resource type="Texture2D" uid="uid://dsroqhsarregr" path="res://characters/euclid/tex/radar_diff.png" id="1_ykp3u"]
 
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_l7atk"]
 input_name = "time"
@@ -28,7 +28,7 @@ operator = 2
 input_name = "screen_uv"
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_ig12j"]
-texture = ExtResource("1_nst5m")
+texture = ExtResource("1_ykp3u")
 
 [sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_t6sk3"]
 default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://lib/debug/debug_pane/debug_pane.gd" id="1_sn71f"]
 [ext_resource type="FontFile" uid="uid://bhk1jyryyb1be" path="res://generic/fonts/plex_mono.otf" id="3_egsd7"]
-[ext_resource type="Shader" path="res://lib/debug/debug_pane/shader_console_gradient.gdshader" id="3_ntk44"]
+[ext_resource type="Shader" path="res://lib/debug/debug_pane/sc_console_gradient.gdshader" id="3_ntk44"]
 [ext_resource type="Script" path="res://lib/ui/clicky_button/clicky_button.gd" id="5_ojek2"]
 [ext_resource type="Theme" uid="uid://bq1l1bs325lug" path="res://lib/debug/debug_pane/debug.tres" id="5_tfl4g"]
 

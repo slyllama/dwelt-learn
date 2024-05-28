@@ -1,6 +1,7 @@
-[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://d0mqxs6mkrqql"]
+[gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://d0mqxs6mkrqql"]
 
-[ext_resource type="Shader" path="res://generic/shaders/shader_fresnel.gdshader" id="1_soged"]
+[ext_resource type="Shader" path="res://generic/shaders/sp_fresnel.gdshader" id="1_o50oe"]
+[ext_resource type="Texture2D" uid="uid://dgkrpn8nt8pvt" path="res://generic/tex/shader_tex/laser.jpeg" id="2_8rdu4"]
 [ext_resource type="Texture2D" uid="uid://bpobtu45t8vkb" path="res://generic/tex/stars_tile.png" id="2_wldmf"]
 
 [sub_resource type="Gradient" id="Gradient_vjhi1"]
@@ -19,10 +20,11 @@ noise = SubResource("FastNoiseLite_8rwa0")
 
 [resource]
 render_priority = 0
-shader = ExtResource("1_soged")
+shader = ExtResource("1_o50oe")
 shader_parameter/stars_scale = 10.0
 shader_parameter/fresnel_color = Color(0.4, 0.71, 1, 1)
 shader_parameter/fresnel_amount = 3.4
 shader_parameter/fresnel_intensity = 0.5
 shader_parameter/stars_texture = ExtResource("2_wldmf")
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_rt4rh")
+shader_parameter/smoke_texture = ExtResource("2_8rdu4")
