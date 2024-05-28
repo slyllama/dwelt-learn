@@ -22,6 +22,10 @@ func _ready():
 	
 	$Greybox/VentHandler.turn_off()
 	$FourierTest/AnimationPlayer.play("Idle")
+	$FourierRotate/FourierTest/AnimationPlayer.play("Idle")
+
+func _process(_delta):
+	$FourierRotate.rotation_degrees.y += 0.1
 
 func _physics_process(_delta):
 	if Global.player_position.y > 10.0:

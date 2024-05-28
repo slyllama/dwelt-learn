@@ -75,6 +75,5 @@ texture_focused = ExtResource("7_nqof2")
 [connection signal="focus_entered" from="TopMenu/DebugButton" to="." method="_focus"]
 [connection signal="mouse_entered" from="TopMenu/DebugButton" to="." method="_mouseover"]
 [connection signal="pressed" from="TopMenu/DebugButton" to="." method="_on_debug_button_pressed"]
-[connection signal="focus_entered" from="TopMenu/DebugPopupButton" to="." method="_focus"]
 [connection signal="mouse_entered" from="TopMenu/DebugPopupButton" to="." method="_mouseover"]
 [connection signal="pressed" from="TopMenu/DebugPopupButton" to="." method="_on_debug_popup_button_pressed"]

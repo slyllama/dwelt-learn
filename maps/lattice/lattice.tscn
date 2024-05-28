@@ -95,7 +95,6 @@ orientation = 2
 script = ExtResource("1_hqs2c")
 map_name = "lattice"
 custom_data_load_signal = true
-music_disabled_on_load = true
 
 [node name="Sky" type="WorldEnvironment" parent="."]
 unique_name_in_owner = true
@@ -185,7 +184,7 @@ cast_shadow = 0
 mesh = ExtResource("11_vmy1k")
 
 [node name="Laser" parent="." instance=ExtResource("15_qt6cc")]
-transform = Transform3D(-0.561838, 0, 0.827247, 0, 1, 0, -0.827247, 0, -0.561838, 12.5046, 0.164409, 12.1707)
+transform = Transform3D(-0.561838, 0, 0.827247, 0, 1, 0, -0.827247, 0, -0.561838, 14.4304, 0.164409, 13.9497)
 object_name = "siax"
 
 [node name="FourierTest" parent="." instance=ExtResource("17_wxfph")]
@@ -291,6 +290,12 @@ custom_texture = ExtResource("25_xrdwe")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 12, 11)
 script = ExtResource("24_0csbc")
 custom_texture = ExtResource("25_xrdwe")
+
+[node name="FourierRotate" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="FourierTest" parent="FourierRotate" instance=ExtResource("17_wxfph")]
+transform = Transform3D(-5.68247e-08, 0, 1.3, 0, 1.3, 0, -1.3, 0, -5.68247e-08, 0, 1.7, 16.6)
 
 [connection signal="player_left" from="Laser" to="." method="_on_laser_player_left"]
 [connection signal="activated" from="LaserDetector" to="." method="_on_laser_detector_activated"]

@@ -10,8 +10,7 @@ func _on_settings_button_pressed(): settings_pressed.emit()
 func _mouseover():
 	Global.button_hover.emit()
 func _focus():
-	if Global.debug_state:
-		Global.button_hover.emit()
+	Global.button_hover.emit()
 
 func fade_out():
 	$Delay.start()
