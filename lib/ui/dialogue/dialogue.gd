@@ -48,7 +48,7 @@ func play_dialogue(get_dialogue):
 	$PlayDialogue.play()
 	Global.smoke_faded.emit("in")
 	Global.input_hint_played.emit([
-		{ "title": "PROCEED", "description": "Continue dialogue.", "key": str(Utilities.get_key("interact")) } ], 0.0)
+		{ "title": "PROCEED", "description": "Continue dialogue.", "key": ["interact"] } ], 0.0)
 	current_dialogue = get_dialogue.data
 	current_title = str(_format_text(get_dialogue.title)).to_upper()
 	current_place = 0

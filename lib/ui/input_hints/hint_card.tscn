@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bocissxgni5dt"]
+[gd_scene load_steps=12 format=3 uid="uid://bocissxgni5dt"]
 
 [ext_resource type="Script" path="res://lib/ui/input_hints/hint_card.gd" id="1_25ewk"]
 [ext_resource type="FontFile" uid="uid://b1v28gy50d86f" path="res://generic/fonts/red_hat.ttf" id="1_k8k71"]
@@ -31,6 +31,18 @@ corner_radius_top_left = 2
 corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7eufm"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_blend = true
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xlfur"]
 
@@ -72,6 +84,29 @@ grow_vertical = 2
 theme_override_colors/default_color = Color(0.699653, 0.699653, 0.699653, 1)
 theme_override_fonts/normal_font = ExtResource("4_it01f")
 theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[center]?[/center]"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="ControllerPanelTemplate" type="Panel" parent="Container"]
+visible = false
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_7eufm")
+
+[node name="Key" type="RichTextLabel" parent="Container/ControllerPanelTemplate"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.699653, 0.699653, 0.699653, 1)
+theme_override_fonts/normal_font = ExtResource("4_it01f")
+theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 text = "[center]?[/center]"
 scroll_active = false

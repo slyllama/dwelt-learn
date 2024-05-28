@@ -95,7 +95,7 @@ func _input(event):
 func _process(_delta):
 	Global.camera_y_rotation = rotation_degrees.y
 	
-	if !Global.settings_opened and !Action.active:
+	if !Global.settings_opened and !Action.active and !Global.debug_popup_is_open:
 		if Input.is_joy_button_pressed(0, JOY_BUTTON_DPAD_UP): _zoom("in", 0.25)
 		elif Input.is_joy_button_pressed(0, JOY_BUTTON_DPAD_DOWN): _zoom("out", 0.25)
 	

@@ -12,7 +12,7 @@ func check_for_controller():
 	Global.input_mode_switched.emit()
 
 func _input(event):
-	if event is InputEventKey:
+	if event is InputEventKey or event is InputEventMouseButton:
 		if Global.input_mode == Global.InputModes.CONTROLLER:
 			Global.input_mode = Global.InputModes.KEYBOARD
 			Global.printc("[InputTools] keyboard selected as input.")

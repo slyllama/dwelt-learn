@@ -23,7 +23,27 @@ func fade_out(white = true):
 
 func update_input():
 	for k in key_panels: k.queue_free() # reset array of keys
-	if Global.input_mode == Global.InputModes.CONTROLLER: pass
+	key_panels = []
+	if Global.input_mode == Global.InputModes.CONTROLLER:
+		for key in key_text:
+			var pane = $Container/ControllerPanelTemplate.duplicate()
+			pane.visible = true
+			$Container.add_child(pane)
+			$Container.move_child(pane, 1)
+			key_panels.append(pane)
+			
+			var controller_key = ""
+			match str(key):
+				"interact": controller_key = "A"
+				"skill_glide": controller_key = "RT"
+				"skill_ping": controller_key = "Y"
+				"move_forward": controller_key = "\u2191"
+				"move_back": controller_key = "\u2193"
+				"strafe_left": controller_key = "\u2190"
+				"strafe_right": controller_key = "\u2192"
+				_: controller_key = str(key)
+			pane.get_node("Key").text = Utilities.cntr(controller_key)
+	
 	if Global.input_mode == Global.InputModes.KEYBOARD:
 		for key in key_text:
 			var pane = $Container/KeyPanelTemplate.duplicate()
