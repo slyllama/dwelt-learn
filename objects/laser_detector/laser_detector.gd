@@ -47,7 +47,8 @@ func _ready():
 
 func _process(_delta):
 	if caster == null: return
-	if caster.cast_is_on_type(TYPE) == false:
+	if !"state" in caster.get_parent(): return
+	if caster.cast_is_on_type(TYPE) == false or !caster.get_parent().state:
 		selected = false
 		$DelayTimer.stop()
 		set_inactive()

@@ -7,10 +7,18 @@ extends Node3D
 
 var delay_complete = false # laser won't start moving until after a short delay
 var active = false
+var state = true
+
 signal player_left(object_name, cast_rotation)
+signal state_set(state)
 
 var og_cast_rotation_x
 var og_cast_rotation_y
+
+func set_state(get_state):
+	state = get_state
+	if get_state: state_set.emit(get_state)
+	else: state_set.emit(get_state)
 
 func activate():
 	active = true
@@ -52,6 +60,9 @@ func _ready():
 	$ObjectHandler.activated.connect(activate)
 	$ObjectHandler.deactivated.connect(deactivate)
 	
+	state_set.connect(func(get_state):
+		$Cable.visible = get_state)
+	
 	# For measuring and checking limits
 	og_cast_rotation_x = $Cast.rotation_degrees.x
 	og_cast_rotation_y = $Cast.rotation_degrees.y
@@ -63,7 +74,7 @@ func _ready():
 var start = 2
 
 func _process(_delta):
-	if $Cast.is_colliding() == true:
+	if $Cast.is_colliding():
 		$Cable.start = lerp($Cable.start, $Cast.get_collision_point(), 0.5)
 		$Cable.toggle_end_point(true)
 	else:
@@ -72,11 +83,11 @@ func _process(_delta):
 	
 	# Allow to update for 2 frames, and then only run after the delay
 	if start > 0: start -= 1
-	else: if delay_complete == false: return
+	#else: if !delay_complete: return
 	
 	# Also prevents camera movement on controller from moving the laser
 	# TODO: check whether this works with the controller too
-	if active == true:
+	if active and state:
 		if (Input.is_action_pressed("ui_up")
 			or Input.is_action_pressed("move_forward")
 			or Input.get_joy_axis(0, JOY_AXIS_RIGHT_Y)):
@@ -104,5 +115,5 @@ func _process(_delta):
 		og_cast_rotation_y - laser_limit_angle.x,
 		og_cast_rotation_y + laser_limit_angle.x)
 	
-	if $Cast.cast_is_on_type() == true:
-		$Cast.get_collider().set_active($Cast)
+	if $Cast.cast_is_on_type():
+		if state: $Cast.get_collider().set_active($Cast)

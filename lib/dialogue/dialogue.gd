@@ -7,8 +7,7 @@ extends Node3D
 @export var dialogue_close_distance = 9.0
 
 func _play_dialogue():
-	Action.activate(object_name, false)
-	Action.untargeted.emit()
+	#Action.activate(object_name, false)
 	Global.dialogue_played.emit({
 		"title": dialogue_title,
 		"data": dialogue_data,
