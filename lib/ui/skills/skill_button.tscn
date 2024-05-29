@@ -14,6 +14,7 @@ corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 
 [node name="SkillButton" type="TextureButton"]
+focus_mode = 0
 texture_normal = ExtResource("1_rgtws")
 script = ExtResource("2_dehel")
 
@@ -48,6 +49,7 @@ offset_left = -108.0
 offset_top = -34.0
 offset_right = 180.0
 offset_bottom = 103.0
+mouse_filter = 2
 texture = ExtResource("5_05wnr")
 
 [connection signal="mouse_entered" from="." to="." method="_mouse_entered"]

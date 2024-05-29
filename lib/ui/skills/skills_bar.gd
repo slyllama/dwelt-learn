@@ -12,10 +12,14 @@ func _ready():
 	Action.targeted.connect($HBox/Interact.enable)
 	Action.activated.connect(func(can_toggle):
 		if can_toggle == true:
+			$HBox/Ping.disable()
+			$HBox/Glide.disable()
 			$HBox/Interact.enable()
 			$HBox/Interact.set_texture("CANCEL")
 		else: $HBox/Interact.disable())
 	Action.deactivated.connect(func():
+		$HBox/Ping.enable()
+		$HBox/Glide.enable()
 		$HBox/Interact.disable()
 		$HBox/Interact.set_texture("INTERACT"))
 	
