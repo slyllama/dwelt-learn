@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://cvho6mkc04s7h" path="res://objects/laser_detector/laser_detector.tscn" id="15_mdlo6"]
 [ext_resource type="PackedScene" uid="uid://bdock8rc758qp" path="res://maps/lattice/props/tank.glb" id="15_yru8h"]
 [ext_resource type="PackedScene" uid="uid://07n4fhjhunl" path="res://objects/laser/laser.tscn" id="16_qr5ys"]
-[ext_resource type="AudioStream" uid="uid://c62xqceplif7s" path="res://maps/test/lava.ogg" id="17_ifxop"]
+[ext_resource type="AudioStream" uid="uid://c62xqceplif7s" path="res://maps/lattice/sounds/lava_ambience.ogg" id="17_ifxop"]
 [ext_resource type="Script" path="res://lib/debug/debug_flag/debug_flag.gd" id="18_fje8s"]
 [ext_resource type="Texture2D" uid="uid://chb02gji54q0j" path="res://lib/debug/debug_flag/tex/controller_icon.png" id="19_1pd7c"]
 [ext_resource type="PackedScene" uid="uid://k05mh66k8gs8" path="res://objects/puzzle_piece/puzzle_wrapper.tscn" id="20_v3htv"]

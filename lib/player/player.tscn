@@ -77,8 +77,8 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7nbr8"]
-radius = 0.733304
-height = 1.7
+radius = 0.6
+height = 1.4
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ejrkj"]
 shader = ExtResource("11_f4obd")

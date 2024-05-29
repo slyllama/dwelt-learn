@@ -44,7 +44,7 @@ func _interact():
 		deactivate()
 		return
 	else:
-		if Action.target == object_name:
+		if !Action.active and Action.target == object_name:
 			activate()
 			return
 
