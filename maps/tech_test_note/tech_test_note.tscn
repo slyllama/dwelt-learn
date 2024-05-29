@@ -1,0 +1,123 @@
+[gd_scene load_steps=9 format=3 uid="uid://c7wei6j8r8l4a"]
+
+[ext_resource type="FontFile" uid="uid://nyvmwj526bbr" path="res://generic/fonts/alegreya.ttf" id="1_ujas1"]
+[ext_resource type="Script" path="res://maps/tech_test_note/tech_test_note.gd" id="1_x1cqx"]
+[ext_resource type="Texture2D" uid="uid://d2nv8xnwo132g" path="res://lib/ui/tex/placeholder_logo.png" id="3_x885j"]
+[ext_resource type="FontFile" uid="uid://bhk1jyryyb1be" path="res://generic/fonts/plex_mono.otf" id="4_wt4kc"]
+[ext_resource type="Script" path="res://lib/ui/text_label_anim/text_label_anim.gd" id="5_pc5l1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ycnon"]
+content_margin_left = 10.0
+content_margin_top = 6.0
+content_margin_right = 10.0
+content_margin_bottom = 6.0
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8brg3"]
+content_margin_left = 10.0
+content_margin_top = 6.0
+content_margin_right = 10.0
+content_margin_bottom = 6.0
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eyr5f"]
+content_margin_left = 10.0
+content_margin_top = 6.0
+content_margin_right = 10.0
+content_margin_bottom = 6.0
+bg_color = Color(0.4, 0.709804, 1, 1)
+
+[node name="TechTestNote" type="CanvasLayer"]
+script = ExtResource("1_x1cqx")
+
+[node name="BG" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Container" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="RichTextLabel" parent="Container"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -268.0
+offset_top = 300.0
+offset_right = 268.0
+offset_bottom = 364.0
+grow_horizontal = 2
+theme_override_fonts/normal_font = ExtResource("4_wt4kc")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[center]TECHNICAL TEST[/center]"
+scroll_active = false
+script = ExtResource("5_pc5l1")
+
+[node name="Text" type="RichTextLabel" parent="Container"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -581.0
+offset_top = 370.0
+offset_right = 581.0
+offset_bottom = 641.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.7, 0.7, 0.7, 1)
+theme_override_fonts/normal_font = ExtResource("1_ujas1")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "Thank you for playing the Dwelt technical test!"
+scroll_active = false
+
+[node name="Logo" type="TextureRect" parent="Container"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -102.0
+offset_top = 186.0
+offset_right = 102.0
+offset_bottom = 306.0
+grow_horizontal = 2
+texture = ExtResource("3_x885j")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Proceed" type="Button" parent="Container"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -116.0
+offset_top = 140.0
+offset_right = 116.0
+offset_bottom = 184.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_wt4kc")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_ycnon")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8brg3")
+theme_override_styles/focus = SubResource("StyleBoxFlat_eyr5f")
+text = "PRESS ANY KEY"
+
+[connection signal="pressed" from="Container/Proceed" to="." method="_on_proceed_pressed"]

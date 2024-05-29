@@ -99,7 +99,5 @@ func _input(_event):
 	if Input.is_action_just_pressed("interact"):
 			if Global.dialogue_active == true: play_phrase()
 
-func _mouseover(): Global.button_hover.emit()
-
 func _on_proceed_pressed():
 	if Global.dialogue_active == true: play_phrase()

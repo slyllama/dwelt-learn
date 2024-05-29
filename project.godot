@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Dwelt"
-run/main_scene="res://lib/loading/loading.tscn"
+run/main_scene="res://maps/tech_test_note/tech_test_note.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="dwelt"
 config/features=PackedStringArray("4.2", "Forward Plus")
@@ -136,6 +136,6 @@ controller_debug={
 [rendering]
 
 lights_and_shadows/directional_shadow/soft_shadow_filter_quality=3
-environment/defaults/default_clear_color=Color(0.0666667, 0.0666667, 0.0666667, 1)
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)
 anti_aliasing/quality/screen_space_aa=1
 occlusion_culling/use_occlusion_culling=true

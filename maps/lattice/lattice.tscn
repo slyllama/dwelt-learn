@@ -279,7 +279,7 @@ dialogue_close_distance = 7.0
 unique_name_in_owner = true
 
 [node name="SP" type="Marker3D" parent="SavePoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 18)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.75, 0, 19.75)
 script = ExtResource("24_0csbc")
 custom_texture = ExtResource("25_xrdwe")
 
@@ -304,7 +304,7 @@ custom_texture = ExtResource("25_xrdwe")
 transform = Transform3D(-5.68247e-08, 0, 1.3, 0, 1.3, 0, -1.3, 0, -5.68247e-08, 0, 1.7, 16.6)
 
 [node name="PuzzleWrapper" parent="." instance=ExtResource("27_nwdys")]
-transform = Transform3D(0.635607, 0, -0.772013, 0, 1, 0, 0.772013, 0, 0.635607, 10.3115, -0.0620207, 12.7932)
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 19.7994, 0.124966, 18.5905)
 
 [connection signal="player_left" from="Laser" to="." method="_on_laser_player_left"]
 [connection signal="activated" from="LaserDetector" to="." method="_on_laser_detector_activated"]
