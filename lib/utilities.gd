@@ -32,6 +32,16 @@ func get_all_children(in_node, arr := []):
 		arr = get_all_children(child,arr)
 	return(arr)
 
+# Checking for retina, and things like that
+func configure_screen():
+	if DisplayServer.screen_get_size().x > 2000:
+		DisplayServer.window_set_min_size(Global.MIN_SCREEN_SIZE * 2.0)
+		get_window().content_scale_factor = 2.0
+		if OS.get_name() != "macOS":
+			DisplayServer.cursor_set_custom_image(
+				load("res://lib/ui/tex/cursor_2x.png"))
+	else: DisplayServer.window_set_min_size(Global.MIN_SCREEN_SIZE)
+
 # Toggle full screen
 func toggle_full_screen():
 	if Global.settings.full_screen == true:
