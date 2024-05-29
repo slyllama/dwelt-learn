@@ -16,6 +16,7 @@ signal untargeted # cursor has moved away from an action
 # Perform all the logic and assignments for entering an action
 func activate(object_name, can_toggle = true):
 	active = true
+	Action.untargeted.emit()
 	last_target = object_name
 	activated.emit(can_toggle)
 

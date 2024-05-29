@@ -1,24 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://07n4fhjhunl"]
+[gd_scene load_steps=8 format=3 uid="uid://07n4fhjhunl"]
 
 [ext_resource type="Script" path="res://objects/laser/laser.gd" id="1_qy5bo"]
 [ext_resource type="PackedScene" uid="uid://bbt6np1daksl4" path="res://objects/cable/cable.tscn" id="2_qx4ym"]
 [ext_resource type="Script" path="res://objects/laser/Cast.gd" id="3_0t5vk"]
-[ext_resource type="Texture2D" uid="uid://bd7c4x2ajeimr" path="res://generic/tex/shader_tex/floor_diff.png" id="5_1mnxb"]
-[ext_resource type="Texture2D" uid="uid://5bruu4afeor5" path="res://generic/tex/shader_tex/floor_norm.png" id="6_67wx2"]
+[ext_resource type="Material" uid="uid://8dgrpigvgadk" path="res://generic/mat_placeholder.tres" id="4_gxc62"]
 [ext_resource type="PackedScene" uid="uid://csbchge3673bh" path="res://lib/object_handler/object_handler.tscn" id="7_2554r"]
 [ext_resource type="AudioStream" uid="uid://ksek1nmbm7lq" path="res://objects/laser/enter_laser.ogg" id="8_pae4y"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_80sux"]
-albedo_texture = ExtResource("5_1mnxb")
-metallic = 0.5
-normal_enabled = true
-normal_scale = 2.0
-normal_texture = ExtResource("6_67wx2")
-backlight = Color(0.25, 0.25, 0.25, 1)
-uv1_scale = Vector3(2, 2, 2)
-distance_fade_mode = 2
-distance_fade_min_distance = 1.0
-distance_fade_max_distance = 2.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_eydll"]
 size = Vector3(2, 2, 2)
@@ -42,7 +29,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -30)
 [node name="Placeholder2" type="CSGBox3D" parent="Cast"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.8)
 size = Vector3(0.5, 0.5, 2)
-material = SubResource("StandardMaterial3D_80sux")
+material = ExtResource("4_gxc62")
 
 [node name="DockingPoint" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
@@ -53,7 +40,7 @@ stream = ExtResource("8_pae4y")
 [node name="Placeholder" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 size = Vector3(2, 2, 2)
-material = SubResource("StandardMaterial3D_80sux")
+material = ExtResource("4_gxc62")
 
 [node name="ObjectHandler" parent="." instance=ExtResource("7_2554r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

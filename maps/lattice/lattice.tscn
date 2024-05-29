@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://dsf4aknq3seh2"]
+[gd_scene load_steps=37 format=3 uid="uid://dsf4aknq3seh2"]
 
 [ext_resource type="Script" path="res://maps/lattice/lattice.gd" id="1_hqs2c"]
 [ext_resource type="Texture2D" uid="uid://c5duom5wl7px7" path="res://generic/tex/sky.png" id="2_1uuus"]
@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://cvho6mkc04s7h" path="res://objects/laser_detector/laser_detector.tscn" id="24_dbxhx"]
 [ext_resource type="AudioStream" uid="uid://gspni8xs632w" path="res://generic/sounds/play_dialogue.ogg" id="25_71yxt"]
 [ext_resource type="Texture2D" uid="uid://chb02gji54q0j" path="res://lib/debug/debug_flag/tex/controller_icon.png" id="25_xrdwe"]
+[ext_resource type="PackedScene" uid="uid://k05mh66k8gs8" path="res://objects/puzzle_piece/puzzle_wrapper.tscn" id="27_nwdys"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dbpli"]
 panorama = ExtResource("2_1uuus")
@@ -301,6 +302,9 @@ custom_texture = ExtResource("25_xrdwe")
 
 [node name="FourierTest" parent="FourierRotate" instance=ExtResource("17_wxfph")]
 transform = Transform3D(-5.68247e-08, 0, 1.3, 0, 1.3, 0, -1.3, 0, -5.68247e-08, 0, 1.7, 16.6)
+
+[node name="PuzzleWrapper" parent="." instance=ExtResource("27_nwdys")]
+transform = Transform3D(0.635607, 0, -0.772013, 0, 1, 0, 0.772013, 0, 0.635607, 10.3115, -0.0620207, 12.7932)
 
 [connection signal="player_left" from="Laser" to="." method="_on_laser_player_left"]
 [connection signal="activated" from="LaserDetector" to="." method="_on_laser_detector_activated"]

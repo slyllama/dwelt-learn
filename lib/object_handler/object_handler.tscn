@@ -8,6 +8,7 @@ resource_local_to_scene = true
 [node name="ObjectHandler" type="Area3D"]
 collision_layer = 4
 script = ExtResource("1_lvfoe")
+trigger_mode = null
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_hgv8v")

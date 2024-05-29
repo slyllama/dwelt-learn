@@ -5,12 +5,18 @@ extends Area3D
 # which can be used by its parent class. The aim here is to provide a single
 # object handler for every kind of action - dialogue, machines, elevators etc.
 
+signal triggered
+
 ## This object name is used by the action handler and must be specified by the
 ## parent scene.
 @export var object_name = "none"
 @export var collision_size = Vector3(1.0, 1.0, 1.0)
 @export var can_toggle_action = true
 @export var interactable = true # deactivations are still possible
+## If [code]trigger_mode[/code] is enabled, all other entering/exiting logic
+## will be ignored, and interacting with this object handler will simply
+## propogate the [code]triggered[/code] signal.
+@export var trigger_mode = false
 
 signal activated
 signal deactivated
@@ -28,13 +34,19 @@ func deactivate():
 	deactivated.emit()
 
 func _interact():
-	if Action.target == object_name and interactable == true:
-		if Action.active == false and active == false:
-			activate()
-			return
-	if active == true and can_toggle_action == true:
+	if !interactable: return
+	
+	if trigger_mode and !Action.active and Action.target == object_name:
+		triggered.emit()
+		return
+	
+	if active and can_toggle_action:
 		deactivate()
 		return
+	else:
+		if Action.target == object_name:
+			activate()
+			return
 
 func _ready():
 	if !Engine.is_editor_hint():

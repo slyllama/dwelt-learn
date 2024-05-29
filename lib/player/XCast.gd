@@ -5,11 +5,11 @@ var on_object = false
 func _is_on_object():
 	var o = false
 	if get_collider() != null:
-		var p = get_collider().get_parent()
+		var p = get_collider()
 		if "object_name" in p:
 			if "interactable" in p:
 				# Prevent non-interactable objects from triggering this
-				if p.interactable == true: o = true
+				if p.interactable: o = true
 			else: o = true
 	return(o)
 
@@ -19,12 +19,12 @@ func _ready():
 
 func _process(_delta):
 	if _is_on_object() == true:
-		var oname = get_collider().get_parent().object_name
+		var oname = get_collider().object_name
 		Action.target = oname
 	
 	if on_object == false:
 		if _is_on_object() == true:
-			var oname = get_collider().get_parent().object_name
+			var oname = get_collider().object_name
 			if oname != "ignore":
 				on_object = true
 			else:
