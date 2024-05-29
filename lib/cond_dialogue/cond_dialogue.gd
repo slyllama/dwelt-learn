@@ -8,9 +8,9 @@ var dialogue_data = {}
 
 func _play_dialogue():
 	Global.dialogue_played.emit({
-		"title": "test",
+		"title": dialogue_data.title,
 		"data": ["1", "2"],
-		"character": "fourier"})
+		"character": dialogue_data.character})
 
 func _close_dialogue():
 	Global.dialogue_closed_early.emit()

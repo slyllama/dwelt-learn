@@ -15,6 +15,10 @@ func _ready():
 	)
 	proc_save() # trigger save loading now that customs have been added
 
+func _input(_event):
+	if Input.is_action_just_pressed("debug_action"):
+		Global.printc(Save.save_data)
+
 func _on_lever_a_state_set(state):
 	Save.set_data(map_name, "lever_a_state", state)
 

@@ -192,8 +192,6 @@ func _ready():
 			get_node_or_null("Music").play()
 
 func _input(_event):
-	if Input.is_action_just_pressed("debug_action"):
-		_get_nearest_save_point()
 	if Input.is_action_just_pressed("skill_ping"):
 		fire_ping()
 
