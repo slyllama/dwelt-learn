@@ -20,7 +20,6 @@ func _ready():
 		var get_file = FileAccess.open(dialogue_data_file, FileAccess.READ)
 		dialogue_data = JSON.parse_string(get_file.get_as_text())
 		get_file.close()
-		Global.printc(dialogue_data, "yellow")
 	
 	# Object handler-specifics
 	$ObjectHandler.object_name = object_name

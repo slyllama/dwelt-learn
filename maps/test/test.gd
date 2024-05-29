@@ -16,6 +16,7 @@ func _ready():
 	proc_save() # trigger save loading now that customs have been added
 
 func _input(_event):
+	super(_event)
 	if Input.is_action_just_pressed("debug_action"):
 		Global.printc(Save.save_data)
 

@@ -14,7 +14,7 @@ dest_files=["res://.godot/imported/rocket.glb-1148cc66129204686f115c43e6e41674.s
 [params]
 
 nodes/root_type=""
-nodes/root_name="LegTest"
+nodes/root_name="Rocket"
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 meshes/ensure_tangents=true

@@ -302,8 +302,9 @@ custom_texture = ExtResource("25_xrdwe")
 [node name="FourierTest" parent="FourierRotate" instance=ExtResource("17_wxfph")]
 transform = Transform3D(-5.68247e-08, 0, 1.3, 0, 1.3, 0, -1.3, 0, -5.68247e-08, 0, 1.7, 16.6)
 
-[node name="PuzzleWrapper" parent="." instance=ExtResource("27_nwdys")]
+[node name="LaserLever" parent="." instance=ExtResource("27_nwdys")]
 transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 19.7994, 0.124966, 18.5905)
+lever_name = "laser_lever"
 
 [connection signal="player_left" from="Laser" to="." method="_on_laser_player_left"]
 [connection signal="activated" from="LaserDetector" to="." method="_on_laser_detector_activated"]

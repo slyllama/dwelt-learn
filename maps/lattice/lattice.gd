@@ -3,7 +3,7 @@ extends "res://lib/world_loader/world_loader.gd"
 # These will disappear when on the second floor
 @onready var first_floor_components = [
 	$Tank, $Tank2, $Tank3, $MushroomCluster, $Motes, $Elevator, $FourierTest,
-	$Laser, $FourierRotate, $PuzzleWrapper ]
+	$Laser, $FourierRotate, $LaserLever ]
 
 var on_second_floor = false
 var played_glider_hint = false
@@ -11,11 +11,11 @@ var played_glider_hint = false
 func _ready():
 	interact_objects = [
 		$Elevator, $Laser, $FourierTest/DialogueArea, $Tank2/TankDialogue,
-		$LaserDetector/DialogueArea, $PuzzleWrapper ]
+		$LaserDetector/DialogueArea, $LaserLever ]
 	spring_arm_objects = [$Greybox]
 	super()
 	
-	$PuzzleWrapper.state_set.connect(func(get_state):
+	$LaserLever.state_set.connect(func(get_state):
 		Save.set_data(map_name, "laser_activated", get_state)
 		$Laser.set_state(get_state))
 	
@@ -29,7 +29,7 @@ func _ready():
 	proc_save() # trigger save loading now that customs have been added
 	
 	# Make sure laser agrees with lever
-	$Laser.set_state($PuzzleWrapper.state)
+	$Laser.set_state($LaserLever.state)
 	
 	$Greybox/VentHandler.turn_off()
 	$FourierTest/AnimationPlayer.play("Idle")

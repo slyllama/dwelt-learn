@@ -99,6 +99,7 @@ func insights_refresh():
 
 func fire_ping():
 	if ping_cooling or Action.active: return
+	
 	ping_cooling = true
 	PingCooldown.start()
 	PingSound.play()

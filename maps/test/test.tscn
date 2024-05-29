@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://yyd0ltle0un5"]
+[gd_scene load_steps=28 format=3 uid="uid://yyd0ltle0un5"]
 
 [ext_resource type="PackedScene" uid="uid://e0k8h1ytp7wi" path="res://lib/ui/hud/hud.tscn" id="1_3q1w7"]
 [ext_resource type="Script" path="res://maps/test/test.gd" id="1_fvnbx"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://k05mh66k8gs8" path="res://objects/puzzle_piece/lever.tscn" id="13_ix5rb"]
 [ext_resource type="PackedScene" uid="uid://bw14qvqobtubd" path="res://characters/fourier/fourier.glb" id="13_r7xks"]
 [ext_resource type="PackedScene" uid="uid://bvnmyltvk8rhe" path="res://lib/cond_dialogue/cond_dialogue.tscn" id="15_j3rmr"]
+[ext_resource type="PackedScene" uid="uid://djgjcyichaft4" path="res://objects/rocket/rocket.glb" id="16_syt88"]
 [ext_resource type="AudioStream" uid="uid://c62xqceplif7s" path="res://maps/lattice/sounds/lava_ambience.ogg" id="17_ifxop"]
 [ext_resource type="Script" path="res://lib/debug/debug_flag/debug_flag.gd" id="18_fje8s"]
 [ext_resource type="Texture2D" uid="uid://chb02gji54q0j" path="res://lib/debug/debug_flag/tex/controller_icon.png" id="19_1pd7c"]
@@ -185,6 +186,9 @@ transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 0, 2.4, -2)
 transform = Transform3D(0.769231, 0, 0, 0, 0.769231, 0, 0, 0, 0.769231, 0, 0, 0)
 object_name = "lever_dialogue"
 dialogue_data_file = "res://maps/test/d_lever_jedi.json"
+
+[node name="Rocket" parent="." instance=ExtResource("16_syt88")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -20, 18, -16)
 
 [connection signal="state_set" from="LeverA" to="." method="_on_lever_a_state_set"]
 [connection signal="state_set" from="LeverB" to="." method="_on_lever_b_state_set"]

@@ -60,7 +60,6 @@ func _process(_delta):
 
 func _mouse_entered():
 	if !enabled: return
-	Global.printc("mouse entered", "yellow")
 	self_modulate.a = 1.0
 
 func _mouse_left(): self_modulate.a = 0.4
