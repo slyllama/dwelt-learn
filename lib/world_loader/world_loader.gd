@@ -40,7 +40,7 @@ var PingCooldown = Timer.new()
 var PingSound = AudioStreamPlayer.new()
 var ping_cooling = false
 
-func _get_nearest_save_point(height = 1.5):
+func _get_nearest_save_point(height = 2.0):
 	if get_node_or_null("SavePoints") == null:
 		Global.printc("[WorldLoader] no save point data!", "red")
 	

@@ -1,5 +1,6 @@
 extends Node3D
 
+@export var lever_name = "ignore"
 var delay = false
 var state = false
 
@@ -8,14 +9,14 @@ signal state_set(state)
 func set_state(get_state):
 	state = get_state
 	if get_state:
-		$TestLever/AnimationPlayer.play("LeverPull")
+		$Model/AnimationPlayer.play("LeverPull")
 		state_set.emit(get_state)
 	else:
-		$TestLever/AnimationPlayer.play_backwards("LeverPull")
+		$Model/AnimationPlayer.play_backwards("LeverPull")
 		state_set.emit(get_state)
 
 func _ready():
-	$ObjectHandler.object_name = "puzzle_wrapper"
+	$ObjectHandler.object_name = lever_name
 
 func _on_object_handler_activated():
 	Global.input_hint_cleared.emit()
