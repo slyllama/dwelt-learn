@@ -3,9 +3,9 @@ extends "res://lib/world_loader/world_loader.gd"
 func _n(): return
 
 func _ready():
-	interact_objects = [ $Insights/Insight, $Insights/Insight2 ]
+	interact_objects = [ $Insights/Insight, $Insights/Insight2, $LeverA, $LeverB, $LeverJedi ]
 	super()
-	$Fourier/AnimationPlayer.play("Idle")
+	$LeverJedi/AnimationPlayer.play("Idle")
 
 	Save.save_loaded.connect(func():
 		var lever_a_state = Save.get_data(map_name, "lever_a_state")
