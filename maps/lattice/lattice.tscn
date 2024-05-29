@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dsf4aknq3seh2"]
+[gd_scene load_steps=36 format=3 uid="uid://dsf4aknq3seh2"]
 
 [ext_resource type="Script" path="res://maps/lattice/lattice.gd" id="1_hqs2c"]
 [ext_resource type="Texture2D" uid="uid://c5duom5wl7px7" path="res://generic/tex/sky.png" id="2_1uuus"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://d1fy6jygommc6" path="res://generic/tex/particles/mote.png" id="10_vpwvh"]
 [ext_resource type="ArrayMesh" uid="uid://c48ccnw3gi5h4" path="res://objects/god_ray/god_ray.obj" id="11_vmy1k"]
 [ext_resource type="PackedScene" uid="uid://djgjcyichaft4" path="res://objects/rocket/rocket.glb" id="13_8sf1c"]
+[ext_resource type="Material" uid="uid://cu31l43wp5syj" path="res://objects/god_ray/mat_god_ray.tres" id="13_dmwwp"]
 [ext_resource type="PackedScene" uid="uid://07n4fhjhunl" path="res://objects/laser/laser.tscn" id="15_qt6cc"]
 [ext_resource type="PackedScene" uid="uid://i1jp4klishr3" path="res://lib/dialogue/dialogue.tscn" id="16_j30j2"]
 [ext_resource type="PackedScene" uid="uid://d23wqewgge7mv" path="res://objects/elevator/elevator.tscn" id="17_l4sxi"]
@@ -179,10 +180,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19)
 height = 3
 
 [node name="GodRay1" type="MeshInstance3D" parent="."]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.3, 20.663, 1.3)
-visible = false
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0.126418, -1.9737, 29.8832)
 cast_shadow = 0
 mesh = ExtResource("11_vmy1k")
+surface_material_override/0 = ExtResource("13_dmwwp")
 
 [node name="Laser" parent="." instance=ExtResource("15_qt6cc")]
 transform = Transform3D(-0.561838, 0, 0.827247, 0, 1, 0, -0.827247, 0, -0.561838, 14.4304, 0.164409, 13.9497)

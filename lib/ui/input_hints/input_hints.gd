@@ -5,8 +5,9 @@ var card_nodes = []
 var transitioning = false
 var active = false
 
-func clear_hints():
-	if !active : return
+func clear_hints(override = false):
+	if !override:
+		if !active : return
 	active = false
 	
 	# Old version:
@@ -54,4 +55,4 @@ func _on_check_timer_timeout():
 		if c.title == "Interact": is_interact = true
 	if is_interact and Action.target == "":
 		Global.printc("[InputHints] clearing a stuck input hint.", "yellow")
-		Global.input_hint_cleared.emit()
+		clear_hints(true) # override = true: always clear no matter what
