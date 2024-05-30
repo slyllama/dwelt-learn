@@ -133,6 +133,7 @@ func _ready():
 	# Reset everything so that ghost data doesn't persist after returning to the menu
 	Action.deactivate() # interesting bug where an action will persist across maps
 	Action.in_glide = false
+	Global.can_move = true
 	Global.insights_collected = 0
 
 	# Fade in all sound if the game wasn't already muted
