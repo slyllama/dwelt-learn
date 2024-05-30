@@ -33,7 +33,7 @@ _subresources={
 "materials": {
 "mat_placeholder": {
 "use_external/enabled": true,
-"use_external/path": "res://generic/mat_placeholder.tres"
+"use_external/path": "res://generic/mat_yellow.tres"
 }
 }
 }

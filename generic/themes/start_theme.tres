@@ -3,7 +3,7 @@
 [ext_resource type="FontFile" uid="uid://b1v28gy50d86f" path="res://generic/fonts/red_hat.ttf" id="1_uwj03"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fvos8"]
-bg_color = Color(0, 0, 0, 1)
+bg_color = Color(0.0807833, 0.0807833, 0.0807833, 1)
 border_width_left = 4
 border_width_right = 4
 border_color = Color(0.4, 0.709804, 1, 1)

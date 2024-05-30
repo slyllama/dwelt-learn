@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://objects/elevator/elevator.gd" id="1_c374k"]
 [ext_resource type="PackedScene" uid="uid://csbchge3673bh" path="res://lib/object_handler/object_handler.tscn" id="2_6ng8t"]
 [ext_resource type="Material" uid="uid://cv238mthfr37m" path="res://objects/elevator/mat_elevator.tres" id="2_wfjvg"]
-[ext_resource type="Material" uid="uid://8dgrpigvgadk" path="res://generic/mat_placeholder.tres" id="3_0oaxb"]
+[ext_resource type="Material" uid="uid://djdiuamqrkis0" path="res://generic/mat_yellow.tres" id="3_qxc4i"]
 [ext_resource type="AudioStream" uid="uid://ksek1nmbm7lq" path="res://objects/laser/enter_laser.ogg" id="4_jyhym"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_poms6"]
@@ -22,11 +22,10 @@ script = ExtResource("1_c374k")
 
 [node name="ObjectHandler" parent="." instance=ExtResource("2_6ng8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 0)
-cube_size = 1.5
 can_toggle_action = false
 
 [node name="Mesh" type="CSGBox3D" parent="ObjectHandler"]
-material = ExtResource("3_0oaxb")
+material = ExtResource("3_qxc4i")
 
 [node name="Column" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)

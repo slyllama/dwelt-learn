@@ -2,8 +2,8 @@ extends "res://lib/world_loader/world_loader.gd"
 
 # These will disappear when on the second floor
 @onready var first_floor_components = [
-	$Tank, $Tank2, $Tank3, $MushroomCluster, $Motes, $Elevator, $FourierTest,
-	$Laser, $FourierRotate, $LaserLever ]
+	$Tank, $Tank2, $Tank3, $MushroomCluster, $Motes, $FourierTest, $Laser,
+	$FourierRotate, $LaserLever ]
 
 var on_second_floor = false
 var played_glider_hint = false

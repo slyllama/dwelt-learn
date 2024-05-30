@@ -3,7 +3,6 @@ extends CanvasLayer
 const InsightFlame = preload("res://lib/ui/insight/insight_flame/insight_flame.tscn")
 
 const INODE = preload("res://lib/ui/insight/tex/insight_node.png")
-const PLACEHOLDER = preload("res://generic/tex/placeholder.png")
 const BLUR = preload("res://objects/insight/tex/insight_blur.png")
 const RANDOM = [0.01, 0.03, 0.02, 0.041, 0.012, 0.06, 0.032, 0.02, 0.06, 0.045]
 # Parameters for parallax offset

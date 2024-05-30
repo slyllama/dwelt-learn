@@ -13,6 +13,7 @@ func _format_text(get_text): # add proper dashes, colours, etc
 	return(out_text + "[/center]")
 
 func go_to_menu():
+	Global.button_click.emit()
 	can_interact = false
 	var fade_tween = create_tween()
 	fade_tween.tween_property($Container, "modulate:a", 0.0, 1.0)

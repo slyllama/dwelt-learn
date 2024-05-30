@@ -1,32 +1,25 @@
-[gd_scene load_steps=10 format=3 uid="uid://c7wei6j8r8l4a"]
+[gd_scene load_steps=13 format=3 uid="uid://c7wei6j8r8l4a"]
 
 [ext_resource type="FontFile" uid="uid://nyvmwj526bbr" path="res://generic/fonts/alegreya.ttf" id="1_ujas1"]
 [ext_resource type="Script" path="res://maps/tech_test_note/tech_test_note.gd" id="1_x1cqx"]
 [ext_resource type="Texture2D" uid="uid://d2nv8xnwo132g" path="res://lib/ui/tex/placeholder_logo.png" id="3_x885j"]
 [ext_resource type="Texture2D" uid="uid://clnh0ggn2ilep" path="res://maps/tech_test_note/tex/separator.png" id="5_kph0f"]
-[ext_resource type="FontFile" uid="uid://b1v28gy50d86f" path="res://generic/fonts/red_hat.ttf" id="6_878xh"]
+[ext_resource type="Theme" uid="uid://ch4overpy78ds" path="res://generic/themes/start_theme.tres" id="6_heuii"]
 [ext_resource type="FontFile" uid="uid://bhk1jyryyb1be" path="res://generic/fonts/plex_mono.otf" id="6_wagbv"]
+[ext_resource type="Script" path="res://lib/ui/clicky_button/clicky_button.gd" id="7_pxqe2"]
+[ext_resource type="PackedScene" uid="uid://d24gofb7bfo8k" path="res://lib/ui/hover_sound/hover_sound.tscn" id="8_l3t5x"]
+[ext_resource type="PackedScene" uid="uid://sihpp2cwoyfc" path="res://lib/ui/sprite_center/sprite_center.tscn" id="9_4eqqr"]
+[ext_resource type="Texture2D" uid="uid://dinrdf02xeqaq" path="res://generic/tex/fade_ramp.tres" id="10_586g8"]
+[ext_resource type="Texture2D" uid="uid://d1fy6jygommc6" path="res://generic/tex/particles/mote.png" id="11_varb8"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ycnon"]
-content_margin_left = 10.0
-content_margin_top = 6.0
-content_margin_right = 10.0
-content_margin_bottom = 6.0
-bg_color = Color(1, 1, 1, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8brg3"]
-content_margin_left = 10.0
-content_margin_top = 6.0
-content_margin_right = 10.0
-content_margin_bottom = 6.0
-bg_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eyr5f"]
-content_margin_left = 10.0
-content_margin_top = 6.0
-content_margin_right = 10.0
-content_margin_bottom = 6.0
-bg_color = Color(0.4, 0.709804, 1, 1)
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bc5mo"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(200, 100, 1)
+gravity = Vector3(0, -20, 0)
+scale_min = 0.5
+scale_max = 0.7
+color_ramp = ExtResource("10_586g8")
 
 [node name="TechTestNote" type="CanvasLayer"]
 script = ExtResource("1_x1cqx")
@@ -67,6 +60,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="SpriteCenter" parent="Container" instance=ExtResource("9_4eqqr")]
+position = Vector2(0, 150)
+keep_y = true
+
+[node name="Motes2D" type="GPUParticles2D" parent="Container/SpriteCenter"]
+amount = 6
+process_material = SubResource("ParticleProcessMaterial_bc5mo")
+texture = ExtResource("11_varb8")
+preprocess = 2.0
+speed_scale = 0.5
 
 [node name="Logo" type="TextureRect" parent="Container"]
 custom_minimum_size = Vector2(0, 120)
@@ -122,11 +126,11 @@ theme_override_constants/line_separation = -3
 theme_override_fonts/normal_font = ExtResource("1_ujas1")
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
-text = "[center]Welcome to the [color=#66b5ff]Dwelt[/color] technical test! [color=#66b5ff]Dwelt[/color] is an environment puzzle-driven RPG in which you play as a Scrapper-bot, tasked with journeying through realms of emotion in order to unlock and extract their essence, and to traffick it to robots desperate for a dose of the remnants of humanity.
+text = "[center][center][center]Welcome to the [color=#66b5ff]Dwelt[/color] technical test! [color=#66b5ff]Dwelt[/color] is an environment puzzle-driven RPG in which you play as a Scrapper-bot, tasked with journeying through realms of emotion in order to unlock and extract their essence, and to traffick it to robots desperate for a dose of the remnants of humanity.
 [font_size=10] [/font_size]
 This build contains no setting or narrative content – it's just a test of the mechanics used to tell the story of the Scrappers and those who dwell amongst the Lattice. [color=#66b5ff]Your help in trialing these features, attempting novel combinations of actions, and documenting the bugs that result, will be invaluable in stabilising this world and readying it to be painted in.[/color] Checking that saving and loading is robust, combining unforseen actions (for instance, initiating a skill simultaneously from two different inputs), and tests like these will be very helpful.
 [font_size=10] [/font_size]
-Thank you so much for your interest in [color=#66b5ff]Dwelt[/color]! Don't hesitate to contact me directly with any issues you encounter or ideas you might have, or use the contact methods listed in the readme.[/center]"
+Thank you so much for your interest in [color=#66b5ff]Dwelt[/color]! Don't hesitate to contact me directly with any issues you encounter or ideas you might have, or use the contact methods listed in the readme.[/center][/center][/center]"
 scroll_active = false
 
 [node name="Sep2" type="TextureRect" parent="Container"]
@@ -159,14 +163,11 @@ offset_right = 116.0
 offset_bottom = 274.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("6_878xh")
-theme_override_font_sizes/font_size = 16
-theme_override_styles/normal = SubResource("StyleBoxFlat_ycnon")
-theme_override_styles/hover = SubResource("StyleBoxFlat_8brg3")
-theme_override_styles/focus = SubResource("StyleBoxFlat_eyr5f")
+theme = ExtResource("6_heuii")
 text = "CONTINUE"
+script = ExtResource("7_pxqe2")
+override_once = true
+
+[node name="UIHover" parent="." instance=ExtResource("8_l3t5x")]
 
 [connection signal="pressed" from="Container/Proceed" to="." method="_on_proceed_pressed"]

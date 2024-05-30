@@ -67,7 +67,7 @@ func _ready():
 	$InputTools.check_for_controller()
 	
 	# Focus assignments
-	$LoadPanel/VBox/Quit.focus_neighbor_bottom = "../../../HUDButtons/TopMenu/DebugButton"
+	$LoadPanel/VBox/Quit.focus_neighbor_bottom = "../../../HUDButtons/TopMenu/SettingsButton"
 	$HUDButtons/TopMenu/SettingsButton.focus_neighbor_top = "../../../LoadPanel/VBox/Quit"
 	$HUDButtons/TopMenu/DebugPopupButton.focus_neighbor_top = "../../../LoadPanel/VBox/Quit"
 	Global.debug_toggled.connect(func():
