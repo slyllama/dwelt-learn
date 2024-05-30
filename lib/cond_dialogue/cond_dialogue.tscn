@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvnmyltvk8rhe"]
+
+[ext_resource type="Script" path="res://lib/cond_dialogue/cond_dialogue.gd" id="1_ynkf1"]
+[ext_resource type="PackedScene" uid="uid://csbchge3673bh" path="res://lib/object_handler/object_handler.tscn" id="2_uxqm2"]
+
+[node name="CondDialogueArea" type="Node3D"]
+script = ExtResource("1_ynkf1")
+
+[node name="ObjectHandler" parent="." instance=ExtResource("2_uxqm2")]
+collision_size = Vector3(1.5, 1.5, 1.5)
+can_toggle_action = false

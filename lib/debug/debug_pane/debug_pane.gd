@@ -101,6 +101,7 @@ func _on_toggle_player_vis_pressed():
 	Global.debug_popup_closed.emit()
 
 func _on_reset_settings_pressed():
+	Global.input_data_loaded = false # force this to be re-processed
 	DirAccess.remove_absolute("user://settings.json")
 	DirAccess.remove_absolute("user://input_data.json")
 	get_tree().change_scene_to_file("res://lib/loading/loading.tscn")

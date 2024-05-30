@@ -9,7 +9,7 @@ vec3 fresnel_glow(float amount, float intensity, vec3 color, vec3 normal, vec3 v
 	return pow((1.0 - dot(normalize(normal), normalize(view))), amount) * color * intensity; }
 
 void fragment() {
-	vec3 c = textureLod(screen_texture, SCREEN_UV / 1.4, 0.0).rgb;
-	ALBEDO = c.rgb + fresnel_glow(1.0, 0.1, base_color.rgb, NORMAL, VIEW);
+	vec3 c = textureLod(screen_texture, SCREEN_UV / 1.02, 0.0).rgb;
+	ALBEDO = c.rgb + fresnel_glow(2.0, 0.1, base_color.rgb, NORMAL, VIEW);
 	ALPHA = alpha_scale;
 }

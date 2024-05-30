@@ -1,13 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://k05mh66k8gs8"]
+[gd_scene load_steps=5 format=3 uid="uid://k05mh66k8gs8"]
 
-[ext_resource type="PackedScene" uid="uid://27jqipt5besq" path="res://objects/puzzle_piece/test_lever.glb" id="1_mjvco"]
-[ext_resource type="Script" path="res://objects/puzzle_piece/puzzle_wrapper.gd" id="1_rb0he"]
+[ext_resource type="PackedScene" uid="uid://27jqipt5besq" path="res://objects/puzzle_piece/lever.glb" id="1_mjvco"]
+[ext_resource type="Script" path="res://objects/puzzle_piece/lever.gd" id="1_rb0he"]
 [ext_resource type="PackedScene" uid="uid://csbchge3673bh" path="res://lib/object_handler/object_handler.tscn" id="2_0lywk"]
+[ext_resource type="AudioStream" uid="uid://bybjkc3qgp8a1" path="res://objects/puzzle_piece/sound/lever.ogg" id="4_4j1f7"]
 
-[node name="PuzzleWrapper" type="Node3D"]
+[node name="Lever" type="Node3D"]
 script = ExtResource("1_rb0he")
 
-[node name="TestLever" parent="." instance=ExtResource("1_mjvco")]
+[node name="Model" parent="." instance=ExtResource("1_mjvco")]
 
 [node name="ObjectHandler" parent="." instance=ExtResource("2_0lywk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.63193, 0.520368)
@@ -17,6 +18,13 @@ trigger_mode = true
 [node name="DelayTimer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+
+[node name="LeverSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_4j1f7")
+attenuation_model = 2
+volume_db = -4.0
+panning_strength = 1.5
+attenuation_filter_cutoff_hz = 20500.0
 
 [connection signal="activated" from="ObjectHandler" to="." method="_on_object_handler_activated"]
 [connection signal="triggered" from="ObjectHandler" to="." method="_on_object_handler_triggered"]

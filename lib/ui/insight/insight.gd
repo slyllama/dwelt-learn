@@ -128,7 +128,7 @@ func _ready():
 	Global.insight_pane_closed.connect(func(): if is_open: close())
 
 func _input(_event):
-	if Input.is_action_just_pressed("right_click") or Input.is_action_just_pressed("interact"):
+	if Input.is_action_just_pressed("interact"):
 		if is_open == true and !Action.in_insight_dialogue:
 			Action.deactivate()
 			Global.insight_pane_closed.emit()

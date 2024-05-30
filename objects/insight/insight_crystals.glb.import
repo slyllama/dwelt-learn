@@ -3,20 +3,20 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://djgjcyichaft4"
-path="res://.godot/imported/rocket.glb-1148cc66129204686f115c43e6e41674.scn"
+uid="uid://cv4dj3xyrbj46"
+path="res://.godot/imported/insight_crystals.glb-d276d709a6a3db9f17aaba9622578237.scn"
 
 [deps]
 
-source_file="res://objects/rocket/rocket.glb"
-dest_files=["res://.godot/imported/rocket.glb-1148cc66129204686f115c43e6e41674.scn"]
+source_file="res://objects/insight/insight_crystals.glb"
+dest_files=["res://.godot/imported/insight_crystals.glb-d276d709a6a3db9f17aaba9622578237.scn"]
 
 [params]
 
 nodes/root_type=""
-nodes/root_name="Rocket"
+nodes/root_name="InsightCrystals"
 nodes/apply_root_scale=true
-nodes/root_scale=1.0
+nodes/root_scale=1.35
 meshes/ensure_tangents=true
 meshes/generate_lods=true
 meshes/create_shadow_meshes=true
@@ -31,15 +31,11 @@ animation/remove_immutable_tracks=true
 import_script/path=""
 _subresources={
 "materials": {
-"Core": {
+"mat_insight_fractal": {
 "use_external/enabled": true,
-"use_external/path": "res://objects/rocket/mat_core.tres"
-},
-"Leg": {
-"use_external/enabled": true,
-"use_external/path": "res://objects/rocket/mat_leg.tres"
+"use_external/path": "res://objects/insight/mat_insight_fractal.tres"
 }
 }
 }
 gltf/naming_version=1
-gltf/embedded_image_handling=0
+gltf/embedded_image_handling=1

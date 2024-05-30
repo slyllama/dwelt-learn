@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://e0k8h1ytp7wi"]
+[gd_scene load_steps=18 format=3 uid="uid://e0k8h1ytp7wi"]
 
 [ext_resource type="PackedScene" uid="uid://dq3aqaliycowy" path="res://lib/debug/debug_pane/debug_pane.tscn" id="1_gv0re"]
 [ext_resource type="Script" path="res://lib/ui/hud/hud.gd" id="1_i45xt"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://b6bvm7et230dg" path="res://lib/ui/input_hints/input_hints.tscn" id="13_eft55"]
 [ext_resource type="PackedScene" uid="uid://bt5sosdm3tncx" path="res://lib/ui/hud/hud_buttons.tscn" id="15_6wbiv"]
 [ext_resource type="Texture2D" uid="uid://danqqg64d8q2k" path="res://lib/ui/tex/dot.png" id="15_cp3ui"]
+[ext_resource type="FontFile" uid="uid://bhk1jyryyb1be" path="res://generic/fonts/plex_mono.otf" id="17_j8gc1"]
 [ext_resource type="PackedScene" uid="uid://bx5xwgdebscc6" path="res://lib/ui/settings/settings.tscn" id="19_c42st"]
 [ext_resource type="PackedScene" uid="uid://d24gofb7bfo8k" path="res://lib/ui/hover_sound/hover_sound.tscn" id="19_uwm57"]
 
@@ -63,6 +64,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_n4mbk")
+expand_mode = 1
 
 [node name="InteractCursor" type="TextureRect" parent="InteractOverlay"]
 layout_mode = 1
@@ -125,3 +127,23 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="UIHover" parent="." instance=ExtResource("19_uwm57")]
+
+[node name="Version" type="RichTextLabel" parent="."]
+self_modulate = Color(1, 1, 1, 0.588235)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -175.0
+offset_top = -42.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("17_j8gc1")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[right]test_1.0.0[/right]"
+fit_content = true

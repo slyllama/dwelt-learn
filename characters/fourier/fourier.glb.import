@@ -14,7 +14,7 @@ dest_files=["res://.godot/imported/fourier.glb-975f68221387fbf7443113ce4df1513f.
 [params]
 
 nodes/root_type=""
-nodes/root_name="FourierTest"
+nodes/root_name="Fourier"
 nodes/apply_root_scale=true
 nodes/root_scale=0.25
 meshes/ensure_tangents=true

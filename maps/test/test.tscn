@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://yyd0ltle0un5"]
+[gd_scene load_steps=29 format=3 uid="uid://yyd0ltle0un5"]
 
 [ext_resource type="PackedScene" uid="uid://e0k8h1ytp7wi" path="res://lib/ui/hud/hud.tscn" id="1_3q1w7"]
 [ext_resource type="Script" path="res://maps/test/test.gd" id="1_fvnbx"]
@@ -8,18 +8,15 @@
 [ext_resource type="Texture2D" uid="uid://d1fy6jygommc6" path="res://generic/tex/particles/mote.png" id="3_hvkgi"]
 [ext_resource type="Texture2D" uid="uid://c5duom5wl7px7" path="res://generic/tex/sky.png" id="3_mt7r7"]
 [ext_resource type="Texture2D" uid="uid://5bruu4afeor5" path="res://generic/tex/shader_tex/floor_norm.png" id="3_xldvb"]
-[ext_resource type="PackedScene" uid="uid://b85g73m6ogrhp" path="res://objects/updraft/vent_handler.tscn" id="9_7ftuj"]
-[ext_resource type="PackedScene" uid="uid://dpxnpda25fr1t" path="res://maps/lattice/props/mushroom_cluster.glb" id="11_3jr7i"]
 [ext_resource type="PackedScene" uid="uid://d3wu1w4amd36m" path="res://objects/insight/insight.tscn" id="12_sl0pd"]
+[ext_resource type="PackedScene" uid="uid://k05mh66k8gs8" path="res://objects/puzzle_piece/lever.tscn" id="13_ix5rb"]
 [ext_resource type="PackedScene" uid="uid://bw14qvqobtubd" path="res://characters/fourier/fourier.glb" id="13_r7xks"]
-[ext_resource type="PackedScene" uid="uid://i1jp4klishr3" path="res://lib/dialogue/dialogue.tscn" id="14_ucrvw"]
-[ext_resource type="PackedScene" uid="uid://cvho6mkc04s7h" path="res://objects/laser_detector/laser_detector.tscn" id="15_mdlo6"]
-[ext_resource type="PackedScene" uid="uid://bdock8rc758qp" path="res://maps/lattice/props/tank.glb" id="15_yru8h"]
-[ext_resource type="PackedScene" uid="uid://07n4fhjhunl" path="res://objects/laser/laser.tscn" id="16_qr5ys"]
+[ext_resource type="Script" path="res://lib/ui/screen_space_label/screen_space_label.gd" id="15_b7hap"]
+[ext_resource type="PackedScene" uid="uid://bvnmyltvk8rhe" path="res://lib/cond_dialogue/cond_dialogue.tscn" id="15_j3rmr"]
+[ext_resource type="PackedScene" uid="uid://djgjcyichaft4" path="res://objects/rocket/rocket.glb" id="16_syt88"]
 [ext_resource type="AudioStream" uid="uid://c62xqceplif7s" path="res://maps/lattice/sounds/lava_ambience.ogg" id="17_ifxop"]
 [ext_resource type="Script" path="res://lib/debug/debug_flag/debug_flag.gd" id="18_fje8s"]
 [ext_resource type="Texture2D" uid="uid://chb02gji54q0j" path="res://lib/debug/debug_flag/tex/controller_icon.png" id="19_1pd7c"]
-[ext_resource type="PackedScene" uid="uid://k05mh66k8gs8" path="res://objects/puzzle_piece/puzzle_wrapper.tscn" id="20_v3htv"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_lvxdd"]
 panorama = ExtResource("3_mt7r7")
@@ -132,12 +129,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 5)
 unique_name_in_owner = true
 
 [node name="Insight" parent="Insights" instance=ExtResource("12_sl0pd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 object_name = "insight_1"
 dialogue_data = Array[String](["Test dialogue!"])
 
 [node name="Insight2" parent="Insights" instance=ExtResource("12_sl0pd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
 object_name = "insight_2"
 dialogue_data = Array[String](["Test dialogue!"])
 
@@ -162,36 +159,6 @@ visibility_aabb = AABB(-6.5899, -2.60607, -5.6187, 13.1798, 5.21214, 11.2374)
 process_material = SubResource("ParticleProcessMaterial_xa72n")
 draw_pass_1 = SubResource("PlaneMesh_k7b7a")
 
-[node name="VentHandler" parent="." instance=ExtResource("9_7ftuj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
-
-[node name="MushroomCluster" parent="." instance=ExtResource("11_3jr7i")]
-transform = Transform3D(-0.629578, 0, -0.776937, 0, 1, 0, 0.776937, 0, -0.629578, -1.08866, 0, -3.93834)
-
-[node name="FourierTest" parent="." instance=ExtResource("13_r7xks")]
-transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 8, 1.5, -4)
-
-[node name="DialogueArea" parent="FourierTest" instance=ExtResource("14_ucrvw")]
-transform = Transform3D(1, 0, 1.16872e-07, 0, 1, 0, -1.16872e-07, 0, 1, 0, 0.2, 0)
-dialogue_data = Array[String](["The rusty bot looks out toward the ventilator with an expression of pure contentment, joints squeaking as they bounce in the air.
-$
-<\"I've been on this thing -- computing -- twenty-seven times today. I can't get enough of it!\"> You wonder for a second if you should reach out and see if they really are okay; but it occurs to you that they're probably happier than you are.", "God I hope this works."])
-dialogue_title = "Fourier -- Observer-Class"
-character = "fourier"
-object_name = "fourier_dialogue"
-dialogue_close_distance = 7.0
-
-[node name="EssenceTank" parent="." instance=ExtResource("15_yru8h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, -9)
-
-[node name="Laser" parent="." instance=ExtResource("16_qr5ys")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 1)
-object_name = "kopa"
-
-[node name="LaserDetector" parent="." instance=ExtResource("15_mdlo6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2, -6)
-delay_time = 0.0
-
 [node name="Ambience" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_ifxop")
 volume_db = -7.0
@@ -201,22 +168,49 @@ autoplay = true
 unique_name_in_owner = true
 
 [node name="SP" type="Marker3D" parent="SavePoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
 script = ExtResource("18_fje8s")
 custom_texture = ExtResource("19_1pd7c")
 
-[node name="SP2" type="Marker3D" parent="SavePoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0)
-script = ExtResource("18_fje8s")
-custom_texture = ExtResource("19_1pd7c")
+[node name="LeverA" parent="." instance=ExtResource("13_ix5rb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -3)
+lever_name = "lever_a"
 
-[node name="SP3" type="Marker3D" parent="SavePoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 0)
-script = ExtResource("18_fje8s")
-custom_texture = ExtResource("19_1pd7c")
+[node name="AVis" type="VisibleOnScreenNotifier3D" parent="LeverA"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+aabb = AABB(-0.5, -0.5, -0.5, 1, 1, 1)
+script = ExtResource("15_b7hap")
+display_text = "Lever A"
+render_distance = 20
 
-[node name="PuzzleWrapper" parent="." instance=ExtResource("20_v3htv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 5)
+[node name="LeverB" parent="." instance=ExtResource("13_ix5rb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -3)
+lever_name = "lever_b"
 
-[connection signal="player_left" from="Laser" to="." method="_on_laser_player_left"]
-[connection signal="activated" from="LaserDetector" to="." method="_on_laser_detector_activated"]
-[connection signal="deactivated" from="LaserDetector" to="." method="_on_laser_detector_deactivated"]
+[node name="BVis" type="VisibleOnScreenNotifier3D" parent="LeverB"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+aabb = AABB(-0.5, -0.5, -0.5, 1, 1, 1)
+script = ExtResource("15_b7hap")
+display_text = "Lever B"
+render_distance = 20
+
+[node name="LeverJedi" parent="." instance=ExtResource("13_r7xks")]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 0, 2.4, -2)
+
+[node name="Vis" type="VisibleOnScreenNotifier3D" parent="LeverJedi"]
+transform = Transform3D(0.769231, 0, 0, 0, 0.769231, 0, 0, 0, 0.769231, 0, 1.3, 0)
+aabb = AABB(-0.5, -0.5, -0.5, 1, 1, 1)
+script = ExtResource("15_b7hap")
+display_text = "\"Lever Jedi\""
+render_distance = 20
+
+[node name="DLeverJedi" parent="LeverJedi" instance=ExtResource("15_j3rmr")]
+transform = Transform3D(0.769231, 0, 0, 0, 0.769231, 0, 0, 0, 0.769231, 0, 0, 0)
+object_name = "lever_dialogue"
+dialogue_data_file = "res://maps/test/d_lever_jedi.json"
+
+[node name="Rocket" parent="." instance=ExtResource("16_syt88")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -20, 18, -16)
+
+[connection signal="state_set" from="LeverA" to="." method="_on_lever_a_state_set"]
+[connection signal="state_set" from="LeverB" to="." method="_on_lever_b_state_set"]

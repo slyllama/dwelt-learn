@@ -61,13 +61,7 @@ func _ready():
 	$DebugPane.update()
 	
 	# Set up for retina
-	if DisplayServer.screen_get_size().x > 2000:
-		DisplayServer.window_set_min_size(Global.MIN_SCREEN_SIZE * 2.0)
-		get_window().content_scale_factor = 2.0
-		if OS.get_name() != "macOS":
-			DisplayServer.cursor_set_custom_image(
-				load("res://lib/ui/tex/cursor_2x.png"))
-	else: DisplayServer.window_set_min_size(Global.MIN_SCREEN_SIZE)
+	Utilities.configure_screen()
 	
 	# First-run controller check
 	$InputTools.check_for_controller()

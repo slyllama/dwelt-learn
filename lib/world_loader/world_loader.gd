@@ -40,7 +40,7 @@ var PingCooldown = Timer.new()
 var PingSound = AudioStreamPlayer.new()
 var ping_cooling = false
 
-func _get_nearest_save_point(height = 1.5):
+func _get_nearest_save_point(height = 2.0):
 	if get_node_or_null("SavePoints") == null:
 		Global.printc("[WorldLoader] no save point data!", "red")
 	
@@ -99,6 +99,7 @@ func insights_refresh():
 
 func fire_ping():
 	if ping_cooling or Action.active: return
+	
 	ping_cooling = true
 	PingCooldown.start()
 	PingSound.play()
@@ -132,6 +133,7 @@ func _ready():
 	# Reset everything so that ghost data doesn't persist after returning to the menu
 	Action.deactivate() # interesting bug where an action will persist across maps
 	Action.in_glide = false
+	Global.can_move = true
 	Global.insights_collected = 0
 
 	# Fade in all sound if the game wasn't already muted
@@ -192,8 +194,6 @@ func _ready():
 			get_node_or_null("Music").play()
 
 func _input(_event):
-	if Input.is_action_just_pressed("debug_action"):
-		_get_nearest_save_point()
 	if Input.is_action_just_pressed("skill_ping"):
 		fire_ping()
 

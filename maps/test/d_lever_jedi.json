@@ -1,0 +1,24 @@
+{
+	"title": "Lever Jedi",
+	"character": "fourier",
+	"states": {
+		"default": {
+			"data": ["Try a lever!"]
+		},
+		"lever_a_only": {
+			"data": ["That's lever A!"],
+			"depends": "lever_a_state = true",
+			"priority" : "1"
+		},
+		"lever_b_only": {
+			"data": ["That's lever B!"],
+			"depends": "lever_b_state = true",
+			"priority" : "1"
+		},
+		"both_levers": {
+			"data": ["That's both levers!"],
+			"depends": "lever_a_state = true,lever_b_state = true",
+			"priority" : "2"
+		}
+	}
+}

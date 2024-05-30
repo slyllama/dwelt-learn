@@ -27,4 +27,5 @@ func _on_object_handler_deactivated():
 
 func _on_visibility_changed():
 	interactable = visible
+	$FountainNoise.playing = visible
 	$ObjectHandler.interactable = interactable
