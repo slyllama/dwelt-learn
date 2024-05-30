@@ -6,24 +6,55 @@ extends Node3D
 
 var dialogue_data = {}
 
-func _get_state_data(state):
+func _get_latest_data():
 	var error_print = "[CondDialogue] (" + str(dialogue_data_file) + ") syntax error."
 	if !"states" in dialogue_data:
 		Global.printc(error_print, "orange")
 		return(["[Error]"])
-	if !state in dialogue_data.states:
-		Global.printc(error_print, "orange")
-		return(["Error"])
-	if !"data" in dialogue_data.states[state]:
-		Global.printc(error_print, "orange")
-		return(["Error"])
-	return(dialogue_data.states[state].data)
+	
+	# Run through states. If their conditions are true and their priority is
+	# higher than the current highest, update both data and priority.
+	var current_data = []
+	var highest_priority = 0
+	
+	# TODO: only handles equality for a start
+	for s in dialogue_data.states:
+		if s == "default": continue
+		var condition_met = true
+		
+		var state = dialogue_data.states[s]
+		
+		for statement in state.depends.split(","):
+			Global.printc(statement, "green")
+			var cond = statement.split(" ")[0]
+			var cond_value_string = statement.split(" ")[2]
+			var cond_value
+			if cond_value_string == "true": cond_value = true
+			else: cond_value = false
+			
+			Global.printc("---", "yellow")
+			Global.printc("data = " + str(state.data), "yellow")
+			Global.printc("cond = " + str(cond), "yellow")
+			Global.printc("cond_value = " + str(cond_value), "yellow")
+			
+			var saved_cond = Save.get_data(Global.current_map, cond)
+		
+			if saved_cond != null:
+				if saved_cond != cond_value: condition_met = false
+			else: condition_met = false
+		if condition_met and int(state.priority) >= highest_priority:
+			current_data = state.data
+			highest_priority = int(state.priority)
+	
+	if current_data == []: current_data = dialogue_data.states["default"].data
+	Global.printc("elected: " + str(current_data))
+	return(current_data)
 
 func _play_dialogue():
 	# Identify the correct dialogue
 	Global.dialogue_played.emit({
 		"title": dialogue_data.title,
-		"data": _get_state_data("default"),
+		"data": _get_latest_data(),
 		"character": dialogue_data.character})
 
 func _close_dialogue():

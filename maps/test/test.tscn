@@ -167,7 +167,7 @@ autoplay = true
 unique_name_in_owner = true
 
 [node name="SP" type="Marker3D" parent="SavePoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
 script = ExtResource("18_fje8s")
 custom_texture = ExtResource("19_1pd7c")
 
