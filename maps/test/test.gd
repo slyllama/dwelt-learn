@@ -12,6 +12,8 @@ func _ready():
 	interact_objects = [ $Insights/Insight, $Insights/Insight2, $LeverA, $LeverB, $LeverJedi ]
 	super()
 	$LeverJedi/AnimationPlayer.play("Idle")
+	Global.debug_state = true
+	Global.debug_toggled.emit()
 
 	Save.save_loaded.connect(func():
 		var lever_a_state = Save.get_data(map_name, "lever_a_state")
@@ -21,11 +23,6 @@ func _ready():
 	)
 	proc_save() # trigger save loading now that customs have been added
 	_set_lever_text()
-
-func _input(_event):
-	super(_event)
-	if Input.is_action_just_pressed("debug_action"):
-		Global.printc(Save.save_data)
 
 func _on_lever_a_state_set(state):
 	Save.set_data(map_name, "lever_a_state", state)

@@ -25,18 +25,11 @@ func _get_latest_data():
 		var state = dialogue_data.states[s]
 		
 		for statement in state.depends.split(","):
-			Global.printc(statement, "green")
 			var cond = statement.split(" ")[0]
 			var cond_value_string = statement.split(" ")[2]
 			var cond_value
 			if cond_value_string == "true": cond_value = true
 			else: cond_value = false
-			
-			Global.printc("---", "yellow")
-			Global.printc("data = " + str(state.data), "yellow")
-			Global.printc("cond = " + str(cond), "yellow")
-			Global.printc("cond_value = " + str(cond_value), "yellow")
-			
 			var saved_cond = Save.get_data(Global.current_map, cond)
 		
 			if saved_cond != null:
@@ -47,7 +40,6 @@ func _get_latest_data():
 			highest_priority = int(state.priority)
 	
 	if current_data == []: current_data = dialogue_data.states["default"].data
-	Global.printc("elected: " + str(current_data))
 	return(current_data)
 
 func _play_dialogue():

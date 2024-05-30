@@ -19,10 +19,12 @@ func _ready():
 	$ObjectHandler.object_name = lever_name
 
 func _on_object_handler_activated():
+	#$LeverSound.play()
 	Global.input_hint_cleared.emit()
 
 func _on_object_handler_triggered():
 	if delay: return
+	$LeverSound.play()
 	delay = true
 	$DelayTimer.start()
 	if !state:
