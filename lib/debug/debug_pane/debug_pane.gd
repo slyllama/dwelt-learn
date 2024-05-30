@@ -22,7 +22,7 @@ func _ready():
 	
 	Global.debug_popup_opened.connect(func():
 		Global.debug_popup_is_open = true
-		$CmdPanel/CmdVBox/ClosePopup.grab_focus()
+		#$CmdPanel/CmdVBox/ClosePopup.grab_focus()
 		$CmdPanel/CmdVBox.visible = true)
 	Global.debug_popup_closed.connect(func():
 		Global.debug_popup_is_open = false
@@ -118,8 +118,5 @@ func _on_emit_controller_input_pressed():
 	Input.action_press("interact")
 	Input.action_release("interact")
 	controller_test_event.pressed = false
-
-func _on_print_input_map_pressed():
-	Global.printc(str(InputMap.action_get_events("interact")))
 
 func _on_close_popup_pressed(): Global.debug_popup_closed.emit()

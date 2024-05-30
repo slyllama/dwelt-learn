@@ -3,6 +3,7 @@ extends CanvasLayer
 
 ## Set this to true to skip straight to the loading screen
 @export var debug_bypass = false
+@export_multiline var copy_text: String
 var can_interact = true
 
 func _format_text(get_text): # add proper dashes, colours, etc
@@ -22,7 +23,7 @@ func go_to_menu():
 
 func _ready():
 	if Engine.is_editor_hint():
-		$Container/Text.text = _format_text($Container/Text.text)
+		$Container/Text.text = _format_text(copy_text)
 		return
 	can_interact = false
 	$Container.modulate.a = 0.0

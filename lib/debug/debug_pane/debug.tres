@@ -9,7 +9,6 @@ content_margin_left = 6.0
 content_margin_top = 4.0
 content_margin_bottom = 4.0
 bg_color = Color(0.142514, 0.142514, 0.142514, 1)
-border_width_bottom = 1
 border_color = Color(0.322788, 0.322788, 0.322788, 1)
 border_blend = true
 
@@ -18,7 +17,6 @@ content_margin_left = 6.0
 content_margin_top = 4.0
 content_margin_bottom = 4.0
 bg_color = Color(0, 0, 0, 1)
-border_width_bottom = 1
 border_color = Color(0.322788, 0.322788, 0.322788, 1)
 border_blend = true
 

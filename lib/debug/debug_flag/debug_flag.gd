@@ -14,6 +14,7 @@ func _ready():
 	Flag.position.y = 2.0
 	Flag.cast_shadow = false
 	Flag.mesh = QuadMesh.new()
+	Flag.mesh.size = Vector2(0.5, 0.5)
 	Flag.mesh.orientation = PlaneMesh.FACE_Z
 	
 	var FlagMaterial = ShaderMaterial.new()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://yyd0ltle0un5"]
+[gd_scene load_steps=28 format=3 uid="uid://yyd0ltle0un5"]
 
 [ext_resource type="PackedScene" uid="uid://e0k8h1ytp7wi" path="res://lib/ui/hud/hud.tscn" id="1_3q1w7"]
 [ext_resource type="Script" path="res://maps/test/test.gd" id="1_fvnbx"]
@@ -16,7 +16,6 @@
 [ext_resource type="PackedScene" uid="uid://djgjcyichaft4" path="res://objects/rocket/rocket.glb" id="16_syt88"]
 [ext_resource type="AudioStream" uid="uid://c62xqceplif7s" path="res://maps/lattice/sounds/lava_ambience.ogg" id="17_ifxop"]
 [ext_resource type="Script" path="res://lib/debug/debug_flag/debug_flag.gd" id="18_fje8s"]
-[ext_resource type="Texture2D" uid="uid://chb02gji54q0j" path="res://lib/debug/debug_flag/tex/controller_icon.png" id="19_1pd7c"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_lvxdd"]
 panorama = ExtResource("3_mt7r7")
@@ -170,7 +169,6 @@ unique_name_in_owner = true
 [node name="SP" type="Marker3D" parent="SavePoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
 script = ExtResource("18_fje8s")
-custom_texture = ExtResource("19_1pd7c")
 
 [node name="LeverA" parent="." instance=ExtResource("13_ix5rb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -3)

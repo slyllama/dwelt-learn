@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://ban2jmbcpo0g1"]
+[gd_scene load_steps=6 format=3 uid="uid://ban2jmbcpo0g1"]
 
 [ext_resource type="Texture2D" uid="uid://b1broubues35t" path="res://lib/ui/skills/tex/unknown.png" id="1_l6xoo"]
 [ext_resource type="Texture2D" uid="uid://cn6h6t5vpgw3e" path="res://lib/ui/skills/tex/frame.png" id="1_rgtws"]
 [ext_resource type="Script" path="res://lib/ui/skills/skill_button.gd" id="2_dehel"]
 [ext_resource type="FontFile" uid="uid://b1v28gy50d86f" path="res://generic/fonts/red_hat.ttf" id="4_joo88"]
-[ext_resource type="Texture2D" uid="uid://mitid3cjeqk7" path="res://lib/ui/skills/tex/skill_highlight.png" id="5_05wnr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lqlge"]
 bg_color = Color(0.158472, 0.158472, 0.158472, 1)
@@ -41,16 +40,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_lqlge")
 bbcode_enabled = true
 text = "[center][/center]"
 scroll_active = false
-
-[node name="Highlight" type="TextureRect" parent="."]
-z_index = -1
-layout_mode = 1
-offset_left = -108.0
-offset_top = -34.0
-offset_right = 180.0
-offset_bottom = 103.0
-mouse_filter = 2
-texture = ExtResource("5_05wnr")
 
 [connection signal="mouse_entered" from="." to="." method="_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_mouse_left"]

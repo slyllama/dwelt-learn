@@ -1,11 +1,10 @@
-[gd_scene load_steps=38 format=3 uid="uid://dsf4aknq3seh2"]
+[gd_scene load_steps=36 format=3 uid="uid://dsf4aknq3seh2"]
 
 [ext_resource type="Script" path="res://maps/lattice/lattice.gd" id="1_hqs2c"]
 [ext_resource type="Texture2D" uid="uid://c5duom5wl7px7" path="res://generic/tex/sky.png" id="2_1uuus"]
 [ext_resource type="PackedScene" uid="uid://bcp4um4sjbyx6" path="res://lib/player/player.tscn" id="3_0m0xl"]
 [ext_resource type="PackedScene" uid="uid://e0k8h1ytp7wi" path="res://lib/ui/hud/hud.tscn" id="4_gb0g0"]
 [ext_resource type="AudioStream" uid="uid://c62xqceplif7s" path="res://maps/lattice/sounds/lava_ambience.ogg" id="6_0scba"]
-[ext_resource type="AudioStream" uid="uid://ccuptmdtd3lav" path="res://generic/sounds/music/glass_darkly.ogg" id="7_rro6x"]
 [ext_resource type="Texture2D" uid="uid://dinrdf02xeqaq" path="res://generic/tex/fade_ramp.tres" id="9_clv77"]
 [ext_resource type="Texture2D" uid="uid://d1fy6jygommc6" path="res://generic/tex/particles/mote.png" id="10_vpwvh"]
 [ext_resource type="ArrayMesh" uid="uid://c48ccnw3gi5h4" path="res://objects/god_ray/god_ray.obj" id="11_vmy1k"]
@@ -26,7 +25,6 @@
 [ext_resource type="Script" path="res://lib/debug/debug_flag/debug_flag.gd" id="24_0csbc"]
 [ext_resource type="PackedScene" uid="uid://cvho6mkc04s7h" path="res://objects/laser_detector/laser_detector.tscn" id="24_dbxhx"]
 [ext_resource type="AudioStream" uid="uid://gspni8xs632w" path="res://generic/sounds/play_dialogue.ogg" id="25_71yxt"]
-[ext_resource type="Texture2D" uid="uid://chb02gji54q0j" path="res://lib/debug/debug_flag/tex/controller_icon.png" id="25_xrdwe"]
 [ext_resource type="PackedScene" uid="uid://k05mh66k8gs8" path="res://objects/puzzle_piece/lever.tscn" id="27_nwdys"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dbpli"]
@@ -145,10 +143,6 @@ stream = ExtResource("6_0scba")
 volume_db = -5.0
 autoplay = true
 
-[node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_rro6x")
-volume_db = -2.0
-
 [node name="Floor" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.433279, 0)
 collision_layer = 3
@@ -183,13 +177,14 @@ height = 3
 
 [node name="GodRay1" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0.126418, -1.9737, 29.8832)
+visible = false
 cast_shadow = 0
 mesh = ExtResource("11_vmy1k")
 surface_material_override/0 = ExtResource("13_dmwwp")
 
 [node name="Laser" parent="." instance=ExtResource("15_qt6cc")]
 transform = Transform3D(-0.561838, 0, 0.827247, 0, 1, 0, -0.827247, 0, -0.561838, 14.4304, 0.164409, 13.9497)
-object_name = "siax"
+object_name = "test_laser"
 
 [node name="Vis" type="VisibleOnScreenNotifier3D" parent="Laser"]
 transform = Transform3D(0.769231, 0, 0, 0, 0.769231, 0, 0, 0, 0.769231, 0, 3.5, 0)
@@ -207,7 +202,7 @@ $
 <\"I've been on this thing -- computing -- twenty-seven times today. I can't get enough of it!\"> You wonder for a second if you should reach out and see if they really are okay; but it occurs to you that they're probably happier than you are."])
 dialogue_title = "Fourier -- Observer-Class"
 character = "fourier"
-object_name = "fourier_dialogue"
+object_name = "fourier"
 dialogue_close_distance = 7.0
 
 [node name="FloorPieces" type="Node3D" parent="."]
@@ -255,7 +250,7 @@ $
 It's not a practice  the Scrappers might once have engaged in, but times are changing. Competition is fierce, and the populace has become more desparate than ever to get their inlets into <any> kind of emotional gratification."])
 dialogue_title = "Essence Tanks"
 character = "tank"
-object_name = "essence_notes"
+object_name = "essence_tank"
 dialogue_close_distance = 7.0
 
 [node name="Tank3" parent="." instance=ExtResource("22_iujst")]
@@ -288,27 +283,22 @@ unique_name_in_owner = true
 [node name="SP" type="Marker3D" parent="SavePoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.75, 0, 19.75)
 script = ExtResource("24_0csbc")
-custom_texture = ExtResource("25_xrdwe")
 
 [node name="SP4" type="Marker3D" parent="SavePoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 17)
 script = ExtResource("24_0csbc")
-custom_texture = ExtResource("25_xrdwe")
 
 [node name="SP2" type="Marker3D" parent="SavePoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 12, 16)
 script = ExtResource("24_0csbc")
-custom_texture = ExtResource("25_xrdwe")
 
 [node name="SP3" type="Marker3D" parent="SavePoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 12, 11)
 script = ExtResource("24_0csbc")
-custom_texture = ExtResource("25_xrdwe")
 
 [node name="SP5" type="Marker3D" parent="SavePoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 11)
 script = ExtResource("24_0csbc")
-custom_texture = ExtResource("25_xrdwe")
 
 [node name="FourierRotate" type="Node3D" parent="."]
 
