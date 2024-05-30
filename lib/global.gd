@@ -6,6 +6,8 @@ const LARGE_UI_SCALE = 1.0
 
 enum InputModes { KEYBOARD, CONTROLLER }
 
+var camera_reference: Camera3D # reference to the player camera
+
 signal camera_shaken(intensity)
 signal button_hover
 signal button_click

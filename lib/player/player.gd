@@ -60,6 +60,7 @@ func update_debug():
 var spring_arm_mask
 
 func _ready():
+	Global.camera_reference = $CamPivot/Camera
 	spring_arm_mask = $CamPivot/CamArm.collision_mask
 	
 	# Bindings
