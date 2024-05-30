@@ -6,10 +6,24 @@ extends Node3D
 
 var dialogue_data = {}
 
+func _get_state_data(state):
+	var error_print = "[CondDialogue] (" + str(dialogue_data_file) + ") syntax error."
+	if !"states" in dialogue_data:
+		Global.printc(error_print, "orange")
+		return(["[Error]"])
+	if !state in dialogue_data.states:
+		Global.printc(error_print, "orange")
+		return(["Error"])
+	if !"data" in dialogue_data.states[state]:
+		Global.printc(error_print, "orange")
+		return(["Error"])
+	return(dialogue_data.states[state].data)
+
 func _play_dialogue():
+	# Identify the correct dialogue
 	Global.dialogue_played.emit({
 		"title": dialogue_data.title,
-		"data": ["1", "2"],
+		"data": _get_state_data("default"),
 		"character": dialogue_data.character})
 
 func _close_dialogue():

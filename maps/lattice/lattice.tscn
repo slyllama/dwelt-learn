@@ -123,7 +123,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.77882, 1.5, 17.476)
 unique_name_in_owner = true
 
 [node name="Insight" parent="Insights" instance=ExtResource("23_hbglv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 1, 20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 20)
 object_name = "insight_1"
 dialogue_data = Array[String](["First Insight!"])
 
@@ -294,6 +294,11 @@ custom_texture = ExtResource("25_xrdwe")
 
 [node name="SP3" type="Marker3D" parent="SavePoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 12, 11)
+script = ExtResource("24_0csbc")
+custom_texture = ExtResource("25_xrdwe")
+
+[node name="SP5" type="Marker3D" parent="SavePoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 11)
 script = ExtResource("24_0csbc")
 custom_texture = ExtResource("25_xrdwe")
 

@@ -6,4 +6,4 @@
 render_priority = 0
 shader = ExtResource("1_gn85v")
 shader_parameter/base_color = Color(0.65098, 0.847059, 1, 1)
-shader_parameter/alpha_scale = 0.5
+shader_parameter/alpha_scale = 1.0

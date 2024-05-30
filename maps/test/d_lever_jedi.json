@@ -1,4 +1,14 @@
 {
 	"title": "Lever Jedi",
-	"character": "fourier"
+	"character": "fourier",
+	"states": {
+		"default": {
+			"data": ["Try a lever!"]
+		},
+		"lever_a_only": {
+			"data": ["That's lever A!"],
+			"depends": "lever_a_state = true",
+			"priority" : "1"
+		}
+	}
 }

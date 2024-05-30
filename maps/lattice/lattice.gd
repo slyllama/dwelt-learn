@@ -24,7 +24,7 @@ func _ready():
 		if Save.get_data(map_name, "laser_siax_orientation") != null:
 			$Laser/Cast.rotation_degrees = Save.get_data(map_name, "laser_siax_orientation")
 		if Save.get_data(map_name, "laser_activated") != null:
-			$PuzzleWrapper.set_state(Save.get_data(map_name, "laser_activated"))
+			$LaserLever.set_state(Save.get_data(map_name, "laser_activated"))
 	)
 	proc_save() # trigger save loading now that customs have been added
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://d3wu1w4amd36m"]
+[gd_scene load_steps=17 format=3 uid="uid://d3wu1w4amd36m"]
 
 [ext_resource type="Script" path="res://objects/insight/insight.gd" id="1_adjom"]
 [ext_resource type="PackedScene" uid="uid://dtuoy5rvcxu7b" path="res://objects/insight/insight_model.glb" id="1_j7cxf"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://dinrdf02xeqaq" path="res://generic/tex/fade_ramp.tres" id="4_4k2e2"]
 [ext_resource type="Texture2D" uid="uid://d1fy6jygommc6" path="res://generic/tex/particles/mote.png" id="5_8yxhf"]
 [ext_resource type="PackedScene" uid="uid://csbchge3673bh" path="res://lib/object_handler/object_handler.tscn" id="7_eu0w7"]
+[ext_resource type="PackedScene" uid="uid://cv4dj3xyrbj46" path="res://objects/insight/insight_crystals.glb" id="8_7n0yc"]
+[ext_resource type="AudioStream" uid="uid://b51c55rvugqeh" path="res://objects/insight/insight_ambience.ogg" id="9_1xpyp"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_v3sn8"]
 material = ExtResource("3_ku1lu")
@@ -84,6 +86,16 @@ draw_pass_1 = SubResource("PlaneMesh_kpung")
 [node name="ObjectHandler" parent="." instance=ExtResource("7_eu0w7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 collision_size = Vector3(1.5, 3, 1.5)
+
+[node name="InsightCrystals" parent="." instance=ExtResource("8_7n0yc")]
+
+[node name="FountainNoise" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("9_1xpyp")
+attenuation_model = 2
+volume_db = -5.0
+unit_size = 6.0
+autoplay = true
+attenuation_filter_cutoff_hz = 20500.0
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="activated" from="ObjectHandler" to="." method="_on_object_handler_activated"]
