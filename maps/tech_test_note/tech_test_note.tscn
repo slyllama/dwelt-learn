@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://c7wei6j8r8l4a"]
+[gd_scene load_steps=10 format=3 uid="uid://c7wei6j8r8l4a"]
 
 [ext_resource type="FontFile" uid="uid://nyvmwj526bbr" path="res://generic/fonts/alegreya.ttf" id="1_ujas1"]
 [ext_resource type="Script" path="res://maps/tech_test_note/tech_test_note.gd" id="1_x1cqx"]
 [ext_resource type="Texture2D" uid="uid://d2nv8xnwo132g" path="res://lib/ui/tex/placeholder_logo.png" id="3_x885j"]
-[ext_resource type="Script" path="res://lib/ui/text_label_anim/text_label_anim.gd" id="5_pc5l1"]
+[ext_resource type="Texture2D" uid="uid://clnh0ggn2ilep" path="res://maps/tech_test_note/tex/separator.png" id="5_kph0f"]
 [ext_resource type="FontFile" uid="uid://b1v28gy50d86f" path="res://generic/fonts/red_hat.ttf" id="6_878xh"]
+[ext_resource type="FontFile" uid="uid://bhk1jyryyb1be" path="res://generic/fonts/plex_mono.otf" id="6_wagbv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ycnon"]
 content_margin_left = 10.0
@@ -29,7 +30,6 @@ bg_color = Color(0.4, 0.709804, 1, 1)
 
 [node name="TechTestNote" type="CanvasLayer"]
 script = ExtResource("1_x1cqx")
-debug_bypass = true
 
 [node name="BG" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -40,6 +40,26 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
+[node name="Version" type="RichTextLabel" parent="."]
+self_modulate = Color(1, 1, 1, 0.588235)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -175.0
+offset_top = -42.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("6_wagbv")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[right]test_1.0.0[/right]"
+fit_content = true
+
 [node name="Container" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
@@ -48,56 +68,81 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Title" type="RichTextLabel" parent="Container"]
+[node name="Logo" type="TextureRect" parent="Container"]
+custom_minimum_size = Vector2(0, 120)
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-offset_left = -268.0
-offset_top = 300.0
-offset_right = 268.0
-offset_bottom = 364.0
+anchor_bottom = 0.5
+offset_left = -102.0
+offset_top = -414.0
+offset_right = 102.0
+offset_bottom = -294.0
 grow_horizontal = 2
-theme_override_fonts/normal_font = ExtResource("6_878xh")
-theme_override_font_sizes/normal_font_size = 22
-bbcode_enabled = true
-text = "[center]TECHNICAL TEST[/center]"
-scroll_active = false
-script = ExtResource("5_pc5l1")
+grow_vertical = 2
+texture = ExtResource("3_x885j")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Sep" type="TextureRect" parent="Container"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -734.0
+offset_top = -250.0
+offset_right = 734.0
+offset_bottom = -230.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_kph0f")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Text" type="RichTextLabel" parent="Container"]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-offset_left = -581.0
-offset_top = 370.0
-offset_right = 581.0
-offset_bottom = 641.0
+anchor_bottom = 0.5
+offset_left = -455.0
+offset_top = -178.0
+offset_right = 455.0
+offset_bottom = 106.0
 grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 theme_override_colors/default_color = Color(0.7, 0.7, 0.7, 1)
 theme_override_constants/line_separation = -3
 theme_override_fonts/normal_font = ExtResource("1_ujas1")
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
-text = "Welcome to the <Dwelt> technical test! <Dwelt> is an environment puzzle-driven RPG in which you play as a Scrapper-bot, tasked with journeying through realms of emotion in order to unlock and extract their essence, and to traffick it to robots desperate for a dose of the remnants of humanity.
-$
-This build contains no setting or narrative content -- it's just a test of the mechanics used to tell the story of the Scrappers and those who dwell amongst the Lattice. <Your help in trialing these features, attempting novel combinations of actions, and documenting the>"
+text = "[center]Welcome to the [color=#66b5ff]Dwelt[/color] technical test! [color=#66b5ff]Dwelt[/color] is an environment puzzle-driven RPG in which you play as a Scrapper-bot, tasked with journeying through realms of emotion in order to unlock and extract their essence, and to traffick it to robots desperate for a dose of the remnants of humanity.
+[font_size=10] [/font_size]
+This build contains no setting or narrative content – it's just a test of the mechanics used to tell the story of the Scrappers and those who dwell amongst the Lattice. [color=#66b5ff]Your help in trialing these features, attempting novel combinations of actions, and documenting the bugs that result, will be invaluable in stabilising this world and readying it to be painted in.[/color] Checking that saving and loading is robust, combining unforseen actions (for instance, initiating a skill simultaneously from two different inputs), and tests like these will be very helpful.
+[font_size=10] [/font_size]
+Thank you so much for your interest in [color=#66b5ff]Dwelt[/color]! Don't hesitate to contact me directly with any issues you encounter or ideas you might have, or use the contact methods listed in the readme.[/center]"
 scroll_active = false
 
-[node name="Logo" type="TextureRect" parent="Container"]
-custom_minimum_size = Vector2(0, 120)
+[node name="Sep2" type="TextureRect" parent="Container"]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-offset_left = -102.0
-offset_top = 186.0
-offset_right = 102.0
-offset_bottom = 306.0
+anchor_bottom = 0.5
+offset_left = -734.0
+offset_top = 168.0
+offset_right = 734.0
+offset_bottom = 188.0
 grow_horizontal = 2
-texture = ExtResource("3_x885j")
+grow_vertical = 2
+texture = ExtResource("5_kph0f")
 expand_mode = 1
 stretch_mode = 5
 
@@ -109,9 +154,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -116.0
-offset_top = 140.0
+offset_top = 230.0
 offset_right = 116.0
-offset_bottom = 184.0
+offset_bottom = 274.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)

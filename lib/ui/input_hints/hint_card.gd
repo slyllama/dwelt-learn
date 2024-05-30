@@ -15,6 +15,7 @@ func _set_trans(val, white = true):
 	var ease_val = ease(val, 2.0)
 	modulate.a = val
 	if white == true: material.set_shader_parameter("base_color", 1.0 - ease_val)
+	else: material.set_shader_parameter("base_color", 0.0)
 	material.set_shader_parameter("alpha_scale", val * 0.85)
 
 func fade_out(white = true):
@@ -66,4 +67,4 @@ func _ready():
 	update_input()
 	
 	var fade = create_tween()
-	fade.tween_method(_set_trans, 0.0, 1.0, 0.2)
+	fade.tween_method(_set_trans.bind(false), 0.0, 1.0, 0.2)
