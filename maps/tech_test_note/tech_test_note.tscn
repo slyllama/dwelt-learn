@@ -181,7 +181,7 @@ mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("6_wagbv")
 theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
-text = "[right]Version[/right]"
+text = "[right]test_1.0.0[/right]"
 fit_content = true
 script = ExtResource("3_iwiqs")
 

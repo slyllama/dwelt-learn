@@ -9,7 +9,7 @@ var delay_complete = false # laser won't start moving until after a short delay
 var active = false
 var state = true
 
-signal player_left(object_name, cast_rotation)
+signal player_left(cast_rotation)
 signal state_set(state)
 
 var og_cast_rotation_x
@@ -52,7 +52,7 @@ func deactivate():
 	Global.player_position_unlocked.emit()
 	
 	Global.printc("[Laser -> " + object_name + "] player exited!", "magenta")
-	player_left.emit(object_name, $Cast.rotation_degrees)
+	player_left.emit($Cast.rotation_degrees)
 
 func _ready():
 	# Object handler-specifics

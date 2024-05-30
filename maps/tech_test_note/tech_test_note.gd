@@ -4,6 +4,8 @@ extends CanvasLayer
 ## Set this to true to skip straight to the loading screen
 @export var debug_bypass = false
 @export_multiline var copy_text: String
+
+@onready var fade_tween
 var can_interact = true
 
 func _format_text(get_text): # add proper dashes, colours, etc
@@ -16,16 +18,16 @@ func _format_text(get_text): # add proper dashes, colours, etc
 func go_to_menu():
 	Global.button_click.emit()
 	can_interact = false
-	var fade_tween = create_tween()
+	fade_tween = create_tween()
 	fade_tween.tween_property($Container, "modulate:a", 0.0, 1.0)
 	fade_tween.tween_callback(func():
 		get_tree().change_scene_to_file("res://lib/loading/loading.tscn"))
 
 func _ready():
+	$Container/Proceed.grab_focus()
 	if Engine.is_editor_hint():
 		$Container/Text.text = _format_text(copy_text)
 		return
-	can_interact = false
 	$Container.modulate.a = 0.0
 	Utilities.configure_screen()
 	await get_tree().create_timer(0.5).timeout
@@ -33,11 +35,8 @@ func _ready():
 	if debug_bypass:
 		get_tree().change_scene_to_file("res://lib/loading/loading.tscn")
 	else:
-		var fade_tween = create_tween()
+		fade_tween = create_tween()
 		fade_tween.tween_property($Container, "modulate:a", 1.0, 0.65)
-		fade_tween.tween_callback(func():
-			$Container/Proceed.grab_focus()
-			can_interact = true)
 
 func _input(_event):
 	if Engine.is_editor_hint(): return
