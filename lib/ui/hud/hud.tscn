@@ -64,6 +64,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_n4mbk")
+expand_mode = 1
 
 [node name="InteractCursor" type="TextureRect" parent="InteractOverlay"]
 layout_mode = 1
