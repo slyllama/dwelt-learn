@@ -34,7 +34,7 @@ func deactivate():
 	deactivated.emit()
 
 func _interact():
-	if !interactable: return
+	if !interactable or Global.settings_opened: return
 	
 	if trigger_mode and !Action.active and Action.target == object_name:
 		triggered.emit()

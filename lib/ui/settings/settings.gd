@@ -3,20 +3,25 @@ extends CanvasLayer
 const InputLine = preload("res://lib/ui/settings/components/stin_input_keybind.tscn")
 
 var input_containers = [] # input list nodes, so they can be cleared on refresh
+var is_open = false
 
 # Move the "reset" button to the bottom of the menu after reloading the menu
 func _reset_to_bottom():
 	$Control/Panel/InputVBox.move_child($Control/Panel/InputVBox/LowerCloseButton, -1)
 
 func open():
+	is_open = true
 	$Control/Panel/InputVBox/LowerCloseButton.grab_focus()
 	visible = true
 	Global.settings_opened = true
 
 func close():
 	Global.button_click.emit()
+	is_open = false
 	visible = false
-	Global.settings_opened = false
+	# Prevent simultaneous action in the world (controller)!
+	await get_tree().create_timer(0.2).timeout
+	if !is_open: Global.settings_opened = false
 
 func _assign_controller_button(action, button):
 	var e = InputEventJoypadButton.new()
