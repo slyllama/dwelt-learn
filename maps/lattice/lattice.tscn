@@ -1,10 +1,11 @@
-[gd_scene load_steps=37 format=3 uid="uid://dsf4aknq3seh2"]
+[gd_scene load_steps=38 format=3 uid="uid://dsf4aknq3seh2"]
 
 [ext_resource type="Script" path="res://maps/lattice/lattice.gd" id="1_hqs2c"]
 [ext_resource type="Texture2D" uid="uid://c5duom5wl7px7" path="res://generic/tex/sky.png" id="2_1uuus"]
 [ext_resource type="PackedScene" uid="uid://bcp4um4sjbyx6" path="res://lib/player/player.tscn" id="3_0m0xl"]
 [ext_resource type="PackedScene" uid="uid://e0k8h1ytp7wi" path="res://lib/ui/hud/hud.tscn" id="4_gb0g0"]
 [ext_resource type="AudioStream" uid="uid://c62xqceplif7s" path="res://maps/lattice/sounds/lava_ambience.ogg" id="6_0scba"]
+[ext_resource type="AudioStream" uid="uid://cqtqw831ndndm" path="res://generic/sounds/music/mus_lattice.ogg" id="7_82mk8"]
 [ext_resource type="Texture2D" uid="uid://dinrdf02xeqaq" path="res://generic/tex/fade_ramp.tres" id="9_clv77"]
 [ext_resource type="Texture2D" uid="uid://d1fy6jygommc6" path="res://generic/tex/particles/mote.png" id="10_vpwvh"]
 [ext_resource type="ArrayMesh" uid="uid://c48ccnw3gi5h4" path="res://objects/god_ray/god_ray.obj" id="11_vmy1k"]
@@ -143,6 +144,10 @@ dialogue_data = Array[String](["Second Insight!"])
 stream = ExtResource("6_0scba")
 volume_db = -5.0
 autoplay = true
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_82mk8")
+volume_db = -3.0
 
 [node name="Floor" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.433279, 0)

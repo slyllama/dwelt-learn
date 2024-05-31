@@ -3,22 +3,22 @@
 	"character": "fourier",
 	"states": {
 		"default": {
-			"data": ["Try a lever!"]
+			"data": ["Hi, I'm the Lever Jedi! My job is to respond accurately to map events and remember them across saves. So could you try flipping those levers and then checking back in with me?\n"]
 		},
 		"lever_a_only": {
-			"data": ["That's lever A!"],
+			"data": ["Hi, I'm the Lever Jedi! My job is to respond accurately to map events and remember them across saves. So could you try flipping those levers and then checking back in with me?\n$\n<Lever A> is on!"],
 			"depends": "lever_a_state = true",
-			"priority" : "1"
+			"priority": "1"
 		},
 		"lever_b_only": {
-			"data": ["That's lever B!"],
+			"data": ["Hi, I'm the Lever Jedi! My job is to respond accurately to map events and remember them across saves. So could you try flipping those levers and then checking back in with me?\n$\n<Lever B> is on!"],
 			"depends": "lever_b_state = true",
-			"priority" : "1"
+			"priority": "1"
 		},
 		"both_levers": {
-			"data": ["That's both levers!"],
+			"data": ["Hi, I'm the Lever Jedi! My job is to respond accurately to map events and remember them across saves. So could you try flipping those levers and then checking back in with me?\n$\n<Both levers> are on!"],
 			"depends": "lever_a_state = true,lever_b_state = true",
-			"priority" : "2"
+			"priority": "2"
 		}
 	}
 }

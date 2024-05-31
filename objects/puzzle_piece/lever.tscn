@@ -22,7 +22,7 @@ one_shot = true
 [node name="LeverSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_4j1f7")
 attenuation_model = 2
-volume_db = -4.0
+volume_db = -7.0
 panning_strength = 1.5
 attenuation_filter_cutoff_hz = 20500.0
 

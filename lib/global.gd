@@ -2,7 +2,7 @@ extends Node
 
 const VERSION = "test_1.0.0"
 const SCREEN_SIZE = Vector2(1920.0, 1080.0)
-const MIN_SCREEN_SIZE = Vector2(800.0, 600.0)
+const MIN_SCREEN_SIZE = Vector2(1600.0, 900.0)
 const LARGE_UI_SCALE = 1.0
 
 enum InputModes { KEYBOARD, CONTROLLER }

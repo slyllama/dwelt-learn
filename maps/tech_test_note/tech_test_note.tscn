@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c7wei6j8r8l4a"]
+[gd_scene load_steps=15 format=3 uid="uid://c7wei6j8r8l4a"]
 
 [ext_resource type="FontFile" uid="uid://nyvmwj526bbr" path="res://generic/fonts/alegreya.ttf" id="1_ujas1"]
 [ext_resource type="Script" path="res://maps/tech_test_note/tech_test_note.gd" id="1_x1cqx"]
@@ -8,7 +8,6 @@
 [ext_resource type="Theme" uid="uid://ch4overpy78ds" path="res://generic/themes/start_theme.tres" id="6_heuii"]
 [ext_resource type="FontFile" uid="uid://bhk1jyryyb1be" path="res://generic/fonts/plex_mono.otf" id="6_wagbv"]
 [ext_resource type="Script" path="res://lib/ui/clicky_button/clicky_button.gd" id="7_pxqe2"]
-[ext_resource type="PackedScene" uid="uid://d24gofb7bfo8k" path="res://lib/ui/hover_sound/hover_sound.tscn" id="8_l3t5x"]
 [ext_resource type="PackedScene" uid="uid://sihpp2cwoyfc" path="res://lib/ui/sprite_center/sprite_center.tscn" id="9_4eqqr"]
 [ext_resource type="Texture2D" uid="uid://dinrdf02xeqaq" path="res://generic/tex/fade_ramp.tres" id="10_586g8"]
 [ext_resource type="Texture2D" uid="uid://d1fy6jygommc6" path="res://generic/tex/particles/mote.png" id="11_varb8"]
@@ -184,7 +183,5 @@ bbcode_enabled = true
 text = "[right]test_1.0.0[/right]"
 fit_content = true
 script = ExtResource("3_iwiqs")
-
-[node name="UIHover" parent="." instance=ExtResource("8_l3t5x")]
 
 [connection signal="pressed" from="Container/Proceed" to="." method="_on_proceed_pressed"]

@@ -32,13 +32,14 @@ func _ready():
 	####### Custom save data for Lattice #######
 	Save.save_loaded.connect(func():
 		var _laser_orientation = Save.get_data(map_name, "laser_orientation")
-		$Laser/Cast.rotation_degrees = _laser_orientation if _laser_orientation else _n()
+		if _laser_orientation: $Laser/Cast.rotation_degrees = _laser_orientation
+		#$Laser/Cast.rotation_degrees = _laser_orientation if _laser_orientation else _n()
 		var _laser_activated = Save.get_data(map_name, "laser_activated")
-		$LaserLever.set_state(_laser_activated) if _laser_activated else _n()
+		if _laser_activated: $LaserLever.set_state(_laser_activated)
 		var _lever_a_state = Save.get_data(map_name, "lever_a_state")
-		$MemTest/LeverA.set_state(_lever_a_state) if _lever_a_state else _n()
+		if _lever_a_state: $MemTest/LeverA.set_state(_lever_a_state)
 		var _lever_b_state = Save.get_data(map_name, "lever_b_state")
-		$MemTest/LeverB.set_state(_lever_b_state) if _lever_b_state else _n()
+		if _lever_b_state: $MemTest/LeverB.set_state(_lever_b_state)
 	)
 	proc_save() # trigger save loading now that customs have been added
 	_set_lever_text()
