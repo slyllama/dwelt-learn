@@ -134,7 +134,7 @@ object_name = "insight_2"
 dialogue_data = Array[String](["Second Insight!"])
 
 [node name="Insight3" parent="Insights" instance=ExtResource("23_hbglv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 12, -7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.2333, 12, 13.0191)
 object_name = "insight_2"
 dialogue_data = Array[String](["Second Insight!"])
 
@@ -178,8 +178,7 @@ spot_range = 30.0
 spot_angle = 30.0
 
 [node name="Elevator" parent="." instance=ExtResource("17_l4sxi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19)
-height = 3
+transform = Transform3D(0.570183, 0, -0.821518, 0, 1, 0, 0.821518, 0, 0.570183, -15.4433, -4.76837e-07, 9.91502)
 
 [node name="GodRay1" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0.126418, -1.9737, 29.8832)
@@ -274,12 +273,8 @@ script = ExtResource("24_0csbc")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.6912, 12, 9.00814)
 script = ExtResource("24_0csbc")
 
-[node name="SP3" type="Marker3D" parent="SavePoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 12, 11)
-script = ExtResource("24_0csbc")
-
 [node name="SP5" type="Marker3D" parent="SavePoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 11)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.25032, 4.76837e-07, 16.1047)
 script = ExtResource("24_0csbc")
 
 [node name="FourierRotate" type="Node3D" parent="."]

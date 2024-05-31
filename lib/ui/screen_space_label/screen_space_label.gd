@@ -3,9 +3,23 @@ class_name ScreenSpaceLabel extends VisibleOnScreenNotifier3D
 @export var display_text = "Screen-space text label"
 @export var render_distance = 0
 
+enum { IN, OUT }
+
 var canvas = CanvasLayer.new()
 var text_node = RichTextLabel.new()
 var in_range = true
+
+var fade_tween: Tween
+func fade(dir):
+	fade_tween = create_tween()
+	if dir == OUT:
+		fade_tween.tween_property(text_node, "modulate:a", 0.0, 0.3)
+		fade_tween.tween_callback(func():
+			if in_range == false: text_node.visible = false)
+	elif dir == IN:
+		text_node.visible = true
+		text_node.modulate.a = 0.0
+		fade_tween.tween_property(text_node, "modulate:a", 1.0, 0.3)
 
 func set_text(get_text):
 	text_node.text = Utilities.cntr(get_text)
@@ -21,9 +35,9 @@ func _ready():
 	text_node.add_theme_font_override("normal_font", load("res://generic/fonts/plex_mono.otf"))
 	canvas.add_child(text_node)
 	
-	screen_entered.connect(func(): text_node.visible = true)
-	screen_exited.connect(func(): text_node.visible = false)
-	text_node.visible = is_on_screen()
+	screen_entered.connect(func(): canvas.visible = true)
+	screen_exited.connect(func(): canvas.visible = false)
+	canvas.visible = is_on_screen()
 
 func _process(_delta):
 	if Global.camera_reference == null: return
@@ -36,8 +50,8 @@ func _process(_delta):
 		if dist > render_distance:
 			if in_range:
 				in_range = false
-				canvas.visible = false
+				fade(OUT)
 		else:
 			if !in_range:
 				in_range = true
-				canvas.visible = true
+				fade(IN)
