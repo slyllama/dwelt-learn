@@ -54,5 +54,5 @@ func _on_check_timer_timeout():
 		if c == null: return
 		if c.title == "Interact": is_interact = true
 	if is_interact and Action.target == "":
-		Global.printc("[InputHints] clearing a stuck input hint.", "yellow")
+		#Global.printc("[InputHints] clearing a stuck input hint.", "yellow")
 		clear_hints(true) # override = true: always clear no matter what

@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://dsf4aknq3seh2"]
+[gd_scene load_steps=41 format=3 uid="uid://dsf4aknq3seh2"]
 
 [ext_resource type="Script" path="res://maps/lattice/lattice.gd" id="1_hqs2c"]
 [ext_resource type="Texture2D" uid="uid://c5duom5wl7px7" path="res://generic/tex/sky.png" id="2_1uuus"]
@@ -99,6 +99,9 @@ size = Vector3(4.55176, 45.0667, 16.4705)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x538a"]
 size = Vector3(3.18945, 45.0667, 8.81055)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lmxv8"]
+size = Vector3(20, 48.12, 2)
 
 [node name="Lattice" type="Node3D"]
 script = ExtResource("1_hqs2c")
@@ -385,6 +388,23 @@ dialogue_close_distance = 7.0
 
 [node name="Tank3" parent="Tanks" instance=ExtResource("22_iujst")]
 transform = Transform3D(0.987494, 0, 0.157658, 0, 1, 0, -0.157658, 0, 0.987494, 4.284, 0, 26.791)
+
+[node name="Wall" type="StaticBody3D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="Coll" type="CollisionShape3D" parent="Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 14, 0)
+shape = SubResource("BoxShape3D_lmxv8")
+
+[node name="Wall2" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, -0.939693, 0, 0, 0)
+collision_layer = 3
+collision_mask = 3
+
+[node name="Coll" type="CollisionShape3D" parent="Wall2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 14, 0)
+shape = SubResource("BoxShape3D_lmxv8")
 
 [connection signal="player_left" from="Laser" to="." method="_on_laser_player_left"]
 [connection signal="activated" from="LaserDetector" to="." method="_on_laser_detector_activated"]

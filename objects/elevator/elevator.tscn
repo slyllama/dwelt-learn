@@ -45,6 +45,7 @@ collision_layer = 2
 shape = SubResource("BoxShape3D_6827j")
 
 [node name="Mesh" type="CSGMesh3D" parent="Floor"]
+visible = false
 mesh = SubResource("BoxMesh_g0a4o")
 
 [node name="EnterLaser" type="AudioStreamPlayer3D" parent="."]

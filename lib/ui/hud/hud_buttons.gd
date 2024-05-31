@@ -30,8 +30,6 @@ func _ready():
 		if !Global.debug_state:
 			$TopMenu/DebugPopupButton.release_focus()
 		$TopMenu/DebugPopupButton.visible = Global.debug_state)
-	#Global.debug_popup_closed.connect(func():
-		#$TopMenu/DebugPopupButton.grab_focus())
 
 func _on_debug_popup_button_pressed():
 	if !Global.debug_state: # show the debug pane if it already isn't visible

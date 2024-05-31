@@ -71,8 +71,8 @@ func open():
 	is_open = true
 	primed = false
 	visible = true
-
-	$OpenSound.play()
+	
+	Action.insight_advanced.emit()
 	$OpenDelay.start()
 	$SpriteCenter/InsightTitle.animate("INSIGHTS", true)
 	

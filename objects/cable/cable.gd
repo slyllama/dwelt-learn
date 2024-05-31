@@ -18,9 +18,9 @@ func update():
 	
 	mesh.height = global_position.distance_to(end) * 2.0
 	$Sparks.look_at(end, Vector3.UP)
-	$Sparks.position.y = mesh.height / 2.0 - 1.0
+	$Sparks.position.y = mesh.height / 2.0 - 0.1
 	$Glow.look_at(end, Vector3.UP)
-	$Glow.position.y = mesh.height / 2.0 - 1.0
+	$Glow.position.y = mesh.height / 2.0 - 0.1
 
 func _ready():
 	# Avoid erroneous particles when the laser first updates its position

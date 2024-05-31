@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://d3wu1w4amd36m"]
+[gd_scene load_steps=18 format=3 uid="uid://d3wu1w4amd36m"]
 
 [ext_resource type="Script" path="res://objects/insight/insight.gd" id="1_adjom"]
 [ext_resource type="PackedScene" uid="uid://dtuoy5rvcxu7b" path="res://objects/insight/insight_model.glb" id="1_j7cxf"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://csbchge3673bh" path="res://lib/object_handler/object_handler.tscn" id="7_eu0w7"]
 [ext_resource type="PackedScene" uid="uid://cv4dj3xyrbj46" path="res://objects/insight/insight_crystals.glb" id="8_7n0yc"]
 [ext_resource type="AudioStream" uid="uid://b51c55rvugqeh" path="res://objects/insight/insight_ambience.ogg" id="9_1xpyp"]
+[ext_resource type="AudioStream" uid="uid://b25jscbfl1es7" path="res://lib/ui/insight/open_insight.ogg" id="10_evgun"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_v3sn8"]
 material = ExtResource("3_ku1lu")
@@ -96,6 +97,9 @@ volume_db = -9.0
 unit_size = 6.0
 autoplay = true
 attenuation_filter_cutoff_hz = 20500.0
+
+[node name="OpenSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_evgun")
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="activated" from="ObjectHandler" to="." method="_on_object_handler_activated"]

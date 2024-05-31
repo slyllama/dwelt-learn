@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dp2blk7gd88n2"]
+[gd_scene load_steps=15 format=3 uid="uid://dp2blk7gd88n2"]
 
 [ext_resource type="Script" path="res://lib/ui/insight/insight.gd" id="1_6dq0b"]
 [ext_resource type="PackedScene" uid="uid://sihpp2cwoyfc" path="res://lib/ui/sprite_center/sprite_center.tscn" id="1_vrxdd"]
@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://diq3dkelcpf84" path="res://lib/ui/insight/tex/base_2.png" id="4_rb6os"]
 [ext_resource type="Texture2D" uid="uid://dsroqhsarregr" path="res://characters/euclid/tex/radar_diff.png" id="4_sklih"]
 [ext_resource type="Texture2D" uid="uid://b5nufueq16vw0" path="res://generic/tex/shader_tex/wobble_noise.tres" id="5_mvkds"]
-[ext_resource type="AudioStream" uid="uid://b25jscbfl1es7" path="res://lib/ui/insight/open_insight.ogg" id="10_s0upf"]
 [ext_resource type="FontFile" uid="uid://bhk1jyryyb1be" path="res://generic/fonts/plex_mono.otf" id="11_i12l7"]
 [ext_resource type="Script" path="res://lib/ui/text_label_anim/text_label_anim.gd" id="12_b62ph"]
 
@@ -92,9 +91,6 @@ theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "[center]INSIGHTS[/center]"
 script = ExtResource("12_b62ph")
-
-[node name="OpenSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("10_s0upf")
 
 [node name="OpenDelay" type="Timer" parent="."]
 wait_time = 0.2
