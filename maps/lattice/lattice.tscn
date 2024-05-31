@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dsf4aknq3seh2"]
+[gd_scene load_steps=40 format=3 uid="uid://dsf4aknq3seh2"]
 
 [ext_resource type="Script" path="res://maps/lattice/lattice.gd" id="1_hqs2c"]
 [ext_resource type="Texture2D" uid="uid://c5duom5wl7px7" path="res://generic/tex/sky.png" id="2_1uuus"]
@@ -93,6 +93,12 @@ particles_anim_loop = false
 material = SubResource("StandardMaterial3D_r8kvd")
 size = Vector2(0.06, 0.06)
 orientation = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wa26j"]
+size = Vector3(4.55176, 45.0667, 16.4705)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x538a"]
+size = Vector3(3.18945, 45.0667, 8.81055)
 
 [node name="Lattice" type="Node3D"]
 script = ExtResource("1_hqs2c")
@@ -233,6 +239,32 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0)
 
 [node name="Floor_002" parent="FloorPieces" instance=ExtResource("19_32vag")]
 transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 0, 7, 0)
+
+[node name="A" type="StaticBody3D" parent="FloorPieces"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 7, 0)
+collision_layer = 3
+collision_mask = 3
+
+[node name="Col" type="CollisionShape3D" parent="FloorPieces/A"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.687, 15.1248, 0)
+shape = SubResource("BoxShape3D_wa26j")
+
+[node name="Col2" type="CollisionShape3D" parent="FloorPieces/A"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5999, 15.1248, 0)
+shape = SubResource("BoxShape3D_x538a")
+
+[node name="A2" type="StaticBody3D" parent="FloorPieces"]
+transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 0, 7, 0)
+collision_layer = 3
+collision_mask = 3
+
+[node name="Col" type="CollisionShape3D" parent="FloorPieces/A2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.687, 15.1248, 0)
+shape = SubResource("BoxShape3D_wa26j")
+
+[node name="Col2" type="CollisionShape3D" parent="FloorPieces/A2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5999, 15.1248, 0)
+shape = SubResource("BoxShape3D_x538a")
 
 [node name="Greybox" parent="." instance=ExtResource("18_8pphe")]
 
