@@ -34,16 +34,10 @@ func update_input():
 			$Container.move_child(pane, 1)
 			key_panels.append(pane)
 			
-			var controller_key = ""
-			match str(key):
-				"interact": controller_key = "A"
-				"skill_glide": controller_key = "RT"
-				"skill_ping": controller_key = "Y"
-				"move_forward": controller_key = "\u2191"
-				"move_back": controller_key = "\u2193"
-				"strafe_left": controller_key = "\u2190"
-				"strafe_right": controller_key = "\u2192"
-				_: controller_key = str(key)
+			var controller_key
+			if key in Global.CONTROLLER_KEYS:
+				controller_key = Global.CONTROLLER_KEYS[key]
+			else: controller_key = "?"
 			pane.get_node("Key").text = Utilities.cntr(controller_key)
 	
 	if Global.input_mode == Global.InputModes.KEYBOARD:

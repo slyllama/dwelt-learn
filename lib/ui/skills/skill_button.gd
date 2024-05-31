@@ -32,7 +32,12 @@ func set_texture(tex_name):
 # Updates the input command that shows on the bottom right of the button
 func _get_key():
 	if input_mapping != "none":
-		$InputKey.text = "[center]" + Utilities.get_key(input_mapping) + "[/center]"
+		if Global.input_mode == Global.InputModes.KEYBOARD:
+			$InputKey.text = Utilities.cntr(Utilities.get_key(input_mapping))
+		else:
+			if input_mapping in Global.CONTROLLER_KEYS:
+				$InputKey.text = Utilities.cntr(Global.CONTROLLER_KEYS[input_mapping])
+			else: $InputKey.text = Utilities.cntr("?")
 	else: $InputKey.visible = false
 
 func _ready():
@@ -41,6 +46,8 @@ func _ready():
 	self_modulate.a = 0.4
 	Global.input_changed.connect(_get_key)
 	set_texture(initial_texture)
+	
+	Global.input_mode_switched.connect(_get_key)
 
 func _mouse_entered():
 	if !enabled: return

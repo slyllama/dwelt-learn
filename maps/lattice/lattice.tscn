@@ -326,6 +326,12 @@ transform = Transform3D(0.769231, 0, 0, 0, 0.769231, 0, 0, 0, 0.769231, 0, 0, 0)
 object_name = "lever_dialogue"
 dialogue_data_file = "res://maps/test/d_lever_jedi.json"
 
+[node name="Tank4" parent="." instance=ExtResource("22_iujst")]
+transform = Transform3D(0.987494, 0, 0.157658, 0, 1, 0, -0.157658, 0, 0.987494, 10, 12, 24)
+
+[node name="Tank5" parent="." instance=ExtResource("22_iujst")]
+transform = Transform3D(0.566349, 0, 0.824166, 0, 1, 0, -0.824166, 0, 0.566349, 15, 12, 22)
+
 [node name="Tanks" type="Node3D" parent="."]
 
 [node name="MushroomCluster" parent="Tanks" instance=ExtResource("21_pc35o")]
@@ -349,12 +355,6 @@ dialogue_close_distance = 7.0
 
 [node name="Tank3" parent="Tanks" instance=ExtResource("22_iujst")]
 transform = Transform3D(0.987494, 0, 0.157658, 0, 1, 0, -0.157658, 0, 0.987494, 4.284, 0, 26.791)
-
-[node name="Tank4" parent="Tanks" instance=ExtResource("22_iujst")]
-transform = Transform3D(0.987494, 0, 0.157658, 0, 1, 0, -0.157658, 0, 0.987494, 10, 12, 24)
-
-[node name="Tank5" parent="Tanks" instance=ExtResource("22_iujst")]
-transform = Transform3D(0.566349, 0, 0.824166, 0, 1, 0, -0.824166, 0, 0.566349, 15, 12, 22)
 
 [connection signal="player_left" from="Laser" to="." method="_on_laser_player_left"]
 [connection signal="activated" from="LaserDetector" to="." method="_on_laser_detector_activated"]

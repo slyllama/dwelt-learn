@@ -7,6 +7,16 @@ const LARGE_UI_SCALE = 1.0
 
 enum InputModes { KEYBOARD, CONTROLLER }
 
+const CONTROLLER_KEYS = {
+	"interact": "A",
+	"skill_glide": "RT",
+	"skill_ping": "Y",
+	"move_forward": "\u2191",
+	"move_back": "\u2193",
+	"strafe_left": "\u2190",
+	"strafe_right": "\u2192",
+}
+
 var camera_reference: Camera3D # reference to the player camera
 
 signal camera_shaken(intensity)
