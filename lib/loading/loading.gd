@@ -19,10 +19,6 @@ func _setting_changed(get_setting_id):
 	Utilities.save_settings()
 
 func load_map(map_name):
-	if !FileAccess.file_exists(_make_path(map_name)):
-		$ErrorText.text = Utilities.cntr("[Load] error: couldn't load map '" + map_name + "'.")
-		$ErrorText.visible = true
-		return
 	started = true
 	get_parent().cam_x_offset = -6.0
 	get_parent().cam_z_offset = 16.0
