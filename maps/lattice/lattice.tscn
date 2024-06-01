@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://dsf4aknq3seh2"]
+[gd_scene load_steps=42 format=3 uid="uid://dsf4aknq3seh2"]
 
 [ext_resource type="Script" path="res://maps/lattice/lattice.gd" id="1_hqs2c"]
 [ext_resource type="Texture2D" uid="uid://c5duom5wl7px7" path="res://generic/tex/sky.png" id="2_1uuus"]
@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://d3wu1w4amd36m" path="res://objects/insight/insight.tscn" id="23_hbglv"]
 [ext_resource type="Script" path="res://lib/debug/debug_flag/debug_flag.gd" id="24_0csbc"]
 [ext_resource type="PackedScene" uid="uid://cvho6mkc04s7h" path="res://objects/laser_detector/laser_detector.tscn" id="24_dbxhx"]
+[ext_resource type="Material" uid="uid://vxytudcydwsa" path="res://characters/euclid/mat_energy.tres" id="25_8ehr0"]
 [ext_resource type="AudioStream" uid="uid://gspni8xs632w" path="res://generic/sounds/play_dialogue.ogg" id="25_71yxt"]
 [ext_resource type="PackedScene" uid="uid://bvnmyltvk8rhe" path="res://lib/cond_dialogue/cond_dialogue.tscn" id="27_d5mqc"]
 [ext_resource type="PackedScene" uid="uid://k05mh66k8gs8" path="res://objects/puzzle_piece/lever.tscn" id="27_nwdys"]
@@ -321,6 +322,11 @@ transform = Transform3D(0.811156, 0, -0.58483, 0, 1, 0, 0.58483, 0, 0.811156, 0,
 
 [node name="FourierTest" parent="FourierRotate" instance=ExtResource("17_wxfph")]
 transform = Transform3D(-5.68247e-08, 0, 1.3, 0, 1.3, 0, -1.3, 0, -5.68247e-08, 0, 1.7, 16.6)
+
+[node name="Glow" type="CSGSphere3D" parent="FourierRotate/FourierTest"]
+transform = Transform3D(1, 0, -1.19209e-07, 0, 1, 0, 1.19209e-07, 0, 1, 0, 0, -0.592053)
+radius = 0.2
+material = ExtResource("25_8ehr0")
 
 [node name="LaserLever" parent="." instance=ExtResource("27_nwdys")]
 transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 19.7994, 0.124966, 18.5905)

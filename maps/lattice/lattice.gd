@@ -16,6 +16,11 @@ func _set_lever_text():
 	else: $MemTest/LeverB/BVis.set_text("Lever B\n[color=yellow]OFF[/color]")
 
 func _ready():
+	# Reparent the energy ball to the thruster bone so it maintains the correct position
+	var RearThruster = $FourierRotate/FourierTest/FourierSkeleton/Skeleton3D/RearThruster_001
+	$FourierRotate/FourierTest/Glow.reparent(RearThruster, false)
+	RearThruster.get_node("Glow").position = Vector3.ZERO
+	
 	interact_objects = [
 		$Elevator,
 		$Laser,
