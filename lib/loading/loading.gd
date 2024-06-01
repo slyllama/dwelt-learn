@@ -7,8 +7,6 @@ var progress: Array[float] # ResourceLoader will put its status details here
 var started = false
 var target_mus_vol = 0.7
 
-var settings_last_button # focus will be given back to this button
-
 func _make_path(map_name):
 	return("res://maps/" + str(map_name) + "/" + str(map_name) + ".tscn")
 
@@ -43,7 +41,6 @@ func _ready():
 	
 	$HUDButtons.settings_pressed.connect(func():
 		Global.button_click.emit()
-		settings_last_button = $HUDButtons/TopMenu/SettingsButton
 		$Settings.open()
 		return)
 	
@@ -75,8 +72,8 @@ func _ready():
 	$LoadPanel/VBox/Play.grab_focus()
 	
 	# Regain focus on the correct settings button after it is closed, for controllers
-	$Settings/Control/Panel/InputVBox/LowerCloseButton.pressed.connect(
-		func(): settings_last_button.grab_focus())
+	$Settings/Control/Panel/InputVBox/LowerCloseButton.pressed.connect( # TODO
+		func(): $LoadPanel/VBox/Settings.grab_focus())
 
 	$Music.volume_db = linear_to_db(target_mus_vol)
 	if !get_parent().disable_music:
@@ -107,7 +104,6 @@ func _map_button_pressed(map_name = ""):
 		return
 	elif map_name == "settings":
 		$Settings.open()
-		settings_last_button = $LoadPanel/VBox/Settings
 		return
 	load_map(map_name)
 

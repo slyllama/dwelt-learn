@@ -1,17 +1,18 @@
 extends CanvasLayer
 
 const InputLine = preload("res://lib/ui/settings/components/stin_input_keybind.tscn")
+@onready var CloseButton = get_node("Control/Panel/InputVBox/LowerCloseButton")
 
 var input_containers = [] # input list nodes, so they can be cleared on refresh
 var is_open = false
 
 # Move the "reset" button to the bottom of the menu after reloading the menu
 func _reset_to_bottom():
-	$Control/Panel/InputVBox.move_child($Control/Panel/InputVBox/LowerCloseButton, -1)
+	$Control/Panel/InputVBox.move_child(CloseButton, -1)
 
 func open():
 	is_open = true
-	$Control/Panel/InputVBox/LowerCloseButton.grab_focus()
+	CloseButton.grab_focus()
 	visible = true
 	Global.settings_opened = true
 
@@ -58,9 +59,13 @@ func refresh_input_data():
 		input_containers.append(i)
 		$Control/Panel/InputVBox.add_child(i)
 	
-	_reset_to_bottom()
+	# Go to the bottom input from the close button
+	var LastInputButton = input_containers[input_containers.size() - 1].get_node("Button")
+	CloseButton.set_focus_neighbor(SIDE_TOP, CloseButton.get_path_to(LastInputButton))
+	
 	# To avoid instantly triggering that input just by setting it
 	# TODO: fix; this isn't that ideal...
+	_reset_to_bottom()
 	await get_tree().create_timer(0.2).timeout
 	Global.in_keybind_select = false
 
@@ -103,7 +108,7 @@ func _ready():
 	#Global.connect("left_keybind_select", refresh_input_data)
 	Global.left_keybind_select.connect(func():
 		refresh_input_data()
-		$Control/Panel/InputVBox/LowerCloseButton.grab_focus())
+		CloseButton.grab_focus())
 	refresh_input_data()
 
 func _input(event):

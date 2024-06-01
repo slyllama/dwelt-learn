@@ -117,8 +117,9 @@ func _physics_process(_delta):
 	if (Input.get_joy_axis(0, JOY_AXIS_LEFT_Y) != 0
 		or Input.get_joy_axis(0, JOY_AXIS_LEFT_X) != 0):
 		if !joy_forward:
-			joy_forward_just_pressed.emit()
-			joy_forward = true
+			if !Global.settings_opened:
+				joy_forward_just_pressed.emit()
+				joy_forward = true
 	else:
 		if joy_forward:
 			joy_forward_just_released.emit()
@@ -142,8 +143,9 @@ func _physics_process(_delta):
 	if Input.is_action_pressed("move_back"): forward -= 1
 	if Input.is_action_pressed("strafe_left"): side += 0.5
 	if Input.is_action_pressed("strafe_right"): side -= 0.5
-	forward -= Input.get_joy_axis(0, JOY_AXIS_LEFT_Y)
-	side -= Input.get_joy_axis(0, JOY_AXIS_LEFT_X) * 0.5
+	if !Global.settings_opened:
+		forward -= Input.get_joy_axis(0, JOY_AXIS_LEFT_Y)
+		side -= Input.get_joy_axis(0, JOY_AXIS_LEFT_X) * 0.5
 	
 	forward = clamp(forward, -1.0, 1.0)
 	side = clamp(side, -1.0, 1.0)

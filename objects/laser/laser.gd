@@ -5,7 +5,7 @@ extends Node3D
 @export var laser_move_speed = 0.3
 @export var laser_limit_angle = Vector2(45.0, 30.0)
 
-var delay_complete = false # laser won't start moving until after a short delay
+var delay_complete = true # laser won't start moving until after a short delay
 var active = false
 var state = true
 
@@ -26,6 +26,7 @@ func activate():
 	$EnterLaser.play()
 
 	delay_complete = false
+	$ObjectHandler.interactable = false
 	Global.emit_signal(
 		"player_position_locked",
 		$DockingPoint.global_position,
@@ -42,17 +43,19 @@ func activate():
 			"description": "Detach from the laser.",
 			"key": ["interact"]
 		}], 0.0)
-	await get_tree().create_timer(0.4).timeout
+	await get_tree().create_timer(1.0).timeout
 	delay_complete = true
+	$ObjectHandler.interactable = true
 
 func deactivate():
+	if !delay_complete: return
 	active = false
 	Global.smoke_faded.emit("out")
-	Global.input_hint_cleared.emit()
-	Global.player_position_unlocked.emit()
 	
+	Global.player_position_unlocked.emit()
 	Global.printc("[Laser -> " + object_name + "] player exited!", "magenta")
 	player_left.emit($Cast.rotation_degrees)
+	Global.input_hint_cleared.emit()
 
 func _ready():
 	# Object handler-specifics

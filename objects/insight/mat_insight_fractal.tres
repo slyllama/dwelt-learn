@@ -1,9 +1,11 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://tw4cr3kd2jfj"]
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://tw4cr3kd2jfj"]
 
 [ext_resource type="Shader" path="res://generic/shaders/sp_fractal.gdshader" id="1_gn85v"]
+[ext_resource type="Texture2D" uid="uid://dgkrpn8nt8pvt" path="res://generic/tex/shader_tex/laser.jpeg" id="2_lnckb"]
 
 [resource]
 render_priority = 0
 shader = ExtResource("1_gn85v")
 shader_parameter/base_color = Color(0.65098, 0.847059, 1, 1)
 shader_parameter/alpha_scale = 1.0
+shader_parameter/smoke_texture = ExtResource("2_lnckb")

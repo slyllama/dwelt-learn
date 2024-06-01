@@ -29,6 +29,7 @@ func _input(event):
 			Global.emit_signal("left_keybind_select")
 
 func _on_button_pressed():
+	if Global.input_mode == Global.InputModes.CONTROLLER: return
 	if Global.in_keybind_select == true: return # keybind select is already active
 	Global.in_keybind_select = true
 	active = true
