@@ -119,7 +119,7 @@ func _input(event):
 		if visible == false: open()
 		else: close()
 	# Right click to close settings menu
-	if Input.is_action_just_pressed("right_click"):
+	if Input.is_action_just_pressed("ui_cancel"):
 		if visible == true: close()
 
 func _on_button_pressed():

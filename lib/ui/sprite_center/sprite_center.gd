@@ -13,7 +13,7 @@ func set_pos(offset = Vector2.ZERO, lerp_val = 0.0):
 	else: global_position = pos_val
 
 func _ready():
-	og_y_pos = position.y
+	og_y_pos = global_position.y
 	if debug == false: $FloorDiff.queue_free()
 	get_tree().get_root().size_changed.connect(func():
 		set_pos())

@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://diq3dkelcpf84" path="res://lib/ui/insight/tex/base_2.png" id="4_rb6os"]
 [ext_resource type="Texture2D" uid="uid://dsroqhsarregr" path="res://characters/euclid/tex/radar_diff.png" id="4_sklih"]
 [ext_resource type="Texture2D" uid="uid://b5nufueq16vw0" path="res://generic/tex/shader_tex/wobble_noise.tres" id="5_mvkds"]
-[ext_resource type="FontFile" uid="uid://bhk1jyryyb1be" path="res://generic/fonts/plex_mono.otf" id="11_i12l7"]
+[ext_resource type="FontFile" uid="uid://b1v28gy50d86f" path="res://generic/fonts/red_hat.ttf" id="9_gik22"]
 [ext_resource type="Script" path="res://lib/ui/text_label_anim/text_label_anim.gd" id="12_b62ph"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_as573"]
@@ -41,16 +41,6 @@ shader_parameter/noise = ExtResource("5_mvkds")
 [node name="Insight" type="CanvasLayer"]
 script = ExtResource("1_6dq0b")
 
-[node name="TestTexture" type="TextureRect" parent="."]
-visible = false
-z_index = -2
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-expand_mode = 1
-
 [node name="BG" type="ColorRect" parent="."]
 z_index = -1
 material = SubResource("ShaderMaterial_as573")
@@ -82,11 +72,11 @@ flip_h = true
 
 [node name="InsightTitle" type="RichTextLabel" parent="SpriteCenter"]
 offset_left = -250.0
-offset_top = -170.0
+offset_top = -24.0
 offset_right = 250.0
-offset_bottom = -120.0
+offset_bottom = 26.0
 mouse_filter = 2
-theme_override_fonts/normal_font = ExtResource("11_i12l7")
+theme_override_fonts/normal_font = ExtResource("9_gik22")
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "[center]INSIGHTS[/center]"

@@ -136,17 +136,19 @@ unique_name_in_owner = true
 [node name="Insight" parent="Insights" instance=ExtResource("23_hbglv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 20)
 object_name = "insight_1"
-dialogue_data = Array[String](["First Insight!"])
+dialogue_data = Array[String](["<Insights> represent inflection points in unlocking the emotional characteristics of the landscape you are navigating. Through them the spirit of the land manifests, and so in gaining access to each subsequent Insight, you expose more and more of its essence until you can fully untether it.
+$
+This is the first of <three> Insights in this technical test!"])
 
 [node name="Insight2" parent="Insights" instance=ExtResource("23_hbglv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 12, 19)
 object_name = "insight_2"
-dialogue_data = Array[String](["Second Insight!"])
+dialogue_data = Array[String](["This is the second Insight!"])
 
 [node name="Insight3" parent="Insights" instance=ExtResource("23_hbglv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.2333, 12, 13.0191)
-object_name = "insight_2"
-dialogue_data = Array[String](["Second Insight!"])
+object_name = "insight_3"
+dialogue_data = Array[String](["This is the third and final Insight!"])
 
 [node name="HUD" parent="." instance=ExtResource("4_gb0g0")]
 

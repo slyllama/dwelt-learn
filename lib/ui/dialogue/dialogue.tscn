@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ds7v1kxeoggbl"]
+[gd_scene load_steps=20 format=3 uid="uid://ds7v1kxeoggbl"]
 
 [ext_resource type="Script" path="res://lib/ui/dialogue/dialogue.gd" id="1_6fhhv"]
 [ext_resource type="Texture2D" uid="uid://dduothw77bdaf" path="res://lib/ui/dialogue/tex/base.png" id="1_i1ywh"]
@@ -7,6 +7,8 @@
 [ext_resource type="FontFile" uid="uid://bhk1jyryyb1be" path="res://generic/fonts/plex_mono.otf" id="3_y1toj"]
 [ext_resource type="FontFile" uid="uid://nyvmwj526bbr" path="res://generic/fonts/alegreya.ttf" id="6_0uj4r"]
 [ext_resource type="Script" path="res://lib/ui/text_label_anim/text_label_anim.gd" id="8_ga7aj"]
+[ext_resource type="PackedScene" uid="uid://sihpp2cwoyfc" path="res://lib/ui/sprite_center/sprite_center.tscn" id="9_vefo6"]
+[ext_resource type="Texture2D" uid="uid://fk0cfrsqe4we" path="res://lib/ui/tex/decoration.png" id="9_vexrw"]
 [ext_resource type="AudioStream" uid="uid://gspni8xs632w" path="res://generic/sounds/play_dialogue.ogg" id="10_ayfgg"]
 [ext_resource type="AudioStream" uid="uid://d17c68aqvdewo" path="res://generic/sounds/click.ogg" id="12_3bocd"]
 [ext_resource type="PackedScene" uid="uid://dyhaqy0gi2mf1" path="res://lib/ui/dialogue/dialogue_world/dialogue_world.tscn" id="14_qbvws"]
@@ -37,6 +39,69 @@ content_margin_top = 6.0
 content_margin_right = 10.0
 content_margin_bottom = 6.0
 bg_color = Color(0.4, 0.709804, 1, 1)
+
+[sub_resource type="Animation" id="Animation_m0jqr"]
+resource_name = "float"
+length = 3.0
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Base:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 10), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Base:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.75, 1.5, 2.25, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.588235), Color(1, 1, 1, 1), Color(1, 1, 1, 0.588235), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_sckei"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Base:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Base:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jm4id"]
+_data = {
+"RESET": SubResource("Animation_sckei"),
+"float": SubResource("Animation_m0jqr")
+}
 
 [node name="Dialogue" type="CanvasLayer"]
 script = ExtResource("1_6fhhv")
@@ -134,6 +199,27 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_f812m")
 theme_override_styles/hover = SubResource("StyleBoxFlat_dy2bg")
 theme_override_styles/focus = SubResource("StyleBoxFlat_mg74j")
 text = "PROCEED"
+
+[node name="SpriteCenter" parent="Base" instance=ExtResource("9_vefo6")]
+position = Vector2(533, 250)
+keep_y = true
+
+[node name="Float" type="AnimationPlayer" parent="Base/SpriteCenter"]
+libraries = {
+"": SubResource("AnimationLibrary_jm4id")
+}
+autoplay = "float"
+
+[node name="Base" type="Node2D" parent="Base/SpriteCenter"]
+
+[node name="DecoR" type="Sprite2D" parent="Base/SpriteCenter/Base"]
+position = Vector2(425, -188)
+texture = ExtResource("9_vexrw")
+
+[node name="DecoL" type="Sprite2D" parent="Base/SpriteCenter/Base"]
+position = Vector2(-422, 196)
+rotation = -3.14159
+texture = ExtResource("9_vexrw")
 
 [node name="ContinueSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_3bocd")

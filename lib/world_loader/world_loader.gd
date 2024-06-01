@@ -146,7 +146,8 @@ func _ready():
 	Action.in_glide = false
 	Action.last_target = ""
 	Global.can_move = true
-	Global.insights_collected = 0
+	insights_refresh()
+	Global.dialogue_closed_early.emit()
 
 	# Fade in all sound if the game wasn't already muted
 	Utilities.set_master_vol(0.0)
