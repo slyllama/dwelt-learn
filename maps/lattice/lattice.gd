@@ -49,6 +49,7 @@ func _ready():
 	$Greybox/VentHandler.turn_off()
 	$Fourier/AnimationPlayer.play("Idle")
 	$FourierRotate/FourierTest/AnimationPlayer.play("Idle")
+	$MemTest/LeverJedi/AnimationPlayer.play("Idle")
 
 func _process(_delta):
 	$FourierRotate.rotation_degrees.y += 0.1

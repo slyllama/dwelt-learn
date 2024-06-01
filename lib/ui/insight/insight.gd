@@ -89,7 +89,7 @@ func open():
 	Action.in_insight_dialogue = false
 
 func close():
-	if can_close == false: return
+	if !can_close: return
 	can_close = false
 	is_open = false
 	Global.smoke_faded.emit("out")
@@ -128,7 +128,7 @@ func _ready():
 
 func _input(_event):
 	if Input.is_action_just_pressed("interact"):
-		if is_open == true and !Action.in_insight_dialogue:
+		if is_open and !Action.in_insight_dialogue and !Global.settings_opened:
 			Action.deactivate()
 			Global.insight_pane_closed.emit()
 

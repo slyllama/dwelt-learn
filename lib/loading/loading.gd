@@ -72,7 +72,7 @@ func _ready():
 	$LoadPanel/VBox/Play.grab_focus()
 	
 	# Regain focus on the correct settings button after it is closed, for controllers
-	$Settings/Control/Panel/InputVBox/LowerCloseButton.pressed.connect( # TODO
+	$Settings.closed.connect(
 		func(): $LoadPanel/VBox/Settings.grab_focus())
 
 	$Music.volume_db = linear_to_db(target_mus_vol)

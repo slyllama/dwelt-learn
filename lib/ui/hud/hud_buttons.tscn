@@ -48,6 +48,7 @@ offset_right = 112.0
 offset_bottom = -30.0
 grow_vertical = 0
 size_flags_horizontal = 2
+focus_mode = 0
 texture_normal = ExtResource("4_vcamg")
 texture_hover = ExtResource("5_1l846")
 texture_focused = ExtResource("5_1l846")

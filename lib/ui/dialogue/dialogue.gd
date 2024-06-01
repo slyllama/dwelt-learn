@@ -94,10 +94,10 @@ func _ready():
 	visible = false
 
 func _input(_event):
-	if (transitioning == true or Global.dialogue_active == false
-		or Global.in_keybind_select == true): return
+	if (transitioning or !Global.dialogue_active or Global.settings_opened
+		or Global.in_keybind_select): return
 	if Input.is_action_just_pressed("interact"):
-			if Global.dialogue_active == true: play_phrase()
+			if Global.dialogue_active: play_phrase()
 
 func _on_proceed_pressed():
-	if Global.dialogue_active == true: play_phrase()
+	if Global.dialogue_active: play_phrase()

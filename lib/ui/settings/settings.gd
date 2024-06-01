@@ -5,6 +5,7 @@ const InputLine = preload("res://lib/ui/settings/components/stin_input_keybind.t
 
 var input_containers = [] # input list nodes, so they can be cleared on refresh
 var is_open = false
+signal closed
 
 # Move the "reset" button to the bottom of the menu after reloading the menu
 func _reset_to_bottom():
@@ -14,12 +15,14 @@ func open():
 	is_open = true
 	CloseButton.grab_focus()
 	visible = true
+	$ControllerLayout.visible = false # because you can leave it open
 	Global.settings_opened = true
 
 func close():
 	Global.button_click.emit()
 	is_open = false
 	visible = false
+	closed.emit()
 	# Prevent simultaneous action in the world (controller)!
 	await get_tree().create_timer(0.2).timeout
 	if !is_open: Global.settings_opened = false
@@ -132,4 +135,13 @@ func _on_control_mouse_exited(): Global.mouse_in_settings_menu = false
 
 func _on_map_selection_pressed():
 	Save.game_saved.emit()
+	Global.settings_opened = false
 	get_tree().change_scene_to_file("res://lib/loading/loading.tscn")
+
+func _on_controller_bindings_pressed():
+	$ControllerLayout.visible = true
+	$ControllerLayout/Proceed.grab_focus()
+
+func _on_proceed_pressed():
+	$ControllerLayout.visible = false
+	$Control/Panel/VBox/ControllerBindings.grab_focus()

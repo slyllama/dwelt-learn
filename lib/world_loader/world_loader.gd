@@ -98,7 +98,7 @@ func insights_refresh():
 	Global.insight_on_map = insight_found
 
 func fire_ping():
-	if ping_cooling or Action.active: return
+	if ping_cooling or Action.active or Global.settings_opened: return
 	
 	ping_cooling = true
 	PingCooldown.start()

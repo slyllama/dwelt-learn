@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bx5xwgdebscc6"]
+[gd_scene load_steps=13 format=3 uid="uid://bx5xwgdebscc6"]
 
 [ext_resource type="Script" path="res://lib/ui/settings/settings.gd" id="1_ttf36"]
 [ext_resource type="Texture2D" uid="uid://d2nv8xnwo132g" path="res://lib/ui/tex/placeholder_logo.png" id="2_3tfr4"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://bg5bulncs2ejf" path="res://lib/ui/settings/components/stin_input_toggle.tscn" id="5_duwqu"]
 [ext_resource type="PackedScene" uid="uid://d4avw33snp7bc" path="res://lib/ui/settings/components/stin_input_slider.tscn" id="6_y64kv"]
 [ext_resource type="Script" path="res://lib/ui/clicky_button/clicky_button.gd" id="7_tcdlk"]
+[ext_resource type="Texture2D" uid="uid://1h7sep7hyk7w" path="res://lib/ui/settings/tex/controller_layout.png" id="8_p7oo5"]
+[ext_resource type="Theme" uid="uid://ch4overpy78ds" path="res://generic/themes/start_theme.tres" id="9_idci6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mavhn"]
 bg_color = Color(0, 0, 0, 1)
@@ -203,6 +205,14 @@ theme = ExtResource("4_iyw7p")
 text = "DEFAULTS"
 script = ExtResource("7_tcdlk")
 
+[node name="ControllerBindings" type="Button" parent="Control/Panel/VBox"]
+layout_mode = 2
+size_flags_vertical = 8
+mouse_filter = 1
+theme = ExtResource("4_iyw7p")
+text = "CONTROLLER LAYOUT"
+script = ExtResource("7_tcdlk")
+
 [node name="MapSelection" type="Button" parent="Control/Panel/VBox"]
 layout_mode = 2
 theme = ExtResource("4_iyw7p")
@@ -260,8 +270,43 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_6s3qa")
 text = "DONE"
 script = ExtResource("7_tcdlk")
 
+[node name="ControllerLayout" type="TextureRect" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -591.0
+offset_top = -365.5
+offset_right = 591.0
+offset_bottom = 365.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_p7oo5")
+
+[node name="Proceed" type="Button" parent="ControllerLayout"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -116.0
+offset_top = 230.0
+offset_right = 116.0
+offset_bottom = 274.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("9_idci6")
+text = "CONTINUE"
+script = ExtResource("7_tcdlk")
+override_once = true
+
 [connection signal="mouse_entered" from="Control" to="." method="_on_control_mouse_entered"]
 [connection signal="mouse_exited" from="Control" to="." method="_on_control_mouse_exited"]
 [connection signal="pressed" from="Control/Panel/VBox/ResetButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Control/Panel/VBox/ControllerBindings" to="." method="_on_controller_bindings_pressed"]
 [connection signal="pressed" from="Control/Panel/VBox/MapSelection" to="." method="_on_map_selection_pressed"]
 [connection signal="pressed" from="Control/Panel/InputVBox/LowerCloseButton" to="." method="close"]
+[connection signal="pressed" from="ControllerLayout/Proceed" to="." method="_on_proceed_pressed"]

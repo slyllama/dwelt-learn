@@ -90,7 +90,7 @@ func _process(_delta):
 	
 	# Also prevents camera movement on controller from moving the laser
 	# TODO: check whether this works with the controller too
-	if active and state:
+	if active and state and !Global.settings_opened:
 		if (Input.is_action_pressed("ui_up")
 			or Input.is_action_pressed("move_forward")
 			or Input.get_joy_axis(0, JOY_AXIS_RIGHT_Y)):
