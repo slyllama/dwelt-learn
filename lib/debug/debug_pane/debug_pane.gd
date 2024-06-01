@@ -120,3 +120,7 @@ func _on_emit_controller_input_pressed():
 	controller_test_event.pressed = false
 
 func _on_close_popup_pressed(): Global.debug_popup_closed.emit()
+
+func _on_print_cam_rotation_pressed():
+	Global.printc(Utilities.vecstr(Global.camera_rotation))
+	Global.debug_popup_closed.emit()

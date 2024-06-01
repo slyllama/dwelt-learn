@@ -40,19 +40,30 @@ var PingCooldown = Timer.new()
 var PingSound = AudioStreamPlayer.new()
 var ping_cooling = false
 
+var initial_cam_rotation = Vector3.ZERO # in degrees
+
 func _get_nearest_save_point(height = 2.0):
 	if get_node_or_null("SavePoints") == null:
 		Global.printc("[WorldLoader] no save point data!", "red")
 	
 	var nearest_point
 	var closest_dist = 9999.99
-	for point in %SavePoints.get_children():
-		var s_player_position = Save.get_data(Global.current_map, "player_position")
-		var dist = Vector3(s_player_position).distance_to(point.global_position)
-		if dist < closest_dist:
-			closest_dist = dist
-			nearest_point = point
-	# Returns adding the specified height
+	var s_player_position = Save.get_data(Global.current_map, "player_position")
+	if !s_player_position:
+		nearest_point = %SavePoints.get_node("Origin")
+	else:
+		for point in %SavePoints.get_children():
+			# We always work from save points - if the player's position isn't saved,
+			# we simply reckon from 0, 0
+			var dist = Vector3(s_player_position).distance_to(point.global_position)
+			if dist < closest_dist:
+				closest_dist = dist
+				nearest_point = point
+	
+	# Get the custom camera direction of the nearest save point, if it has one
+	if "save_camera_rotation" in nearest_point:
+		initial_cam_rotation = nearest_point.save_camera_rotation
+		initial_cam_rotation.z = 0.0 # never shift the camera like this
 	return(nearest_point.global_position + Vector3(0, height, 0))
 
 func _setting_changed(get_setting_id):
@@ -162,8 +173,9 @@ func _ready():
 	# ===== DATA TO LOAD =====
 	Global.current_map = map_name
 	Save.save_loaded.connect(func():
-		if Save.get_data(Global.current_map, "player_position") != null:
-			%Player.global_position = _get_nearest_save_point()
+		%Player.global_position = _get_nearest_save_point()
+		%Player.set_cam_rotation(initial_cam_rotation)
+		
 		var s_collected_insights = Save.get_data(Global.current_map, "collected_insights")
 		if s_collected_insights != null: Global.insights_collected = s_collected_insights)
 	

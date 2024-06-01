@@ -292,13 +292,15 @@ dialogue_close_distance = 7.0
 [node name="SavePoints" type="Node3D" parent="."]
 unique_name_in_owner = true
 
-[node name="SP" type="Marker3D" parent="SavePoints"]
+[node name="Origin" type="Marker3D" parent="SavePoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.75, 0, 19.75)
 script = ExtResource("24_0csbc")
+save_camera_rotation = Vector3(12.7, 93.8, 0)
 
 [node name="SP4" type="Marker3D" parent="SavePoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 17)
 script = ExtResource("24_0csbc")
+save_camera_rotation = Vector3(20, 54, 0)
 
 [node name="SP2" type="Marker3D" parent="SavePoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 12, 16)
@@ -307,12 +309,15 @@ script = ExtResource("24_0csbc")
 [node name="SP6" type="Marker3D" parent="SavePoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.6912, 12, 9.00814)
 script = ExtResource("24_0csbc")
+save_camera_rotation = Vector3(-4, 560, 0)
 
 [node name="SP5" type="Marker3D" parent="SavePoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.25032, 4.76837e-07, 16.1047)
 script = ExtResource("24_0csbc")
+save_camera_rotation = Vector3(17, 295, 0)
 
 [node name="FourierRotate" type="Node3D" parent="."]
+transform = Transform3D(0.811156, 0, -0.58483, 0, 1, 0, 0.58483, 0, 0.811156, 0, 0, 0)
 
 [node name="FourierTest" parent="FourierRotate" instance=ExtResource("17_wxfph")]
 transform = Transform3D(-5.68247e-08, 0, 1.3, 0, 1.3, 0, -1.3, 0, -5.68247e-08, 0, 1.7, 16.6)

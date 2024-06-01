@@ -4,6 +4,7 @@ class_name DebugFlag extends Marker3D
 # Simple system for displaying debug points
 
 @export var custom_texture: Texture2D
+@export var save_camera_rotation: Vector3
 
 func _ready():
 	var tex_to_use

@@ -24,6 +24,11 @@ var lock_dir = Vector3.ZERO
 var lock_cam_clamp = { "x_lower": 0.0, "x_upper": 0.0, "y_lower": 0.0, "y_upper": 0.0 }
 var moving = false
 
+func set_cam_rotation(cam_rotation):
+	#$CamPivot.rotation_degrees = cam_rotation
+	$CamPivot.new_cam_x_rotation = cam_rotation.x
+	$CamPivot.new_cam_y_rotation = cam_rotation.y
+
 func lock_position(get_lock_pos, get_cam_facing):
 	position_locked = true
 	$Collision.disabled = true

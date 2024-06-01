@@ -110,7 +110,7 @@ var insight_on_map = false
 var insights_total = 0
 
 ### World states ###
-var camera_y_rotation= 0.0
+var camera_rotation = Vector3.ZERO
 var player_position = Vector3.ZERO
 var player_ground_position = Vector3.ZERO
 var raycast_y_point = 0.0
