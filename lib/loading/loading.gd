@@ -14,6 +14,9 @@ func _setting_changed(get_setting_id):
 	match get_setting_id:
 		"volume": Utilities.set_master_vol(Global.settings.volume)
 		"full_screen": Utilities.toggle_full_screen()
+		"music_volume": if get_node_or_null("Music"):
+			target_mus_vol = Global.settings.music_volume
+			$Music.volume_db = linear_to_db(Global.settings.music_volume)
 	Utilities.save_settings()
 
 func load_map(map_name):

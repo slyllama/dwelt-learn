@@ -23,7 +23,6 @@ var tutorial_input_data = [{
 ## [code]Save.save_loaded()[/code] [b]must[/b] be called at the end of the
 ## extended script's [code]_ready()[/code] function if this option is set.
 @export var custom_data_load_signal = false
-@export var music_disabled_on_load = false
 
 # All lights in here will be excluded from spotlight shadows. Remember to add
 # to this before calling super().
@@ -73,6 +72,8 @@ func _setting_changed(get_setting_id):
 		"camera_sensitivity": %Player/CamPivot.camera_sensitivity = Global.settings.camera_sensitivity
 		"volumetric_fog": %Sky.environment.volumetric_fog_enabled = Global.settings.volumetric_fog
 		"bloom": %Sky.environment.glow_enabled = Global.settings.bloom
+		"music_volume": if get_node_or_null("Music"):
+			$Music.volume_db = linear_to_db(Global.settings.music_volume)
 
 	# The following are only applied after the first run
 	if first_settings_run == true:
@@ -202,10 +203,7 @@ func _ready():
 	if Save.get_data("dwelt", "tutorial_inputs_shown") == null:
 		Global.input_hint_played.emit(tutorial_input_data, 5.0)
 		Save.set_data("dwelt", "tutorial_inputs_shown", true)
-	
-	if !music_disabled_on_load:
-		if get_node_or_null("Music") != null:
-			get_node_or_null("Music").play()
+	if get_node_or_null("Music"): $Music.play()
 
 func _input(_event):
 	if Input.is_action_just_pressed("skill_ping"):

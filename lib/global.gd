@@ -75,7 +75,8 @@ signal input_changed
 var SETTINGS = {
 	"fov": 80,
 	"camera_sensitivity": 0.65,
-	"volume": 1.00,
+	"volume": 0.04,
+	"music_volume": 1.00,
 	"full_screen": false,
 	"volumetric_fog": true,
 	"bloom": true
