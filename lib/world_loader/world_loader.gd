@@ -34,6 +34,8 @@ var exclude_from_shadow = []
 var spring_arm_objects = []
 var interact_objects = []
 var first_settings_run = false
+var delay_passed = false # past first second of runtime?
+var tutorial_hint_spawned = false # only for first run
 
 var PingCooldown = Timer.new()
 var PingSound = AudioStreamPlayer.new()
@@ -200,14 +202,21 @@ func _ready():
 	fade_bus_in.tween_callback(func(): Global.setting_changed.emit("volume"))
 	
 	await get_tree().create_timer(1.0).timeout
-	if Save.get_data("dwelt", "tutorial_inputs_shown") == null:
-		Global.input_hint_played.emit(tutorial_input_data, 5.0)
+	delay_passed = true
+	if !Save.get_data("dwelt", "tutorial_inputs_shown"):
+		Global.input_hint_played.emit(tutorial_input_data, 0.0)
+		tutorial_hint_spawned = true
 		Save.set_data("dwelt", "tutorial_inputs_shown", true)
 	if get_node_or_null("Music"): $Music.play()
 
 func _input(_event):
 	if Input.is_action_just_pressed("skill_ping"):
 		fire_ping()
+	# TODO: check this works on controller too
+	if Input.is_action_just_pressed("move_forward"): # clear tutorials on movement
+		if tutorial_hint_spawned:
+			tutorial_hint_spawned = false
+			Global.input_hint_cleared.emit()
 
 func _notification(what):
 	# Save the game on quit via Save.game_saved
