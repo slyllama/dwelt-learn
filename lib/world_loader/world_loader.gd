@@ -146,6 +146,7 @@ func _ready():
 	Action.deactivate() # interesting bug where an action will persist across maps
 	Action.in_glide = false
 	Action.last_target = ""
+	Global.insights_collected = 0
 	Global.can_move = true
 	Global.dialogue_closed_early.emit()
 
@@ -176,9 +177,8 @@ func _ready():
 	Save.save_loaded.connect(func():
 		%Player.global_position = _get_nearest_save_point()
 		%Player.set_cam_rotation(initial_cam_rotation)
-		
 		var s_collected_insights = Save.get_data(Global.current_map, "collected_insights")
-		if s_collected_insights != null: Global.insights_collected = s_collected_insights)
+		if s_collected_insights: Global.insights_collected = s_collected_insights)
 	
 	if custom_data_load_signal == false: proc_save()
 	insights_refresh()

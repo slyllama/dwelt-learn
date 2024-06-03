@@ -41,7 +41,6 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.784314)
 
 [node name="Logo" type="TextureRect" parent="BG"]
-self_modulate = Color(1, 1, 1, 0.784314)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
