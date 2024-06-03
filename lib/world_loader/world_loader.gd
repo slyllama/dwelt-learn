@@ -147,7 +147,6 @@ func _ready():
 	Action.in_glide = false
 	Action.last_target = ""
 	Global.can_move = true
-	insights_refresh()
 	Global.dialogue_closed_early.emit()
 
 	# Fade in all sound if the game wasn't already muted
@@ -182,6 +181,7 @@ func _ready():
 		if s_collected_insights != null: Global.insights_collected = s_collected_insights)
 	
 	if custom_data_load_signal == false: proc_save()
+	insights_refresh()
 	$HUD/DebugPane.update()
 	
 	# Set spring arm collisions

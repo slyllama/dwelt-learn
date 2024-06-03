@@ -18,6 +18,8 @@ func _toggle_interact_overlay(state):
 func _fade_out_black():
 	await get_tree().create_timer(0.5).timeout
 	var fade_tween = create_tween()
+	$SmokeOverlay.set_alpha($SmokeOverlay.max_alpha)
+	$SmokeOverlay/BG.visible = true
 	fade_tween.tween_property($LoadOverride/LoadBlack, "modulate:a", 0.0, 0.2)
 	fade_tween.tween_callback(func():
 		$LoadOverride/LoadBlack.visible = false
@@ -29,7 +31,7 @@ func _ready():
 	Action.untargeted.connect(_toggle_interact_overlay.bind(false))
 	$HUDButtons.settings_pressed.connect(_toggle_settings)
 	
-	Global.smoke_faded.emit("in")
+	#Global.smoke_faded.emit("in")
 	$InteractOverlay.modulate = Color(0.0, 0.0, 0.0, 0.2)
 	$LoadOverride/LoadBlack.visible = true
 	
