@@ -6,7 +6,13 @@ extends Node3D
 
 const InsightProjectile = preload("res://objects/insight_projectile/insight_projectile.tscn")
 const PingNodule = preload("res://lib/ui/ping_nodule/ping_nodule.tscn")
-var tutorial_input_data = [{
+var tutorial_input_data = [
+	{
+		"title": "LOOK",
+		"description": "Control the camera and cursor.", 
+		"key": ["axis_action"]
+	},
+	{
 		"title": "MOVE",
 		"description": "Navigate the world.", 
 		"key": ["strafe_right", "strafe_left", "move_back", "move_forward"]

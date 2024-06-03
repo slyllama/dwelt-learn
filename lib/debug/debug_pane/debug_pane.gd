@@ -17,7 +17,9 @@ func update():
 func _ready():
 	$Render.text = ""
 	Global.debug_toggled.connect(func():
-		visible = Global.debug_state)
+		visible = Global.debug_state
+		if !Global.debug_state: Global.debug_popup_closed.emit()
+	)
 	Global.debug_toggled.emit()
 	
 	Global.debug_popup_opened.connect(func():

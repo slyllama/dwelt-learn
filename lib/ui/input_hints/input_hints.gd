@@ -5,6 +5,11 @@ var card_nodes = []
 var transitioning = false
 var active = false
 
+const TEXTURES = {
+	"tex_joystick": preload("res://lib/ui/input_hints/tex/input_tex_joystick.png"),
+	"tex_mouse": preload("res://lib/ui/input_hints/tex/input_tex_mouse.png")
+}
+
 func clear_hints(override = false):
 	if !override:
 		if !active : return
