@@ -1,0 +1,138 @@
+[gd_scene load_steps=11 format=3 uid="uid://dp1up0pngrtij"]
+
+[ext_resource type="Texture2D" uid="uid://d2nv8xnwo132g" path="res://lib/ui/tex/placeholder_logo.png" id="1_csny3"]
+[ext_resource type="PackedScene" uid="uid://sihpp2cwoyfc" path="res://lib/ui/sprite_center/sprite_center.tscn" id="1_jrx8u"]
+[ext_resource type="Script" path="res://lib/settings_tabs/settings_tabs.gd" id="1_q5q8i"]
+[ext_resource type="Texture2D" uid="uid://fk0cfrsqe4we" path="res://lib/ui/tex/decoration.png" id="2_8w74t"]
+[ext_resource type="Theme" uid="uid://dfe36tnn0c1ud" path="res://generic/themes/theme.tres" id="5_cda0n"]
+[ext_resource type="PackedScene" uid="uid://dgg0ydt6egir0" path="res://lib/settings_tabs/settings_general.tscn" id="6_4x3hg"]
+[ext_resource type="PackedScene" uid="uid://bbbfu66cxakti" path="res://lib/settings_tabs/settings_input.tscn" id="7_khgo2"]
+
+[sub_resource type="Animation" id="Animation_sckei"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Base:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Base:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_m0jqr"]
+resource_name = "float"
+length = 3.0
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Base:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 10), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Base:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.75, 1.5, 2.25, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.588235), Color(1, 1, 1, 1), Color(1, 1, 1, 0.588235), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jm4id"]
+_data = {
+"RESET": SubResource("Animation_sckei"),
+"float": SubResource("Animation_m0jqr")
+}
+
+[node name="SettingsTabs" type="CanvasLayer"]
+script = ExtResource("1_q5q8i")
+
+[node name="BG" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.784314)
+
+[node name="SpriteCenter" parent="BG" instance=ExtResource("1_jrx8u")]
+position = Vector2(960, 435)
+keep_y = true
+
+[node name="Float" type="AnimationPlayer" parent="BG/SpriteCenter"]
+libraries = {
+"": SubResource("AnimationLibrary_jm4id")
+}
+autoplay = "float"
+
+[node name="Base" type="Node2D" parent="BG/SpriteCenter"]
+
+[node name="DecoL" type="Sprite2D" parent="BG/SpriteCenter/Base"]
+position = Vector2(-178, 414)
+rotation = -3.14159
+texture = ExtResource("2_8w74t")
+
+[node name="Logo" type="TextureRect" parent="BG"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -138.0
+offset_top = -419.0
+offset_right = 138.0
+offset_bottom = -331.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_csny3")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Container" type="TabContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -218.0
+offset_top = -320.0
+offset_right = 218.0
+offset_bottom = 340.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_cda0n")
+
+[node name="SettingsGeneral" parent="Container" instance=ExtResource("6_4x3hg")]
+layout_mode = 2
+
+[node name="SettingsInput" parent="Container" instance=ExtResource("7_khgo2")]
+visible = false
+layout_mode = 2

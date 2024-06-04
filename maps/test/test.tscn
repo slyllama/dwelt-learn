@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://yyd0ltle0un5"]
+[gd_scene load_steps=27 format=3 uid="uid://yyd0ltle0un5"]
 
 [ext_resource type="PackedScene" uid="uid://e0k8h1ytp7wi" path="res://lib/ui/hud/hud.tscn" id="1_3q1w7"]
 [ext_resource type="Script" path="res://maps/test/test.gd" id="1_fvnbx"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dinrdf02xeqaq" path="res://generic/tex/fade_ramp.tres" id="2_qqlgb"]
 [ext_resource type="Texture2D" uid="uid://d1fy6jygommc6" path="res://generic/tex/particles/mote.png" id="3_hvkgi"]
 [ext_resource type="Texture2D" uid="uid://c5duom5wl7px7" path="res://generic/tex/sky.png" id="3_mt7r7"]
+[ext_resource type="PackedScene" uid="uid://dp1up0pngrtij" path="res://lib/settings_tabs/settings_tabs.tscn" id="3_p8gio"]
 [ext_resource type="Texture2D" uid="uid://5bruu4afeor5" path="res://generic/tex/shader_tex/floor_norm.png" id="3_xldvb"]
 [ext_resource type="PackedScene" uid="uid://d3wu1w4amd36m" path="res://objects/insight/insight.tscn" id="12_sl0pd"]
 [ext_resource type="PackedScene" uid="uid://i1jp4klishr3" path="res://lib/dialogue/dialogue.tscn" id="13_jixis"]
@@ -101,6 +102,8 @@ map_name = "test"
 custom_data_load_signal = true
 
 [node name="HUD" parent="." instance=ExtResource("1_3q1w7")]
+
+[node name="SettingsTabs" parent="HUD" instance=ExtResource("3_p8gio")]
 
 [node name="Sky" type="WorldEnvironment" parent="."]
 unique_name_in_owner = true
