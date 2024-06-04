@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://dgg0ydt6egir0"]
 
-[ext_resource type="Theme" uid="uid://dfe36tnn0c1ud" path="res://generic/themes/theme.tres" id="1_kswo8"]
-[ext_resource type="Script" path="res://lib/settings_tabs/settings_panel.gd" id="2_jr7se"]
-[ext_resource type="PackedScene" uid="uid://bg5bulncs2ejf" path="res://lib/ui/settings/components/stin_input_toggle.tscn" id="2_wdft6"]
-[ext_resource type="Script" path="res://lib/ui/clicky_button/clicky_button.gd" id="3_7hwey"]
-[ext_resource type="PackedScene" uid="uid://d4avw33snp7bc" path="res://lib/ui/settings/components/stin_input_slider.tscn" id="4_bxpq7"]
+[ext_resource type="Theme" uid="uid://dfe36tnn0c1ud" path="res://generic/themes/theme.tres" id="1_jdb6o"]
+[ext_resource type="Script" path="res://lib/settings/settings_panel.gd" id="2_1e88e"]
+[ext_resource type="PackedScene" uid="uid://bg5bulncs2ejf" path="res://lib/settings/components/stin_input_toggle.tscn" id="3_fulcb"]
+[ext_resource type="PackedScene" uid="uid://d4avw33snp7bc" path="res://lib/settings/components/stin_input_slider.tscn" id="4_n5r2d"]
+[ext_resource type="Script" path="res://lib/ui/clicky_button/clicky_button.gd" id="5_qv8q3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qgkwm"]
 content_margin_top = 12.0
@@ -24,8 +24,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_kswo8")
-script = ExtResource("2_jr7se")
+theme = ExtResource("1_jdb6o")
+script = ExtResource("2_1e88e")
 
 [node name="VBox" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -45,7 +45,7 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
-theme = ExtResource("1_kswo8")
+theme = ExtResource("1_jdb6o")
 theme_override_colors/default_color = Color(0.4, 0.709804, 1, 1)
 theme_override_constants/line_separation = -5
 theme_override_font_sizes/normal_font_size = 22
@@ -64,17 +64,17 @@ custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 color = Color(0, 0, 0, 0)
 
-[node name="FullScreen" parent="VBox" instance=ExtResource("2_wdft6")]
+[node name="FullScreen" parent="VBox" instance=ExtResource("3_fulcb")]
 layout_mode = 2
 setting_id = "full_screen"
 setting_title = "FULL SCREEN"
 
-[node name="VolShadows" parent="VBox" instance=ExtResource("2_wdft6")]
+[node name="VolShadows" parent="VBox" instance=ExtResource("3_fulcb")]
 layout_mode = 2
 setting_id = "volumetric_fog"
 setting_title = "VOLUMETRIC FOG"
 
-[node name="Bloom" parent="VBox" instance=ExtResource("2_wdft6")]
+[node name="Bloom" parent="VBox" instance=ExtResource("3_fulcb")]
 layout_mode = 2
 setting_id = "bloom"
 setting_title = "BLOOM"
@@ -89,7 +89,7 @@ custom_minimum_size = Vector2(0, 1)
 layout_mode = 2
 color = Color(0.4, 0.709804, 1, 1)
 
-[node name="Volume" parent="VBox" instance=ExtResource("4_bxpq7")]
+[node name="Volume" parent="VBox" instance=ExtResource("4_n5r2d")]
 layout_mode = 2
 setting_id = "volume"
 setting_title = "OVERALL VOLUME"
@@ -97,7 +97,7 @@ output_as_percentage = true
 max_value = 1.0
 step = 0.02
 
-[node name="MusVolume" parent="VBox" instance=ExtResource("4_bxpq7")]
+[node name="MusVolume" parent="VBox" instance=ExtResource("4_n5r2d")]
 layout_mode = 2
 setting_id = "music_volume"
 setting_title = "MUSIC  VOLUME"
@@ -110,7 +110,7 @@ custom_minimum_size = Vector2(0, 1)
 layout_mode = 2
 color = Color(0.4, 0.709804, 1, 1)
 
-[node name="FOV" parent="VBox" instance=ExtResource("4_bxpq7")]
+[node name="FOV" parent="VBox" instance=ExtResource("4_n5r2d")]
 layout_mode = 2
 setting_id = "fov"
 setting_title = "FIELD OF VIEW"
@@ -122,7 +122,7 @@ custom_minimum_size = Vector2(0, 1)
 layout_mode = 2
 color = Color(0.4, 0.709804, 1, 1)
 
-[node name="CamSens" parent="VBox" instance=ExtResource("4_bxpq7")]
+[node name="CamSens" parent="VBox" instance=ExtResource("4_n5r2d")]
 layout_mode = 2
 setting_id = "camera_sensitivity"
 setting_title = "ORBIT SENSITIVITY"
@@ -138,25 +138,25 @@ color = Color(0.4, 0.709804, 1, 1)
 [node name="Default" type="Button" parent="VBox"]
 layout_mode = 2
 size_flags_vertical = 10
-theme = ExtResource("1_kswo8")
+theme = ExtResource("1_jdb6o")
 text = "DEFAULT SETTINGS"
-script = ExtResource("3_7hwey")
+script = ExtResource("5_qv8q3")
 
 [node name="Menu" type="Button" parent="VBox"]
 layout_mode = 2
 size_flags_vertical = 8
-theme = ExtResource("1_kswo8")
+theme = ExtResource("1_jdb6o")
 text = "RETURN TO MENU"
-script = ExtResource("3_7hwey")
+script = ExtResource("5_qv8q3")
 
 [node name="Done" type="Button" parent="VBox"]
 layout_mode = 2
 size_flags_vertical = 8
-theme = ExtResource("1_kswo8")
+theme = ExtResource("1_jdb6o")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_hqd37")
 text = "DONE"
-script = ExtResource("3_7hwey")
+script = ExtResource("5_qv8q3")
 
 [connection signal="pressed" from="VBox/Default" to="." method="_on_default_pressed"]
 [connection signal="pressed" from="VBox/Menu" to="." method="_on_menu_pressed"]

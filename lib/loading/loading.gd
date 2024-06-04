@@ -44,7 +44,7 @@ func _ready():
 	
 	$HUDButtons.settings_pressed.connect(func():
 		Global.button_click.emit()
-		$SettingsTabs.open()
+		$Settings.open()
 		return)
 	
 	# Load and populate settings (including menu)
@@ -75,7 +75,7 @@ func _ready():
 	$LoadPanel/VBox/Play.grab_focus()
 	
 	# Regain focus on the correct settings button after it is closed, for controllers
-	$SettingsTabs.closed.connect(
+	$Settings.closed.connect(
 		func(): $LoadPanel/VBox/Settings.grab_focus())
 
 	$Music.volume_db = linear_to_db(target_mus_vol)
@@ -106,7 +106,7 @@ func _map_button_pressed(map_name = ""):
 		get_tree().quit()
 		return
 	elif map_name == "settings":
-		$SettingsTabs.open()
+		$Settings.open()
 		return
 	load_map(map_name)
 

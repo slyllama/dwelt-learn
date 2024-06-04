@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://d4avw33snp7bc"]
 
-[ext_resource type="Script" path="res://lib/ui/settings/components/stin_input_slider.gd" id="1_67xaq"]
+[ext_resource type="Script" path="res://lib/settings/components/stin_input_slider.gd" id="1_67xaq"]
 [ext_resource type="Theme" uid="uid://dfe36tnn0c1ud" path="res://generic/themes/theme.tres" id="1_d25bt"]
 
 [node name="SettingsInputSlider" type="VBoxContainer"]
