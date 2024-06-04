@@ -17,8 +17,12 @@ const MODEL_DATA = {
 		"path": "res://maps/lattice/props/tank.glb",
 		"rotation_degrees": Vector3(0.0, 15.0, 0.0),
 		"offset": Vector3(-0.1, -0.7, 0.0),
-		"scale": 0.5
-	}
+		"scale": 0.5},
+	"insight": {
+		"path": "res://objects/insight/insight.tscn",
+		"scale": 0.2,
+		"rotation_degrees": Vector3(20.0, 0.0, 0.0),
+		"offset": Vector3(0.0, -0.6, 0.0)}
 }
 
 func load_model(model_name):

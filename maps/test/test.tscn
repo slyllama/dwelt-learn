@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://yyd0ltle0un5"]
+[gd_scene load_steps=26 format=3 uid="uid://yyd0ltle0un5"]
 
 [ext_resource type="PackedScene" uid="uid://e0k8h1ytp7wi" path="res://lib/ui/hud/hud.tscn" id="1_3q1w7"]
 [ext_resource type="Script" path="res://maps/test/test.gd" id="1_fvnbx"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://c5duom5wl7px7" path="res://generic/tex/sky.png" id="3_mt7r7"]
 [ext_resource type="Texture2D" uid="uid://5bruu4afeor5" path="res://generic/tex/shader_tex/floor_norm.png" id="3_xldvb"]
 [ext_resource type="PackedScene" uid="uid://d3wu1w4amd36m" path="res://objects/insight/insight.tscn" id="12_sl0pd"]
+[ext_resource type="PackedScene" uid="uid://i1jp4klishr3" path="res://lib/dialogue/dialogue.tscn" id="13_jixis"]
+[ext_resource type="Script" path="res://lib/ui/screen_space_label/screen_space_label.gd" id="14_5k6pk"]
 [ext_resource type="PackedScene" uid="uid://djgjcyichaft4" path="res://objects/rocket/rocket.glb" id="16_syt88"]
 [ext_resource type="AudioStream" uid="uid://c62xqceplif7s" path="res://maps/lattice/sounds/lava_ambience.ogg" id="17_ifxop"]
 [ext_resource type="Script" path="res://lib/debug/debug_flag/debug_flag.gd" id="18_fje8s"]
@@ -168,3 +170,14 @@ script = ExtResource("18_fje8s")
 
 [node name="Rocket" parent="." instance=ExtResource("16_syt88")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -20, 18, -16)
+
+[node name="InsightTest" parent="." instance=ExtResource("13_jixis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2, 0)
+dialogue_data = Array[String](["Insight 3D test!"])
+dialogue_title = "INSIGHT"
+character = "insight"
+object_name = "insight_display"
+
+[node name="Label" type="VisibleOnScreenNotifier3D" parent="InsightTest"]
+script = ExtResource("14_5k6pk")
+display_text = "Insight 3D Test"

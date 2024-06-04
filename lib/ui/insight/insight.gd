@@ -106,7 +106,7 @@ func play_after_dialogue(get_dialogue_data):
 	Global.dialogue_played.emit({
 		"title": "Insight",
 		"data": get_dialogue_data,
-		"character": ""})
+		"character": "insight"})
 
 func _ready():
 	mouse_pos = get_viewport().get_mouse_position()
