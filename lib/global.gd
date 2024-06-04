@@ -77,7 +77,7 @@ var SETTINGS = {
 	"camera_sensitivity": 0.65,
 	"volume": 1.00,
 	"music_volume": 1.00,
-	"full_screen": false,
+	"full_screen": true,
 	"volumetric_fog": true,
 	"bloom": true
 }

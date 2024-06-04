@@ -40,7 +40,7 @@ func load_map(map_name):
 func _ready():
 	for _i in 20: Global.printc("\n", "white", true) # prime the debug buffer!
 	Global.current_map = ""
-	Global.printc("--- This is Dwelt (Technical Test) ---", "cyan")
+	Global.printc("--- This is Dwelt (" + str(Global.VERSION) + ") ---", "cyan")
 	
 	$HUDButtons.settings_pressed.connect(func():
 		Global.button_click.emit()
