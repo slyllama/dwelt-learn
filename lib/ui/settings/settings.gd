@@ -118,7 +118,6 @@ func _input(event):
 	if Utilities.is_joy_button(event, JOY_BUTTON_START):
 		if visible == false: open()
 		else: close()
-	# Right click to close settings menu
 	if Input.is_action_just_pressed("ui_cancel"):
 		if visible == true: close()
 

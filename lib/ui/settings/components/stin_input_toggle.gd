@@ -16,6 +16,8 @@ func _ready():
 	$Toggle.button_pressed = Global.settings[setting_id]
 	Global.setting_changed.connect(func(get_setting_id):
 		if get_setting_id == setting_id and setting_id != null:
+			if Global.settings[setting_id]: $Toggle.text = "ON"
+			else: $Toggle.text = "OFF"
 			$Toggle.button_pressed = Global.settings[setting_id])
 
 func _on_toggle_pressed():

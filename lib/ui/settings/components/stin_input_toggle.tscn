@@ -17,11 +17,13 @@ bbcode_enabled = true
 text = "[Setting]"
 fit_content = true
 
-[node name="Toggle" type="CheckButton" parent="."]
+[node name="Toggle" type="Button" parent="."]
+custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 mouse_filter = 1
 theme = ExtResource("1_uvnjk")
+text = "-"
 
 [connection signal="focus_entered" from="Toggle" to="." method="_on_toggle_focus_entered"]
 [connection signal="pressed" from="Toggle" to="." method="_on_toggle_pressed"]

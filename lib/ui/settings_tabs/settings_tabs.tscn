@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://dp1up0pngrtij"]
+[gd_scene load_steps=12 format=3 uid="uid://dp1up0pngrtij"]
 
 [ext_resource type="Texture2D" uid="uid://d2nv8xnwo132g" path="res://lib/ui/tex/placeholder_logo.png" id="1_csny3"]
 [ext_resource type="PackedScene" uid="uid://sihpp2cwoyfc" path="res://lib/ui/sprite_center/sprite_center.tscn" id="1_jrx8u"]
 [ext_resource type="Script" path="res://lib/ui/settings_tabs/settings_tabs.gd" id="1_q5q8i"]
 [ext_resource type="Texture2D" uid="uid://fk0cfrsqe4we" path="res://lib/ui/tex/decoration.png" id="2_8w74t"]
 [ext_resource type="Theme" uid="uid://dfe36tnn0c1ud" path="res://generic/themes/theme.tres" id="5_cda0n"]
+[ext_resource type="PackedScene" uid="uid://bg5bulncs2ejf" path="res://lib/ui/settings/components/stin_input_toggle.tscn" id="6_2aca5"]
 [ext_resource type="Script" path="res://lib/ui/clicky_button/clicky_button.gd" id="6_4l1ub"]
 
 [sub_resource type="Animation" id="Animation_sckei"]
@@ -87,7 +88,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.784314)
 
 [node name="SpriteCenter" parent="BG" instance=ExtResource("1_jrx8u")]
-position = Vector2(960, 500)
+position = Vector2(960, 435)
 keep_y = true
 
 [node name="Float" type="AnimationPlayer" parent="BG/SpriteCenter"]
@@ -98,12 +99,8 @@ autoplay = "float"
 
 [node name="Base" type="Node2D" parent="BG/SpriteCenter"]
 
-[node name="DecoR" type="Sprite2D" parent="BG/SpriteCenter/Base"]
-position = Vector2(400, -240)
-texture = ExtResource("2_8w74t")
-
 [node name="DecoL" type="Sprite2D" parent="BG/SpriteCenter/Base"]
-position = Vector2(-400, 240)
+position = Vector2(-178, 414)
 rotation = -3.14159
 texture = ExtResource("2_8w74t")
 
@@ -115,9 +112,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -138.0
-offset_top = -379.0
+offset_top = -419.0
 offset_right = 138.0
-offset_bottom = -272.0
+offset_bottom = -331.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_csny3")
@@ -130,10 +127,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -364.5
-offset_top = -257.0
-offset_right = 364.5
-offset_bottom = 254.0
+offset_left = -218.0
+offset_top = -320.0
+offset_right = 218.0
+offset_bottom = 340.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("5_cda0n")
@@ -169,8 +166,24 @@ bbcode_enabled = true
 text = "[center]GENERAL[/center]"
 fit_content = true
 
+[node name="Sep" type="ColorRect" parent="Container/General/VBox"]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+color = Color(0.4, 0.709804, 1, 1)
+
+[node name="Pad" type="ColorRect" parent="Container/General/VBox"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+color = Color(0, 0, 0, 0)
+
+[node name="FullScreen" parent="Container/General/VBox" instance=ExtResource("6_2aca5")]
+layout_mode = 2
+setting_id = "full_screen"
+setting_title = "FULL SCREEN"
+
 [node name="ReturnToMenu" type="Button" parent="Container/General/VBox"]
 layout_mode = 2
+size_flags_vertical = 10
 theme = ExtResource("5_cda0n")
 text = "RETURN TO MENU"
 script = ExtResource("6_4l1ub")
@@ -207,8 +220,19 @@ bbcode_enabled = true
 text = "[center]INPUT[/center]"
 fit_content = true
 
+[node name="Sep" type="ColorRect" parent="Container/Input/VBox"]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+color = Color(0.4, 0.709804, 1, 1)
+
+[node name="Pad" type="ColorRect" parent="Container/Input/VBox"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+color = Color(0, 0, 0, 0)
+
 [node name="ReturnToMenu" type="Button" parent="Container/Input/VBox"]
 layout_mode = 2
+size_flags_vertical = 10
 theme = ExtResource("5_cda0n")
 text = "RETURN TO MENU"
 script = ExtResource("6_4l1ub")
@@ -245,8 +269,23 @@ bbcode_enabled = true
 text = "[center]CONTROLLER INPUT[/center]"
 fit_content = true
 
+[node name="Sep" type="ColorRect" parent="Container/ControllerInput/VBox"]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+color = Color(0.4, 0.709804, 1, 1)
+
+[node name="Pad" type="ColorRect" parent="Container/ControllerInput/VBox"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+color = Color(0, 0, 0, 0)
+
 [node name="ReturnToMenu" type="Button" parent="Container/ControllerInput/VBox"]
 layout_mode = 2
+size_flags_vertical = 10
 theme = ExtResource("5_cda0n")
 text = "RETURN TO MENU"
 script = ExtResource("6_4l1ub")
+
+[connection signal="pressed" from="Container/General/VBox/ReturnToMenu" to="." method="_on_return_to_menu_pressed"]
+[connection signal="pressed" from="Container/Input/VBox/ReturnToMenu" to="." method="_on_return_to_menu_pressed"]
+[connection signal="pressed" from="Container/ControllerInput/VBox/ReturnToMenu" to="." method="_on_return_to_menu_pressed"]
