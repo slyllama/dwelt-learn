@@ -44,7 +44,7 @@ func _ready():
 	
 	$HUDButtons.settings_pressed.connect(func():
 		Global.button_click.emit()
-		$Settings.open()
+		$SettingsTabs.open()
 		return)
 	
 	# Load and populate settings (including menu)
@@ -69,13 +69,13 @@ func _ready():
 	#Global.debug_toggled.connect(func():
 		#if !Global.debug_state: $HUDButtons/TopMenu/SettingsButton.grab_focus())
 
-	$Settings/Control/Panel/VBox/MapSelection.visible = false # no need to go to the menu from the menu
+	#$Settings/Control/Panel/VBox/MapSelection.visible = false # no need to go to the menu from the menu
 	$LoadBlack/ProgressBar.visible = false
 	$GlowIcon.visible = false
 	$LoadPanel/VBox/Play.grab_focus()
 	
 	# Regain focus on the correct settings button after it is closed, for controllers
-	$Settings.closed.connect(
+	$SettingsTabs.closed.connect(
 		func(): $LoadPanel/VBox/Settings.grab_focus())
 
 	$Music.volume_db = linear_to_db(target_mus_vol)
@@ -106,7 +106,7 @@ func _map_button_pressed(map_name = ""):
 		get_tree().quit()
 		return
 	elif map_name == "settings":
-		$Settings.open()
+		$SettingsTabs.open()
 		return
 	load_map(map_name)
 

@@ -72,6 +72,7 @@ func save_input_data(): # save input data to "input_data.json" file
 	inputs_json.close()
 
 func _ready():
+	super()
 	expand_input_data()
 
 	# Only do this once (from the loading screen)

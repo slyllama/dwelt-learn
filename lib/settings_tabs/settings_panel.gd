@@ -2,6 +2,12 @@ extends Panel
 
 @onready var root = get_parent().get_parent()
 
+func _ready():
+	$VBox/Menu.visible = false
+	Save.save_loaded.connect(func():
+		if Global.current_map != "":
+			$VBox/Menu.visible = true)
+
 func _on_menu_pressed():
 	Save.game_saved.emit()
 	Global.settings_opened = false
