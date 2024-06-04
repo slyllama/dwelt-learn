@@ -1,13 +1,14 @@
 extends "res://lib/settings_tabs/settings_panel.gd"
 
 const InputLine = preload("res://lib/ui/settings/components/stin_input_keybind.tscn")
-
 var input_containers = [] # input list nodes, so they can be cleared on refresh
+signal controller_diagram_opened
 
 # Move the "reset" button to the bottom of the menu after reloading the menu
 func _reset_to_bottom():
 	$VBox.move_child($VBox/Default, -1)
 	$VBox.move_child($VBox/Menu, -1)
+	$VBox.move_child($VBox/Controller, -1)
 	$VBox.move_child($VBox/Done, -1)
 
 func _assign_controller_button(action, button):
@@ -102,3 +103,6 @@ func _on_default_pressed():
 	Utilities.input_data = Global.original_input_data.duplicate()
 	apply_input_data()
 	refresh_input_data()
+
+func _on_controller_pressed():
+	controller_diagram_opened.emit()

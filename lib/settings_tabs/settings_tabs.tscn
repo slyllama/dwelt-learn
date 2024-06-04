@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dp1up0pngrtij"]
+[gd_scene load_steps=14 format=3 uid="uid://dp1up0pngrtij"]
 
 [ext_resource type="Texture2D" uid="uid://d2nv8xnwo132g" path="res://lib/ui/tex/placeholder_logo.png" id="1_csny3"]
 [ext_resource type="PackedScene" uid="uid://sihpp2cwoyfc" path="res://lib/ui/sprite_center/sprite_center.tscn" id="1_jrx8u"]
@@ -7,6 +7,9 @@
 [ext_resource type="Theme" uid="uid://dfe36tnn0c1ud" path="res://generic/themes/theme.tres" id="5_cda0n"]
 [ext_resource type="PackedScene" uid="uid://dgg0ydt6egir0" path="res://lib/settings_tabs/settings_general.tscn" id="6_4x3hg"]
 [ext_resource type="PackedScene" uid="uid://bbbfu66cxakti" path="res://lib/settings_tabs/settings_input.tscn" id="7_khgo2"]
+[ext_resource type="Texture2D" uid="uid://1h7sep7hyk7w" path="res://lib/ui/settings/tex/controller_layout.png" id="8_vvqg7"]
+[ext_resource type="Theme" uid="uid://ch4overpy78ds" path="res://generic/themes/start_theme.tres" id="9_matqm"]
+[ext_resource type="Script" path="res://lib/ui/clicky_button/clicky_button.gd" id="10_ug4vk"]
 
 [sub_resource type="Animation" id="Animation_sckei"]
 length = 0.001
@@ -138,4 +141,41 @@ layout_mode = 2
 visible = false
 layout_mode = 2
 
+[node name="ControllerLayout" type="TextureRect" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -591.0
+offset_top = -365.5
+offset_right = 591.0
+offset_bottom = 365.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_vvqg7")
+
+[node name="Proceed" type="Button" parent="ControllerLayout"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -116.0
+offset_top = 230.0
+offset_right = 116.0
+offset_bottom = 274.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("9_matqm")
+text = "CONTINUE"
+script = ExtResource("10_ug4vk")
+override_once = true
+
+[connection signal="mouse_entered" from="Container" to="." method="_on_control_mouse_entered"]
+[connection signal="mouse_exited" from="Container" to="." method="_on_control_mouse_exited"]
 [connection signal="tab_changed" from="Container" to="." method="_on_container_tab_changed"]
+[connection signal="controller_diagram_opened" from="Container/SettingsInput" to="." method="_on_settings_input_controller_diagram_opened"]
+[connection signal="pressed" from="ControllerLayout/Proceed" to="." method="_on_proceed_pressed"]

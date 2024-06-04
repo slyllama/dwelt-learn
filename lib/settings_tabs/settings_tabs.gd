@@ -41,8 +41,19 @@ func _input(event):
 			return
 		else: close()
 
+func _on_control_mouse_entered(): Global.mouse_in_settings_menu = true
+func _on_control_mouse_exited(): Global.mouse_in_settings_menu = false
+
 func _on_container_tab_changed(tab):
+	# This is the most painful thing I have ever written
 	$Container.get_child(0, true).set_focus_neighbor(SIDE_TOP,
 		$Container.get_child(0, true).get_path_to($Container.get_tab_control(tab).get_node("VBox/Done")))
-	Global.printc($Container.get_path_to($Container.get_tab_control(tab).get_node("VBox/Done")), "yellow")
 	Global.button_click.emit()
+
+func _on_proceed_pressed():
+	$ControllerLayout.visible = false
+	$Container.get_tab_control(1).get_node("VBox/Done").grab_focus() # input tab
+
+func _on_settings_input_controller_diagram_opened():
+	$ControllerLayout.visible = true
+	$ControllerLayout/Proceed.grab_focus()
