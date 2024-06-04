@@ -34,8 +34,8 @@ func load_from_file():
 		Global.printc("[Save] save.dat exists, loading.")
 		var save_file = FileAccess.open("user://save.dat", FileAccess.READ)
 		save_data = save_file.get_var()
-		save_loaded.emit()
 	else: Global.printc("[Save] no existing save.dat.")
+	save_loaded.emit() # always called
 
 func save_to_file():
 	Global.printc("[Save] saving to save.dat.")

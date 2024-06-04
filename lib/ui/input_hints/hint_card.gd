@@ -26,8 +26,6 @@ func fade_out(white = true):
 	fade.tween_callback(queue_free)
 
 func spawn_texture(token):
-	Global.printc("spawning texture token "
-		+ str(token.replace("tex_", "")), "yellow")
 	var pane = $Container/TexturePanelTemplate.duplicate()
 	pane.visible = true
 	if token in root.TEXTURES:

@@ -9,7 +9,7 @@ var dialogue_data = {}
 func _get_latest_data():
 	var error_print = "[CondDialogue] (" + str(dialogue_data_file) + ") syntax error."
 	if !"states" in dialogue_data:
-		Global.printc(error_print, "orange")
+		Global.printc(error_print, "red")
 		return(["[Error]"])
 	
 	# Run through states. If their conditions are true and their priority is
