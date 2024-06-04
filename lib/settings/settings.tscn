@@ -1,9 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://dp1up0pngrtij"]
+[gd_scene load_steps=13 format=3 uid="uid://dp1up0pngrtij"]
 
 [ext_resource type="Script" path="res://lib/settings/settings.gd" id="1_yliyb"]
 [ext_resource type="PackedScene" uid="uid://sihpp2cwoyfc" path="res://lib/ui/sprite_center/sprite_center.tscn" id="2_1fxgl"]
 [ext_resource type="Texture2D" uid="uid://fk0cfrsqe4we" path="res://lib/ui/tex/decoration.png" id="3_ks8vf"]
-[ext_resource type="Texture2D" uid="uid://d2nv8xnwo132g" path="res://lib/ui/tex/placeholder_logo.png" id="4_jknd3"]
 [ext_resource type="Theme" uid="uid://dfe36tnn0c1ud" path="res://generic/themes/theme.tres" id="5_wc3gn"]
 [ext_resource type="PackedScene" uid="uid://dgg0ydt6egir0" path="res://lib/settings/settings_general.tscn" id="6_ogh13"]
 [ext_resource type="PackedScene" uid="uid://bbbfu66cxakti" path="res://lib/settings/settings_input.tscn" id="7_x7tyk"]
@@ -87,8 +86,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.784314)
 
 [node name="SpriteCenter" parent="BG" instance=ExtResource("2_1fxgl")]
-position = Vector2(960, 435)
-keep_y = true
+position = Vector2(960, 540)
 
 [node name="Float" type="AnimationPlayer" parent="BG/SpriteCenter"]
 libraries = {
@@ -99,26 +97,9 @@ autoplay = "float"
 [node name="Base" type="Node2D" parent="BG/SpriteCenter"]
 
 [node name="DecoL" type="Sprite2D" parent="BG/SpriteCenter/Base"]
-position = Vector2(-178, 414)
+position = Vector2(-178, 256)
 rotation = -3.14159
 texture = ExtResource("3_ks8vf")
-
-[node name="Logo" type="TextureRect" parent="BG"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -138.0
-offset_top = -419.0
-offset_right = 138.0
-offset_bottom = -331.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_jknd3")
-expand_mode = 3
-stretch_mode = 5
 
 [node name="Container" type="TabContainer" parent="."]
 anchors_preset = 8
@@ -127,9 +108,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -218.0
-offset_top = -320.0
+offset_top = -361.0
 offset_right = 218.0
-offset_bottom = 340.0
+offset_bottom = 299.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("5_wc3gn")
