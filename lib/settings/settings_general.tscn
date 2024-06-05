@@ -69,6 +69,11 @@ layout_mode = 2
 setting_id = "full_screen"
 setting_title = "FULL SCREEN"
 
+[node name="VSync" parent="VBox" instance=ExtResource("3_fulcb")]
+layout_mode = 2
+setting_id = "vsync"
+setting_title = "VSYNC"
+
 [node name="VolShadows" parent="VBox" instance=ExtResource("3_fulcb")]
 layout_mode = 2
 setting_id = "volumetric_fog"

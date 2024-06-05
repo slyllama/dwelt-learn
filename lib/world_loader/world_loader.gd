@@ -82,6 +82,8 @@ func _setting_changed(get_setting_id):
 		"bloom": %Sky.environment.glow_enabled = Global.settings.bloom
 		"music_volume": if get_node_or_null("Music"):
 			$Music.volume_db = linear_to_db(Global.settings.music_volume) * 0.8 # not so loud
+		"vsync": if Global.settings.vsync: DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
+		else: DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
 
 	# The following are only applied after the first run
 	if first_settings_run == true:

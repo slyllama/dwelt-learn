@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Dwelt"
 config/description="An environment-driven puzzle RPG about robot cartels and essences of emotion."
-config/version="1.0.0"
+config/version="1.0.1"
 run/main_scene="res://maps/tech_test_note/tech_test_note.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="dwelt"

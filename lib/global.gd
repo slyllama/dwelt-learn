@@ -1,6 +1,6 @@
 extends Node
 
-const VERSION = "test_1.0.0"
+const VERSION = "test_1.0.1"
 const SCREEN_SIZE = Vector2(1920.0, 1080.0)
 const MIN_SCREEN_SIZE = Vector2(1600.0, 900.0)
 const LARGE_UI_SCALE = 1.0
@@ -79,7 +79,8 @@ var SETTINGS = {
 	"music_volume": 1.00,
 	"full_screen": true,
 	"volumetric_fog": true,
-	"bloom": true
+	"bloom": true,
+	"vsync": true
 }
 var settings = SETTINGS.duplicate()
 var input_data_loaded = false
