@@ -6,9 +6,9 @@ signal controller_diagram_opened
 
 # Move the "reset" button to the bottom of the menu after reloading the menu
 func _reset_to_bottom():
+	$VBox.move_child($VBox/Controller, -1)
 	$VBox.move_child($VBox/Default, -1)
 	$VBox.move_child($VBox/Menu, -1)
-	$VBox.move_child($VBox/Controller, -1)
 	$VBox.move_child($VBox/Done, -1)
 
 func _assign_controller_button(action, button):

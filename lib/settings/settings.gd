@@ -33,12 +33,13 @@ func _ready():
 	$Container.set_tab_title(1, "INPUT")
 
 func _input(event):
-	if Input.is_action_just_pressed("ui_right") and can_tab:
-		$Container.select_next_available()
-		$Container.get_child(0, true).grab_focus()
-	if Input.is_action_just_pressed("ui_left") and can_tab:
-		$Container.select_previous_available()
-		$Container.get_child(0, true).grab_focus()
+	if !$ControllerLayout.visible:
+		if Input.is_action_just_pressed("ui_right") and can_tab:
+			$Container.select_next_available()
+			$Container.get_child(0, true).grab_focus()
+		if Input.is_action_just_pressed("ui_left") and can_tab:
+			$Container.select_previous_available()
+			$Container.get_child(0, true).grab_focus()
 	
 	if (Utilities.is_joy_button(event, JOY_BUTTON_START)
 		or Input.is_action_just_pressed("ui_cancel")):

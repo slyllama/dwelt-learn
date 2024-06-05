@@ -55,18 +55,18 @@ custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 color = Color(0, 0, 0, 0)
 
-[node name="Default" type="Button" parent="VBox"]
+[node name="Controller" type="Button" parent="VBox"]
 layout_mode = 2
 size_flags_vertical = 10
 theme = ExtResource("1_3vcu2")
-text = "DEFAULT INPUTS"
+text = "CONTROLLER LAYOUT"
 script = ExtResource("3_ju603")
 
-[node name="Controller" type="Button" parent="VBox"]
+[node name="Default" type="Button" parent="VBox"]
 layout_mode = 2
 size_flags_vertical = 8
 theme = ExtResource("1_3vcu2")
-text = "CONTROLLER LAYOUT"
+text = "DEFAULT INPUTS"
 script = ExtResource("3_ju603")
 
 [node name="Menu" type="Button" parent="VBox"]
@@ -83,7 +83,7 @@ theme = ExtResource("1_3vcu2")
 text = "DONE"
 script = ExtResource("3_ju603")
 
-[connection signal="pressed" from="VBox/Default" to="." method="_on_default_pressed"]
 [connection signal="pressed" from="VBox/Controller" to="." method="_on_controller_pressed"]
+[connection signal="pressed" from="VBox/Default" to="." method="_on_default_pressed"]
 [connection signal="pressed" from="VBox/Menu" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="VBox/Done" to="." method="_on_done_pressed"]
