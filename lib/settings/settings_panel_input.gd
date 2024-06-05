@@ -99,7 +99,6 @@ func _ready():
 	refresh_input_data()
 
 func _on_default_pressed():
-	super()
 	Utilities.input_data = Global.original_input_data.duplicate()
 	apply_input_data()
 	refresh_input_data()

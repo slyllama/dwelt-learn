@@ -79,7 +79,8 @@ var SETTINGS = {
 	"music_volume": 1.00,
 	"full_screen": true,
 	"hq_graphics": true,
-	"vsync": true
+	"vsync": true,
+	"version": Global.VERSION
 }
 var settings = SETTINGS.duplicate()
 var input_data_loaded = false

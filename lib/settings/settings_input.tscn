@@ -59,14 +59,7 @@ color = Color(0, 0, 0, 0)
 layout_mode = 2
 size_flags_vertical = 10
 theme = ExtResource("1_3vcu2")
-text = "DEFAULT SETTINGS"
-script = ExtResource("3_ju603")
-
-[node name="Menu" type="Button" parent="VBox"]
-layout_mode = 2
-size_flags_vertical = 8
-theme = ExtResource("1_3vcu2")
-text = "RETURN TO MENU"
+text = "DEFAULT INPUTS"
 script = ExtResource("3_ju603")
 
 [node name="Controller" type="Button" parent="VBox"]
@@ -74,6 +67,13 @@ layout_mode = 2
 size_flags_vertical = 8
 theme = ExtResource("1_3vcu2")
 text = "CONTROLLER LAYOUT"
+script = ExtResource("3_ju603")
+
+[node name="Menu" type="Button" parent="VBox"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = ExtResource("1_3vcu2")
+text = "RETURN TO MENU"
 script = ExtResource("3_ju603")
 
 [node name="Done" type="Button" parent="VBox"]
@@ -84,6 +84,6 @@ text = "DONE"
 script = ExtResource("3_ju603")
 
 [connection signal="pressed" from="VBox/Default" to="." method="_on_default_pressed"]
-[connection signal="pressed" from="VBox/Menu" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="VBox/Controller" to="." method="_on_controller_pressed"]
+[connection signal="pressed" from="VBox/Menu" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="VBox/Done" to="." method="_on_done_pressed"]
