@@ -157,6 +157,7 @@ script = ExtResource("7_5xnoj")
 stream = ExtResource("7_h5ndv")
 volume_db = 2.0
 unit_size = 14.0
+panning_strength = 2.0
 
 [connection signal="body_entered" from="UpdraftArea" to="." method="_on_updraft_area_entered"]
 [connection signal="body_exited" from="UpdraftArea" to="." method="_on_updraft_area_exited"]

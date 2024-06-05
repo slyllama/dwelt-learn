@@ -447,6 +447,9 @@ v_offset = -0.1
 current = true
 fov = 55.0
 
+[connection signal="focus_entered" from="Loading/LoadPanel/VBox/Play" to="." method="_on_play_focus_entered"]
 [connection signal="pressed" from="Loading/LoadPanel/VBox/Play" to="Loading" method="_map_button_pressed" binds= ["lattice"]]
+[connection signal="focus_entered" from="Loading/LoadPanel/VBox/Settings" to="." method="_on_settings_focus_entered"]
 [connection signal="pressed" from="Loading/LoadPanel/VBox/Settings" to="Loading" method="_map_button_pressed" binds= ["settings"]]
+[connection signal="focus_entered" from="Loading/LoadPanel/VBox/Quit" to="." method="_on_quit_focus_entered"]
 [connection signal="pressed" from="Loading/LoadPanel/VBox/Quit" to="Loading" method="_map_button_pressed" binds= ["quit"]]

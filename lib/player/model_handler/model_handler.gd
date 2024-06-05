@@ -54,8 +54,9 @@ func _glide_started():
 	$GW/GW2/AnimationPlayer.play("ExtendWings")
 	$GlideSound.play()
 
-func _glide_ended():
-	_glider_flicker_out()
+func _glide_ended(hard = false):
+	if hard: _set_shader_level(0.0)
+	else: _glider_flicker_out()
 	in_glide = false
 	$GW/AnimationPlayer.play_backwards("ExtendWings")
 	$GW/GW2/AnimationPlayer.play_backwards("ExtendWings")
@@ -183,4 +184,4 @@ func _notification(action) -> void:
 	if action == MainLoop.NOTIFICATION_APPLICATION_FOCUS_OUT:
 		Action.in_glide = false
 		stop_moving()
-		_glide_ended()
+		_glide_ended(true)

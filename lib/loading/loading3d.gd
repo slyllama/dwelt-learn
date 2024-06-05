@@ -11,6 +11,7 @@ var mouse_pos
 var center
 var cam_x_offset = 0.0
 var cam_z_offset = 0.0
+var focus_y_offset = 0.0
 
 var status
 var loaded = false
@@ -37,7 +38,7 @@ func _process(_delta):
 		clamp(2.0 * mouse_pos.y / center.y - 1.0, -1.0, 1.0))
 	
 	$Camera.position.x = lerp($Camera.position.x, 2.5 + adj.x * 0.6 + cam_x_offset, smooth)
-	$Camera.position.y = lerp($Camera.position.y, -1.23 + adj.y * 0.3, smooth)
+	$Camera.position.y = lerp($Camera.position.y, -1.23 + adj.y * 0.3 + focus_y_offset, smooth)
 	$Camera.position.z = lerp($Camera.position.z, cam_z_offset, smooth)
 	
 	if rocket != null:
@@ -57,3 +58,8 @@ func _process(_delta):
 		var fade_tween = create_tween()
 		fade_tween.tween_property($ModelLoadOverlay/BG, "modulate:a", 0.0, 1.0)
 		fade_tween.tween_callback(func(): $ModelLoadOverlay/BG.visible = false)
+
+# Subtle effect for controllers
+func _on_play_focus_entered(): focus_y_offset = 0.0
+func _on_settings_focus_entered(): focus_y_offset = -0.3
+func _on_quit_focus_entered(): focus_y_offset = -0.6

@@ -18,6 +18,7 @@ func close():
 	is_open = false
 	visible = false
 	closed.emit()
+	$ControllerLayout.visible = false
 	# Prevent simultaneous action in the world (controller)!
 	await get_tree().create_timer(0.2).timeout
 	if !is_open: Global.settings_opened = false

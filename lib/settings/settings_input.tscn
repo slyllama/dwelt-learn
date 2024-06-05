@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bbbfu66cxakti"]
+[gd_scene load_steps=5 format=3 uid="uid://bbbfu66cxakti"]
 
 [ext_resource type="Theme" uid="uid://dfe36tnn0c1ud" path="res://generic/themes/theme.tres" id="1_3vcu2"]
 [ext_resource type="Script" path="res://lib/settings/settings_panel_input.gd" id="2_y1a5o"]
@@ -8,13 +8,6 @@
 content_margin_top = 12.0
 content_margin_bottom = 10.0
 bg_color = Color(0.6, 0.6, 0.6, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hqd37"]
-content_margin_left = 5.0
-content_margin_top = 4.0
-content_margin_right = 5.0
-content_margin_bottom = 4.0
-bg_color = Color(0.903598, 0.903598, 0.903598, 1)
 
 [node name="SettingsInput" type="Panel"]
 anchors_preset = 15
@@ -87,8 +80,6 @@ script = ExtResource("3_ju603")
 layout_mode = 2
 size_flags_vertical = 8
 theme = ExtResource("1_3vcu2")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_hqd37")
 text = "DONE"
 script = ExtResource("3_ju603")
 

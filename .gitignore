@@ -1,7 +1,10 @@
 # Godot 4+ specific ignores
 .godot/
 addons/
+
+*.7z
 *.exe
+*.lnk
 *.pck
 *.zip
-*.7z
+
