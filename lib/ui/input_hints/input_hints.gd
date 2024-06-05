@@ -47,6 +47,7 @@ func show_hints(get_card_data, clear_time = 0.0):
 		$ClearTimer.start()
 
 func _ready():
+	card_nodes = []
 	Global.input_hint_played.connect(show_hints)
 	Global.input_hint_cleared.connect(clear_hints)
 

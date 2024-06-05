@@ -190,3 +190,7 @@ func _physics_process(_delta):
 		c = 0
 	update_debug()
 	c += 1
+
+func _notification(action) -> void:
+	if action == MainLoop.NOTIFICATION_APPLICATION_FOCUS_OUT:
+		_stop_moving()

@@ -178,3 +178,9 @@ func _process(_delta):
 	if expn < 1.05:
 		target_expn = 10.0
 		return
+
+func _notification(action) -> void:
+	if action == MainLoop.NOTIFICATION_APPLICATION_FOCUS_OUT:
+		Action.in_glide = false
+		stop_moving()
+		_glide_ended()
