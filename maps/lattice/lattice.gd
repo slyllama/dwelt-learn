@@ -41,6 +41,7 @@ func _ready():
 		#$Laser/Cast.rotation_degrees = _laser_orientation if _laser_orientation else _n()
 		var _laser_activated = Save.get_data(map_name, "laser_activated")
 		if _laser_activated: $LaserLever.set_state(_laser_activated)
+		else: $LaserLever.set_state(false)
 		var _lever_a_state = Save.get_data(map_name, "lever_a_state")
 		if _lever_a_state: $MemTest/LeverA.set_state(_lever_a_state)
 		var _lever_b_state = Save.get_data(map_name, "lever_b_state")
@@ -105,5 +106,7 @@ func _on_lever_b_state_set(state):
 	_set_lever_text()
 
 func _on_laser_lever_state_set(state):
+	if state: $Laser/Vis.set_text("Laser (ON)")
+	else: $Laser/Vis.set_text("Laser (OFF)")
 	Save.set_data(map_name, "laser_activated", state)
 	$Laser.set_state(state)
