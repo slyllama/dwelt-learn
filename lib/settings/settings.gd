@@ -3,6 +3,8 @@ extends CanvasLayer
 var is_open = false
 signal closed
 
+var can_tab = true # can use the arrow keys to swap tabs? (i.e., not on sliders)
+
 func open():
 	$Container.current_tab = 0
 	$Container/SettingsGeneral/VBox/Done.grab_focus()
@@ -21,16 +23,19 @@ func close():
 	if !is_open: Global.settings_opened = false
 
 func _ready():
+	# Can't tab when using a slider
+	get_viewport().gui_focus_changed.connect(func(node):
+		if is_open: can_tab = !node is HSlider)
+	
 	visible = false
 	$Container.set_tab_title(0, "GENERAL")
 	$Container.set_tab_title(1, "INPUT")
-	#$Container.set_tab_title(2, "CONTROLLER")
 
 func _input(event):
-	if Input.is_action_just_pressed("ui_right"):
+	if Input.is_action_just_pressed("ui_right") and can_tab:
 		$Container.select_next_available()
 		$Container.get_child(0, true).grab_focus()
-	if Input.is_action_just_pressed("ui_left"):
+	if Input.is_action_just_pressed("ui_left") and can_tab:
 		$Container.select_previous_available()
 		$Container.get_child(0, true).grab_focus()
 	

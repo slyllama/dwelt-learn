@@ -12,6 +12,8 @@ extends VBoxContainer
 @export var max_value: float = 100
 @export var step: float = 1
 
+var is_slider = true
+
 var in_focus = false
 
 func fstr(num, place = 0.01): # copied from Utilities for @tool
