@@ -3,6 +3,7 @@
 addons/
 
 *.7z
+*.dll
 *.exe
 *.lnk
 *.pck
