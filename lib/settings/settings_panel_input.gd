@@ -1,31 +1,15 @@
-extends CanvasLayer
+extends "res://lib/settings/settings_panel.gd"
 
-const InputLine = preload("res://lib/ui/settings/components/stin_input_keybind.tscn")
-@onready var CloseButton = get_node("Control/Panel/InputVBox/LowerCloseButton")
-
+const InputLine = preload("res://lib/settings/components/stin_input_keybind.tscn")
 var input_containers = [] # input list nodes, so they can be cleared on refresh
-var is_open = false
-signal closed
+signal controller_diagram_opened
 
 # Move the "reset" button to the bottom of the menu after reloading the menu
 func _reset_to_bottom():
-	$Control/Panel/InputVBox.move_child(CloseButton, -1)
-
-func open():
-	is_open = true
-	CloseButton.grab_focus()
-	visible = true
-	$ControllerLayout.visible = false # because you can leave it open
-	Global.settings_opened = true
-
-func close():
-	Global.button_click.emit()
-	is_open = false
-	visible = false
-	closed.emit()
-	# Prevent simultaneous action in the world (controller)!
-	await get_tree().create_timer(0.2).timeout
-	if !is_open: Global.settings_opened = false
+	$VBox.move_child($VBox/Default, -1)
+	$VBox.move_child($VBox/Menu, -1)
+	$VBox.move_child($VBox/Controller, -1)
+	$VBox.move_child($VBox/Done, -1)
 
 func _assign_controller_button(action, button):
 	var e = InputEventJoypadButton.new()
@@ -60,12 +44,12 @@ func refresh_input_data():
 		var i = InputLine.instantiate()
 		i.populate(input.name, input.id, Utilities.get_key(input.id))
 		input_containers.append(i)
-		$Control/Panel/InputVBox.add_child(i)
+		$VBox.add_child(i)
 	
 	# Go to the bottom input from the close button
-	var LastInputButton = input_containers[input_containers.size() - 1].get_node("Button")
-	CloseButton.set_focus_neighbor(SIDE_TOP, CloseButton.get_path_to(LastInputButton))
-	
+	#var LastInputButton = input_containers[input_containers.size() - 1].get_node("Button")
+	#CloseButton.set_focus_neighbor(SIDE_TOP, CloseButton.get_path_to(LastInputButton))
+	#
 	# To avoid instantly triggering that input just by setting it
 	# TODO: fix; this isn't that ideal...
 	_reset_to_bottom()
@@ -89,6 +73,7 @@ func save_input_data(): # save input data to "input_data.json" file
 	inputs_json.close()
 
 func _ready():
+	super()
 	expand_input_data()
 
 	# Only do this once (from the loading screen)
@@ -108,40 +93,16 @@ func _ready():
 		Global.input_data_loaded = true
 	
 	apply_input_data()
-	#Global.connect("left_keybind_select", refresh_input_data)
 	Global.left_keybind_select.connect(func():
 		refresh_input_data()
-		CloseButton.grab_focus())
+		$VBox/Done.grab_focus())
 	refresh_input_data()
 
-func _input(event):
-	if Utilities.is_joy_button(event, JOY_BUTTON_START):
-		if visible == false: open()
-		else: close()
-	# Right click to close settings menu
-	if Input.is_action_just_pressed("ui_cancel"):
-		if visible == true: close()
-
-func _on_button_pressed():
+func _on_default_pressed():
+	super()
 	Utilities.input_data = Global.original_input_data.duplicate()
 	apply_input_data()
 	refresh_input_data()
-	Global.settings = Global.SETTINGS.duplicate()
-	for setting in Global.settings:
-		Global.setting_changed.emit(setting)
 
-func _on_control_mouse_entered(): Global.mouse_in_settings_menu = true
-func _on_control_mouse_exited(): Global.mouse_in_settings_menu = false
-
-func _on_map_selection_pressed():
-	Save.game_saved.emit()
-	Global.settings_opened = false
-	get_tree().change_scene_to_file("res://lib/loading/loading.tscn")
-
-func _on_controller_bindings_pressed():
-	$ControllerLayout.visible = true
-	$ControllerLayout/Proceed.grab_focus()
-
-func _on_proceed_pressed():
-	$ControllerLayout.visible = false
-	$Control/Panel/VBox/ControllerBindings.grab_focus()
+func _on_controller_pressed():
+	controller_diagram_opened.emit()

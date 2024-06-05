@@ -1,0 +1,162 @@
+[gd_scene load_steps=13 format=3 uid="uid://dp1up0pngrtij"]
+
+[ext_resource type="Script" path="res://lib/settings/settings.gd" id="1_yliyb"]
+[ext_resource type="PackedScene" uid="uid://sihpp2cwoyfc" path="res://lib/ui/sprite_center/sprite_center.tscn" id="2_1fxgl"]
+[ext_resource type="Texture2D" uid="uid://fk0cfrsqe4we" path="res://lib/ui/tex/decoration.png" id="3_ks8vf"]
+[ext_resource type="Theme" uid="uid://dfe36tnn0c1ud" path="res://generic/themes/theme.tres" id="5_wc3gn"]
+[ext_resource type="PackedScene" uid="uid://dgg0ydt6egir0" path="res://lib/settings/settings_general.tscn" id="6_ogh13"]
+[ext_resource type="PackedScene" uid="uid://bbbfu66cxakti" path="res://lib/settings/settings_input.tscn" id="7_x7tyk"]
+[ext_resource type="Texture2D" uid="uid://1h7sep7hyk7w" path="res://lib/settings/tex/controller_layout.png" id="8_oukba"]
+[ext_resource type="Theme" uid="uid://ch4overpy78ds" path="res://generic/themes/start_theme.tres" id="9_t7ugb"]
+[ext_resource type="Script" path="res://lib/ui/clicky_button/clicky_button.gd" id="10_wf55y"]
+
+[sub_resource type="Animation" id="Animation_sckei"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Base:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Base:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_m0jqr"]
+resource_name = "float"
+length = 3.0
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Base:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 10), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Base:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.75, 1.5, 2.25, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.588235), Color(1, 1, 1, 1), Color(1, 1, 1, 0.588235), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jm4id"]
+_data = {
+"RESET": SubResource("Animation_sckei"),
+"float": SubResource("Animation_m0jqr")
+}
+
+[node name="Settings" type="CanvasLayer"]
+layer = 100
+script = ExtResource("1_yliyb")
+
+[node name="BG" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.784314)
+
+[node name="SpriteCenter" parent="BG" instance=ExtResource("2_1fxgl")]
+position = Vector2(960, 540)
+
+[node name="Float" type="AnimationPlayer" parent="BG/SpriteCenter"]
+libraries = {
+"": SubResource("AnimationLibrary_jm4id")
+}
+autoplay = "float"
+
+[node name="Base" type="Node2D" parent="BG/SpriteCenter"]
+
+[node name="DecoL" type="Sprite2D" parent="BG/SpriteCenter/Base"]
+position = Vector2(-178, 256)
+rotation = -3.14159
+texture = ExtResource("3_ks8vf")
+
+[node name="Container" type="TabContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -218.0
+offset_top = -361.0
+offset_right = 218.0
+offset_bottom = 299.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_wc3gn")
+
+[node name="SettingsGeneral" parent="Container" instance=ExtResource("6_ogh13")]
+layout_mode = 2
+
+[node name="SettingsInput" parent="Container" instance=ExtResource("7_x7tyk")]
+visible = false
+layout_mode = 2
+
+[node name="ControllerLayout" type="TextureRect" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -591.0
+offset_top = -365.5
+offset_right = 591.0
+offset_bottom = 365.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_oukba")
+
+[node name="Proceed" type="Button" parent="ControllerLayout"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -116.0
+offset_top = 230.0
+offset_right = 116.0
+offset_bottom = 274.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("9_t7ugb")
+text = "CONTINUE"
+script = ExtResource("10_wf55y")
+override_once = true
+
+[connection signal="mouse_entered" from="Container" to="." method="_on_control_mouse_entered"]
+[connection signal="mouse_exited" from="Container" to="." method="_on_control_mouse_exited"]
+[connection signal="tab_changed" from="Container" to="." method="_on_container_tab_changed"]
+[connection signal="controller_diagram_opened" from="Container/SettingsInput" to="." method="_on_settings_input_controller_diagram_opened"]
+[connection signal="pressed" from="ControllerLayout/Proceed" to="." method="_on_proceed_pressed"]

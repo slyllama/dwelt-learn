@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 func _toggle_settings():
-	if $Settings.visible == false:
+	if !$Settings.is_open:
 		$Settings.open()
 	else: $Settings.close()
 

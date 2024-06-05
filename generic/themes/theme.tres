@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=15 format=3 uid="uid://dfe36tnn0c1ud"]
+[gd_resource type="Theme" load_steps=19 format=3 uid="uid://dfe36tnn0c1ud"]
 
 [ext_resource type="FontFile" uid="uid://b1v28gy50d86f" path="res://generic/fonts/red_hat.ttf" id="1_3v4gw"]
 [ext_resource type="Texture2D" uid="uid://d4gts4lvqw0je" path="res://lib/ui/tex/toggle_on.png" id="2_fpka2"]
@@ -37,15 +37,11 @@ corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7og0q"]
-content_margin_left = 2.0
-content_margin_top = 2.0
-content_margin_right = 2.0
-content_margin_bottom = 2.0
+content_margin_left = 4.0
+content_margin_top = 0.0
+content_margin_right = 4.0
+content_margin_bottom = 0.0
 bg_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vwtc4"]
 bg_color = Color(0.4, 0.709804, 1, 1)
@@ -58,13 +54,45 @@ bg_color = Color(0, 0, 0, 1)
 border_width_top = 8
 border_color = Color(0.147672, 0.147672, 0.147672, 1)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0er1m"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_08fkm"]
+bg_color = Color(0.0666667, 0.0666667, 0.0666667, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ciiu4"]
 bg_color = Color(0.146641, 0.146641, 0.146641, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xijcw"]
 bg_color = Color(0.63, 0.63, 0.63, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ivjal"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 6.0
+bg_color = Color(0.0666667, 0.0666667, 0.0666667, 1)
+border_width_top = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lr6x5"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 6.0
+bg_color = Color(0.133333, 0.133333, 0.133333, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d70d2"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 6.0
+bg_color = Color(0.0666667, 0.0666667, 0.0666667, 1)
+border_width_top = 4
+border_color = Color(0.4, 0.709804, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sufei"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 6.0
+bg_color = Color(0, 0, 0, 1)
 
 [resource]
 Button/colors/font_focus_color = Color(0, 0, 0, 1)
@@ -85,8 +113,16 @@ HSlider/styles/normal = null
 HSlider/styles/slider = SubResource("StyleBoxFlat_x5pj6")
 Label/font_sizes/font_size = 16
 Label/fonts/font = ExtResource("1_3v4gw")
-Panel/styles/panel = SubResource("StyleBoxEmpty_0er1m")
+Panel/styles/panel = SubResource("StyleBoxFlat_08fkm")
 ProgressBar/styles/background = SubResource("StyleBoxFlat_ciiu4")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_xijcw")
 RichTextLabel/font_sizes/normal_font_size = 16
 RichTextLabel/fonts/normal_font = ExtResource("1_3v4gw")
+TabContainer/colors/drop_mark_color = Color(0, 0, 0, 1)
+TabContainer/colors/font_hovered_color = Color(1, 1, 1, 1)
+TabContainer/constants/side_margin = 0
+TabContainer/fonts/font = ExtResource("1_3v4gw")
+TabContainer/styles/tab_focus = SubResource("StyleBoxFlat_ivjal")
+TabContainer/styles/tab_hovered = SubResource("StyleBoxFlat_lr6x5")
+TabContainer/styles/tab_selected = SubResource("StyleBoxFlat_d70d2")
+TabContainer/styles/tab_unselected = SubResource("StyleBoxFlat_sufei")

@@ -14,9 +14,9 @@
 [ext_resource type="PackedScene" uid="uid://b6bvm7et230dg" path="res://lib/ui/input_hints/input_hints.tscn" id="13_eft55"]
 [ext_resource type="PackedScene" uid="uid://bt5sosdm3tncx" path="res://lib/ui/hud/hud_buttons.tscn" id="15_6wbiv"]
 [ext_resource type="Texture2D" uid="uid://danqqg64d8q2k" path="res://lib/ui/tex/dot.png" id="15_cp3ui"]
+[ext_resource type="PackedScene" uid="uid://dp1up0pngrtij" path="res://lib/settings/settings.tscn" id="15_rsriv"]
 [ext_resource type="FontFile" uid="uid://b1v28gy50d86f" path="res://generic/fonts/red_hat.ttf" id="17_ersqn"]
 [ext_resource type="Script" path="res://lib/debug/version_text.gd" id="18_xcs5q"]
-[ext_resource type="PackedScene" uid="uid://bx5xwgdebscc6" path="res://lib/ui/settings/settings.tscn" id="19_c42st"]
 [ext_resource type="PackedScene" uid="uid://d24gofb7bfo8k" path="res://lib/ui/hover_sound/hover_sound.tscn" id="19_uwm57"]
 
 [node name="HUD" type="CanvasLayer"]
@@ -111,9 +111,7 @@ layer = 6
 
 [node name="InputHints" parent="." instance=ExtResource("13_eft55")]
 
-[node name="Settings" parent="." instance=ExtResource("19_c42st")]
-layer = 100
-visible = false
+[node name="Settings" parent="." instance=ExtResource("15_rsriv")]
 
 [node name="LoadOverride" type="CanvasLayer" parent="."]
 layer = 101

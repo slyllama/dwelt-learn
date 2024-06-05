@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://1h7sep7hyk7w"
-path="res://.godot/imported/controller_layout.png-b4995ce6db676778128e9f67765d3552.ctex"
+path="res://.godot/imported/controller_layout.png-0fcfed311ff54a72efed53ed6ac8355c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://lib/ui/settings/tex/controller_layout.png"
-dest_files=["res://.godot/imported/controller_layout.png-b4995ce6db676778128e9f67765d3552.ctex"]
+source_file="res://lib/settings/tex/controller_layout.png"
+dest_files=["res://.godot/imported/controller_layout.png-0fcfed311ff54a72efed53ed6ac8355c.ctex"]
 
 [params]
 

@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" path="res://lib/loading/loading.gd" id="1_dy6oh"]
 [ext_resource type="Script" path="res://lib/loading/loading3d.gd" id="1_iixfr"]
-[ext_resource type="PackedScene" uid="uid://bx5xwgdebscc6" path="res://lib/ui/settings/settings.tscn" id="2_k2j3d"]
 [ext_resource type="Theme" uid="uid://dfe36tnn0c1ud" path="res://generic/themes/theme.tres" id="2_rl4eh"]
 [ext_resource type="PackedScene" uid="uid://b5ast1f22qol1" path="res://lib/input_tools/input_tools.tscn" id="3_qyxxt"]
 [ext_resource type="PackedScene" uid="uid://dq3aqaliycowy" path="res://lib/debug/debug_pane/debug_pane.tscn" id="4_hhqni"]
 [ext_resource type="Texture2D" uid="uid://c1ens2tjsu5wf" path="res://lib/loading/loading_icon.png" id="4_o48hx"]
 [ext_resource type="Texture2D" uid="uid://d2nv8xnwo132g" path="res://lib/ui/tex/placeholder_logo.png" id="5_s6nor"]
 [ext_resource type="PackedScene" uid="uid://bt5sosdm3tncx" path="res://lib/ui/hud/hud_buttons.tscn" id="5_umvr7"]
+[ext_resource type="PackedScene" uid="uid://dp1up0pngrtij" path="res://lib/settings/settings.tscn" id="6_jwqg6"]
 [ext_resource type="Texture2D" uid="uid://fk0cfrsqe4we" path="res://lib/ui/tex/decoration.png" id="6_kn8kd"]
 [ext_resource type="Theme" uid="uid://ch4overpy78ds" path="res://generic/themes/start_theme.tres" id="6_tdoiq"]
 [ext_resource type="Texture2D" uid="uid://dinrdf02xeqaq" path="res://generic/tex/fade_ramp.tres" id="10_g1ts5"]
@@ -205,8 +205,7 @@ volume_db = -5.0
 
 [node name="DebugPane" parent="Loading" instance=ExtResource("4_hhqni")]
 
-[node name="Settings" parent="Loading" instance=ExtResource("2_k2j3d")]
-visible = false
+[node name="Settings" parent="Loading" instance=ExtResource("6_jwqg6")]
 
 [node name="HUDButtons" parent="Loading" instance=ExtResource("5_umvr7")]
 

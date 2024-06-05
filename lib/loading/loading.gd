@@ -69,7 +69,7 @@ func _ready():
 	#Global.debug_toggled.connect(func():
 		#if !Global.debug_state: $HUDButtons/TopMenu/SettingsButton.grab_focus())
 
-	$Settings/Control/Panel/VBox/MapSelection.visible = false # no need to go to the menu from the menu
+	#$Settings/Control/Panel/VBox/MapSelection.visible = false # no need to go to the menu from the menu
 	$LoadBlack/ProgressBar.visible = false
 	$GlowIcon.visible = false
 	$LoadPanel/VBox/Play.grab_focus()
