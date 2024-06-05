@@ -111,7 +111,7 @@ layer = 6
 
 [node name="InputHints" parent="." instance=ExtResource("13_eft55")]
 
-[node name="SettingsTabs" parent="." instance=ExtResource("15_rsriv")]
+[node name="Settings" parent="." instance=ExtResource("15_rsriv")]
 
 [node name="LoadOverride" type="CanvasLayer" parent="."]
 layer = 101
