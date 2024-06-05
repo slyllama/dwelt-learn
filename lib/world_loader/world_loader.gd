@@ -78,8 +78,9 @@ func _setting_changed(get_setting_id):
 	match get_setting_id:
 		"fov": %Player/CamPivot/Camera.fov = Global.settings.fov
 		"camera_sensitivity": %Player/CamPivot.camera_sensitivity = Global.settings.camera_sensitivity
-		"volumetric_fog": %Sky.environment.volumetric_fog_enabled = Global.settings.volumetric_fog
-		"bloom": %Sky.environment.glow_enabled = Global.settings.bloom
+		"hq_graphics":
+			%Sky.environment.volumetric_fog_enabled = Global.settings.hq_graphics
+			%Sky.environment.glow_enabled = Global.settings.hq_graphics
 		"music_volume": if get_node_or_null("Music"):
 			$Music.volume_db = linear_to_db(Global.settings.music_volume) * 0.8 # not so loud
 		"vsync": if Global.settings.vsync: DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)

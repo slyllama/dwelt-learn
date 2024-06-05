@@ -78,8 +78,7 @@ var SETTINGS = {
 	"volume": 1.00,
 	"music_volume": 1.00,
 	"full_screen": true,
-	"volumetric_fog": true,
-	"bloom": true,
+	"hq_graphics": true,
 	"vsync": true
 }
 var settings = SETTINGS.duplicate()

@@ -69,20 +69,15 @@ layout_mode = 2
 setting_id = "full_screen"
 setting_title = "FULL SCREEN"
 
+[node name="HQGraphics" parent="VBox" instance=ExtResource("3_fulcb")]
+layout_mode = 2
+setting_id = "hq_graphics"
+setting_title = "HIGH QUALITY GRAPHICS"
+
 [node name="VSync" parent="VBox" instance=ExtResource("3_fulcb")]
 layout_mode = 2
 setting_id = "vsync"
 setting_title = "VSYNC"
-
-[node name="VolShadows" parent="VBox" instance=ExtResource("3_fulcb")]
-layout_mode = 2
-setting_id = "volumetric_fog"
-setting_title = "VOLUMETRIC FOG"
-
-[node name="Bloom" parent="VBox" instance=ExtResource("3_fulcb")]
-layout_mode = 2
-setting_id = "bloom"
-setting_title = "BLOOM"
 
 [node name="Pad2" type="ColorRect" parent="VBox"]
 custom_minimum_size = Vector2(0, 10)
