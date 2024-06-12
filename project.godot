@@ -137,7 +137,7 @@ controller_debug={
 
 [physics]
 
-common/physics_jitter_fix=1.0
+common/max_physics_steps_per_frame=16
 3d/physics_engine="JoltPhysics3D"
 
 [rendering]
