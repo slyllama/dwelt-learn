@@ -1,9 +1,9 @@
 extends CharacterBody3D
 
 @export_category("Player Physics")
-@export var speed = 5.0
+@export var speed = 8.0
 @export var hover_height = 3.0
-@export var speed_smoothing = 0.08
+@export var speed_smoothing = 0.10
 @export var glide_rate = 0.04
 @export var max_gliding_force = 0.5
 
@@ -88,13 +88,11 @@ func _start_moving():
 	moving = true
 	$CamPivot.fov_offset = 5.0 # shift the camera back a little when moving
 	$ModelHandler.start_moving()
-	$Anime.anime_in()
 
 func _stop_moving():
 	moving = false
 	$CamPivot.fov_offset = 0.0
 	$ModelHandler.stop_moving()
-	$Anime.anime_out()
 
 func _input(_event):
 	# No animations if the player's position is locked

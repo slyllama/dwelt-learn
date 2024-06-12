@@ -34,8 +34,8 @@ func _process(_delta): # prevent motion when locked
 	if get_parent().get_node("Collision").disabled:
 		if can_move:
 			#active = false
+			#anime_out()
 			can_move = false
-			anime_out()
 	else:
 		if !can_move:
 			can_move = true

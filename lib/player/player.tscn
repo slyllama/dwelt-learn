@@ -139,6 +139,7 @@ collide_with_areas = true
 script = ExtResource("3_oxn4f")
 
 [node name="Anime" type="CanvasLayer" parent="."]
+visible = false
 script = ExtResource("9_b4cap")
 
 [node name="AnimeTex" type="TextureRect" parent="Anime"]
