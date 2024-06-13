@@ -51,7 +51,7 @@ fog_sky_affect = 0.0
 fog_height = 25.0
 fog_height_density = -0.1
 volumetric_fog_enabled = true
-volumetric_fog_density = 0.02
+volumetric_fog_density = 0.012
 volumetric_fog_albedo = Color(0.873683, 0.76685, 0.723182, 1)
 volumetric_fog_length = 16.0
 adjustment_enabled = true
@@ -190,7 +190,7 @@ spot_range = 30.0
 spot_angle = 30.0
 
 [node name="Elevator" parent="." instance=ExtResource("17_l4sxi")]
-transform = Transform3D(0.570183, 0, -0.821518, 0, 1, 0, 0.821518, 0, 0.570183, -15.4433, -4.76837e-07, 9.91502)
+transform = Transform3D(0.570183, 0, -0.821518, 0, 1, 0, 0.821518, 0, 0.570183, -14.8731, -4.76837e-07, 10.7365)
 
 [node name="GodRay1" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0.126418, -1.9737, 29.8832)
@@ -214,10 +214,10 @@ render_distance = 20
 transform = Transform3D(0.390851, 0, 1.23985, 0, 1.3, 0, -1.23985, 0, 0.390851, -0.885991, 1.77663, 18.703)
 
 [node name="DialogueArea" parent="Fourier" instance=ExtResource("16_j30j2")]
-dialogue_data = Array[String](["The rusty bot looks out toward the ventilator with an expression of pure contentment, joints squeaking as they bounce in the air.
+dialogue_data = Array[String](["I'm a <Technical Test Bot>, here to remind you that there's no narrative or content in this build! It's just a stress-test for the world environment! I'm hyped!
 $
-<\"I've been on this thing -- computing -- twenty-seven times today. I can't get enough of it!\"> You wonder for a second if you should reach out and see if they really are okay; but it occurs to you that they're probably happier than you are."])
-dialogue_title = "Fourier -- Observer-Class"
+Try activating the laser and using it to start the updraft vent next to me! See if it all holds up; thanks!"])
+dialogue_title = "Test Bot"
 character = "fourier"
 object_name = "fourier"
 dialogue_close_distance = 7.0
@@ -287,8 +287,8 @@ volume_db = -1.0
 
 [node name="DialogueArea" parent="LaserDetector" instance=ExtResource("16_j30j2")]
 transform = Transform3D(1.49766, 0, 0.0837322, 0, 1.5, 0, -0.0837322, 0, 1.49766, 0, 0, 0)
-dialogue_data = Array[String](["A good old energy conduit. The technology for these absorption plates was salvaged from some forgotten cavern folded into the Lattice, and while their designs are reproducible, they are not truly <understood>."])
-dialogue_title = "Energy Reciever"
+dialogue_data = Array[String](["Try pointing the laser at me! If you can't get it started, look out for a <lever switch> nearby..."])
+dialogue_title = "Laser Receptor"
 object_name = "energy_receiver"
 dialogue_close_distance = 7.0
 
@@ -333,6 +333,13 @@ material = ExtResource("25_8ehr0")
 [node name="LaserLever" parent="." instance=ExtResource("27_nwdys")]
 transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 19.7994, 0.124966, 18.5905)
 lever_name = "laser_lever"
+
+[node name="Vis" type="VisibleOnScreenNotifier3D" parent="LaserLever"]
+transform = Transform3D(0.769231, 0, 0, 0, 0.769231, 0, 0, 0, 0.769231, 0, 3.5, 0)
+aabb = AABB(-0.5, -0.5, -0.5, 1, 1, 1)
+script = ExtResource("15_26xhl")
+display_text = "Laser Activator"
+render_distance = 20
 
 [node name="MemTest" type="Node3D" parent="."]
 transform = Transform3D(-0.384489, 0, -0.92313, 0, 1, 0, 0.92313, 0, -0.384489, 20.4145, 11.6677, 10.4494)
@@ -388,16 +395,6 @@ transform = Transform3D(0.799758, 0, -0.600323, 0, 1, 0, 0.600323, 0, 0.799758, 
 
 [node name="Tank2" parent="Tanks" instance=ExtResource("22_iujst")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.94, 0, 23.981)
-
-[node name="TankDialogue" parent="Tanks/Tank2" instance=ExtResource("16_j30j2")]
-transform = Transform3D(2.1, 0, 0, 0, 2.1, 0, 0, 0, 2.1, 0, 2.38109, 0)
-dialogue_data = Array[String](["These tanks haven't been labeled -- and likely for good reason. Unwatched and unsecured, their contents are probably flaccid and stale, fit only for diluting other product to keep things on the cheap.
-$
-It's not a practice  the Scrappers might once have engaged in, but times are changing. Competition is fierce, and the populace has become more desparate than ever to get their inlets into <any> kind of emotional gratification."])
-dialogue_title = "Essence Tanks"
-character = "tank"
-object_name = "essence_tank"
-dialogue_close_distance = 7.0
 
 [node name="Tank3" parent="Tanks" instance=ExtResource("22_iujst")]
 transform = Transform3D(0.987494, 0, 0.157658, 0, 1, 0, -0.157658, 0, 0.987494, 4.284, 0, 26.791)

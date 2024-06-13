@@ -1,6 +1,6 @@
 extends Node
 
-const VERSION = "test_1.0.1"
+const VERSION = "test_1.0.2"
 const SCREEN_SIZE = Vector2(1920.0, 1080.0)
 const MIN_SCREEN_SIZE = Vector2(1600.0, 900.0)
 const LARGE_UI_SCALE = 1.0
@@ -77,7 +77,7 @@ var SETTINGS = {
 	"camera_sensitivity": 0.65,
 	"volume": 1.00,
 	"music_volume": 1.00,
-	"full_screen": true,
+	"full_screen": false,
 	"hq_graphics": true,
 	"vsync": true,
 	"version": Global.VERSION

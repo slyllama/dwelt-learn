@@ -25,7 +25,6 @@ func _ready():
 		$Elevator,
 		$Laser,
 		$Fourier/DialogueArea,
-		$Tanks/Tank2/TankDialogue,
 		$LaserDetector/DialogueArea,
 		$LaserLever,
 		$MemTest/LeverA,

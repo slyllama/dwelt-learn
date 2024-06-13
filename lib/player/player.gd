@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 @export_category("Player Physics")
-@export var speed = 8.0
+@export var speed = 7.0
 @export var hover_height = 3.0
 @export var speed_smoothing = 0.10
 @export var glide_rate = 0.04

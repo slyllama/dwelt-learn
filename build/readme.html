@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Dwelt Technical Test &mdash; 1.0.1</title>
+        <title>Dwelt Technical Test</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..900&display=swap');
+            #old-notes-container {
+                display: none;
+            }
             body {
                 font-family: "Alegreya", serif;
                 margin: 1em;
                 max-width: 90%;
+                padding-bottom: 150px;
                 width: 600px;
             }
             p {
@@ -21,33 +26,46 @@
                 margin-right: 3em;
             }
         </style>
+
+        <script type="text/javascript">
+            function toggleReleaseNotes() {
+                var OldNotesContainer = document.getElementById("old-notes-container");
+                var OldNotesButton = document.getElementById("old-notes-button");
+
+                if (OldNotesContainer.style.display == "block") {
+                    OldNotesContainer.style.display = "none";
+                    OldNotesButton.innerText = "Show Notes";
+                } else {
+                    OldNotesContainer.style.display = "block"
+                    OldNotesButton.innerText = "Hide Notes";
+                }
+            }
+        </script>
     </head>
 
     <body lang="en">
-        <h1>Dwelt</h1>
+        <h1>Dwelt Technical Test Notes</h1>
 
-        <p><strong>An environment-driven puzzle RPG about robot cartels and essences of emotion.</strong> In the world of <em>Dwelt</em>, the valuable essences of emotion trafficked by the Order of Scrappers are locked within portals to strange landscapes of memory and feeling, which line the walls of their infinitely labyrinthine dwelling. In order to unlock and extract this essence and trade it on a lucrative black market, you and your cohort must negotiate the emotional skeletons of these geographies, bringing them closure by traversing their spans and depths, and solving the puzzles and riddles which encapsulate their feelings, hopes, and trauma. Yet questions remain: what are these portals? Where do they come from?</p>
+        <!--<p><strong>An environment-driven puzzle RPG about robot cartels and essences of emotion.</strong> In the world of <em>Dwelt</em>, the valuable essences of emotion trafficked by the Order of Scrappers are locked within portals to strange landscapes of memory and feeling, which line the walls of their infinitely labyrinthine dwelling. In order to unlock and extract this essence and trade it on a lucrative black market, you and your cohort must negotiate the emotional skeletons of these geographies, bringing them closure by traversing their spans and depths, and solving the puzzles and riddles which encapsulate their feelings, hopes, and trauma. Yet questions remain: what are these portals? Where do they come from?</p>
         
         <p>And how is it even possible that you, Scrapper, are here to gaze upon a labyrinth torn from the universe by the Cosmos Itself?</p>
         
-        <h2>Technical Test Notes</h2>
+        <h2>Technical Test Notes</h2>-->
+
+        <p style="text-align: center; margin: 3em auto;"><b>Run the EXE file in this folder to get started!</b></p>
 		
+        <p>Welcome to the <em>Dwelt</em> technical test! This build contains no setting or narrative content - it's just a test of the mechanics used to tell the story of the Scrappers and those who dwell amongst the Lattice. <strong>Your help in trialing these features, attempting novel combinations of actions, and documenting the bugs that result, will be invaluable in stabilising this world and readying it to be painted in.</strong> Checking that saving and loading is robust, combining unforseen actions (for instance, initiating a skill simultaneously from two different inputs), and tests like these will be very helpful.</p>
+
 		<div style="background: #fff1d4; padding-bottom: 0.5em;">
-			<h3>1.0.1 Release Notes</h3>
+			<h3>1.0.2 Release Notes</h3>
 			
 			<p style="color:red; margin: 10px; border: 1px solid black; padding: 5px;">Running this version will reset your old save and settings. This will only happen during pre-release development.</p>
 			
 			<ul>
-                <li>Fixed an issue with the shortcut which prevented the program from opening.</li>
-				<li>Settings are now tabulated, and can be toggled with the <code>ESC</code> key.</li>
-				<li>Added a VSync toggle. Graphics settings are now consolidated into a single "High Quality Graphics" option.</li>
-				<li>Re-entering the updraft while gliding will cause the player to be propelled back upward.</li>
-				<li>Sounds are now perceived from the player model (rather than inaccurately from the camera).</li>
-				<li>Fixed janky behavior when the game loses focus, and other bug fixes.</li>
+                <li>Fixed an issue causing lower FPS values to result in sluggish movement. Slight tweaks to movement dynamics - more speed; reduced slipperiness.</li>
+                <li>Adjusted some visual effects to be more subtle. Various minor fixes.</li>
 			</ul>
 		</div>
-        
-        <p>Welcome to the <em>Dwelt</em> technical test! This build contains no setting or narrative content - it's just a test of the mechanics used to tell the story of the Scrappers and those who dwell amongst the Lattice. <strong>Your help in trialing these features, attempting novel combinations of actions, and documenting the bugs that result, will be invaluable in stabilising this world and readying it to be painted in.</strong> Checking that saving and loading is robust, combining unforseen actions (for instance, initiating a skill simultaneously from two different inputs), and tests like these will be very helpful.</p>
         
         <p>Thank you so much for your interest in <em>Dwelt</em>! Don't hesitate to contact me directly (slyllama on Discord and <a href="https://bsky.app/profile/slyllama.bsky.social">Bluesky</a>, or  &#x73;&#x6c;&#x79;&#x6c;&#x6c;&#x61;&#x6d;&#x61;&#x40;&#x6f;&#x75;&#x74;&#x6c;&#x6f;&#x6f;&#x6b;&#x2e;&#x63;&#x6f;&#x6d;, etc) with any issues you encounter or ideas you might have. Enjoy the technical test!</p>
         
@@ -56,7 +74,6 @@
         <ul>
             <li>Press <b>F2</b> to open the debugging menu, which lets you reset your save, hide the player model, and other useful things like that.</li>
             <li>Settings, save data, and shader caches are stored in your <code>AppData/Roaming/dwelt</code> folder. You can safely delete everything in here, which might be useful if the program gets totally stuck.</li>
-            <li>The program will spawn a console when it starts; if <i>Dwelt</i> freezes up, the stuff printed here will be very useful to include for debugging.</li>
             <li>Please quote the version number always shown in the bottom right of the game when reporting issues and improvements!</li>
         </ul>
 
@@ -68,5 +85,26 @@
             <li><strong>Godot.</strong> <em>Dwelt</em> is built in <a href="https://godotengine.org/">Godot 4.2.2</a>.</li>
             <li><strong>Jolt 0.12</strong> physics engine is required but not packaged by default. Download it from the <a href="https://godotengine.org/asset-library/asset/1918">Godot Asset Library</a>, place it in the <code>addons</code> folder, and restart the engine. (More information about Jolt on their <a href="https://github.com/jrouwe/JoltPhysics">GitHub page</a>.)</li>
         </ul>
+
+        <h2>Previous Test Build Release Notes</h2>
+
+        <button onclick="toggleReleaseNotes();" id="old-notes-button">Show Notes</button>
+
+        <div id="old-notes-container">
+            <div style="background: #fff1d4; padding-bottom: 0.5em;">
+                <h3>1.0.1 Release Notes</h3>
+                
+                <p style="color:red; margin: 10px; border: 1px solid black; padding: 5px;">Running this version will reset your old save and settings. This will only happen during pre-release development.</p>
+                
+                <ul>
+                    <li>Fixed an issue with the shortcut which prevented the program from opening.</li>
+                    <li>Settings are now tabulated, and can be toggled with the <code>ESC</code> key.</li>
+                    <li>Added a VSync toggle. Graphics settings are now consolidated into a single "High Quality Graphics" option.</li>
+                    <li>Re-entering the updraft while gliding will cause the player to be propelled back upward.</li>
+                    <li>Sounds are now perceived from the player model (rather than inaccurately from the camera).</li>
+                    <li>Fixed janky behavior when the game loses focus, and other bug fixes.</li>
+                </ul>
+            </div>
+        </div>
     </body>
 </html>
