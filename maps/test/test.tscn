@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://yyd0ltle0un5"]
+[gd_scene load_steps=25 format=3 uid="uid://yyd0ltle0un5"]
 
 [ext_resource type="PackedScene" uid="uid://e0k8h1ytp7wi" path="res://lib/ui/hud/hud.tscn" id="1_3q1w7"]
 [ext_resource type="Script" path="res://maps/test/test.gd" id="1_fvnbx"]
@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://i1jp4klishr3" path="res://lib/dialogue/dialogue.tscn" id="13_jixis"]
 [ext_resource type="Script" path="res://lib/ui/screen_space_label/screen_space_label.gd" id="14_5k6pk"]
 [ext_resource type="PackedScene" uid="uid://djgjcyichaft4" path="res://objects/rocket/rocket.glb" id="16_syt88"]
-[ext_resource type="AudioStream" uid="uid://c62xqceplif7s" path="res://maps/lattice/sounds/lava_ambience.ogg" id="17_ifxop"]
 [ext_resource type="Script" path="res://lib/debug/debug_flag/debug_flag.gd" id="18_fje8s"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_lvxdd"]
@@ -157,7 +156,6 @@ process_material = SubResource("ParticleProcessMaterial_xa72n")
 draw_pass_1 = SubResource("PlaneMesh_k7b7a")
 
 [node name="Ambience" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("17_ifxop")
 volume_db = -7.0
 autoplay = true
 

@@ -391,7 +391,7 @@ mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("15_dq5er")
 theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
-text = "[right]TEST_1.0.1[/right]"
+text = "[right]TEST_1.0.2[/right]"
 fit_content = true
 script = ExtResource("16_wnkdf")
 
@@ -448,7 +448,7 @@ current = true
 fov = 55.0
 
 [connection signal="focus_entered" from="Loading/LoadPanel/VBox/Play" to="." method="_on_play_focus_entered"]
-[connection signal="pressed" from="Loading/LoadPanel/VBox/Play" to="Loading" method="_map_button_pressed" binds= ["lattice"]]
+[connection signal="pressed" from="Loading/LoadPanel/VBox/Play" to="Loading" method="_map_button_pressed" binds= ["test"]]
 [connection signal="focus_entered" from="Loading/LoadPanel/VBox/Settings" to="." method="_on_settings_focus_entered"]
 [connection signal="pressed" from="Loading/LoadPanel/VBox/Settings" to="Loading" method="_map_button_pressed" binds= ["settings"]]
 [connection signal="focus_entered" from="Loading/LoadPanel/VBox/Quit" to="." method="_on_quit_focus_entered"]
